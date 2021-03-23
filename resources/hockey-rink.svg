@@ -1,0 +1,433 @@
+<svg width="202px" height="87px" xmlns="http://www.w3.org/2000/svg">
+    <path
+        id="center-line"
+        d="M 101 1
+          L 101 86"
+        stroke="#C8102e"
+        stroke-width="1"
+    />
+    <path
+        id="center-line-decor"
+        d="
+          M 101 1
+          L 101 3.5
+          M 101 6
+          L 101 8.5
+          M 101 11
+          L 101 13.5
+          M 101 16
+          L 101 18.5
+          M 101 21
+          L 101 23.5
+          M 101 26
+          L 101 28.5
+          M 101 31
+          L 101 33.5
+          M 101 36
+          L 101 38.5
+          M 101 41
+          L 101 43.5
+          M 101 46
+          L 101 48.5
+          M 101 51
+          L 101 53.5
+          M 101 56
+          L 101 58.5
+          M 101 61
+          L 101 63.5
+          M 101 66
+          L 101 68.5
+          M 101 71
+          L 101 73.5
+          M 101 76
+          L 101 78.5
+          M 101 81
+          L 101 83.5"
+        stroke="white"
+        stroke-width=".25"
+    />
+    <g id="goal-lines">
+        <path
+            id="left-goal-line"
+            d="M 12 7
+            L 12 80"
+            stroke="#C8102e"
+            stroke-width="0.166667"
+        />
+        <path
+            id="right-goal-line"
+            d="M 190 7
+            L 190 80"
+            stroke="#C8102e"
+            stroke-width="0.166667"
+        />
+    </g>
+    <g id="goal-creases">
+        <g id="left-goalie-crease">
+            <path
+                d="
+                  M 1 57.5
+                  L 12 54.5
+                  M 1 29.5
+                  L 12 32.5"
+                stroke="#C8102e"
+                stroke-width="0.1667"
+            />
+            <path
+                id="left-goal-crease"
+                d="
+                  M 12 39.5
+                  L 16.5 39.5
+                  A 6 6 0 0 1 16.5 47.5
+                  L 12 47.5
+                  M 16 39.5
+                  L 16 39.9166667
+                  M 16 47.5
+                  L 16 47.08333333"
+                stroke="#C8102e"
+                fill="#E6F9FF"
+                stroke-width="0.1667"
+            />
+            <path
+                id="left-goal"
+                d="
+                  M 12 40.5
+                  L 10 40.5
+                  A 5 5 0 0 0 10 46.5
+                  L 12 46.5"
+                stroke="black"
+                fill="transparent"
+                stroke-width="0.1667"
+            />
+        </g>
+        <g id="right-goalie-crease">
+            <path
+                d="
+                  M 201 57.5
+                  L 190 54.5
+                  M 201 29.5
+                  L 190 32.5"
+                stroke="#C8102e"
+                stroke-width="0.1667"
+            />
+            <path
+                id="right-goal-crease"
+                d="
+                  M 190 39.5
+                  L 185.5 39.5
+                  A 6 6 0 0 0 185.5 47.5
+                  L 190 47.5
+                  M 186 39.5
+                  L 186 39.9166667
+                  M 186 47.5
+                  L 186 47.08333333"
+                stroke="#C8102e"
+                fill="#E6F9FF"
+                stroke-width="0.1667"
+            />
+            <path
+                id="right-goal"
+                d="
+                  M 190 40.5
+                  L 192 40.5
+                  A 5 5 0 0 1 192 46.5
+                  L 190 46.5"
+                stroke="black"
+                fill="transparent"
+                stroke-width="0.1667"
+            />
+        </g>
+    </g>
+    <g id="#0033A0-lines">
+        <path
+            id="left-#0033A0-line"
+            d="M 76 1
+          L 76 86"
+            stroke="#0033A0"
+            stroke-width="1"
+        />
+        <path
+            id="right-#0033A0-line"
+            d="M 126 1
+          L 126 86"
+            stroke="#0033A0"
+            stroke-width="1"
+        />
+    </g>
+    <g id="center-faceoff-spots">
+        <circle
+            id="top-left-spot"
+            cx="81"
+            cy="21.5"
+            r="1"
+            fill="#0033A0"
+        />
+        <circle
+            id="top-right-spot"
+            cx="121"
+            cy="21.5"
+            r="1"
+            fill="#0033A0"
+        />
+        <circle
+            id="bottom-left-spot"
+            cx="81"
+            cy="65.5"
+            r="1"
+            fill="#0033A0"
+        />
+        <circle
+            id="bottom-right-spot"
+            cx="121"
+            cy="65.5"
+            r="1"
+            fill="#0033A0"
+        />
+    </g>
+    <g id="center-circles">
+        <circle
+            id="outer-center-circle"
+            cx="101"
+            cy="43.5"
+            r="15"
+            stroke="#0033A0"
+            stroke-width="0.1666667"
+            fill="transparent"
+        />
+        <circle
+            id="middle-center-circle"
+            cx="101"
+            cy="43.5"
+            r=".5"
+            fill="#0033A0"
+        />
+    </g>
+    <g id="faceoff-circles">
+        <g id="bottom-left-faceoff-circle">
+            <circle
+                id="center-circle"
+                cx="32"
+                cy="65.5"
+                r="1"
+                fill="#C8102e"
+            />
+            <circle
+                id="center-circle"
+                cx="32"
+                cy="65.5"
+                r="15"
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+            <path
+                d="
+            M 29.125 50.75
+            L 29.125 48.75
+            M 34.875 50.75
+            L 34.875 48.75
+            M 29.125 80.25
+            L 29.125 82.25
+            M 34.875 80.25
+            L 34.875 82.25
+            "
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+            <path
+                d="M 26 66.3333333
+               L 29.9166667 66.3333333
+               L 29.9166667 69.25
+               M 29.9166667 61.75
+               L 29.9166667 64.6666667
+               L 26 64.6666667
+               M 38 66.3333333
+               L 34.08333333 66.3333333
+               L 34.08333333 69.25
+               M 34.08333333 61.75
+               L 34.08333333 64.6666667
+               L 38 64.6666667
+               "
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+        </g>
+        <g id="bottom-right-faceoff-circle">
+            <circle
+                id="center-circle"
+                cx="170"
+                cy="65.5"
+                r="1"
+                fill="#C8102e"
+            />
+            <circle
+                id="center-circle"
+                cx="170"
+                cy="65.5"
+                r="15"
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+            <path
+                d="
+            M 167.125 50.75
+            L 167.125 48.75
+            M 172.875 50.75
+            L 172.875 48.75
+            M 167.125 80.25
+            L 167.125 82.25
+            M 172.875 80.25
+            L 172.875 82.25
+            "
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+            <path
+                d="M 164 66.3333333
+               L 167.9166667 66.3333333
+               L 167.9166667 69.25
+               M 167.9166667 61.75
+               L 167.9166667 64.6666667
+               L 164 64.6666667
+               M 176 66.3333333
+               L 172.08333333 66.3333333
+               L 172.08333333 69.25
+               M 172.08333333 61.75
+               L 172.08333333 64.6666667
+               L 176 64.6666667
+               "
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+        </g>
+        <g id="top-right-faceoff-circle">
+            <circle
+                id="center-circle"
+                cx="170"
+                cy="21.5"
+                r="1"
+                fill="#C8102e"
+            />
+            <circle
+                id="center-circle"
+                cx="170"
+                cy="21.5"
+                r="15"
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+            <path
+                d="
+            M 167.125 6.75
+            L 167.125 4.75
+            M 172.875 6.75
+            L 172.875 4.75
+            M 167.125 36.25
+            L 167.125 38.25
+            M 172.875 36.25
+            L 172.875 38.25
+            "
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+            <path
+                d="M 164 22.3333333
+               L 167.9166667 22.3333333
+               L 167.9166667 25.25
+               M 167.9166667 17.75
+               L 167.9166667 20.6666667
+               L 164 20.6666667
+               M 176 22.3333333
+               L 172.08333333 22.3333333
+               L 172.08333333 25.25
+               M 172.08333333 17.75
+               L 172.08333333 20.6666667
+               L 176 20.6666667
+               "
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+        </g>
+        <g id="top-left-faceoff-circle">
+            <circle
+                id="center-circle"
+                cx="32"
+                cy="21.5"
+                r="1"
+                fill="#C8102e"
+            />
+            <circle
+                id="center-circle"
+                cx="32"
+                cy="21.5"
+                r="15"
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+            <path
+                d="
+            M 29.125 6.75
+            L 29.125 4.75
+            M 34.875 6.75
+            L 34.875 4.75
+            M 29.125 36.25
+            L 29.125 38.25
+            M 34.875 36.25
+            L 34.875 38.25
+            "
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+            <path
+                d="M 26 22.3333333
+               L 29.9166667 22.3333333
+               L 29.9166667 25.25
+               M 29.9166667 17.75
+               L 29.9166667 20.6666667
+               L 26 20.6666667
+               M 38 22.3333333
+               L 34.08333333 22.3333333
+               L 34.08333333 25.25
+               M 34.08333333 17.75
+               L 34.08333333 20.6666667
+               L 38 20.6666667
+               "
+                stroke="#C8102e"
+                fill="transparent"
+                stroke-width=".16667"
+            />
+        </g>
+    </g>
+    <path
+        id="scorekeeper"
+        d="M 91 86 A 10 10 0 0 1 111 86"
+        stroke-width="0.16667"
+        fill="transparent"
+        stroke="black"
+    />
+    <path
+        id="outside-perimeter"
+        d="M 1 29
+        A 28 28 0 0 1 29 1
+        L 173 1
+        A 28 28 0 0 1 201 29
+        L 201 58
+        A 28 28 0 0 1 173 86
+        L 29 86
+        A 28 28 0 0 1 1 58
+        L 1 29"
+        stroke="black"
+        fill="transparent"
+        stroke-width="2"
+    />
+</svg>

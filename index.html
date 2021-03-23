@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Shot Plotter</title>
+
+        <!-- Google fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,300"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <!-- D3.js -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"
+            charset="utf-8"
+        ></script>
+        <link rel="stylesheet" href="index.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h1>Shot Plotter</h1>
+        </div>
+        <div id="test"></div>
+        <div id="hockey-rink"></div>
+        <hr />
+        <script type="module" src="index.js"></script>
+        <script type="module">
+            import { index } from "./index.js";
+            index();
+        </script>
+    </body>
+    <footer>
+        Website built by An Nguyen using D3.js. Source code is available on
+        <a href="https://github.com/nguyenank/shot-plotter">Github</a>.
+    </footer>
+</html>
