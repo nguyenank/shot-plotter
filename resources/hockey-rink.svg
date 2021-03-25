@@ -1,5 +1,5 @@
-<svg width="220" height="105" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(10,10)"><path
+<svg id="hockey-rink-svg" width="620" height="275" xmlns="http://www.w3.org/2000/svg">
+    <g id="transformations"><path
         id="center-line"
         d="M 100 0
           L 100 85"
@@ -428,6 +428,6 @@
         L 0 28"
         stroke="black"
         fill="transparent"
-        stroke-width="2"
+        stroke-width="1"
     /></g>
 </svg>
