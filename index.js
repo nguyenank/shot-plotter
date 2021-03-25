@@ -4,7 +4,11 @@ function index() {
             .node()
             .append(data.documentElement);
 
-        var resize = Math.floor(window.innerWidth / 200);
+        var maxWidth =
+            window.innerWidth >= 768
+                ? window.innerWidth * 0.75
+                : window.innerWidth;
+        var resize = Math.floor(maxWidth / 200);
         d3.select("#hockey-rink-svg")
             .attr("width", resize * 200 + 20)
             .attr("height", resize * 85 + 20);

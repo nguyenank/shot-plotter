@@ -1,4 +1,41 @@
+* {
+    box-sizing: border-box;
+}
 body {
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
+}
+
+footer {
+    font-size: 0.75em;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar {
+    background-color: #dddddd;
+    margin: 1em;
+}
+
+.sidebar-wrapper {
+    width: 15%;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .main {
+        display: block;
+    }
+    .sidebar-wrapper {
+        width: 100%;
+    }
+    #hockey-rink {
+    }
 }
