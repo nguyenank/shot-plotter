@@ -1,8 +1,4 @@
 function setUpShots() {
-    var transform = d3.select("#hockey-rink").select("#transformations");
-
-    transform.append("g").attr("id", "home-team");
-    transform.append("g").attr("id", "away-team");
     d3.select("#hockey-rink")
         .select("#outside-perimeter")
         .on("click", e => {

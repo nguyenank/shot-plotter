@@ -410,6 +410,10 @@
         fill="transparent"
         stroke="black"
     />
+    <g id = "teams">
+      <g id="home-team"></g>
+      <g id="away-team"></g>
+    </g>
     <path
         id="outside-perimeter"
         d="M 0 28
