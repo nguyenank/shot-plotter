@@ -35,7 +35,7 @@ function setUpTable() {
         .append("tr");
     createHeaderRow(headerRow, "Shot");
     createHeaderRow(headerRow, "Team");
-    createHeaderRow(headerRow, "Player #");
+    createHeaderRow(headerRow, "Player");
     createHeaderRow(headerRow, "X");
     createHeaderRow(headerRow, "Y");
 

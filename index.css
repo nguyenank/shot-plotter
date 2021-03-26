@@ -28,6 +28,11 @@ footer {
     margin-right: 1em;
 }
 
+.form-group {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
 .main {
     display: flex;
     justify-content: space-between;

@@ -14,6 +14,10 @@ function clickHandler(e) {
 
     // https://stackoverflow.com/a/29325047
     var teamId = d3.select("input[name='home-away']:checked").property("value");
+    var player = d3
+        .select("#options")
+        .select("#player-input")
+        .property("value");
 
     var homeConfig = {
         name: "Home",
@@ -45,7 +49,7 @@ function clickHandler(e) {
                 .size()
         );
     row.append("td").text(config.name);
-    row.append("td").text("42");
+    row.append("td").text(player);
     row.append("td").text(adjustedX);
     row.append("td").text(adjustedY);
 }
