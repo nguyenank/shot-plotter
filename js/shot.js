@@ -17,11 +17,11 @@ function clickHandler(e) {
 
     var homeConfig = {
         name: "Home",
-        color: "rgba(53, 171, 169, 0.8)",
+        color: "rgba(53, 171, 169, 0.7)",
     };
     var awayConfig = {
         name: "Away",
-        color: "rgba(234, 142, 72, 0.8)",
+        color: "rgba(234, 142, 72, 0.7)",
     };
 
     var config = teamId === "#home-team" ? homeConfig : awayConfig;

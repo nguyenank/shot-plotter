@@ -1,4 +1,9 @@
 function setUpOptions() {
+    d3.select("#options")
+        .append("h3")
+        .text("Team")
+        .attr("class", "center");
+
     var homeDiv = d3
         .select("#options")
         .append("div")
