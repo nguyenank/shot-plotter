@@ -23,6 +23,10 @@ footer {
     overflow-y: auto;
 }
 
+.form-check {
+    margin-left: 1em;
+}
+
 .main {
     display: flex;
     justify-content: space-between;
