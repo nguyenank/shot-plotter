@@ -2,50 +2,40 @@ function setUpShots() {
     d3.select("#hockey-rink")
         .select("#outside-perimeter")
         .on("click", e => {
-            clickHandler(e);
+            createShot(e);
         });
 }
 
-function clickHandler(e) {
-    var adjustedX = (d3.pointer(e)[0] - 100).toFixed(2);
-    var adjustedY = (d3.pointer(e)[1] - 42.5).toFixed(2);
-
-    // create dot
-
+function createShot(e) {
     // https://stackoverflow.com/a/29325047
     var teamId = d3.select("input[name='home-away']:checked").property("value");
-    var player = d3
-        .select("#options")
-        .select("#player-input")
-        .property("value");
-
-    var homeConfig = {
-        name: "Home",
-        color: "rgba(53, 171, 169, 0.7)",
-        rowClass: "home-row",
-    };
-    var awayConfig = {
-        name: "Away",
-        color: "rgba(234, 142, 72, 0.7)",
-        rowClass: "away-row",
-    };
-
-    var config = teamId === "#home-team" ? homeConfig : awayConfig;
+    var homeBool = teamId === "#home-team";
     var id = uuidv4();
+    createDot(teamId, homeBool, d3.pointer(e), id);
+    createRow(homeBool, d3.pointer(e), id);
+}
+
+function createDot(teamId, homeBool, coords, id) {
     d3.select(teamId)
         .append("circle")
-        .attr("cx", d3.pointer(e)[0])
-        .attr("cy", d3.pointer(e)[1])
+        .attr("cx", coords[0])
+        .attr("cy", coords[1])
         .attr("r", 1.5)
         .attr("id", id)
-        .style("fill", config.color);
+        .attr("class", homeBool ? "home-shot" : "away-shot");
+}
+
+function createRow(homeBool, coords, id) {
+    var adjustedX = (coords[0] - 100).toFixed(2);
+    var adjustedY = (coords[1] - 42.5).toFixed(2);
 
     // create row
     var row = d3
         .select("#shot-table-body")
         .append("tr")
-        .attr("class", config.rowClass);
+        .attr("class", homeBool ? "home-row" : "away-row");
 
+    // get shot number
     row.append("th")
         .attr("scope", "col")
         .text(
@@ -54,7 +44,14 @@ function clickHandler(e) {
                 .selectAll("tr")
                 .size()
         );
-    row.append("td").text(config.name);
+
+    // get player field
+    var player = d3
+        .select("#options")
+        .select("#player-input")
+        .property("value");
+
+    row.append("td").text(homeBool ? "Home" : "Away");
     row.append("td").text(player);
     row.append("td").text(adjustedX);
     row.append("td").text(adjustedY);

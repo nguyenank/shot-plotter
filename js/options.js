@@ -1,4 +1,9 @@
 function setUpOptions() {
+    homeAwayRadioButtons();
+    playerTextField();
+}
+
+function homeAwayRadioButtons() {
     d3.select("#options")
         .append("h3")
         .text("Team")
@@ -38,7 +43,9 @@ function setUpOptions() {
         .attr("class", "form-check-label")
         .attr("for", "away")
         .text("Away");
+}
 
+function playerTextField() {
     d3.select("#options")
         .append("h3")
         .text("Player")
