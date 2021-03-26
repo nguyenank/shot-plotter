@@ -38,6 +38,14 @@ footer {
     justify-content: space-between;
 }
 
+.home-row:hover {
+    background-color: rgba(53, 171, 169, 0.7);
+}
+
+.away-row:hover {
+    background-color: rgba(234, 142, 72, 0.7);
+}
+
 @media (max-width: 768px) {
     .main {
         display: block;
