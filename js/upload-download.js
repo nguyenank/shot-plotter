@@ -10,8 +10,7 @@ function downloadCSV() {
                 });
             csv = csv.slice(0, -1) + "\n";
         });
-    console.log(csv);
-    download(csv, "test.csv", "text/csv");
+    download(csv, new Date(Date.now()).toDateString(), "text/csv");
 }
 
 export { downloadCSV };
