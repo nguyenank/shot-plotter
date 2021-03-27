@@ -60,13 +60,34 @@
                 <div class="sidebar">
                     <table id="shot-table" class="table"></table>
                 </div>
-                <label class="form-label" for="download">Download CSV</label>
-                <button id="download" class="btn btn-light">Download</button>
-                <label class="form-label" for="upload">Upload CSV</label>
+            </div>
+        </div>
+        <div class="upload-download">
+            <div class="input-group mb-3">
+                <button
+                    class="input-group-text download-btn"
+                    type="button"
+                    id="download"
+                >
+                    Download
+                </button>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="test"
+                    aria-label="download file name"
+                    aria-describedby="basic-addon2"
+                    id="download-name"
+                />
+                <span class="input-group-text white-bg" id="basic-addon2"
+                    >.csv</span
+                >
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="upload">Upload</label>
                 <input type="file" class="form-control" id="upload" />
             </div>
         </div>
-
         <hr />
         <script type="module" src="index.js"></script>
         <script type="module">

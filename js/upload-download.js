@@ -15,7 +15,11 @@ function downloadCSV() {
             csv = csv.slice(0, -2) + "\n";
         });
     csv = csv.slice(0, -1); // remove trailing new line
-    download(csv, new Date(Date.now()).toDateString(), "text/csv");
+    var fileName = d3.select("#download-name").property("value");
+    if (!fileName) {
+        fileName = d3.select("#download-name").attr("placeholder");
+    }
+    download(csv, fileName + ".csv", "text/csv");
 }
 
 function uploadCSV(e) {

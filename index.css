@@ -56,6 +56,22 @@ footer {
     cursor: pointer;
 }
 
+.white-bg {
+    background-color: white;
+}
+
+.download-btn {
+    background-color: #eaecef;
+}
+
+.download-btn:hover {
+    background-color: #dee0e3;
+}
+
+.upload-download {
+    margin: 1em;
+}
+
 @media (max-width: 768px) {
     .main {
         display: block;
