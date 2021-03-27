@@ -12,6 +12,7 @@ function setUpTable() {
     createHeaderRow(headerRow, "Shot");
     createHeaderRow(headerRow, "Team");
     createHeaderRow(headerRow, "Player");
+    createHeaderRow(headerRow, "Type");
     createHeaderRow(headerRow, "X");
     createHeaderRow(headerRow, "Y");
     createHeaderRow(headerRow, ""); // space for trash can

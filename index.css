@@ -16,17 +16,8 @@ footer {
     background-color: #dddddd;
     margin: 1em;
     height: 85vh;
+    padding: 1em;
     overflow-y: auto;
-}
-
-.form-check {
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-.form-group {
-    margin-left: 1em;
-    margin-right: 1em;
 }
 
 .main {
@@ -70,6 +61,16 @@ footer {
 
 .upload-download {
     margin: 1em;
+}
+
+select {
+    width: 100%;
+}
+
+input[type="text"] {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    border: 1px solid #aaaaaa;
 }
 
 @media (max-width: 768px) {

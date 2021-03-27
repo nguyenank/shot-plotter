@@ -1,6 +1,9 @@
 function setUpOptions() {
     homeAwayRadioButtons();
+    d3.select("#options").append("hr");
     playerTextField();
+    d3.select("#options").append("hr");
+    shotTypeDropdown();
 }
 
 function homeAwayRadioButtons() {
@@ -55,15 +58,36 @@ function playerTextField() {
         .append("div")
         .attr("class", "form-group");
     playerDiv
-        .append("label")
-        .attr("for", "player-input")
-        .text("Player");
-    playerDiv
         .append("input")
         .attr("type", "text")
         .attr("class", "form-control")
         .attr("id", "player-input")
         .attr("value", "");
+}
+
+function shotTypeDropdown() {
+    d3.select("#options")
+        .append("h3")
+        .text("Shot Type")
+        .attr("class", "center");
+
+    var select = d3
+        .select("#options")
+        .append("div")
+        .attr("class", "select-wrapper")
+        .append("select")
+        .attr("id", "shot-type");
+    select
+        .append("option")
+        .text("Shot")
+        .attr("selected", true);
+    select.append("option").text("Goal");
+
+    d3.select("#options")
+        .append("div")
+        .text(
+            "(To add new shot type, type into the dropdown and select the new option or press Enter.)"
+        );
 }
 
 export { setUpOptions };

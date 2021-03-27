@@ -10,6 +10,9 @@ function index() {
         setUpTable();
         setUpShots();
         setUpDownloadUpload();
+        $(document).ready(function() {
+            $("#shot-type").select2({ tags: true });
+        });
     });
 }
 

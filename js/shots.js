@@ -17,16 +17,19 @@ function createShotFromEvent(e) {
         .select("#player-input")
         .property("value");
 
+    // get shot type field
+    var type = d3.select("#shot-type").property("value");
+
     createDot(teamId, homeBool, d3.pointer(e), id);
-    createRow(homeBool, player, d3.pointer(e), id);
+    createRow(homeBool, player, type, d3.pointer(e), id);
 }
 
-function createShotFromData(team, player, coords) {
+function createShotFromData(team, player, type, coords) {
     var teamId = team === "Home" ? "#home-team" : "#away-team";
     var homeBool = teamId === "#home-team";
     var id = uuidv4();
     createDot(teamId, homeBool, coords, id);
-    createRow(homeBool, player, coords, id);
+    createRow(homeBool, player, type, coords, id);
 }
 
 function createDot(teamId, homeBool, coords, id) {
@@ -39,7 +42,7 @@ function createDot(teamId, homeBool, coords, id) {
         .attr("class", homeBool ? "home-shot" : "away-shot");
 }
 
-function createRow(homeBool, player, coords, id) {
+function createRow(homeBool, player, type, coords, id) {
     var adjustedX = (coords[0] - 100).toFixed(2);
     var adjustedY = (coords[1] - 42.5).toFixed(2);
 
@@ -61,6 +64,7 @@ function createRow(homeBool, player, coords, id) {
 
     row.append("td").text(homeBool ? "Home" : "Away");
     row.append("td").text(player);
+    row.append("td").text(type);
     row.append("td").text(adjustedX);
     row.append("td").text(adjustedY);
     row.append("td")
