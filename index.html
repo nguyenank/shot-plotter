@@ -11,6 +11,7 @@
             rel="stylesheet"
             type="text/css"
         />
+
         <!-- UUID -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
 
@@ -20,6 +21,7 @@
             integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ=="
             crossorigin="anonymous"
         ></script>
+
         <!-- D3.js -->
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.6.0/d3.min.js"
@@ -39,6 +41,8 @@
             integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
             crossorigin="anonymous"
         ></script>
+
+        <!-- Bootstrap Icons -->
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css"
@@ -62,32 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="upload-download">
-            <div class="input-group mb-3">
-                <button
-                    class="input-group-text download-btn"
-                    type="button"
-                    id="download"
-                >
-                    Download
-                </button>
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="test"
-                    aria-label="download file name"
-                    aria-describedby="basic-addon2"
-                    id="download-name"
-                />
-                <span class="input-group-text white-bg" id="basic-addon2"
-                    >.csv</span
-                >
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="upload">Upload</label>
-                <input type="file" class="form-control" id="upload" />
-            </div>
-        </div>
+        <div class="upload-download"></div>
         <hr />
         <script type="module" src="index.js"></script>
         <script type="module">

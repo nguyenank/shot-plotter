@@ -1,6 +1,75 @@
 import { clearTable } from "./table.js";
 import { createShotFromData } from "./shots.js";
 
+function setUpDownloadUpload() {
+    setUpDownload();
+    setUpUpload();
+}
+
+function setUpDownload() {
+    var wrapper = d3
+        .select(".upload-download")
+        .append("div")
+        .attr("class", "input-group");
+
+    // Download Button
+    wrapper
+        .append("button")
+        .attr("class", "input-group-text download-btn")
+        .attr("type", "button")
+        .attr("id", "download")
+        .text("Download")
+        .on("click", downloadCSV);
+
+    // Custom Filename
+    var d = new Date(Date.now());
+    var defaultFileName =
+        (d.getMonth() + 1).toString() +
+        "." +
+        d.getDate() +
+        "." +
+        d.getFullYear() +
+        "-" +
+        d.getHours() +
+        "." +
+        d.getMinutes();
+
+    wrapper
+        .append("input")
+        .attr("type", "text")
+        .attr("class", "form-control")
+        .attr("placeholder", defaultFileName)
+        .attr("aria-label", "download file name")
+        .attr("aria-described-by", "download file name")
+        .attr("id", "download-name");
+
+    // .csv tack-on
+    wrapper
+        .append("span")
+        .attr("class", "input-group-text white-bg")
+        .text(".csv");
+}
+
+function setUpUpload() {
+    var wrapper = d3
+        .select(".upload-download")
+        .append("div")
+        .attr("class", "input-group");
+
+    wrapper
+        .append("label")
+        .attr("class", "input-group-text")
+        .attr("for", "upload")
+        .text("Upload");
+
+    wrapper
+        .append("input")
+        .attr("type", "file")
+        .attr("class", "form-control")
+        .attr("id", "upload")
+        .on("change", e => uploadCSV(e));
+}
+
 function downloadCSV() {
     var csv = "Team,Player,X,Y\n";
     d3.select("#shot-table-body")
@@ -51,4 +120,4 @@ function processCSV(text) {
     }
 }
 
-export { downloadCSV, uploadCSV };
+export { setUpDownloadUpload };
