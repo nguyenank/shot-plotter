@@ -5,10 +5,11 @@ function downloadCSV() {
         .each(function() {
             d3.select(this)
                 .selectAll("td")
-                .each(function() {
+                .each(function(d, i) {
                     csv += d3.select(this).text() + ",";
                 });
-            csv = csv.slice(0, -1) + "\n";
+            // remove trailing commas from trash can
+            csv = csv.slice(0, -2) + "\n";
         });
     download(csv, new Date(Date.now()).toDateString(), "text/csv");
 }

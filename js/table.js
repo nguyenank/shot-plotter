@@ -14,6 +14,7 @@ function setUpTable() {
     createHeaderRow(headerRow, "Player");
     createHeaderRow(headerRow, "X");
     createHeaderRow(headerRow, "Y");
+    createHeaderRow(headerRow, ""); // space for trash can
 
     d3.select("#shot-table")
         .append("tbody")

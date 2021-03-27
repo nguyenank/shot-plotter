@@ -55,6 +55,10 @@ function createRow(homeBool, coords, id) {
     row.append("td").text(player);
     row.append("td").text(adjustedX);
     row.append("td").text(adjustedY);
+    row.append("td")
+        .append("i")
+        .attr("class", "bi bi-trash-fill")
+        .on("click", () => deleteHandler(id));
     row.attr("id", id);
     row.on("mouseover", () => {
         d3.select("#teams")
@@ -70,6 +74,21 @@ function createRow(homeBool, coords, id) {
             .duration(75)
             .attr("r", 1.5);
     });
+}
+
+function deleteHandler(id) {
+    d3.select("#shot-table-body")
+        .select("[id='" + id + "']")
+        .remove();
+    d3.select("#teams")
+        .select("[id='" + id + "']")
+        .remove();
+
+    d3.select("#shot-table-body")
+        .selectAll("th")
+        .each(function(d, i) {
+            d3.select(this).text(i + 1);
+        });
 }
 
 export { setUpShots };

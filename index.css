@@ -50,6 +50,12 @@ footer {
     fill: rgba(234, 142, 72, 0.7);
 }
 
+.bi-trash-fill:hover {
+    color: #dddddd;
+    text-shadow: 0.1em 0.1em black;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .main {
         display: block;
