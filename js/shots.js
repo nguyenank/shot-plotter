@@ -2,17 +2,31 @@ function setUpShots() {
     d3.select("#hockey-rink")
         .select("#outside-perimeter")
         .on("click", e => {
-            createShot(e);
+            createShotFromEvent(e);
         });
 }
 
-function createShot(e) {
+function createShotFromEvent(e) {
     // https://stackoverflow.com/a/29325047
     var teamId = d3.select("input[name='home-away']:checked").property("value");
     var homeBool = teamId === "#home-team";
     var id = uuidv4();
+    // get player field
+    var player = d3
+        .select("#options")
+        .select("#player-input")
+        .property("value");
+
     createDot(teamId, homeBool, d3.pointer(e), id);
-    createRow(homeBool, d3.pointer(e), id);
+    createRow(homeBool, player, d3.pointer(e), id);
+}
+
+function createShotFromData(team, player, coords) {
+    var teamId = team === "Home" ? "#home-team" : "#away-team";
+    var homeBool = teamId === "#home-team";
+    var id = uuidv4();
+    createDot(teamId, homeBool, coords, id);
+    createRow(homeBool, player, coords, id);
 }
 
 function createDot(teamId, homeBool, coords, id) {
@@ -25,7 +39,7 @@ function createDot(teamId, homeBool, coords, id) {
         .attr("class", homeBool ? "home-shot" : "away-shot");
 }
 
-function createRow(homeBool, coords, id) {
+function createRow(homeBool, player, coords, id) {
     var adjustedX = (coords[0] - 100).toFixed(2);
     var adjustedY = (coords[1] - 42.5).toFixed(2);
 
@@ -44,12 +58,6 @@ function createRow(homeBool, coords, id) {
                 .selectAll("tr")
                 .size()
         );
-
-    // get player field
-    var player = d3
-        .select("#options")
-        .select("#player-input")
-        .property("value");
 
     row.append("td").text(homeBool ? "Home" : "Away");
     row.append("td").text(player);
@@ -91,4 +99,4 @@ function deleteHandler(id) {
         });
 }
 
-export { setUpShots };
+export { setUpShots, createShotFromData };

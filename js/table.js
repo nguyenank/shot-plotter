@@ -21,4 +21,14 @@ function setUpTable() {
         .attr("id", "shot-table-body");
 }
 
-export { setUpTable };
+function clearTable() {
+    d3.select("#shot-table-body")
+        .selectAll("tr")
+        .remove();
+    d3.select("#hockey-rink-svg")
+        .select("#teams")
+        .selectAll("circle")
+        .remove();
+}
+
+export { setUpTable, clearTable };
