@@ -66,10 +66,36 @@ function playerTextField() {
 }
 
 function shotTypeDropdown() {
+    // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
+    var tooltip = d3
+        .select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0)
+        .text(
+            "To add new shot types, type into the dropdown, then select the new option or press Enter."
+        );
+
     d3.select("#options")
         .append("h3")
         .text("Shot Type")
-        .attr("class", "center");
+        .attr("class", "center")
+        .append("i")
+        .attr("class", "bi bi-info-circle")
+        .on("mouseover", function(e) {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0.9)
+                .style("left", e.pageX + 10 + "px")
+                .style("top", e.pageY - 28 + "px");
+        })
+        .on("mouseout", function() {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0.0);
+        });
 
     var select = d3
         .select("#options")
@@ -82,12 +108,6 @@ function shotTypeDropdown() {
         .text("Shot")
         .attr("selected", true);
     select.append("option").text("Goal");
-
-    d3.select("#options")
-        .append("div")
-        .text(
-            "(To add new shot type, type into the dropdown and select the new option or press Enter.)"
-        );
 }
 
 export { setUpOptions };
