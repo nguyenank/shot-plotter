@@ -46,6 +46,16 @@ input[type="text"] {
     border: 1px solid #aaaaaa;
 }
 
+.column {
+    display: flex;
+    justify-content: space-around;
+}
+
+.vr {
+    border-right: 0.075em solid rgba(0, 0, 0, 0.2);
+    padding-right: 0.5em;
+}
+
 /* rink */
 #hockey-rink {
     margint-: 1em;

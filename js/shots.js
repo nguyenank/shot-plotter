@@ -11,6 +11,8 @@ function createShotFromEvent(e) {
     var teamId = d3.select("input[name='home-away']:checked").property("value");
     var homeBool = teamId === "#home-team";
     var id = uuidv4();
+    var period = d3.select("input[name='period']:checked").property("value");
+
     // get player field
     var player = d3
         .select("#options")
@@ -21,15 +23,15 @@ function createShotFromEvent(e) {
     var type = d3.select("#shot-type").property("value");
 
     createDot(teamId, homeBool, d3.pointer(e), id);
-    createRow(homeBool, player, type, d3.pointer(e), id);
+    createRow(period, homeBool, player, type, d3.pointer(e), id);
 }
 
-function createShotFromData(team, player, type, coords) {
+function createShotFromData(period, team, player, type, coords) {
     var teamId = team === "Home" ? "#home-team" : "#away-team";
     var homeBool = teamId === "#home-team";
     var id = uuidv4();
     createDot(teamId, homeBool, coords, id);
-    createRow(homeBool, player, type, coords, id);
+    createRow(period, homeBool, player, type, coords, id);
 }
 
 function createDot(teamId, homeBool, coords, id) {
@@ -42,7 +44,7 @@ function createDot(teamId, homeBool, coords, id) {
         .attr("class", homeBool ? "home-shot" : "away-shot");
 }
 
-function createRow(homeBool, player, type, coords, id) {
+function createRow(period, homeBool, player, type, coords, id) {
     var adjustedX = (coords[0] - 100).toFixed(2);
     var adjustedY = (coords[1] - 42.5).toFixed(2);
 
@@ -61,7 +63,7 @@ function createRow(homeBool, player, type, coords, id) {
                 .selectAll("tr")
                 .size()
         );
-
+    row.append("td").text(period);
     row.append("td").text(homeBool ? "Home" : "Away");
     row.append("td").text(player);
     row.append("td").text(type);

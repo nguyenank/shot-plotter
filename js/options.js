@@ -1,21 +1,35 @@
 function setUpOptions() {
-    homeAwayRadioButtons();
+    teamPeriod();
     d3.select("#options").append("hr");
-    playerTextField();
+    playerTextField("#options");
     d3.select("#options").append("hr");
     shotTypeDropdown();
 }
 
-function homeAwayRadioButtons() {
+function teamPeriod() {
     d3.select("#options")
+        .append("div")
+        .attr("class", "column");
+    periodRadioButtons(".column");
+
+    d3.select(".column")
+        .append("div")
+        .attr("class", "vr");
+    homeAwayRadioButtons(".column");
+}
+
+function homeAwayRadioButtons(id) {
+    d3.select(id)
+        .append("div")
+        .attr("class", "team-select")
         .append("h3")
         .text("Team")
         .attr("class", "center");
 
     var homeDiv = d3
-        .select("#options")
+        .select(".team-select")
         .append("div")
-        .attr("class", "form-check");
+        .attr("class", "form-check vertical");
     homeDiv
         .append("input")
         .attr("class", "form-check-input")
@@ -31,7 +45,7 @@ function homeAwayRadioButtons() {
         .text("Home");
 
     var awayDiv = d3
-        .select("#options")
+        .select(".team-select")
         .append("div")
         .attr("class", "form-check");
     awayDiv
@@ -48,13 +62,91 @@ function homeAwayRadioButtons() {
         .text("Away");
 }
 
-function playerTextField() {
-    d3.select("#options")
+function periodRadioButtons(id) {
+    d3.select(id)
+        .append("div")
+        .attr("class", "period-select")
+        .append("h3")
+        .text("Period")
+        .attr("class", "center");
+
+    var oneDiv = d3
+        .select(".period-select")
+        .append("div")
+        .attr("class", "form-check vertical");
+    oneDiv
+        .append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "radio")
+        .attr("name", "period")
+        .attr("id", "one")
+        .attr("value", "1")
+        .attr("checked", true);
+    oneDiv
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "one")
+        .text("1");
+
+    var twoDiv = d3
+        .select(".period-select")
+        .append("div")
+        .attr("class", "form-check vertical");
+    twoDiv
+        .append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "radio")
+        .attr("name", "period")
+        .attr("id", "two")
+        .attr("value", "2");
+    twoDiv
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "two")
+        .text("2");
+
+    var threeDiv = d3
+        .select(".period-select")
+        .append("div")
+        .attr("class", "form-check vertical");
+    threeDiv
+        .append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "radio")
+        .attr("name", "period")
+        .attr("id", "three")
+        .attr("value", "3");
+    threeDiv
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "three")
+        .text("3");
+
+    var otDiv = d3
+        .select(".period-select")
+        .append("div")
+        .attr("class", "form-check vertical");
+    otDiv
+        .append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "radio")
+        .attr("name", "period")
+        .attr("id", "ot")
+        .attr("value", "OT");
+    otDiv
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "ot")
+        .text("OT");
+}
+
+function playerTextField(id) {
+    d3.select(id)
         .append("h3")
         .text("Player")
         .attr("class", "center");
     var playerDiv = d3
-        .select("#options")
+        .select(id)
         .append("div")
         .attr("class", "form-group");
     playerDiv
@@ -108,6 +200,8 @@ function shotTypeDropdown() {
         .text("Shot")
         .attr("selected", true);
     select.append("option").text("Goal");
+    select.append("option").text("Block");
+    select.append("option").text("Miss");
 }
 
 export { setUpOptions };

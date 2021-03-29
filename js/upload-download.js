@@ -71,7 +71,7 @@ function setUpUpload() {
 }
 
 function downloadCSV() {
-    var csv = "Team,Player,Type,X,Y\n";
+    var csv = "Period,Team,Player,Type,X,Y\n";
     d3.select("#shot-table-body")
         .selectAll("tr")
         .each(function() {
@@ -108,7 +108,7 @@ function uploadCSV(e) {
 function processCSV(text) {
     var lines = text.split("\n");
     // literally the barest sprinkle of input validation
-    if (lines[0] == "Team,Player,Type,X,Y") {
+    if (lines[0] == "Period,Team,Player,Type,X,Y") {
         clearTable();
         for (let i = 1; i < lines.length; i++) {
             var [team, player, type, x, y] = lines[i].split(",");

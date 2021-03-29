@@ -10,6 +10,7 @@ function setUpTable() {
         .append("thead")
         .append("tr");
     createHeaderRow(headerRow, "Shot");
+    createHeaderRow(headerRow, "Period");
     createHeaderRow(headerRow, "Team");
     createHeaderRow(headerRow, "Player");
     createHeaderRow(headerRow, "Type");
