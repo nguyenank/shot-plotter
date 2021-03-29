@@ -179,6 +179,7 @@ function colorShift(color, modifier) {
 }
 
 function deleteHandler(id) {
+    event.stopPropagation();
     d3.select("#shot-table-body")
         .select("[id='" + id + "']")
         .remove();
