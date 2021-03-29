@@ -1,3 +1,10 @@
+const cfg = {
+    circleR: 1.5,
+    polyR: 1.75,
+    largerCR: 2.75,
+    largerPR: 3,
+};
+
 function setUpShots() {
     d3.select("#hockey-rink")
         .select("#outside-perimeter")
@@ -22,7 +29,7 @@ function createShotFromEvent(e) {
     // get shot type field
     var type = d3.select("#shot-type").property("value");
 
-    createDot(teamId, homeBool, d3.pointer(e), id);
+    createDot(teamId, homeBool, type, d3.pointer(e), id);
     createRow(period, homeBool, player, type, d3.pointer(e), id);
 }
 
@@ -30,18 +37,54 @@ function createShotFromData(period, team, player, type, coords) {
     var teamId = team === "Home" ? "#home-team" : "#away-team";
     var homeBool = teamId === "#home-team";
     var id = uuidv4();
-    createDot(teamId, homeBool, coords, id);
+    createDot(teamId, homeBool, type, coords, id);
     createRow(period, homeBool, player, type, coords, id);
 }
 
-function createDot(teamId, homeBool, coords, id) {
-    d3.select(teamId)
-        .append("circle")
-        .attr("cx", coords[0])
-        .attr("cy", coords[1])
-        .attr("r", 1.5)
-        .attr("id", id)
-        .attr("class", homeBool ? "home-shot" : "away-shot");
+function createDot(teamId, homeBool, type, coords, id) {
+    function getOptions() {
+        var options = {};
+        d3.select("#shot-type")
+            .selectAll("option")
+            .each(function(d, i) {
+                options[d3.select(this).property("value")] = i;
+            });
+        return options;
+    }
+    var typeIndex = getOptions()[type];
+    if (typeIndex == 0) {
+        d3.select(teamId)
+            .append("circle")
+            .attr("cx", coords[0])
+            .attr("cy", coords[1])
+            .attr("r", cfg.circleR)
+            .attr("id", id)
+            .attr("class", homeBool ? "home-shot" : "away-shot");
+    } else {
+        var sides = typeIndex + 2;
+        d3.select(teamId)
+            .append("polygon")
+            .attr(
+                "points",
+                createPolygon(coords[0], coords[1], cfg.polyR, sides)
+            )
+            .attr("id", id)
+            .attr("cx", coords[0])
+            .attr("cy", coords[1])
+            .attr("sides", sides)
+            .attr("class", homeBool ? "home-shot" : "away-shot");
+    }
+}
+
+function createPolygon(cx, cy, r, sides) {
+    var degrees = (2 * Math.PI) / sides;
+    var points = "";
+    for (let i = 0; i < sides; i++) {
+        let x = (cx + r * Math.cos(degrees * i)).toFixed(3);
+        let y = (cy + r * Math.sin(degrees * i)).toFixed(3);
+        points = points + x + "," + y + " ";
+    }
+    return points;
 }
 
 function createRow(period, homeBool, player, type, coords, id) {
@@ -75,19 +118,36 @@ function createRow(period, homeBool, player, type, coords, id) {
         .on("click", () => deleteHandler(id));
     row.attr("id", id);
     row.on("mouseover", () => {
-        d3.select("#teams")
-            .select("[id='" + id + "']")
-            .transition()
-            .duration(75)
-            .attr("r", 3);
+        dotSizeHandler(id, true);
     });
     row.on("mouseout", () => {
-        d3.select("#teams")
-            .select("[id='" + id + "']")
-            .transition()
-            .duration(75)
-            .attr("r", 1.5);
+        dotSizeHandler(id, false);
     });
+}
+
+function dotSizeHandler(id, largerBool) {
+    var d = d3.select("#teams").select("[id='" + id + "']");
+    var r;
+    let circleBool = d.node().tagName === "circle";
+    if (circleBool) {
+        r = largerBool ? cfg.largerCR : cfg.circleR;
+        d.transition()
+            .duration(75)
+            .attr("r", r);
+    } else {
+        r = largerBool ? cfg.largerPR : cfg.polyR;
+        d.transition()
+            .duration(75)
+            .attr(
+                "points",
+                createPolygon(
+                    Number(d.attr("cx")),
+                    Number(d.attr("cy")),
+                    r,
+                    Number(d.attr("sides"))
+                )
+            );
+    }
 }
 
 function deleteHandler(id) {
