@@ -99,7 +99,6 @@ function uploadCSV(e) {
         var r = new FileReader();
         r.onload = function(evt) {
             var contents = evt.target.result;
-            console.log(contents);
             processCSV(contents);
         };
         r.readAsText(f);
