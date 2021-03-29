@@ -18,10 +18,7 @@ function createDot(teamId, homeBool, type, coords, id) {
         var sides = typeIndex + 2;
         d3.select(teamId)
             .append("polygon")
-            .attr(
-                "points",
-                createPolygon(coords[0], coords[1], cfg.polyR, sides)
-            )
+            .attr("points", polygon(coords[0], coords[1], cfg.polyR, sides))
             .attr("id", id)
             .attr("cx", coords[0])
             .attr("cy", coords[1])
@@ -33,7 +30,7 @@ function createDot(teamId, homeBool, type, coords, id) {
     }
 }
 
-function createPolygon(cx, cy, r, sides) {
+function polygon(cx, cy, r, sides) {
     var degrees = (2 * Math.PI) / sides;
     var points = "";
     for (let i = 0; i < sides; i++) {
@@ -65,4 +62,4 @@ function colorShift(color, modifier) {
     return s;
 }
 
-export { createDot };
+export { createDot, polygon };

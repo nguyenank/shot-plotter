@@ -1,4 +1,5 @@
 import { cfg } from "./config.js";
+import { polygon } from "./dot.js";
 
 function createRow(period, homeBool, player, type, coords, id) {
     var adjustedX = (coords[0] - 100).toFixed(2);
@@ -64,7 +65,7 @@ function dotSizeHandler(id, largerBool) {
             .duration(75)
             .attr(
                 "points",
-                createPolygon(
+                polygon(
                     Number(d.attr("cx")),
                     Number(d.attr("cy")),
                     r,
