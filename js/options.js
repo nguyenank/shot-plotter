@@ -204,4 +204,14 @@ function shotTypeDropdown() {
     select.append("option").text("Miss");
 }
 
-export { setUpOptions };
+function getOptions() {
+    var options = {};
+    d3.select("#shot-type")
+        .selectAll("option")
+        .each(function(d, i) {
+            options[d3.select(this).property("value")] = i;
+        });
+    return options;
+}
+
+export { setUpOptions, getOptions };

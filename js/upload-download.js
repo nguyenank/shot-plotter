@@ -1,3 +1,4 @@
+import { getOptions } from "./options.js";
 import { clearTable } from "./table.js";
 import { createShotFromData } from "./shots.js";
 
@@ -107,12 +108,19 @@ function uploadCSV(e) {
 
 function processCSV(text) {
     var lines = text.split("\n");
+    var options = getOptions();
     // literally the barest sprinkle of input validation
     if (lines[0] == "Period,Team,Player,Type,X,Y") {
         clearTable();
         for (let i = 1; i < lines.length; i++) {
-            var [team, player, type, x, y] = lines[i].split(",");
-            createShotFromData(team, player, type, [
+            var [period, team, player, type, x, y] = lines[i].split(",");
+            if (!(type in options)) {
+                d3.select("#shot-type")
+                    .append("option")
+                    .text(type);
+                options = getOptions();
+            }
+            createShotFromData(period, team, player, type, [
                 parseFloat(x) + 100,
                 parseFloat(y) + 42.5,
             ]); // undo coordinate adjustment
