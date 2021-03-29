@@ -9,6 +9,7 @@ function setUpTable() {
         .select("#shot-table")
         .append("thead")
         .append("tr");
+    createHeaderRow(headerRow, ""); // space for check box
     createHeaderRow(headerRow, "Shot");
     createHeaderRow(headerRow, "Period");
     createHeaderRow(headerRow, "Team");

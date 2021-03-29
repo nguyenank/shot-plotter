@@ -1,6 +1,6 @@
 import { getOptions } from "./options.js";
 import { clearTable } from "./table.js";
-import { createShotFromData } from "./shots.js";
+import { createShotFromData } from "./shots/shot.js";
 
 function setUpDownloadUpload() {
     setUpDownload();
@@ -81,8 +81,8 @@ function downloadCSV() {
                 .each(function(d, i) {
                     csv += d3.select(this).text() + ",";
                 });
-            // remove trailing commas from trash can
-            csv = csv.slice(0, -2) + "\n";
+            // remove trailing comma
+            csv = csv.slice(0, -1) + "\n";
         });
     csv = csv.slice(0, -1); // remove trailing new line
     var fileName = d3.select("#download-name").property("value");
