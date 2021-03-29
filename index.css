@@ -67,11 +67,11 @@ input[type="text"] {
     padding: 1em 0;
 }
 
-.home-row:hover {
+.home-row {
     background-color: rgba(53, 171, 169, 0.7);
 }
 
-.away-row:hover {
+.away-row {
     background-color: rgba(234, 142, 72, 0.7);
 }
 

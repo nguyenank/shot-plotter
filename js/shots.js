@@ -98,10 +98,7 @@ function createRow(period, homeBool, player, type, coords, id) {
     var adjustedY = (coords[1] - 42.5).toFixed(2);
 
     // create row
-    var row = d3
-        .select("#shot-table-body")
-        .append("tr")
-        .attr("class", homeBool ? "home-row" : "away-row");
+    var row = d3.select("#shot-table-body").append("tr");
 
     // get shot number
     row.append("th")
@@ -123,11 +120,19 @@ function createRow(period, homeBool, player, type, coords, id) {
         .attr("class", "bi bi-trash-fill")
         .on("click", () => deleteHandler(id));
     row.attr("id", id);
-    row.on("mouseover", () => {
-        dotSizeHandler(id, true);
-    });
-    row.on("mouseout", () => {
-        dotSizeHandler(id, false);
+    row.attr("selected", false);
+    row.on("click", () => {
+        var d = d3.select("#shot-table-body").select("[id='" + id + "']");
+        if (d.attr("selected") === "true") {
+            dotSizeHandler(id, false);
+            d.attr("selected", false).attr("class", "");
+        } else {
+            dotSizeHandler(id, true);
+            d.attr("selected", true).attr(
+                "class",
+                homeBool ? "home-row" : "away-row"
+            );
+        }
     });
 }
 
