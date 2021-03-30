@@ -1,5 +1,5 @@
 import { getOptionsList } from "../options.js";
-import { createDot, colorShift } from "./dot.js";
+import { createDot } from "./dot.js";
 import { cfg } from "./config.js";
 
 function setUpLegend() {
@@ -10,7 +10,6 @@ function setUpLegend() {
         .append("svg")
         .attr("id", "shot-type-legend");
 
-    // clear svg
     shotTypeLegend();
 
     div.append("div")
@@ -19,35 +18,6 @@ function setUpLegend() {
         .attr("id", "home-away-legend");
 
     homeAwayLegend();
-}
-
-function homeAwayLegend(id = "#home-away-legend") {
-    var xOffset = 2 * cfg.legendR;
-    var yOffset = 2 * cfg.legendR;
-    var svg = d3.select(id);
-
-    for (let i of [
-        ["Home", cfg.homeColor],
-        ["Away", cfg.awayColor],
-    ]) {
-        svg.append("rect")
-            .attr("x", xOffset - cfg.legendR)
-            .attr("y", 0.25 * yOffset)
-            .attr("width", 2 * cfg.legendR)
-            .attr("height", 2 * cfg.legendR)
-            .style("fill", colorShift(i[1], 0));
-        xOffset += 2 * cfg.legendR;
-        xOffset +=
-            svg
-                .append("text")
-                .attr("x", xOffset)
-                .attr("y", yOffset)
-                .text(i[0])
-                .node()
-                .getComputedTextLength() +
-            4 * cfg.legendR;
-    }
-    svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
 
 function shotTypeLegend(id = "#shot-type-legend") {
@@ -61,7 +31,15 @@ function shotTypeLegend(id = "#shot-type-legend") {
     svg.selectAll("*").remove();
 
     for (let option of options) {
-        createDot(id, true, option, [xOffset, 0.75 * yOffset], xOffset, true);
+        createDot(
+            id,
+            true,
+            "",
+            option,
+            [xOffset, 0.6 * yOffset],
+            xOffset,
+            true
+        );
         xOffset += spacing;
         xOffset +=
             svg
@@ -74,6 +52,36 @@ function shotTypeLegend(id = "#shot-type-legend") {
             2 * spacing;
     }
 
+    svg.attr("width", xOffset).attr("height", 2 * yOffset);
+}
+
+function homeAwayLegend(id = "#home-away-legend") {
+    var xOffset = 2 * cfg.legendR;
+    var yOffset = 2 * cfg.legendR;
+    var spacing = 2 * cfg.legendR;
+    var svg = d3.select(id);
+
+    for (let i of [
+        ["home-shot", "Home"],
+        ["away-shot", "Away"],
+    ]) {
+        svg.append("rect")
+            .attr("x", xOffset - cfg.legendR)
+            .attr("y", 0.25 * yOffset)
+            .attr("width", 2 * cfg.legendR)
+            .attr("height", 2 * cfg.legendR)
+            .attr("class", i[0]);
+        xOffset += spacing;
+        xOffset +=
+            svg
+                .append("text")
+                .attr("x", xOffset)
+                .attr("y", yOffset)
+                .text(i[1])
+                .node()
+                .getComputedTextLength() +
+            2 * spacing;
+    }
     svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
 

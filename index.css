@@ -1,138 +1,122 @@
-.shot-info,
-.shot-table {
-    background-color: #eaecef;
-    border: 0.1em solid #aaaaaa;
-    border-radius: 0.2em;
-}
+.shot-info, .shot-table {
+  background-color: #eaecef;
+  border: 0.1em solid #aaaaaa;
+  border-radius: 0.2em; }
+
+.home-shot, .away-shot {
+  stroke: white;
+  stroke-width: 0.1; }
 
 /* general  */
 body {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 300;
-    margin: 1em;
-}
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  margin: 1em; }
 
 footer {
-    font-size: 0.75em;
-}
+  font-size: 0.75em; }
 
 .main {
-    display: flex;
-    justify-content: space-between;
-}
+  display: flex;
+  justify-content: space-between; }
 
 .white-bg {
-    background-color: white;
-}
+  background-color: white; }
 
 /* utility */
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 /* shot info */
 .shot-info {
-    height: 85vh;
-    width: 25%;
-    padding: 1em;
-    margin-bottom: 1em;
-    overflow-y: auto;
-}
+  height: 85vh;
+  width: 25%;
+  padding: 1em;
+  margin-bottom: 1em;
+  overflow-y: auto; }
 
 select {
-    width: 100%;
-}
+  width: 100%; }
 
 .bi-info-circle {
-    font-size: 0.5em;
-}
+  font-size: 0.5em; }
 
 input[type="text"] {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 300;
-    border: 0.1em solid #aaaaaa;
-}
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  border: 0.1em solid #aaaaaa; }
 
 .column {
-    display: flex;
-    justify-content: space-around;
-}
+  display: flex;
+  justify-content: space-around; }
 
 .vr {
-    border-right: 0.075em solid rgba(0, 0, 0, 0.2);
-}
+  border-right: 0.075em solid rgba(0, 0, 0, 0.2); }
 
 /* rink */
 #hockey-rink {
-    margint-: 1em;
-}
+  margint-: 1em; }
+
+.dot-text {
+  font-size: 1.8px;
+  font-weight: bold;
+  fill: white; }
 
 /* shot table */
 .shot-table {
-    padding: 1em 0;
-}
+  padding: 1em 0; }
 
 tbody {
-    background-color: white;
-}
+  background-color: white; }
 
 .home-row {
-    background-color: rgba(53, 171, 169, 0.7);
-}
+  background-color: rgba(53, 171, 169, 0.7); }
 
 .away-row {
-    background-color: rgba(234, 142, 72, 0.7);
-}
+  background-color: rgba(234, 142, 72, 0.7); }
 
 .home-shot {
-    fill: rgba(53, 171, 169, 0.7);
-}
+  fill: rgba(53, 171, 169, 0.7); }
 
 .away-shot {
-    fill: rgba(234, 142, 72, 0.7);
-}
+  fill: rgba(234, 142, 72, 0.7); }
+
+.legend-shot {
+  fill: black; }
 
 .bi-trash-fill:hover {
-    color: #aaaaaa;
-    text-shadow: 0.1em 0.1em black;
-    cursor: pointer;
-}
+  color: #dee0e3;
+  text-shadow: 0.1em 0.1em black;
+  cursor: pointer; }
 
 /* download/upload */
 .download-btn {
-    background-color: #eaecef;
-}
+  background-color: #eaecef; }
 
 .download-btn:hover {
-    background-color: #dee0e3;
-}
+  background-color: #dee0e3; }
 
 .input-group {
-    margin-top: 0.25em;
-}
+  margin-top: 0.25em; }
 
 /* https://bl.ocks.org/d3noob/a22c42db65eb00d4e369 */
 div.tooltip {
-    position: absolute;
-    text-align: center;
-    padding: 0.2em;
-    font-size: 0.75em;
-    background: #aaaaaa;
-    border-radius: 0.5em;
-    pointer-events: none;
-}
+  position: absolute;
+  text-align: center;
+  padding: 0.2em;
+  font-size: 0.75em;
+  background: #aaaaaa;
+  border-radius: 0.5em;
+  pointer-events: none; }
 
 @media (max-width: 768px) {
-    .main {
-        display: block;
-    }
+  .main {
+    display: block; }
 
-    .shot-info {
-        height: auto;
-        width: 100%;
-    }
-}
+  .shot-info {
+    height: auto;
+    width: 100%; } }
 
 /*# sourceMappingURL=index.css.map */

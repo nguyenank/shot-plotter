@@ -1,7 +1,7 @@
 function setUpOptions() {
     teamPeriod();
     d3.select("#options").append("hr");
-    playerTextField("#options");
+    playerField("#options");
     d3.select("#options").append("hr");
     shotTypeDropdown();
 }
@@ -140,11 +140,36 @@ function periodRadioButtons(id) {
         .text("OT");
 }
 
-function playerTextField(id) {
+function playerField(id) {
+    var tooltip = d3
+        .select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0)
+        .text(
+            "Player will appear on shot in rink if player is 2 or less characters long."
+        );
+
     d3.select(id)
         .append("h3")
         .text("Player")
-        .attr("class", "center");
+        .attr("class", "center")
+        .append("i")
+        .attr("class", "bi bi-info-circle")
+        .on("mouseover", function(e) {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0.9)
+                .style("left", e.pageX + 10 + "px")
+                .style("top", e.pageY - 28 + "px");
+        })
+        .on("mouseout", function() {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0.0);
+        });
     var playerDiv = d3
         .select(id)
         .append("div")

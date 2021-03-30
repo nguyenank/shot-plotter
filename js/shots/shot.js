@@ -1,6 +1,5 @@
 import { createDot } from "./dot.js";
 import { createRow } from "./row.js";
-import { cfg } from "./config.js";
 
 function setUpShots() {
     d3.select("#hockey-rink")
@@ -26,7 +25,7 @@ function createShotFromEvent(e) {
     // get shot type field
     var type = d3.select("#shot-type").property("value");
 
-    createDot(teamId, homeBool, type, d3.pointer(e), id);
+    createDot(teamId, homeBool, player, type, d3.pointer(e), id);
     createRow(period, homeBool, player, type, d3.pointer(e), id);
 }
 
@@ -34,7 +33,7 @@ function createShotFromData(period, team, player, type, coords) {
     var teamId = team === "Home" ? "#home-team" : "#away-team";
     var homeBool = teamId === "#home-team";
     var id = uuidv4();
-    createDot(teamId, homeBool, type, coords, id);
+    createDot(teamId, homeBool, player, type, coords, id);
     createRow(period, homeBool, player, type, coords, id);
 }
 

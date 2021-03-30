@@ -1,6 +1,3 @@
-import { cfg } from "./config.js";
-import { polygon } from "./dot.js";
-
 function createRow(period, homeBool, player, type, coords, id) {
     var adjustedX = (coords[0] - 100).toFixed(2);
     var adjustedY = (coords[1] - 42.5).toFixed(2);
@@ -18,10 +15,10 @@ function createRow(period, homeBool, player, type, coords, id) {
             var checked = d3.select(this).property("checked");
             var row = d3.select("#shot-table-body").select("[id='" + id + "']");
             if (checked) {
-                dotSizeHandler(id, true);
+                dotSizeHandler(id, 1.5);
                 row.attr("class", homeBool ? "home-row" : "away-row");
             } else {
-                dotSizeHandler(id, false);
+                dotSizeHandler(id, 1);
                 row.attr("class", "");
             }
         });
@@ -50,30 +47,18 @@ function createRow(period, homeBool, player, type, coords, id) {
     row.attr("selected", false);
 }
 
-function dotSizeHandler(id, largerBool) {
+function dotSizeHandler(id, scale) {
     var d = d3.select("#teams").select("[id='" + id + "']");
-    var r;
-    let circleBool = d.node().tagName === "circle";
-    if (circleBool) {
-        r = largerBool ? cfg.largerCR : cfg.circleR;
-        d.transition()
-            .duration(75)
-            .attr("r", r);
-    } else {
-        r = largerBool ? cfg.largerPR : cfg.polyR;
-        d.transition()
-            .duration(75)
-            .attr(
-                "points",
-                polygon(
-                    Number(d.attr("cx")),
-                    Number(d.attr("cy")),
-                    r,
-                    Number(d.attr("sides"))
-                )
-            );
-    }
+    // https://stackoverflow.com/a/11671373
+    var bbox = d.node().getBBox();
+    var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
+    var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
+    d.attr(
+        "transform",
+        `translate(${xShift},${yShift}) scale(${scale},${scale})`
+    );
 }
+
 function deleteHandler(id) {
     event.stopPropagation();
     d3.select("#shot-table-body")

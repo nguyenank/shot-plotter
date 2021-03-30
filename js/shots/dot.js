@@ -1,25 +1,26 @@
 import { getOptionsObject } from "../options.js";
 import { cfg } from "./config.js";
 
-function createDot(svgId, homeBool, type, coords, id, legendBool) {
+function createDot(svgId, homeBool, player, type, coords, id, legendBool) {
     var typeIndex = getOptionsObject()[type];
+    var className = legendBool
+        ? "legend-shot"
+        : homeBool
+        ? "home-shot"
+        : "away-shot";
+    let g = d3
+        .select(svgId)
+        .append("g")
+        .attr("id", id);
     if (typeIndex == 0) {
-        d3.select(svgId)
-            .append("circle")
+        g.append("circle")
             .attr("cx", coords[0])
             .attr("cy", coords[1])
             .attr("r", legendBool ? cfg.legendR : cfg.circleR)
-            .attr("id", id)
-            .attr(
-                "fill",
-                legendBool
-                    ? cfg.legendColor
-                    : colorShift(homeBool ? cfg.homeColor : cfg.awayColor, 0)
-            );
+            .attr("class", className);
     } else {
         var sides = typeIndex + 2;
-        d3.select(svgId)
-            .append("polygon")
+        g.append("polygon")
             .attr(
                 "points",
                 polygon(
@@ -29,30 +30,28 @@ function createDot(svgId, homeBool, type, coords, id, legendBool) {
                     sides
                 )
             )
-            .attr("id", id)
-            .attr("cx", coords[0])
-            .attr("cy", coords[1])
-            .attr("sides", sides)
-            .attr(
-                "fill",
-                legendBool
-                    ? cfg.legendColor
-                    : colorShift(
-                          homeBool ? cfg.homeColor : cfg.awayColor,
-                          sides
-                      )
-            );
+            .attr("class", className);
     }
+    // only display text if two characters or less
+    let text = player.length <= 2 ? player : "";
+    g.append("text")
+        .attr("x", coords[0])
+        .attr("y", coords[1])
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .text(text)
+        .attr("class", "dot-text");
 }
 
 function polygon(cx, cy, r, sides) {
     var degrees = (2 * Math.PI) / sides;
     var points = "";
     for (let i = 0; i < sides; i++) {
-        let x = (cx + r * Math.cos(degrees * i))
+        // shift by 100 to make triangle point down for max space
+        let x = (cx + r * Math.cos(degrees * i + 100))
             .toFixed(3)
             .replace(/^-0.000$/, "0");
-        let y = (cy + r * Math.sin(degrees * i))
+        let y = (cy + r * Math.sin(degrees * i + 100))
             .toFixed(3)
             .replace(/^-0.000$/, "0");
         points = points + x + "," + y + " ";
@@ -60,21 +59,4 @@ function polygon(cx, cy, r, sides) {
     return points;
 }
 
-function colorShift(color, modifier) {
-    const scale = 15;
-    if (modifier % 2 == 0) {
-        color = color.map(x => Math.min(255, x + scale * modifier));
-    } else {
-        color = color.map(x => Math.min(255, x - scale * modifier));
-    }
-
-    let s = "rgba(";
-
-    for (let i of color) {
-        s += i + ",";
-    }
-    s += cfg.alpha + ")";
-    return s;
-}
-
-export { createDot, polygon, colorShift };
+export { createDot, polygon };
