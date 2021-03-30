@@ -1,4 +1,3 @@
-import { getOptions } from "../options.js";
 import { createDot } from "./dot.js";
 import { createRow } from "./row.js";
 import { cfg } from "./config.js";

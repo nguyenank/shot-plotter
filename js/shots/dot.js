@@ -1,31 +1,46 @@
-import { getOptions } from "../options.js";
+import { getOptionsObject } from "../options.js";
 import { cfg } from "./config.js";
 
-function createDot(teamId, homeBool, type, coords, id) {
-    var typeIndex = getOptions()[type];
+function createDot(svgId, homeBool, type, coords, id, legendBool) {
+    var typeIndex = getOptionsObject()[type];
     if (typeIndex == 0) {
-        d3.select(teamId)
+        d3.select(svgId)
             .append("circle")
             .attr("cx", coords[0])
             .attr("cy", coords[1])
-            .attr("r", cfg.circleR)
+            .attr("r", legendBool ? cfg.legendR : cfg.circleR)
             .attr("id", id)
             .attr(
                 "fill",
-                colorShift(homeBool ? cfg.homeColor : cfg.awayColor, 0)
+                legendBool
+                    ? cfg.legendColor
+                    : colorShift(homeBool ? cfg.homeColor : cfg.awayColor, 0)
             );
     } else {
         var sides = typeIndex + 2;
-        d3.select(teamId)
+        d3.select(svgId)
             .append("polygon")
-            .attr("points", polygon(coords[0], coords[1], cfg.polyR, sides))
+            .attr(
+                "points",
+                polygon(
+                    coords[0],
+                    coords[1],
+                    legendBool ? cfg.legendR : cfg.polyR,
+                    sides
+                )
+            )
             .attr("id", id)
             .attr("cx", coords[0])
             .attr("cy", coords[1])
             .attr("sides", sides)
             .attr(
                 "fill",
-                colorShift(homeBool ? cfg.homeColor : cfg.awayColor, sides)
+                legendBool
+                    ? cfg.legendColor
+                    : colorShift(
+                          homeBool ? cfg.homeColor : cfg.awayColor,
+                          sides
+                      )
             );
     }
 }
@@ -62,4 +77,4 @@ function colorShift(color, modifier) {
     return s;
 }
 
-export { createDot, polygon };
+export { createDot, polygon, colorShift };

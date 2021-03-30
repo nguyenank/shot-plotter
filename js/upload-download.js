@@ -1,6 +1,7 @@
-import { getOptions } from "./options.js";
+import { getOptionsObject } from "./options.js";
 import { clearTable } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
+import { shotTypeLegend } from "./shots/legend.js";
 
 function setUpDownloadUpload() {
     setUpDownload();
@@ -107,7 +108,7 @@ function uploadCSV(e) {
 
 function processCSV(text) {
     var lines = text.split("\n");
-    var options = getOptions();
+    var options = getOptionsObject();
     // literally the barest sprinkle of input validation
     if (lines[0] == "Period,Team,Player,Type,X,Y") {
         clearTable();
@@ -117,7 +118,8 @@ function processCSV(text) {
                 d3.select("#shot-type")
                     .append("option")
                     .text(type);
-                options = getOptions();
+                options = getOptionsObject();
+                shotTypeLegend();
             }
             createShotFromData(period, team, player, type, [
                 parseFloat(x) + 100,
