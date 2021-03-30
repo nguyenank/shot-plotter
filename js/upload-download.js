@@ -25,16 +25,9 @@ function setUpDownload() {
 
     // Custom Filename
     var d = new Date(Date.now());
-    var defaultFileName =
-        (d.getMonth() + 1).toString() +
-        "." +
-        d.getDate() +
-        "." +
-        d.getFullYear() +
-        "-" +
-        d.getHours() +
-        "." +
-        d.getMinutes();
+    var defaultFileName = `${(
+        d.getMonth() + 1
+    ).toString()}.${d.getDate()}.${d.getFullYear()}-${d.getHours()}.${d.getMinutes()}`;
 
     wrapper
         .append("input")
