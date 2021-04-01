@@ -39,8 +39,9 @@ function index() {
 
         d3.select("#email").on("click", function() {
             var y = "znvygb:naxathlranaxathlra@tznvy.pbz";
-            d3.select(this).attr("href", decode(y));
-            d3.on("click", () => {});
+            d3.select(this)
+                .attr("href", decode(y))
+                .on("click", () => {});
         });
 
         $(document).ready(function() {
