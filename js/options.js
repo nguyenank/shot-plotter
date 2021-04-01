@@ -1,9 +1,16 @@
 function setUpOptions() {
     teamPeriod();
     d3.select("#options").append("hr");
-    playerField("#options");
-    d3.select("#options").append("hr");
-    shotTypeDropdown();
+    var col = d3
+        .select("#options")
+        .append("div")
+        .attr("class", "column")
+        .attr("id", "row2");
+    playerField("#row2");
+    d3.select("#row2")
+        .append("div")
+        .attr("class", "vr");
+    shotTypeDropdown("#row2");
 }
 
 function teamPeriod() {
@@ -15,22 +22,24 @@ function teamPeriod() {
     d3.select(".column")
         .append("div")
         .attr("class", "vr");
-    homeAwayRadioButtons(".column");
+    blueOrangeRadioButtons(".column");
 }
 
-function homeAwayRadioButtons(id) {
+function blueOrangeRadioButtons(id) {
     d3.select(id)
+        .append("div")
         .append("div")
         .attr("class", "team-select")
         .append("h3")
         .text("Team")
         .attr("class", "center");
 
-    var homeDiv = d3
+    var wrapper = d3
         .select(".team-select")
         .append("div")
-        .attr("class", "form-check vertical");
-    homeDiv
+        .attr("class", "form-group");
+    var blueDiv = wrapper.append("div").attr("class", "form-check");
+    blueDiv
         .append("input")
         .attr("class", "form-check-input")
         .attr("type", "radio")
@@ -38,28 +47,23 @@ function homeAwayRadioButtons(id) {
         .attr("id", "home")
         .attr("value", "home")
         .attr("checked", true);
-    homeDiv
-        .append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "home")
-        .text("Home");
+    blueDiv
+        .append("input")
+        .attr("type", "text")
+        .attr("placeholder", "Home");
 
-    var awayDiv = d3
-        .select(".team-select")
-        .append("div")
-        .attr("class", "form-check");
-    awayDiv
+    var orangeDiv = wrapper.append("div").attr("class", "form-check");
+    orangeDiv
         .append("input")
         .attr("class", "form-check-input")
         .attr("type", "radio")
         .attr("name", "home-away")
         .attr("id", "away")
         .attr("value", "away");
-    awayDiv
-        .append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "away")
-        .text("Away");
+    orangeDiv
+        .append("input")
+        .attr("type", "text")
+        .attr("placeholder", "Away");
 }
 
 function periodRadioButtons(id) {
@@ -150,8 +154,11 @@ function playerField(id) {
             "Player will appear on shot in rink if player is 2 or less characters long."
         );
 
-    d3.select(id)
-        .append("h3")
+    var div = d3
+        .select(id)
+        .append("div")
+        .attr("class", "even-width");
+    div.append("h3")
         .text("Player")
         .attr("class", "center")
         .append("i")
@@ -170,10 +177,7 @@ function playerField(id) {
                 .duration(200)
                 .style("opacity", 0.0);
         });
-    var playerDiv = d3
-        .select(id)
-        .append("div")
-        .attr("class", "form-group");
+    var playerDiv = div.append("div").attr("class", "form-group");
     playerDiv
         .append("input")
         .attr("type", "text")
@@ -182,7 +186,7 @@ function playerField(id) {
         .attr("value", "");
 }
 
-function shotTypeDropdown() {
+function shotTypeDropdown(id) {
     // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
     var tooltip = d3
         .select("body")
@@ -193,9 +197,12 @@ function shotTypeDropdown() {
             "To add new shot types, type into the dropdown, then select the new option or press Enter."
         );
 
-    d3.select("#options")
-        .append("h3")
-        .text("Shot Type")
+    var div = d3
+        .select(id)
+        .append("div")
+        .attr("class", "even-width");
+    div.append("h3")
+        .text("Type")
         .attr("class", "center")
         .append("i")
         .attr("class", "bi bi-info-circle")
@@ -214,10 +221,8 @@ function shotTypeDropdown() {
                 .style("opacity", 0.0);
         });
 
-    var select = d3
-        .select("#options")
+    var select = div
         .append("div")
-        .attr("class", "select-wrapper")
         .append("select")
         .attr("id", "shot-type");
     select

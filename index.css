@@ -27,7 +27,6 @@ footer {
 
 /* shot info */
 .shot-info {
-  height: 85vh;
   width: 25%;
   padding: 1em;
   margin-bottom: 1em;
@@ -42,14 +41,24 @@ select {
 input[type="text"] {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
-  border: 0.1em solid #aaaaaa; }
+  border: 0.1em solid #aaaaaa;
+  border-radius: 0.25em;
+  padding: 0 0.5em; }
+
+.team-input {
+  margin-bottom: 0.5em; }
 
 .column {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-evenly; }
+
+.even-width {
+  width: 50%;
+  padding: 0.5em; }
 
 .vr {
-  border-right: 0.075em solid rgba(0, 0, 0, 0.2); }
+  border-right: 0.075em solid rgba(0, 0, 0, 0.2);
+  margin: 0.5em; }
 
 /* rink */
 #hockey-rink {
