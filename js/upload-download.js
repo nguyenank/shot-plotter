@@ -94,59 +94,50 @@ function uploadCSV(e) {
     // https://stackoverflow.com/a/55929686
     var f = e.target.files[0];
     if (f) {
-        var r = new FileReader();
-        r.onload = function(evt) {
-            var contents = evt.target.result;
-            processCSV(contents);
-        };
-        r.readAsText(f);
+        var swapTeamId = "#blue-team-name";
+        clearTable();
+        Papa.parse(f, {
+            header: true,
+            worker: true,
+            step: function(row) {
+                swapTeamId = processCSV(row.data, swapTeamId);
+            },
+        });
     }
 }
 
-function processCSV(text) {
-    var lines = text.split("\n");
+function processCSV(row, swapTeamId) {
     var options = getOptionsObject();
-    // literally the barest sprinkle of input validation
-
-    // swap blue team name first
-    var swapTeamId = "#blue-team-name";
-    if (lines[0] == "Period,Team,Player,Type,X,Y") {
-        clearTable();
-        for (let i = 1; i < lines.length; i++) {
-            var [period, team, player, type, x, y] = lines[i].split(",");
-            if (!(type in options)) {
-                d3.select("#shot-type")
-                    .append("option")
-                    .text(type);
-                options = getOptionsObject();
-                shotTypeLegend();
-            }
-            var teamId;
-
-            if (team === d3.select("#blue-team-name").property("value")) {
-                teamId = "#blue-team-name";
-            } else if (
-                team === d3.select("#orange-team-name").property("value")
-            ) {
-                teamId = "#orange-team-name";
-            } else {
-                d3.select(swapTeamId).property("value", team);
-                teamLegend();
-
-                teamId = swapTeamId;
-                // alternate changing team names
-                swapTeamId =
-                    swapTeamId === "#blue-team-name"
-                        ? "#orange-team-name"
-                        : "#blue-team-name";
-            }
-
-            createShotFromData(period, teamId, player, type, [
-                parseFloat(x) + 100,
-                -1 * parseFloat(y) + 42.5,
-            ]); // undo coordinate adjustment
-        }
+    var newSwapTeam = swapTeamId;
+    if (!(row.Type in options)) {
+        d3.select("#shot-type")
+            .append("option")
+            .text(row.Type);
+        options = getOptionsObject();
+        shotTypeLegend();
     }
+    var teamId;
+
+    if (row.Team === d3.select("#blue-team-name").property("value")) {
+        teamId = "#blue-team-name";
+    } else if (row.Team === d3.select("#orange-team-name").property("value")) {
+        teamId = "#orange-team-name";
+    } else {
+        d3.select(swapTeamId).property("value", row.Team);
+        teamLegend();
+
+        teamId = swapTeamId;
+        // alternate changing team names
+        newSwapTeam =
+            swapTeamId === "#blue-team-name"
+                ? "#orange-team-name"
+                : "#blue-team-name";
+    }
+    createShotFromData(row.Period, teamId, row.Player, row.Type, [
+        parseFloat(row.X) + 100,
+        -1 * parseFloat(row.Y) + 42.5,
+    ]); // undo coordinate adjustment
+    return newSwapTeam;
 }
 
 export { setUpDownloadUpload };
