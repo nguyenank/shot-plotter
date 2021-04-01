@@ -63,6 +63,10 @@ function setUpUpload() {
         .attr("class", "form-control")
         .attr("id", "upload")
         .on("change", e => uploadCSV(e));
+    wrapper
+        .append("div")
+        .attr("class", "invalid-tooltip")
+        .text("Only .csv files are allowed.");
 }
 
 function downloadCSV() {
@@ -91,18 +95,23 @@ function escape(text) {
 }
 
 function uploadCSV(e) {
-    // https://stackoverflow.com/a/55929686
-    var f = e.target.files[0];
-    if (f) {
-        var swapTeamId = "#blue-team-name";
-        clearTable();
-        Papa.parse(f, {
-            header: true,
-            worker: true,
-            step: function(row) {
-                swapTeamId = processCSV(row.data, swapTeamId);
-            },
-        });
+    if (/.csv$/i.exec(d3.select("#upload").property("value"))) {
+        var f = e.target.files[0];
+        if (f) {
+            // remove invalid class if necessary
+            d3.select("#upload").attr("class", "form-control");
+            var swapTeamId = "#blue-team-name";
+            clearTable();
+            Papa.parse(f, {
+                header: true,
+                worker: true,
+                step: function(row) {
+                    swapTeamId = processCSV(row.data, swapTeamId);
+                },
+            });
+        }
+    } else {
+        d3.select("#upload").attr("class", "form-control is-invalid");
     }
 }
 
