@@ -26,13 +26,16 @@ function createShotFromEvent(e) {
     // get shot type field
     var type = d3.select("#shot-type").property("value");
 
-    createDot("#normal", homeBool, player, type, d3.pointer(e), id);
+    // this order to get right shot number on dot
     createRow(period, homeBool, player, type, d3.pointer(e), id);
+    createDot("#normal", homeBool, player, type, d3.pointer(e), id);
 }
 
 function createShotFromData(period, team, player, type, coords) {
     var homeBool = team === "Home";
     var id = uuidv4();
+
+    // this order to get right shot number on dot
     createDot("#normal", homeBool, player, type, coords, id);
     createRow(period, homeBool, player, type, coords, id);
 }

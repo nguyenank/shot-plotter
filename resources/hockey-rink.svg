@@ -412,7 +412,7 @@
     />
     <g id = "dots">
       <g id="normal"></g>
-      <g id="highlighted"></g>
+      <g id="selected"></g>
     </g>
     <path
         id="outside-perimeter"

@@ -1,7 +1,11 @@
 function createRow(period, homeBool, player, type, coords, id) {
     var adjustedX = (coords[0] - 100).toFixed(2);
     var adjustedY = (coords[1] - 42.5).toFixed(2);
-
+    var shotNumber =
+        d3
+            .select("#shot-table-body")
+            .selectAll("tr")
+            .size() + 1;
     // create row
     var row = d3.select("#shot-table-body").append("tr");
 
@@ -13,25 +17,13 @@ function createRow(period, homeBool, player, type, coords, id) {
         .attr("id", id)
         .on("change", function() {
             var checked = d3.select(this).property("checked");
-            var row = d3.select("#shot-table-body").select("[id='" + id + "']");
-            if (checked) {
-                dotSizeHandler(id, 1.5);
-                row.attr("class", homeBool ? "home-row" : "away-row");
-            } else {
-                dotSizeHandler(id, 1);
-                row.attr("class", "");
-            }
+            selectHandler(id, checked, homeBool);
         });
     // get shot number
     row.append("th")
         .attr("scope", "col")
         .attr("class", "shot-number")
-        .text(
-            d3
-                .select("#shot-table-body")
-                .selectAll("tr")
-                .size()
-        );
+        .text(shotNumber);
     row.append("td").text(period);
     row.append("td").text(homeBool ? "Home" : "Away");
     row.append("td").text(player);
@@ -67,12 +59,56 @@ function deleteHandler(id) {
     d3.select("#dots")
         .select("[id='" + id + "']")
         .remove();
-
     d3.select("#shot-table-body")
-        .selectAll(".shot-number")
+        .selectAll("tr")
         .each(function(d, i) {
-            d3.select(this).text(i + 1);
+            d3.select(this)
+                .select(".shot-number")
+                .text(i + 1);
         });
+    d3.select("#shot-table-body")
+        .selectAll("tr")
+        .each(function(d, i) {
+            d3.select(this)
+                .select(".shot-number")
+                .text(i + 1);
+            var id = d3.select(this).attr("id");
+            d3.select("#dots")
+                .select("[id='" + id + "']")
+                .attr("shot-number", i + 1);
+        });
+}
+
+function selectHandler(id, checked, homeBool) {
+    var row = d3.select("#shot-table-body").select("[id='" + id + "']");
+    if (checked) {
+        // https://stackoverflow.com/a/23724356
+        var toMove = d3
+            .select("#dots")
+            .select("[id='" + id + "']")
+            .node();
+        d3.select("#dots")
+            .select("#selected")
+            .append(() => toMove);
+        dotSizeHandler(id, 1.5);
+        row.attr("class", homeBool ? "home-row" : "away-row");
+    } else {
+        var shotNumber = d3
+            .select("#dots")
+            .select("[id='" + id + "']")
+            .attr("shot-number");
+        shotNumber = Number(shotNumber) + 1;
+
+        var toMove = d3
+            .select("#dots")
+            .select("[id='" + id + "']")
+            .node();
+        d3.select("#dots")
+            .select("#normal")
+            .insert(() => toMove, "[shot-number='" + shotNumber + "']");
+        dotSizeHandler(id, 1);
+        row.attr("class", "");
+    }
 }
 
 export { createRow };

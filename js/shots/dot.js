@@ -11,7 +11,15 @@ function createDot(svgId, homeBool, player, type, coords, id, legendBool) {
     let g = d3
         .select(svgId)
         .append("g")
-        .attr("id", id);
+        .attr("id", id)
+        .attr(
+            "shot-number",
+            d3
+                .select("#shot-table-body")
+                .selectAll("tr")
+                .size()
+        );
+
     if (typeIndex == 0) {
         g.append("circle")
             .attr("cx", coords[0])
@@ -33,14 +41,15 @@ function createDot(svgId, homeBool, player, type, coords, id, legendBool) {
             .attr("class", className);
     }
     // only display text if two characters or less
-    let text = player.length <= 2 ? player : "";
-    g.append("text")
-        .attr("x", coords[0])
-        .attr("y", coords[1])
-        .attr("text-anchor", "middle")
-        .attr("dominant-baseline", "middle")
-        .text(text)
-        .attr("class", "dot-text");
+    if (player.length <= 2) {
+        g.append("text")
+            .attr("x", coords[0])
+            .attr("y", coords[1])
+            .attr("text-anchor", "middle")
+            .attr("dominant-baseline", "middle")
+            .text(player)
+            .attr("class", "dot-text");
+    }
 }
 
 function polygon(cx, cy, r, sides) {
