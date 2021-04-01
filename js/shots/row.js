@@ -1,6 +1,6 @@
 function createRow(period, homeBool, player, type, coords, id) {
     var adjustedX = (coords[0] - 100).toFixed(2);
-    var adjustedY = (coords[1] - 42.5).toFixed(2);
+    var adjustedY = (-1 * (coords[1] - 42.5)).toFixed(2);
     var shotNumber =
         d3
             .select("#shot-table-body")

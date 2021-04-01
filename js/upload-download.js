@@ -116,7 +116,7 @@ function processCSV(text) {
             }
             createShotFromData(period, team, player, type, [
                 parseFloat(x) + 100,
-                parseFloat(y) + 42.5,
+                -1 * parseFloat(y) + 42.5,
             ]); // undo coordinate adjustment
         }
     }
