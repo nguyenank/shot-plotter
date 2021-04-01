@@ -73,7 +73,7 @@ function downloadCSV() {
             d3.select(this)
                 .selectAll("td")
                 .each(function(d, i) {
-                    csv += d3.select(this).text() + ",";
+                    csv += escape(d3.select(this).text()) + ",";
                 });
             // remove trailing comma
             csv = csv.slice(0, -1) + "\n";
@@ -84,6 +84,10 @@ function downloadCSV() {
         fileName = d3.select("#download-name").attr("placeholder");
     }
     download(csv, fileName + ".csv", "text/csv");
+}
+
+function escape(text) {
+    return text.includes(",") ? '"' + text + '"' : text;
 }
 
 function uploadCSV(e) {
@@ -130,8 +134,11 @@ function processCSV(text) {
                 teamLegend();
 
                 teamId = swapTeamId;
-                swapTeamId = "#orange-team-name";
-                // swap home team name first; then away team every time after
+                // alternate changing team names
+                swapTeamId =
+                    swapTeamId === "#blue-team-name"
+                        ? "#orange-team-name"
+                        : "#blue-team-name";
             }
 
             createShotFromData(period, teamId, player, type, [
