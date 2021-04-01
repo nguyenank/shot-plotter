@@ -1,5 +1,16 @@
+import { teamLegend } from "./shots/legend.js";
+
 function setUpOptions() {
-    teamPeriod();
+    d3.select("#options")
+        .append("div")
+        .attr("class", "column");
+    periodRadioButtons(".column");
+
+    d3.select(".column")
+        .append("div")
+        .attr("class", "vr");
+    blueOrangeRadioButtons(".column");
+
     d3.select("#options").append("hr");
     var col = d3
         .select("#options")
@@ -11,18 +22,6 @@ function setUpOptions() {
         .append("div")
         .attr("class", "vr");
     shotTypeDropdown("#row2");
-}
-
-function teamPeriod() {
-    d3.select("#options")
-        .append("div")
-        .attr("class", "column");
-    periodRadioButtons(".column");
-
-    d3.select(".column")
-        .append("div")
-        .attr("class", "vr");
-    blueOrangeRadioButtons(".column");
 }
 
 function blueOrangeRadioButtons(id) {
@@ -43,27 +42,29 @@ function blueOrangeRadioButtons(id) {
         .append("input")
         .attr("class", "form-check-input")
         .attr("type", "radio")
-        .attr("name", "home-away")
-        .attr("id", "home")
-        .attr("value", "home")
+        .attr("name", "team-bool")
+        .attr("value", "#blue-team-name")
         .attr("checked", true);
     blueDiv
         .append("input")
         .attr("type", "text")
-        .attr("placeholder", "Home");
+        .attr("id", "blue-team-name")
+        .attr("value", "Home")
+        .on("change", () => teamLegend());
 
     var orangeDiv = wrapper.append("div").attr("class", "form-check");
     orangeDiv
         .append("input")
         .attr("class", "form-check-input")
         .attr("type", "radio")
-        .attr("name", "home-away")
-        .attr("id", "away")
-        .attr("value", "away");
+        .attr("name", "team-bool")
+        .attr("value", "#orange-team-name");
     orangeDiv
         .append("input")
         .attr("type", "text")
-        .attr("placeholder", "Away");
+        .attr("id", "orange-team-name")
+        .attr("value", "Away")
+        .on("change", () => teamLegend());
 }
 
 function periodRadioButtons(id) {

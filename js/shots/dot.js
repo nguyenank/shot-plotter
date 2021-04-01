@@ -1,13 +1,13 @@
 import { getOptionsObject } from "../options.js";
 import { cfg } from "./config.js";
 
-function createDot(svgId, homeBool, player, type, coords, id, legendBool) {
+function createDot(svgId, teamId, player, type, coords, id, legendBool) {
     var typeIndex = getOptionsObject()[type];
     var className = legendBool
         ? "legend-shot"
-        : homeBool
-        ? "home-shot"
-        : "away-shot";
+        : teamId === "#blue-team-name"
+        ? "blue-shot"
+        : "orange-shot";
     let g = d3
         .select(svgId)
         .append("g")

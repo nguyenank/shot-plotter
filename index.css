@@ -76,18 +76,18 @@ input[type="text"] {
 tbody {
   background-color: white; }
 
-.home-row {
+.blue-row {
   background-color: rgba(53, 171, 169, 0.7); }
 
-.away-row {
+.orange-row {
   background-color: rgba(234, 142, 72, 0.7); }
 
-.home-shot {
+.blue-shot {
   fill: rgba(53, 171, 169, 0.7);
   stroke-width: 0.1px;
   stroke: #35aba9; }
 
-.away-shot {
+.orange-shot {
   fill: rgba(234, 142, 72, 0.7);
   stroke-width: 0.1px;
   stroke: #ea8e48; }

@@ -15,9 +15,9 @@ function setUpLegend() {
     div.append("div")
         .attr("class", "center")
         .append("svg")
-        .attr("id", "home-away-legend");
+        .attr("id", "team-legend");
 
-    homeAwayLegend();
+    teamLegend();
 }
 
 function shotTypeLegend(id = "#shot-type-legend") {
@@ -55,15 +55,18 @@ function shotTypeLegend(id = "#shot-type-legend") {
     svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
 
-function homeAwayLegend(id = "#home-away-legend") {
+function teamLegend(id = "#team-legend") {
     var xOffset = 2 * cfg.legendR;
     var yOffset = 2 * cfg.legendR;
     var spacing = 2 * cfg.legendR;
     var svg = d3.select(id);
 
+    // clear svg
+    svg.selectAll("*").remove();
+
     for (let i of [
-        ["home-shot", "Home"],
-        ["away-shot", "Away"],
+        ["blue-shot", d3.select("#blue-team-name").property("value")],
+        ["orange-shot", d3.select("#orange-team-name").property("value")],
     ]) {
         svg.append("rect")
             .attr("x", xOffset - cfg.legendR)
@@ -86,4 +89,4 @@ function homeAwayLegend(id = "#home-away-legend") {
     svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
 
-export { setUpLegend, shotTypeLegend };
+export { setUpLegend, shotTypeLegend, teamLegend };

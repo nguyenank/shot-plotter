@@ -11,9 +11,7 @@ function setUpShots() {
 
 function createShotFromEvent(e) {
     // https://stackoverflow.com/a/29325047
-    var homeBool =
-        d3.select("input[name='home-away']:checked").property("value") ===
-        "home";
+    var teamId = d3.select("input[name='team-bool']:checked").property("value");
     var id = uuidv4();
     var period = d3.select("input[name='period']:checked").property("value");
 
@@ -27,17 +25,16 @@ function createShotFromEvent(e) {
     var type = d3.select("#shot-type").property("value");
 
     // this order to get right shot number on dot
-    createRow(period, homeBool, player, type, d3.pointer(e), id);
-    createDot("#normal", homeBool, player, type, d3.pointer(e), id);
+    createRow(period, teamId, player, type, d3.pointer(e), id);
+    createDot("#normal", teamId, player, type, d3.pointer(e), id);
 }
 
-function createShotFromData(period, team, player, type, coords) {
-    var homeBool = team === "Home";
+function createShotFromData(period, teamId, player, type, coords) {
     var id = uuidv4();
 
     // this order to get right shot number on dot
-    createDot("#normal", homeBool, player, type, coords, id);
-    createRow(period, homeBool, player, type, coords, id);
+    createDot("#normal", teamId, player, type, coords, id);
+    createRow(period, teamId, player, type, coords, id);
 }
 
 export { setUpShots, createShotFromData };

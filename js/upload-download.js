@@ -1,7 +1,7 @@
 import { getOptionsObject } from "./options.js";
 import { clearTable } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
-import { shotTypeLegend } from "./shots/legend.js";
+import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 
 function setUpDownloadUpload() {
     setUpDownload();
@@ -103,6 +103,9 @@ function processCSV(text) {
     var lines = text.split("\n");
     var options = getOptionsObject();
     // literally the barest sprinkle of input validation
+
+    // swap blue team name first
+    var swapTeamId = "#blue-team-name";
     if (lines[0] == "Period,Team,Player,Type,X,Y") {
         clearTable();
         for (let i = 1; i < lines.length; i++) {
@@ -114,7 +117,24 @@ function processCSV(text) {
                 options = getOptionsObject();
                 shotTypeLegend();
             }
-            createShotFromData(period, team, player, type, [
+            var teamId;
+
+            if (team === d3.select("#blue-team-name").property("value")) {
+                teamId = "#blue-team-name";
+            } else if (
+                team === d3.select("#orange-team-name").property("value")
+            ) {
+                teamId = "#orange-team-name";
+            } else {
+                d3.select(swapTeamId).property("value", team);
+                teamLegend();
+
+                teamId = swapTeamId;
+                swapTeamId = "#orange-team-name";
+                // swap home team name first; then away team every time after
+            }
+
+            createShotFromData(period, teamId, player, type, [
                 parseFloat(x) + 100,
                 -1 * parseFloat(y) + 42.5,
             ]); // undo coordinate adjustment

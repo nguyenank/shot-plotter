@@ -1,4 +1,4 @@
-function createRow(period, homeBool, player, type, coords, id) {
+function createRow(period, teamId, player, type, coords, id) {
     var adjustedX = (coords[0] - 100).toFixed(2);
     var adjustedY = (-1 * (coords[1] - 42.5)).toFixed(2);
     var shotNumber =
@@ -17,7 +17,7 @@ function createRow(period, homeBool, player, type, coords, id) {
         .attr("id", id)
         .on("change", function() {
             var checked = d3.select(this).property("checked");
-            selectHandler(id, checked, homeBool);
+            selectHandler(id, checked, teamId);
         });
     // get shot number
     row.append("th")
@@ -25,7 +25,7 @@ function createRow(period, homeBool, player, type, coords, id) {
         .attr("class", "shot-number")
         .text(shotNumber);
     row.append("td").text(period);
-    row.append("td").text(homeBool ? "Home" : "Away");
+    row.append("td").text(d3.select(teamId).property("value"));
     row.append("td").text(player);
     row.append("td").text(type);
     row.append("td").text(adjustedX);
@@ -79,7 +79,7 @@ function deleteHandler(id) {
         });
 }
 
-function selectHandler(id, checked, homeBool) {
+function selectHandler(id, checked, teamId) {
     var row = d3.select("#shot-table-body").select("[id='" + id + "']");
     if (checked) {
         // https://stackoverflow.com/a/23724356
@@ -91,7 +91,10 @@ function selectHandler(id, checked, homeBool) {
             .select("#selected")
             .append(() => toMove);
         dotSizeHandler(id, 1.5);
-        row.attr("class", homeBool ? "home-row" : "away-row");
+        row.attr(
+            "class",
+            teamId === "#blue-team-name" ? "blue-row" : "orange-row"
+        );
     } else {
         var shotNumber = d3
             .select("#dots")
