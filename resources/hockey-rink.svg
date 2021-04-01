@@ -410,9 +410,9 @@
         fill="transparent"
         stroke="black"
     />
-    <g id = "teams">
-      <g id="home-team"></g>
-      <g id="away-team"></g>
+    <g id = "dots">
+      <g id="normal"></g>
+      <g id="highlighted"></g>
     </g>
     <path
         id="outside-perimeter"

@@ -29,7 +29,7 @@ function clearTable() {
         .selectAll("tr")
         .remove();
     d3.select("#hockey-rink-svg")
-        .select("#teams")
+        .select("#dots")
         .selectAll("circle")
         .remove();
 }

@@ -3,10 +3,6 @@
   border: 0.1em solid #aaaaaa;
   border-radius: 0.2em; }
 
-.home-shot, .away-shot {
-  stroke: white;
-  stroke-width: 0.1; }
-
 /* general  */
 body {
   font-family: "Open Sans", sans-serif;
@@ -60,8 +56,8 @@ input[type="text"] {
   margint-: 1em; }
 
 .dot-text {
-  font-size: 1.8px;
-  font-weight: bold;
+  font-size: 1.9px;
+  font-weight: 900;
   fill: white; }
 
 /* shot table */
@@ -78,10 +74,14 @@ tbody {
   background-color: rgba(234, 142, 72, 0.7); }
 
 .home-shot {
-  fill: rgba(53, 171, 169, 0.7); }
+  fill: rgba(53, 171, 169, 0.7);
+  stroke-width: 0.1px;
+  stroke: #35aba9; }
 
 .away-shot {
-  fill: rgba(234, 142, 72, 0.7); }
+  fill: rgba(234, 142, 72, 0.7);
+  stroke-width: 0.1px;
+  stroke: #ea8e48; }
 
 .legend-shot {
   fill: black; }

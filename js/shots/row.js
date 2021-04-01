@@ -48,7 +48,7 @@ function createRow(period, homeBool, player, type, coords, id) {
 }
 
 function dotSizeHandler(id, scale) {
-    var d = d3.select("#teams").select("[id='" + id + "']");
+    var d = d3.select("#dots").select("[id='" + id + "']");
     // https://stackoverflow.com/a/11671373
     var bbox = d.node().getBBox();
     var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
@@ -64,7 +64,7 @@ function deleteHandler(id) {
     d3.select("#shot-table-body")
         .select("[id='" + id + "']")
         .remove();
-    d3.select("#teams")
+    d3.select("#dots")
         .select("[id='" + id + "']")
         .remove();
 

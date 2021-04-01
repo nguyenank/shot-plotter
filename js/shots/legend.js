@@ -36,7 +36,7 @@ function shotTypeLegend(id = "#shot-type-legend") {
             true,
             "",
             option,
-            [xOffset, 0.6 * yOffset],
+            [xOffset, 0.625 * yOffset],
             xOffset,
             true
         );
@@ -70,7 +70,8 @@ function homeAwayLegend(id = "#home-away-legend") {
             .attr("y", 0.25 * yOffset)
             .attr("width", 2 * cfg.legendR)
             .attr("height", 2 * cfg.legendR)
-            .attr("class", i[0]);
+            .attr("class", i[0])
+            .style("stroke-width", "0.02em");
         xOffset += spacing;
         xOffset +=
             svg

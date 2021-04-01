@@ -36,7 +36,7 @@ function homeAwayRadioButtons(id) {
         .attr("type", "radio")
         .attr("name", "home-away")
         .attr("id", "home")
-        .attr("value", "#home-team")
+        .attr("value", "home")
         .attr("checked", true);
     homeDiv
         .append("label")
@@ -54,7 +54,7 @@ function homeAwayRadioButtons(id) {
         .attr("type", "radio")
         .attr("name", "home-away")
         .attr("id", "away")
-        .attr("value", "#away-team");
+        .attr("value", "away");
     awayDiv
         .append("label")
         .attr("class", "form-check-label")
