@@ -13,6 +13,36 @@ function index() {
         setUpShots();
         setUpDownloadUpload();
         setUpLegend();
+
+        function decode(a) {
+            return a.replace(/[a-zA-Z]/g, function(c) {
+                return String.fromCharCode(
+                    (c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13)
+                        ? c
+                        : c - 26
+                );
+            });
+        }
+
+        // https://www.ionos.com/digitalguide/e-mail/e-mail-security/protecting-your-email-address-how-to-do-it/
+
+        // ROT13 encryption for email
+        function decode(a) {
+            return a.replace(/[a-zA-Z]/g, function(c) {
+                return String.fromCharCode(
+                    (c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13)
+                        ? c
+                        : c - 26
+                );
+            });
+        }
+
+        d3.select("#email").on("click", function() {
+            var y = "znvygb:naxathlranaxathlra@tznvy.pbz";
+            d3.select(this).attr("href", decode(y));
+            d3.on("click", () => {});
+        });
+
         $(document).ready(function() {
             $("#shot-type")
                 .select2({
