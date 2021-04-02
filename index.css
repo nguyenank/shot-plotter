@@ -30,7 +30,7 @@ footer {
   width: 25%;
   padding: 1em;
   margin-bottom: 1em;
-  overflow-y: auto; }
+  flex-grow: 1; }
 
 select {
   width: 100%; }
@@ -43,7 +43,8 @@ input[type="text"] {
   font-weight: 300;
   border: 0.1em solid #aaaaaa;
   border-radius: 0.25em;
-  padding: 0 0.5em; }
+  padding: 0 0.5em;
+  width: 100%; }
 
 .team-input {
   margin-bottom: 0.5em; }

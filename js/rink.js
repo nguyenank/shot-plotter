@@ -4,7 +4,7 @@ function setUpRink(data) {
         .append(data.documentElement);
 
     var maxWidth =
-        window.innerWidth >= 768 ? window.innerWidth * 0.75 : window.innerWidth;
+        window.innerWidth >= 768 ? window.innerWidth * 0.7 : window.innerWidth;
 
     // floor resizing factor to the nearest 0.5
     var resize = (
