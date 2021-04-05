@@ -3,17 +3,30 @@ import { teamLegend } from "./shots/legend.js";
 function setUpOptions() {
     d3.select("#options")
         .append("div")
-        .attr("class", "column");
-    periodRadioButtons(".column");
+        .attr("class", "column")
+        .attr("id", "row1");
+
+    var periodData = {
+        class: "period-select",
+        title: "Period",
+        id: "period", // id and name are the same
+        options: [
+            { value: "1", checked: true },
+            { value: "2", checked: false },
+            { value: "3", checked: false },
+            { value: "OT", checked: false },
+        ],
+    };
+
+    createRadioButtons("#row1", periodData);
 
     d3.select(".column")
         .append("div")
         .attr("class", "vr");
-    blueOrangeRadioButtons(".column");
+    teamRadioButtons("#row1");
 
     d3.select("#options").append("hr");
-    var col = d3
-        .select("#options")
+    d3.select("#options")
         .append("div")
         .attr("class", "column")
         .attr("id", "row2");
@@ -24,7 +37,36 @@ function setUpOptions() {
     shotTypeDropdown("#row2");
 }
 
-function blueOrangeRadioButtons(id) {
+function createRadioButtons(id, data) {
+    d3.select(id)
+        .append("div")
+        .attr("class", data.class)
+        .attr("id", data.id)
+        .append("h3")
+        .text(data.title)
+        .attr("class", "center");
+
+    for (let option of data.options) {
+        var div = d3
+            .select("#" + data.id)
+            .append("div")
+            .attr("class", "form-check vertical");
+
+        div.append("input")
+            .attr("class", "form-check-input")
+            .attr("type", "radio")
+            .attr("name", data.id)
+            .attr("id", option.value) // sanitize, make sure no duplicate values
+            .attr("value", option.value)
+            .attr("checked", option.checked);
+        div.append("label")
+            .attr("class", "form-check-label")
+            .attr("for", option.value)
+            .text(option.value);
+    }
+}
+
+function teamRadioButtons(id) {
     d3.select(id)
         .append("div")
         .append("div")
@@ -65,84 +107,6 @@ function blueOrangeRadioButtons(id) {
         .attr("id", "orange-team-name")
         .attr("value", "Away")
         .on("change", () => teamLegend());
-}
-
-function periodRadioButtons(id) {
-    d3.select(id)
-        .append("div")
-        .attr("class", "period-select")
-        .append("h3")
-        .text("Period")
-        .attr("class", "center");
-
-    var oneDiv = d3
-        .select(".period-select")
-        .append("div")
-        .attr("class", "form-check vertical");
-    oneDiv
-        .append("input")
-        .attr("class", "form-check-input")
-        .attr("type", "radio")
-        .attr("name", "period")
-        .attr("id", "one")
-        .attr("value", "1")
-        .attr("checked", true);
-    oneDiv
-        .append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "one")
-        .text("1");
-
-    var twoDiv = d3
-        .select(".period-select")
-        .append("div")
-        .attr("class", "form-check vertical");
-    twoDiv
-        .append("input")
-        .attr("class", "form-check-input")
-        .attr("type", "radio")
-        .attr("name", "period")
-        .attr("id", "two")
-        .attr("value", "2");
-    twoDiv
-        .append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "two")
-        .text("2");
-
-    var threeDiv = d3
-        .select(".period-select")
-        .append("div")
-        .attr("class", "form-check vertical");
-    threeDiv
-        .append("input")
-        .attr("class", "form-check-input")
-        .attr("type", "radio")
-        .attr("name", "period")
-        .attr("id", "three")
-        .attr("value", "3");
-    threeDiv
-        .append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "three")
-        .text("3");
-
-    var otDiv = d3
-        .select(".period-select")
-        .append("div")
-        .attr("class", "form-check vertical");
-    otDiv
-        .append("input")
-        .attr("class", "form-check-input")
-        .attr("type", "radio")
-        .attr("name", "period")
-        .attr("id", "ot")
-        .attr("value", "OT");
-    otDiv
-        .append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "ot")
-        .text("OT");
 }
 
 function playerField(id) {
