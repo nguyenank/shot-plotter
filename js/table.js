@@ -34,4 +34,18 @@ function clearTable() {
         .remove();
 }
 
-export { setUpTable, clearTable };
+function getHeaderRow() {
+    // returns header row in string, separated by commas
+    var s = "";
+    d3.select("#shot-table")
+        .selectAll("th")
+        .each(function() {
+            let text = d3.select(this).text();
+            if (text !== "") {
+                s += text + ",";
+            }
+        });
+    return s.slice(0, -1);
+}
+
+export { setUpTable, clearTable, getHeaderRow };

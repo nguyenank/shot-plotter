@@ -1,5 +1,5 @@
 import { getOptionsObject } from "./options.js";
-import { clearTable } from "./table.js";
+import { clearTable, getHeaderRow } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 
@@ -70,7 +70,7 @@ function setUpUpload() {
 }
 
 function downloadCSV() {
-    var csv = "Period,Team,Player,Type,X,Y\n";
+    var csv = getHeaderRow() + "\n";
     d3.select("#shot-table-body")
         .selectAll("tr")
         .each(function() {
