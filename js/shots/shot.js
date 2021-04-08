@@ -21,33 +21,15 @@ function createShotFromEvent(e) {
             .select("#player-input")
             .property("value"),
         type: d3.select("#shot-type").property("value"),
-        coordinates: d3.pointer(e),
+        coords: d3.pointer(e),
     };
-    // this order to get right shot number on dot
+
+    createDot("#normal", data);
     createRow(data);
-    createDot(
-        "#normal",
-        data.teamId,
-        data.player,
-        data.type,
-        d3.pointer(e),
-        data.id
-    );
 }
 
-function createShotFromData(period, teamId, player, type, coords) {
-    var id = uuidv4();
-
-    var data = {
-        id: uuidv4(),
-        period: period,
-        teamId: teamId,
-        player: player,
-        type: type,
-        coordinates: coords,
-    };
-    // this order to get right shot number on dot
-    createDot("#normal", teamId, player, type, coords, data.id);
+function createShotFromData(data) {
+    createDot("#normal", data);
     createRow(data);
 }
 

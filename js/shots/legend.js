@@ -31,15 +31,15 @@ function shotTypeLegend(id = "#shot-type-legend") {
     svg.selectAll("*").remove();
 
     for (let option of options) {
-        createDot(
-            id,
-            true,
-            "",
-            option,
-            [xOffset, 0.625 * yOffset],
-            xOffset,
-            true
-        );
+        var data = {
+            teamId: true,
+            player: "",
+            type: option,
+            coords: [xOffset, 0.625 * yOffset],
+            id: xOffset,
+            legendBool: true,
+        };
+        createDot(id, data);
         xOffset += spacing;
         xOffset +=
             svg

@@ -2,8 +2,8 @@ import { getHeaderRow } from "../table.js";
 
 function createRow(data) {
     // transform info and add to data
-    data["x"] = (data.coordinates[0] - 100).toFixed(2);
-    data["y"] = (-1 * (data.coordinates[1] - 42.5)).toFixed(2);
+    data["x"] = (data.coords[0] - 100).toFixed(2);
+    data["y"] = (-1 * (data.coords[1] - 42.5)).toFixed(2);
     data["shotNumber"] =
         d3
             .select("#shot-table-body")

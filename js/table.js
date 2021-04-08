@@ -62,7 +62,7 @@ function printHeaderRow() {
         .selectAll("th")
         .each(function() {
             let text = d3.select(this).text();
-            if (text !== "" && text !== "Shot") {
+            if (text !== "" && text !== "shot") {
                 s += text + ",";
             }
         });

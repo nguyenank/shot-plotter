@@ -1,24 +1,17 @@
 import { getOptionsObject } from "../options.js";
 import { cfg } from "./config.js";
 
-function createDot(svgId, teamId, player, type, coords, id, legendBool) {
-    var data = {
-        period: period,
-        teamId: teamId,
-        player: player,
-        type: type,
-        coordinates: coords,
-    };
-    var typeIndex = getOptionsObject()[type];
-    var className = legendBool
+function createDot(svgId, data) {
+    var typeIndex = getOptionsObject()[data.type];
+    var className = data.legendBool
         ? "legend-shot"
-        : teamId === "#blue-team-name"
+        : data.teamId === "#blue-team-name"
         ? "blue-shot"
         : "orange-shot";
     let g = d3
         .select(svgId)
         .append("g")
-        .attr("id", id)
+        .attr("id", data.id)
         .attr(
             "shot-number",
             d3
@@ -29,9 +22,9 @@ function createDot(svgId, teamId, player, type, coords, id, legendBool) {
 
     if (typeIndex == 0) {
         g.append("circle")
-            .attr("cx", coords[0])
-            .attr("cy", coords[1])
-            .attr("r", legendBool ? cfg.legendR : cfg.circleR)
+            .attr("cx", data.coords[0])
+            .attr("cy", data.coords[1])
+            .attr("r", data.legendBool ? cfg.legendR : cfg.circleR)
             .attr("class", className);
     } else {
         var sides = typeIndex + 2;
@@ -39,22 +32,22 @@ function createDot(svgId, teamId, player, type, coords, id, legendBool) {
             .attr(
                 "points",
                 polygon(
-                    coords[0],
-                    coords[1],
-                    legendBool ? cfg.legendR : cfg.polyR,
+                    data.coords[0],
+                    data.coords[1],
+                    data.legendBool ? cfg.legendR : cfg.polyR,
                     sides
                 )
             )
             .attr("class", className);
     }
     // only display text if two characters or less
-    if (player && player.length <= 2) {
+    if (data.player.length <= 2) {
         g.append("text")
-            .attr("x", coords[0])
-            .attr("y", coords[1])
+            .attr("x", data.coords[0])
+            .attr("y", data.coords[1])
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
-            .text(player)
+            .text(data.player)
             .attr("class", "dot-text");
     }
 }
