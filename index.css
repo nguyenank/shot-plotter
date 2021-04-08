@@ -19,6 +19,9 @@ footer {
 .white-bg {
   background-color: white; }
 
+ul {
+  list-style: none; }
+
 /* utility */
 .center {
   display: flex;
@@ -27,7 +30,7 @@ footer {
 
 /* shot info */
 .shot-info {
-  width: 25%;
+  width: 30%;
   padding: 1em;
   margin-bottom: 1em;
   flex-grow: 1; }
@@ -61,10 +64,20 @@ input[type="text"] {
   border-right: 0.075em solid rgba(0, 0, 0, 0.2);
   margin: 0.5em; }
 
-/* rink */
-#hockey-rink {
-  margint-: 1em; }
+/* options modal */
+.bi-arrows-move {
+  cursor: move;
+  padding: 0.2em 0.25em; }
 
+.bi-eye,
+.bi-eye-slash {
+  cursor: pointer;
+  padding: 0.2em 0.25em; }
+
+li {
+  border: 0.1em solid #aaaaaa; }
+
+/* rink */
 .dot-text {
   font-size: 1.9px;
   font-weight: 900;

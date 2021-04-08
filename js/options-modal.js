@@ -23,12 +23,42 @@ function setUpModal(id) {
     m.append("div")
         .attr("class", "modal-body")
         .text("wheee custom options hell yeah!");
+    setUpModalBody(".modal-body");
     m.append("div")
         .attr("class", "modal-footer")
         .append("button")
         .attr("type", "button")
         .attr("class", "btn btn-primary")
         .text("Save Changes");
+}
+
+function setUpModalBody(id) {
+    // copied from table.js
+    var columns = ["Shot", "Period", "Team", "Player", "Type", "X", "Y"];
+
+    var v = d3
+        .select(id)
+        .append("ul")
+        .attr("id", "reorder-columns")
+        .selectAll("li")
+        .data(columns)
+        .enter()
+        .append("li");
+    v.append("i")
+        .attr("class", "bi bi-eye")
+        .on("click", function() {
+            var c = d3.select(this).attr("class");
+            if (c === "bi bi-eye") {
+                d3.select(this).attr("class", "bi bi-eye-slash");
+            } else {
+                d3.select(this).attr("class", "bi bi-eye");
+            }
+        });
+    v.append("i").attr("class", "bi bi-arrows-move");
+    v.append("span").text(d => d);
+
+    var el = document.getElementById("reorder-columns");
+    var sortable = new Sortable(el, { handle: ".bi-arrows-move" });
 }
 
 export { setUpModal };
