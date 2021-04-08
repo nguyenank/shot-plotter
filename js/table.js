@@ -48,10 +48,11 @@ function getHeaderRow() {
     // returns header row in string, separated by commas
     var s = "";
     d3.select("#shot-table")
+        .select("thead")
         .selectAll("th")
         .each(function() {
             let text = d3.select(this).text();
-            if (text !== "") {
+            if (text !== "" && text !== "Shot") {
                 s += text + ",";
             }
         });

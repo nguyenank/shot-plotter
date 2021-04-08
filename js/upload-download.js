@@ -116,6 +116,7 @@ function uploadCSV(e) {
 }
 
 function processCSV(row, swapTeamId) {
+    console.log(row);
     var options = getOptionsObject();
     var newSwapTeam = swapTeamId;
     if (!(row.Type in options)) {
