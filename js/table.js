@@ -5,13 +5,13 @@ function setUpTable() {
         .append("tr");
     var columns = [
         "", // for check box
-        "Shot",
-        "Period",
-        "Team",
-        "Player",
-        "Type",
-        "X",
-        "Y",
+        "shot",
+        "period",
+        "team",
+        "player",
+        "type",
+        "x",
+        "y",
         "", // for trash can
     ];
 
@@ -45,7 +45,17 @@ function clearTable() {
 }
 
 function getHeaderRow() {
-    // returns header row in string, separated by commas
+    var l = [];
+    d3.select("#shot-table")
+        .select("thead")
+        .selectAll("th")
+        .each(function() {
+            l.push(d3.select(this).text());
+        });
+    return _.filter(l, x => x !== "");
+}
+
+function printHeaderRow() {
     var s = "";
     d3.select("#shot-table")
         .select("thead")
@@ -59,4 +69,4 @@ function getHeaderRow() {
     return s.slice(0, -1);
 }
 
-export { setUpTable, clearTable, getHeaderRow };
+export { setUpTable, clearTable, getHeaderRow, printHeaderRow };

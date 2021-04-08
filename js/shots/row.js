@@ -1,41 +1,50 @@
-function createRow(period, teamId, player, type, coords, id) {
-    var adjustedX = (coords[0] - 100).toFixed(2);
-    var adjustedY = (-1 * (coords[1] - 42.5)).toFixed(2);
-    var shotNumber =
+import { getHeaderRow } from "../table.js";
+
+function createRow(data) {
+    // transform info and add to data
+    data["x"] = (data.coordinates[0] - 100).toFixed(2);
+    data["y"] = (-1 * (data.coordinates[1] - 42.5)).toFixed(2);
+    data["shotNumber"] =
         d3
             .select("#shot-table-body")
             .selectAll("tr")
             .size() + 1;
+    data["team"] = d3.select(data.teamId).property("value");
+
     // create row
     var row = d3.select("#shot-table-body").append("tr");
 
+    // select checkbox
     row.append("th")
         .attr("scope", "col")
         .append("input")
         .attr("type", "checkbox")
-        .attr("value", id)
-        .attr("id", id)
+        .attr("value", data.id)
+        .attr("id", data.id)
         .on("change", function() {
             var checked = d3.select(this).property("checked");
-            selectHandler(id, checked, teamId);
+            selectHandler(data.id, checked, data.teamId);
         });
-    // get shot number
-    row.append("th")
-        .attr("scope", "col")
-        .attr("class", "shot-number")
-        .text(shotNumber);
-    row.append("td").text(period);
-    row.append("td").text(d3.select(teamId).property("value"));
-    row.append("td").text(player);
-    row.append("td").text(type);
-    row.append("td").text(adjustedX);
-    row.append("td").text(adjustedY);
+
+    // customizable rows
+    for (let i of getHeaderRow()) {
+        if (i === "shot") {
+            row.append("th")
+                .attr("scope", "col")
+                .attr("class", "shot-number")
+                .text(data.shotNumber);
+        } else {
+            row.append("td").text(data[i]);
+        }
+    }
+
+    // trash can
     row.append("th")
         .attr("scope", "col")
         .append("i")
         .attr("class", "bi bi-trash-fill")
-        .on("click", () => deleteHandler(id));
-    row.attr("id", id);
+        .on("click", () => deleteHandler(data.id));
+    row.attr("id", data.id);
     row.attr("selected", false);
 }
 

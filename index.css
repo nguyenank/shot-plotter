@@ -87,6 +87,9 @@ li {
 .shot-table {
   padding: 1em 0; }
 
+thead {
+  text-transform: capitalize; }
+
 tbody {
   background-color: white; }
 

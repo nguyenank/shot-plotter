@@ -2,6 +2,13 @@ import { getOptionsObject } from "../options.js";
 import { cfg } from "./config.js";
 
 function createDot(svgId, teamId, player, type, coords, id, legendBool) {
+    var data = {
+        period: period,
+        teamId: teamId,
+        player: player,
+        type: type,
+        coordinates: coords,
+    };
     var typeIndex = getOptionsObject()[type];
     var className = legendBool
         ? "legend-shot"
