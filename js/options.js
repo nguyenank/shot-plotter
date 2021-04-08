@@ -1,6 +1,7 @@
 import { teamLegend } from "./shots/legend.js";
-
+import { setUpModal } from "./options-modal.js";
 function setUpOptions() {
+    setUpModal("#options-modal");
     d3.select("#options")
         .append("div")
         .attr("class", "column")
@@ -35,6 +36,16 @@ function setUpOptions() {
         .append("div")
         .attr("class", "vr");
     shotTypeDropdown("#row2");
+
+    d3.select("#options").append("hr");
+    d3.select("#options")
+        .append("div")
+        .attr("class", "center")
+        .append("button")
+        .attr("class", "btn btn-block white-bg")
+        .attr("data-bs-toggle", "modal")
+        .attr("data-bs-target", "#options-modal")
+        .text("Customize Info Options");
 }
 
 function createRadioButtons(id, data) {
