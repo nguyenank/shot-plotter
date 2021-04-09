@@ -104,7 +104,7 @@ function uploadCSV(e) {
             clearTable();
             Papa.parse(f, {
                 header: true,
-                worker: true,
+                transformHeader: h => h.toLowerCase(),
                 step: function(row) {
                     swapTeamId = processCSV(row.data, swapTeamId);
                 },
