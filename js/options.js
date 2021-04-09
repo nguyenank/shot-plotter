@@ -38,37 +38,8 @@ function setUpOptions() {
     shotTypeDropdown("#row2");
 
     d3.select("#options").append("hr");
-    var d = d3
-        .select("#options")
-        .append("div")
-        .attr("class", "center position-relative");
-    d.append("button")
-        .attr("class", "form-control")
-        .attr("id", "customize-btn")
-        .text("Customize Info Options")
-        .on("click", e => {
-            if (
-                d3
-                    .select("#shot-table-body")
-                    .selectAll("tr")
-                    .size() === 0
-            ) {
-                d3.select("#customize-btn").attr("class", "form-control");
-                new bootstrap.Modal(
-                    document.getElementById("options-modal")
-                ).show();
-            } else {
-                d3.select("#customize-btn").attr(
-                    "class",
-                    "form-control is-invalid"
-                );
-            }
-        });
-    d.append("div")
-        .attr("class", "invalid-tooltip")
-        .text(
-            "Info options can only be customized when no shots are recorded."
-        );
+
+    customizeButton();
 }
 
 function createRadioButtons(id, data) {
@@ -267,6 +238,42 @@ function shotTypeDropdown(id) {
                     });
             }
         });
+}
+
+function customizeButton() {
+    var d = d3
+        .select("#options")
+        .append("div")
+        .attr("class", "center position-relative");
+    d.append("button")
+        .attr("class", "form-control")
+        .attr("id", "customize-btn")
+        .text("Customize Info Options")
+        .on("mouseout", e => {
+            d3.select("#customize-btn").attr("class", "form-control");
+        })
+        .on("click", e => {
+            if (
+                d3
+                    .select("#shot-table-body")
+                    .selectAll("tr")
+                    .size() === 0
+            ) {
+                new bootstrap.Modal(
+                    document.getElementById("options-modal")
+                ).show();
+            } else {
+                d3.select("#customize-btn").attr(
+                    "class",
+                    "form-control is-invalid"
+                );
+            }
+        });
+    d.append("div")
+        .attr("class", "invalid-tooltip")
+        .text(
+            "Info options can only be customized when no shots are recorded."
+        );
 }
 
 function getOptionsObject() {
