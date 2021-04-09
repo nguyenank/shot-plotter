@@ -1,4 +1,4 @@
-import { getOptionsList } from "../options.js";
+import { getOptionsList } from "../options/options.js";
 import { createDot } from "./dot.js";
 import { cfg } from "./config.js";
 

@@ -1,4 +1,4 @@
-import { getOptionsObject } from "../options.js";
+import { getOptionsObject } from "../options/options.js";
 import { cfg } from "./config.js";
 
 function createDot(svgId, data) {
