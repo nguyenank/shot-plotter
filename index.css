@@ -1,4 +1,4 @@
-.shot-info, .shot-table {
+.shot-info, .reorder-items, .customize-btn, .shot-table {
   background-color: #eaecef;
   border: 0.1em solid #aaaaaa;
   border-radius: 0.2em; }
@@ -67,15 +67,31 @@ input[type="text"] {
 /* options modal */
 .bi-arrows-move {
   cursor: move;
-  padding: 0.2em 0.25em; }
+  padding: 0.2em 1em 0.2em 0.4em; }
 
 .bi-eye,
 .bi-eye-slash {
   cursor: pointer;
-  padding: 0.2em 0.25em; }
+  padding: 0.2em 0.4em; }
 
-li {
-  border: 0.1em solid #aaaaaa; }
+.reorder-items {
+  text-transform: capitalize;
+  font-weight: 400;
+  margin: 0.1em;
+  padding: 0.05em; }
+
+.modal-body div {
+  margin: 0.5em 0; }
+
+.customize-btn {
+  font-size: 1.2em;
+  font-weight: 300; }
+
+.customize-btn:hover {
+  background-color: #dee0e3; }
+
+#reorder-columns {
+  padding-left: 0; }
 
 /* rink */
 .dot-text {

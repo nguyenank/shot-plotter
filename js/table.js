@@ -1,28 +1,27 @@
 function setUpTable() {
-    var headerRow = d3
-        .select("#shot-table")
+    d3.select("#shot-table")
         .append("thead")
         .append("tr");
-    var columns = [
-        "", // for check box
-        "shot",
-        "period",
-        "team",
-        "player",
-        "type",
-        "x",
-        "y",
-        "", // for trash can
-    ];
+    var columns = ["shot", "period", "team", "player", "type", "x", "y"];
 
-    createHeaderRow(headerRow, columns);
+    createHeaderRow(columns);
 
     d3.select("#shot-table")
         .append("tbody")
         .attr("id", "shot-table-body");
 }
 
-function createHeaderRow(headerRow, columns) {
+function createHeaderRow(columns) {
+    columns = [""].concat(columns); // for check box
+    columns.push(""); // for trash can
+
+    var headerRow = d3
+        .select("#shot-table")
+        .select("thead")
+        .select("tr");
+    // clear row
+    headerRow.selectAll("*").remove();
+
     function createHeaderCol(headerRow, text) {
         headerRow
             .append("th")
@@ -69,4 +68,10 @@ function printHeaderRow() {
     return s.slice(0, -1);
 }
 
-export { setUpTable, clearTable, getHeaderRow, printHeaderRow };
+export {
+    setUpTable,
+    clearTable,
+    createHeaderRow,
+    getHeaderRow,
+    printHeaderRow,
+};
