@@ -28,15 +28,24 @@ function setUpOptions(id = "#options") {
 
     for (let [i, data] of options.entries()) {
         let rowId = "#row" + (Math.floor(i / 2) + 1);
-        if (i % 2 == 0 && Math.floor(i / 2) > 0) {
-            d3.select(id).append("hr");
-        }
+
         if (i % 2 == 0) {
+            if (Math.floor(i / 2) > 0) {
+                // need to add hr after row that isn't first row
+                d3.select(id).append("hr");
+            }
+            // need to create new row
             d3.select(id)
                 .append("div")
                 .attr("class", "option-row")
                 .attr("id", rowId.slice(1));
+        } else {
+            // need to add dividing line
+            d3.select(rowId)
+                .append("div")
+                .attr("class", "vr");
         }
+
         switch (data.type) {
             case "team":
                 teamRadioButtons(rowId);
@@ -56,13 +65,6 @@ function setUpOptions(id = "#options") {
             case "dropdown":
                 createDropdown(rowId, data);
                 break;
-            default:
-                console.log("hit");
-        }
-        if (i % 2 == 0) {
-            d3.select(rowId)
-                .append("div")
-                .attr("class", "vr");
         }
     }
 
