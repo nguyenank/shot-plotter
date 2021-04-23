@@ -62,7 +62,7 @@ input[type="text"] {
 .team-input {
   margin-bottom: 0.5em; }
 
-.option-row {
+.detail-row {
   display: flex;
   justify-content: space-evenly; }
 
@@ -74,7 +74,7 @@ input[type="text"] {
   border-right: 0.075em solid rgba(0, 0, 0, 0.2);
   margin: 0.5em; }
 
-/* options modal */
+/* detail modal */
 .bi-eye,
 .bi-eye-slash {
   cursor: pointer;

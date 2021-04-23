@@ -55,7 +55,7 @@ function setUpDetails(id = "#details") {
             // need to create new row
             d3.select(id)
                 .append("div")
-                .attr("class", "option-row")
+                .attr("class", "detail-row")
                 .attr("id", rowId.slice(1));
         } else {
             // need to add dividing line
@@ -216,71 +216,47 @@ function customizeButton(id) {
         );
 }
 
-function getDetails(asObject = true) {
-    getDetailsTest();
-    // actually just shot-type options
-    if (!asObject) {
-        var options = [];
-        d3.select("#shot-type")
-            .selectAll("option")
-            .each(function(d, i) {
-                options[i] = d3.select(this).property("value");
-            });
-        return options;
-    } else {
-        var options = {};
-        d3.select("#shot-type")
-            .selectAll("option")
-            .each(function(d, i) {
-                options[d3.select(this).property("value")] = i;
-            });
-        return options;
-    }
-}
-
-function getDetailsTest(id = "#details") {
+function getDetails(id = "#details") {
     var details = [];
     d3.select(id)
         .selectAll(".detail-row")
         .selectAll(".detail-module")
         .each(function(d, i) {
-            var option = {};
+            var detail = {};
             var m = d3.select(this);
-            option.type = m.attr("type");
-            option.title = m.select("h3").text();
-            option.class = m.attr("class").replace(optionsClass + " ", "");
-            option.id = m.attr("id");
-            options.push(option);
-            if (option.type === "text-field") {
-                option.defaultValue = m.select("input").attr("value");
-            }
-            if (option.type === "radio") {
-                let o = [];
+            detail.type = m.attr("type");
+            detail.title = m.select("h3").text();
+            detail.class = m.attr("class").replace(detailClass + " ", "");
+            detail.id = m.attr("id");
+            if (detail.type === "text-field") {
+                detail.defaultValue = m.select("input").attr("value");
+            } else if (detail.type === "radio") {
+                let options = [];
                 m.selectAll("input").each(function() {
-                    let oo = {};
-                    oo.value = d3.select(this).attr("value");
+                    let option = {};
+                    option.value = d3.select(this).attr("value");
                     if (d3.select(this).attr("checked")) {
-                        oo.checked = true;
+                        option.checked = true;
                     }
-                    o.push(oo);
+                    options.push(option);
                 });
-                option.options = o;
-            }
-            if (option.type === "dropdown") {
-                let o = [];
+                detail.options = options;
+            } else if (detail.type === "dropdown") {
+                let options = [];
                 m.selectAll("option").each(function() {
-                    let oo = {};
-                    oo.value = d3.select(this).property("value");
+                    let option = {};
+                    option.value = d3.select(this).property("value");
                     if (
-                        oo.value ===
-                        m.select("#" + option.id + "-select").property("value")
+                        option.value ===
+                        m.select("#" + detail.id + "-select").property("value")
                     ) {
-                        oo.selected = true;
+                        option.selected = true;
                     }
-                    o.push(oo);
+                    options.push(option);
                 });
-                option.options = o;
+                detail.options = options;
             }
+            details.push(detail);
         });
     return details;
 }

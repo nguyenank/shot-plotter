@@ -23,17 +23,18 @@ function shotTypeLegend(id = "#shot-type-legend") {
     var xOffset = 2 * cfg.legendR;
     var yOffset = 2 * cfg.legendR;
     var spacing = 2 * cfg.legendR;
-    var options = getDetails(false);
+    var typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
+    console.log(typeOptions);
     var svg = d3.select(id);
 
     // clear svg
     svg.selectAll("*").remove();
 
-    for (let option of options) {
+    for (let option of typeOptions) {
         var data = {
             teamId: true,
             player: "",
-            type: option,
+            type: option.value,
             coords: [xOffset, 0.625 * yOffset],
             id: xOffset,
             legendBool: true,
@@ -45,7 +46,7 @@ function shotTypeLegend(id = "#shot-type-legend") {
                 .append("text")
                 .attr("x", xOffset)
                 .attr("y", yOffset)
-                .text(option)
+                .text(option.value)
                 .node()
                 .getComputedTextLength() +
             2 * spacing;

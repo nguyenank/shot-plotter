@@ -117,13 +117,13 @@ function uploadCSV(e) {
 
 function processCSV(row, swapTeamId) {
     // add any new shot type options
-    var options = getOptions();
+    var typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
     var newSwapTeam = swapTeamId;
-    if (!(row.type in options)) {
-        d3.select("#shot-type")
+    if (!_.find(typeOptions, { value: row.type })) {
+        d3.select("#shot-type-select")
             .append("option")
             .text(row.type);
-        options = getOptions();
+        typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
         shotTypeLegend();
     }
     var teamId;
