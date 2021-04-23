@@ -17,7 +17,7 @@ function setUpDownload() {
     // Download Button
     wrapper
         .append("button")
-        .attr("class", "input-group-text download-btn")
+        .attr("class", "input-group-text grey-btn")
         .attr("type", "button")
         .attr("id", "download")
         .text("Download")

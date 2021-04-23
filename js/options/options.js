@@ -184,11 +184,14 @@ function customizeButton() {
         .append("div")
         .attr("class", "center position-relative");
     d.append("button")
-        .attr("class", "form-control")
+        .attr("class", "form-control customize-btn white-btn")
         .attr("id", "customize-btn")
         .text("Customize Info Options")
         .on("mouseout", e => {
-            d3.select("#customize-btn").attr("class", "form-control");
+            d3.select("#customize-btn").attr(
+                "class",
+                "form-control customize-btn white-btn"
+            );
         })
         .on("click", e => {
             if (
@@ -203,7 +206,7 @@ function customizeButton() {
             } else {
                 d3.select("#customize-btn").attr(
                     "class",
-                    "form-control is-invalid"
+                    "form-control is-invalid customize-btn white-btn"
                 );
             }
         });

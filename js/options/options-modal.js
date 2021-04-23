@@ -8,7 +8,7 @@ function setUpOptionsModal(id) {
         .attr("aria-hidden", true)
         .attr("aria-labelledby", "customize-options")
         .append("div")
-        .attr("class", "modal-dialog")
+        .attr("class", "modal-dialog modal-lg")
         .append("div")
         .attr("class", "modal-content");
 
@@ -42,11 +42,10 @@ function setUpOptionsModal(id) {
         ") indicates the column is not visible. Only visible columns will be included in the .csv when downloaded."
     );
 
-    text = mb
-        .append("div")
-        .text("To reorder columns, click and hold the drag handler (");
-    text.append("i").attr("class", "bi bi-arrows-move");
-    text.append("span").text(") to drag the column into the desired spot.");
+    text.append("div").text(
+        "To reorder columns, click and drag them into the desired order."
+    );
+
     setUpModalBody(".modal-body");
     m.append("div")
         .attr("class", "modal-footer")
@@ -63,13 +62,15 @@ function setUpModalBody(id) {
 
     var v = d3
         .select(id)
-        .append("ul")
+        .append("div")
+        .attr("class", "center")
+        .append("table")
         .attr("id", "reorder-columns")
-        .selectAll("li")
+        .selectAll("td")
         .data(columns)
         .enter()
-        .append("li")
-        .attr("class", "reorder-items");
+        .append("td")
+        .attr("class", "reorder-item");
     v.append("i")
         .attr("class", "bi bi-eye")
         .on("click", function() {
@@ -80,17 +81,18 @@ function setUpModalBody(id) {
                 d3.select(this).attr("class", "bi bi-eye");
             }
         });
-    v.append("i").attr("class", "bi bi-arrows-move");
-    v.append("span").text(d => d);
+    v.append("span")
+        .text(d => d)
+        .attr("class", "reorder-item-text");
 
     var el = document.getElementById("reorder-columns");
-    var sortable = new Sortable(el, { handle: ".bi-arrows-move" });
+    var sortable = new Sortable(el, { ghostClass: "reorder-ghost" });
 }
 
 function saveChanges(e) {
     var l = [];
     d3.select("#reorder-columns")
-        .selectAll("li")
+        .selectAll("td")
         .each(function() {
             if (
                 d3
@@ -98,7 +100,12 @@ function saveChanges(e) {
                     .select("i")
                     .attr("class") === "bi bi-eye"
             ) {
-                l.push(d3.select(this).text());
+                l.push(
+                    d3
+                        .select(this)
+                        .select("span")
+                        .text()
+                );
             }
         });
     createHeaderRow(l);

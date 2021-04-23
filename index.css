@@ -1,4 +1,4 @@
-.shot-info, .reorder-items, .customize-btn, .shot-table {
+.shot-info, .reorder-item, .reorder-ghost, .customize-btn, .shot-table {
   background-color: #eaecef;
   border: 0.1em solid #aaaaaa;
   border-radius: 0.2em; }
@@ -21,6 +21,16 @@ footer {
 
 ul {
   list-style: none; }
+
+.grey-btn {
+  background-color: #eaecef; }
+  .grey-btn:hover {
+    background-color: #dee0e3; }
+
+.white-btn {
+  background-color: white; }
+  .white-btn:hover {
+    background-color: #f2f4f5; }
 
 /* utility */
 .center {
@@ -72,26 +82,27 @@ input[type="text"] {
 .bi-eye,
 .bi-eye-slash {
   cursor: pointer;
-  padding: 0.2em 0.4em; }
+  padding: 0.2em 0; }
 
-.reorder-items {
+.reorder-item {
   text-transform: capitalize;
   font-weight: 400;
-  margin: 0.1em;
-  padding: 0.05em; }
+  padding: 0.2em; }
+
+.reorder-item-text {
+  padding-left: 0.3em; }
+
+.reorder-ghost {
+  background-color: white;
+  border-color: #eaecef;
+  color: #aaaaaa; }
+
+#reorder-columns {
+  padding-left: 0;
+  border-collapse: collapse; }
 
 .modal-body div {
   margin: 0.5em 0; }
-
-.customize-btn {
-  font-size: 1.2em;
-  font-weight: 300; }
-
-.customize-btn:hover {
-  background-color: #dee0e3; }
-
-#reorder-columns {
-  padding-left: 0; }
 
 /* rink */
 .dot-text {
@@ -139,12 +150,6 @@ tbody {
   cursor: pointer; }
 
 /* download/upload */
-.download-btn {
-  background-color: #eaecef; }
-
-.download-btn:hover {
-  background-color: #dee0e3; }
-
 .input-group {
   margin-top: 0.25em; }
 
