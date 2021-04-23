@@ -50,9 +50,13 @@ function clearTable() {
     d3.select("#shot-table-body")
         .selectAll("tr")
         .remove();
-    d3.select("#hockey-rink-svg")
-        .select("#dots")
-        .selectAll("circle")
+    var dots = d3.select("#hockey-rink-svg").select("#dots");
+
+    dots.select("#normal")
+        .selectAll("*")
+        .remove();
+    dots.select("#selected")
+        .selectAll("*")
         .remove();
 }
 

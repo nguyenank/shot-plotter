@@ -1,4 +1,4 @@
-import { getOptions } from "./options/options.js";
+import { getDetails } from "./details/details.js";
 import { clearTable, printHeaderRow } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";

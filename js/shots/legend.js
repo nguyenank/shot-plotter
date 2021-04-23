@@ -1,4 +1,4 @@
-import { getOptions } from "../options/options.js";
+import { getDetails } from "../details/details.js";
 import { createDot } from "./dot.js";
 import { cfg } from "./config.js";
 
@@ -23,7 +23,7 @@ function shotTypeLegend(id = "#shot-type-legend") {
     var xOffset = 2 * cfg.legendR;
     var yOffset = 2 * cfg.legendR;
     var spacing = 2 * cfg.legendR;
-    var options = getOptions(false);
+    var options = getDetails(false);
     var svg = d3.select(id);
 
     // clear svg

@@ -1,5 +1,5 @@
 import { setUpRink } from "./js/rink.js";
-import { setUpOptions } from "./js/options/options.js";
+import { setUpDetails } from "./js/details/details.js";
 import { setUpShots } from "./js/shots/shot.js";
 import { setUpTable } from "./js/table.js";
 import { setUpDownloadUpload } from "./js/upload-download.js";
@@ -8,7 +8,7 @@ import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 function index() {
     d3.xml("resources/hockey-rink.svg").then(data => {
         setUpRink(data);
-        setUpOptions();
+        setUpDetails();
         setUpTable();
         setUpShots();
         setUpDownloadUpload();

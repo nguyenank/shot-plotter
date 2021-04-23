@@ -1,8 +1,8 @@
-import { getOptions } from "../options/options.js";
+import { getDetails } from "../details/details.js";
 import { cfg } from "./config.js";
 
 function createDot(svgId, data) {
-    var typeIndex = getOptions()[data.type];
+    var typeIndex = getDetails()[data.type];
     var className = data.legendBool
         ? "legend-shot"
         : data.teamId === "#blue-team-name"

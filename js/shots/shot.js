@@ -17,7 +17,7 @@ function createShotFromEvent(e) {
         period: d3.select("input[name='period']:checked").property("value"),
         teamId: d3.select("input[name='team-bool']:checked").property("value"),
         player: d3
-            .select("#options")
+            .select("#details")
             .select("#player-input")
             .select("input")
             .property("value"),

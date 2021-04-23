@@ -1,9 +1,9 @@
-let optionsClass = "option-module";
+let detailClass = "detail-module";
 
 function createRadioButtons(id, data) {
     d3.select(id)
         .append("div")
-        .attr("class", optionsClass + " " + data.class)
+        .attr("class", detailClass + " " + data.class)
         .attr("id", data.id)
         .attr("type", data.type)
         .append("h3")
@@ -34,7 +34,7 @@ function createTextField(id, data) {
     let div = d3
         .select(id)
         .append("div")
-        .attr("class", optionsClass + " " + "even-width")
+        .attr("class", detailClass + " " + "even-width")
         .attr("id", data.id)
         .attr("type", "text-field");
     div.append("h3")
@@ -52,7 +52,7 @@ function createDropdown(id, data) {
     var div = d3
         .select(id)
         .append("div")
-        .attr("class", optionsClass + " " + "even-width")
+        .attr("class", detailClass + " " + "even-width")
         .attr("id", data.id)
         .attr("type", "dropdown");
     div.append("h3")

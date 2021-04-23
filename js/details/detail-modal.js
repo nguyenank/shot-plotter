@@ -1,12 +1,12 @@
 import { createHeaderRow } from "../table.js";
 
-function setUpOptionsModal(id) {
+function setUpDetailModal(id) {
     var m = d3
         .select(id)
         .attr("class", "modal fade")
         .attr("data-bs-backdrop", "static")
         .attr("aria-hidden", true)
-        .attr("aria-labelledby", "customize-options")
+        .attr("aria-labelledby", "customize-details")
         .append("div")
         .attr("class", "modal-dialog modal-lg")
         .append("div")
@@ -15,7 +15,7 @@ function setUpOptionsModal(id) {
     var h = m.append("div").attr("class", "modal-header");
     h.append("h5")
         .attr("class", "modal-title")
-        .text("Customize Options");
+        .text("Customize Details");
     h.append("button")
         .attr("type", "button")
         .attr("class", "btn-close")
@@ -109,7 +109,7 @@ function saveChanges(e) {
             }
         });
     createHeaderRow(l);
-    $("#options-modal").modal("hide"); // default js doesn't work for some reason
+    $("#detail-modal").modal("hide"); // default js doesn't work for some reason
 }
 
-export { setUpOptionsModal };
+export { setUpDetailModal };

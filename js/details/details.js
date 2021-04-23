@@ -1,15 +1,15 @@
 import { teamLegend } from "../shots/legend.js";
-import { setUpOptionsModal } from "./options-modal.js";
+import { setUpDetailModal } from "./detail-modal.js";
 import {
     createRadioButtons,
     createTextField,
     createDropdown,
 } from "./form-control.js";
 
-let optionsClass = "option-module";
+let detailClass = "detail-module";
 
-function setUpOptions(id = "#options") {
-    let options = [
+function setUpDetails(id = "#details") {
+    let details = [
         {
             type: "radio",
             class: "period-select",
@@ -42,9 +42,9 @@ function setUpOptions(id = "#options") {
         },
     ];
 
-    setUpOptionsModal("#options-modal");
+    setUpDetailModal("#detail-modal");
 
-    for (let [i, data] of options.entries()) {
+    for (let [i, data] of details.entries()) {
         let rowId = "#row" + (Math.floor(i / 2) + 1);
 
         if (i % 2 == 0) {
@@ -97,7 +97,7 @@ function setUpOptions(id = "#options") {
     }
 
     d3.select(id).append("hr");
-    customizeButton();
+    customizeButton(id);
 }
 
 function createTooltip(id, title, text) {
@@ -136,7 +136,7 @@ function createTooltip(id, title, text) {
 function teamRadioButtons(id) {
     d3.select(id)
         .append("div")
-        .attr("class", optionsClass + " " + "team-select")
+        .attr("class", detailClass + " " + "team-select")
         .attr("type", "team")
         .attr("id", "team")
         .append("h3")
@@ -177,15 +177,15 @@ function teamRadioButtons(id) {
         .on("change", () => teamLegend());
 }
 
-function customizeButton() {
+function customizeButton(id) {
     var d = d3
-        .select("#options")
+        .select(id)
         .append("div")
         .attr("class", "center position-relative");
     d.append("button")
         .attr("class", "form-control customize-btn white-btn")
         .attr("id", "customize-btn")
-        .text("Customize Info Options")
+        .text("Customize Shot Details")
         .on("mouseout", e => {
             d3.select("#customize-btn").attr(
                 "class",
@@ -200,7 +200,7 @@ function customizeButton() {
                     .size() === 0
             ) {
                 new bootstrap.Modal(
-                    document.getElementById("options-modal")
+                    document.getElementById("detail-modal")
                 ).show();
             } else {
                 d3.select("#customize-btn").attr(
@@ -212,12 +212,12 @@ function customizeButton() {
     d.append("div")
         .attr("class", "invalid-tooltip")
         .text(
-            "Info options can only be customized when no shots are recorded."
+            "Shot details can only be customized when no shots are recorded."
         );
 }
 
-function getOptions(asObject = true) {
-    getOptionsTest();
+function getDetails(asObject = true) {
+    getDetailsTest();
     // actually just shot-type options
     if (!asObject) {
         var options = [];
@@ -238,11 +238,11 @@ function getOptions(asObject = true) {
     }
 }
 
-function getOptionsTest(id = "#options") {
-    var options = [];
+function getDetailsTest(id = "#details") {
+    var details = [];
     d3.select(id)
-        .selectAll(".option-row")
-        .selectAll(".option-module")
+        .selectAll(".detail-row")
+        .selectAll(".detail-module")
         .each(function(d, i) {
             var option = {};
             var m = d3.select(this);
@@ -282,8 +282,7 @@ function getOptionsTest(id = "#options") {
                 option.options = o;
             }
         });
-    console.log(options);
-    return options;
+    return details;
 }
 
-export { setUpOptions, getOptions };
+export { setUpDetails, getDetails };
