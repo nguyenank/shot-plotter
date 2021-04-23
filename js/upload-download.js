@@ -1,4 +1,4 @@
-import { getOptionsObject } from "./options/options.js";
+import { getOptions } from "./options/options.js";
 import { clearTable, printHeaderRow } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
@@ -117,13 +117,13 @@ function uploadCSV(e) {
 
 function processCSV(row, swapTeamId) {
     // add any new shot type options
-    var options = getOptionsObject();
+    var options = getOptions();
     var newSwapTeam = swapTeamId;
     if (!(row.type in options)) {
         d3.select("#shot-type")
             .append("option")
             .text(row.type);
-        options = getOptionsObject();
+        options = getOptions();
         shotTypeLegend();
     }
     var teamId;

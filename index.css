@@ -75,10 +75,6 @@ input[type="text"] {
   margin: 0.5em; }
 
 /* options modal */
-.bi-arrows-move {
-  cursor: move;
-  padding: 0.2em 1em 0.2em 0.4em; }
-
 .bi-eye,
 .bi-eye-slash {
   cursor: pointer;
@@ -87,7 +83,8 @@ input[type="text"] {
 .reorder-item {
   text-transform: capitalize;
   font-weight: 400;
-  padding: 0.2em; }
+  padding: 0.2em;
+  cursor: move; }
 
 .reorder-item-text {
   padding-left: 0.3em; }

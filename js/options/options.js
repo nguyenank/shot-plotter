@@ -20,8 +20,23 @@ function setUpOptions(id = "#options") {
             ],
         },
         { type: "team" },
-        { type: "player" },
-        { type: "shot" },
+        {
+            type: "player",
+            title: "Player",
+            id: "player-input",
+            defaultValue: "",
+        },
+        {
+            type: "shot",
+            title: "Type",
+            id: "shot-type",
+            options: [
+                { value: "Shot", selected: true },
+                { value: "Goal" },
+                { value: "Block" },
+                { value: "Miss" },
+            ],
+        },
     ];
 
     setUpOptionsModal("#options-modal");
@@ -51,10 +66,20 @@ function setUpOptions(id = "#options") {
                 teamRadioButtons(rowId);
                 break;
             case "player":
-                playerField(rowId);
+                createTextField(rowId, data);
+                createTooltip(
+                    rowId,
+                    data.title,
+                    "Player will appear on shot in rink if player is 2 or less characters long."
+                );
                 break;
             case "shot":
-                shotTypeDropdown(rowId);
+                createDropdown(rowId, data);
+                createTooltip(
+                    rowId,
+                    data.title,
+                    "To add new shot types, type into the dropdown, then select the new option or press Enter."
+                );
                 break;
             case "radio":
                 createRadioButtons(rowId, data);
@@ -70,6 +95,39 @@ function setUpOptions(id = "#options") {
 
     d3.select(id).append("hr");
     customizeButton();
+}
+
+function createTooltip(id, title, text) {
+    // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
+    var tooltip = d3
+        .select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0)
+        .text(text);
+    d3.select(id)
+        .selectAll("h3")
+        .each(function() {
+            var h = d3.select(this);
+            if (h.text() === title) {
+                h.append("i")
+                    .attr("class", "bi bi-info-circle")
+                    .on("mouseover", function(e) {
+                        tooltip
+                            .transition()
+                            .duration(200)
+                            .style("opacity", 0.9)
+                            .style("left", e.pageX + 10 + "px")
+                            .style("top", e.pageY - 28 + "px");
+                    })
+                    .on("mouseout", function() {
+                        tooltip
+                            .transition()
+                            .duration(200)
+                            .style("opacity", 0.0);
+                    });
+            }
+        });
 }
 
 function teamRadioButtons(id) {
@@ -115,94 +173,6 @@ function teamRadioButtons(id) {
         .on("change", () => teamLegend());
 }
 
-function playerField(id) {
-    var data = {
-        title: "Player",
-        id: "player-input",
-        defaultValue: "",
-    };
-    createTextField(id, data);
-    var tooltip = d3
-        .select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0)
-        .text(
-            "Player will appear on shot in rink if player is 2 or less characters long."
-        );
-
-    d3.select(id)
-        .selectAll("h3")
-        .each(function() {
-            let h = d3.select(this);
-            if (h.text() === data.title) {
-                h.append("i")
-                    .attr("class", "bi bi-info-circle")
-                    .on("mouseover", function(e) {
-                        tooltip
-                            .transition()
-                            .duration(200)
-                            .style("opacity", 0.9)
-                            .style("left", e.pageX + 10 + "px")
-                            .style("top", e.pageY - 28 + "px");
-                    })
-                    .on("mouseout", function() {
-                        tooltip
-                            .transition()
-                            .duration(200)
-                            .style("opacity", 0.0);
-                    });
-            }
-        });
-}
-
-function shotTypeDropdown(id) {
-    // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
-    var tooltip = d3
-        .select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0)
-        .text(
-            "To add new shot types, type into the dropdown, then select the new option or press Enter."
-        );
-
-    var typeData = {
-        title: "Type",
-        id: "shot-type",
-        options: [
-            { value: "Shot", selected: true },
-            { value: "Goal" },
-            { value: "Block" },
-            { value: "Miss" },
-        ],
-    };
-    createDropdown(id, typeData);
-    d3.select(id)
-        .selectAll("h3")
-        .each(function() {
-            var h = d3.select(this);
-            if (h.text() === typeData.title) {
-                h.append("i")
-                    .attr("class", "bi bi-info-circle")
-                    .on("mouseover", function(e) {
-                        tooltip
-                            .transition()
-                            .duration(200)
-                            .style("opacity", 0.9)
-                            .style("left", e.pageX + 10 + "px")
-                            .style("top", e.pageY - 28 + "px");
-                    })
-                    .on("mouseout", function() {
-                        tooltip
-                            .transition()
-                            .duration(200)
-                            .style("opacity", 0.0);
-                    });
-            }
-        });
-}
-
 function customizeButton() {
     var d = d3
         .select("#options")
@@ -242,24 +212,24 @@ function customizeButton() {
         );
 }
 
-function getOptionsObject() {
-    var options = {};
-    d3.select("#shot-type")
-        .selectAll("option")
-        .each(function(d, i) {
-            options[d3.select(this).property("value")] = i;
-        });
-    return options;
+function getOptions(asObject = true) {
+    if (!asObject) {
+        var options = [];
+        d3.select("#shot-type")
+            .selectAll("option")
+            .each(function(d, i) {
+                options[i] = d3.select(this).property("value");
+            });
+        return options;
+    } else {
+        var options = {};
+        d3.select("#shot-type")
+            .selectAll("option")
+            .each(function(d, i) {
+                options[d3.select(this).property("value")] = i;
+            });
+        return options;
+    }
 }
 
-function getOptionsList() {
-    var options = [];
-    d3.select("#shot-type")
-        .selectAll("option")
-        .each(function(d, i) {
-            options[i] = d3.select(this).property("value");
-        });
-    return options;
-}
-
-export { setUpOptions, getOptionsObject, getOptionsList };
+export { setUpOptions, getOptions };
