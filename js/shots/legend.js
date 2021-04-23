@@ -24,7 +24,6 @@ function shotTypeLegend(id = "#shot-type-legend") {
     var yOffset = 2 * cfg.legendR;
     var spacing = 2 * cfg.legendR;
     var typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
-    console.log(typeOptions);
     var svg = d3.select(id);
 
     // clear svg

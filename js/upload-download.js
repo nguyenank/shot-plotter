@@ -129,7 +129,9 @@ function processCSV(row, swapTeamId) {
     var teamId;
 
     // add any new team name
-    if (row.team === d3.select("#blue-team-name").property("value")) {
+    if (!row.team) {
+        teamId = "#blue-team-name";
+    } else if (row.team === d3.select("#blue-team-name").property("value")) {
         teamId = "#blue-team-name";
     } else if (row.team === d3.select("#orange-team-name").property("value")) {
         teamId = "#orange-team-name";
