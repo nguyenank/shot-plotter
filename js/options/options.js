@@ -1,12 +1,12 @@
 import { teamLegend } from "../shots/legend.js";
-import { setUpModal } from "./options-modal.js";
+import { setUpOptionsModal } from "./options-modal.js";
 import {
     createRadioButtons,
     createTextField,
     createDropdown,
 } from "./form-control.js";
 function setUpOptions() {
-    setUpModal("#options-modal");
+    setUpOptionsModal("#options-modal");
     d3.select("#options")
         .append("div")
         .attr("class", "column")

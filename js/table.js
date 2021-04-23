@@ -1,3 +1,5 @@
+import { setUpDeleteAllModal } from "./shots/delete-all-modal.js";
+
 function setUpTable() {
     d3.select("#shot-table")
         .append("thead")
@@ -9,11 +11,12 @@ function setUpTable() {
     d3.select("#shot-table")
         .append("tbody")
         .attr("id", "shot-table-body");
+
+    setUpDeleteAllModal("#delete-all-modal");
 }
 
 function createHeaderRow(columns) {
     columns = [""].concat(columns); // for check box
-    columns.push(""); // for trash can
 
     var headerRow = d3
         .select("#shot-table")
@@ -31,6 +34,16 @@ function createHeaderRow(columns) {
     for (let col of columns) {
         createHeaderCol(headerRow, col);
     }
+
+    // for trash can
+    let r = headerRow.append("th").attr("scope", "col");
+    r.append("i")
+        .attr("class", "bi-trash-fill")
+        .on("click", () => {
+            new bootstrap.Modal(
+                document.getElementById("delete-all-modal")
+            ).show();
+        });
 }
 
 function clearTable() {

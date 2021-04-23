@@ -128,8 +128,13 @@ tbody {
 .legend-shot {
   fill: black; }
 
+.bi-trash:hover {
+  color: black;
+  text-shadow: 0.1em 0.1em #aaaaaa;
+  cursor: pointer; }
+
 .bi-trash-fill:hover {
-  color: #dee0e3;
+  color: #aaaaaa;
   text-shadow: 0.1em 0.1em black;
   cursor: pointer; }
 

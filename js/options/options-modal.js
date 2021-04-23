@@ -1,6 +1,6 @@
 import { createHeaderRow } from "../table.js";
 
-function setUpModal(id) {
+function setUpOptionsModal(id) {
     var m = d3
         .select(id)
         .attr("class", "modal fade")
@@ -105,4 +105,4 @@ function saveChanges(e) {
     $("#options-modal").modal("hide"); // default js doesn't work for some reason
 }
 
-export { setUpModal };
+export { setUpOptionsModal };

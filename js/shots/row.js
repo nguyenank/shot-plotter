@@ -42,7 +42,7 @@ function createRow(data) {
     row.append("th")
         .attr("scope", "col")
         .append("i")
-        .attr("class", "bi bi-trash-fill")
+        .attr("class", "bi bi-trash")
         .on("click", () => deleteHandler(data.id));
     row.attr("id", data.id);
     row.attr("selected", false);
