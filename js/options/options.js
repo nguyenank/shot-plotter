@@ -5,6 +5,9 @@ import {
     createTextField,
     createDropdown,
 } from "./form-control.js";
+
+let optionsClass = "option-module";
+
 function setUpOptions(id = "#options") {
     let options = [
         {
@@ -19,7 +22,7 @@ function setUpOptions(id = "#options") {
                 { value: "OT" },
             ],
         },
-        { type: "team" },
+        { type: "team", title: "Team", class: "team-select", id: "team" },
         {
             type: "player",
             title: "Player",
@@ -84,7 +87,7 @@ function setUpOptions(id = "#options") {
             case "radio":
                 createRadioButtons(rowId, data);
                 break;
-            case "textfield":
+            case "text-field":
                 createTextField(rowId, data);
                 break;
             case "dropdown":
@@ -133,8 +136,9 @@ function createTooltip(id, title, text) {
 function teamRadioButtons(id) {
     d3.select(id)
         .append("div")
-        .append("div")
-        .attr("class", "team-select")
+        .attr("class", optionsClass + " " + "team-select")
+        .attr("type", "team")
+        .attr("id", "team")
         .append("h3")
         .text("Team")
         .attr("class", "center");
@@ -213,6 +217,8 @@ function customizeButton() {
 }
 
 function getOptions(asObject = true) {
+    getOptionsTest();
+    // actually just shot-type options
     if (!asObject) {
         var options = [];
         d3.select("#shot-type")
@@ -230,6 +236,54 @@ function getOptions(asObject = true) {
             });
         return options;
     }
+}
+
+function getOptionsTest(id = "#options") {
+    var options = [];
+    d3.select(id)
+        .selectAll(".option-row")
+        .selectAll(".option-module")
+        .each(function(d, i) {
+            var option = {};
+            var m = d3.select(this);
+            option.type = m.attr("type");
+            option.title = m.select("h3").text();
+            option.class = m.attr("class").replace(optionsClass + " ", "");
+            option.id = m.attr("id");
+            options.push(option);
+            if (option.type === "text-field") {
+                option.defaultValue = m.select("input").attr("value");
+            }
+            if (option.type === "radio") {
+                let o = [];
+                m.selectAll("input").each(function() {
+                    let oo = {};
+                    oo.value = d3.select(this).attr("value");
+                    if (d3.select(this).attr("checked")) {
+                        oo.checked = true;
+                    }
+                    o.push(oo);
+                });
+                option.options = o;
+            }
+            if (option.type === "dropdown") {
+                let o = [];
+                m.selectAll("option").each(function() {
+                    let oo = {};
+                    oo.value = d3.select(this).property("value");
+                    if (
+                        oo.value ===
+                        m.select("#" + option.id + "-select").property("value")
+                    ) {
+                        oo.selected = true;
+                    }
+                    o.push(oo);
+                });
+                option.options = o;
+            }
+        });
+    console.log(options);
+    return options;
 }
 
 export { setUpOptions, getOptions };

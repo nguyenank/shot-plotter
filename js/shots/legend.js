@@ -23,7 +23,6 @@ function shotTypeLegend(id = "#shot-type-legend") {
     var xOffset = 2 * cfg.legendR;
     var yOffset = 2 * cfg.legendR;
     var spacing = 2 * cfg.legendR;
-    console.log(getOptions());
     var options = getOptions(false);
     var svg = d3.select(id);
 

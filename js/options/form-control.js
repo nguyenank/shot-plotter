@@ -1,8 +1,11 @@
+let optionsClass = "option-module";
+
 function createRadioButtons(id, data) {
     d3.select(id)
         .append("div")
-        .attr("class", data.class)
+        .attr("class", optionsClass + " " + data.class)
         .attr("id", data.id)
+        .attr("type", data.type)
         .append("h3")
         .text(data.title)
         .attr("class", "center");
@@ -31,7 +34,9 @@ function createTextField(id, data) {
     let div = d3
         .select(id)
         .append("div")
-        .attr("class", "even-width");
+        .attr("class", optionsClass + " " + "even-width")
+        .attr("id", data.id)
+        .attr("type", "text-field");
     div.append("h3")
         .text(data.title)
         .attr("class", "center");
@@ -40,7 +45,6 @@ function createTextField(id, data) {
         .append("input")
         .attr("type", "text")
         .attr("class", "form-control")
-        .attr("id", data.id)
         .attr("value", data.defaultValue);
 }
 
@@ -48,7 +52,9 @@ function createDropdown(id, data) {
     var div = d3
         .select(id)
         .append("div")
-        .attr("class", "even-width");
+        .attr("class", optionsClass + " " + "even-width")
+        .attr("id", data.id)
+        .attr("type", "dropdown");
     div.append("h3")
         .text(data.title)
         .attr("class", "center");
@@ -56,7 +62,8 @@ function createDropdown(id, data) {
     var select = div
         .append("div")
         .append("select")
-        .attr("id", data.id);
+        .attr("id", data.id + "-select")
+        .attr("class", "select2");
     for (let option of data.options) {
         select
             .append("option")

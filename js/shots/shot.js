@@ -19,8 +19,9 @@ function createShotFromEvent(e) {
         player: d3
             .select("#options")
             .select("#player-input")
+            .select("input")
             .property("value"),
-        type: d3.select("#shot-type").property("value"),
+        type: d3.select("#shot-type-select").property("value"),
         coords: d3.pointer(e),
     };
 

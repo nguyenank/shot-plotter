@@ -45,7 +45,7 @@ function index() {
         });
 
         $(document).ready(function() {
-            $("#shot-type")
+            $(".select2")
                 .select2({
                     tags: true,
                 })
