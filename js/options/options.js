@@ -5,45 +5,68 @@ import {
     createTextField,
     createDropdown,
 } from "./form-control.js";
-function setUpOptions() {
+function setUpOptions(id = "#options") {
+    let options = [
+        {
+            type: "radio",
+            class: "period-select",
+            title: "Period",
+            id: "period", // id and name are the same
+            options: [
+                { value: "1", checked: true },
+                { value: "2" },
+                { value: "3" },
+                { value: "OT" },
+            ],
+        },
+        { type: "team" },
+        { type: "player" },
+        { type: "shot" },
+    ];
+
     setUpOptionsModal("#options-modal");
-    d3.select("#options")
-        .append("div")
-        .attr("class", "column")
-        .attr("id", "row1");
 
-    var periodData = {
-        class: "period-select",
-        title: "Period",
-        id: "period", // id and name are the same
-        options: [
-            { value: "1", checked: true },
-            { value: "2" },
-            { value: "3" },
-            { value: "OT" },
-        ],
-    };
+    for (let [i, data] of options.entries()) {
+        let rowId = "#row" + (Math.floor(i / 2) + 1);
+        if (i % 2 == 0 && Math.floor(i / 2) > 0) {
+            d3.select(id).append("hr");
+        }
+        if (i % 2 == 0) {
+            d3.select(id)
+                .append("div")
+                .attr("class", "option-row")
+                .attr("id", rowId.slice(1));
+        }
+        switch (data.type) {
+            case "team":
+                teamRadioButtons(rowId);
+                break;
+            case "player":
+                playerField(rowId);
+                break;
+            case "shot":
+                shotTypeDropdown(rowId);
+                break;
+            case "radio":
+                createRadioButtons(rowId, data);
+                break;
+            case "textfield":
+                createTextField(rowId, data);
+                break;
+            case "dropdown":
+                createDropdown(rowId, data);
+                break;
+            default:
+                console.log("hit");
+        }
+        if (i % 2 == 0) {
+            d3.select(rowId)
+                .append("div")
+                .attr("class", "vr");
+        }
+    }
 
-    createRadioButtons("#row1", periodData);
-
-    d3.select(".column")
-        .append("div")
-        .attr("class", "vr");
-    teamRadioButtons("#row1");
-
-    d3.select("#options").append("hr");
-    d3.select("#options")
-        .append("div")
-        .attr("class", "column")
-        .attr("id", "row2");
-    playerField("#row2");
-    d3.select("#row2")
-        .append("div")
-        .attr("class", "vr");
-    shotTypeDropdown("#row2");
-
-    d3.select("#options").append("hr");
-
+    d3.select(id).append("hr");
     customizeButton();
 }
 
