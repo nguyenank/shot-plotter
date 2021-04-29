@@ -1,4 +1,6 @@
 import { createHeaderRow } from "../table.js";
+import { getDetails, setDetails, createDetailsPanel } from "./details.js";
+import { shotTypeLegend, teamLegend } from "../shots/legend.js";
 
 function setUpDetailModal(id) {
     var m = d3
@@ -46,6 +48,8 @@ function setUpDetailModal(id) {
         "To reorder columns, click and drag them into the desired order."
     );
 
+    var columns = getDetails();
+
     setUpModalBody(".modal-body");
     m.append("div")
         .attr("class", "modal-footer")
@@ -57,8 +61,7 @@ function setUpDetailModal(id) {
 }
 
 function setUpModalBody(id) {
-    // copied from table.js
-    var columns = ["shot", "period", "team", "player", "type", "x", "y"];
+    var columns = getDetails();
 
     var v = d3
         .select(id)
@@ -82,7 +85,7 @@ function setUpModalBody(id) {
             }
         });
     v.append("span")
-        .text(d => d)
+        .text(d => d.title)
         .attr("class", "reorder-item-text");
 
     var el = document.getElementById("reorder-columns");
@@ -90,7 +93,7 @@ function setUpModalBody(id) {
 }
 
 function saveChanges(e) {
-    var l = [];
+    var titles = [];
     d3.select("#reorder-columns")
         .selectAll("td")
         .each(function() {
@@ -100,7 +103,7 @@ function saveChanges(e) {
                     .select("i")
                     .attr("class") === "bi bi-eye"
             ) {
-                l.push(
+                titles.push(
                     d3
                         .select(this)
                         .select("span")
@@ -108,7 +111,12 @@ function saveChanges(e) {
                 );
             }
         });
-    createHeaderRow(l);
+    createHeaderRow(titles);
+    var details = titles.map(x => _.find(getDetails(), { title: x }));
+    setDetails(details);
+    createDetailsPanel();
+    shotTypeLegend();
+    teamLegend();
     $("#detail-modal").modal("hide"); // default js doesn't work for some reason
 }
 

@@ -23,11 +23,18 @@ function shotTypeLegend(id = "#shot-type-legend") {
     var xOffset = 2 * cfg.legendR;
     var yOffset = 2 * cfg.legendR;
     var spacing = 2 * cfg.legendR;
-    var typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
     var svg = d3.select(id);
 
     // clear svg
     svg.selectAll("*").remove();
+
+    // if shot-type not in the details
+    if (!_.find(getDetails(), { id: "shot-type" })) {
+        svg.attr("width", 0).attr("height", 0);
+        return;
+    }
+
+    var typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
 
     for (let option of typeOptions) {
         var data = {
@@ -62,6 +69,12 @@ function teamLegend(id = "#team-legend") {
 
     // clear svg
     svg.selectAll("*").remove();
+
+    // do not do anything if team widget isn't present
+    if (d3.select("#team").empty()) {
+        svg.attr("width", 0).attr("height", 0);
+        return;
+    }
 
     for (let i of [
         ["blue-shot", d3.select("#blue-team-name").property("value")],

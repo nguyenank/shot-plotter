@@ -10,10 +10,11 @@ let detailClass = "detail-module";
 
 function setUpDetails(id = "#details") {
     let details = [
+        { type: "shot", title: "shot", noWidget: true },
         {
             type: "radio",
             class: "period-select",
-            title: "Period",
+            title: "period",
             id: "period", // id and name are the same
             options: [
                 { value: "1", checked: true },
@@ -22,16 +23,16 @@ function setUpDetails(id = "#details") {
                 { value: "OT" },
             ],
         },
-        { type: "team", title: "Team", class: "team-select", id: "team" },
+        { type: "team", title: "team", class: "team-select", id: "team" },
         {
             type: "player",
-            title: "Player",
+            title: "player",
             id: "player-input",
             defaultValue: "",
         },
         {
             type: "shot",
-            title: "Type",
+            title: "type",
             id: "shot-type",
             options: [
                 { value: "Shot", selected: true },
@@ -40,10 +41,23 @@ function setUpDetails(id = "#details") {
                 { value: "Miss" },
             ],
         },
+        { type: "x", title: "x", noWidget: true },
+        { type: "y", title: "y", noWidget: true },
     ];
 
-    setUpDetailModal("#detail-modal");
+    sessionStorage.setItem("details", JSON.stringify(details));
+    createDetailsPanel(id);
 
+    setUpDetailModal("#detail-modal");
+}
+
+function createDetailsPanel(id = "#details") {
+    d3.select(id)
+        .selectAll("*")
+        .remove();
+
+    let details = getDetails();
+    _.remove(details, x => x.noWidget);
     for (let [i, data] of details.entries()) {
         let rowId = "#row" + (Math.floor(i / 2) + 1);
 
@@ -83,6 +97,9 @@ function setUpDetails(id = "#details") {
                     data.title,
                     "To add new shot types, type into the dropdown, then select the new option or press Enter."
                 );
+                $(".select2").select2({
+                    tags: true,
+                });
                 break;
             case "radio":
                 createRadioButtons(rowId, data);
@@ -140,7 +157,7 @@ function teamRadioButtons(id) {
         .attr("type", "team")
         .attr("id", "team")
         .append("h3")
-        .text("Team")
+        .text("team")
         .attr("class", "center");
 
     var wrapper = d3
@@ -216,49 +233,12 @@ function customizeButton(id) {
         );
 }
 
-function getDetails(id = "#details") {
-    var details = [];
-    d3.select(id)
-        .selectAll(".detail-row")
-        .selectAll(".detail-module")
-        .each(function(d, i) {
-            var detail = {};
-            var m = d3.select(this);
-            detail.type = m.attr("type");
-            detail.title = m.select("h3").text();
-            detail.class = m.attr("class").replace(detailClass + " ", "");
-            detail.id = m.attr("id");
-            if (detail.type === "text-field") {
-                detail.defaultValue = m.select("input").attr("value");
-            } else if (detail.type === "radio") {
-                let options = [];
-                m.selectAll("input").each(function() {
-                    let option = {};
-                    option.value = d3.select(this).attr("value");
-                    if (d3.select(this).attr("checked")) {
-                        option.checked = true;
-                    }
-                    options.push(option);
-                });
-                detail.options = options;
-            } else if (detail.type === "dropdown") {
-                let options = [];
-                m.selectAll("option").each(function() {
-                    let option = {};
-                    option.value = d3.select(this).property("value");
-                    if (
-                        option.value ===
-                        m.select("#" + detail.id + "-select").property("value")
-                    ) {
-                        option.selected = true;
-                    }
-                    options.push(option);
-                });
-                detail.options = options;
-            }
-            details.push(detail);
-        });
-    return details;
+function getDetails() {
+    return JSON.parse(sessionStorage.getItem("details"));
 }
 
-export { setUpDetails, getDetails };
+function setDetails(detailsList) {
+    sessionStorage.setItem("details", JSON.stringify(detailsList));
+}
+
+export { setUpDetails, getDetails, setDetails, createDetailsPanel };

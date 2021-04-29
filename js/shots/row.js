@@ -9,7 +9,11 @@ function createRow(data) {
             .select("#shot-table-body")
             .selectAll("tr")
             .size() + 1;
-    data["team"] = d3.select(data.teamId).property("value");
+    if (data.teamId) {
+        data["team"] = d3.select(data.teamId).property("value");
+    } else {
+        data.teamId = "#grey";
+    }
 
     // create row
     var row = d3.select("#shot-table-body").append("tr");
@@ -102,7 +106,11 @@ function selectHandler(id, checked, teamId) {
         dotSizeHandler(id, 1.5);
         row.attr(
             "class",
-            teamId === "#blue-team-name" ? "blue-row" : "orange-row"
+            teamId === "#blue-team-name"
+                ? "blue-row"
+                : teamId === "#grey"
+                ? "grey-row"
+                : "orange-row"
         );
     } else {
         var shotNumber = d3

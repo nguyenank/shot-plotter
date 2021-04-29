@@ -9,6 +9,9 @@ body {
   font-weight: 300;
   margin: 1em; }
 
+h3 {
+  text-transform: capitalize; }
+
 footer {
   font-size: 0.75em; }
 
@@ -123,6 +126,9 @@ tbody {
 .orange-row {
   background-color: rgba(234, 142, 72, 0.7); }
 
+.grey-row {
+  background-color: rgba(170, 170, 170, 0.7); }
+
 .blue-shot {
   fill: rgba(53, 171, 169, 0.7);
   stroke-width: 0.1px;
@@ -132,6 +138,11 @@ tbody {
   fill: rgba(234, 142, 72, 0.7);
   stroke-width: 0.1px;
   stroke: #ea8e48; }
+
+.grey-shot {
+  fill: rgba(170, 170, 170, 0.7);
+  stroke-width: 0.1px;
+  stroke: #aaaaaa; }
 
 .legend-shot {
   fill: black; }
