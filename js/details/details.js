@@ -48,6 +48,13 @@ function setUpDetails(id = "#details") {
     setDetails(details);
     createDetailsPanel(details, id);
 
+    d3.select(id).on("mouseleave", e => {
+        d3.select("#customize-btn").attr(
+            "class",
+            "form-control customize-btn white-btn"
+        );
+    });
+
     setUpDetailModal("#detail-modal");
 }
 
@@ -202,12 +209,6 @@ function customizeButton(id) {
         .attr("class", "form-control customize-btn white-btn")
         .attr("id", "customize-btn")
         .text("Customize Shot Details")
-        .on("mouseout", e => {
-            d3.select("#customize-btn").attr(
-                "class",
-                "form-control customize-btn white-btn"
-            );
-        })
         .on("click", e => {
             if (
                 d3
