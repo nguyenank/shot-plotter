@@ -35,8 +35,6 @@ function createShotFromEvent(e) {
         coords: d3.pointer(e),
     };
 
-    console.log(data);
-
     createDot("#normal", data);
     createRow(data);
 }

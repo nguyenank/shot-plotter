@@ -1,5 +1,5 @@
 import { setUpRink } from "./js/rink.js";
-import { setUpDetails } from "./js/details/details.js";
+import { setUpDetails, setDetails, getDetails } from "./js/details/details.js";
 import { setUpShots } from "./js/shots/shot.js";
 import { setUpTable } from "./js/table.js";
 import { setUpDownloadUpload } from "./js/upload-download.js";
@@ -50,6 +50,7 @@ function index() {
                     tags: true,
                 })
                 .on("change", function(e) {
+                    // update legend
                     shotTypeLegend();
 
                     // https://stackoverflow.com/a/54047075

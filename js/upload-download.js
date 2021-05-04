@@ -1,4 +1,9 @@
-import { getDetails } from "./details/details.js";
+import {
+    getDetails,
+    setDetails,
+    existsDetail,
+    getCurrentShotTypes,
+} from "./details/details.js";
 import { clearTable, printHeaderRow } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
@@ -66,7 +71,9 @@ function setUpUpload() {
     wrapper
         .append("div")
         .attr("class", "invalid-tooltip")
-        .text("Only .csv files are allowed.");
+        .text(
+            "Only .csv files are allowed. Every column in the table (apart from shot number) must appear in the .csv file."
+        );
 }
 
 function downloadCSV() {
@@ -116,35 +123,61 @@ function uploadCSV(e) {
 }
 
 function processCSV(row, swapTeamId) {
-    // add any new shot type options
-    var typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
-    var newSwapTeam = swapTeamId;
-    if (!_.find(typeOptions, { value: row.type })) {
-        d3.select("#shot-type-select")
-            .append("option")
-            .text(row.type);
-        typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
-        shotTypeLegend();
+    // only process if current table header (minus shot) is subset of csv header
+    var tableHeader = [];
+    d3.select("#shot-table")
+        .select("thead")
+        .selectAll("th")
+        .each(function() {
+            let text = d3.select(this).text();
+            if (text.length > 0 && text !== "shot") {
+                tableHeader.push(text);
+            }
+        });
+    var csvHeader = Object.keys(row);
+    if (_.some(tableHeader, x => csvHeader.indexOf(x) === -1)) {
+        d3.select("#upload").attr("class", "form-control is-invalid");
+        return swapTeamId;
     }
-    var teamId;
 
-    // add any new team name
-    if (!row.team) {
-        teamId = "#blue-team-name";
-    } else if (row.team === d3.select("#blue-team-name").property("value")) {
-        teamId = "#blue-team-name";
-    } else if (row.team === d3.select("#orange-team-name").property("value")) {
-        teamId = "#orange-team-name";
-    } else {
-        d3.select(swapTeamId).property("value", row.team);
-        teamLegend();
+    // add any new shot type options
+    if (existsDetail("#shot-type")) {
+        var typeOptions = getCurrentShotTypes().map(x => x.value);
+        if (typeOptions.indexOf(row.type) === -1) {
+            d3.select("#shot-type-select")
+                .append("option")
+                .text(row.type);
+            shotTypeLegend();
+        }
+    }
 
-        teamId = swapTeamId;
-        // alternate changing team names
-        newSwapTeam =
-            swapTeamId === "#blue-team-name"
-                ? "#orange-team-name"
-                : "#blue-team-name";
+    var newSwapTeam = swapTeamId;
+
+    if (existsDetail("#team")) {
+        var teamId;
+
+        // add any new team name
+        if (!row.team) {
+            teamId = "#blue-team-name";
+        } else if (
+            row.team === d3.select("#blue-team-name").property("value")
+        ) {
+            teamId = "#blue-team-name";
+        } else if (
+            row.team === d3.select("#orange-team-name").property("value")
+        ) {
+            teamId = "#orange-team-name";
+        } else {
+            d3.select(swapTeamId).property("value", row.team);
+            teamLegend();
+
+            teamId = swapTeamId;
+            // alternate changing team names
+            newSwapTeam =
+                swapTeamId === "#blue-team-name"
+                    ? "#orange-team-name"
+                    : "#blue-team-name";
+        }
     }
 
     // add additional attributes to row
@@ -154,6 +187,7 @@ function processCSV(row, swapTeamId) {
     row["coords"] = [parseFloat(row.x) + 100, -1 * parseFloat(row.y) + 42.5];
 
     createShotFromData(row);
+
     return newSwapTeam;
 }
 

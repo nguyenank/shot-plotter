@@ -45,18 +45,17 @@ function setUpDetails(id = "#details") {
         { type: "y", title: "y", noWidget: true },
     ];
 
-    sessionStorage.setItem("details", JSON.stringify(details));
-    createDetailsPanel(id);
+    setDetails(details);
+    createDetailsPanel(details, id);
 
     setUpDetailModal("#detail-modal");
 }
 
-function createDetailsPanel(id = "#details") {
+function createDetailsPanel(details, id = "#details") {
     d3.select(id)
         .selectAll("*")
         .remove();
 
-    let details = getDetails();
     _.remove(details, x => x.noWidget);
     for (let [i, data] of details.entries()) {
         let rowId = "#row" + (Math.floor(i / 2) + 1);
@@ -216,6 +215,15 @@ function customizeButton(id) {
                     .selectAll("tr")
                     .size() === 0
             ) {
+                // update details storage with shot options b/c this
+                // was the most convenient place
+                let options = getCurrentShotTypes();
+                let details = getDetails();
+                details[_.findIndex(details, { id: "shot-type" })][
+                    "options"
+                ] = options;
+                setDetails(details);
+
                 new bootstrap.Modal(
                     document.getElementById("detail-modal")
                 ).show();
@@ -241,4 +249,37 @@ function setDetails(detailsList) {
     sessionStorage.setItem("details", JSON.stringify(detailsList));
 }
 
-export { setUpDetails, getDetails, setDetails, createDetailsPanel };
+function existsDetail(id) {
+    return !d3.select(id).empty();
+}
+
+function getCurrentShotTypes() {
+    var options = [];
+    if (existsDetail("#shot-type")) {
+        d3.select("#shot-type-select")
+            .selectAll("option")
+            .each(function() {
+                let obj = {
+                    value: d3.select(this).property("value"),
+                };
+                if (
+                    d3.select("#shot-type-select").property("value") ===
+                    obj.value
+                ) {
+                    obj["selected"] = true;
+                }
+
+                options.push(obj);
+            });
+    }
+    return options;
+}
+
+export {
+    setUpDetails,
+    getDetails,
+    setDetails,
+    createDetailsPanel,
+    existsDetail,
+    getCurrentShotTypes,
+};

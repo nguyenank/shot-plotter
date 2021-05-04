@@ -1,14 +1,12 @@
-import { getDetails } from "../details/details.js";
+import { getDetails, getCurrentShotTypes } from "../details/details.js";
 import { cfg } from "./config.js";
 
 function createDot(svgId, data) {
-    var typeIndex;
-    if (_.find(getDetails(), { id: "shot-type" })) {
-        var typeList = _.find(getDetails(), { id: "shot-type" })["options"];
-        typeIndex = _.findIndex(typeList, { value: data.type });
-    } else {
-        typeIndex = 0;
-    }
+    var typeIndex = data.type
+        ? _.findIndex(getCurrentShotTypes(), {
+              value: data.type,
+          })
+        : 0;
     var className = data.legendBool
         ? "legend-shot"
         : !data.teamId

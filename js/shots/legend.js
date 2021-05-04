@@ -1,4 +1,8 @@
-import { getDetails } from "../details/details.js";
+import {
+    getDetails,
+    existsDetail,
+    getCurrentShotTypes,
+} from "../details/details.js";
 import { createDot } from "./dot.js";
 import { cfg } from "./config.js";
 
@@ -29,12 +33,12 @@ function shotTypeLegend(id = "#shot-type-legend") {
     svg.selectAll("*").remove();
 
     // if shot-type not in the details
-    if (!_.find(getDetails(), { id: "shot-type" })) {
+    if (!existsDetail("#shot-type")) {
         svg.attr("width", 0).attr("height", 0);
         return;
     }
 
-    var typeOptions = _.find(getDetails(), { id: "shot-type" })["options"];
+    var typeOptions = getCurrentShotTypes();
 
     for (let option of typeOptions) {
         var data = {
@@ -71,7 +75,7 @@ function teamLegend(id = "#team-legend") {
     svg.selectAll("*").remove();
 
     // do not do anything if team widget isn't present
-    if (d3.select("#team").empty()) {
+    if (!existsDetail("#team")) {
         svg.attr("width", 0).attr("height", 0);
         return;
     }

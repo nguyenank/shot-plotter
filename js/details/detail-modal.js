@@ -112,9 +112,8 @@ function saveChanges(e) {
             }
         });
     createHeaderRow(titles);
-    var details = titles.map(x => _.find(getDetails(), { title: x }));
-    setDetails(details);
-    createDetailsPanel();
+    var visibleDetails = titles.map(x => _.find(getDetails(), { title: x }));
+    createDetailsPanel(visibleDetails);
     shotTypeLegend();
     teamLegend();
     $("#detail-modal").modal("hide"); // default js doesn't work for some reason
