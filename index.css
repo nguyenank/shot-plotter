@@ -161,6 +161,32 @@ tbody {
 .input-group {
   margin-top: 0.25em; }
 
+.input-group-text {
+  border-radius: 0.25em 0 0 0.25em; }
+
+.hover {
+  background-color: #dee0e3; }
+
+.upload-area {
+  display: flex;
+  width: 100%;
+  cursor: pointer; }
+
+#download-name {
+  font-weight: normal; }
+
+#upload-name-box {
+  padding: 0.1em;
+  border: 0.1em solid #aaaaaa;
+  flex: 1;
+  display: flex;
+  align-items: center; }
+
+#upload-name-text {
+  font-weight: normal;
+  vertical-align: bottom;
+  margin-left: 0.5em; }
+
 /* https://bl.ocks.org/d3noob/a22c42db65eb00d4e369 */
 div.tooltip {
   position: absolute;

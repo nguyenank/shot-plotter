@@ -56,17 +56,35 @@ function setUpUpload() {
         .append("div")
         .attr("class", "input-group");
 
-    wrapper
+    var upload = wrapper
         .append("label")
-        .attr("class", "input-group-text")
         .attr("for", "upload")
+        .attr("class", "upload-area")
+        .on("mouseover", function() {
+            d3.select("#upload-label").attr("class", "input-group-text hover");
+        })
+        .on("mouseout", function() {
+            d3.select("#upload-label").attr("class", "input-group-text");
+        });
+
+    upload
+        .append("div")
+        .attr("class", "input-group-text")
+        .attr("id", "upload-label")
         .text("Upload");
+    upload
+        .append("div")
+        .attr("id", "upload-name-box")
+        .append("div")
+        .attr("id", "upload-name-text")
+        .text("No file chosen.");
 
     wrapper
         .append("input")
         .attr("type", "file")
         .attr("class", "form-control")
         .attr("id", "upload")
+        .attr("hidden", true)
         .on("change", e => uploadCSV(e));
     wrapper
         .append("div")
