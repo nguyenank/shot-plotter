@@ -162,7 +162,8 @@ tbody {
   margin-top: 0.25em; }
 
 .input-group-text {
-  border-radius: 0.25em 0 0 0.25em; }
+  border-radius: 0.25em 0 0 0.25em;
+  border-color: #aaaaaa; }
 
 .hover {
   background-color: #dee0e3; }
@@ -178,6 +179,7 @@ tbody {
 #upload-name-box {
   padding: 0.1em;
   border: 0.1em solid #aaaaaa;
+  border-left: 0;
   flex: 1;
   display: flex;
   align-items: center; }

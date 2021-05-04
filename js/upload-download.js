@@ -123,6 +123,11 @@ function uploadCSV(e) {
     if (/.csv$/i.exec(d3.select("#upload").property("value"))) {
         var f = e.target.files[0];
         if (f) {
+            // change text and wipe value to allow for same file upload
+            // while preserving name
+            d3.select("#upload-name-text").text(f.name);
+            d3.select("#upload").property("value", "");
+
             // remove invalid class if necessary
             d3.select("#upload").attr("class", "form-control");
             var swapTeamId = "#blue-team-name";
