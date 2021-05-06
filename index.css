@@ -1,4 +1,4 @@
-.shot-info, .reorder-item, .reorder-ghost, .customize-btn, .shot-table {
+.shot-info, .reorder-item, .reorder-ghost, .customize-btn, .save-changes-btn, .shot-table {
   background-color: #eaecef;
   border: 0.1em solid #aaaaaa;
   border-radius: 0.2em; }
@@ -74,7 +74,7 @@ input[type="text"] {
   padding: 0.5em; }
 
 .vr {
-  border-right: 0.075em solid rgba(0, 0, 0, 0.2);
+  border-right: 0.075em solid #dee0e3;
   margin: 0.5em; }
 
 /* detail modal */
@@ -103,6 +103,15 @@ input[type="text"] {
 
 .modal-body div {
   margin: 0.5em 0; }
+
+.save-changes-btn {
+  margin: 0.5em; }
+
+.footer-row {
+  border-top: 0.075em solid rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  display: flex;
+  justify-content: space-between; }
 
 /* rink */
 .dot-text {
@@ -173,10 +182,10 @@ tbody {
   width: 100%;
   cursor: pointer; }
 
-#download-name {
+.download-name {
   font-weight: normal; }
 
-#upload-name-box {
+.upload-name-box {
   padding: 0.1em;
   border: 0.1em solid #aaaaaa;
   border-left: 0;
@@ -184,7 +193,7 @@ tbody {
   display: flex;
   align-items: center; }
 
-#upload-name-text {
+.upload-name-text {
   font-weight: normal;
   vertical-align: bottom;
   margin-left: 0.5em; }

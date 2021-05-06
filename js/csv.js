@@ -1,100 +1,34 @@
 import {
     getDetails,
-    setDetails,
     existsDetail,
     getCurrentShotTypes,
 } from "./details/details.js";
 import { clearTable, printHeaderRow } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
+import { downloadArea, uploadArea } from "./components/upload-download.js";
 
-function setUpDownloadUpload() {
-    setUpDownload();
-    setUpUpload();
-}
-
-function setUpDownload() {
-    var wrapper = d3
-        .select(".upload-download")
-        .append("div")
-        .attr("class", "input-group");
-
-    // Download Button
-    wrapper
-        .append("button")
-        .attr("class", "input-group-text grey-btn")
-        .attr("type", "button")
-        .attr("id", "download")
-        .text("Download")
-        .on("click", downloadCSV);
-
+function setUpCSVDownloadUpload() {
     // Custom Filename
     var d = new Date(Date.now());
     var defaultFileName = `${(
         d.getMonth() + 1
     ).toString()}.${d.getDate()}.${d.getFullYear()}-${d.getHours()}.${d.getMinutes()}`;
-
-    wrapper
-        .append("input")
-        .attr("type", "text")
-        .attr("class", "form-control")
-        .attr("placeholder", defaultFileName)
-        .attr("aria-label", "download file name")
-        .attr("aria-described-by", "download file name")
-        .attr("id", "download-name");
-
-    // .csv tack-on
-    wrapper
-        .append("span")
-        .attr("class", "input-group-text white-bg")
-        .text(".csv");
+    downloadArea(
+        "#csv-upload-download",
+        defaultFileName,
+        () => downloadCSV("#csv-upload-download"),
+        ".csv"
+    );
+    uploadArea(
+        "#csv-upload-download",
+        "csv-upload",
+        e => uploadCSV("#csv-upload-download", "#csv-upload", e),
+        "Only .csv files are allowed. Every column in the table (apart from shot number) must appear in the .csv file."
+    );
 }
 
-function setUpUpload() {
-    var wrapper = d3
-        .select(".upload-download")
-        .append("div")
-        .attr("class", "input-group");
-
-    var upload = wrapper
-        .append("label")
-        .attr("for", "upload")
-        .attr("class", "upload-area")
-        .on("mouseover", function() {
-            d3.select("#upload-label").attr("class", "input-group-text hover");
-        })
-        .on("mouseout", function() {
-            d3.select("#upload-label").attr("class", "input-group-text");
-        });
-
-    upload
-        .append("div")
-        .attr("class", "input-group-text")
-        .attr("id", "upload-label")
-        .text("Upload");
-    upload
-        .append("div")
-        .attr("id", "upload-name-box")
-        .append("div")
-        .attr("id", "upload-name-text")
-        .text("No file chosen.");
-
-    wrapper
-        .append("input")
-        .attr("type", "file")
-        .attr("class", "form-control")
-        .attr("id", "upload")
-        .attr("hidden", true)
-        .on("change", e => uploadCSV(e));
-    wrapper
-        .append("div")
-        .attr("class", "invalid-tooltip")
-        .text(
-            "Only .csv files are allowed. Every column in the table (apart from shot number) must appear in the .csv file."
-        );
-}
-
-function downloadCSV() {
+function downloadCSV(id) {
     var csv = printHeaderRow() + "\n";
     d3.select("#shot-table-body")
         .selectAll("tr")
@@ -108,9 +42,15 @@ function downloadCSV() {
             csv = csv.slice(0, -1) + "\n";
         });
     csv = csv.slice(0, -1); // remove trailing new line
-    var fileName = d3.select("#download-name").property("value");
+    var fileName = d3
+        .select(id)
+        .select(".download-name")
+        .property("value");
     if (!fileName) {
-        fileName = d3.select("#download-name").attr("placeholder");
+        fileName = d3
+            .select(id)
+            .select(".download-name")
+            .attr("placeholder");
     }
     download(csv, fileName + ".csv", "text/csv");
 }
@@ -119,33 +59,37 @@ function escape(text) {
     return text.includes(",") ? '"' + text + '"' : text;
 }
 
-function uploadCSV(e) {
-    if (/.csv$/i.exec(d3.select("#upload").property("value"))) {
+function uploadCSV(id, uploadId, e) {
+    if (/.csv$/i.exec(d3.select(uploadId).property("value"))) {
         var f = e.target.files[0];
         if (f) {
             // change text and wipe value to allow for same file upload
             // while preserving name
-            d3.select("#upload-name-text").text(f.name);
-            d3.select("#upload").property("value", "");
+            d3.select(id)
+                .select(".upload-name-text")
+                .text(f.name);
+            d3.select(id)
+                .select(".upload")
+                .property("value", "");
 
             // remove invalid class if necessary
-            d3.select("#upload").attr("class", "form-control");
+            d3.select(uploadId).attr("class", "form-control");
             var swapTeamId = "#blue-team-name";
             clearTable();
             Papa.parse(f, {
                 header: true,
                 transformHeader: h => h.toLowerCase(),
                 step: function(row) {
-                    swapTeamId = processCSV(row.data, swapTeamId);
+                    swapTeamId = processCSV(uploadId, row.data, swapTeamId);
                 },
             });
         }
     } else {
-        d3.select("#upload").attr("class", "form-control is-invalid");
+        d3.select(uploadId).attr("class", "form-control is-invalid");
     }
 }
 
-function processCSV(row, swapTeamId) {
+function processCSV(uploadId, row, swapTeamId) {
     // only process if current table header (minus shot) is subset of csv header
     var tableHeader = [];
     d3.select("#shot-table")
@@ -159,7 +103,7 @@ function processCSV(row, swapTeamId) {
         });
     var csvHeader = Object.keys(row);
     if (_.some(tableHeader, x => csvHeader.indexOf(x) === -1)) {
-        d3.select("#upload").attr("class", "form-control is-invalid");
+        d3.select(uploadId).attr("class", "form-control is-invalid");
         return swapTeamId;
     }
 
@@ -214,4 +158,4 @@ function processCSV(row, swapTeamId) {
     return newSwapTeam;
 }
 
-export { setUpDownloadUpload };
+export { setUpCSVDownloadUpload };
