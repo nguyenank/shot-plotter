@@ -71,24 +71,4 @@ function getHeaderRow() {
     return _.filter(l, x => x !== "");
 }
 
-function printHeaderRow() {
-    var s = "";
-    d3.select("#shot-table")
-        .select("thead")
-        .selectAll("th")
-        .each(function() {
-            let text = d3.select(this).text();
-            if (text !== "" && text !== "shot") {
-                s += text + ",";
-            }
-        });
-    return s.slice(0, -1);
-}
-
-export {
-    setUpTable,
-    clearTable,
-    createHeaderRow,
-    getHeaderRow,
-    printHeaderRow,
-};
+export { setUpTable, clearTable, createHeaderRow, getHeaderRow };

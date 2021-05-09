@@ -1,4 +1,4 @@
-import { cfg } from "./config-detail.js";
+import { cfg } from "../config-details.js";
 
 function createRadioButtons(id, data) {
     d3.select(id)
@@ -72,4 +72,4 @@ function createDropdown(id, data) {
     }
 }
 
-export { createTextField, createDropdown, createRadioButtons };
+export { createRadioButtons, createTextField, createDropdown };

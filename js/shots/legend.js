@@ -2,9 +2,9 @@ import {
     getDetails,
     existsDetail,
     getCurrentShotTypes,
-} from "../details/details.js";
+} from "../details/details-functions.js";
 import { createDot } from "./dot.js";
-import { cfg } from "./config-shot.js";
+import { cfg } from "./config-shots.js";
 
 function setUpLegend() {
     var div = d3.select("#legend").append("div");

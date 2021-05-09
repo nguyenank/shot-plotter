@@ -1,5 +1,8 @@
-import { getDetails, getCurrentShotTypes } from "../details/details.js";
-import { cfg } from "./config-shot.js";
+import {
+    getDetails,
+    getCurrentShotTypes,
+} from "../details/details-functions.js";
+import { cfg } from "./config-shots.js";
 
 function createDot(svgId, data) {
     var typeIndex = data.type

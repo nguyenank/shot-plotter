@@ -1,9 +1,10 @@
 import { createHeaderRow } from "../table.js";
-import { getDetails, setDetails, createDetailsPanel } from "./details.js";
+import { getDetails, setDetails } from "./details-functions.js";
+import { createDetailsPanel } from "./details-panel.js";
 import { shotTypeLegend, teamLegend } from "../shots/legend.js";
 import { downloadArea, uploadArea } from "../components/upload-download.js";
 
-function setUpDetailModal(id) {
+function setUpDetailsModal(id) {
     var m = d3
         .select(id)
         .attr("class", "modal fade")
@@ -123,7 +124,7 @@ function saveChanges(e) {
     createDetailsPanel(visibleDetails);
     shotTypeLegend();
     teamLegend();
-    $("#detail-modal").modal("hide"); // default js doesn't work for some reason
+    $("#details-modal").modal("hide"); // default js doesn't work for some reason
 }
 
 function setUpJSONDownloadUpload(id) {
@@ -256,4 +257,4 @@ function uploadJSON(id, uploadId, e) {
     }
 }
 
-export { setUpDetailModal };
+export { setUpDetailsModal };

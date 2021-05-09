@@ -2,7 +2,7 @@ import {
     getDetails,
     existsDetail,
     getCurrentShotTypes,
-} from "./details/details.js";
+} from "./details/details-functions.js";
 import { clearTable, printHeaderRow } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
@@ -29,7 +29,19 @@ function setUpCSVDownloadUpload() {
 }
 
 function downloadCSV(id) {
-    var csv = printHeaderRow() + "\n";
+    // set up header row
+    var csv = "";
+    d3.select("#shot-table")
+        .select("thead")
+        .selectAll("th")
+        .each(function() {
+            let text = d3.select(this).text();
+            if (text !== "" && text !== "shot") {
+                s += text + ",";
+            }
+        });
+    csv = csv.slice(0, -1) + "\n";
+
     d3.select("#shot-table-body")
         .selectAll("tr")
         .each(function() {
