@@ -4,7 +4,7 @@ import {
     getCurrentShotTypes,
 } from "../details/details.js";
 import { createDot } from "./dot.js";
-import { cfg } from "./config.js";
+import { cfg } from "./config-shot.js";
 
 function setUpLegend() {
     var div = d3.select("#legend").append("div");
