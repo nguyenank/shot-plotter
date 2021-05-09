@@ -1,9 +1,9 @@
-let detailClass = "detail-module";
+import { cfg } from "./config-detail.js";
 
 function createRadioButtons(id, data) {
     d3.select(id)
         .append("div")
-        .attr("class", detailClass + " " + data.class)
+        .attr("class", cfg.detailClass + " " + data.class)
         .attr("id", data.id)
         .attr("type", data.type)
         .append("h3")
@@ -34,7 +34,7 @@ function createTextField(id, data) {
     let div = d3
         .select(id)
         .append("div")
-        .attr("class", detailClass + " " + "even-width")
+        .attr("class", cfg.detailClass + " " + "even-width")
         .attr("id", data.id)
         .attr("type", "text-field");
     div.append("h3")
@@ -52,7 +52,7 @@ function createDropdown(id, data) {
     var div = d3
         .select(id)
         .append("div")
-        .attr("class", detailClass + " " + "even-width")
+        .attr("class", cfg.detailClass + " " + "even-width")
         .attr("id", data.id)
         .attr("type", "dropdown");
     div.append("h3")

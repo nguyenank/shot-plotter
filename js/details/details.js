@@ -5,45 +5,10 @@ import {
     createTextField,
     createDropdown,
 } from "./form-control.js";
-
-let detailClass = "detail-module";
+import { cfg } from "./config-detail.js";
 
 function setUpDetails(id = "#details") {
-    let details = [
-        { type: "shot", title: "shot", noWidget: true },
-        {
-            type: "radio",
-            class: "period-select",
-            title: "period",
-            id: "period", // id and name are the same
-            options: [
-                { value: "1", checked: true },
-                { value: "2" },
-                { value: "3" },
-                { value: "OT" },
-            ],
-        },
-        { type: "team", title: "team", class: "team-select", id: "team" },
-        {
-            type: "player",
-            title: "player",
-            id: "player-input",
-            defaultValue: "",
-        },
-        {
-            type: "shot",
-            title: "type",
-            id: "shot-type",
-            options: [
-                { value: "Shot", selected: true },
-                { value: "Goal" },
-                { value: "Block" },
-                { value: "Miss" },
-            ],
-        },
-        { type: "x", title: "x", noWidget: true },
-        { type: "y", title: "y", noWidget: true },
-    ];
+    let details = cfg.defaultDetails;
 
     setDetails(details);
     createDetailsPanel(details, id);
@@ -86,7 +51,7 @@ function createDetailsPanel(details, id = "#details") {
 
         switch (data.type) {
             case "team":
-                teamRadioButtons(rowId);
+                teamRadioButtons(rowId, data);
                 break;
             case "player":
                 createTextField(rowId, data);
@@ -96,7 +61,7 @@ function createDetailsPanel(details, id = "#details") {
                     "Player will appear on shot in rink if player is 2 or less characters long."
                 );
                 break;
-            case "shot":
+            case "shot-type":
                 createDropdown(rowId, data);
                 createTooltip(
                     rowId,
@@ -156,18 +121,17 @@ function createTooltip(id, title, text) {
         });
 }
 
-function teamRadioButtons(id) {
+function teamRadioButtons(id, data) {
     d3.select(id)
         .append("div")
-        .attr("class", detailClass + " " + "team-select")
-        .attr("type", "team")
-        .attr("id", "team")
+        .attr("class", cfg.detailClass + " " + data.class)
+        .attr("id", data.id)
         .append("h3")
-        .text("team")
+        .text(data.title)
         .attr("class", "center");
 
     var wrapper = d3
-        .select(".team-select")
+        .select("." + data.class)
         .append("div")
         .attr("class", "form-group");
     var blueDiv = wrapper.append("div").attr("class", "form-check");
@@ -176,13 +140,13 @@ function teamRadioButtons(id) {
         .attr("class", "form-check-input")
         .attr("type", "radio")
         .attr("name", "team-bool")
-        .attr("value", "#blue-team-name")
-        .attr("checked", true);
+        .attr("id", "blue-team-select")
+        .attr("value", "#blue-team-name");
     blueDiv
         .append("input")
         .attr("type", "text")
         .attr("id", "blue-team-name")
-        .attr("value", "Home")
+        .attr("value", data.blueTeamName)
         .on("change", () => teamLegend());
 
     var orangeDiv = wrapper.append("div").attr("class", "form-check");
@@ -191,13 +155,16 @@ function teamRadioButtons(id) {
         .attr("class", "form-check-input")
         .attr("type", "radio")
         .attr("name", "team-bool")
+        .attr("id", "orange-team-select")
         .attr("value", "#orange-team-name");
     orangeDiv
         .append("input")
         .attr("type", "text")
         .attr("id", "orange-team-name")
-        .attr("value", "Away")
+        .attr("value", data.orangeTeamName)
         .on("change", () => teamLegend());
+
+    wrapper.select("#" + data.checked).attr("checked", true);
 }
 
 function customizeButton(id) {
