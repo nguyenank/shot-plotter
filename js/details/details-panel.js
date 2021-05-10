@@ -1,5 +1,5 @@
 import { teamLegend } from "../shots/legend.js";
-import { setUpDetailsModal } from "./details-modal.js";
+import { setUpDetailsModal } from "./modal/details-modal.js";
 import {
     createRadioButtons,
     createTextField,
@@ -119,6 +119,12 @@ function customizeButton(id) {
                     "options"
                 ] = options;
                 setDetails(details);
+
+                // make sure main page is showing
+                let m = d3.select("#details-modal").select(".modal-content");
+                m.selectAll(".modal-page").attr("hidden", true);
+                m.select(".modal-header").attr("hidden", null);
+                m.select("#main-page").attr("hidden", null);
 
                 new bootstrap.Modal(
                     document.getElementById("details-modal")

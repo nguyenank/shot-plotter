@@ -1,4 +1,4 @@
-.shot-info, .reorder-item, .reorder-ghost, .customize-btn, .save-changes-btn, .shot-table {
+.shot-info, .reorder-item, .reorder-ghost, .customize-btn, .save-changes-btn, .new-column-btn, .shot-table {
   background-color: #eaecef;
   border: 0.1em solid #aaaaaa;
   border-radius: 0.2em; }
@@ -106,6 +106,9 @@ input[type="text"] {
 
 .save-changes-btn {
   margin: 0.5em; }
+
+.new-column-btn {
+  margin-bottom: 0.5em; }
 
 .footer-row {
   border-top: 0.075em solid rgba(0, 0, 0, 0.1);

@@ -1,34 +1,19 @@
-import { createHeaderRow } from "../table.js";
-import { getDetails, setDetails } from "./details-functions.js";
-import { createDetailsPanel } from "./details-panel.js";
-import { shotTypeLegend, teamLegend } from "../shots/legend.js";
-import { downloadArea, uploadArea } from "../components/upload-download.js";
+import { createHeaderRow } from "../../table.js";
+import { getDetails, setDetails } from "../details-functions.js";
+import { createDetailsPanel } from "../details-panel.js";
+import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
+import { downloadArea, uploadArea } from "../../components/upload-download.js";
 
-function setUpDetailsModal(id) {
-    var m = d3
+function createMainPage(id) {
+    var mb = d3
         .select(id)
-        .attr("class", "modal fade")
-        .attr("data-bs-backdrop", "static")
-        .attr("aria-hidden", true)
-        .attr("aria-labelledby", "customize-details")
         .append("div")
-        .attr("class", "modal-dialog modal-lg")
-        .append("div")
-        .attr("class", "modal-content");
+        .attr("id", "main-page-mb")
+        .attr("class", "modal-body");
 
-    var h = m.append("div").attr("class", "modal-header");
-    h.append("h5")
-        .attr("class", "modal-title")
-        .text("Customize Details");
-    h.append("button")
-        .attr("type", "button")
-        .attr("class", "btn-close")
-        .attr("data-bs-dismiss", "modal")
-        .attr("aria-label", "Close");
-
-    var mb = m.append("div").attr("class", "modal-body");
+    // explanation text
     mb.append("div").text(
-        "You can choose what columns appear in the table, and in what order."
+        "You can choose what columns appear in the table and in the details panel, and in what order."
     );
 
     var text = mb
@@ -43,35 +28,50 @@ function setUpDetailsModal(id) {
     text.append("span").text(" while an eye with a slash through it (");
     text.append("i").attr("class", "bi bi-eye-slash");
     text.append("span").text(
-        ") indicates the column is not visible. Only visible columns will be included in the .csv when downloaded."
+        ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv when downloaded."
     );
 
     text.append("div").text(
         "To reorder columns, click and drag them into the desired order."
     );
 
-    setUpModalBody();
+    // reorder columns
+    createReorderColumns("#main-page-mb");
 
-    var footer = m.append("div").attr("class", "footer-row");
+    d3.select(id)
+        .append("div")
+        .attr("class", "center")
+        .append("button")
+        .attr("class", "new-column-btn grey-btn")
+        .text("Create New Column")
+        .on("click", function() {
+            d3.select("#main-page").attr("hidden", true);
+            d3.select("#widget-type-page").attr("hidden", null);
+        });
+
+    // footer
+    var footer = d3
+        .select(id)
+        .append("div")
+        .attr("class", "footer-row");
     footer.append("div").attr("id", "json-upload-download");
     setUpJSONDownloadUpload("#json-upload-download");
     footer
         .append("button")
         .attr("type", "button")
-        .attr("class", "save-changes-btn")
+        .attr("class", "save-changes-btn grey-btn")
         .text("Save Changes")
         .on("click", e => saveChanges(e));
 }
 
-function setUpModalBody(id = ".modal-body") {
+function createReorderColumns(id) {
+    // column reordering
     var columns = getDetails();
 
-    d3.select(id)
-        .select("#reorder")
-        .remove();
+    var mb = d3.select(id);
+    mb.select("#reorder").remove();
 
-    var v = d3
-        .select(id)
+    var v = mb
         .append("div")
         .attr("class", "center")
         .attr("id", "reorder")
@@ -247,7 +247,7 @@ function uploadJSON(id, uploadId, e) {
             // TODO: some actual input sanitization
             f.text().then(function(text) {
                 setDetails(JSON.parse(text));
-                setUpModalBody();
+                createReorderColumns();
             });
         }
     } else {
@@ -257,4 +257,4 @@ function uploadJSON(id, uploadId, e) {
     }
 }
 
-export { setUpDetailsModal };
+export { createMainPage };

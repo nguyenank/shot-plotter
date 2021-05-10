@@ -39,15 +39,19 @@ function uploadArea(id, uploadId, onChange, warning) {
         .attr("for", uploadId)
         .attr("class", "upload-area")
         .on("mouseover", function() {
-            d3.select("#upload-label").attr("class", "input-group-text hover");
+            d3.select(this)
+                .select("#upload-label")
+                .attr("class", "input-group-text hover");
         })
         .on("mouseout", function() {
-            d3.select("#upload-label").attr("class", "input-group-text");
+            d3.select(this)
+                .select("#upload-label")
+                .attr("class", "input-group-text");
         });
 
     upload
         .append("div")
-        .attr("class", "input-group-text")
+        .attr("class", "input-group-text grey-btn")
         .attr("id", "upload-label")
         .text("Upload");
     upload
