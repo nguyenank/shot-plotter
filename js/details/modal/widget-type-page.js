@@ -115,7 +115,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             .attr("class", "card-footer text-center white-bg")
             .append("button")
             .attr("type", "button")
-            .attr("class", "grey-btn big-text")
+            .attr("class", "grey-btn card-btn")
             .text("Create " + widget.name)
             .on("click", () => changePage(id, widget.id));
     }

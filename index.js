@@ -47,7 +47,7 @@ function index() {
 
         $(document).ready(function() {
             $("#example-select").select2({
-                dropdownParent: $("#details-modal"),
+                dropdownParent: $(".cards"),
                 width: "100%",
                 dropdownCssClass: "small-text",
             });
