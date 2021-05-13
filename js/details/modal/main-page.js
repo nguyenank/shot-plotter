@@ -1,5 +1,5 @@
 import { createHeaderRow } from "../../table.js";
-import { getDetails, setDetails } from "../details-functions.js";
+import { getDetails, setDetails, changePage } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
 import { downloadArea, uploadArea } from "../../components/upload-download.js";
@@ -42,12 +42,9 @@ function createMainPage(id) {
         .append("div")
         .attr("class", "center")
         .append("button")
-        .attr("class", "new-column-btn grey-btn")
+        .attr("class", "grey-btn new-column-btn")
         .text("Create New Column")
-        .on("click", function() {
-            d3.select("#main-page").attr("hidden", true);
-            d3.select("#widget-type-page").attr("hidden", null);
-        });
+        .on("click", () => changePage("#main-page", "#widget-type-page"));
 
     // footer
     var footer = d3
@@ -59,7 +56,7 @@ function createMainPage(id) {
     footer
         .append("button")
         .attr("type", "button")
-        .attr("class", "save-changes-btn grey-btn")
+        .attr("class", "grey-btn save-changes-btn")
         .text("Save Changes")
         .on("click", e => saveChanges(e));
 }

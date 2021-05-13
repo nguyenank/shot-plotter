@@ -7,7 +7,7 @@ function downloadArea(id, defaultFileName, onClick, extension) {
     // Download Button
     wrapper
         .append("button")
-        .attr("class", "input-group-text grey-btn")
+        .attr("class", "input-group-text grey-hover-bg")
         .attr("type", "button")
         .attr("id", "download")
         .text("Download")

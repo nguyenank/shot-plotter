@@ -46,7 +46,13 @@ function index() {
         });
 
         $(document).ready(function() {
-            $(".select2")
+            $("#example-select").select2({
+                dropdownParent: $("#details-modal"),
+                width: "100%",
+                dropdownCssClass: "small-text",
+            });
+
+            $("#shot-type-select")
                 .select2({
                     tags: true,
                 })

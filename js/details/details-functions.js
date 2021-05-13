@@ -32,4 +32,15 @@ function getCurrentShotTypes() {
     return options;
 }
 
-export { getDetails, setDetails, existsDetail, getCurrentShotTypes };
+function changePage(currentPageId, newPageId) {
+    d3.select(currentPageId).attr("hidden", true);
+    d3.select(newPageId).attr("hidden", null);
+}
+
+export {
+    getDetails,
+    setDetails,
+    existsDetail,
+    getCurrentShotTypes,
+    changePage,
+};
