@@ -1,4 +1,4 @@
-.shot-info, .grey-btn, .reorder-item, .reorder-ghost, .customize-btn, .shot-table {
+.shot-info, .grey-btn, .reorder-item, .reorder-ghost, .customize-btn, .example, .shot-table {
   background-color: #eaecef;
   border: 0.1em solid #aaaaaa;
   border-radius: 0.2em; }
@@ -87,12 +87,20 @@ input[type="text"] {
   display: flex;
   justify-content: space-between; }
 
+.form-label {
+  font-weight: bolder;
+  font-size: 0.95em; }
+
+.form-group {
+  margin: 0.5em 0; }
+
 .bi-eye,
 .bi-eye-slash {
   cursor: pointer;
   padding: 0.2em 0; }
 
 .reorder-item {
+  background-color: #f2f4f5;
   text-transform: capitalize;
   font-weight: 400;
   padding: 0.2em;
@@ -141,6 +149,9 @@ input[type="text"] {
   width: 100%;
   padding: 0.5em 0;
   border: 0; }
+
+.example {
+  margin: 0.75em 0; }
 
 /* rink */
 .dot-text {

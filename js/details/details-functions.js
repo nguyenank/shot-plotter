@@ -37,10 +37,16 @@ function changePage(currentPageId, newPageId) {
     d3.select(newPageId).attr("hidden", null);
 }
 
+function createId(title) {
+    // lowercase and replace all whitespace
+    return title.toLowerCase().replace(/\s/g, "-");
+}
+
 export {
     getDetails,
     setDetails,
     existsDetail,
     getCurrentShotTypes,
     changePage,
+    createId,
 };

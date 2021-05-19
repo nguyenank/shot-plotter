@@ -1,5 +1,7 @@
 import { createMainPage } from "./main-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
+import { createTextFieldPage } from "./text-field-page.js";
+
 function setUpDetailsModal(id) {
     // modal
     var m = d3
@@ -29,7 +31,7 @@ function setUpDetailsModal(id) {
         { id: "main-page", create: createMainPage },
         { id: "widget-type-page", create: createWidgetTypePage },
         { id: "radio-buttons-page", create: () => {} },
-        { id: "text-field-page", create: () => {} },
+        { id: "text-field-page", create: createTextFieldPage },
         { id: "dropdown-page", create: () => {} },
     ];
 
