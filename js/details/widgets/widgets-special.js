@@ -1,6 +1,6 @@
 import { cfg } from "../config-details.js";
 
-function createTooltip(id, title, text) {
+function createTooltip({ id, title, text }) {
     // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
     var tooltip = d3
         .select("body")

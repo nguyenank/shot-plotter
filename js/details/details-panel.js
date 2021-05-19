@@ -62,19 +62,21 @@ function createDetailsPanel(details, id = "#details") {
                 break;
             case "player":
                 createTextField(rowId, data);
-                createTooltip(
-                    rowId,
-                    data.title,
-                    "Player will appear on shot in rink if player is 2 or less characters long."
-                );
+                createTooltip({
+                    id: rowId,
+                    title: data.title,
+                    text:
+                        "Player will appear on shot in rink if player is 2 or less characters long.",
+                });
                 break;
             case "shot-type":
                 createDropdown(rowId, data);
-                createTooltip(
-                    rowId,
-                    data.title,
-                    "To add new shot types, type into the dropdown, then select the new option or press Enter."
-                );
+                createTooltip({
+                    id: rowId,
+                    title: data.title,
+                    text:
+                        "To add new shot types, type into the dropdown, then select the new option or press Enter.",
+                });
                 $(".select2").select2({
                     tags: true,
                 });

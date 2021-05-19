@@ -4,7 +4,6 @@ const cfg = {
         { type: "shot-number", title: "shot", noWidget: true },
         {
             type: "radio",
-            class: "period-select",
             title: "period",
             id: "period", // id and name are the same
             options: [
@@ -17,7 +16,7 @@ const cfg = {
         {
             type: "team",
             title: "team",
-            class: "team-select",
+            className: "team-select",
             id: "team",
             blueTeamName: "Home",
             orangeTeamName: "Away",

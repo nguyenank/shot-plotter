@@ -1,25 +1,24 @@
 import { cfg } from "../config-details.js";
 
-function createRadioButtons(id, data) {
-    d3.select(id)
+function createRadioButtons(selectId, { id, title, options }) {
+    d3.select(selectId)
         .append("div")
-        .attr("class", cfg.detailClass + " " + data.class)
-        .attr("id", data.id)
-        .attr("type", data.type)
+        .attr("class", cfg.detailClass)
+        .attr("id", id)
         .append("h3")
-        .text(data.title)
+        .text(title)
         .attr("class", "center");
 
-    for (let option of data.options) {
+    for (let option of options) {
         var div = d3
-            .select("#" + data.id)
+            .select("#" + id)
             .append("div")
             .attr("class", "form-check vertical");
 
         div.append("input")
             .attr("class", "form-check-input")
             .attr("type", "radio")
-            .attr("name", data.id)
+            .attr("name", id)
             .attr("id", option.value) // sanitize, make sure no duplicate values
             .attr("value", option.value)
             .attr("checked", option.checked);
@@ -30,41 +29,39 @@ function createRadioButtons(id, data) {
     }
 }
 
-function createTextField(id, data) {
+function createTextField(selectId, { id, title, defaultValue }) {
     let div = d3
-        .select(id)
+        .select(selectId)
         .append("div")
         .attr("class", cfg.detailClass + " " + "even-width")
-        .attr("id", data.id)
-        .attr("type", "text-field");
+        .attr("id", id);
     div.append("h3")
-        .text(data.title)
+        .text(title)
         .attr("class", "center");
     div.append("div")
         .attr("class", "form-group")
         .append("input")
         .attr("type", "text")
         .attr("class", "form-control")
-        .attr("value", data.defaultValue);
+        .attr("value", defaultValue);
 }
 
-function createDropdown(id, data) {
+function createDropdown(selectId, { id, title, options }) {
     var div = d3
-        .select(id)
+        .select(selectId)
         .append("div")
         .attr("class", cfg.detailClass + " " + "even-width")
-        .attr("id", data.id)
-        .attr("type", "dropdown");
+        .attr("id", id);
     div.append("h3")
-        .text(data.title)
+        .text(title)
         .attr("class", "center");
 
     var select = div
         .append("div")
         .append("select")
-        .attr("id", data.id + "-select")
+        .attr("id", id + "-select")
         .attr("class", "select2");
-    for (let option of data.options) {
+    for (let option of options) {
         select
             .append("option")
             .text(option.value)
