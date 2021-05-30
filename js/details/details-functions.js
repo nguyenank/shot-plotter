@@ -39,7 +39,11 @@ function changePage(currentPageId, newPageId) {
 
 function createId(title) {
     // lowercase and replace all whitespace
-    return title.toLowerCase().replace(/\s/g, "-");
+    let id = title.toLowerCase().replace(/\s/g, "-");
+    while (_.findIndex(getDetails(), { id: id }) !== -1) {
+        id += "0";
+    }
+    return id;
 }
 
 export {

@@ -115,8 +115,6 @@ function createTextFieldPage(id = "#text-field-page") {
             d3.select("#text-field-title").attr("class", "form-control");
             d3.select("#text-field-title").attr("class", "form-control");
 
-            // TODO: validate id is unique
-            /// do in createId, actually, probably
             var id = createId(title);
             var details = [
                 ...getDetails(),
@@ -127,6 +125,7 @@ function createTextFieldPage(id = "#text-field-page") {
                     defaultValue: text,
                 },
             ];
+            console.log(details);
             setDetails(details);
             createMainPage("#main-page");
 

@@ -5,6 +5,10 @@ import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
 import { downloadArea, uploadArea } from "../../components/upload-download.js";
 
 function createMainPage(id) {
+    d3.select(id)
+        .selectAll("*")
+        .remove();
+
     var mb = d3
         .select(id)
         .append("div")
