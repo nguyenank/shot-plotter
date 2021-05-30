@@ -1,6 +1,17 @@
-import { changePage } from "../details-functions.js";
+import {
+    changePage,
+    getDetails,
+    setDetails,
+    createId,
+} from "../details-functions.js";
 import { createTextField } from "../widgets/widgets-base.js";
+import { createMainPage } from "./main-page.js";
+
 function createTextFieldPage(id = "#text-field-page") {
+    d3.select(id)
+        .selectAll("*")
+        .remove();
+
     var mb = d3
         .select(id)
         .append("div")
@@ -88,15 +99,38 @@ function createTextFieldPage(id = "#text-field-page") {
                     "class",
                     "form-control is-invalid"
                 );
+                return;
             }
 
             var text = d3.select("#text-field-default-text").property("value");
             if (text.length > 32) {
-                d3.select("#text-field-title").attr(
+                d3.select("#text-field-default-text").attr(
                     "class",
                     "form-control is-invalid"
                 );
+                return;
             }
+
+            // remove any warnings
+            d3.select("#text-field-title").attr("class", "form-control");
+            d3.select("#text-field-title").attr("class", "form-control");
+
+            // TODO: validate id is unique
+            /// do in createId, actually, probably
+            var id = createId(title);
+            var details = [
+                ...getDetails(),
+                {
+                    type: "text-field",
+                    title: title,
+                    id: id,
+                    defaultValue: text,
+                },
+            ];
+            setDetails(details);
+            createMainPage("#main-page");
+
+            changePage("#text-field-page", "#main-page");
         });
 }
 
