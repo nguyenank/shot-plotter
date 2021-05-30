@@ -12,9 +12,6 @@ body {
   font-weight: 300;
   margin: 1em; }
 
-h3 {
-  text-transform: capitalize; }
-
 footer {
   font-size: 0.75em; }
 
@@ -162,9 +159,6 @@ input[type="text"] {
 /* shot table */
 .shot-table {
   padding: 1em 0; }
-
-thead {
-  text-transform: capitalize; }
 
 tbody {
   background-color: white; }

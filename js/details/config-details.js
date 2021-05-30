@@ -1,10 +1,10 @@
 const cfg = {
     detailClass: "detail-module",
     defaultDetails: [
-        { type: "shot-number", title: "shot", noWidget: true },
+        { type: "shot-number", title: "Shot", noWidget: true },
         {
             type: "radio",
-            title: "period",
+            title: "Period",
             id: "period", // id and name are the same
             options: [
                 { value: "1", checked: true },
@@ -15,7 +15,7 @@ const cfg = {
         },
         {
             type: "team",
-            title: "team",
+            title: "Team",
             className: "team-select",
             id: "team",
             blueTeamName: "Home",
@@ -24,13 +24,13 @@ const cfg = {
         },
         {
             type: "player",
-            title: "player",
+            title: "Player",
             id: "player-input",
             defaultValue: "",
         },
         {
             type: "shot-type",
-            title: "type",
+            title: "Type",
             id: "shot-type",
             options: [
                 { value: "Shot", selected: true },
@@ -39,9 +39,11 @@ const cfg = {
                 { value: "Miss" },
             ],
         },
-        { type: "x", title: "x", noWidget: true },
-        { type: "y", title: "y", noWidget: true },
+        { type: "x", title: "X", noWidget: true },
+        { type: "y", title: "Y", noWidget: true },
     ],
 };
-
-export { cfg };
+function getDefaultDetails() {
+    return _.cloneDeep(cfg.defaultDetails);
+}
+export { cfg, getDefaultDetails };

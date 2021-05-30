@@ -11,10 +11,10 @@ import {
     getDetails,
     getCurrentShotTypes,
 } from "./details-functions.js";
-import { cfg } from "./config-details.js";
+import { getDefaultDetails } from "./config-details.js";
 
 function setUpDetailsPanel(id = "#details") {
-    let details = cfg.defaultDetails;
+    let details = getDefaultDetails();
 
     setDetails(details);
     createDetailsPanel(details, id);

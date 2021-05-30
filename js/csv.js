@@ -37,7 +37,7 @@ function downloadCSV(id) {
         .each(function() {
             let text = d3.select(this).text();
             if (text !== "" && text !== "shot") {
-                s += text + ",";
+                csv += text + ",";
             }
         });
     csv = csv.slice(0, -1) + "\n";

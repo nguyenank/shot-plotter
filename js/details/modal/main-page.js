@@ -82,7 +82,9 @@ function createReorderColumns(id) {
         .data(columns)
         .enter()
         .append("td")
-        .attr("class", "reorder-item");
+        .attr("class", "reorder-item")
+        .attr("data-id", d => d.id)
+        .attr("data-type", d => d.type);
     v.append("i")
         .attr("class", d => (d.hidden ? "bi bi-eye-slash" : "bi bi-eye"))
         .on("click", function() {
@@ -112,12 +114,9 @@ function saveChanges(e) {
                     .select("i")
                     .attr("class") === "bi bi-eye"
             ) {
-                titles.push(
-                    d3
-                        .select(this)
-                        .select("span")
-                        .text()
-                );
+                let dataId = d3.select(this).attr("data-id");
+                let dataType = d3.select(this).attr("data-type");
+                titles.push({ id: dataId, type: dataType });
             }
         });
     createHeaderRow(titles);

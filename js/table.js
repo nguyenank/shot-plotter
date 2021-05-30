@@ -1,12 +1,12 @@
 import { setUpDeleteAllModal } from "./shots/delete-all-modal.js";
+import { getDefaultDetails } from "./details/config-details.js";
 
 function setUpTable() {
     d3.select("#shot-table")
         .append("thead")
         .append("tr");
-    var columns = ["shot", "period", "team", "player", "type", "x", "y"];
 
-    createHeaderRow(columns);
+    createHeaderRow(getDefaultDetails());
 
     d3.select("#shot-table")
         .append("tbody")
@@ -15,9 +15,7 @@ function setUpTable() {
     setUpDeleteAllModal("#delete-all-modal");
 }
 
-function createHeaderRow(columns) {
-    columns = [""].concat(columns); // for check box
-
+function createHeaderRow(details) {
     var headerRow = d3
         .select("#shot-table")
         .select("thead")
@@ -25,14 +23,16 @@ function createHeaderRow(columns) {
     // clear row
     headerRow.selectAll("*").remove();
 
-    function createHeaderCol(headerRow, text) {
-        headerRow
+    var columns = [{ title: "" }, ...details]; // for check box
+    for (let col of columns) {
+        var c = headerRow
             .append("th")
             .attr("scope", "col")
-            .text(text);
-    }
-    for (let col of columns) {
-        createHeaderCol(headerRow, col);
+            .text(col.title);
+        if (col.id) {
+            c.attr("data-id", col.id);
+        }
+        c.attr("data-type", col.type);
     }
 
     // for trash can
@@ -66,9 +66,11 @@ function getHeaderRow() {
         .select("thead")
         .selectAll("th")
         .each(function() {
-            l.push(d3.select(this).text());
+            let dataId = d3.select(this).attr("data-id");
+            let dataType = d3.select(this).attr("data-type");
+            l.push({ id: dataId, type: dataType });
         });
-    return _.filter(l, x => x !== "");
+    return l;
 }
 
 export { setUpTable, clearTable, createHeaderRow, getHeaderRow };

@@ -1,45 +1,47 @@
-import { getHeaderRow } from "../table.js";
+function createRow(id, rowData) {
+    // transform shot point info and add to data
+    // data["X"] = (data.coords[0] - 100).toFixed(2);
+    // data["Y"] = (-1 * (data.coords[1] - 42.5)).toFixed(2);
+    // data["ShotNumber"] =
+    //     d3
+    //         .select("#shot-table-body")
+    //         .selectAll("tr")
+    //         .size() + 1;
 
-function createRow(data) {
-    // transform info and add to data
-    data["x"] = (data.coords[0] - 100).toFixed(2);
-    data["y"] = (-1 * (data.coords[1] - 42.5)).toFixed(2);
-    data["shotNumber"] =
-        d3
-            .select("#shot-table-body")
-            .selectAll("tr")
-            .size() + 1;
-    if (data.teamId) {
-        data["team"] = d3.select(data.teamId).property("value");
-    } else {
-        data.teamId = "#grey";
-    }
+    // TODO: find way to do row color
+
+    // if (data.teamId) {
+    //     data["team"] = d3.select(data.teamId).property("value");
+    // } else {
+    //     data.teamId = "#grey";
+    // }
 
     // create row
     var row = d3.select("#shot-table-body").append("tr");
 
-    // select checkbox
+    // create select checkbox
     row.append("th")
         .attr("scope", "col")
         .append("input")
         .attr("type", "checkbox")
-        .attr("value", data.id)
-        .attr("id", data.id)
+        .attr("value", id)
+        .attr("id", id)
         .on("change", function() {
             var checked = d3.select(this).property("checked");
-            selectHandler(data.id, checked, data.teamId);
+            selectHandler(id, checked, "#grey"); // TODO: fix row color
         });
 
     // customizable rows
-    for (let i of getHeaderRow()) {
-        if (i === "shot") {
-            row.append("th")
-                .attr("scope", "col")
-                .attr("class", "shot-number")
-                .text(data.shotNumber);
-        } else {
-            row.append("td").text(data[i]);
-        }
+
+    for (let i of rowData) {
+        // if (i === "Shot") {
+        //     row.append("th")
+        //         .attr("scope", "col")
+        //         .attr("class", "shot-number")
+        //         .text(data.shotNumber);
+        // } else {
+        row.append("td").text(i);
+        // }
     }
 
     // trash can
@@ -47,8 +49,8 @@ function createRow(data) {
         .attr("scope", "col")
         .append("i")
         .attr("class", "bi bi-trash")
-        .on("click", () => deleteHandler(data.id));
-    row.attr("id", data.id);
+        .on("click", () => deleteHandler(id));
+    row.attr("id", id);
     row.attr("selected", false);
 }
 
