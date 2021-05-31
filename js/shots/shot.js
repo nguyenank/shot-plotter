@@ -20,6 +20,7 @@ function createShotFromEvent(e) {
         // data for custom specfics like color etc.
         id: id,
         coords: d3.pointer(e),
+        numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
     };
 
     for (let col of columns) {

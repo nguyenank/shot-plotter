@@ -1,6 +1,4 @@
-function createRow(rowData, { id, teamId }) {
-    // TODO: find way to do row color
-
+function createRow(rowData, { id, teamId, numberCol }) {
     // create row
     var row = d3.select("#shot-table-body").append("tr");
 
@@ -13,21 +11,20 @@ function createRow(rowData, { id, teamId }) {
         .attr("id", id)
         .on("change", function() {
             var checked = d3.select(this).property("checked");
-            selectHandler(id, checked, teamId ? teamId : "#grey"); // TODO: fix row color
+            selectHandler(id, checked, teamId ? teamId : "#grey");
         });
 
-    // customizable rows
-
-    for (let i of rowData) {
-        // if (i === "Shot") {
-        //     row.append("th")
-        //         .attr("scope", "col")
-        //         .attr("class", "shot-number")
-        //         .text(data.shotNumber);
-        // } else {
-        row.append("td").text(i);
-        // }
-    }
+    // row data
+    rowData.forEach((item, i) => {
+        if (i === numberCol) {
+            row.append("th")
+                .attr("scope", "col")
+                .attr("class", "shot-number")
+                .text(item);
+        } else {
+            row.append("td").text(item);
+        }
+    });
 
     // trash can
     row.append("th")

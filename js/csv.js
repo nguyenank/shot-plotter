@@ -3,7 +3,7 @@ import {
     existsDetail,
     getCurrentShotTypes,
 } from "./details/details-functions.js";
-import { clearTable } from "./table.js";
+import { clearTable, getHeaderRow } from "./table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
@@ -36,7 +36,7 @@ function downloadCSV(id) {
         .selectAll("th")
         .each(function() {
             let text = d3.select(this).text();
-            if (text !== "" && text !== "shot") {
+            if (text !== "" && text !== "Number") {
                 csv += text + ",";
             }
         });
@@ -108,7 +108,7 @@ function processCSV(uploadId, row, swapTeamId) {
         .selectAll("th")
         .each(function() {
             let text = d3.select(this).text();
-            if (text.length > 0 && text !== "shot") {
+            if (text.length > 0 && text !== "Number") {
                 tableHeader.push(text);
             }
         });
@@ -167,9 +167,20 @@ function processCSV(uploadId, row, swapTeamId) {
         teamId: teamId,
         coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
         player: row.Player,
+        numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
     };
-    createShotFromData(Object.values(row), specialData);
 
+    let rowData = Object.values(row);
+    // add number
+    rowData.splice(
+        specialData.numberCol,
+        0,
+        d3
+            .select("#shot-table-body")
+            .selectAll("tr")
+            .size() + 1
+    );
+    createShotFromData(rowData, specialData);
     return newSwapTeam;
 }
 
