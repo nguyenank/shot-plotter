@@ -35,6 +35,7 @@ function createDetailsPanel(details, id = "#details") {
         .selectAll("*")
         .remove();
 
+    console.log(details);
     _.remove(details, x => x.noWidget);
     for (let [i, data] of details.entries()) {
         let rowId = "#row" + (Math.floor(i / 2) + 1);

@@ -4,23 +4,23 @@ import {
 } from "../details/details-functions.js";
 import { cfg } from "./config-shots.js";
 
-function createDot(svgId, data) {
-    var typeIndex = data.type
+function createDot(svgId, { id, type, teamId, coords, player, legendBool }) {
+    var typeIndex = type
         ? _.findIndex(getCurrentShotTypes(), {
-              value: data.type,
+              value: type,
           })
         : 0;
-    var className = data.legendBool
+    var className = legendBool
         ? "legend-shot"
-        : !data.teamId
+        : !teamId
         ? "grey-shot"
-        : data.teamId === "#blue-team-name"
+        : teamId === "#blue-team-name"
         ? "blue-shot"
         : "orange-shot";
     let g = d3
         .select(svgId)
         .append("g")
-        .attr("id", data.id)
+        .attr("id", id)
         .attr(
             "shot-number",
             d3
@@ -31,9 +31,9 @@ function createDot(svgId, data) {
 
     if (typeIndex == 0) {
         g.append("circle")
-            .attr("cx", data.coords[0])
-            .attr("cy", data.coords[1])
-            .attr("r", data.legendBool ? cfg.legendR : cfg.circleR)
+            .attr("cx", coords[0])
+            .attr("cy", coords[1])
+            .attr("r", legendBool ? cfg.legendR : cfg.circleR)
             .attr("class", className);
     } else {
         var sides = typeIndex + 2;
@@ -41,22 +41,22 @@ function createDot(svgId, data) {
             .attr(
                 "points",
                 polygon(
-                    data.coords[0],
-                    data.coords[1],
-                    data.legendBool ? cfg.legendR : cfg.polyR,
+                    coords[0],
+                    coords[1],
+                    legendBool ? cfg.legendR : cfg.polyR,
                     sides
                 )
             )
             .attr("class", className);
     }
     // only display text if two characters or less
-    if (data.player.length <= 2) {
+    if (player.length <= 2) {
         g.append("text")
-            .attr("x", data.coords[0])
-            .attr("y", data.coords[1])
+            .attr("x", coords[0])
+            .attr("y", coords[1])
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
-            .text(data.player)
+            .text(player)
             .attr("class", "dot-text");
     }
 }

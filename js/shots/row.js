@@ -1,20 +1,5 @@
-function createRow(id, rowData) {
-    // transform shot point info and add to data
-    // data["X"] = (data.coords[0] - 100).toFixed(2);
-    // data["Y"] = (-1 * (data.coords[1] - 42.5)).toFixed(2);
-    // data["ShotNumber"] =
-    //     d3
-    //         .select("#shot-table-body")
-    //         .selectAll("tr")
-    //         .size() + 1;
-
+function createRow(id, rowData, { teamId }) {
     // TODO: find way to do row color
-
-    // if (data.teamId) {
-    //     data["team"] = d3.select(data.teamId).property("value");
-    // } else {
-    //     data.teamId = "#grey";
-    // }
 
     // create row
     var row = d3.select("#shot-table-body").append("tr");
@@ -28,7 +13,7 @@ function createRow(id, rowData) {
         .attr("id", id)
         .on("change", function() {
             var checked = d3.select(this).property("checked");
-            selectHandler(id, checked, "#grey"); // TODO: fix row color
+            selectHandler(id, checked, teamId ? teamId : "#grey"); // TODO: fix row color
         });
 
     // customizable rows

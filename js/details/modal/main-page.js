@@ -114,13 +114,19 @@ function saveChanges(e) {
                     .select("i")
                     .attr("class") === "bi bi-eye"
             ) {
+                let title = d3
+                    .select(this)
+                    .select("span")
+                    .text();
                 let dataId = d3.select(this).attr("data-id");
                 let dataType = d3.select(this).attr("data-type");
-                titles.push({ id: dataId, type: dataType });
+                titles.push({ id: dataId, type: dataType, title: title });
             }
         });
     createHeaderRow(titles);
-    var visibleDetails = titles.map(x => _.find(getDetails(), { title: x }));
+    var visibleDetails = titles.map(x =>
+        _.find(getDetails(), { title: x.title })
+    );
     createDetailsPanel(visibleDetails);
     shotTypeLegend();
     teamLegend();

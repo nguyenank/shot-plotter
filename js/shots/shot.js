@@ -13,10 +13,14 @@ function setUpShots() {
 function createShotFromEvent(e) {
     // https://stackoverflow.com/a/29325047
 
-    // TODO: switch these to be items, with col.id and the text value ???
     var columns = getHeaderRow();
-    console.log(columns);
     let rowData = [];
+    var id = uuidv4();
+    let specialData = {
+        // data for custom specfics like color etc.
+        id: id,
+        coords: d3.pointer(e),
+    };
 
     for (let col of columns) {
         switch (col.type) {
@@ -27,8 +31,12 @@ function createShotFromEvent(e) {
                         .property("value")
                 );
                 break;
-            case "text-field":
             case "player":
+                specialData["player"] = d3
+                    .select("#" + col.id)
+                    .select("input")
+                    .property("value");
+            case "text-field":
                 rowData.push(
                     d3
                         .select("#" + col.id)
@@ -36,8 +44,12 @@ function createShotFromEvent(e) {
                         .property("value")
                 );
                 break;
-            case "dropdown":
             case "shot-type":
+                specialData["type"] = d3
+                    .select("#" + col.id)
+                    .select("select")
+                    .property("value");
+            case "dropdown":
                 rowData.push(
                     d3
                         .select("#" + col.id)
@@ -46,10 +58,11 @@ function createShotFromEvent(e) {
                 );
                 break;
             case "team":
+                specialData["teamId"] = d3
+                    .select("input[name='team-bool']:checked")
+                    .property("value");
                 rowData.push(
-                    d3
-                        .select("input[name='team-bool']:checked")
-                        .property("value")
+                    d3.select(specialData["teamId"]).property("value")
                 );
                 break;
             case "shot-number":
@@ -70,35 +83,9 @@ function createShotFromEvent(e) {
                 continue;
         }
     }
-    console.log(rowData);
-    var period = d3.select("input[name='period']").empty()
-        ? ""
-        : d3.select("input[name='period']:checked").property("value");
-    var teamId = d3.select("input[name='team-bool']").empty()
-        ? null
-        : d3.select("input[name='team-bool']:checked").property("value");
-    var player = d3.select("#player-input").empty()
-        ? ""
-        : d3
-              .select("#player-input")
-              .select("input")
-              .property("value");
-    var type = d3.select("#shot-type-select").empty()
-        ? null
-        : d3.select("#shot-type-select").property("value");
 
-    var id = uuidv4();
-    var dotData = {
-        id: id,
-        period: period,
-        teamId: teamId,
-        player: player,
-        type: type,
-        coords: d3.pointer(e),
-    };
-
-    createDot("#normal", dotData);
-    createRow(id, rowData);
+    createDot("#normal", specialData);
+    createRow(id, rowData, specialData);
 }
 
 function createShotFromData(data) {
