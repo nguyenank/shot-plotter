@@ -85,12 +85,12 @@ function createShotFromEvent(e) {
     }
 
     createDot("#normal", specialData);
-    createRow(id, rowData, specialData);
+    createRow(rowData, specialData);
 }
 
-function createShotFromData(data) {
-    createDot("#normal", data);
-    createRow(data);
+function createShotFromData(rowData, specialData) {
+    createDot("#normal", specialData);
+    createRow(rowData, specialData);
 }
 
 export { setUpShots, createShotFromData };

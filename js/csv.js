@@ -24,7 +24,7 @@ function setUpCSVDownloadUpload() {
         "#csv-upload-download",
         "csv-upload",
         e => uploadCSV("#csv-upload-download", "#csv-upload", e),
-        "Only .csv files are allowed. Every column in the table (apart from shot number) must appear in the .csv file."
+        "Only .csv files are allowed. The column headers in the .csv file must be identical to the column headers in the table, sensitive to order."
     );
 }
 
@@ -90,7 +90,6 @@ function uploadCSV(id, uploadId, e) {
             clearTable();
             Papa.parse(f, {
                 header: true,
-                transformHeader: h => h.toLowerCase(),
                 step: function(row) {
                     swapTeamId = processCSV(uploadId, row.data, swapTeamId);
                 },
@@ -102,7 +101,7 @@ function uploadCSV(id, uploadId, e) {
 }
 
 function processCSV(uploadId, row, swapTeamId) {
-    // only process if current table header (minus shot) is subset of csv header
+    // only process if current table header (minus shot) is Identical to the current header
     var tableHeader = [];
     d3.select("#shot-table")
         .select("thead")
@@ -114,7 +113,7 @@ function processCSV(uploadId, row, swapTeamId) {
             }
         });
     var csvHeader = Object.keys(row);
-    if (_.some(tableHeader, x => csvHeader.indexOf(x) === -1)) {
+    if (!_.isEqual(tableHeader, csvHeader)) {
         d3.select(uploadId).attr("class", "form-control is-invalid");
         return swapTeamId;
     }
@@ -122,10 +121,10 @@ function processCSV(uploadId, row, swapTeamId) {
     // add any new shot type options
     if (existsDetail("#shot-type")) {
         var typeOptions = getCurrentShotTypes().map(x => x.value);
-        if (typeOptions.indexOf(row.type) === -1) {
+        if (typeOptions.indexOf(row.Type) === -1) {
             d3.select("#shot-type-select")
                 .append("option")
-                .text(row.type);
+                .text(row.Type);
             shotTypeLegend();
         }
     }
@@ -136,18 +135,18 @@ function processCSV(uploadId, row, swapTeamId) {
         var teamId;
 
         // add any new team name
-        if (!row.team) {
+        if (!row.Team) {
             teamId = "#blue-team-name";
         } else if (
-            row.team === d3.select("#blue-team-name").property("value")
+            row.Team === d3.select("#blue-team-name").property("value")
         ) {
             teamId = "#blue-team-name";
         } else if (
-            row.team === d3.select("#orange-team-name").property("value")
+            row.Team === d3.select("#orange-team-name").property("value")
         ) {
             teamId = "#orange-team-name";
         } else {
-            d3.select(swapTeamId).property("value", row.team);
+            d3.select(swapTeamId).property("value", row.Team);
             teamLegend();
 
             teamId = swapTeamId;
@@ -160,12 +159,16 @@ function processCSV(uploadId, row, swapTeamId) {
     }
 
     // add additional attributes to row
-    row["id"] = uuidv4();
-    row["teamId"] = teamId;
-    // undo coordinate adjustment
-    row["coords"] = [parseFloat(row.x) + 100, -1 * parseFloat(row.y) + 42.5];
+    let id = uuidv4();
 
-    createShotFromData(row);
+    let specialData = {
+        id: id,
+        type: row.Type,
+        teamId: teamId,
+        coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
+        player: row.Player,
+    };
+    createShotFromData(Object.values(row), specialData);
 
     return newSwapTeam;
 }

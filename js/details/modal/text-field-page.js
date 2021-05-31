@@ -125,7 +125,6 @@ function createTextFieldPage(id = "#text-field-page") {
                     defaultValue: text,
                 },
             ];
-            console.log(details);
             setDetails(details);
             createMainPage("#main-page");
 

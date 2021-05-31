@@ -32,7 +32,7 @@ function createMainPage(id) {
     text.append("span").text(" while an eye with a slash through it (");
     text.append("i").attr("class", "bi bi-eye-slash");
     text.append("span").text(
-        ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv when downloaded."
+        ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv when downloaded. The coordinate columns (X and Y) must always be visible."
     );
 
     text.append("div").text(
@@ -85,16 +85,23 @@ function createReorderColumns(id) {
         .attr("class", "reorder-item")
         .attr("data-id", d => d.id)
         .attr("data-type", d => d.type);
-    v.append("i")
-        .attr("class", d => (d.hidden ? "bi bi-eye-slash" : "bi bi-eye"))
-        .on("click", function() {
-            var c = d3.select(this).attr("class");
-            if (c === "bi bi-eye") {
-                d3.select(this).attr("class", "bi bi-eye-slash");
-            } else {
-                d3.select(this).attr("class", "bi bi-eye");
-            }
-        });
+    v.append("i").each(function(d) {
+        if (d.type != "x" && d.type !== "y") {
+            // no turning off coordinates
+            d3.select(this)
+                .attr("class", d =>
+                    d.hidden ? "bi bi-eye-slash" : "bi bi-eye"
+                )
+                .on("click", function() {
+                    var c = d3.select(this).attr("class");
+                    if (c === "bi bi-eye") {
+                        d3.select(this).attr("class", "bi bi-eye-slash");
+                    } else {
+                        d3.select(this).attr("class", "bi bi-eye");
+                    }
+                });
+        }
+    });
     v.append("span")
         .text(d => d.title)
         .attr("class", "reorder-item-text");
@@ -112,7 +119,7 @@ function saveChanges(e) {
                 d3
                     .select(this)
                     .select("i")
-                    .attr("class") === "bi bi-eye"
+                    .attr("class") !== "bi bi-eye-slash"
             ) {
                 let title = d3
                     .select(this)

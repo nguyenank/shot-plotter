@@ -1,4 +1,4 @@
-function createRow(id, rowData, { teamId }) {
+function createRow(rowData, { id, teamId }) {
     // TODO: find way to do row color
 
     // create row
