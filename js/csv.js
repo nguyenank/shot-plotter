@@ -24,7 +24,7 @@ function setUpCSVDownloadUpload() {
         "#csv-upload-download",
         "csv-upload",
         e => uploadCSV("#csv-upload-download", "#csv-upload", e),
-        "Only .csv files are allowed. The column headers in the .csv file must be identical to the column headers in the table, sensitive to order."
+        "Only .csv files are allowed. The column headers in the .csv file must be identical to the column headers in the table, excluding Number. Order matters."
     );
 }
 

@@ -50,7 +50,7 @@ function createDot(svgId, { id, type, teamId, coords, player, legendBool }) {
             .attr("class", className);
     }
     // only display text if two characters or less
-    if (player.length <= 2) {
+    if (player && player.length <= 2) {
         g.append("text")
             .attr("x", coords[0])
             .attr("y", coords[1])
