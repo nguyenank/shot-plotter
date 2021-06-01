@@ -150,6 +150,16 @@ input[type="text"] {
 .example {
   margin: 0.75em 0; }
 
+.new-option {
+  display: flex; }
+  .new-option * {
+    margin-right: 0.2em;
+    margin-left: 0.2em; }
+
+.add-option-btn {
+  margin-top: 0.35em;
+  font-size: 0.9em; }
+
 /* rink */
 .dot-text {
   font-size: 1.9px;

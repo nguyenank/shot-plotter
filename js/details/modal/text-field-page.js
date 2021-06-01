@@ -93,13 +93,16 @@ function createTextFieldPage(id = "#text-field-page") {
         .attr("class", "grey-btn")
         .text("Create Text Field")
         .on("click", function() {
+            var invalid = false;
+
             var title = d3.select("#text-field-title").property("value");
             if (title.length < 1 || title.length > 16) {
                 d3.select("#text-field-title").attr(
                     "class",
                     "form-control is-invalid"
                 );
-                return;
+            } else {
+                d3.select("#text-field-title").attr("class", "form-control");
             }
 
             var text = d3.select("#text-field-default-text").property("value");
@@ -108,12 +111,12 @@ function createTextFieldPage(id = "#text-field-page") {
                     "class",
                     "form-control is-invalid"
                 );
+            } else {
+                d3.select("#text-field-title").attr("class", "form-control");
+            }
+            if (invalid) {
                 return;
             }
-
-            // remove any warnings
-            d3.select("#text-field-title").attr("class", "form-control");
-            d3.select("#text-field-title").attr("class", "form-control");
 
             var id = createId(title);
             var details = [

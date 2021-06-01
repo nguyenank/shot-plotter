@@ -1,6 +1,7 @@
 import { createMainPage } from "./main-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
 import { createTextFieldPage } from "./text-field-page.js";
+import { createRadioButtonsPage } from "./radio-buttons-page.js";
 
 function setUpDetailsModal(id) {
     // modal
@@ -30,7 +31,7 @@ function setUpDetailsModal(id) {
     var pages = [
         { id: "main-page", create: createMainPage },
         { id: "widget-type-page", create: createWidgetTypePage },
-        { id: "radio-buttons-page", create: () => {} },
+        { id: "radio-buttons-page", create: createRadioButtonsPage },
         { id: "text-field-page", create: createTextFieldPage },
         { id: "dropdown-page", create: () => {} },
     ];
