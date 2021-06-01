@@ -160,6 +160,10 @@ input[type="text"] {
   margin-top: 0.35em;
   font-size: 0.9em; }
 
+.textarea {
+  resize: none;
+  border-color: #aaaaaa; }
+
 /* rink */
 .dot-text {
   font-size: 1.9px;

@@ -101,6 +101,7 @@ function createTextFieldPage(id = "#text-field-page") {
                     "class",
                     "form-control is-invalid"
                 );
+                invalid = true;
             } else {
                 d3.select("#text-field-title").attr("class", "form-control");
             }
@@ -111,8 +112,12 @@ function createTextFieldPage(id = "#text-field-page") {
                     "class",
                     "form-control is-invalid"
                 );
+                invalid = true;
             } else {
-                d3.select("#text-field-title").attr("class", "form-control");
+                d3.select("#text-field-default-text").attr(
+                    "class",
+                    "form-control"
+                );
             }
             if (invalid) {
                 return;

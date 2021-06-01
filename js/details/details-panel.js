@@ -5,7 +5,11 @@ import {
     createTextField,
     createDropdown,
 } from "./widgets/widgets-base.js";
-import { createTooltip, teamRadioButtons } from "./widgets/widgets-special.js";
+import {
+    createTooltip,
+    teamRadioButtons,
+    select2Dropdown,
+} from "./widgets/widgets-special.js";
 import {
     setDetails,
     getDetails,
@@ -92,7 +96,7 @@ function createDetailsPanel(details, id = "#details") {
                 break;
         }
     }
-
+    select2Dropdown();
     d3.select(id).append("hr");
     customizeButton(id);
 }

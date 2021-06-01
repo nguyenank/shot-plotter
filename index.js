@@ -5,6 +5,7 @@ import { setUpShots } from "./js/shots/shot.js";
 import { setUpTable } from "./js/table.js";
 import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
+import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 
 function index() {
     d3.xml("resources/hockey-rink.svg").then(data => {
@@ -46,26 +47,17 @@ function index() {
         });
 
         $(document).ready(function() {
-            $("#example-select").select2({
-                dropdownParent: $(".cards"),
-                width: "100%",
-                dropdownCssClass: "small-text",
+            select2Dropdown();
+            $("#shot-type-select").on("change", function(e) {
+                // update legend
+                shotTypeLegend();
+
+                // https://stackoverflow.com/a/54047075
+                // do not delete new options
+                $(this)
+                    .find("option")
+                    .removeAttr("data-select2-tag");
             });
-
-            $("#shot-type-select")
-                .select2({
-                    tags: true,
-                })
-                .on("change", function(e) {
-                    // update legend
-                    shotTypeLegend();
-
-                    // https://stackoverflow.com/a/54047075
-                    // do not delete new options
-                    $(this)
-                        .find("option")
-                        .removeAttr("data-select2-tag");
-                });
         });
     });
 }

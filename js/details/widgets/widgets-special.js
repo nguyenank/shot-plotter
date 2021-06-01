@@ -79,4 +79,35 @@ function teamRadioButtons(id, data) {
     wrapper.select("#" + data.checked).attr("checked", true);
 }
 
-export { createTooltip, teamRadioButtons };
+function select2Dropdown() {
+    $(".select2").select2({});
+
+    $("#example-select").select2({
+        dropdownParent: $(".cards"),
+        width: "100%",
+        dropdownCssClass: "small-text",
+    });
+
+    $("#sample-dropdown-select").select2({
+        dropdownParent: $("#sample-dropdown"),
+        width: "100%",
+        dropdownCssClass: "small-text",
+    });
+
+    $("#shot-type-select")
+        .select2({
+            tags: true,
+        })
+        .on("change", function(e) {
+            // update legend
+            shotTypeLegend();
+
+            // https://stackoverflow.com/a/54047075
+            // do not delete new options
+            $(this)
+                .find("option")
+                .removeAttr("data-select2-tag");
+        });
+}
+
+export { createTooltip, teamRadioButtons, select2Dropdown };
