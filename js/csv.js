@@ -169,17 +169,19 @@ function processCSV(uploadId, row, swapTeamId) {
         player: row.Player,
         numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
     };
-
     let rowData = Object.values(row);
-    // add number
-    rowData.splice(
-        specialData.numberCol,
-        0,
-        d3
-            .select("#shot-table-body")
-            .selectAll("tr")
-            .size() + 1
-    );
+
+    if (specialData.numberCol !== -2) {
+        // add #
+        rowData.splice(
+            specialData.numberCol,
+            0,
+            d3
+                .select("#shot-table-body")
+                .selectAll("tr")
+                .size() + 1
+        );
+    }
     createShotFromData(rowData, specialData);
     return newSwapTeam;
 }
