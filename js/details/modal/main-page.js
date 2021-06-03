@@ -147,7 +147,7 @@ function setUpJSONDownloadUpload(id) {
         id,
         "json-upload",
         e => uploadJSON(id, "#json-upload", e),
-        "Only .csv files are allowed. Every column in the table (apart from shot number) must appear in the .csv file."
+        "Only .json files are allowed."
     );
 }
 
@@ -267,7 +267,7 @@ function uploadJSON(id, uploadId, e) {
         }
     } else {
         d3.select(id)
-            .select("#upload")
+            .select("#json-upload")
             .attr("class", "form-control is-invalid");
     }
 }
