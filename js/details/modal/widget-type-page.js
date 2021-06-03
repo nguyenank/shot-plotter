@@ -40,7 +40,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
                         .attr("class", "form-check-input")
                         .attr("type", "radio")
                         .attr("name", "example")
-                        .attr("id", option.value) // sanitize, make sure no duplicate values
+                        .attr("id", option.value)
                         .attr("value", option.value)
                         .attr("checked", option.checked);
                     div.append("label")

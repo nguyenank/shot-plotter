@@ -24,7 +24,7 @@ function setUpCSVDownloadUpload() {
         "#csv-upload-download",
         "csv-upload",
         e => uploadCSV("#csv-upload-download", "#csv-upload", e),
-        "Only .csv files are allowed. The column headers in the .csv file must be identical to the column headers in the table, excluding Number. Order matters."
+        "Only .csv files are allowed. The column headers in the .csv file must be identical to the column headers in the table, excluding #. Order matters."
     );
 }
 
@@ -108,7 +108,7 @@ function processCSV(uploadId, row, swapTeamId) {
         .selectAll("th")
         .each(function() {
             let text = d3.select(this).text();
-            if (text.length > 0 && text !== "Number") {
+            if (text.length > 0 && text !== "#") {
                 tableHeader.push(text);
             }
         });

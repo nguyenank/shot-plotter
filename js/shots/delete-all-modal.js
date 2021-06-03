@@ -4,7 +4,6 @@ function setUpDeleteAllModal(id) {
     var m = d3
         .select(id)
         .attr("class", "modal fade")
-        .attr("data-bs-backdrop", "static")
         .attr("aria-hidden", true)
         .attr("aria-labelledby", "customize-options")
         .append("div")
@@ -35,7 +34,7 @@ function setUpDeleteAllModal(id) {
         .text("Delete All")
         .on("click", () => {
             clearTable();
-            $(id).modal("hide"); // default js doesn't work for some reason
+            // $(id).modal("hide"); // default js doesn't work for some reason
         });
 }
 

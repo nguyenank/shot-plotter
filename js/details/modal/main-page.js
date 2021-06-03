@@ -262,7 +262,7 @@ function uploadJSON(id, uploadId, e) {
             // TODO: some actual input sanitization
             f.text().then(function(text) {
                 setDetails(JSON.parse(text));
-                createReorderColumns();
+                createReorderColumns("#main-page-mb");
             });
         }
     } else {

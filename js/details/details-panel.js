@@ -132,9 +132,10 @@ function customizeButton(id) {
                 m.select(".modal-header").attr("hidden", null);
                 m.select("#main-page").attr("hidden", null);
 
-                new bootstrap.Modal(
-                    document.getElementById("details-modal")
-                ).show();
+                new bootstrap.Modal(document.getElementById("details-modal"), {
+                    backdrop: "static",
+                    keyboard: false,
+                }).show();
             } else {
                 d3.select("#customize-btn").attr(
                     "class",

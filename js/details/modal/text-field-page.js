@@ -107,7 +107,7 @@ function createTextFieldPage(id = "#text-field-page") {
             }
 
             var text = d3.select("#text-field-default-text").property("value");
-            if (text.length > 32) {
+            if (text.length >= 32) {
                 d3.select("#text-field-default-text").attr(
                     "class",
                     "form-control is-invalid"

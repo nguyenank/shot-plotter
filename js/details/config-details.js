@@ -1,7 +1,7 @@
 const cfg = {
     detailClass: "detail-module",
     defaultDetails: [
-        { type: "shot-number", title: "Number", noWidget: true },
+        { type: "shot-number", title: "#", noWidget: true },
         {
             type: "radio",
             title: "Period",
