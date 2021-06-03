@@ -1,7 +1,10 @@
-.shot-info, .shot-table {
+.shot-info, .grey-btn, .reorder-item, .reorder-ghost, .customize-btn, .example, .shot-table {
   background-color: #eaecef;
   border: 0.1em solid #aaaaaa;
   border-radius: 0.2em; }
+
+.small-text {
+  font-size: 0.75em; }
 
 /* general  */
 body {
@@ -19,6 +22,19 @@ footer {
 .white-bg {
   background-color: white; }
 
+ul {
+  list-style: none; }
+
+.grey-hover-bg, .grey-btn {
+  background-color: #eaecef; }
+  .grey-hover-bg:hover, .grey-btn:hover {
+    background-color: #dee0e3; }
+
+.white-btn {
+  background-color: white; }
+  .white-btn:hover {
+    background-color: #f2f4f5; }
+
 /* utility */
 .center {
   display: flex;
@@ -27,7 +43,7 @@ footer {
 
 /* shot info */
 .shot-info {
-  width: 25%;
+  width: 30%;
   padding: 1em;
   margin-bottom: 1em;
   flex-grow: 1; }
@@ -49,7 +65,7 @@ input[type="text"] {
 .team-input {
   margin-bottom: 0.5em; }
 
-.column {
+.detail-row {
   display: flex;
   justify-content: space-evenly; }
 
@@ -58,13 +74,97 @@ input[type="text"] {
   padding: 0.5em; }
 
 .vr {
-  border-right: 0.075em solid rgba(0, 0, 0, 0.2);
+  border-right: 0.075em solid #dee0e3;
   margin: 0.5em; }
 
-/* rink */
-#hockey-rink {
-  margint-: 1em; }
+/* detail modal */
+.footer-row {
+  border-top: 0.075em solid rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  display: flex;
+  justify-content: space-between; }
 
+.form-label {
+  font-weight: bolder;
+  font-size: 0.95em; }
+
+.form-group {
+  margin: 0.5em 0; }
+
+.bi-eye,
+.bi-eye-slash {
+  cursor: pointer;
+  padding: 0.2em 0; }
+
+.reorder-item {
+  background-color: #f2f4f5;
+  text-transform: capitalize;
+  font-weight: 400;
+  padding: 0.2em;
+  cursor: move;
+  margin: 0.5em 0; }
+
+.reorder-item-text {
+  padding-left: 0.3em; }
+
+.reorder-ghost {
+  background-color: white;
+  border-color: #eaecef;
+  color: #aaaaaa; }
+
+#reorder-columns {
+  padding-left: 0;
+  border-collapse: collapse; }
+
+.save-changes-btn {
+  margin: 0.5em; }
+
+.new-column-btn {
+  margin-bottom: 0.5em; }
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.card {
+  width: 45%;
+  font-size: 0.75em;
+  margin: 1em 0;
+  border-color: #aaaaaa; }
+
+.card-footer {
+  padding: 0em;
+  border-color: #aaaaaa; }
+
+.card-header {
+  border-color: #aaaaaa;
+  background-color: #fafafa; }
+
+.card-btn {
+  font-size: 1.2em;
+  width: 100%;
+  padding: 0.5em 0;
+  border: 0; }
+
+.example {
+  margin: 0.75em 0; }
+
+.new-option {
+  display: flex; }
+  .new-option * {
+    margin-right: 0.2em;
+    margin-left: 0.2em; }
+
+.add-option-btn {
+  margin-top: 0.35em;
+  font-size: 0.9em; }
+
+.textarea {
+  resize: none;
+  border-color: #aaaaaa; }
+
+/* rink */
 .dot-text {
   font-size: 1.9px;
   font-weight: 900;
@@ -83,6 +183,9 @@ tbody {
 .orange-row {
   background-color: rgba(234, 142, 72, 0.7); }
 
+.grey-row {
+  background-color: rgba(170, 170, 170, 0.7); }
+
 .blue-shot {
   fill: rgba(53, 171, 169, 0.7);
   stroke-width: 0.1px;
@@ -93,23 +196,55 @@ tbody {
   stroke-width: 0.1px;
   stroke: #ea8e48; }
 
+.grey-shot {
+  fill: rgba(170, 170, 170, 0.7);
+  stroke-width: 0.1px;
+  stroke: #aaaaaa; }
+
 .legend-shot {
   fill: black; }
 
+.bi-trash:hover {
+  color: black;
+  text-shadow: 0.1em 0.1em #aaaaaa;
+  cursor: pointer; }
+
 .bi-trash-fill:hover {
-  color: #dee0e3;
+  color: #aaaaaa;
   text-shadow: 0.1em 0.1em black;
   cursor: pointer; }
 
 /* download/upload */
-.download-btn {
-  background-color: #eaecef; }
-
-.download-btn:hover {
-  background-color: #dee0e3; }
-
 .input-group {
   margin-top: 0.25em; }
+
+.input-group-text {
+  border-radius: 0.25em 0 0 0.25em;
+  border-color: #aaaaaa; }
+
+.hover {
+  background-color: #dee0e3; }
+
+.upload-area {
+  display: flex;
+  width: 100%;
+  cursor: pointer; }
+
+.download-name {
+  font-weight: normal; }
+
+.upload-name-box {
+  padding: 0.1em;
+  border: 0.1em solid #aaaaaa;
+  border-left: 0;
+  flex: 1;
+  display: flex;
+  align-items: center; }
+
+.upload-name-text {
+  font-weight: normal;
+  vertical-align: bottom;
+  margin-left: 0.5em; }
 
 /* https://bl.ocks.org/d3noob/a22c42db65eb00d4e369 */
 div.tooltip {

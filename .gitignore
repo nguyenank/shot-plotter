@@ -107,3 +107,4 @@ dist
 *.css.map
 .sass-cache/
 sass/
+*.scss

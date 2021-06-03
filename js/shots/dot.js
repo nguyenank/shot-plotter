@@ -1,10 +1,19 @@
-import { getOptionsObject } from "../options.js";
-import { cfg } from "./config.js";
+import {
+    getDetails,
+    getCurrentShotTypes,
+} from "../details/details-functions.js";
+import { cfg } from "./config-shots.js";
 
-function createDot(svgId, teamId, player, type, coords, id, legendBool) {
-    var typeIndex = getOptionsObject()[type];
+function createDot(svgId, { id, type, teamId, coords, player, legendBool }) {
+    var typeIndex = type
+        ? _.findIndex(getCurrentShotTypes(), {
+              value: type,
+          })
+        : 0;
     var className = legendBool
         ? "legend-shot"
+        : !teamId
+        ? "grey-shot"
         : teamId === "#blue-team-name"
         ? "blue-shot"
         : "orange-shot";

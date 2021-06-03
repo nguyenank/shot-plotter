@@ -1,14 +1,8 @@
-function createRow(period, teamId, player, type, coords, id) {
-    var adjustedX = (coords[0] - 100).toFixed(2);
-    var adjustedY = (-1 * (coords[1] - 42.5)).toFixed(2);
-    var shotNumber =
-        d3
-            .select("#shot-table-body")
-            .selectAll("tr")
-            .size() + 1;
+function createRow(rowData, { id, teamId, numberCol }) {
     // create row
     var row = d3.select("#shot-table-body").append("tr");
 
+    // create select checkbox
     row.append("th")
         .attr("scope", "col")
         .append("input")
@@ -17,23 +11,26 @@ function createRow(period, teamId, player, type, coords, id) {
         .attr("id", id)
         .on("change", function() {
             var checked = d3.select(this).property("checked");
-            selectHandler(id, checked, teamId);
+            selectHandler(id, checked, teamId ? teamId : "#grey");
         });
-    // get shot number
-    row.append("th")
-        .attr("scope", "col")
-        .attr("class", "shot-number")
-        .text(shotNumber);
-    row.append("td").text(period);
-    row.append("td").text(d3.select(teamId).property("value"));
-    row.append("td").text(player);
-    row.append("td").text(type);
-    row.append("td").text(adjustedX);
-    row.append("td").text(adjustedY);
+
+    // row data
+    rowData.forEach((item, i) => {
+        if (i === numberCol) {
+            row.append("th")
+                .attr("scope", "col")
+                .attr("class", "shot-number")
+                .text(item);
+        } else {
+            row.append("td").text(item);
+        }
+    });
+
+    // trash can
     row.append("th")
         .attr("scope", "col")
         .append("i")
-        .attr("class", "bi bi-trash-fill")
+        .attr("class", "bi bi-trash")
         .on("click", () => deleteHandler(id));
     row.attr("id", id);
     row.attr("selected", false);
@@ -93,7 +90,11 @@ function selectHandler(id, checked, teamId) {
         dotSizeHandler(id, 1.5);
         row.attr(
             "class",
-            teamId === "#blue-team-name" ? "blue-row" : "orange-row"
+            teamId === "#blue-team-name"
+                ? "blue-row"
+                : teamId === "#grey"
+                ? "grey-row"
+                : "orange-row"
         );
     } else {
         var shotNumber = d3

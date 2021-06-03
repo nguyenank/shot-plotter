@@ -6,11 +6,13 @@ A [web application](https://shot-plotter.netlify.app/) for plotting hockey shots
 
 The web application is primarily built using D3.js.
 
-### Details and How to Use
+##### 6/03/21: Now featuring customization of shot details! Also some other additions and changes, like a button to delete all shots and the _Shot_ column has been renamed _\#_.
 
-#### Shot Information
+### How to Use and Additional Information
 
-Four pieces of information can be specified for each shot.
+#### Shot Details
+
+By default, four pieces of information can be specified for each shot.
 
 The period of the shot can be logged through radio buttons (1, 2, 3, OT).
 
@@ -19,6 +21,22 @@ The team can be specified through radio buttons and a text field that allows cus
 The player can be specified through a text field. If the player entry is 2 characters or less (for a player number, say), the player will appear on the shot dot on the rink.
 
 The type of shot can be specified. There are four default options: shot, goal, block, and miss. Additional shot types can be specified by typing in the type dropdown and selecting the new option that appears by clicking or pressing Enter. Each shot corresponds to a different dot shape, as indicated by the legend below the rink.
+
+Details logged for each shot can be customized by clicking on the _Customize Details_ button at the bottom of the details panel. Details can only be customized when there are no shots recorded.
+
+##### Customizing Details
+
+Clicking the _Customize Details_ button will bring up a modal with a list of the current details: drag-and-drop detail names to reorder and click on the eye symbol to toggle whether it is visible. Reordering details changes their position in both the details panel and the table. The _X_ and _Y_ details cannot be hidden.
+
+Details configurations can be saved or restored through download/upload. When a detail configuration is downloaded, it stores the current order and visibility of details, as well as any newly created details. Also, currently selected/entered options in the details panel are made the default options when the configuration is uploaded; if a detail is not visible, it preserves its original default value.
+
+Clicking on the _Add Details_ Button allows creation of new details. There are three options for types of new details: radio buttons, text field, and dropdown. The name of all details must be 1-16 characters.
+
+Radio buttons are limited to at most 5 options; each option must be between 1-32 characters and all options must be unique. The default value can be selected by checking the appropriate radio button.
+
+For a text field, a default value can be entered and can be up to 32 characters.
+
+For a dropdown, options are entered in a text area, with each option on a new line. Each option must be between 1-50 characters. The first option is the default selection. Unlike with the _Type_ detail, new options cannot be added from the details panel, though options can still be searched.
 
 #### Rink
 
@@ -32,10 +50,10 @@ The rink size is not pinned to the window size. This allows you to zoom in and p
 
 #### Table
 
-The table logs the information for each shot, as well as the row number of the shot in the table. Shots can be highlighted by clicking on the check box for the appropriate row. This will highlight the row in the matching team color, and both enlarge the dot on the rink and move it to the front if it was previously covered by other dots. Multiple shots can be highlighted at once. Shots can be deleted by clicking on the trash can in the appropriate row.
+The table logs the information for each shot, as well as the row number of the shot in the table. Shots can be highlighted by clicking on the check box for the appropriate row. This will highlight the row in the matching team color, and both enlarge the dot on the rink and move it to the front if it was previously covered by other dots. Multiple shots can be highlighted at once. Shots can be deleted by clicking on the trash can in the appropriate row. All shots can be deleted by clicking on the trash can in the header of the table; a prompt will confirm this choice.
 
-#### Download/Upload
+#### Download/Upload Table
 
-The shot table information can be download by pressing the Download button. There is a text-field to customize the name of the file; otherwise, it defaults to the day and time when the web app was opened. Files are in .csv format, using comma separators, with the header row as it appears on the table, excluding _Shot_, included in the file.
+The shot table information can be download by pressing the _Download_ button. There is a text-field to customize the name of the file; otherwise, it defaults to the day and time when the web app was opened. Files are in .csv format, using comma separators, with the header row as it appears on the table, excluding _\#_, included in the file.
 
-To initialize the table, a .csv file can be uploaded using the Choose File button next to the Upload label. Only .csv files are permitted. The header row must exactly match the header row of the table, excluding _Shot_. Any custom shot types will be added in shot order. Custom teams will be added in order as they appear, alternating between the teal and orange team. This means if a shot by the orange team is logged first, when the file is downloaded and later uploaded, the team will be blue, but besides color there is no impact to the web app. **When a file is uploaded, any shots previously in the table are erased.**
+To initialize the table, a .csv file can be uploaded using the _Choose File_ button next to the Upload label. Only .csv files are permitted. The header row must exactly match the header row of the table, excluding _\#_, including order. Any custom shot types will be added in shot order. Custom teams will be added in order as they appear, alternating between the teal and orange team. This means if a shot by the orange team is logged first, when the file is downloaded and later uploaded, the team will be blue, but besides color there is no impact to the web app. _When a file is uploaded, any shots previously in the table are erased._

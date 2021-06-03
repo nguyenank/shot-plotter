@@ -1,17 +1,19 @@
 import { setUpRink } from "./js/rink.js";
-import { setUpOptions } from "./js/options.js";
+import { setUpDetailsPanel } from "./js/details/details-panel.js";
+import { setDetails, getDetails } from "./js/details/details-functions.js";
 import { setUpShots } from "./js/shots/shot.js";
 import { setUpTable } from "./js/table.js";
-import { setUpDownloadUpload } from "./js/upload-download.js";
+import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
+import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 
 function index() {
     d3.xml("resources/hockey-rink.svg").then(data => {
         setUpRink(data);
-        setUpOptions();
+        setUpDetailsPanel();
         setUpTable();
         setUpShots();
-        setUpDownloadUpload();
+        setUpCSVDownloadUpload();
         setUpLegend();
 
         function decode(a) {
@@ -45,19 +47,17 @@ function index() {
         });
 
         $(document).ready(function() {
-            $("#shot-type")
-                .select2({
-                    tags: true,
-                })
-                .on("change", function(e) {
-                    shotTypeLegend();
+            select2Dropdown();
+            $("#shot-type-select").on("change", function(e) {
+                // update legend
+                shotTypeLegend();
 
-                    // https://stackoverflow.com/a/54047075
-                    // do not delete new options
-                    $(this)
-                        .find("option")
-                        .removeAttr("data-select2-tag");
-                });
+                // https://stackoverflow.com/a/54047075
+                // do not delete new options
+                $(this)
+                    .find("option")
+                    .removeAttr("data-select2-tag");
+            });
         });
     });
 }
