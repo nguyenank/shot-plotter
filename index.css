@@ -24,10 +24,6 @@ footer {
   justify-content: space-between;
 }
 
-.italics {
-  font-weight: bold;
-}
-
 .white-bg {
   background-color: white;
 }
@@ -127,7 +123,6 @@ input[type=text] {
 .reorder-item {
   border: 1px solid #aaaaaa;
   background-color: #f2f4f5;
-  text-transform: capitalize;
   font-weight: 400;
   padding: 0.2rem;
   cursor: move;
@@ -175,7 +170,7 @@ input[type=text] {
 }
 
 .card-btn {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   width: 100%;
   padding: 0.5rem 0;
   border: 0;
@@ -205,8 +200,8 @@ input[type=text] {
 
 /* rink */
 .dot-text {
-  font-size: 0.12rem;
-  font-weight: 900;
+  font-size: 0.15rem;
+  font-weight: 600;
   fill: white;
 }
 
