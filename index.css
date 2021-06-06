@@ -114,10 +114,15 @@ input[type=text] {
   margin: 0.5rem 0;
 }
 
-.bi-eye,
-.bi-eye-slash {
+.bi-eye-fill,
+.bi-eye-slash-fill {
   cursor: pointer;
   padding: 0.2rem 0;
+}
+.bi-eye-fill:hover,
+.bi-eye-slash-fill:hover {
+  color: #aaaaaa;
+  text-shadow: 0.1rem 0.1rem black;
 }
 
 .reorder-item {
@@ -126,6 +131,11 @@ input[type=text] {
   font-weight: 400;
   padding: 0.2rem;
   cursor: move;
+}
+
+.reorder-item-icons {
+  display: flex;
+  justify-content: space-between;
 }
 
 .reorder-item-text {

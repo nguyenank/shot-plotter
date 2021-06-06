@@ -23,14 +23,14 @@ function createMainPage(id) {
     var text = mb
         .append("div")
         .text("To toggle if a column is visible, click on the eye (");
-    text.append("i").attr("class", "bi bi-eye");
+    text.append("i").attr("class", "bi bi-eye-fill");
     text.append("span").text("/");
-    text.append("i").attr("class", "bi bi-eye-slash");
+    text.append("i").attr("class", "bi bi-eye-slash-fill");
     text.append("span").text("). An eye (");
-    text.append("i").attr("class", "bi bi-eye");
+    text.append("i").attr("class", "bi bi-eye-fill");
     text.append("span").text(") indicates the column is visible,");
     text.append("span").text(" while an eye with a slash through it (");
-    text.append("i").attr("class", "bi bi-eye-slash");
+    text.append("i").attr("class", "bi bi-eye-slash-fill");
     text.append("span").text(
         ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv when downloaded. The coordinate columns (X and Y) must always be visible."
     );
@@ -85,26 +85,46 @@ function createReorderColumns(id) {
         .attr("class", "reorder-item")
         .attr("data-id", d => d.id)
         .attr("data-type", d => d.type);
-    v.append("i").each(function(d) {
-        if (d.type != "x" && d.type !== "y") {
-            // no turning off coordinates
-            d3.select(this)
-                .attr("class", d =>
-                    d.hidden ? "bi bi-eye-slash" : "bi bi-eye"
-                )
-                .on("click", function() {
-                    var c = d3.select(this).attr("class");
-                    if (c === "bi bi-eye") {
-                        d3.select(this).attr("class", "bi bi-eye-slash");
-                    } else {
-                        d3.select(this).attr("class", "bi bi-eye");
-                    }
-                });
-        }
-    });
-    v.append("span")
+    // text
+    v.append("div")
         .text(d => d.title)
-        .attr("class", "reorder-item-text");
+        .attr("class", "center");
+
+    // icons
+    v.append("div")
+        .attr("class", "reorder-item-icons")
+        .each(function(d) {
+            if (d.type != "x" && d.type !== "y") {
+                // no turning off or deleting coordinates
+                d3.select(this)
+                    .append("i")
+                    .attr("class", d =>
+                        d.hidden ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"
+                    )
+                    .on("click", function() {
+                        var c = d3.select(this).attr("class");
+                        if (c === "bi bi-eye-fill") {
+                            d3.select(this).attr(
+                                "class",
+                                "bi bi-eye-slash-fill"
+                            );
+                        } else {
+                            d3.select(this).attr("class", "bi bi-eye-fill");
+                        }
+                    });
+                d3.select(this)
+                    .append("i")
+                    .attr("class", "bi bi-trash-fill")
+                    .on("click", function() {
+                        var details = getDetails();
+                        _.remove(details, { id: d.id });
+                        setDetails(details);
+                        d3.select("#reorder-columns")
+                            .select(`td[data-id="${d.id}"]`)
+                            .remove();
+                    });
+            }
+        });
 
     var el = document.getElementById("reorder-columns");
     var sortable = new Sortable(el, { ghostClass: "reorder-ghost" });
@@ -118,12 +138,18 @@ function saveChanges(e) {
             if (
                 d3
                     .select(this)
+                    .select(".reorder-item-icons")
                     .select("i")
-                    .attr("class") !== "bi bi-eye-slash"
+                    .size() === 0 ||
+                d3
+                    .select(this)
+                    .select(".reorder-item-icons")
+                    .select("i")
+                    .attr("class") !== "bi bi-eye-slash-fill"
             ) {
                 let title = d3
                     .select(this)
-                    .select("span")
+                    .select(".center")
                     .text();
                 let dataId = d3.select(this).attr("data-id");
                 let dataType = d3.select(this).attr("data-type");
@@ -180,7 +206,7 @@ function downloadJSON(id) {
                 d3
                     .select(this)
                     .select("i")
-                    .attr("class") === "bi bi-eye-slash"
+                    .attr("class") === "bi bi-eye-slash-fill"
             ) {
                 detail["hidden"] = true;
             }

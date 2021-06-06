@@ -1,7 +1,7 @@
 const cfg = {
     detailClass: "detail-module",
     defaultDetails: [
-        { type: "shot-number", title: "#", noWidget: true },
+        { type: "shot-number", title: "#", id: "shot-number", noWidget: true },
         {
             type: "radio",
             title: "Period",
@@ -39,8 +39,8 @@ const cfg = {
                 { value: "Miss" },
             ],
         },
-        { type: "x", title: "X", noWidget: true },
-        { type: "y", title: "Y", noWidget: true },
+        { type: "x", title: "X", id: "x", noWidget: true },
+        { type: "y", title: "Y", id: "y", noWidget: true },
     ],
 };
 function getDefaultDetails() {
