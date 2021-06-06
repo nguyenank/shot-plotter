@@ -132,6 +132,12 @@ function createReorderColumns(id) {
                             d3.select(this).attr("class", "bi bi-eye-fill");
                         }
                     });
+                if (d.editable) {
+                    d3.select(this)
+                        .append("i")
+                        .attr("class", "bi bi-pencil-square")
+                        .on("click", function() {});
+                }
                 d3.select(this)
                     .append("i")
                     .attr("class", "bi bi-trash-fill")

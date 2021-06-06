@@ -92,52 +92,49 @@ function createTextFieldPage(id = "#text-field-page") {
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Create Text Field")
-        .on("click", function() {
-            var invalid = false;
+        .on("click", createNewTextField);
+}
 
-            var title = d3.select("#text-field-title").property("value");
-            if (title.length < 1 || title.length > 16) {
-                d3.select("#text-field-title").attr(
-                    "class",
-                    "form-control is-invalid"
-                );
-                invalid = true;
-            } else {
-                d3.select("#text-field-title").attr("class", "form-control");
-            }
+function createNewTextField() {
+    var invalid = false;
 
-            var text = d3.select("#text-field-default-text").property("value");
-            if (text.length >= 32) {
-                d3.select("#text-field-default-text").attr(
-                    "class",
-                    "form-control is-invalid"
-                );
-                invalid = true;
-            } else {
-                d3.select("#text-field-default-text").attr(
-                    "class",
-                    "form-control"
-                );
-            }
-            if (invalid) {
-                return;
-            }
+    var title = d3.select("#text-field-title").property("value");
+    if (title.length < 1 || title.length > 16) {
+        d3.select("#text-field-title").attr("class", "form-control is-invalid");
+        invalid = true;
+    } else {
+        d3.select("#text-field-title").attr("class", "form-control");
+    }
 
-            var id = createId(title);
-            var details = [
-                ...getDetails(),
-                {
-                    type: "text-field",
-                    title: title,
-                    id: id,
-                    defaultValue: text,
-                },
-            ];
-            setDetails(details);
-            createMainPage("#main-page");
+    var text = d3.select("#text-field-default-text").property("value");
+    if (text.length >= 32) {
+        d3.select("#text-field-default-text").attr(
+            "class",
+            "form-control is-invalid"
+        );
+        invalid = true;
+    } else {
+        d3.select("#text-field-default-text").attr("class", "form-control");
+    }
+    if (invalid) {
+        return;
+    }
 
-            changePage("#text-field-page", "#main-page");
-        });
+    var id = createId(title);
+    var details = [
+        ...getDetails(),
+        {
+            type: "text-field",
+            title: title,
+            id: id,
+            defaultValue: text,
+            editable: true,
+        },
+    ];
+    setDetails(details);
+    createMainPage("#main-page");
+
+    changePage("#text-field-page", "#main-page");
 }
 
 export { createTextFieldPage };

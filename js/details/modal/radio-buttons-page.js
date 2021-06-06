@@ -98,70 +98,7 @@ function createRadioButtonsPage(id = "#radio-buttons-page") {
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Create Radio Buttons")
-        .on("click", function() {
-            var invalid = false;
-
-            var title = d3.select("#radio-buttons-title").property("value");
-            if (title.length < 1 || title.length > 16) {
-                d3.select("#radio-buttons-title").attr(
-                    "class",
-                    "form-control is-invalid"
-                );
-                invalid = true;
-            } else {
-                d3.select("#radio-buttons-title").attr("class", "form-control");
-            }
-            var options = [];
-            var selected = d3
-                .select(`input[name="radio-buttons-options"]:checked`)
-                .property("value");
-            d3.select("#radio-buttons-options")
-                .selectAll(".new-option")
-                .each(function() {
-                    let option = {};
-                    option.value = d3
-                        .select(this)
-                        .select("input[type='text']")
-                        .property("value");
-                    if (selected === d3.select(this).attr("id")) {
-                        option.checked = true;
-                    }
-                    options.push(option);
-                });
-
-            let optionValues = options.map(x => x.value);
-            if (
-                optionValues.some(
-                    value => value.length < 1 || value.length > 32
-                ) ||
-                !_.isEqual(optionValues, _.uniq(optionValues))
-            ) {
-                d3.select("#radio-buttons-options").attr(
-                    "class",
-                    "form-control is-invalid"
-                );
-                invalid = true;
-            } else {
-                d3.select("#radio-buttons-options").attr("class", "");
-            }
-            if (invalid) {
-                return;
-            }
-            var id = createId(title);
-            var details = [
-                ...getDetails(),
-                {
-                    type: "radio",
-                    title: title,
-                    id: id,
-                    options: options,
-                },
-            ];
-            setDetails(details);
-            createMainPage("#main-page");
-
-            changePage("#radio-buttons-page", "#main-page");
-        });
+        .on("click", createNewRadioButtons);
 }
 
 function createOption(number, optionsDiv) {
@@ -175,7 +112,7 @@ function createOption(number, optionsDiv) {
         .attr("class", "form-check-input")
         .attr("type", "radio")
         .attr("name", "radio-buttons-options")
-        .attr("id", `new-radio-${number}`) // sanitize, make sure no duplicate values
+        .attr("id", `new-radio-${number}`)
         .attr("value", `radio-option-${number}`)
         .attr("checked", number === 1 ? true : null);
     div.append("input")
@@ -214,6 +151,73 @@ function getNumOptions(id = "#radio-buttons-page") {
         .select(id)
         .selectAll(".new-option")
         .size();
+}
+
+function createNewRadioButtons() {
+    // input sanitization
+    var invalid = false;
+
+    var title = d3.select("#radio-buttons-title").property("value");
+    if (title.length < 1 || title.length > 16) {
+        d3.select("#radio-buttons-title").attr(
+            "class",
+            "form-control is-invalid"
+        );
+        invalid = true;
+    } else {
+        d3.select("#radio-buttons-title").attr("class", "form-control");
+    }
+    var options = [];
+    var selected = d3
+        .select(`input[name="radio-buttons-options"]:checked`)
+        .property("value");
+    d3.select("#radio-buttons-options")
+        .selectAll(".new-option")
+        .each(function() {
+            let option = {};
+            option.value = d3
+                .select(this)
+                .select("input[type='text']")
+                .property("value");
+            if (selected === d3.select(this).attr("id")) {
+                option.checked = true;
+            }
+            options.push(option);
+        });
+
+    let optionValues = options.map(x => x.value);
+    if (
+        optionValues.some(value => value.length < 1 || value.length > 32) ||
+        !_.isEqual(optionValues, _.uniq(optionValues))
+    ) {
+        d3.select("#radio-buttons-options").attr(
+            "class",
+            "form-control is-invalid"
+        );
+        invalid = true;
+    } else {
+        d3.select("#radio-buttons-options").attr("class", "");
+    }
+    if (invalid) {
+        return;
+    }
+
+    // actual creation
+    var id = createId(title);
+    var details = [
+        ...getDetails(),
+        {
+            type: "radio",
+            title: title,
+            id: id,
+            options: options,
+            editable: true,
+        },
+    ];
+    setDetails(details);
+    createMainPage("#main-page");
+
+    changePage("#radio-buttons-page", "#main-page");
 }
 
 export { createRadioButtonsPage };

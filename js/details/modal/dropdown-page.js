@@ -94,54 +94,51 @@ function createDropdownPage(id = "#dropdown-page") {
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Create Dropdown")
-        .on("click", function() {
-            var invalid = false;
+        .on("click", createNewDropdown);
+}
 
-            var title = d3.select("#dropdown-title").property("value");
-            if (title.length < 1 || title.length > 16) {
-                d3.select("#dropdown-title").attr(
-                    "class",
-                    "form-control is-invalid"
-                );
-                invalid = true;
-            } else {
-                d3.select("#dropdown-title").attr("class", "form-control");
-            }
+function createNewDropdown() {
+    var invalid = false;
 
-            var text = d3.select("#dropdown-options").property("value");
-            var optionValues = text.split("\n");
-            if (optionValues.some(value => value < 1 || value > 50)) {
-                d3.select("#dropdown-options").attr(
-                    "class",
-                    "form-control is-invalid"
-                );
-                invalid = true;
-            } else {
-                d3.select("#dropdown-options").attr("class", "form-control");
-            }
-            if (invalid) {
-                return;
-            }
+    var title = d3.select("#dropdown-title").property("value");
+    if (title.length < 1 || title.length > 16) {
+        d3.select("#dropdown-title").attr("class", "form-control is-invalid");
+        invalid = true;
+    } else {
+        d3.select("#dropdown-title").attr("class", "form-control");
+    }
 
-            var options = optionValues.map(value => ({
-                value: value,
-            }));
-            options[0] = { ...options[0], selected: true };
-            var id = createId(title);
-            var details = [
-                ...getDetails(),
-                {
-                    type: "dropdown",
-                    title: title,
-                    id: id,
-                    options: options,
-                },
-            ];
-            setDetails(details);
-            createMainPage("#main-page");
+    var text = d3.select("#dropdown-options").property("value");
+    var optionValues = text.split("\n");
+    if (optionValues.some(value => value < 1 || value > 50)) {
+        d3.select("#dropdown-options").attr("class", "form-control is-invalid");
+        invalid = true;
+    } else {
+        d3.select("#dropdown-options").attr("class", "form-control");
+    }
+    if (invalid) {
+        return;
+    }
 
-            changePage("#dropdown-page", "#main-page");
-        });
+    var options = optionValues.map(value => ({
+        value: value,
+    }));
+    options[0] = { ...options[0], selected: true };
+    var id = createId(title);
+    var details = [
+        ...getDetails(),
+        {
+            type: "dropdown",
+            title: title,
+            id: id,
+            options: options,
+            editable: true,
+        },
+    ];
+    setDetails(details);
+    createMainPage("#main-page");
+
+    changePage("#dropdown-page", "#main-page");
 }
 
 export { createDropdownPage };

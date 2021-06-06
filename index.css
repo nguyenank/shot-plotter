@@ -126,11 +126,13 @@ input[type=text] {
 }
 
 .bi-eye-fill,
-.bi-eye-slash-fill {
+.bi-eye-slash-fill,
+.bi-pencil-square {
   cursor: pointer;
 }
 .bi-eye-fill:hover,
-.bi-eye-slash-fill:hover {
+.bi-eye-slash-fill:hover,
+.bi-pencil-square:hover {
   color: #aaaaaa;
   text-shadow: 0.1rem 0.1rem black;
 }
