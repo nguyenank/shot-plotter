@@ -50,7 +50,13 @@ ul {
 .center {
   display: flex;
   justify-content: center;
-  align-itrems: center;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 /* shot info */
@@ -125,6 +131,10 @@ input[type=text] {
   text-shadow: 0.1rem 0.1rem black;
 }
 
+#reorder {
+  margin: 1rem 0;
+}
+
 .reorder-item {
   border: 1px solid #aaaaaa;
   background-color: #f2f4f5;
@@ -152,8 +162,10 @@ input[type=text] {
   margin: 0.5rem;
 }
 
-.new-column-btn {
+.column-btns {
   margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-around;
 }
 
 .cards {

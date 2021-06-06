@@ -3,6 +3,7 @@ import { getDetails, setDetails, changePage } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
 import { downloadArea, uploadArea } from "../../components/upload-download.js";
+import { getDefaultDetails } from "../config-details.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -40,16 +41,25 @@ function createMainPage(id) {
     );
 
     // reorder columns
-    createReorderColumns("#main-page-mb");
-
-    d3.select(id)
-        .append("div")
+    mb.append("div")
+        .attr("class", "center")
+        .attr("id", "reorder");
+    createReorderColumns("#reorder");
+    mb.append("div")
         .attr("class", "center")
         .append("button")
         .attr("class", "grey-btn new-column-btn")
         .text("Create New Column")
         .on("click", () => changePage("#main-page", "#widget-type-page"));
-
+    mb.append("div")
+        .attr("class", "right")
+        .append("button")
+        .attr("class", "grey-btn new-column-btn")
+        .text("Reset To Defaults")
+        .on("click", function() {
+            setDetails(getDefaultDetails());
+            createReorderColumns("#reorder");
+        });
     // footer
     var footer = d3
         .select(id)
@@ -70,12 +80,9 @@ function createReorderColumns(id) {
     var columns = getDetails();
 
     var mb = d3.select(id);
-    mb.select("#reorder").remove();
+    mb.select("#reorder-columns").remove();
 
     var v = mb
-        .append("div")
-        .attr("class", "center")
-        .attr("id", "reorder")
         .append("table")
         .attr("id", "reorder-columns")
         .selectAll("td")
