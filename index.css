@@ -120,10 +120,14 @@ input[type=text] {
   margin: 0.5rem 0;
 }
 
+#main-page-mb p {
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+}
+
 .bi-eye-fill,
 .bi-eye-slash-fill {
   cursor: pointer;
-  padding: 0.2rem 0;
 }
 .bi-eye-fill:hover,
 .bi-eye-slash-fill:hover {
@@ -139,17 +143,13 @@ input[type=text] {
   border: 1px solid #aaaaaa;
   background-color: #f2f4f5;
   font-weight: 400;
-  padding: 0.2rem;
+  padding: 0.2rem 0.5rem;
   cursor: move;
 }
 
 .reorder-item-icons {
   display: flex;
   justify-content: space-between;
-}
-
-.reorder-item-text {
-  padding-left: 0.3rem;
 }
 
 .reorder-ghost {

@@ -17,27 +17,40 @@ function createMainPage(id) {
         .attr("class", "modal-body");
 
     // explanation text
-    mb.append("div").text(
-        "You can choose what columns appear in the table and in the details panel, and in what order."
+    mb.append("p").text(
+        "You can customize what columns appear in the table and in the details panel, and in what order."
     );
 
-    var text = mb
-        .append("div")
-        .text("To toggle if a column is visible, click on the eye (");
-    text.append("i").attr("class", "bi bi-eye-fill");
-    text.append("span").text("/");
-    text.append("i").attr("class", "bi bi-eye-slash-fill");
-    text.append("span").text("). An eye (");
-    text.append("i").attr("class", "bi bi-eye-fill");
-    text.append("span").text(") indicates the column is visible,");
-    text.append("span").text(" while an eye with a slash through it (");
-    text.append("i").attr("class", "bi bi-eye-slash-fill");
-    text.append("span").text(
-        ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv when downloaded. The coordinate columns (X and Y) must always be visible."
-    );
-
-    text.append("div").text(
+    mb.append("p").text(
         "To reorder columns, click and drag them into the desired order."
+    );
+
+    var visText = mb
+        .append("p")
+        .text("To toggle if a column is visible, click on the eye (");
+    visText.append("i").attr("class", "bi bi-eye-fill");
+    visText.append("span").text("/");
+    visText.append("i").attr("class", "bi bi-eye-slash-fill");
+    visText.append("span").text("). An eye (");
+    visText.append("i").attr("class", "bi bi-eye-fill");
+    visText.append("span").text(") indicates the column is visible,");
+    visText.append("span").text(" while an eye with a slash through it (");
+    visText.append("i").attr("class", "bi bi-eye-slash-fill");
+    visText
+        .append("span")
+        .text(
+            ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv for shots."
+        );
+    var deleteText = mb.append("p").text("The trash can (");
+    deleteText.append("i").attr("class", "bi bi-trash-fill");
+    deleteText
+        .append("span")
+        .text(
+            ") allows you to delete a column. Deleted columns disappear from the reordering and the details panel, and will not be present when downloading the .csv for shots."
+        );
+
+    mb.append("p").text(
+        "The X and Y coordinate columns cannot be hidden or deleted."
     );
 
     // reorder columns
