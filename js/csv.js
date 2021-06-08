@@ -36,7 +36,7 @@ function downloadCSV(id) {
         .selectAll("th")
         .each(function() {
             let text = d3.select(this).text();
-            if (text !== "" && text !== "Number") {
+            if (text !== "" && text !== "#") {
                 csv += text + ",";
             }
         });

@@ -1,8 +1,17 @@
 import { createHeaderRow } from "../../table.js";
-import { getDetails, setDetails, changePage } from "../details-functions.js";
+import {
+    getDetails,
+    setDetails,
+    changePage,
+    saveCurrentDetailSetup,
+} from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
-import { downloadArea, uploadArea } from "../../components/upload-download.js";
+import { getDefaultDetails } from "../config-details.js";
+import { setUpJSONDownloadUpload } from "./json.js";
+import { createTextFieldPage } from "./text-field-page.js";
+import { createRadioButtonsPage } from "./radio-buttons-page.js";
+import { createDropdownPage } from "./dropdown-page.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -16,40 +25,68 @@ function createMainPage(id) {
         .attr("class", "modal-body");
 
     // explanation text
-    mb.append("div").text(
-        "You can choose what columns appear in the table and in the details panel, and in what order."
+    mb.append("p").text(
+        "You can customize what columns appear in the table and in the details panel, and in what order."
     );
 
-    var text = mb
-        .append("div")
-        .text("To toggle if a column is visible, click on the eye (");
-    text.append("i").attr("class", "bi bi-eye");
-    text.append("span").text("/");
-    text.append("i").attr("class", "bi bi-eye-slash");
-    text.append("span").text("). An eye (");
-    text.append("i").attr("class", "bi bi-eye");
-    text.append("span").text(") indicates the column is visible,");
-    text.append("span").text(" while an eye with a slash through it (");
-    text.append("i").attr("class", "bi bi-eye-slash");
-    text.append("span").text(
-        ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv when downloaded. The coordinate columns (X and Y) must always be visible."
-    );
-
-    text.append("div").text(
+    mb.append("p").text(
         "To reorder columns, click and drag them into the desired order."
     );
 
-    // reorder columns
-    createReorderColumns("#main-page-mb");
+    var visText = mb
+        .append("p")
+        .text("To toggle if a column is visible, click on the eye (");
+    visText.append("i").attr("class", "bi bi-eye-fill");
+    visText.append("span").text("/");
+    visText.append("i").attr("class", "bi bi-eye-slash-fill");
+    visText.append("span").text("). An eye (");
+    visText.append("i").attr("class", "bi bi-eye-fill");
+    visText.append("span").text(") indicates the column is visible,");
+    visText.append("span").text(" while an eye with a slash through it (");
+    visText.append("i").attr("class", "bi bi-eye-slash-fill");
+    visText
+        .append("span")
+        .text(
+            ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv for shots."
+        );
+    var deleteText = mb.append("p").text("The trash can (");
+    deleteText.append("i").attr("class", "bi bi-trash-fill");
+    deleteText
+        .append("span")
+        .text(
+            ") allows you to delete a column. Deleted columns disappear from the reordering and the details panel, and will not be present when downloading the .csv for shots."
+        );
 
-    d3.select(id)
-        .append("div")
+    mb.append("p").text(
+        "The X and Y coordinate columns cannot be hidden or deleted."
+    );
+
+    // reorder columns
+    mb.append("div")
+        .attr("class", "center")
+        .attr("id", "reorder");
+    createReorderColumns("#reorder");
+    mb.append("div")
         .attr("class", "center")
         .append("button")
         .attr("class", "grey-btn new-column-btn")
         .text("Create New Column")
-        .on("click", () => changePage("#main-page", "#widget-type-page"));
-
+        .on("click", function() {
+            saveCurrentDetailSetup();
+            createTextFieldPage("#text-field-page");
+            createDropdownPage("#dropdown-page");
+            createRadioButtonsPage("#radio-buttons-page");
+            changePage("#main-page", "#widget-type-page");
+        });
+    mb.append("div")
+        .attr("class", "right")
+        .append("button")
+        .attr("class", "grey-btn new-column-btn")
+        .text("Reset To Defaults")
+        .on("click", function() {
+            setDetails(getDefaultDetails());
+            createReorderColumns("#reorder");
+        });
     // footer
     var footer = d3
         .select(id)
@@ -65,17 +102,14 @@ function createMainPage(id) {
         .on("click", e => saveChanges(e));
 }
 
-function createReorderColumns(id) {
+function createReorderColumns(id = "#reorder") {
     // column reordering
     var columns = getDetails();
 
     var mb = d3.select(id);
-    mb.select("#reorder").remove();
+    mb.select("#reorder-columns").remove();
 
     var v = mb
-        .append("div")
-        .attr("class", "center")
-        .attr("id", "reorder")
         .append("table")
         .attr("id", "reorder-columns")
         .selectAll("td")
@@ -85,26 +119,73 @@ function createReorderColumns(id) {
         .attr("class", "reorder-item")
         .attr("data-id", d => d.id)
         .attr("data-type", d => d.type);
-    v.append("i").each(function(d) {
-        if (d.type != "x" && d.type !== "y") {
-            // no turning off coordinates
-            d3.select(this)
-                .attr("class", d =>
-                    d.hidden ? "bi bi-eye-slash" : "bi bi-eye"
-                )
-                .on("click", function() {
-                    var c = d3.select(this).attr("class");
-                    if (c === "bi bi-eye") {
-                        d3.select(this).attr("class", "bi bi-eye-slash");
-                    } else {
-                        d3.select(this).attr("class", "bi bi-eye");
-                    }
-                });
-        }
-    });
-    v.append("span")
+    // text
+    v.append("div")
         .text(d => d.title)
-        .attr("class", "reorder-item-text");
+        .attr("class", "center");
+
+    // icons
+    v.append("div")
+        .attr("class", "reorder-item-icons")
+        .each(function(d) {
+            if (d.type != "x" && d.type !== "y") {
+                // no turning off or deleting coordinates
+                d3.select(this)
+                    .append("i")
+                    .attr("class", d =>
+                        d.hidden ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"
+                    )
+                    .on("click", function() {
+                        var c = d3.select(this).attr("class");
+                        if (c === "bi bi-eye-fill") {
+                            d3.select(this).attr(
+                                "class",
+                                "bi bi-eye-slash-fill"
+                            );
+                        } else {
+                            d3.select(this).attr("class", "bi bi-eye-fill");
+                        }
+                    });
+                if (d.editable) {
+                    d3.select(this)
+                        .append("i")
+                        .attr("class", "bi bi-pencil-square")
+                        .on("click", function() {
+                            saveCurrentDetailSetup();
+                            let details = _.find(getDetails(), { id: d.id });
+                            let pageId;
+                            switch (d.type) {
+                                case "text-field":
+                                    pageId = "#text-field-page";
+                                    createTextFieldPage(pageId, details);
+                                    break;
+                                case "dropdown":
+                                    pageId = "#dropdown-page";
+                                    createDropdownPage(pageId, details);
+                                    break;
+                                case "radio":
+                                    pageId = "#radio-buttons-page";
+                                    createRadioButtonsPage(pageId, details);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            changePage("#main-page", pageId);
+                        });
+                }
+                d3.select(this)
+                    .append("i")
+                    .attr("class", "bi bi-trash-fill")
+                    .on("click", function() {
+                        var details = getDetails();
+                        _.remove(details, { id: d.id });
+                        setDetails(details);
+                        d3.select("#reorder-columns")
+                            .select(`td[data-id="${d.id}"]`)
+                            .remove();
+                    });
+            }
+        });
 
     var el = document.getElementById("reorder-columns");
     var sortable = new Sortable(el, { ghostClass: "reorder-ghost" });
@@ -118,12 +199,18 @@ function saveChanges(e) {
             if (
                 d3
                     .select(this)
+                    .select(".reorder-item-icons")
                     .select("i")
-                    .attr("class") !== "bi bi-eye-slash"
+                    .size() === 0 ||
+                d3
+                    .select(this)
+                    .select(".reorder-item-icons")
+                    .select("i")
+                    .attr("class") !== "bi bi-eye-slash-fill"
             ) {
                 let title = d3
                     .select(this)
-                    .select("span")
+                    .select(".center")
                     .text();
                 let dataId = d3.select(this).attr("data-id");
                 let dataType = d3.select(this).attr("data-type");
@@ -140,136 +227,4 @@ function saveChanges(e) {
     $("#details-modal").modal("hide"); // default js doesn't work for some reason
 }
 
-function setUpJSONDownloadUpload(id) {
-    // Custom Filename
-    downloadArea(id, "custom-details", () => downloadJSON(id), ".json");
-    uploadArea(
-        id,
-        "json-upload",
-        e => uploadJSON(id, "#json-upload", e),
-        "Only .json files are allowed."
-    );
-}
-
-function downloadJSON(id) {
-    var fileName = d3
-        .select(id)
-        .select(".download-name")
-        .property("value");
-    if (!fileName) {
-        fileName =
-            d3
-                .select(id)
-                .select(".download-name")
-                .attr("placeholder") + ".json";
-    }
-    var details = getDetails("details");
-
-    // based on select2, reorder and tag with hidden
-    var newDetails = [];
-    d3.select("#reorder-columns")
-        .selectAll("td")
-        .each(function() {
-            let detail = _.find(details, {
-                title: d3
-                    .select(this)
-                    .select("span")
-                    .text(),
-            });
-            if (
-                d3
-                    .select(this)
-                    .select("i")
-                    .attr("class") === "bi bi-eye-slash"
-            ) {
-                detail["hidden"] = true;
-            }
-            // custom saves for each
-            if (!detail.hidden && detail.id) {
-                var d = d3.select("#details").select("#" + detail.id);
-                if (!d.empty()) {
-                    switch (detail.type) {
-                        case "team":
-                            // save teams
-                            detail.blueTeamName = d
-                                .select("#blue-team-name")
-                                .property("value");
-                            detail.orangeTeamName = d
-                                .select("#orange-team-name")
-                                .property("value");
-                            detail.checked = d3
-                                .select("input[name='team-bool']:checked")
-                                .property("id");
-                            break;
-
-                        case "player":
-                        case "text-field":
-                            // save current entry
-                            detail["defaultValue"] = d
-                                .select("input")
-                                .property("value");
-                            break;
-
-                        case "shot-type":
-                        case "dropdown":
-                            // save currently selected option
-                            let selectedValue = d
-                                .select("select")
-                                .property("value");
-                            detail.options = detail.options.map(function(o) {
-                                let option = { value: o.value };
-                                if (o.value === selectedValue) {
-                                    option.selected = true;
-                                }
-                                return option;
-                            });
-                            break;
-
-                        case "radio":
-                            // save current selection
-                            let checkedValue = d
-                                .select(`input[name='${detail.id}']:checked`)
-                                .property("value");
-                            detail.options = detail.options.map(function(o) {
-                                let option = { value: o.value };
-                                if (o.value === checkedValue) {
-                                    option.checked = true;
-                                }
-                                return option;
-                            });
-                            break;
-                    }
-                }
-            }
-            newDetails.push(detail);
-        });
-
-    download(JSON.stringify(newDetails), fileName, "application/json");
-}
-
-function uploadJSON(id, uploadId, e) {
-    if (/.json$/i.exec(d3.select(uploadId).property("value"))) {
-        var f = e.target.files[0];
-        if (f) {
-            // change text and wipe value to allow for same file upload
-            // while preserving name
-            d3.select(id)
-                .select(".upload-name-text")
-                .text(f.name);
-            d3.select(id)
-                .select(".upload")
-                .property("value", "");
-            // TODO: some actual input sanitization
-            f.text().then(function(text) {
-                setDetails(JSON.parse(text));
-                createReorderColumns("#main-page-mb");
-            });
-        }
-    } else {
-        d3.select(id)
-            .select("#json-upload")
-            .attr("class", "form-control is-invalid");
-    }
-}
-
-export { createMainPage };
+export { createMainPage, createReorderColumns };
