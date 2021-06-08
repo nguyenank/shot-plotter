@@ -145,10 +145,8 @@ function createNewTextField(data) {
         editable: true,
     };
     if (data) {
-        console.log(details);
         let i = _.findIndex(details, data);
         details.splice(i, 1, newDetail);
-        console.log(details);
     } else {
         details.push(newDetail);
     }

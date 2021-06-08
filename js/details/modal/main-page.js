@@ -157,16 +157,14 @@ function createReorderColumns(id) {
                             switch (d.type) {
                                 case "text-field":
                                     pageId = "#text-field-page";
-                                    createTextFieldPage(
-                                        "#text-field-page",
-                                        details
-                                    );
+                                    createTextFieldPage(pageId, details);
                                     break;
                                 case "dropdown":
                                     pageId = "#dropdown-page";
                                     break;
                                 case "radio":
                                     pageId = "#radio-buttons-page";
+                                    createRadioButtonsPage(pageId, details);
                                     break;
                                 default:
                                     break;

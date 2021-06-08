@@ -7,7 +7,7 @@ import {
 import { createRadioButtons } from "../widgets/widgets-base.js";
 import { createMainPage } from "./main-page.js";
 
-function createRadioButtonsPage(id = "#radio-buttons-page") {
+function createRadioButtonsPage(id, data) {
     d3.select(id)
         .selectAll("*")
         .remove();
@@ -29,11 +29,16 @@ function createRadioButtonsPage(id = "#radio-buttons-page") {
         { value: "Option 1" },
         { value: "Option 2", checked: true },
     ];
-    createRadioButtons("#radio-buttons-page-example", {
-        id: "sample-radio-buttons",
-        title: "Column Name",
-        options: defaultOptions,
-    });
+    createRadioButtons(
+        "#radio-buttons-page-example",
+        data
+            ? { ...data, id: "sample-radio-buttons" }
+            : {
+                  id: "sample-radio-buttons",
+                  title: "Column Name",
+                  options: defaultOptions,
+              }
+    );
 
     mb.append("div").text(
         "Choose the column name and create options for the text field. There must be 2-5 options. Also select which options should be selected by default."
@@ -56,7 +61,8 @@ function createRadioButtonsPage(id = "#radio-buttons-page") {
         .append("input")
         .attr("type", "text")
         .attr("class", "form-control")
-        .attr("id", "radio-buttons-title");
+        .attr("id", "radio-buttons-title")
+        .property("value", data ? data.title : "");
     nameDiv
         .append("div")
         .attr("class", "invalid-tooltip")
@@ -73,9 +79,8 @@ function createRadioButtonsPage(id = "#radio-buttons-page") {
         .text("Options");
     optionsDiv.append("div").attr("id", "radio-buttons-options");
 
-    for (let number of [1, 2]) {
-        createOption(number);
-    }
+    let options = data ? data.options : defaultOptions;
+    options.forEach(createOption);
     createAddOptionButton();
     optionsDiv
         .append("div")
@@ -91,17 +96,28 @@ function createRadioButtonsPage(id = "#radio-buttons-page") {
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Back")
-        .on("click", () => changePage(id, "#widget-type-page"));
+        .on(
+            "click",
+            data
+                ? () => changePage(id, "#main-page")
+                : () => changePage(id, "#widget-type-page")
+        );
 
     footer
         .append("button")
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Create Radio Buttons")
-        .on("click", createNewRadioButtons);
+        .on(
+            "click",
+            data
+                ? () => createNewRadioButtons(data)
+                : () => createNewRadioButtons()
+        );
 }
 
-function createOption(number, optionsDiv) {
+function createOption(option, number) {
+    number += 1;
     var div = d3
         .select("#radio-buttons-options")
         .append("div")
@@ -114,11 +130,11 @@ function createOption(number, optionsDiv) {
         .attr("name", "radio-buttons-options")
         .attr("id", `new-radio-${number}`)
         .attr("value", `radio-option-${number}`)
-        .attr("checked", number === 1 ? true : null);
+        .attr("checked", option.checked);
     div.append("input")
         .attr("type", "text")
         .attr("class", "form-control")
-        .attr("value", `Option ${number}`);
+        .attr("value", option.value);
     if (number > 2) {
         div.append("i")
             .attr("class", "bi bi-trash-fill")
@@ -139,8 +155,8 @@ function createAddOptionButton(id = "#radio-buttons-page") {
         .attr("class", "grey-btn add-option-btn")
         .on("click", function(e) {
             e.preventDefault();
-            let number = getNumOptions() + 1;
-            createOption(number);
+            let number = getNumOptions();
+            createOption({ value: `Option ${number + 1}` }, number);
             if (number >= 5) {
                 d3.select(this).remove();
             }
@@ -153,7 +169,7 @@ function getNumOptions(id = "#radio-buttons-page") {
         .size();
 }
 
-function createNewRadioButtons() {
+function createNewRadioButtons(data) {
     // input sanitization
     var invalid = false;
 
@@ -204,16 +220,20 @@ function createNewRadioButtons() {
 
     // actual creation
     var id = createId(title);
-    var details = [
-        ...getDetails(),
-        {
-            type: "radio",
-            title: title,
-            id: id,
-            options: options,
-            editable: true,
-        },
-    ];
+    var details = getDetails();
+    var newDetail = {
+        type: "radio",
+        title: title,
+        id: id,
+        options: options,
+        editable: true,
+    };
+    if (data) {
+        let i = _.findIndex(details, data);
+        details.splice(i, 1, newDetail);
+    } else {
+        details.push(newDetail);
+    }
     setDetails(details);
     createMainPage("#main-page");
 
