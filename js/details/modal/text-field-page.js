@@ -7,7 +7,7 @@ import {
 import { createTextField } from "../widgets/widgets-base.js";
 import { createMainPage } from "./main-page.js";
 
-function createTextFieldPage(id = "#text-field-page") {
+function createTextFieldPage(data, id = "#text-field-page") {
     d3.select(id)
         .selectAll("*")
         .remove();
@@ -52,7 +52,8 @@ function createTextFieldPage(id = "#text-field-page") {
         .append("input")
         .attr("type", "text")
         .attr("class", "form-control")
-        .attr("id", "text-field-title");
+        .attr("id", "text-field-title")
+        .property("value", data ? data.title : "Column Name");
     nameDiv
         .append("div")
         .attr("class", "invalid-tooltip")
@@ -69,7 +70,8 @@ function createTextFieldPage(id = "#text-field-page") {
         .append("input")
         .attr("type", "text")
         .attr("class", "form-control")
-        .attr("id", "text-field-default-text");
+        .attr("id", "text-field-default-text")
+        .property("value", data ? data.defaultText : "Default Text");
     defaultTextDiv
         .append("div")
         .attr("class", "invalid-tooltip")
@@ -92,10 +94,10 @@ function createTextFieldPage(id = "#text-field-page") {
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Create Text Field")
-        .on("click", createNewTextField);
+        .on("click", () => createNewTextField(data));
 }
 
-function createNewTextField() {
+function createNewTextField(data) {
     var invalid = false;
 
     var title = d3.select("#text-field-title").property("value");
@@ -131,6 +133,9 @@ function createNewTextField() {
             editable: true,
         },
     ];
+    if (data) {
+        _.remove(details, data);
+    }
     setDetails(details);
     createMainPage("#main-page");
 
