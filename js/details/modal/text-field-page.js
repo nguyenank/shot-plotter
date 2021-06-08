@@ -62,7 +62,9 @@ function createTextFieldPage(id, data) {
     nameDiv
         .append("div")
         .attr("class", "invalid-tooltip")
-        .text("Column names must be 1-16 characters long.");
+        .text(
+            "Column names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
+        );
     var defaultTextDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
@@ -114,7 +116,11 @@ function createNewTextField(data) {
     var invalid = false;
 
     var title = d3.select("#text-field-title").property("value");
-    if (title.length < 1 || title.length > 16) {
+    if (
+        title.length < 1 ||
+        title.length > 16 ||
+        !/^[_a-zA-Z0-9- ]*$/.test(title)
+    ) {
         d3.select("#text-field-title").attr("class", "form-control is-invalid");
         invalid = true;
     } else {

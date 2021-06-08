@@ -66,7 +66,9 @@ function createRadioButtonsPage(id, data) {
     nameDiv
         .append("div")
         .attr("class", "invalid-tooltip")
-        .text("Column names must be 1-16 characters long.");
+        .text(
+            "Column names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
+        );
     // options
     var optionsDiv = form
         .append("div")
@@ -174,7 +176,11 @@ function createNewRadioButtons(data) {
     var invalid = false;
 
     var title = d3.select("#radio-buttons-title").property("value");
-    if (title.length < 1 || title.length > 16) {
+    if (
+        title.length < 1 ||
+        title.length > 16 ||
+        !/^[_a-zA-Z0-9- ]*$/.test(title)
+    ) {
         d3.select("#radio-buttons-title").attr(
             "class",
             "form-control is-invalid"
