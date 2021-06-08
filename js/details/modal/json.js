@@ -1,5 +1,10 @@
-import { saveCurrentDetailSetup } from "../details-functions.js";
+import {
+    saveCurrentDetailSetup,
+    getDetails,
+    setDetails,
+} from "../details-functions.js";
 import { downloadArea, uploadArea } from "../../components/upload-download.js";
+import { createReorderColumns } from "./main-page.js";
 
 function setUpJSONDownloadUpload(id) {
     // Custom Filename
@@ -47,7 +52,7 @@ function uploadJSON(id, uploadId, e) {
             // TODO: some actual input sanitization
             f.text().then(function(text) {
                 setDetails(JSON.parse(text));
-                createReorderColumns("#main-page-mb");
+                createReorderColumns("#reorder");
             });
         }
     } else {

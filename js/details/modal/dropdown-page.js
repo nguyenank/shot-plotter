@@ -6,8 +6,9 @@ import {
 } from "../details-functions.js";
 import { createTextField, createDropdown } from "../widgets/widgets-base.js";
 import { createMainPage } from "./main-page.js";
+import { select2Dropdown } from "../widgets/widgets-special.js";
 
-function createDropdownPage(id = "#dropdown-page") {
+function createDropdownPage(id, data) {
     d3.select(id)
         .selectAll("*")
         .remove();
@@ -25,11 +26,19 @@ function createDropdownPage(id = "#dropdown-page") {
     mb.append("div")
         .attr("id", "dropdown-page-example")
         .attr("class", "center example");
-    createDropdown("#dropdown-page-example", {
-        id: "sample-dropdown",
-        title: "Column Name",
-        options: [{ value: "Option 1", selected: true }, { value: "Option 2" }],
-    });
+    createDropdown(
+        "#dropdown-page-example",
+        data
+            ? { ...data, id: "sample-dropdown" }
+            : {
+                  id: "sample-dropdown",
+                  title: "Column Name",
+                  options: [
+                      { value: "Option 1", selected: true },
+                      { value: "Option 2" },
+                  ],
+              }
+    );
 
     mb.append("div").text(
         "Choose the column name. Then, input a list of options for the dropdown, each option on a new line. The first option will be the default selection."
@@ -52,7 +61,8 @@ function createDropdownPage(id = "#dropdown-page") {
         .append("input")
         .attr("type", "text")
         .attr("class", "form-control")
-        .attr("id", "dropdown-title");
+        .attr("id", "dropdown-title")
+        .property("value", data ? data.title : "");
     nameDiv
         .append("div")
         .attr("class", "invalid-tooltip")
@@ -71,7 +81,11 @@ function createDropdownPage(id = "#dropdown-page") {
         .attr("class", "form-control textarea")
         .attr("id", "dropdown-options")
         .attr("rows", "10")
-        .text("Option 1\nOption 2\n");
+        .text(
+            data
+                ? data.options.map(x => x.value).join("\n")
+                : "Option 1\nOption 2\n"
+        );
     optionsDiv
         .append("div")
         .attr("class", "invalid-tooltip")
@@ -87,17 +101,31 @@ function createDropdownPage(id = "#dropdown-page") {
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Back")
-        .on("click", () => changePage(id, "#widget-type-page"));
+        .on(
+            "click",
+            data
+                ? () => changePage(id, "#main-page")
+                : () => changePage(id, "#widget-type-page")
+        );
 
     footer
         .append("button")
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Create Dropdown")
-        .on("click", createNewDropdown);
+        .on(
+            "click",
+            data ? () => createNewDropdown(data) : () => createNewDropdown()
+        );
+
+    $("#sample-dropdown-select").select2({
+        dropdownParent: $("#sample-dropdown"),
+        width: "100%",
+        dropdownCssClass: "small-text",
+    });
 }
 
-function createNewDropdown() {
+function createNewDropdown(data) {
     var invalid = false;
 
     var title = d3.select("#dropdown-title").property("value");
@@ -125,16 +153,20 @@ function createNewDropdown() {
     }));
     options[0] = { ...options[0], selected: true };
     var id = createId(title);
-    var details = [
-        ...getDetails(),
-        {
-            type: "dropdown",
-            title: title,
-            id: id,
-            options: options,
-            editable: true,
-        },
-    ];
+    var details = getDetails();
+    var newDetail = {
+        type: "dropdown",
+        title: title,
+        id: id,
+        options: options,
+        editable: true,
+    };
+    if (data) {
+        let i = _.findIndex(details, data);
+        details.splice(i, 1, newDetail);
+    } else {
+        details.push(newDetail);
+    }
     setDetails(details);
     createMainPage("#main-page");
 

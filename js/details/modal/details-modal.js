@@ -32,12 +32,18 @@ function setUpDetailsModal(id) {
     var pages = [
         { id: "main-page", create: createMainPage },
         { id: "widget-type-page", create: createWidgetTypePage },
-        { id: "radio-buttons-page", create: createRadioButtonsPage },
+        {
+            id: "radio-buttons-page",
+            create: () => createRadioButtonsPage("#radio-buttons-page"),
+        },
         {
             id: "text-field-page",
             create: () => createTextFieldPage("#text-field-page"),
         },
-        { id: "dropdown-page", create: createDropdownPage },
+        {
+            id: "dropdown-page",
+            create: () => createDropdownPage("#dropdown-page"),
+        },
     ];
 
     for (let page of pages) {

@@ -102,7 +102,7 @@ function createMainPage(id) {
         .on("click", e => saveChanges(e));
 }
 
-function createReorderColumns(id) {
+function createReorderColumns(id = "#reorder") {
     // column reordering
     var columns = getDetails();
 
@@ -161,6 +161,7 @@ function createReorderColumns(id) {
                                     break;
                                 case "dropdown":
                                     pageId = "#dropdown-page";
+                                    createDropdownPage(pageId, details);
                                     break;
                                 case "radio":
                                     pageId = "#radio-buttons-page";
@@ -226,4 +227,4 @@ function saveChanges(e) {
     $("#details-modal").modal("hide"); // default js doesn't work for some reason
 }
 
-export { createMainPage };
+export { createMainPage, createReorderColumns };
