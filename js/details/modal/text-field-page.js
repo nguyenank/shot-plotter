@@ -7,7 +7,7 @@ import {
 import { createTextField } from "../widgets/widgets-base.js";
 import { createMainPage } from "./main-page.js";
 
-function createTextFieldPage(data, id = "#text-field-page") {
+function createTextFieldPage(id, data) {
     d3.select(id)
         .selectAll("*")
         .remove();
@@ -25,11 +25,16 @@ function createTextFieldPage(data, id = "#text-field-page") {
     mb.append("div")
         .attr("id", "text-field-page-example")
         .attr("class", "center example");
-    createTextField("#text-field-page-example", {
-        id: "sample-text-field",
-        title: "Column Name",
-        defaultValue: "Default Text",
-    });
+    createTextField(
+        "#text-field-page-example",
+        data
+            ? { ...data, id: "sample-text-field" }
+            : {
+                  id: "sample-text-field",
+                  title: "Column Name",
+                  defaultValue: "Default Text",
+              }
+    );
 
     mb.append("div").text(
         "Choose the column name and any default text for the text field."
@@ -53,7 +58,7 @@ function createTextFieldPage(data, id = "#text-field-page") {
         .attr("type", "text")
         .attr("class", "form-control")
         .attr("id", "text-field-title")
-        .property("value", data ? data.title : "Column Name");
+        .property("value", data ? data.title : "");
     nameDiv
         .append("div")
         .attr("class", "invalid-tooltip")
@@ -71,7 +76,7 @@ function createTextFieldPage(data, id = "#text-field-page") {
         .attr("type", "text")
         .attr("class", "form-control")
         .attr("id", "text-field-default-text")
-        .property("value", data ? data.defaultText : "Default Text");
+        .property("value", data ? data.defaultValue : "");
     defaultTextDiv
         .append("div")
         .attr("class", "invalid-tooltip")
@@ -87,14 +92,22 @@ function createTextFieldPage(data, id = "#text-field-page") {
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Back")
-        .on("click", () => changePage(id, "#widget-type-page"));
+        .on(
+            "click",
+            data
+                ? () => changePage(id, "#main-page")
+                : () => changePage(id, "#widget-type-page")
+        );
 
     footer
         .append("button")
         .attr("type", "button")
         .attr("class", "grey-btn")
         .text("Create Text Field")
-        .on("click", () => createNewTextField(data));
+        .on(
+            "click",
+            data ? () => createNewTextField(data) : () => createNewTextField()
+        );
 }
 
 function createNewTextField(data) {
@@ -123,18 +136,21 @@ function createNewTextField(data) {
     }
 
     var id = createId(title);
-    var details = [
-        ...getDetails(),
-        {
-            type: "text-field",
-            title: title,
-            id: id,
-            defaultValue: text,
-            editable: true,
-        },
-    ];
+    var details = getDetails();
+    var newDetail = {
+        type: "text-field",
+        title: title,
+        id: id,
+        defaultValue: text,
+        editable: true,
+    };
     if (data) {
-        _.remove(details, data);
+        console.log(details);
+        let i = _.findIndex(details, data);
+        details.splice(i, 1, newDetail);
+        console.log(details);
+    } else {
+        details.push(newDetail);
     }
     setDetails(details);
     createMainPage("#main-page");

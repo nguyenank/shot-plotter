@@ -3,14 +3,15 @@ import {
     getDetails,
     setDetails,
     changePage,
-    getDetailFromId,
+    saveCurrentDetailSetup,
 } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
-import { downloadArea, uploadArea } from "../../components/upload-download.js";
 import { getDefaultDetails } from "../config-details.js";
-import { createTextFieldPage } from "./text-field-page.js";
 import { setUpJSONDownloadUpload } from "./json.js";
+import { createTextFieldPage } from "./text-field-page.js";
+import { createRadioButtonsPage } from "./radio-buttons-page.js";
+import { createDropdownPage } from "./dropdown-page.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -70,7 +71,13 @@ function createMainPage(id) {
         .append("button")
         .attr("class", "grey-btn new-column-btn")
         .text("Create New Column")
-        .on("click", () => changePage("#main-page", "#widget-type-page"));
+        .on("click", function() {
+            saveCurrentDetailSetup();
+            createTextFieldPage("#text-field-page");
+            createDropdownPage("#dropdown-page");
+            createRadioButtonsPage("#radio-buttons-page");
+            changePage("#main-page", "#widget-type-page");
+        });
     mb.append("div")
         .attr("class", "right")
         .append("button")
@@ -144,14 +151,16 @@ function createReorderColumns(id) {
                         .append("i")
                         .attr("class", "bi bi-pencil-square")
                         .on("click", function() {
-                            createTextFieldPage(
-                                _.find(getDetails(), { id: id })
-                            );
-
+                            saveCurrentDetailSetup();
+                            let details = _.find(getDetails(), { id: d.id });
                             let pageId;
                             switch (d.type) {
                                 case "text-field":
                                     pageId = "#text-field-page";
+                                    createTextFieldPage(
+                                        "#text-field-page",
+                                        details
+                                    );
                                     break;
                                 case "dropdown":
                                     pageId = "#dropdown-page";
