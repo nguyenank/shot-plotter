@@ -26,7 +26,9 @@ Details logged for each shot can be customized by clicking on the _Customize Det
 
 ##### Customizing Details
 
-Clicking the _Customize Details_ button will bring up a modal with a list of the current details: drag-and-drop detail names to reorder and click on the eye symbol to toggle whether it is visible. Reordering details changes their position in both the details panel and the table. The _X_ and _Y_ details cannot be hidden.
+Clicking the _Customize Details_ button will bring up a modal with a list of the current details. Drag-and-drop detail names to reorder them. Click on the eye icon to toggle whether it is visible. Click on the trash can icon to delete details. For created details, click on the pencil-in-a-square icon to edit those details. Reordering details changes their position in both the details panel and the table. The _X_ and _Y_ details cannot be hidden or deleted.
+
+Default details can be restored by clicking on the _Reset to Defaults_ button.
 
 Details configurations can be saved or restored through download/upload. When a detail configuration is downloaded, it stores the current order and visibility of details, as well as any newly created details. Also, currently selected/entered options in the details panel are made the default options when the configuration is uploaded; if a detail is not visible, it preserves its original default value.
 
