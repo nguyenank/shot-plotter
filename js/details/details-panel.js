@@ -4,6 +4,7 @@ import {
     createRadioButtons,
     createTextField,
     createDropdown,
+    createTime,
 } from "./widgets/widgets-base.js";
 import {
     createTooltip,
@@ -93,6 +94,9 @@ function createDetailsPanel(details, id = "#details") {
                 break;
             case "dropdown":
                 createDropdown(rowId, data);
+                break;
+            case "time":
+                createTime(rowId, data);
                 break;
         }
     }
