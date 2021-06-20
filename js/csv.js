@@ -13,7 +13,13 @@ function setUpCSVDownloadUpload() {
     var d = new Date(Date.now());
     var defaultFileName = `${(
         d.getMonth() + 1
-    ).toString()}.${d.getDate()}.${d.getFullYear()}-${d.getHours()}.${d.getMinutes()}`;
+    ).toString()}.${d.getDate()}.${d.getFullYear()}-${d
+        .getHours()
+        .toString()
+        .padStart(2, "0")}.${d
+        .getMinutes()
+        .toString()
+        .padStart(2, "0")}`;
     downloadArea(
         "#csv-upload-download",
         defaultFileName,
