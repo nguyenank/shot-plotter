@@ -6,7 +6,7 @@ A [web application](https://shot-plotter.netlify.app/) for plotting hockey shots
 
 The web application is primarily built using D3.js.
 
-##### 6/03/21: Now featuring customization of shot details! Also some other additions and changes, like a button to delete all shots and the _Shot_ column has been renamed _\#_.
+##### 6/19/21: You can now add a time widget column!
 
 ### How to Use and Additional Information
 
@@ -32,13 +32,15 @@ Default details can be restored by clicking on the _Reset to Defaults_ button.
 
 Details configurations can be saved or restored through download/upload. When a detail configuration is downloaded, it stores the current order and visibility of details, as well as any newly created details. Also, currently selected/entered options in the details panel are made the default options when the configuration is uploaded; if a detail is not visible, it preserves its original default value.
 
-Clicking on the _Add Details_ Button allows creation of new details. There are three options for types of new details: radio buttons, text field, and dropdown. The name of all details must be 1-16 characters.
+Clicking on the _Add Details_ Button allows creation of new details. There are three options for types of new details: radio buttons, text field, dropdown, and time widget. The name of all details must be 1-16 characters.
 
 Radio buttons are limited to at most 5 options; each option must be between 1-32 characters and all options must be unique. The default value can be selected by checking the appropriate radio button.
 
 For a text field, a default value can be entered and can be up to 32 characters.
 
 For a dropdown, options are entered in a text area, with each option on a new line. Each option must be between 1-50 characters. The first option is the default selection. Unlike with the _Type_ detail, new options cannot be added from the details panel, though options can still be searched.
+
+A time widget is a timer you can choose to have count up or countdown. The starting time can be inputted when creating the detail; times must be in the format MM:SS or M:SS, where (M)M is minutes and SS is seconds. When using the time widget in the details panel, the time can be edited any time the time widget is paused. The timer can be paused/started by clicking on the button next to the time.
 
 #### Rink
 
