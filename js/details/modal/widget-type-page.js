@@ -95,7 +95,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             },
         },
         {
-            name: "Time",
+            name: "Time Widget",
             id: "#time-widget-page",
             desc:
                 "A time widget is good for when you want to keep track of, well, time. You can set it to count up or down, and manually adjust the time whenever the widget is stopped.",

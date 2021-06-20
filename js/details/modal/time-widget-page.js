@@ -76,8 +76,16 @@ function createTimeWidgetPage(id, data) {
         .attr("class", "form-label")
         .text("Countdown or Count Up");
     for (let option of [
-        { text: "Countdown", id: "countdown", checked: true },
-        { text: "Count Up", id: "count-up" },
+        {
+            text: "Countdown (i.e. timer)",
+            id: "countdown",
+            checked: data ? data.countdown : true,
+        },
+        {
+            text: "Count Up (i.e. stopwatch)",
+            id: "count-up",
+            checked: data ? (!data.countdown ? true : null) : null,
+        },
     ]) {
         let optionDiv = countdownDiv.append("div").attr("class", "form-check");
         optionDiv
