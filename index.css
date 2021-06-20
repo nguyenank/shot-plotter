@@ -104,7 +104,8 @@ input[type="text"] {
 
 .time-btn {
   padding: 0 0.5rem;
-  margin-left: 0.5rem; }
+  margin-left: 0.5rem;
+  font-size: 1rem; }
 
 #main-page-mb p {
   margin-bottom: 0.3rem;

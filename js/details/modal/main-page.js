@@ -12,6 +12,7 @@ import { setUpJSONDownloadUpload } from "./json.js";
 import { createTextFieldPage } from "./text-field-page.js";
 import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
+import { createTimeWidgetPage } from "./time-widget-page.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -167,6 +168,9 @@ function createReorderColumns(id = "#reorder") {
                                     pageId = "#radio-buttons-page";
                                     createRadioButtonsPage(pageId, details);
                                     break;
+                                case "time":
+                                    pageId = "#time-widget-page";
+                                    createTimeWidgetPage(pageId, details);
                                 default:
                                     break;
                             }

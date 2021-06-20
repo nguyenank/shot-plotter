@@ -69,7 +69,7 @@ function createDropdown(selectId, { id, title, options }) {
     }
 }
 
-function createTime(selectId, { id, title, startTime }) {
+function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
     let div = d3
         .select(selectId)
         .append("div")
@@ -79,15 +79,20 @@ function createTime(selectId, { id, title, startTime }) {
         .text(title)
         .attr("class", "center");
     const timer = new Tock({
-        countdown: true,
+        countdown: countdown,
         interval: 10,
         callback: () => {
             let t = timer.lap();
-            d3.select("#" + id)
+            let min = d3
+                .select("#" + id)
                 .select("input")
                 .property(
                     "value",
-                    `${parseInt(t / 60000)}:${parseInt((t % 60000) / 1000)}`
+                    `${parseInt(t / 60000)
+                        .toString()
+                        .padStart(1, "0")}:${parseInt((t % 60000) / 1000)
+                        .toString()
+                        .padStart(2, "0")}`
                 );
         },
     });
@@ -95,10 +100,10 @@ function createTime(selectId, { id, title, startTime }) {
     text.append("input")
         .attr("type", "text")
         .attr("class", "form-control time-box")
-        .attr("value", startTime);
+        .attr("value", defaultTime);
     text.append("div")
         .attr("class", "invalid-tooltip")
-        .text("Times must be in the form 'MM:SS'. ");
+        .text("Times must be in the form 'MM:SS' or 'M:SS'.");
     text.append("div")
         .attr("class", "white-btn time-btn")
         .on("click", function() {
@@ -123,7 +128,7 @@ function createTime(selectId, { id, title, startTime }) {
                     .select("#" + id)
                     .select("input")
                     .property("value");
-                if (/^\d\d:\d\d$/.test(time)) {
+                if (/^\d{1,2}:\d\d$/.test(time)) {
                     d3.select("#" + id)
                         .select("input")
                         .attr("disabled", true)
@@ -146,4 +151,9 @@ function createTime(selectId, { id, title, startTime }) {
         .attr("class", "bi bi-play-fill");
 }
 
-export { createRadioButtons, createTextField, createDropdown, createTime };
+export {
+    createRadioButtons,
+    createTextField,
+    createDropdown,
+    createTimeWidget,
+};

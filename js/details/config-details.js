@@ -39,12 +39,6 @@ const cfg = {
                 { value: "Miss" },
             ],
         },
-        {
-            type: "time",
-            title: "Game Time",
-            id: "game-time",
-            startTime: "60:00",
-        },
         { type: "x", title: "X", id: "x", noWidget: true },
         { type: "y", title: "Y", id: "y", noWidget: true },
     ],

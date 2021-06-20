@@ -1,4 +1,5 @@
 import { changePage } from "../details-functions.js";
+import { createTimeWidget } from "../widgets/widgets-base.js";
 function createWidgetTypePage(id = "#widget-type-page") {
     var mb = d3
         .select(id)
@@ -91,6 +92,98 @@ function createWidgetTypePage(id = "#widget-type-page") {
                         .text(option.value)
                         .attr("selected", option.selected);
                 }
+            },
+        },
+        {
+            name: "Time",
+            id: "#time-widget-page",
+            desc:
+                "A time widget is good for when you want to keep track of, well, time. You can set it to count up or down, and manually adjust the time whenever the widget is stopped.",
+            example: function(id) {
+                const timer = new Tock({
+                    countdown: true,
+                    interval: 10,
+                    callback: () => {
+                        let t = timer.lap();
+                        d3.select("#widget-type-example-time")
+                            .select("input")
+                            .property(
+                                "value",
+                                `${parseInt(t / 60000)
+                                    .toString()
+                                    .padStart(1, "0")}:${parseInt(
+                                    (t % 60000) / 1000
+                                )
+                                    .toString()
+                                    .padStart(2, "0")}`
+                            );
+                    },
+                });
+
+                let div = d3
+                    .select(id)
+                    .append("div")
+                    .attr("class", "form-group")
+                    .attr("id", "widget-type-example-time");
+
+                let text = div
+                    .append("div")
+                    .attr("class", "time-widget position-relative");
+                text.append("input")
+                    .attr("type", "text")
+                    .attr("class", "form-control time-box")
+                    .attr("value", "60:00");
+                text.append("div")
+                    .attr("class", "invalid-tooltip")
+                    .text("Times must be in the form 'MM:SS' or 'M:SS'.");
+                text.append("div")
+                    .attr("class", "white-btn time-btn")
+                    .on("click", function() {
+                        if (
+                            d3
+                                .select(this)
+                                .select("i")
+                                .attr("class") === "bi bi-stop-fill"
+                        ) {
+                            timer.stop();
+                            d3.select(this)
+                                .select("i")
+                                .remove();
+                            d3.select(this)
+                                .append("i")
+                                .attr("class", "bi bi-play-fill");
+                            d3.select("#widget-type-example-time")
+                                .select("input")
+                                .attr("disabled", null);
+                        } else {
+                            let time = d3
+                                .select("#widget-type-example-time")
+                                .select("input")
+                                .property("value");
+                            if (/^\d{1,2}:\d\d$/.test(time)) {
+                                d3.select("#widget-type-example-time")
+                                    .select("input")
+                                    .attr("disabled", true)
+                                    .attr("class", "form-control time-box");
+                                d3.select(this)
+                                    .select("i")
+                                    .remove();
+                                d3.select(this)
+                                    .append("i")
+                                    .attr("class", "bi bi-stop-fill");
+                                timer.start(time);
+                            } else {
+                                d3.select("#widget-type-example-time")
+                                    .select("input")
+                                    .attr(
+                                        "class",
+                                        "form-control time-box is-invalid"
+                                    );
+                            }
+                        }
+                    })
+                    .append("i")
+                    .attr("class", "bi bi-play-fill");
             },
         },
     ];

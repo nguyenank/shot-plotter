@@ -58,6 +58,14 @@ function createShotFromEvent(e) {
                         .property("value")
                 );
                 break;
+            case "time":
+                rowData.push(
+                    d3
+                        .select("#" + col.id)
+                        .select("input")
+                        .property("value")
+                );
+                break;
             case "team":
                 specialData["teamId"] = d3
                     .select("input[name='team-bool']:checked")
