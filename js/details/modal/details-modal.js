@@ -3,6 +3,7 @@ import { createWidgetTypePage } from "./widget-type-page.js";
 import { createTextFieldPage } from "./text-field-page.js";
 import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
+import { createTimeWidgetPage } from "./time-widget-page.js";
 
 function setUpDetailsModal(id) {
     // modal
@@ -43,6 +44,10 @@ function setUpDetailsModal(id) {
         {
             id: "dropdown-page",
             create: () => createDropdownPage("#dropdown-page"),
+        },
+        {
+            id: "time-widget-page",
+            create: () => createTimeWidgetPage("#time-widget-page"),
         },
     ];
 

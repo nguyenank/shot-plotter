@@ -30,7 +30,7 @@ function setUpDeleteAllModal(id) {
         .attr("class", "modal-footer")
         .append("button")
         .attr("type", "button")
-        .attr("class", "customize-btn")
+        .attr("class", "grey-btn")
         .text("Delete All")
         .on("click", () => {
             clearTable();

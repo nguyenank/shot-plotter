@@ -127,6 +127,12 @@ function saveCurrentDetailSetup() {
                                 return option;
                             });
                             break;
+                        case "time":
+                            // save current time
+                            detail["defaultTime"] = d
+                                .select("input")
+                                .property("value");
+                            break;
                     }
                 }
             }

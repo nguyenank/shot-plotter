@@ -1,312 +1,263 @@
-.shot-table, .example, .customize-btn, .reorder-ghost, .grey-btn, .shot-info {
+.white-btn, .shot-info, .grey-btn, .reorder-ghost, .example, .shot-table {
   background-color: #eaecef;
   border: 1px solid #aaaaaa;
-  border-radius: 0.2rem;
-}
+  border-radius: 0.2rem; }
 
 .small-text {
-  font-size: 0.75rem;
-}
+  font-size: 0.75rem; }
 
 /* general  */
 body {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
-  margin: 1rem;
-}
+  margin: 1rem; }
 
 footer {
-  font-size: 0.75rem;
-}
+  font-size: 0.75rem; }
 
 .main {
   display: flex;
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 .white-bg {
-  background-color: white;
-}
+  background-color: white; }
 
 ul {
-  list-style: none;
-}
+  list-style: none; }
 
-.grey-btn, .grey-hover-bg {
-  background-color: #eaecef;
-}
-.grey-btn:hover, .grey-hover-bg:hover {
-  background-color: #dee0e3;
-}
+.grey-hover-bg, .grey-btn {
+  background-color: #eaecef; }
+  .grey-hover-bg:hover, .grey-btn:hover {
+    background-color: #dee0e3; }
 
 .white-btn {
-  background-color: white;
-}
-.white-btn:hover {
-  background-color: #f2f4f5;
-}
+  background-color: white; }
+  .white-btn:hover {
+    background-color: #f2f4f5; }
 
 /* utility */
 .center {
   display: flex;
   justify-content: center;
-  align-items: center;
-}
+  align-items: center; }
 
 .right {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-}
+  align-items: center; }
 
 /* shot info */
 .shot-info {
   width: 30%;
   padding: 1rem;
   margin-bottom: 1rem;
-  flex-grow: 1;
-}
+  flex-grow: 1; }
 
 select {
-  width: 100%;
-}
+  width: 100%; }
 
 .bi-info-circle {
-  font-size: 0.75rem;
-}
+  font-size: 0.75rem; }
 
-input[type=text] {
+input[type="text"] {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   border: 1px solid #aaaaaa;
   border-radius: 0.25rem;
   padding: 0 0.5rem;
-  width: 100%;
-}
+  width: 100%; }
 
 .team-input {
-  margin-bottom: 0.5rem;
-}
+  margin-bottom: 0.5rem; }
 
 .detail-row {
   display: flex;
-  justify-content: space-evenly;
-}
+  justify-content: space-evenly; }
 
 .even-width {
   width: 50%;
-  padding: 0.5rem;
-}
+  padding: 0.5rem; }
 
 .vr {
   border-right: 1px solid #aaaaaa;
-  margin: 0.5rem;
-}
+  margin: 0.5rem; }
 
 /* detail modal */
 .footer-row {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 .form-label {
   font-weight: bolder;
-  font-size: 0.95rem;
-}
+  font-size: 0.95rem; }
 
 .form-group {
-  margin: 0.5rem 0;
-}
+  margin: 0.5rem 0; }
+
+.time-widget {
+  display: flex; }
+
+.time-box:disabled {
+  background-color: #f2f4f5; }
+
+.time-btn {
+  padding: 0 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 1rem; }
 
 #main-page-mb p {
   margin-bottom: 0.3rem;
-  font-size: 0.85rem;
-}
+  font-size: 0.85rem; }
 
 .bi-eye-fill,
 .bi-eye-slash-fill,
 .bi-pencil-square {
-  cursor: pointer;
-}
-.bi-eye-fill:hover,
-.bi-eye-slash-fill:hover,
-.bi-pencil-square:hover {
-  color: #aaaaaa;
-  text-shadow: 0.1rem 0.1rem black;
-}
+  cursor: pointer; }
+  .bi-eye-fill:hover,
+  .bi-eye-slash-fill:hover,
+  .bi-pencil-square:hover {
+    color: #aaaaaa;
+    text-shadow: 0.1rem 0.1rem black; }
 
 #reorder {
-  margin: 1rem 0;
-}
+  margin: 1rem 0; }
 
 .reorder-item {
   border: 1px solid #aaaaaa;
   background-color: #f2f4f5;
   font-weight: 400;
   padding: 0.2rem 0.5rem;
-  cursor: move;
-}
+  cursor: move; }
 
 .reorder-item-icons {
   display: flex;
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 .reorder-ghost {
   background-color: white;
   border-color: #eaecef;
-  color: #aaaaaa;
-}
+  color: #aaaaaa; }
 
 .save-changes-btn {
-  margin: 0.5rem;
-}
+  margin: 0.5rem; }
 
 .column-btns {
   margin-bottom: 0.5rem;
   display: flex;
-  justify-content: space-around;
-}
+  justify-content: space-around; }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-}
+  justify-content: space-around; }
 
 .card {
   width: 45%;
   font-size: 0.75rem;
   margin: 1rem 0;
-  border-color: #aaaaaa;
-}
+  border-color: #aaaaaa; }
 
 .card-footer {
   padding: 0rem;
-  border-color: #aaaaaa;
-}
+  border-color: #aaaaaa; }
 
 .card-header {
   border-color: #aaaaaa;
-  background-color: #fafafa;
-}
+  background-color: #fafafa; }
 
 .card-btn {
   font-size: 0.9rem;
   width: 100%;
   padding: 0.5rem 0;
-  border: 0;
-}
+  border: 0; }
 
 .example {
-  margin: 0.75rem 0;
-}
+  margin: 0.75rem 0; }
 
 .new-option {
-  display: flex;
-}
-.new-option * {
-  margin-right: 0.2rem;
-  margin-left: 0.2rem;
-}
+  display: flex; }
+  .new-option * {
+    margin-right: 0.2rem;
+    margin-left: 0.2rem; }
 
 .add-option-btn {
   margin-top: 0.35rem;
-  font-size: 0.9rem;
-}
+  font-size: 0.9rem; }
 
 .textarea {
   resize: none;
-  border-color: #aaaaaa;
-}
+  border-color: #aaaaaa; }
 
 /* rink */
 .dot-text {
   font-size: 0.15rem;
   font-weight: 600;
-  fill: white;
-}
+  fill: white; }
 
 /* shot table */
 .shot-table {
-  padding: 1rem 0;
-}
+  padding: 1rem 0; }
 
 tbody {
-  background-color: white;
-}
+  background-color: white; }
 
 .blue-row {
-  background-color: rgba(53, 171, 169, 0.7);
-}
+  background-color: rgba(53, 171, 169, 0.7); }
 
 .orange-row {
-  background-color: rgba(234, 142, 72, 0.7);
-}
+  background-color: rgba(234, 142, 72, 0.7); }
 
 .grey-row {
-  background-color: rgba(170, 170, 170, 0.7);
-}
+  background-color: rgba(170, 170, 170, 0.7); }
 
 .blue-shot {
   fill: rgba(53, 171, 169, 0.7);
   stroke-width: 0.1px;
-  stroke: #35aba9;
-}
+  stroke: #35aba9; }
 
 .orange-shot {
   fill: rgba(234, 142, 72, 0.7);
   stroke-width: 0.1px;
-  stroke: #ea8e48;
-}
+  stroke: #ea8e48; }
 
 .grey-shot {
   fill: rgba(170, 170, 170, 0.7);
   stroke-width: 0.1px;
-  stroke: #aaaaaa;
-}
+  stroke: #aaaaaa; }
 
 .legend-shot {
-  fill: black;
-}
+  fill: black; }
 
 .bi-trash:hover {
   color: black;
   text-shadow: 0.1rem 0.1rem #aaaaaa;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .bi-trash-fill:hover {
   color: #aaaaaa;
   text-shadow: 0.1rem 0.1rem black;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 /* download/upload */
 .input-group {
-  margin-top: 0.25rem;
-}
+  margin-top: 0.25rem; }
 
 .input-group-text {
   border-radius: 0.25rem 0 0 0.25rem;
-  border-color: #aaaaaa;
-}
+  border-color: #aaaaaa; }
 
 .hover {
-  background-color: #dee0e3;
-}
+  background-color: #dee0e3; }
 
 .upload-area {
   display: flex;
   width: 100%;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .download-name {
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 .upload-name-box {
   padding: 0.1rem;
@@ -314,14 +265,12 @@ tbody {
   border-left: 0;
   flex: 1;
   display: flex;
-  align-items: center;
-}
+  align-items: center; }
 
 .upload-name-text {
   font-weight: normal;
   vertical-align: bottom;
-  margin-left: 0.5rem;
-}
+  margin-left: 0.5rem; }
 
 /* https://bl.ocks.org/d3noob/a22c42db65eb00d4e369 */
 div.tooltip {
@@ -331,18 +280,14 @@ div.tooltip {
   font-size: 0.75rem;
   background: #aaaaaa;
   border-radius: 0.5rem;
-  pointer-events: none;
-}
+  pointer-events: none; }
 
 @media (max-width: 768px) {
   .main {
-    display: block;
-  }
+    display: block; }
 
   .shot-info {
     height: auto;
-    width: 100%;
-  }
-}
+    width: 100%; } }
 
 /*# sourceMappingURL=index.css.map */
