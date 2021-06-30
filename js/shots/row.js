@@ -37,15 +37,33 @@ function createRow(rowData, { id, teamId, numberCol }) {
 }
 
 function dotSizeHandler(id, scale) {
-    var d = d3.select("#dots").select("[id='" + id + "']");
-    // https://stackoverflow.com/a/11671373
-    var bbox = d.node().getBBox();
-    var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
-    var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
-    d.attr(
-        "transform",
-        `translate(${xShift},${yShift}) scale(${scale},${scale})`
-    );
+    d3.select("#dots")
+        .select("[id='" + id + "']")
+        .selectAll("circle")
+        .each(function() {
+            // https://stackoverflow.com/a/11671373
+            var bbox = d3
+                .select(this)
+                .node()
+                .getBBox();
+            var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
+            var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
+            d3.select(this).attr(
+                "transform",
+                `translate(${xShift},${yShift}) scale(${scale},${scale})`
+            );
+        });
+    let line = d3
+        .select("#dots")
+        .select("[id='" + id + "']")
+        .select("polyline");
+    if (!line.empty()) {
+        if (line.style("opacity") === "0.3") {
+            line.style("opacity", 0.7);
+        } else {
+            line.style("opacity", 0.3);
+        }
+    }
 }
 
 function deleteHandler(id) {

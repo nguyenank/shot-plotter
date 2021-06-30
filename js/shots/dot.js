@@ -4,7 +4,10 @@ import {
 } from "../details/details-functions.js";
 import { cfg } from "./config-shots.js";
 
-function createDot(svgId, { id, type, teamId, coords, player, legendBool }) {
+function createDot(
+    svgId,
+    { id, type, teamId, coords, coords2, player, legendBool }
+) {
     var typeIndex = type
         ? _.findIndex(getCurrentShotTypes(), {
               value: type,
@@ -28,6 +31,25 @@ function createDot(svgId, { id, type, teamId, coords, player, legendBool }) {
                 .selectAll("tr")
                 .size()
         );
+    if (coords2) {
+        let halfcoords = [
+            Math.round((coords[0] + coords2[0]) / 2),
+            Math.round((coords[1] + coords2[1]) / 2),
+        ];
+        g.append("circle")
+            .attr("cx", coords[0])
+            .attr("cy", coords[1])
+            .attr("r", legendBool ? cfg.legendR : cfg.circleR)
+            .attr("class", className);
+        g.append("polyline")
+            .attr(
+                "points",
+                `${coords[0]},${coords[1]} ${halfcoords[0]},${halfcoords[1]} ${coords2[0]},${coords2[1]}`
+            )
+            .attr("marker-mid", `url(#arrowhead-${className})`)
+            .attr("class", className);
+        coords = coords2;
+    }
 
     if (typeIndex == 0) {
         g.append("circle")
