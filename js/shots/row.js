@@ -37,22 +37,27 @@ function createRow(rowData, { id, teamId, numberCol }) {
 }
 
 function dotSizeHandler(id, scale) {
+    function enlarge() {
+        // https://stackoverflow.com/a/11671373
+        var bbox = d3
+            .select(this)
+            .node()
+            .getBBox();
+        var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
+        var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
+        d3.select(this).attr(
+            "transform",
+            `translate(${xShift},${yShift}) scale(${scale},${scale})`
+        );
+    }
     d3.select("#dots")
         .select("[id='" + id + "']")
         .selectAll("circle")
-        .each(function() {
-            // https://stackoverflow.com/a/11671373
-            var bbox = d3
-                .select(this)
-                .node()
-                .getBBox();
-            var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
-            var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
-            d3.select(this).attr(
-                "transform",
-                `translate(${xShift},${yShift}) scale(${scale},${scale})`
-            );
-        });
+        .each(enlarge);
+    d3.select("#dots")
+        .select("[id='" + id + "']")
+        .selectAll("polygon")
+        .each(enlarge);
     let line = d3
         .select("#dots")
         .select("[id='" + id + "']")

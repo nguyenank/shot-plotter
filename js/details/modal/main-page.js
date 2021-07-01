@@ -79,13 +79,47 @@ function createMainPage(id) {
             createRadioButtonsPage("#radio-buttons-page");
             changePage("#main-page", "#widget-type-page");
         });
-    mb.append("div")
-        .attr("class", "right")
+    let lowerOptions = mb.append("div").attr("class", "split");
+
+    let twoPoint = lowerOptions
+        .append("div")
+        .attr("class", "form-check form-switch");
+    twoPoint
+        .append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "checkbox")
+        .attr("id", "two-point-switch")
+        .on("click", function() {
+            let checked = d3.select("#two-point-switch").property("checked");
+            if (checked) {
+                setDetails([
+                    ...getDetails(),
+                    { type: "x", title: "X2", id: "x2", noWidget: true },
+                    { type: "y", title: "Y2", id: "y2", noWidget: true },
+                ]);
+            } else {
+                setDetails(
+                    _.remove(
+                        getDetails(),
+                        x => (x.id !== "x2") & (x.id !== "y2")
+                    )
+                );
+            }
+            createReorderColumns();
+        });
+    twoPoint
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "two-point-switch")
+        .text("Enable 2-Coordinate Shots (Hold Shift and Click 2 Points)");
+
+    lowerOptions
         .append("button")
         .attr("class", "grey-btn new-column-btn")
         .text("Reset To Defaults")
         .on("click", function() {
             setDetails(getDefaultDetails());
+            d3.select("#two-point-switch").property("checked", false);
             createReorderColumns("#reorder");
         });
     // footer
@@ -129,7 +163,9 @@ function createReorderColumns(id = "#reorder") {
     v.append("div")
         .attr("class", "reorder-item-icons")
         .each(function(d) {
-            if (d.type != "x" && d.type !== "y") {
+            if (d.type === "two-point") {
+                d3.select("#two-point-switch").property("checked", d.checked);
+            } else if (d.type != "x" && d.type !== "y") {
                 // no turning off or deleting coordinates
                 d3.select(this)
                     .append("i")
@@ -190,12 +226,27 @@ function createReorderColumns(id = "#reorder") {
                     });
             }
         });
-
     var el = document.getElementById("reorder-columns");
     var sortable = new Sortable(el, { ghostClass: "reorder-ghost" });
 }
 
 function saveChanges(e) {
+    d3.select("body")
+        .on("keydown", function(e) {
+            if (e.key === "Shift") {
+                sessionStorage.setItem("shiftHeld", true);
+            }
+        })
+        .on("keyup", function(e) {
+            if (e.key === "Shift") {
+                sessionStorage.setItem("shiftHeld", false);
+                sessionStorage.setItem("firstPoint", null);
+                d3.select("#ghost")
+                    .selectAll("*")
+                    .remove();
+            }
+        });
+
     var titles = [];
     d3.select("#reorder-columns")
         .selectAll("td")
@@ -221,6 +272,7 @@ function saveChanges(e) {
                 titles.push({ id: dataId, type: dataType, title: title });
             }
         });
+
     createHeaderRow(titles);
     var visibleDetails = titles.map(x =>
         _.find(getDetails(), { title: x.title })

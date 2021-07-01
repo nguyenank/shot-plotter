@@ -46,7 +46,7 @@ function shotTypeLegend(id = "#shot-type-legend") {
             player: "",
             type: option.value,
             coords: [xOffset, 0.625 * yOffset],
-            id: xOffset,
+            id: `legend-${Math.round(xOffset)}`,
             legendBool: true,
         };
         createDot(id, data);

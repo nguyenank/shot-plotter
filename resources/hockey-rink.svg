@@ -411,6 +411,7 @@
         stroke="black"
     />
     <g id = "dots">
+      <g id="ghost"></g>
       <g id="normal"></g>
       <g id="selected"></g>
     </g>
