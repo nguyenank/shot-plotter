@@ -177,9 +177,7 @@ function createReorderColumns(id = "#reorder") {
     v.append("div")
         .attr("class", "reorder-item-icons")
         .each(function(d) {
-            if (d.type === "two-point") {
-                d3.select("#two-point-enable").property("checked", d.checked);
-            } else if (d.type != "x" && d.type !== "y") {
+            if (d.type != "x" && d.type !== "y") {
                 // no turning off or deleting coordinates
                 d3.select(this)
                     .append("i")
@@ -285,6 +283,10 @@ function saveChanges(e) {
                     sessionStorage.setItem("shiftHeld", true);
                 } else {
                     sessionStorage.setItem("shiftHeld", false);
+                    sessionStorage.setItem("firstPoint", null);
+                    d3.select("#ghost")
+                        .selectAll("*")
+                        .remove();
                 }
             });
         toggle
