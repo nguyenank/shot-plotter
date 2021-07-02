@@ -61,6 +61,7 @@ function shotTypeLegend(id = "#shot-type-legend") {
                 .getComputedTextLength() +
             2 * spacing;
     }
+    xOffset -= 2 * spacing;
 
     svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
@@ -102,6 +103,7 @@ function teamLegend(id = "#team-legend") {
                 .getComputedTextLength() +
             2 * spacing;
     }
+    xOffset -= 2 * spacing;
     svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
 

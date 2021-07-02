@@ -201,6 +201,18 @@ input[type="text"] {
   font-weight: 600;
   fill: white; }
 
+.two-point-toggle {
+  display: flex;
+  font-weight: 400; }
+  .two-point-toggle .form-switch {
+    padding-left: 0rem; }
+    .two-point-toggle .form-switch .form-check-input {
+      margin: 0.3rem 1rem 0; }
+
+#legend {
+  font-weight: 400;
+  font-size: 0.9rem; }
+
 /* shot table */
 .shot-table {
   padding: 1rem 0; }
