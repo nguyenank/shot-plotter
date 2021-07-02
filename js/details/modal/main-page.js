@@ -61,6 +61,20 @@ function createMainPage(id) {
     mb.append("p").text(
         "The X and Y coordinate columns cannot be hidden or deleted."
     );
+    var twoPointText = mb
+        .append("p")
+        .text(
+            "You can also enable switching between 1-coordinate and 2-coordinate shot. When enabled, you can hold down the "
+        );
+    twoPointText
+        .append("span")
+        .text("Shift")
+        .attr("class", "bold");
+    twoPointText
+        .append("span")
+        .text(
+            " button and click two points to create a 2-coordinate shot, or you can switch between 1 and 2 coordinate shots using the toggle above the rink."
+        );
 
     // reorder columns
     mb.append("div")
@@ -88,9 +102,9 @@ function createMainPage(id) {
         .append("input")
         .attr("class", "form-check-input")
         .attr("type", "checkbox")
-        .attr("id", "two-point-switch")
+        .attr("id", "two-point-enable")
         .on("click", function() {
-            let checked = d3.select("#two-point-switch").property("checked");
+            let checked = d3.select("#two-point-enable").property("checked");
             if (checked) {
                 setDetails([
                     ...getDetails(),
@@ -110,8 +124,8 @@ function createMainPage(id) {
     twoPoint
         .append("label")
         .attr("class", "form-check-label")
-        .attr("for", "two-point-switch")
-        .text("Enable 2-Coordinate Shots (Hold Shift and Click 2 Points)");
+        .attr("for", "two-point-enable")
+        .text("Enable 2-Coordinate Shots");
 
     lowerOptions
         .append("button")
@@ -119,7 +133,7 @@ function createMainPage(id) {
         .text("Reset To Defaults")
         .on("click", function() {
             setDetails(getDefaultDetails());
-            d3.select("#two-point-switch").property("checked", false);
+            d3.select("#two-point-enable").property("checked", false);
             createReorderColumns("#reorder");
         });
     // footer
@@ -164,7 +178,7 @@ function createReorderColumns(id = "#reorder") {
         .attr("class", "reorder-item-icons")
         .each(function(d) {
             if (d.type === "two-point") {
-                d3.select("#two-point-switch").property("checked", d.checked);
+                d3.select("#two-point-enable").property("checked", d.checked);
             } else if (d.type != "x" && d.type !== "y") {
                 // no turning off or deleting coordinates
                 d3.select(this)
@@ -231,7 +245,7 @@ function createReorderColumns(id = "#reorder") {
 }
 
 function saveChanges(e) {
-    if (d3.select("#two-point-switch").property("checked")) {
+    if (d3.select("#two-point-enable").property("checked")) {
         d3.select("body")
             .on("keydown", function(e) {
                 if (e.key === "Shift") {

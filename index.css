@@ -3,9 +3,6 @@
   border: 1px solid #aaaaaa;
   border-radius: 0.2rem; }
 
-.small-text {
-  font-size: 0.75rem; }
-
 /* general  */
 body {
   font-family: "Open Sans", sans-serif;
@@ -34,6 +31,13 @@ ul {
   background-color: white; }
   .white-btn:hover {
     background-color: #f2f4f5; }
+
+.small-text {
+  font-size: 0.75rem; }
+
+.bold {
+  font-variant: small-caps;
+  font-weight: 500; }
 
 /* utility */
 .center {
