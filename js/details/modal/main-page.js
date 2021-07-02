@@ -243,65 +243,7 @@ function createReorderColumns(id = "#reorder") {
 }
 
 function saveChanges(e) {
-    if (d3.select("#two-point-enable").property("checked")) {
-        d3.select("body")
-            .on("keydown", function(e) {
-                if (e.key === "Shift") {
-                    sessionStorage.setItem("shiftHeld", true);
-                    d3.select("#two-point-toggle").property("checked", true);
-                }
-            })
-            .on("keyup", function(e) {
-                if (e.key === "Shift") {
-                    sessionStorage.setItem("shiftHeld", false);
-                    sessionStorage.setItem("firstPoint", null);
-                    d3.select("#ghost")
-                        .selectAll("*")
-                        .remove();
-                    d3.select("#two-point-toggle").property("checked", false);
-                }
-            });
-        d3.select(".two-point-toggle")
-            .append("label")
-            .attr("class", "form-check-label")
-            .attr("for", "two-point-toggle")
-            .text("1-Coordinate");
-        let toggle = d3
-            .select(".two-point-toggle")
-            .append("div")
-            .attr("class", "form-check form-switch");
-        toggle
-            .append("input")
-            .attr("class", "form-check-input")
-            .attr("type", "checkbox")
-            .attr("id", "two-point-toggle")
-            .on("click", function() {
-                let checked = d3
-                    .select("#two-point-toggle")
-                    .property("checked");
-                if (checked) {
-                    sessionStorage.setItem("shiftHeld", true);
-                } else {
-                    sessionStorage.setItem("shiftHeld", false);
-                    sessionStorage.setItem("firstPoint", null);
-                    d3.select("#ghost")
-                        .selectAll("*")
-                        .remove();
-                }
-            });
-        toggle
-            .append("label")
-            .attr("class", "form-check-label")
-            .attr("for", "two-point-toggle")
-            .text("2-Coordinate");
-    } else {
-        d3.select("body")
-            .on("keydown", null)
-            .on("keyup", null);
-        d3.select(".two-point-toggle")
-            .selectAll("*")
-            .remove();
-    }
+    twoPointFunctionality();
 
     var titles = [];
     d3.select("#reorder-columns")
@@ -337,6 +279,66 @@ function saveChanges(e) {
     shotTypeLegend();
     teamLegend();
     $("#details-modal").modal("hide"); // default js doesn't work for some reason
+}
+
+function twoPointFunctionality() {
+    function setOn() {
+        sessionStorage.setItem("shiftHeld", true);
+        d3.select("#two-point-toggle").property("checked", true);
+    }
+    function setOff() {
+        d3.select("#two-point-toggle").property("checked", false);
+        sessionStorage.setItem("shiftHeld", false);
+        sessionStorage.setItem("firstPoint", null);
+        d3.select("#ghost")
+            .selectAll("*")
+            .remove();
+    }
+    if (d3.select("#two-point-enable").property("checked")) {
+        d3.select("body")
+            .on("keydown", function(e) {
+                if (e.key === "Shift") {
+                    setOn();
+                }
+            })
+            .on("keyup", function(e) {
+                if (e.key === "Shift") {
+                    setOff();
+                }
+            });
+        d3.select(".two-point-toggle")
+            .append("label")
+            .attr("class", "form-check-label")
+            .attr("for", "two-point-toggle")
+            .text("1-Coordinate");
+        let toggle = d3
+            .select(".two-point-toggle")
+            .append("div")
+            .attr("class", "form-check form-switch");
+        toggle
+            .append("input")
+            .attr("class", "form-check-input")
+            .attr("type", "checkbox")
+            .attr("id", "two-point-toggle")
+            .on("click", () =>
+                d3.select("#two-point-toggle").property("checked")
+                    ? setOn()
+                    : setOff()
+            );
+        toggle
+            .append("label")
+            .attr("class", "form-check-label")
+            .attr("for", "two-point-toggle")
+            .text("2-Coordinate");
+    } else {
+        setOff();
+        d3.select("body")
+            .on("keydown", null)
+            .on("keyup", null);
+        d3.select(".two-point-toggle")
+            .selectAll("*")
+            .remove();
+    }
 }
 
 export { createMainPage, createReorderColumns };
