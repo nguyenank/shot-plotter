@@ -6,7 +6,6 @@ import {
 } from "../details-functions.js";
 import { createTextField, createDropdown } from "../widgets/widgets-base.js";
 import { createMainPage } from "./main-page.js";
-import { select2Dropdown } from "../widgets/widgets-special.js";
 
 function createDropdownPage(id, data) {
     d3.select(id)

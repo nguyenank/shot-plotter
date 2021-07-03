@@ -13,6 +13,7 @@ import { createTextFieldPage } from "./text-field-page.js";
 import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
+import { createWidgetTypePage } from "./widget-type-page.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -61,6 +62,20 @@ function createMainPage(id) {
     mb.append("p").text(
         "The X and Y coordinate columns cannot be hidden or deleted."
     );
+    var twoPointText = mb
+        .append("p")
+        .text(
+            "You can also enable switching between 1-coordinate and 2-coordinate shot. When enabled, you can hold down the "
+        );
+    twoPointText
+        .append("span")
+        .text("Shift")
+        .attr("class", "bold");
+    twoPointText
+        .append("span")
+        .text(
+            " button and click two points to create a 2-coordinate shot, or you can switch between 1 and 2 coordinate shots using the toggle above the rink."
+        );
 
     // reorder columns
     mb.append("div")
@@ -79,13 +94,47 @@ function createMainPage(id) {
             createRadioButtonsPage("#radio-buttons-page");
             changePage("#main-page", "#widget-type-page");
         });
-    mb.append("div")
-        .attr("class", "right")
+    let lowerOptions = mb.append("div").attr("class", "split");
+
+    let twoPoint = lowerOptions
+        .append("div")
+        .attr("class", "form-check form-switch");
+    twoPoint
+        .append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "checkbox")
+        .attr("id", "two-point-enable")
+        .on("click", function() {
+            let checked = d3.select("#two-point-enable").property("checked");
+            if (checked) {
+                setDetails([
+                    ...getDetails(),
+                    { type: "x", title: "X2", id: "x2", noWidget: true },
+                    { type: "y", title: "Y2", id: "y2", noWidget: true },
+                ]);
+            } else {
+                setDetails(
+                    _.remove(
+                        getDetails(),
+                        x => (x.id !== "x2") & (x.id !== "y2")
+                    )
+                );
+            }
+            createReorderColumns();
+        });
+    twoPoint
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "two-point-enable")
+        .text("Enable 2-Coordinate Shots");
+
+    lowerOptions
         .append("button")
         .attr("class", "grey-btn new-column-btn")
         .text("Reset To Defaults")
         .on("click", function() {
             setDetails(getDefaultDetails());
+            d3.select("#two-point-enable").property("checked", false);
             createReorderColumns("#reorder");
         });
     // footer
@@ -190,12 +239,13 @@ function createReorderColumns(id = "#reorder") {
                     });
             }
         });
-
     var el = document.getElementById("reorder-columns");
     var sortable = new Sortable(el, { ghostClass: "reorder-ghost" });
 }
 
 function saveChanges(e) {
+    twoPointFunctionality();
+
     var titles = [];
     d3.select("#reorder-columns")
         .selectAll("td")
@@ -221,14 +271,79 @@ function saveChanges(e) {
                 titles.push({ id: dataId, type: dataType, title: title });
             }
         });
+
     createHeaderRow(titles);
     var visibleDetails = titles.map(x =>
         _.find(getDetails(), { title: x.title })
     );
+    createWidgetTypePage();
     createDetailsPanel(visibleDetails);
     shotTypeLegend();
     teamLegend();
     $("#details-modal").modal("hide"); // default js doesn't work for some reason
+}
+
+function twoPointFunctionality() {
+    function setOn() {
+        sessionStorage.setItem("shiftHeld", true);
+        d3.select("#two-point-toggle").property("checked", true);
+    }
+    function setOff() {
+        d3.select("#two-point-toggle").property("checked", false);
+        sessionStorage.setItem("shiftHeld", false);
+        sessionStorage.setItem("firstPoint", null);
+        d3.select("#ghost")
+            .selectAll("*")
+            .remove();
+    }
+    if (d3.select("#two-point-enable").property("checked")) {
+        d3.select("body")
+            .on("keydown", function(e) {
+                if (e.key === "Shift") {
+                    setOn();
+                }
+            })
+            .on("keyup", function(e) {
+                if (e.key === "Shift") {
+                    setOff();
+                }
+            });
+        d3.select(".two-point-toggle")
+            .selectAll("*")
+            .remove();
+        d3.select(".two-point-toggle")
+            .append("label")
+            .attr("class", "form-check-label")
+            .attr("for", "two-point-toggle")
+            .text("1-Coordinate");
+        let toggle = d3
+            .select(".two-point-toggle")
+            .append("div")
+            .attr("class", "form-check form-switch");
+        toggle
+            .append("input")
+            .attr("class", "form-check-input")
+            .attr("type", "checkbox")
+            .attr("id", "two-point-toggle")
+            .on("click", () =>
+                d3.select("#two-point-toggle").property("checked")
+                    ? setOn()
+                    : setOff()
+            );
+        toggle
+            .append("label")
+            .attr("class", "form-check-label")
+            .attr("for", "two-point-toggle")
+            .text("2-Coordinate");
+    } else {
+        setOff();
+        d3.select("body")
+            .on("keydown", null)
+            .on("keyup", null);
+        d3.select(".two-point-toggle")
+            .selectAll("*")
+            .remove();
+    }
 }
 
 export { createMainPage, createReorderColumns };

@@ -46,7 +46,7 @@ function shotTypeLegend(id = "#shot-type-legend") {
             player: "",
             type: option.value,
             coords: [xOffset, 0.625 * yOffset],
-            id: xOffset,
+            id: `legend-${Math.round(xOffset)}`,
             legendBool: true,
         };
         createDot(id, data);
@@ -61,6 +61,7 @@ function shotTypeLegend(id = "#shot-type-legend") {
                 .getComputedTextLength() +
             2 * spacing;
     }
+    xOffset -= 2 * spacing;
 
     svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
@@ -102,6 +103,7 @@ function teamLegend(id = "#team-legend") {
                 .getComputedTextLength() +
             2 * spacing;
     }
+    xOffset -= 2 * spacing;
     svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
 

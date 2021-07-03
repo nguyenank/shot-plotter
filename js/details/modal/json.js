@@ -51,8 +51,14 @@ function uploadJSON(id, uploadId, e) {
                 .property("value", "");
             // TODO: some actual input sanitization
             f.text().then(function(text) {
-                setDetails(JSON.parse(text));
+                let details = JSON.parse(text);
+                setDetails(details);
                 createReorderColumns("#reorder");
+                if (_.find(details, { id: "x2" })) {
+                    d3.select("#two-point-enable").property("checked", true);
+                } else {
+                    d3.select("#two-point-enable").property("checked", false);
+                }
             });
         }
     } else {

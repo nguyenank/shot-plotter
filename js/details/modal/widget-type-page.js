@@ -1,6 +1,9 @@
 import { changePage } from "../details-functions.js";
 import { createTimeWidget } from "../widgets/widgets-base.js";
 function createWidgetTypePage(id = "#widget-type-page") {
+    d3.select(id)
+        .selectAll("*")
+        .remove();
     var mb = d3
         .select(id)
         .append("div")

@@ -83,12 +83,6 @@ function teamRadioButtons(id, data) {
 function select2Dropdown() {
     $(".select2").select2({});
 
-    $("#example-select").select2({
-        dropdownParent: $(".cards"),
-        width: "100%",
-        dropdownCssClass: "small-text",
-    });
-
     $("#sample-dropdown-select").select2({
         dropdownParent: $("#sample-dropdown"),
         width: "100%",
@@ -109,6 +103,11 @@ function select2Dropdown() {
                 .find("option")
                 .removeAttr("data-select2-tag");
         });
+    $("#example-select").select2({
+        dropdownParent: $(".cards"),
+        width: "100%",
+        dropdownCssClass: "small-text",
+    });
 }
 
 export { createTooltip, teamRadioButtons, select2Dropdown };

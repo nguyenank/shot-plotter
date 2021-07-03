@@ -2,11 +2,11 @@
 
 ![A screenshot of the web application.](./resources/screenshot.png)
 
-A [web application](https://shot-plotter.netlify.app/) for plotting hockey shots with a single click, while keep track of the period, team, player and shot type. The application supports download and upload of .csv files to retrieve that plotted data.
+A [web application](https://shot-plotter.netlify.app/) for plotting hockey shots with a single click, while keep tracking of the period, team, player shot type, or custom created details. The application supports download and upload of .csv files to retrieve that plotted data.
 
 The web application is primarily built using D3.js.
 
-##### 6/19/21: You can now add a time widget column!
+##### 07/02/2021: You can now plot 2-coordinate shots! Enable 2-coordinate shots in the detail customization section, and then either hold Shift and click on the rink or switch between 1- and 2-coordinate mode using the switch above the rink.
 
 ### How to Use and Additional Information
 
@@ -28,6 +28,8 @@ Details logged for each shot can be customized by clicking on the _Customize Det
 
 Clicking the _Customize Details_ button will bring up a modal with a list of the current details. Drag-and-drop detail names to reorder them. Click on the eye icon to toggle whether it is visible. Click on the trash can icon to delete details. For created details, click on the pencil-in-a-square icon to edit those details. Reordering details changes their position in both the details panel and the table. The _X_ and _Y_ details cannot be hidden or deleted.
 
+Using the _Enable 2-Coordinate Shots_ toggle, the ability to have 2-coordinate shots can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted.
+
 Default details can be restored by clicking on the _Reset to Defaults_ button.
 
 Details configurations can be saved or restored through download/upload. When a detail configuration is downloaded, it stores the current order and visibility of details, as well as any newly created details. Also, currently selected/entered options in the details panel are made the default options when the configuration is uploaded; if a detail is not visible, it preserves its original default value.
@@ -44,7 +46,9 @@ A time widget is a timer you can choose to have count up or countdown. The start
 
 #### Rink
 
-To plot shots, simply click on the rink where the shot was made. When clicked, a dot will be added of the appropriate color, shape, and text based on the shot information entered, and a row will be made in the table.
+To plot shots, simply click on the rink where the shot was made. When clicked, a dot will be added of the appropriate color based on team, shape based on type, and text based on player, and a row will be made in the table.
+
+When 2-coordinate shots are enabled, 2-coordinate shots can be plotted by either holding down the **Shift** button and clicking on two points in the rink, or by switching between 1-coordinate and 2-coordinate mode using the toggle above the rink.
 
 The rink matches NHL specifications from the NHL rules. Rink coordinates match the x,y coordinate system in NHL data, with the origin at the center dot and the positive x-axis to the right and the positive y-axis upward.
 

@@ -4,7 +4,10 @@ import {
 } from "../details/details-functions.js";
 import { cfg } from "./config-shots.js";
 
-function createDot(svgId, { id, type, teamId, coords, player, legendBool }) {
+function createDot(
+    svgId,
+    { id, type, teamId, coords, coords2, player, legendBool }
+) {
     var typeIndex = type
         ? _.findIndex(getCurrentShotTypes(), {
               value: type,
@@ -28,27 +31,36 @@ function createDot(svgId, { id, type, teamId, coords, player, legendBool }) {
                 .selectAll("tr")
                 .size()
         );
-
-    if (typeIndex == 0) {
-        g.append("circle")
-            .attr("cx", coords[0])
-            .attr("cy", coords[1])
-            .attr("r", legendBool ? cfg.legendR : cfg.circleR)
-            .attr("class", className);
-    } else {
-        var sides = typeIndex + 2;
-        g.append("polygon")
+    if (coords2) {
+        let halfcoords = [
+            Math.round((coords[0] + coords2[0]) / 2),
+            Math.round((coords[1] + coords2[1]) / 2),
+        ];
+        createShape({
+            id: id,
+            typeIndex: typeIndex,
+            coords: coords,
+            legendBool: legendBool,
+            pointTwoBool: true,
+            className: className,
+        });
+        g.append("polyline")
             .attr(
                 "points",
-                polygon(
-                    coords[0],
-                    coords[1],
-                    legendBool ? cfg.legendR : cfg.polyR,
-                    sides
-                )
+                `${coords[0]},${coords[1]} ${halfcoords[0]},${halfcoords[1]} ${coords2[0]},${coords2[1]}`
             )
+            .attr("marker-mid", `url(#arrowhead-${className})`)
             .attr("class", className);
+        coords = coords2;
     }
+    createShape({
+        id: id,
+        typeIndex: typeIndex,
+        coords: coords,
+        legendBool: legendBool,
+        className: className,
+    });
+
     // only display text if two characters or less
     if (player && player.length <= 2) {
         g.append("text")
@@ -58,6 +70,51 @@ function createDot(svgId, { id, type, teamId, coords, player, legendBool }) {
             .attr("dominant-baseline", "middle")
             .text(player)
             .attr("class", "dot-text");
+    }
+}
+
+function createShape({
+    id,
+    typeIndex,
+    coords,
+    pointTwoBool,
+    legendBool,
+    className,
+}) {
+    let ghostBool = id === "ghost-dot";
+    let g = legendBool
+        ? d3.select("#shot-type-legend").select("[id='" + id + "']")
+        : d3.select("#dots").select("[id='" + id + "']");
+    if (typeIndex == 0) {
+        g.append("circle")
+            .attr("cx", coords[0])
+            .attr("cy", coords[1])
+            .attr(
+                "r",
+                legendBool
+                    ? cfg.legendR
+                    : pointTwoBool || ghostBool
+                    ? cfg.polyR / 2
+                    : cfg.polyR
+            )
+            .attr("class", ghostBool ? className + " ghost-shot" : className);
+    } else {
+        var sides = typeIndex + 2;
+        g.append("polygon")
+            .attr(
+                "points",
+                polygon(
+                    coords[0],
+                    coords[1],
+                    legendBool
+                        ? cfg.legendR
+                        : pointTwoBool || ghostBool
+                        ? cfg.polyR / 2
+                        : cfg.polyR,
+                    sides
+                )
+            )
+            .attr("class", ghostBool ? className + " ghost-shot" : className);
     }
 }
 
