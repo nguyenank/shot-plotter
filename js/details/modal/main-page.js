@@ -309,6 +309,9 @@ function twoPointFunctionality() {
                 }
             });
         d3.select(".two-point-toggle")
+            .selectAll("*")
+            .remove();
+        d3.select(".two-point-toggle")
             .append("label")
             .attr("class", "form-check-label")
             .attr("for", "two-point-toggle")
