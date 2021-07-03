@@ -13,6 +13,7 @@ import { createTextFieldPage } from "./text-field-page.js";
 import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
+import { createWidgetTypePage } from "./widget-type-page.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -275,6 +276,7 @@ function saveChanges(e) {
     var visibleDetails = titles.map(x =>
         _.find(getDetails(), { title: x.title })
     );
+    createWidgetTypePage();
     createDetailsPanel(visibleDetails);
     shotTypeLegend();
     teamLegend();
