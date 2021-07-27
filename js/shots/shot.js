@@ -3,6 +3,7 @@ import { createRow } from "./row.js";
 import { getHeaderRow } from "../table.js";
 
 function setUpShots() {
+    sessionStorage.setItem("rows", JSON.stringify([]));
     sessionStorage.setItem("firstPoint", null);
     sessionStorage.setItem("shiftHeld", null);
 
@@ -67,8 +68,8 @@ function createShotFromEvent(e, point1) {
     // https://stackoverflow.com/a/29325047
 
     var columns = getHeaderRow();
-    let rowData = [];
     var id = uuidv4();
+    let rowData = { id: id };
     let specialData = {
         // data for custom specfics like color etc.
         id: id,
@@ -80,11 +81,9 @@ function createShotFromEvent(e, point1) {
     for (let col of columns) {
         switch (col.type) {
             case "radio":
-                rowData.push(
-                    d3
-                        .select(`input[name="${col.id}"]:checked`)
-                        .property("value")
-                );
+                rowData[col.id] = d3
+                    .select(`input[name="${col.id}"]:checked`)
+                    .property("value");
                 break;
             case "player":
                 specialData["player"] = d3
@@ -92,12 +91,10 @@ function createShotFromEvent(e, point1) {
                     .select("input")
                     .property("value");
             case "text-field":
-                rowData.push(
-                    d3
-                        .select("#" + col.id)
-                        .select("input")
-                        .property("value")
-                );
+                rowData[col.id] = d3
+                    .select("#" + col.id)
+                    .select("input")
+                    .property("value");
                 break;
             case "shot-type":
                 specialData["type"] = d3
@@ -105,45 +102,42 @@ function createShotFromEvent(e, point1) {
                     .select("select")
                     .property("value");
             case "dropdown":
-                rowData.push(
-                    d3
-                        .select("#" + col.id)
-                        .select("select")
-                        .property("value")
-                );
+                rowData[col.id] = d3
+                    .select("#" + col.id)
+                    .select("select")
+                    .property("value");
                 break;
             case "time":
-                rowData.push(
-                    d3
-                        .select("#" + col.id)
-                        .select("input")
-                        .property("value")
-                );
+                rowData[col.id] = d3
+                    .select("#" + col.id)
+                    .select("input")
+                    .property("value");
                 break;
             case "team":
                 specialData["teamId"] = d3
                     .select("input[name='team-bool']:checked")
                     .property("value");
-                rowData.push(
-                    d3.select(specialData["teamId"]).property("value")
-                );
+                rowData[col.id] = d3
+                    .select(specialData["teamId"])
+                    .property("value");
                 break;
             case "shot-number":
-                rowData.push(
+                rowData[col.id] =
                     d3
                         .select("#shot-table-body")
                         .selectAll("tr")
-                        .size() + 1
-                );
+                        .size() + 1;
                 break;
             case "x":
                 if (col.id === "x2") {
                     let x2 = specialData["coords2"]
                         ? (specialData["coords2"][0] - 100).toFixed(2)
                         : "";
-                    rowData.push(x2);
+                    rowData[col.id] = x2;
                 } else {
-                    rowData.push((specialData["coords"][0] - 100).toFixed(2));
+                    rowData[col.id] = (specialData["coords"][0] - 100).toFixed(
+                        2
+                    );
                 }
                 break;
             case "y":
@@ -151,11 +145,12 @@ function createShotFromEvent(e, point1) {
                     let y2 = specialData["coords2"]
                         ? (-1 * (specialData["coords2"][1] - 42.5)).toFixed(2)
                         : "";
-                    rowData.push(y2);
+                    rowData[col.id] = y2;
                 } else {
-                    rowData.push(
-                        (-1 * (specialData["coords"][1] - 42.5)).toFixed(2)
-                    );
+                    rowData[col.id] = (
+                        -1 *
+                        (specialData["coords"][1] - 42.5)
+                    ).toFixed(2);
                 }
                 break;
             default:

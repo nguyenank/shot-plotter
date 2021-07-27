@@ -1,4 +1,8 @@
+import { getHeaderRow } from "../table.js";
 function createRow(rowData, { id, teamId, numberCol }) {
+    // add row to sessionStorage
+    addRow(rowData);
+
     // create row
     var row = d3.select("#shot-table-body").append("tr");
 
@@ -14,15 +18,18 @@ function createRow(rowData, { id, teamId, numberCol }) {
             selectHandler(id, checked, teamId ? teamId : "#grey");
         });
 
+    let headerRow = getHeaderRow().map(item => item.id);
+    _.pull(headerRow, null);
+
     // row data
-    rowData.forEach((item, i) => {
-        if (i === numberCol) {
+    headerRow.forEach(item => {
+        if (item === "shot-number") {
             row.append("th")
                 .attr("scope", "col")
                 .attr("class", "shot-number")
-                .text(item);
+                .text(rowData[item]);
         } else {
-            row.append("td").text(item);
+            row.append("td").text(rowData[item]);
         }
     });
 
@@ -136,6 +143,14 @@ function selectHandler(id, checked, teamId) {
         dotSizeHandler(id, 1);
         row.attr("class", "");
     }
+}
+
+function addRow(rowData) {
+    sessionStorage.setItem("rows", JSON.stringify([...getRows(), rowData]));
+}
+
+function getRows() {
+    return JSON.parse(sessionStorage.getItem("rows"));
 }
 
 export { createRow };

@@ -47,9 +47,12 @@ function createHeaderRow(details) {
 }
 
 function clearTable() {
+    sessionStorage.setItem("rows", JSON.stringify([]));
+
     d3.select("#shot-table-body")
         .selectAll("tr")
         .remove();
+
     var dots = d3.select("#hockey-rink-svg").select("#dots");
 
     dots.select("#normal")
