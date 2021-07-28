@@ -1,4 +1,4 @@
-.white-btn, .shot-info, .grey-btn, .reorder-ghost, .example, .shot-table {
+.white-btn, .shot-info, .grey-btn, .reorder-ghost, .example, table thead, table tbody {
   background-color: #eaecef;
   border: 1px solid #aaaaaa;
   border-radius: 0.2rem; }
@@ -218,11 +218,12 @@ input[type="text"] {
   font-size: 0.9rem; }
 
 /* shot table */
-.shot-table {
+table thead {
   padding: 1rem 0; }
-
-tbody {
+table tbody {
   background-color: white; }
+table tfoot * * {
+  border: 0; }
 
 .blue-row {
   background-color: rgba(53, 171, 169, 0.7); }

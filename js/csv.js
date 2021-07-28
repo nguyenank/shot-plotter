@@ -3,7 +3,7 @@ import {
     existsDetail,
     getCurrentShotTypes,
 } from "./details/details-functions.js";
-import { clearTable, getHeaderRow } from "./table.js";
+import { clearTable, getHeaderRow } from "./table/table-functions.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";

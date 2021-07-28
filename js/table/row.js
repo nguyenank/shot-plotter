@@ -1,4 +1,5 @@
-import { getHeaderRow } from "../table.js";
+import { addRow, getRows, getHeaderRow } from "./table-functions.js";
+
 function createRow(rowData, { id, teamId, numberCol }) {
     // add row to sessionStorage
     addRow(rowData);
@@ -143,14 +144,6 @@ function selectHandler(id, checked, teamId) {
         dotSizeHandler(id, 1);
         row.attr("class", "");
     }
-}
-
-function addRow(rowData) {
-    sessionStorage.setItem("rows", JSON.stringify([...getRows(), rowData]));
-}
-
-function getRows() {
-    return JSON.parse(sessionStorage.getItem("rows"));
 }
 
 export { createRow };

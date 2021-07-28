@@ -1,4 +1,4 @@
-import { createHeaderRow } from "../../table.js";
+import { createHeaderRow } from "../../table/table.js";
 import {
     getDetails,
     setDetails,

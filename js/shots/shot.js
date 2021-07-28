@@ -1,9 +1,8 @@
 import { createDot } from "./dot.js";
-import { createRow } from "./row.js";
-import { getHeaderRow } from "../table.js";
+import { createRow } from "../table/row.js";
+import { getHeaderRow } from "../table/table-functions.js";
 
 function setUpShots() {
-    sessionStorage.setItem("rows", JSON.stringify([]));
     sessionStorage.setItem("firstPoint", null);
     sessionStorage.setItem("shiftHeld", null);
 
