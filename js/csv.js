@@ -168,7 +168,6 @@ function processCSV(uploadId, row, swapTeamId) {
     let id = uuidv4();
 
     let specialData = {
-        id: id,
         type: row.Type,
         teamId: teamId,
         coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
@@ -188,7 +187,7 @@ function processCSV(uploadId, row, swapTeamId) {
                 .size() + 1
         );
     }
-    createShotFromData(rowData, specialData);
+    createShotFromData(id, rowData, specialData);
     return newSwapTeam;
 }
 

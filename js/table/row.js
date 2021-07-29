@@ -2,21 +2,32 @@ import {
     getRows,
     getHeaderRow,
     setStartRow,
+    getStartRow,
     setEndRow,
     setRows,
 } from "./table-functions.js";
 import { updateTableDescription } from "./table.js";
+import { cfg } from "./config-table.js";
 
-function createRow(rowData, { id, teamId, numberCol }) {
+function createRow(id, rowData, specialData) {
     // add row to sessionStorage
-    setRows([...getRows(), rowData]);
+    setRows([
+        ...getRows(),
+        { id: id, rowData: rowData, specialData: specialData },
+    ]);
     if (getRows().length == 1) {
         setStartRow(1);
     }
-    setEndRow(getRows().length);
+
+    if (getRows().length - getStartRow() < cfg.pageSize) {
+        setEndRow(getRows().length);
+        createRowFromData(id, rowData, specialData);
+    }
 
     updateTableDescription();
+}
 
+function createRowFromData(id, rowData, { teamId, numberCol }) {
     // create row
     var row = d3.select("#shot-table-body").append("tr");
 

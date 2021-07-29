@@ -46,10 +46,9 @@ function shotTypeLegend(id = "#shot-type-legend") {
             player: "",
             type: option.value,
             coords: [xOffset, 0.625 * yOffset],
-            id: `legend-${Math.round(xOffset)}`,
             legendBool: true,
         };
-        createDot(id, data);
+        createDot(id, `legend-${Math.round(xOffset)}`, data);
         xOffset += spacing;
         xOffset +=
             svg

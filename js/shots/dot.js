@@ -6,7 +6,8 @@ import { cfg } from "./config-shots.js";
 
 function createDot(
     svgId,
-    { id, type, teamId, coords, coords2, player, legendBool }
+    id,
+    { type, teamId, coords, coords2, player, legendBool }
 ) {
     var typeIndex = type
         ? _.findIndex(getCurrentShotTypes(), {

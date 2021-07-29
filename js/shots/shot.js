@@ -74,10 +74,9 @@ function createShotFromEvent(e, point1) {
 
     var columns = getHeaderRow();
     var id = uuidv4();
-    let rowData = { id: id };
+    let rowData = {};
     let specialData = {
         // data for custom specfics like color etc.
-        id: id,
         coords: point1 ? point1 : d3.pointer(e),
         coords2: point1 ? d3.pointer(e) : null,
         numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
@@ -163,13 +162,13 @@ function createShotFromEvent(e, point1) {
         }
     }
 
-    createDot("#normal", specialData);
-    createRow(rowData, specialData);
+    createDot("#normal", id, specialData);
+    createRow(id, rowData, specialData);
 }
 
 function createShotFromData(rowData, specialData) {
-    createDot("#normal", specialData);
-    createRow(rowData, specialData);
+    createDot("#normal", id, specialData);
+    createRow(id, rowData, specialData);
 }
 
 export { setUpShots, createShotFromData };
