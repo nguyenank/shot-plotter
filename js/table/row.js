@@ -1,8 +1,21 @@
-import { addRow, getRows, getHeaderRow } from "./table-functions.js";
+import {
+    getRows,
+    getHeaderRow,
+    setStartRow,
+    setEndRow,
+    setRows,
+} from "./table-functions.js";
+import { updateTableDescription } from "./table.js";
 
 function createRow(rowData, { id, teamId, numberCol }) {
     // add row to sessionStorage
-    addRow(rowData);
+    setRows([...getRows(), rowData]);
+    if (getRows().length == 1) {
+        setStartRow(1);
+    }
+    setEndRow(getRows().length);
+
+    updateTableDescription();
 
     // create row
     var row = d3.select("#shot-table-body").append("tr");
@@ -81,6 +94,11 @@ function dotSizeHandler(id, scale) {
 
 function deleteHandler(id) {
     event.stopPropagation();
+
+    setRows(_.differenceBy(getRows(), [{ id: id }], "id"));
+    setEndRow(getRows().length);
+    updateTableDescription();
+
     d3.select("#shot-table-body")
         .select("[id='" + id + "']")
         .remove();

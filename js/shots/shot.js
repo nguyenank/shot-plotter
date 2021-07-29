@@ -1,6 +1,12 @@
 import { createDot } from "./dot.js";
 import { createRow } from "../table/row.js";
-import { getHeaderRow } from "../table/table-functions.js";
+import {
+    getHeaderRow,
+    setStartRow,
+    getStartRow,
+    setEndRow,
+    getEndRow,
+} from "../table/table-functions.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
