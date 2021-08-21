@@ -8,6 +8,8 @@ import {
     getStartRow,
     getEndRow,
 } from "./table-functions.js";
+import { createRowFromData } from "./row.js";
+import { cfg } from "./config-table.js";
 
 function setUpTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
@@ -34,21 +36,70 @@ function setUpTable() {
         .select("tr")
         .attr("class", "small-text");
 
-    var t = footerRow
+    var tableWidth = getHeaderRow().length;
+    footerRow
         .append("td")
-        .attr("colspan", getHeaderRow().length)
+        .attr("colspan", tableWidth / 2)
         .attr("id", "table-description");
+    var nav = footerRow
+        .append("td")
+        .attr(
+            "colspan",
+            tableWidth % 2 == 0 ? tableWidth / 2 : tableWidth / 2 + 1
+        )
+        .attr("id", "table-navigation");
 
-    updateTableDescription();
+    updateTableFooter();
 
     setUpDeleteAllModal("#delete-all-modal");
+}
+
+function updateTableFooter() {
+    updateTableDescription();
+    updateTableNavigation();
+}
+
+function updateTableNavigation(id = "#table-navigation") {
+    var nav = d3.select(id);
+    nav.selectAll("*").remove();
+    if (getStartRow() > 1) {
+        let b = nav.append("button").attr("class", "grey-btn");
+        b.append("i").attr("class", "bi bi-chevron-double-left");
+        b.append("span").text("Prev");
+
+        b.on("click", function() {
+            setStartRow(getStartRow() - cfg.pageSize);
+            setEndRow(getStartRow() + cfg.pageSize - 1);
+            createPage(getStartRow(), getEndRow());
+            updateTableFooter();
+        });
+    }
+    nav.append("span").text(
+        `  Page ${parseInt((getStartRow() - 1) / cfg.pageSize) + 1}  `
+    );
+    if (getRows().length !== parseInt(getEndRow())) {
+        let b = nav.append("button").attr("class", "grey-btn");
+        b.append("span").text("Next");
+        b.append("i").attr("class", "bi bi-chevron-double-right");
+
+        b.on("click", function() {
+            let end =
+                getEndRow() + cfg.pageSize < getRows().length
+                    ? getEndRow() + cfg.pageSize
+                    : getRows().length;
+            setStartRow(getStartRow() + cfg.pageSize);
+            setEndRow(end);
+            createPage(getStartRow(), end);
+            updateTableFooter();
+        });
+    }
 }
 
 function updateTableDescription(id = "#table-description") {
     let totalRowCount = getRows().length;
     let startRow = d3
         .select(id)
-        .attr("colspan", getHeaderRow().length)
+        .attr("colspan", getHeaderRow().length / 2)
         .text(
             `Displaying ${getStartRow()} - ${getEndRow()} of ${totalRowCount} rows.`
         );
@@ -85,4 +136,16 @@ function createHeaderRow(details) {
         });
 }
 
-export { setUpTable, createHeaderRow, updateTableDescription };
+function createPage(startRow, endRow) {
+    d3.select("#shot-table-body")
+        .selectAll("tr")
+        .remove();
+
+    var rows = getRows().slice(startRow - 1, endRow);
+
+    for (let { id, rowData, specialData } of rows) {
+        createRowFromData(id, rowData, specialData);
+    }
+}
+
+export { setUpTable, createHeaderRow, updateTableFooter, createPage };

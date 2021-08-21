@@ -1,4 +1,4 @@
-import { updateTableDescription } from "./table.js";
+import { updateTableFooter } from "./table.js";
 function addRow(rowData) {
     sessionStorage.setItem("rows", JSON.stringify([...getRows(), rowData]));
 }
@@ -12,11 +12,11 @@ function getRows() {
 }
 
 function getStartRow() {
-    return sessionStorage.getItem("startRow");
+    return parseInt(sessionStorage.getItem("startRow"));
 }
 
 function getEndRow() {
-    return sessionStorage.getItem("endRow");
+    return parseInt(sessionStorage.getItem("endRow"));
 }
 
 function setStartRow(i) {
@@ -44,7 +44,7 @@ function clearTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
     setStartRow(0);
     setEndRow(0);
-    updateTableDescription();
+    updateTableFooter();
 
     d3.select("#shot-table-body")
         .selectAll("tr")

@@ -222,6 +222,11 @@ table thead {
   padding: 1rem 0; }
 table tbody {
   background-color: white; }
+table tfoot #table-navigation {
+  text-align: right; }
+  table tfoot #table-navigation button,
+  table tfoot #table-navigation span {
+    padding: 0 0.25em; }
 table tfoot * * {
   border: 0; }
 

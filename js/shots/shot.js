@@ -6,6 +6,7 @@ import {
     getStartRow,
     setEndRow,
     getEndRow,
+    getRows,
 } from "../table/table-functions.js";
 
 function setUpShots() {
@@ -126,11 +127,7 @@ function createShotFromEvent(e, point1) {
                     .property("value");
                 break;
             case "shot-number":
-                rowData[col.id] =
-                    d3
-                        .select("#shot-table-body")
-                        .selectAll("tr")
-                        .size() + 1;
+                rowData[col.id] = parseInt(getEndRow()) + 1;
                 break;
             case "x":
                 if (col.id === "x2") {

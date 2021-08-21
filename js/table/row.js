@@ -4,9 +4,10 @@ import {
     setStartRow,
     getStartRow,
     setEndRow,
+    getEndRow,
     setRows,
 } from "./table-functions.js";
-import { updateTableDescription } from "./table.js";
+import { updateTableFooter, createPage } from "./table.js";
 import { cfg } from "./config-table.js";
 
 function createRow(id, rowData, specialData) {
@@ -22,9 +23,18 @@ function createRow(id, rowData, specialData) {
     if (getRows().length - getStartRow() < cfg.pageSize) {
         setEndRow(getRows().length);
         createRowFromData(id, rowData, specialData);
+    } else {
+        setStartRow(getRows().length);
+        setEndRow(getRows().length);
+
+        d3.select("#shot-table-body")
+            .selectAll("tr")
+            .remove();
+
+        createRowFromData(id, rowData, specialData);
     }
 
-    updateTableDescription();
+    updateTableFooter();
 }
 
 function createRowFromData(id, rowData, { teamId, numberCol }) {
@@ -105,10 +115,19 @@ function dotSizeHandler(id, scale) {
 
 function deleteHandler(id) {
     event.stopPropagation();
-
-    setRows(_.differenceBy(getRows(), [{ id: id }], "id"));
+    setRows(
+        _.differenceBy(getRows(), [{ id: id }], "id").map(function(x, i) {
+            x.rowData["shot-number"] = i + 1;
+            return x;
+        })
+    );
     setEndRow(getRows().length);
-    updateTableDescription();
+
+    if (getStartRow() > getEndRow()) {
+        // if all points on a page are deleted, switch back to the previous page
+        setStartRow(getStartRow() - cfg.pageSize);
+    }
+    updateTableFooter();
 
     d3.select("#shot-table-body")
         .select("[id='" + id + "']")
@@ -116,24 +135,8 @@ function deleteHandler(id) {
     d3.select("#dots")
         .select("[id='" + id + "']")
         .remove();
-    d3.select("#shot-table-body")
-        .selectAll("tr")
-        .each(function(d, i) {
-            d3.select(this)
-                .select(".shot-number")
-                .text(i + 1);
-        });
-    d3.select("#shot-table-body")
-        .selectAll("tr")
-        .each(function(d, i) {
-            d3.select(this)
-                .select(".shot-number")
-                .text(i + 1);
-            var id = d3.select(this).attr("id");
-            d3.select("#dots")
-                .select("[id='" + id + "']")
-                .attr("shot-number", i + 1);
-        });
+
+    createPage(getStartRow(), getEndRow());
 }
 
 function selectHandler(id, checked, teamId) {
@@ -175,4 +178,4 @@ function selectHandler(id, checked, teamId) {
     }
 }
 
-export { createRow };
+export { createRow, createRowFromData };
