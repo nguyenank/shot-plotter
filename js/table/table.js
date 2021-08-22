@@ -143,8 +143,8 @@ function createPage(startRow, endRow) {
 
     var rows = getRows().slice(startRow - 1, endRow);
 
-    for (let { id, rowData, specialData } of rows) {
-        createRowFromData(id, rowData, specialData);
+    for (let { id, rowData, specialData, selected } of rows) {
+        createRowFromData(id, rowData, specialData, selected);
     }
 }
 

@@ -14,7 +14,7 @@ function createRow(id, rowData, specialData) {
     // add row to sessionStorage
     setRows([
         ...getRows(),
-        { id: id, rowData: rowData, specialData: specialData },
+        { id: id, rowData: rowData, specialData: specialData, selected: false },
     ]);
     if (getRows().length == 1) {
         setStartRow(1);
@@ -22,7 +22,7 @@ function createRow(id, rowData, specialData) {
 
     if (getRows().length - getStartRow() < cfg.pageSize) {
         setEndRow(getRows().length);
-        createRowFromData(id, rowData, specialData);
+        createRowFromData(id, rowData, specialData, false);
     } else {
         setStartRow(getRows().length);
         setEndRow(getRows().length);
@@ -31,13 +31,13 @@ function createRow(id, rowData, specialData) {
             .selectAll("tr")
             .remove();
 
-        createRowFromData(id, rowData, specialData);
+        createRowFromData(id, rowData, specialData, false);
     }
 
     updateTableFooter();
 }
 
-function createRowFromData(id, rowData, { teamId, numberCol }) {
+function createRowFromData(id, rowData, { teamId, numberCol }, selected) {
     // create row
     var row = d3.select("#shot-table-body").append("tr");
 
@@ -50,6 +50,14 @@ function createRowFromData(id, rowData, { teamId, numberCol }) {
         .attr("id", id)
         .on("change", function() {
             var checked = d3.select(this).property("checked");
+            setRows(
+                getRows().map(function(row) {
+                    if (row.id === id) {
+                        row.selected = checked;
+                    }
+                    return row;
+                })
+            );
             selectHandler(id, checked, teamId ? teamId : "#grey");
         });
 
@@ -76,6 +84,12 @@ function createRowFromData(id, rowData, { teamId, numberCol }) {
         .on("click", () => deleteHandler(id));
     row.attr("id", id);
     row.attr("selected", false);
+
+    if (selected) {
+        row.select("input")
+            .property("checked", true)
+            .dispatch("change");
+    }
 }
 
 function dotSizeHandler(id, scale) {
