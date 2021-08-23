@@ -1,13 +1,6 @@
 import { createDot } from "./dot.js";
 import { createRow } from "../table/row.js";
-import {
-    getHeaderRow,
-    setStartRow,
-    getStartRow,
-    setEndRow,
-    getEndRow,
-    getRows,
-} from "../table/table-functions.js";
+import { getHeaderRow, getRows } from "../table/table-functions.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
@@ -127,7 +120,7 @@ function createShotFromEvent(e, point1) {
                     .property("value");
                 break;
             case "shot-number":
-                rowData[col.id] = parseInt(getEndRow()) + 1;
+                rowData[col.id] = getRows().length + 1;
                 break;
             case "x":
                 if (col.id === "x2") {

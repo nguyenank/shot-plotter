@@ -16,22 +16,26 @@ function createRow(id, rowData, specialData) {
         ...getRows(),
         { id: id, rowData: rowData, specialData: specialData, selected: false },
     ]);
-    if (getRows().length == 1) {
+    let numRows = getRows().length;
+    if (numRows == 1) {
+        // first row
         setStartRow(1);
     }
 
-    if (getRows().length - getStartRow() < cfg.pageSize) {
-        setEndRow(getRows().length);
+    if (numRows - getStartRow() < cfg.pageSize) {
+        // continue adding to current page
+        setEndRow(numRows);
         createRowFromData(id, rowData, specialData, false);
     } else {
-        setStartRow(getRows().length);
-        setEndRow(getRows().length);
+        // switch to last page
+        setStartRow(numRows - (numRows % cfg.pageSize) + 1);
+        setEndRow(numRows);
 
         d3.select("#shot-table-body")
             .selectAll("tr")
             .remove();
 
-        createRowFromData(id, rowData, specialData, false);
+        createPage(numRows - (numRows % cfg.pageSize) + 1, numRows);
     }
 
     updateTableFooter();
@@ -135,7 +139,9 @@ function deleteHandler(id) {
             return x;
         })
     );
-    setEndRow(getRows().length);
+    if (getEndRow() > getRows().length) {
+        setEndRow(getRows().length);
+    }
 
     if (getStartRow() > getEndRow()) {
         // if all points on a page are deleted, switch back to the previous page

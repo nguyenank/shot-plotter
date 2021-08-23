@@ -3,7 +3,7 @@ import {
     existsDetail,
     getCurrentShotTypes,
 } from "./details/details-functions.js";
-import { clearTable, getHeaderRow } from "./table/table-functions.js";
+import { clearTable, getHeaderRow, getRows } from "./table/table-functions.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
@@ -37,28 +37,29 @@ function setUpCSVDownloadUpload() {
 function downloadCSV(id) {
     // set up header row
     var csv = "";
+    var header = [];
     d3.select("#shot-table")
         .select("thead")
         .selectAll("th")
         .each(function() {
+            header.push(d3.select(this).attr("data-id"));
             let text = d3.select(this).text();
             if (text !== "" && text !== "#") {
                 csv += text + ",";
             }
         });
     csv = csv.slice(0, -1) + "\n";
+    var rows = getRows();
+    for (let row of rows) {
+        for (let col of _.compact(header)) {
+            if (col !== "shot-number") {
+                csv += escape(row.rowData[col].toString()) + ",";
+            }
+        }
+        // remove trailing comma
+        csv = csv.slice(0, -1) + "\n";
+    }
 
-    d3.select("#shot-table-body")
-        .selectAll("tr")
-        .each(function() {
-            d3.select(this)
-                .selectAll("td")
-                .each(function(d, i) {
-                    csv += escape(d3.select(this).text()) + ",";
-                });
-            // remove trailing comma
-            csv = csv.slice(0, -1) + "\n";
-        });
     csv = csv.slice(0, -1); // remove trailing new line
     var fileName = d3
         .select(id)
