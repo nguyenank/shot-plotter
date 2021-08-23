@@ -96,7 +96,19 @@ function createMainPage(id) {
         });
     let lowerOptions = mb.append("div").attr("class", "split");
 
-    let twoPoint = lowerOptions
+    let leftSide = lowerOptions.append("div");
+
+    let pageSizeField = leftSide.append("div").attr("class", "page-size-form");
+    pageSizeField
+        .append("input")
+        .attr("type", "number")
+        .attr("min", 1)
+        .attr("max", 999)
+        .attr("value", 10)
+        .attr("class", "form-control")
+        .attr("id", "page-size-field");
+    pageSizeField.append("span").text("Rows per Table Page");
+    let twoPoint = leftSide
         .append("div")
         .attr("class", "form-check form-switch");
     twoPoint

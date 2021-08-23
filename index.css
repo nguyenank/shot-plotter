@@ -54,6 +54,15 @@ ul {
   font-weight: 400; }
   .split .form-switch {
     margin-bottom: 0; }
+  .split .page-size-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem; }
+    .split .page-size-form #page-size-field {
+      width: 3rem;
+      padding: 0.1rem;
+      font-size: 0.85rem;
+      margin-right: 0.5rem; }
 
 /* shot info */
 .shot-info {
