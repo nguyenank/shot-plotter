@@ -35,6 +35,14 @@ function setNumRows(i) {
     sessionStorage.setItem("numRows", i);
 }
 
+function getRowsPerPage() {
+    return parseInt(sessionStorage.getItem("rowsPerPage"));
+}
+
+function setRowsPerPage(i) {
+    sessionStorage.setItem("rowsPerPage", i);
+}
+
 function getHeaderRow() {
     var l = [];
     d3.select("#shot-table")
@@ -80,4 +88,6 @@ export {
     setEndRow,
     getNumRows,
     setNumRows,
+    getRowsPerPage,
+    setRowsPerPage,
 };

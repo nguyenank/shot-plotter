@@ -8,6 +8,7 @@ import {
     setRows,
     getNumRows,
     setNumRows,
+    getRowsPerPage,
 } from "./table-functions.js";
 import { updateTableFooter, createPage } from "./table.js";
 import { cfg } from "./config-table.js";
@@ -27,20 +28,24 @@ function createNewRow(id, rowData, specialData) {
         setStartRow(1);
     }
 
-    if (numRows - getStartRow() < cfg.pageSize) {
+    if (numRows - getStartRow() < getRowsPerPage()) {
         // continue adding to current page
         setEndRow(numRows);
         createRowFromData(id, rowData, specialData, false);
     } else {
         // switch to last page
-        setStartRow(numRows - (numRows % cfg.pageSize) + 1);
+        let startRow =
+            getRowsPerPage() === 1
+                ? numRows
+                : numRows - (numRows % getRowsPerPage()) + 1;
+        setStartRow(startRow);
         setEndRow(numRows);
 
         d3.select("#shot-table-body")
             .selectAll("tr")
             .remove();
 
-        createPage(numRows - (numRows % cfg.pageSize) + 1, numRows);
+        createPage(startRow, numRows);
     }
 
     updateTableFooter();
@@ -147,12 +152,15 @@ function deleteHandler(id) {
     var numRows = getNumRows() - 1;
     setNumRows(numRows);
     if (getEndRow() > numRows) {
+        // end index is larger than the number of rows left
         setEndRow(numRows);
     }
-
-    if (getStartRow() > getEndRow()) {
+    if (getEndRow() === 0) {
+        // set start index to 0
+        setStartRow(0);
+    } else if (getStartRow() > getEndRow()) {
         // if all points on a page are deleted, switch back to the previous page
-        setStartRow(getStartRow() - cfg.pageSize);
+        setStartRow(getStartRow() - getRowsPerPage());
     }
     updateTableFooter();
 

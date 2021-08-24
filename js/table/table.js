@@ -9,6 +9,8 @@ import {
     getEndRow,
     setNumRows,
     getNumRows,
+    setRowsPerPage,
+    getRowsPerPage,
 } from "./table-functions.js";
 import { createRowFromData } from "./row.js";
 import { cfg } from "./config-table.js";
@@ -18,6 +20,7 @@ function setUpTable() {
     setStartRow(0);
     setEndRow(0);
     setNumRows(0);
+    setRowsPerPage(cfg.pageSize);
 
     d3.select("#shot-table")
         .append("thead")
@@ -72,14 +75,14 @@ function updateTableNavigation(id = "#table-navigation") {
         b.append("span").text("Prev");
 
         b.on("click", function() {
-            setStartRow(getStartRow() - cfg.pageSize);
-            setEndRow(getStartRow() + cfg.pageSize - 1);
+            setStartRow(getStartRow() - getRowsPerPage());
+            setEndRow(getStartRow() + getRowsPerPage() - 1);
             createPage(getStartRow(), getEndRow());
             updateTableFooter();
         });
     }
     nav.append("span").text(
-        `  Page ${parseInt((getStartRow() - 1) / cfg.pageSize) + 1}  `
+        `  Page ${parseInt((getStartRow() - 1) / getRowsPerPage()) + 1}  `
     );
     if (getNumRows() !== getEndRow()) {
         // exists another page after; add next button
@@ -89,10 +92,10 @@ function updateTableNavigation(id = "#table-navigation") {
 
         b.on("click", function() {
             let end =
-                getEndRow() + cfg.pageSize < getNumRows()
-                    ? getEndRow() + cfg.pageSize
+                getEndRow() + getRowsPerPage() < getNumRows()
+                    ? getEndRow() + getRowsPerPage()
                     : getNumRows();
-            setStartRow(getStartRow() + cfg.pageSize);
+            setStartRow(getStartRow() + getRowsPerPage());
             setEndRow(end);
             createPage(getStartRow(), end);
             updateTableFooter();

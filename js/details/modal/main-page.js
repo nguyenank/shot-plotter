@@ -1,4 +1,5 @@
 import { createHeaderRow } from "../../table/table.js";
+import { setRowsPerPage } from "../../table/table-functions.js";
 import {
     getDetails,
     setDetails,
@@ -98,7 +99,9 @@ function createMainPage(id) {
 
     let leftSide = lowerOptions.append("div");
 
-    let pageSizeField = leftSide.append("div").attr("class", "page-size-form");
+    let pageSizeField = leftSide
+        .append("div")
+        .attr("class", "page-size-form position-relative");
     pageSizeField
         .append("input")
         .attr("type", "number")
@@ -108,6 +111,10 @@ function createMainPage(id) {
         .attr("class", "form-control")
         .attr("id", "page-size-field");
     pageSizeField.append("span").text("Rows per Table Page");
+    pageSizeField
+        .append("div")
+        .attr("class", "invalid-tooltip")
+        .text("Must be an integer between 1 and 999 (inclusive).");
     let twoPoint = leftSide
         .append("div")
         .attr("class", "form-check form-switch");
@@ -257,6 +264,19 @@ function createReorderColumns(id = "#reorder") {
 
 function saveChanges(e) {
     twoPointFunctionality();
+
+    var pageSize = d3.select("#page-size-field").property("value");
+
+    if (
+        !Number.isInteger(parseInt(pageSize)) ||
+        pageSize < 1 ||
+        pageSize > 999
+    ) {
+        d3.select("#page-size-field").attr("class", "form-control is-invalid");
+        return;
+    }
+    d3.select("#page-size-field").attr("class", "form-control");
+    setRowsPerPage(pageSize);
 
     var titles = [];
     d3.select("#reorder-columns")
