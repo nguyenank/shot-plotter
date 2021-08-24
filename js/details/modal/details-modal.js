@@ -21,7 +21,7 @@ function setUpDetailsModal(id) {
     var h = m.append("div").attr("class", "modal-header");
     h.append("h5")
         .attr("class", "modal-title")
-        .text("Custom Settings");
+        .text("Customize Setup");
     h.append("button")
         .attr("type", "button")
         .attr("class", "btn-close")
