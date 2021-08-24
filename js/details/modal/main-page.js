@@ -26,57 +26,26 @@ function createMainPage(id) {
         .append("div")
         .attr("id", "main-page-mb")
         .attr("class", "modal-body");
+    mb.append("p").text(
+        "Here, you can customize what columns appear and in what order, as well as create columns of your own. You can also modify the number of rows per page of the table, enable two-coordinate shots, and download your current setup, including any customization made here & any entered/selected values in the details panel, to easily upload and recreate later."
+    );
+    mb.append("div")
+        .attr("class", "center")
+        .append("button")
+        .attr("class", "white-btn small-text")
+        .text("More Info")
+        .on("click", () => {
+            $("#explain-text").collapse("toggle");
+        });
+    var et = mb
+        .append("div")
+        .attr("id", "explain-text")
+        .attr("class", "collapse");
 
     // explanation text
-    mb.append("p").text(
-        "You can customize what columns appear in the table and in the details panel, and in what order."
-    );
+    createExplainText();
 
-    mb.append("p").text(
-        "To reorder columns, click and drag them into the desired order."
-    );
-
-    var visText = mb
-        .append("p")
-        .text("To toggle if a column is visible, click on the eye (");
-    visText.append("i").attr("class", "bi bi-eye-fill");
-    visText.append("span").text("/");
-    visText.append("i").attr("class", "bi bi-eye-slash-fill");
-    visText.append("span").text("). An eye (");
-    visText.append("i").attr("class", "bi bi-eye-fill");
-    visText.append("span").text(") indicates the column is visible,");
-    visText.append("span").text(" while an eye with a slash through it (");
-    visText.append("i").attr("class", "bi bi-eye-slash-fill");
-    visText
-        .append("span")
-        .text(
-            ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv for shots."
-        );
-    var deleteText = mb.append("p").text("The trash can (");
-    deleteText.append("i").attr("class", "bi bi-trash-fill");
-    deleteText
-        .append("span")
-        .text(
-            ") allows you to delete a column. Deleted columns disappear from the reordering and the details panel, and will not be present when downloading the .csv for shots."
-        );
-
-    mb.append("p").text(
-        "The X and Y coordinate columns cannot be hidden or deleted."
-    );
-    var twoPointText = mb
-        .append("p")
-        .text(
-            "You can also enable switching between 1-coordinate and 2-coordinate shot. When enabled, you can hold down the "
-        );
-    twoPointText
-        .append("span")
-        .text("Shift")
-        .attr("class", "bold");
-    twoPointText
-        .append("span")
-        .text(
-            " button and click two points to create a 2-coordinate shot, or you can switch between 1 and 2 coordinate shots using the toggle above the rink."
-        );
+    mb.append("hr");
 
     // reorder columns
     mb.append("div")
@@ -110,7 +79,7 @@ function createMainPage(id) {
         .attr("value", 10)
         .attr("class", "form-control")
         .attr("id", "page-size-field");
-    pageSizeField.append("span").text("Rows per Table Page");
+    pageSizeField.append("span").text("Rows Per Table Page");
     pageSizeField
         .append("div")
         .attr("class", "invalid-tooltip")
@@ -376,6 +345,76 @@ function twoPointFunctionality() {
             .selectAll("*")
             .remove();
     }
+}
+
+function createExplainText(id = "#explain-text") {
+    var et = d3.select(id);
+    et.append("hr");
+
+    et.append("p").text(
+        "To reorder columns, click and drag them into the desired order."
+    );
+
+    var visText = et
+        .append("p")
+        .text("To toggle if a column is visible, click on the eye (");
+    visText.append("i").attr("class", "bi bi-eye-fill");
+    visText.append("span").text("/");
+    visText.append("i").attr("class", "bi bi-eye-slash-fill");
+    visText.append("span").text("). An eye (");
+    visText.append("i").attr("class", "bi bi-eye-fill");
+    visText.append("span").text(") indicates the column is visible,");
+    visText.append("span").text(" while an eye with a slash through it (");
+    visText.append("i").attr("class", "bi bi-eye-slash-fill");
+    visText
+        .append("span")
+        .text(
+            ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv for shots."
+        );
+    var deleteText = et.append("p").text("The trash can (");
+    deleteText.append("i").attr("class", "bi bi-trash-fill");
+    deleteText
+        .append("span")
+        .text(
+            ") allows you to delete a column. Deleted columns disappear from the reordering and the details panel, and will not be present when downloading the .csv for shots."
+        );
+
+    et.append("p").text(
+        "The X and Y coordinate columns cannot be hidden or deleted."
+    );
+    et.append("p").text(
+        "You can change the number of rows that appear on each page of the table; the number must be between 1-999, inclusive."
+    );
+
+    var twoPointText = et
+        .append("p")
+        .text(
+            "You can also enable switching between 1-coordinate and 2-coordinate shot. When enabled, you can hold down the "
+        );
+    twoPointText
+        .append("span")
+        .text("Shift")
+        .attr("class", "bold");
+    twoPointText
+        .append("span")
+        .text(
+            " button and click two points to create a 2-coordinate shot, or you can switch between 1 and 2 coordinate shots using the toggle above the rink. 2-coordinate shots will add more coordinate columns: X2 and Y2. X and Y are the coordinates for the first point, and X2 and Y2 are the coordinates for the second point. If a 1-coordinate shot is created while 2-coordinate shots are enabled, X2 and Y2 will be empty."
+        );
+
+    et.append("p").text(
+        "You can save your current setup (which includes: column order, any created columns, whether 2 coordinate shot mode is enabled, number of rows per table page, & any values currently entered/selected in the details panel) as a .json. That .json file can later be uploaded to recreate that setup."
+    );
+
+    var github = et
+        .append("p")
+        .text(
+            "For even more info about all that can be done here, and what can be done in the app in general, visit the "
+        );
+    github
+        .append("a")
+        .attr("href", "https://github.com/nguyenank/shot-plotter")
+        .text("GitHub");
+    github.append("span").text(" page.");
 }
 
 export { createMainPage, createReorderColumns };
