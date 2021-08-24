@@ -7,6 +7,8 @@ import {
     setEndRow,
     getStartRow,
     getEndRow,
+    setNumRows,
+    getNumRows,
 } from "./table-functions.js";
 import { createRowFromData } from "./row.js";
 import { cfg } from "./config-table.js";
@@ -15,6 +17,7 @@ function setUpTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
     setStartRow(0);
     setEndRow(0);
+    setNumRows(0);
 
     d3.select("#shot-table")
         .append("thead")
@@ -63,6 +66,7 @@ function updateTableNavigation(id = "#table-navigation") {
     var nav = d3.select(id);
     nav.selectAll("*").remove();
     if (getStartRow() > 1) {
+        // exists a page before; add prev button
         let b = nav.append("button").attr("class", "grey-btn");
         b.append("i").attr("class", "bi bi-chevron-double-left");
         b.append("span").text("Prev");
@@ -77,16 +81,17 @@ function updateTableNavigation(id = "#table-navigation") {
     nav.append("span").text(
         `  Page ${parseInt((getStartRow() - 1) / cfg.pageSize) + 1}  `
     );
-    if (getRows().length !== parseInt(getEndRow())) {
+    if (getNumRows() !== getEndRow()) {
+        // exists another page after; add next button
         let b = nav.append("button").attr("class", "grey-btn");
         b.append("span").text("Next");
         b.append("i").attr("class", "bi bi-chevron-double-right");
 
         b.on("click", function() {
             let end =
-                getEndRow() + cfg.pageSize < getRows().length
+                getEndRow() + cfg.pageSize < getNumRows()
                     ? getEndRow() + cfg.pageSize
-                    : getRows().length;
+                    : getNumRows();
             setStartRow(getStartRow() + cfg.pageSize);
             setEndRow(end);
             createPage(getStartRow(), end);
@@ -96,7 +101,7 @@ function updateTableNavigation(id = "#table-navigation") {
 }
 
 function updateTableDescription(id = "#table-description") {
-    let totalRowCount = getRows().length;
+    let totalRowCount = getNumRows();
     let startRow = d3
         .select(id)
         .attr("colspan", getHeaderRow().length / 2)

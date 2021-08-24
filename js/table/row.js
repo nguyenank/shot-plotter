@@ -6,17 +6,22 @@ import {
     setEndRow,
     getEndRow,
     setRows,
+    getNumRows,
+    setNumRows,
 } from "./table-functions.js";
 import { updateTableFooter, createPage } from "./table.js";
 import { cfg } from "./config-table.js";
 
-function createRow(id, rowData, specialData) {
+function createNewRow(id, rowData, specialData) {
     // add row to sessionStorage
     setRows([
         ...getRows(),
         { id: id, rowData: rowData, specialData: specialData, selected: false },
     ]);
-    let numRows = getRows().length;
+
+    var numRows = getNumRows() + 1;
+    setNumRows(numRows);
+
     if (numRows == 1) {
         // first row
         setStartRow(1);
@@ -139,8 +144,10 @@ function deleteHandler(id) {
             return x;
         })
     );
-    if (getEndRow() > getRows().length) {
-        setEndRow(getRows().length);
+    var numRows = getNumRows() - 1;
+    setNumRows(numRows);
+    if (getEndRow() > numRows) {
+        setEndRow(numRows);
     }
 
     if (getStartRow() > getEndRow()) {
@@ -198,4 +205,4 @@ function selectHandler(id, checked, teamId) {
     }
 }
 
-export { createRow, createRowFromData };
+export { createNewRow, createRowFromData };

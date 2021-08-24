@@ -15,16 +15,24 @@ function getStartRow() {
     return parseInt(sessionStorage.getItem("startRow"));
 }
 
-function getEndRow() {
-    return parseInt(sessionStorage.getItem("endRow"));
-}
-
 function setStartRow(i) {
     sessionStorage.setItem("startRow", i);
 }
 
+function getEndRow() {
+    return parseInt(sessionStorage.getItem("endRow"));
+}
+
 function setEndRow(i) {
     sessionStorage.setItem("endRow", i);
+}
+
+function getNumRows() {
+    return parseInt(sessionStorage.getItem("numRows"));
+}
+
+function setNumRows(i) {
+    sessionStorage.setItem("numRows", i);
 }
 
 function getHeaderRow() {
@@ -44,6 +52,7 @@ function clearTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
     setStartRow(0);
     setEndRow(0);
+    setNumRows(0);
     updateTableFooter();
 
     d3.select("#shot-table-body")
@@ -69,4 +78,6 @@ export {
     getEndRow,
     setStartRow,
     setEndRow,
+    getNumRows,
+    setNumRows,
 };
