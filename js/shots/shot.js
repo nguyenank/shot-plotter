@@ -156,7 +156,7 @@ function createShotFromEvent(e, point1) {
     createNewRow(id, rowData, specialData);
 }
 
-function createShotFromData(rowData, specialData) {
+function createShotFromData(id, rowData, specialData) {
     createDot("#normal", id, specialData);
     createNewRow(id, rowData, specialData);
 }

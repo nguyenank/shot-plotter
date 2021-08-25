@@ -3,7 +3,12 @@ import {
     existsDetail,
     getCurrentShotTypes,
 } from "./details/details-functions.js";
-import { clearTable, getHeaderRow, getRows } from "./table/table-functions.js";
+import {
+    clearTable,
+    getHeaderRow,
+    getRows,
+    getNumRows,
+} from "./table/table-functions.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
@@ -175,19 +180,17 @@ function processCSV(uploadId, row, swapTeamId) {
         player: row.Player,
         numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
     };
-    let rowData = Object.values(row);
 
-    if (specialData.numberCol !== -2) {
-        // add #
-        rowData.splice(
-            specialData.numberCol,
-            0,
-            d3
-                .select("#shot-table-body")
-                .selectAll("tr")
-                .size() + 1
-        );
-    }
+    let headerIds = _.without(
+        _.compact(getHeaderRow().map(x => x.id)),
+        "shot-number"
+    );
+    let rowData =
+        specialData.numberCol !== -2 ? { "shot-number": getNumRows() + 1 } : {};
+    _.forEach(_.zip(headerIds, Object.values(row)), function([header, value]) {
+        rowData[header] = value;
+    });
+
     createShotFromData(id, rowData, specialData);
     return newSwapTeam;
 }
