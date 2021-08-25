@@ -6,7 +6,7 @@ A [web application](https://shot-plotter.netlify.app/) for plotting hockey shots
 
 The web application is primarily built using D3.js.
 
-##### 07/02/2021: You can now plot 2-coordinate shots! Enable 2-coordinate shots in the detail customization section, and then either hold Shift and click on the rink or switch between 1- and 2-coordinate mode using the switch above the rink.
+##### 08/28/2021: The table now has pages! By default, the last page always see the last 10 recorded shots, and one can switch between pages to see the other shots. The number of shots per page can be customized using the "Customize Setup" button; the explanation for the custom setup interface has also been cleaned up.
 
 ### How to Use and Additional Information
 
@@ -24,9 +24,11 @@ The type of shot can be specified. There are four default options: shot, goal, b
 
 Details logged for each shot can be customized by clicking on the _Customize Details_ button at the bottom of the details panel. Details can only be customized when there are no shots recorded.
 
-##### Customizing Details
+##### Customizing Setup
 
-Clicking the _Customize Details_ button will bring up a modal with a list of the current details. Drag-and-drop detail names to reorder them. Click on the eye icon to toggle whether it is visible. Click on the trash can icon to delete details. For created details, click on the pencil-in-a-square icon to edit those details. Reordering details changes their position in both the details panel and the table. The _X_ and _Y_ details cannot be hidden or deleted.
+Clicking the _Customize Setup_ button will bring up a modal with a list of the current details. Drag-and-drop detail names to reorder them. Click on the eye icon to toggle whether it is visible. Click on the trash can icon to delete details. For created details, click on the pencil-in-a-square icon to edit those details. Reordering details changes their position in both the details panel and the table. The _X_ and _Y_ details cannot be hidden or deleted.
+
+The default number of shots per page can be modified by changing the number before the text _Rows Per Table Page_. The default number is 10; the number must be an integer between 1 and 999 (inclusive).
 
 Using the _Enable 2-Coordinate Shots_ toggle, the ability to have 2-coordinate shots can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted.
 
@@ -59,6 +61,8 @@ The rink size is not pinned to the window size. This allows you to zoom in and p
 #### Table
 
 The table logs the information for each shot, as well as the row number of the shot in the table. Shots can be highlighted by clicking on the check box for the appropriate row. This will highlight the row in the matching team color, and both enlarge the dot on the rink and move it to the front if it was previously covered by other dots. Multiple shots can be highlighted at once. Shots can be deleted by clicking on the trash can in the appropriate row. All shots can be deleted by clicking on the trash can in the header of the table; a prompt will confirm this choice.
+
+The table, by default, shows the last page, which has the last 10 shots recorded. Pages can be navigated using the _Prev_(ious) and _Next_ buttons at the lower-right of the table. The currently shown shots and the total number of shots recorded can be seen in the bottom-left of the table.
 
 #### Download/Upload Table
 
