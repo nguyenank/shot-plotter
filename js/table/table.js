@@ -75,14 +75,18 @@ function updateTableNavigation(id = "#table-navigation") {
         b.append("span").text("Prev");
 
         b.on("click", function() {
-            setStartRow(getStartRow() - getRowsPerPage());
-            setEndRow(getStartRow() + getRowsPerPage() - 1);
+            setStartRow(
+                getStartRow() - getRowsPerPage() < 1
+                    ? 1
+                    : getStartRow() - getRowsPerPage()
+            );
+            setEndRow(getEndRow() - getRowsPerPage());
             createPage(getStartRow(), getEndRow());
             updateTableFooter();
         });
     }
     nav.append("span").text(
-        `  Page ${parseInt((getStartRow() - 1) / getRowsPerPage()) + 1}  `
+        `  Page ${parseInt((getEndRow() - 1) / getRowsPerPage()) + 1}  `
     );
     if (getNumRows() !== getEndRow()) {
         // exists another page after; add next button
@@ -95,7 +99,7 @@ function updateTableNavigation(id = "#table-navigation") {
                 getEndRow() + getRowsPerPage() < getNumRows()
                     ? getEndRow() + getRowsPerPage()
                     : getNumRows();
-            setStartRow(getStartRow() + getRowsPerPage());
+            setStartRow(getEndRow() + 1);
             setEndRow(end);
             createPage(getStartRow(), end);
             updateTableFooter();
