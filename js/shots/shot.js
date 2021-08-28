@@ -38,7 +38,7 @@ function setUpShots() {
                           .map(parseFloat);
             if (shiftHeld === "true" && firstPoint === null) {
                 sessionStorage.setItem("firstPoint", d3.pointer(e));
-                createDot("#ghost", {
+                createDot("#ghost", "ghost-dot", {
                     id: "ghost-dot",
                     type: d3.select("#shot-type").empty()
                         ? null
