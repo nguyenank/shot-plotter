@@ -123,6 +123,8 @@ function createMainPage(id) {
         .on("click", function() {
             setDetails(getDefaultDetails());
             d3.select("#two-point-enable").property("checked", false);
+            // TODO: abstract-ify this to pull from config
+            d3.select("#page-size-fied").property("value", 10);
             createReorderColumns("#reorder");
         });
     // footer
