@@ -6,7 +6,8 @@ import { cfg } from "./config-shots.js";
 
 function createDot(
     svgId,
-    { id, type, teamId, coords, coords2, player, legendBool }
+    id,
+    { type, teamId, coords, coords2, player, legendBool }
 ) {
     var typeIndex = type
         ? _.findIndex(getCurrentShotTypes(), {
@@ -23,14 +24,7 @@ function createDot(
     let g = d3
         .select(svgId)
         .append("g")
-        .attr("id", id)
-        .attr(
-            "shot-number",
-            d3
-                .select("#shot-table-body")
-                .selectAll("tr")
-                .size()
-        );
+        .attr("id", id);
     if (coords2) {
         let halfcoords = [
             Math.round((coords[0] + coords2[0]) / 2),

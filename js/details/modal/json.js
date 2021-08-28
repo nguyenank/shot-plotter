@@ -8,7 +8,7 @@ import { createReorderColumns } from "./main-page.js";
 
 function setUpJSONDownloadUpload(id) {
     // Custom Filename
-    downloadArea(id, "custom-details", () => downloadJSON(id), ".json");
+    downloadArea(id, "custom-setup", () => downloadJSON(id), ".json");
     uploadArea(
         id,
         "json-upload",
@@ -30,11 +30,11 @@ function downloadJSON(id) {
                 .attr("placeholder") + ".json";
     }
     saveCurrentDetailSetup();
-    download(
-        JSON.stringify(getDetails(), null, 2),
-        fileName,
-        "application/json"
-    );
+    var json = {
+        details: getDetails(),
+        rowsPerPage: d3.select("#page-size-field").property("value"),
+    };
+    download(JSON.stringify(json, null, 2), fileName, "application/json");
 }
 
 function uploadJSON(id, uploadId, e) {
@@ -51,7 +51,20 @@ function uploadJSON(id, uploadId, e) {
                 .property("value", "");
             // TODO: some actual input sanitization
             f.text().then(function(text) {
-                let details = JSON.parse(text);
+                let json = JSON.parse(text);
+                let details;
+                if (Array.isArray(json)) {
+                    // old version
+                    details = json;
+                } else {
+                    // new version
+                    details = json.details;
+                    d3.select("#page-size-field").property(
+                        "value",
+                        json.rowsPerPage
+                    );
+                }
+
                 setDetails(details);
                 createReorderColumns("#reorder");
                 if (_.find(details, { id: "x2" })) {

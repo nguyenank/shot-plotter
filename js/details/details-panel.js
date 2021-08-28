@@ -113,7 +113,7 @@ function customizeButton(id) {
     d.append("button")
         .attr("class", "form-control customize-btn white-btn")
         .attr("id", "customize-btn")
-        .text("Customize Shot Details")
+        .text("Customize Setup")
         .on("click", e => {
             if (
                 d3

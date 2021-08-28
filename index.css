@@ -1,4 +1,4 @@
-.white-btn, .shot-info, .grey-btn, .reorder-ghost, .example, .shot-table {
+.white-btn, .shot-info, .grey-btn, .reorder-ghost, .example, table thead, table tbody {
   background-color: #eaecef;
   border: 1px solid #aaaaaa;
   border-radius: 0.2rem; }
@@ -54,6 +54,15 @@ ul {
   font-weight: 400; }
   .split .form-switch {
     margin-bottom: 0; }
+  .split .page-size-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem; }
+    .split .page-size-form #page-size-field {
+      width: 3rem;
+      padding: 0.1rem;
+      font-size: 0.85rem;
+      margin-right: 0.5rem; }
 
 /* shot info */
 .shot-info {
@@ -218,11 +227,17 @@ input[type="text"] {
   font-size: 0.9rem; }
 
 /* shot table */
-.shot-table {
+table thead {
   padding: 1rem 0; }
-
-tbody {
+table tbody {
   background-color: white; }
+table tfoot #table-navigation {
+  text-align: right; }
+  table tfoot #table-navigation button,
+  table tfoot #table-navigation span {
+    padding: 0 0.25em; }
+table tfoot * * {
+  border: 0; }
 
 .blue-row {
   background-color: rgba(53, 171, 169, 0.7); }

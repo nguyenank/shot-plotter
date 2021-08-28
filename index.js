@@ -2,7 +2,7 @@ import { setUpRink } from "./js/rink.js";
 import { setUpDetailsPanel } from "./js/details/details-panel.js";
 import { setDetails, getDetails } from "./js/details/details-functions.js";
 import { setUpShots } from "./js/shots/shot.js";
-import { setUpTable } from "./js/table.js";
+import { setUpTable } from "./js/table/table.js";
 import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";

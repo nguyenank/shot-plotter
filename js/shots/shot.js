@@ -1,6 +1,6 @@
 import { createDot } from "./dot.js";
-import { createRow } from "./row.js";
-import { getHeaderRow } from "../table.js";
+import { createNewRow } from "../table/row.js";
+import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
@@ -38,7 +38,7 @@ function setUpShots() {
                           .map(parseFloat);
             if (shiftHeld === "true" && firstPoint === null) {
                 sessionStorage.setItem("firstPoint", d3.pointer(e));
-                createDot("#ghost", {
+                createDot("#ghost", "ghost-dot", {
                     id: "ghost-dot",
                     type: d3.select("#shot-type").empty()
                         ? null
@@ -67,11 +67,10 @@ function createShotFromEvent(e, point1) {
     // https://stackoverflow.com/a/29325047
 
     var columns = getHeaderRow();
-    let rowData = [];
     var id = uuidv4();
+    let rowData = {};
     let specialData = {
         // data for custom specfics like color etc.
-        id: id,
         coords: point1 ? point1 : d3.pointer(e),
         coords2: point1 ? d3.pointer(e) : null,
         numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
@@ -80,11 +79,9 @@ function createShotFromEvent(e, point1) {
     for (let col of columns) {
         switch (col.type) {
             case "radio":
-                rowData.push(
-                    d3
-                        .select(`input[name="${col.id}"]:checked`)
-                        .property("value")
-                );
+                rowData[col.id] = d3
+                    .select(`input[name="${col.id}"]:checked`)
+                    .property("value");
                 break;
             case "player":
                 specialData["player"] = d3
@@ -92,12 +89,10 @@ function createShotFromEvent(e, point1) {
                     .select("input")
                     .property("value");
             case "text-field":
-                rowData.push(
-                    d3
-                        .select("#" + col.id)
-                        .select("input")
-                        .property("value")
-                );
+                rowData[col.id] = d3
+                    .select("#" + col.id)
+                    .select("input")
+                    .property("value");
                 break;
             case "shot-type":
                 specialData["type"] = d3
@@ -105,45 +100,38 @@ function createShotFromEvent(e, point1) {
                     .select("select")
                     .property("value");
             case "dropdown":
-                rowData.push(
-                    d3
-                        .select("#" + col.id)
-                        .select("select")
-                        .property("value")
-                );
+                rowData[col.id] = d3
+                    .select("#" + col.id)
+                    .select("select")
+                    .property("value");
                 break;
             case "time":
-                rowData.push(
-                    d3
-                        .select("#" + col.id)
-                        .select("input")
-                        .property("value")
-                );
+                rowData[col.id] = d3
+                    .select("#" + col.id)
+                    .select("input")
+                    .property("value");
                 break;
             case "team":
                 specialData["teamId"] = d3
                     .select("input[name='team-bool']:checked")
                     .property("value");
-                rowData.push(
-                    d3.select(specialData["teamId"]).property("value")
-                );
+                rowData[col.id] = d3
+                    .select(specialData["teamId"])
+                    .property("value");
                 break;
             case "shot-number":
-                rowData.push(
-                    d3
-                        .select("#shot-table-body")
-                        .selectAll("tr")
-                        .size() + 1
-                );
+                rowData[col.id] = getNumRows() + 1;
                 break;
             case "x":
                 if (col.id === "x2") {
                     let x2 = specialData["coords2"]
                         ? (specialData["coords2"][0] - 100).toFixed(2)
                         : "";
-                    rowData.push(x2);
+                    rowData[col.id] = x2;
                 } else {
-                    rowData.push((specialData["coords"][0] - 100).toFixed(2));
+                    rowData[col.id] = (specialData["coords"][0] - 100).toFixed(
+                        2
+                    );
                 }
                 break;
             case "y":
@@ -151,11 +139,12 @@ function createShotFromEvent(e, point1) {
                     let y2 = specialData["coords2"]
                         ? (-1 * (specialData["coords2"][1] - 42.5)).toFixed(2)
                         : "";
-                    rowData.push(y2);
+                    rowData[col.id] = y2;
                 } else {
-                    rowData.push(
-                        (-1 * (specialData["coords"][1] - 42.5)).toFixed(2)
-                    );
+                    rowData[col.id] = (
+                        -1 *
+                        (specialData["coords"][1] - 42.5)
+                    ).toFixed(2);
                 }
                 break;
             default:
@@ -163,13 +152,13 @@ function createShotFromEvent(e, point1) {
         }
     }
 
-    createDot("#normal", specialData);
-    createRow(rowData, specialData);
+    createDot("#normal", id, specialData);
+    createNewRow(id, rowData, specialData);
 }
 
-function createShotFromData(rowData, specialData) {
-    createDot("#normal", specialData);
-    createRow(rowData, specialData);
+function createShotFromData(id, rowData, specialData) {
+    createDot("#normal", id, specialData);
+    createNewRow(id, rowData, specialData);
 }
 
 export { setUpShots, createShotFromData };

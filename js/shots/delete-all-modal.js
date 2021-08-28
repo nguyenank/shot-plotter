@@ -1,4 +1,4 @@
-import { clearTable } from "../table.js";
+import { clearTable } from "../table/table-functions.js";
 
 function setUpDeleteAllModal(id) {
     var m = d3

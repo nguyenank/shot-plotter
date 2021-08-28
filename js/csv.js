@@ -3,7 +3,12 @@ import {
     existsDetail,
     getCurrentShotTypes,
 } from "./details/details-functions.js";
-import { clearTable, getHeaderRow } from "./table.js";
+import {
+    clearTable,
+    getHeaderRow,
+    getRows,
+    getNumRows,
+} from "./table/table-functions.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
@@ -37,28 +42,29 @@ function setUpCSVDownloadUpload() {
 function downloadCSV(id) {
     // set up header row
     var csv = "";
+    var header = [];
     d3.select("#shot-table")
         .select("thead")
         .selectAll("th")
         .each(function() {
+            header.push(d3.select(this).attr("data-id"));
             let text = d3.select(this).text();
             if (text !== "" && text !== "#") {
                 csv += text + ",";
             }
         });
     csv = csv.slice(0, -1) + "\n";
+    var rows = getRows();
+    for (let row of rows) {
+        for (let col of _.compact(header)) {
+            if (col !== "shot-number") {
+                csv += escape(row.rowData[col].toString()) + ",";
+            }
+        }
+        // remove trailing comma
+        csv = csv.slice(0, -1) + "\n";
+    }
 
-    d3.select("#shot-table-body")
-        .selectAll("tr")
-        .each(function() {
-            d3.select(this)
-                .selectAll("td")
-                .each(function(d, i) {
-                    csv += escape(d3.select(this).text()) + ",";
-                });
-            // remove trailing comma
-            csv = csv.slice(0, -1) + "\n";
-        });
     csv = csv.slice(0, -1); // remove trailing new line
     var fileName = d3
         .select(id)
@@ -168,27 +174,24 @@ function processCSV(uploadId, row, swapTeamId) {
     let id = uuidv4();
 
     let specialData = {
-        id: id,
         type: row.Type,
         teamId: teamId,
         coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
         player: row.Player,
         numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
     };
-    let rowData = Object.values(row);
 
-    if (specialData.numberCol !== -2) {
-        // add #
-        rowData.splice(
-            specialData.numberCol,
-            0,
-            d3
-                .select("#shot-table-body")
-                .selectAll("tr")
-                .size() + 1
-        );
-    }
-    createShotFromData(rowData, specialData);
+    let headerIds = _.without(
+        _.compact(getHeaderRow().map(x => x.id)),
+        "shot-number"
+    );
+    let rowData =
+        specialData.numberCol !== -2 ? { "shot-number": getNumRows() + 1 } : {};
+    _.forEach(_.zip(headerIds, Object.values(row)), function([header, value]) {
+        rowData[header] = value;
+    });
+
+    createShotFromData(id, rowData, specialData);
     return newSwapTeam;
 }
 
