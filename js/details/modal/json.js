@@ -77,7 +77,7 @@ function uploadJSON(id, uploadId, e) {
     } else {
         d3.select(id)
             .select("#json-upload")
-            .attr("class", "form-control is-invalid");
+            .classed("is-invalid", true);
     }
 }
 

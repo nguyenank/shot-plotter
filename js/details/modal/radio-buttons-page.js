@@ -181,13 +181,10 @@ function createNewRadioButtons(data) {
         title.length > 16 ||
         !/^[_a-zA-Z0-9- ]*$/.test(title)
     ) {
-        d3.select("#radio-buttons-title").attr(
-            "class",
-            "form-control is-invalid"
-        );
+        d3.select("#radio-buttons-title").classed("is-invalid", true);
         invalid = true;
     } else {
-        d3.select("#radio-buttons-title").attr("class", "form-control");
+        d3.select("#radio-buttons-title").classed("is-invalid", false);
     }
     var options = [];
     var selected = d3
@@ -212,13 +209,10 @@ function createNewRadioButtons(data) {
         optionValues.some(value => value.length < 1 || value.length > 32) ||
         !_.isEqual(optionValues, _.uniq(optionValues))
     ) {
-        d3.select("#radio-buttons-options").attr(
-            "class",
-            "form-control is-invalid"
-        );
+        d3.select("#radio-buttons-options").classed("is-invalid", true);
         invalid = true;
     } else {
-        d3.select("#radio-buttons-options").attr("class", "");
+        d3.select("#radio-buttons-options").classed("is-invalid", false);
     }
     if (invalid) {
         return;

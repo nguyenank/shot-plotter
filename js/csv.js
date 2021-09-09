@@ -97,7 +97,7 @@ function uploadCSV(id, uploadId, e) {
                 .property("value", "");
 
             // remove invalid class if necessary
-            d3.select(uploadId).attr("class", "form-control");
+            d3.select(uploadId).classed("is-invalid", false);
             var swapTeamId = "#blue-team-name";
             clearTable();
             Papa.parse(f, {
@@ -108,7 +108,7 @@ function uploadCSV(id, uploadId, e) {
             });
         }
     } else {
-        d3.select(uploadId).attr("class", "form-control is-invalid");
+        d3.select(uploadId).classed("is-invalid", true);
     }
 }
 
@@ -126,7 +126,7 @@ function processCSV(uploadId, row, swapTeamId) {
         });
     var csvHeader = Object.keys(row);
     if (!_.isEqual(tableHeader, csvHeader)) {
-        d3.select(uploadId).attr("class", "form-control is-invalid");
+        d3.select(uploadId).classed("is-invalid", true);
         return swapTeamId;
     }
 

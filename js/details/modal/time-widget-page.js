@@ -159,13 +159,10 @@ function createNewTimeWidget(data) {
         title.length > 16 ||
         !/^[_a-zA-Z0-9- ]*$/.test(title)
     ) {
-        d3.select("#time-widget-title").attr(
-            "class",
-            "form-control is-invalid"
-        );
+        d3.select("#time-widget-title").classed("is-invalid", true);
         invalid = true;
     } else {
-        d3.select("#time-widget-title").attr("class", "form-control");
+        d3.select("#time-widget-title").classed("is-invalid", false);
     }
     var countdown =
         d3
@@ -176,13 +173,10 @@ function createNewTimeWidget(data) {
 
     var defaultTime = d3.select("#time-widget-default-time").property("value");
     if (!/^\d{1,2}:\d\d$/.test(defaultTime)) {
-        d3.select("#time-widget-default-time").attr(
-            "class",
-            "form-control is-invalid"
-        );
+        d3.select("#time-widget-default-time").classed("is-invalid", true);
         invalid = true;
     } else {
-        d3.select("#time-widget-default-time").attr("class", "form-control");
+        d3.select("#time-widget-default-time").classed("is-invalid", false);
     }
     if (invalid) {
         return;

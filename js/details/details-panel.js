@@ -17,6 +17,7 @@ import {
     getCurrentShotTypes,
 } from "./details-functions.js";
 import { getDefaultDetails } from "./config-details.js";
+import { getNumRows } from "../table/table-functions.js";
 
 function setUpDetailsPanel(id = "#details") {
     let details = getDefaultDetails();
@@ -25,10 +26,7 @@ function setUpDetailsPanel(id = "#details") {
     createDetailsPanel(details, id);
 
     d3.select(id).on("mouseleave", e => {
-        d3.select("#customize-btn").attr(
-            "class",
-            "form-control customize-btn white-btn"
-        );
+        d3.select("#customize-btn").classed("is-invalid", false);
     });
 
     setUpDetailsModal("#details-modal");
@@ -111,16 +109,11 @@ function customizeButton(id) {
         .append("div")
         .attr("class", "center position-relative");
     d.append("button")
-        .attr("class", "form-control customize-btn white-btn")
+        .attr("class", "form-control white-btn")
         .attr("id", "customize-btn")
         .text("Customize Setup")
         .on("click", e => {
-            if (
-                d3
-                    .select("#shot-table-body")
-                    .selectAll("tr")
-                    .size() === 0
-            ) {
+            if (getNumRows() === 0) {
                 // update details storage with shot options b/c this
                 // was the most convenient place
                 let options = getCurrentShotTypes();
@@ -141,10 +134,7 @@ function customizeButton(id) {
                     keyboard: false,
                 }).show();
             } else {
-                d3.select("#customize-btn").attr(
-                    "class",
-                    "form-control is-invalid customize-btn white-btn"
-                );
+                d3.select("#customize-btn").classed("is-invalid", true);
             }
         });
     d.append("div")
