@@ -176,15 +176,12 @@ function createReorderColumns(id = "#reorder") {
                         d.hidden ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"
                     )
                     .on("click", function() {
-                        var c = d3.select(this).attr("class");
-                        if (c === "bi bi-eye-fill") {
-                            d3.select(this).attr(
-                                "class",
-                                "bi bi-eye-slash-fill"
-                            );
-                        } else {
-                            d3.select(this).attr("class", "bi bi-eye-fill");
-                        }
+                        var currentClass = d3.select(this).attr("class");
+                        var newClass =
+                            c === "bi bi-eye-fill"
+                                ? "bi bi-eye-slash-fill"
+                                : "bi bi-eye-fill";
+                        d3.select(this).attr("class", "newClass");
                     });
                 if (d.editable) {
                     d3.select(this)
@@ -243,10 +240,10 @@ function saveChanges(e) {
         pageSize < 1 ||
         pageSize > 999
     ) {
-        d3.select("#page-size-field").attr("class", "form-control is-invalid");
+        d3.select("#page-size-field").classed("is-invalid", true);
         return;
     }
-    d3.select("#page-size-field").attr("class", "form-control");
+    d3.select("#page-size-field").classed("is-invalid", false);
     setRowsPerPage(pageSize);
 
     var titles = [];

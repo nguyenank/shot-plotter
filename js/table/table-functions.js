@@ -63,6 +63,8 @@ function clearTable() {
     setNumRows(0);
     updateTableFooter();
 
+    d3.select("#customize-btn").classed("uninteractable", false);
+
     d3.select("#shot-table-body")
         .selectAll("tr")
         .remove();

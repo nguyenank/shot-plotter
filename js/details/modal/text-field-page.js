@@ -121,21 +121,18 @@ function createNewTextField(data) {
         title.length > 16 ||
         !/^[_a-zA-Z0-9- ]*$/.test(title)
     ) {
-        d3.select("#text-field-title").attr("class", "form-control is-invalid");
+        d3.select("#text-field-title").classed("is-invalid", true);
         invalid = true;
     } else {
-        d3.select("#text-field-title").attr("class", "form-control");
+        d3.select("#text-field-title").classed("is-invalid", false);
     }
 
     var text = d3.select("#text-field-default-text").property("value");
     if (text.length >= 32) {
-        d3.select("#text-field-default-text").attr(
-            "class",
-            "form-control is-invalid"
-        );
+        d3.select("#text-field-default-text").classed("is-invalid", true);
         invalid = true;
     } else {
-        d3.select("#text-field-default-text").attr("class", "form-control");
+        d3.select("#text-field-default-text").classed("is-invalid", false);
     }
     if (invalid) {
         return;

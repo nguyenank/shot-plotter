@@ -135,19 +135,19 @@ function createNewDropdown(data) {
         title.length > 16 ||
         !/^[_a-zA-Z0-9- ]*$/.test(title)
     ) {
-        d3.select("#dropdown-title").attr("class", "form-control is-invalid");
+        d3.select("#dropdown-title").classed("is-invalid", true);
         invalid = true;
     } else {
-        d3.select("#dropdown-title").attr("class", "form-control");
+        d3.select("#dropdown-title").classed("is-invalid", false);
     }
 
     var text = d3.select("#dropdown-options").property("value");
     var optionValues = text.split("\n");
     if (optionValues.some(value => value < 1 || value > 50)) {
-        d3.select("#dropdown-options").attr("class", "form-control is-invalid");
+        d3.select("#dropdown-options").classed("is-invalid", true);
         invalid = true;
     } else {
-        d3.select("#dropdown-options").attr("class", "form-control");
+        d3.select("#dropdown-options").classed("is-invalid", false);
     }
     if (invalid) {
         return;
