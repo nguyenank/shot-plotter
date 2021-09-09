@@ -101,6 +101,11 @@ input[type="text"] {
   margin: 0.5rem; }
 
 /* detail modal */
+.uninteractable {
+  background-color: #eaecef; }
+  .uninteractable:hover, .uninteractable:active, .uninteractable:focus {
+    background-color: #eaecef; }
+
 .footer-row {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1rem;

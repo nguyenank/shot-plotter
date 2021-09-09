@@ -26,6 +26,7 @@ function createNewRow(id, rowData, specialData) {
     if (numRows == 1) {
         // first row
         setStartRow(1);
+        d3.select("#customize-btn").classed("uninteractable", true);
     }
 
     if (numRows - getStartRow() < getRowsPerPage()) {
@@ -149,6 +150,10 @@ function deleteHandler(id) {
     );
     var numRows = getNumRows() - 1;
     setNumRows(numRows);
+
+    if (numRows === 0) {
+        d3.select("#customize-btn").classed("uninteractable", false);
+    }
 
     if (getEndRow() > numRows) {
         // deleted row is from last page
