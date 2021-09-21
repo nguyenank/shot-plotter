@@ -65,7 +65,8 @@ ul {
       width: 3rem;
       padding: 0.1rem;
       font-size: 0.85rem;
-      margin-right: 0.5rem; }
+      margin-right: 0.5rem;
+      border: 1px solid #aaaaaa; }
 
 /* shot info */
 .shot-info {
@@ -136,6 +137,9 @@ input[type="text"] {
 #main-page-mb p {
   margin-bottom: 0.3rem;
   font-size: 0.85rem; }
+
+.widgets-dropdown-label {
+  margin-left: 0.5rem; }
 
 .bi-eye-fill,
 .bi-eye-slash-fill,

@@ -84,6 +84,27 @@ function createMainPage(id) {
         .append("div")
         .attr("class", "invalid-tooltip")
         .text("Must be an integer between 1 and 999 (inclusive).");
+
+    let widgetsPerRowWrapper = leftSide
+        .append("div")
+        .attr("class", "page-size-form");
+    let widgetsPerRowDropdown = widgetsPerRowWrapper
+        .append("select")
+        .attr("id", "widgets-per-row-dropdown")
+        .attr("class", "select2");
+
+    for (let i of [1, 2, 3]) {
+        widgetsPerRowDropdown
+            .append("option")
+            .text(i)
+            .attr("value", i)
+            .attr("selected", i === 2 ? true : undefined);
+    }
+    widgetsPerRowWrapper
+        .append("span")
+        .text("Widgets Per Panel Row")
+        .attr("class", "widgets-dropdown-label");
+
     let twoPoint = leftSide
         .append("div")
         .attr("class", "form-check form-switch");
@@ -276,8 +297,13 @@ function saveChanges(e) {
     var visibleDetails = titles.map(x =>
         _.find(getDetails(), { title: x.title })
     );
+
+    var widgetsPerRow = parseInt(
+        d3.select("#widgets-per-row-dropdown").property("value")
+    );
+
     createWidgetTypePage();
-    createDetailsPanel(visibleDetails);
+    createDetailsPanel(visibleDetails, "#details", widgetsPerRow);
     shotTypeLegend();
     teamLegend();
     $("#details-modal").modal("hide"); // default js doesn't work for some reason

@@ -108,6 +108,12 @@ function select2Dropdown() {
         width: "100%",
         dropdownCssClass: "small-text",
     });
+
+    $("#widgets-per-row-dropdown").select2({
+        dropdownParent: $("#main-page-mb"),
+        width: "3em",
+        dropdownCssClass: "small-text",
+    });
 }
 
 export { createTooltip, teamRadioButtons, select2Dropdown };
