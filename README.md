@@ -30,7 +30,7 @@ Clicking the _Customize Setup_ button will bring up a modal with a list of the c
 
 The default number of shots per page can be modified by changing the number before the text _Rows Per Table Page_. The default number is 10; the number must be an integer between 1 and 999 (inclusive).
 
-Using the _Enable 2-Coordinate Shots_ toggle, the ability to have 2-coordinate shots can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted.
+Using the _Enable 2-Location Shots_ toggle, the ability to have 2-location shots can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted.
 
 Default details can be restored by clicking on the _Reset to Defaults_ button.
 
@@ -50,7 +50,7 @@ A time widget is a timer you can choose to have count up or countdown. The start
 
 To plot shots, simply click on the rink where the shot was made. When clicked, a dot will be added of the appropriate color based on team, shape based on type, and text based on player, and a row will be made in the table.
 
-When 2-coordinate shots are enabled, 2-coordinate shots can be plotted by either holding down the **Shift** button and clicking on two points in the rink, or by switching between 1-coordinate and 2-coordinate mode using the toggle above the rink.
+When 2-location shots are enabled, 2-location shots can be plotted by either holding down the **Shift** button and clicking on two points in the rink, or by switching between 1-location and 2-location mode using the toggle above the rink.
 
 The rink matches NHL specifications from the NHL rules. Rink coordinates match the x,y coordinate system in NHL data, with the origin at the center dot and the positive x-axis to the right and the positive y-axis upward.
 

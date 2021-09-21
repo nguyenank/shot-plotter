@@ -143,6 +143,13 @@ function createNewDropdown(data) {
 
     var text = d3.select("#dropdown-options").property("value");
     var optionValues = text.split("\n");
+
+    // drop empty value if it is last
+    let last = optionValues.pop();
+    if (last !== "") {
+        optionValues.push(last);
+    }
+
     if (optionValues.some(value => value < 1 || value > 50)) {
         d3.select("#dropdown-options").classed("is-invalid", true);
         invalid = true;
