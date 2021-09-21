@@ -97,7 +97,6 @@ function createMainPage(id) {
         widgetsPerRowDropdown
             .append("option")
             .text(i)
-            .attr("value", i)
             .attr("selected", i === 2 ? true : undefined);
     }
     widgetsPerRowWrapper
@@ -146,6 +145,8 @@ function createMainPage(id) {
             d3.select("#two-point-enable").property("checked", false);
             // TODO: abstract-ify this to pull from config
             d3.select("#page-size-field").property("value", 10);
+            $("#widgets-per-row-dropdown").val("2");
+            $("#widgets-per-row-dropdown").trigger("change");
             createReorderColumns("#reorder");
         });
     // footer
