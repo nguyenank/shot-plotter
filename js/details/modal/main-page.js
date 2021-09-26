@@ -178,10 +178,10 @@ function createReorderColumns(id = "#reorder") {
                     .on("click", function() {
                         var currentClass = d3.select(this).attr("class");
                         var newClass =
-                            c === "bi bi-eye-fill"
+                            currentClass === "bi bi-eye-fill"
                                 ? "bi bi-eye-slash-fill"
                                 : "bi bi-eye-fill";
-                        d3.select(this).attr("class", "newClass");
+                        d3.select(this).attr("class", newClass);
                     });
                 if (d.editable) {
                     d3.select(this)
