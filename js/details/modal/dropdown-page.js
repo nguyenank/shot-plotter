@@ -5,7 +5,7 @@ import {
     createId,
 } from "../details-functions.js";
 import { createTextField, createDropdown } from "../widgets/widgets-base.js";
-import { createMainPage } from "./main-page.js";
+import { createReorderColumns } from "./main-page.js";
 
 function createDropdownPage(id, data) {
     d3.select(id)
@@ -164,12 +164,12 @@ function createNewDropdown(data) {
         value: value,
     }));
     options[0] = { ...options[0], selected: true };
-    var id = createId(title);
+
     var details = getDetails();
     var newDetail = {
         type: "dropdown",
         title: title,
-        id: id,
+        id: createId(title),
         options: options,
         editable: true,
     };
@@ -180,7 +180,7 @@ function createNewDropdown(data) {
         details.push(newDetail);
     }
     setDetails(details);
-    createMainPage("#main-page");
+    createReorderColumns("#reorder");
 
     changePage("#dropdown-page", "#main-page");
 }

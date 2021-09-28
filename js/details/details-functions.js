@@ -58,10 +58,7 @@ function saveCurrentDetailSetup() {
         .selectAll("td")
         .each(function() {
             let detail = _.find(details, {
-                title: d3
-                    .select(this)
-                    .select(".center")
-                    .text(),
+                id: d3.select(this).attr("data-id"),
             });
             if (
                 d3

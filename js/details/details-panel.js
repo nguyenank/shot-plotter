@@ -32,7 +32,7 @@ function setUpDetailsPanel(id = "#details") {
     setUpDetailsModal("#details-modal");
 }
 
-function createDetailsPanel(details, id = "#details") {
+function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
     // clear existing details
     d3.select(id)
         .selectAll("*")
@@ -40,10 +40,10 @@ function createDetailsPanel(details, id = "#details") {
 
     _.remove(details, x => x.noWidget);
     for (let [i, data] of details.entries()) {
-        let rowId = "#row" + (Math.floor(i / 2) + 1);
+        let rowId = "#row" + (Math.floor(i / widgetsPerRow) + 1);
 
-        if (i % 2 == 0) {
-            if (Math.floor(i / 2) > 0) {
+        if (i % widgetsPerRow == 0) {
+            if (Math.floor(i / widgetsPerRow) > 0) {
                 // need to add hr after row that isn't first row
                 d3.select(id).append("hr");
             }

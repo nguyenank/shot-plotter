@@ -33,6 +33,7 @@ function downloadJSON(id) {
     var json = {
         details: getDetails(),
         rowsPerPage: d3.select("#page-size-field").property("value"),
+        widgetsPerRow: d3.select("#widgets-per-row-dropdown").property("value"),
     };
     download(JSON.stringify(json, null, 2), fileName, "application/json");
 }
@@ -61,8 +62,12 @@ function uploadJSON(id, uploadId, e) {
                     details = json.details;
                     d3.select("#page-size-field").property(
                         "value",
-                        json.rowsPerPage
+                        json.rowsPerPage ? json.rowsPerPage : 10
                     );
+                    $("#widgets-per-row-dropdown").val(
+                        json.widgetsPerRow ? json.widgetsPerRow : "2"
+                    );
+                    $("#widgets-per-row-dropdown").trigger("change");
                 }
 
                 setDetails(details);

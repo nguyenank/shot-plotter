@@ -6,7 +6,7 @@ A [web application](https://shot-plotter.netlify.app/) for plotting hockey shots
 
 The web application is primarily built using D3.js.
 
-##### 08/28/2021: The table now has pages! By default, the last page always see the last 10 recorded shots, and one can switch between pages to see the other shots. The number of shots per page can be customized using the "Customize Setup" button; the explanation for the custom setup interface has also been cleaned up.
+##### 09/28/2021: You can now modify the number of widgets per row in the details panel on the side.
 
 ### How to Use and Additional Information
 
@@ -28,7 +28,9 @@ Details logged for each shot can be customized by clicking on the _Customize Det
 
 Clicking the _Customize Setup_ button will bring up a modal with a list of the current details. Drag-and-drop detail names to reorder them. Click on the eye icon to toggle whether it is visible. Click on the trash can icon to delete details. For created details, click on the pencil-in-a-square icon to edit those details. Reordering details changes their position in both the details panel and the table. The _X_ and _Y_ details cannot be hidden or deleted.
 
-The default number of shots per page can be modified by changing the number before the text _Rows Per Table Page_. The default number is 10; the number must be an integer between 1 and 999 (inclusive).
+The number of widgets can be changed from its default value of 2 to 1 or 3 by choosing a new value in the dropdown labelled _Widgets per Panel Row_.
+
+The default number of shots per table page can be modified by changing the number in the field labelled _Rows Per Table Page_. The default number is 10; the number must be an integer between 1 and 999 (inclusive).
 
 Using the _Enable 2-Location Shots_ toggle, the ability to have 2-location shots can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted.
 

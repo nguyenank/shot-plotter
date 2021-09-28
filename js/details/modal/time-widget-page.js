@@ -5,7 +5,7 @@ import {
     createId,
 } from "../details-functions.js";
 import { createTimeWidget } from "../widgets/widgets-base.js";
-import { createMainPage } from "./main-page.js";
+import { createReorderColumns } from "./main-page.js";
 
 function createTimeWidgetPage(id, data) {
     d3.select(id)
@@ -182,12 +182,11 @@ function createNewTimeWidget(data) {
         return;
     }
 
-    var id = createId(title);
     var details = getDetails();
     var newDetail = {
         type: "time",
         title: title,
-        id: id,
+        id: createId(title),
         defaultTime: defaultTime,
         countdown: countdown,
         editable: true,
@@ -199,7 +198,7 @@ function createNewTimeWidget(data) {
         details.push(newDetail);
     }
     setDetails(details);
-    createMainPage("#main-page");
+    createReorderColumns("#reorder");
 
     changePage("#time-widget-page", "#main-page");
 }

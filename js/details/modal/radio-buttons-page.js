@@ -5,7 +5,7 @@ import {
     createId,
 } from "../details-functions.js";
 import { createRadioButtons } from "../widgets/widgets-base.js";
-import { createMainPage } from "./main-page.js";
+import { createReorderColumns } from "./main-page.js";
 
 function createRadioButtonsPage(id, data) {
     d3.select(id)
@@ -219,12 +219,11 @@ function createNewRadioButtons(data) {
     }
 
     // actual creation
-    var id = createId(title);
     var details = getDetails();
     var newDetail = {
         type: "radio",
         title: title,
-        id: id,
+        id: createId(title),
         options: options,
         editable: true,
     };
@@ -235,7 +234,7 @@ function createNewRadioButtons(data) {
         details.push(newDetail);
     }
     setDetails(details);
-    createMainPage("#main-page");
+    createReorderColumns("#reorder");
 
     changePage("#radio-buttons-page", "#main-page");
 }

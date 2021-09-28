@@ -11,9 +11,9 @@ function createWidgetTypePage(id = "#widget-type-page") {
         .attr("class", "modal-body");
 
     // explanation text
-    mb.append("h6").text("Create New Column");
+    mb.append("h6").text("Create New Detail");
     mb.append("div").text(
-        "Pick what type of new detail you would like in the details panel."
+        "Pick what type of new widget you would like in the details panel."
     );
 
     // widgets
