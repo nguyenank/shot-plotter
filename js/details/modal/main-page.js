@@ -27,7 +27,7 @@ function createMainPage(id) {
         .attr("id", "main-page-mb")
         .attr("class", "modal-body");
     mb.append("p").text(
-        "Here, you can customize what columns appear and in what order, as well as create columns of your own. You can also modify the number of rows per page of the table, enable two-coordinate shots, and download your current setup, including any customization made here & any entered/selected values in the details panel, to easily upload and recreate later."
+        "Customize the app by modifying the details that are logged with locations. You can also tweak the app's appearance, as well as download and upload custom setups."
     );
     mb.append("div")
         .attr("class", "center")
@@ -56,7 +56,7 @@ function createMainPage(id) {
         .attr("class", "center")
         .append("button")
         .attr("class", "grey-btn new-column-btn")
-        .text("Create New Column")
+        .text("Create New Detail")
         .on("click", function() {
             saveCurrentDetailSetup();
             createTextFieldPage("#text-field-page");
@@ -145,8 +145,9 @@ function createMainPage(id) {
             d3.select("#two-point-enable").property("checked", false);
             // TODO: abstract-ify this to pull from config
             d3.select("#page-size-field").property("value", 10);
-            $("#widgets-per-row-dropdown").val("2");
-            $("#widgets-per-row-dropdown").trigger("change");
+            $("#widgets-per-row-dropdown")
+                .val("2")
+                .trigger("change");
             createReorderColumns("#reorder");
         });
     // footer
@@ -376,31 +377,31 @@ function createExplainText(id = "#explain-text") {
     et.append("hr");
 
     et.append("p").text(
-        "To reorder columns, click and drag them into the desired order."
+        "To reorder details, click and drag them into the desired order in the row of details below."
     );
 
     var visText = et
         .append("p")
-        .text("To toggle if a column is visible, click on the eye (");
+        .text("To toggle if a detail is visible, click on the eye (");
     visText.append("i").attr("class", "bi bi-eye-fill");
     visText.append("span").text("/");
     visText.append("i").attr("class", "bi bi-eye-slash-fill");
     visText.append("span").text("). An eye (");
     visText.append("i").attr("class", "bi bi-eye-fill");
-    visText.append("span").text(") indicates the column is visible,");
+    visText.append("span").text(") indicates the detail is visible,");
     visText.append("span").text(" while an eye with a slash through it (");
     visText.append("i").attr("class", "bi bi-eye-slash-fill");
     visText
         .append("span")
         .text(
-            ") indicates the column is not visible. Only visible columns will be included in the details panel and in the .csv for shots."
+            ") indicates the detail is not visible. Only visible details will be included in the side panel and table."
         );
     var deleteText = et.append("p").text("The trash can (");
     deleteText.append("i").attr("class", "bi bi-trash-fill");
     deleteText
         .append("span")
         .text(
-            ") allows you to delete a column. Deleted columns disappear from the reordering and the details panel, and will not be present when downloading the .csv for shots."
+            ") allows you to delete details. Deleted details disappear from the side panel, table, and the row of details."
         );
 
     et.append("p").text(
@@ -426,13 +427,13 @@ function createExplainText(id = "#explain-text") {
         );
 
     et.append("p").text(
-        "You can save your current setup (which includes: column order, any created columns, whether 2 coordinate shot mode is enabled, number of rows per table page, & any values currently entered/selected in the details panel) as a .json. That .json file can later be uploaded to recreate that setup."
+        "You can save your current setup (which includes: detail order, any created details, whether 2 coordinate shot mode is enabled, appearance preferences (i.e. number of widgets per side panel & number of rows per table), and any values currently entered/selected in the details panel) as a .json. That .json file can later be uploaded to recreate that setup."
     );
 
     var github = et
         .append("p")
         .text(
-            "For even more info about all that can be done here, and what can be done in the app in general, visit the "
+            "For more detailed information about customization, and the app in general, visit the "
         );
     github
         .append("a")
