@@ -5,7 +5,7 @@ import {
     createId,
 } from "../details-functions.js";
 import { createTextField } from "../widgets/widgets-base.js";
-import { createMainPage } from "./main-page.js";
+import { createReorderColumns } from "./main-page.js";
 
 function createTextFieldPage(id, data) {
     d3.select(id)
@@ -154,7 +154,7 @@ function createNewTextField(data) {
         details.push(newDetail);
     }
     setDetails(details);
-    createMainPage("#main-page");
+    createReorderColumns("#reorder");
 
     changePage("#text-field-page", "#main-page");
 }

@@ -5,7 +5,7 @@ import {
     createId,
 } from "../details-functions.js";
 import { createTimeWidget } from "../widgets/widgets-base.js";
-import { createMainPage } from "./main-page.js";
+import { createReorderColumns } from "./main-page.js";
 
 function createTimeWidgetPage(id, data) {
     d3.select(id)
@@ -199,7 +199,7 @@ function createNewTimeWidget(data) {
         details.push(newDetail);
     }
     setDetails(details);
-    createMainPage("#main-page");
+    createReorderColumns("#reorder");
 
     changePage("#time-widget-page", "#main-page");
 }
