@@ -182,12 +182,11 @@ function createNewTimeWidget(data) {
         return;
     }
 
-    var id = createId(title);
     var details = getDetails();
     var newDetail = {
         type: "time",
         title: title,
-        id: id,
+        id: createId(title),
         defaultTime: defaultTime,
         countdown: countdown,
         editable: true,

@@ -295,9 +295,7 @@ function saveChanges(e) {
         });
 
     createHeaderRow(titles);
-    var visibleDetails = titles.map(x =>
-        _.find(getDetails(), { title: x.title })
-    );
+    var visibleDetails = titles.map(x => _.find(getDetails(), { id: x.id }));
 
     var widgetsPerRow = parseInt(
         d3.select("#widgets-per-row-dropdown").property("value")

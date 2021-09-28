@@ -164,12 +164,12 @@ function createNewDropdown(data) {
         value: value,
     }));
     options[0] = { ...options[0], selected: true };
-    var id = createId(title);
+
     var details = getDetails();
     var newDetail = {
         type: "dropdown",
         title: title,
-        id: id,
+        id: createId(title),
         options: options,
         editable: true,
     };

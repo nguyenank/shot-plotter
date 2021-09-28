@@ -138,12 +138,11 @@ function createNewTextField(data) {
         return;
     }
 
-    var id = createId(title);
     var details = getDetails();
     var newDetail = {
         type: "text-field",
         title: title,
-        id: id,
+        id: createId(title),
         defaultValue: text,
         editable: true,
     };

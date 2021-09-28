@@ -219,12 +219,11 @@ function createNewRadioButtons(data) {
     }
 
     // actual creation
-    var id = createId(title);
     var details = getDetails();
     var newDetail = {
         type: "radio",
         title: title,
-        id: id,
+        id: createId(title),
         options: options,
         editable: true,
     };
