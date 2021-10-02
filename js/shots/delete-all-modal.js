@@ -14,7 +14,7 @@ function setUpDeleteAllModal(id) {
     var h = m.append("div").attr("class", "modal-header");
     h.append("h5")
         .attr("class", "modal-title")
-        .text("Delete All Shots");
+        .text("Delete All Events");
     h.append("button")
         .attr("type", "button")
         .attr("class", "btn-close")
@@ -24,7 +24,7 @@ function setUpDeleteAllModal(id) {
     var mb = m
         .append("div")
         .attr("class", "modal-body")
-        .text("Are you sure? This will delete all recorded shots.");
+        .text("Are you sure? This will delete all recorded events.");
 
     m.append("div")
         .attr("class", "modal-footer")

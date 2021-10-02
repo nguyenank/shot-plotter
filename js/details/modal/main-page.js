@@ -134,7 +134,7 @@ function createMainPage(id) {
         .append("label")
         .attr("class", "form-check-label")
         .attr("for", "two-point-enable")
-        .text("Enable 2-Location Shots");
+        .text("Enable 2-Location Events");
 
     lowerOptions
         .append("button")
@@ -414,7 +414,7 @@ function createExplainText(id = "#explain-text") {
     var twoPointText = et
         .append("p")
         .text(
-            "You can also enable switching between 1-location and 2-location shots. When enabled, you can hold down the "
+            "You can also enable switching between 1-location and 2-location events. When enabled, you can hold down the "
         );
     twoPointText
         .append("span")
@@ -423,11 +423,11 @@ function createExplainText(id = "#explain-text") {
     twoPointText
         .append("span")
         .text(
-            " button and click two points to create a 2-location shot, or you can switch between 1- and 2-location shots using the toggle above the rink. 2-location shots will add two more coordinate columns: X2 and Y2. X and Y are the coordinates for the first point, and X2 and Y2 are the coordinates for the second point. If a 1-location shot is created while 2-location shots are enabled, X2 and Y2 will be empty."
+            " button and click two points to create a 2-location event, or you can switch between 1- and 2-location events using the toggle above the rink. Enabling 2-location events will add two more coordinate columns: X2 and Y2. X and Y are the coordinates for the first location, and X2 and Y2 are the coordinates for the second location. If a 1-location event is created while 2-location events are enabled, X2 and Y2 will be empty."
         );
 
     et.append("p").text(
-        "You can save your current setup (which includes: detail order, any created details, whether 2 coordinate shot mode is enabled, appearance preferences (i.e. number of widgets per side panel & number of rows per table), and any values currently entered/selected in the details panel) as a .json. That .json file can later be uploaded to recreate that setup."
+        "You can save your current setup (which includes: detail order, any created details, whether 2-location events are enabled, appearance preferences (i.e. number of widgets per side panel & number of rows per table), and any values currently entered/selected in the details panel) as a .json. That .json file can later be uploaded to recreate that setup."
     );
 
     var github = et
