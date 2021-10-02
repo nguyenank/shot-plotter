@@ -19,7 +19,7 @@ function createDropdownPage(id, data) {
         .attr("class", "modal-body");
 
     // explanation text
-    mb.append("h6").text("Create Dropdown Column");
+    mb.append("h6").text("Create Dropdown Widget");
 
     // example
     mb.append("div")
@@ -31,7 +31,7 @@ function createDropdownPage(id, data) {
             ? { ...data, id: "sample-dropdown" }
             : {
                   id: "sample-dropdown",
-                  title: "Column Name",
+                  title: "Detail Name",
                   options: [
                       { value: "Option 1", selected: true },
                       { value: "Option 2" },
@@ -40,7 +40,7 @@ function createDropdownPage(id, data) {
     );
 
     mb.append("div").text(
-        "Choose the column name. Then, input a list of options for the dropdown, each option on a new line. The first option will be the default selection."
+        "Enter the detail name. Then, input a list of options for the dropdown, each option on a new line. The first option will be the default selection."
     );
     mb.append("hr");
     // text field
@@ -55,7 +55,7 @@ function createDropdownPage(id, data) {
         .append("label")
         .attr("for", "dropdown-title")
         .attr("class", "form-label")
-        .text("Column Name");
+        .text("Detail Name");
     nameDiv
         .append("input")
         .attr("type", "text")
@@ -66,7 +66,7 @@ function createDropdownPage(id, data) {
         .append("div")
         .attr("class", "invalid-tooltip")
         .text(
-            "Column names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
+            "Detail names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
         );
 
     var optionsDiv = form

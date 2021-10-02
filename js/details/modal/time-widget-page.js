@@ -19,7 +19,7 @@ function createTimeWidgetPage(id, data) {
         .attr("class", "modal-body");
 
     // explanation text
-    mb.append("h6").text("Create Time Widget Column");
+    mb.append("h6").text("Create Time Widget");
 
     // example
     mb.append("div")
@@ -31,14 +31,14 @@ function createTimeWidgetPage(id, data) {
             ? { ...data, id: "sample-time" }
             : {
                   id: "sample-time",
-                  title: "Column Name",
+                  title: "Detail Name",
                   defaultTime: "60:00",
                   countdown: true,
               }
     );
 
     mb.append("div").text(
-        "Choose the column name, whether the time widget should count up or count down, and what the starting time should be."
+        "Enter the detail name, whether the time widget should count up or count down, and what the starting time should be."
     );
     mb.append("hr");
     // text field
@@ -53,7 +53,7 @@ function createTimeWidgetPage(id, data) {
         .append("label")
         .attr("for", "time-widget-title")
         .attr("class", "form-label")
-        .text("Column Name");
+        .text("Detail Name");
     nameDiv
         .append("input")
         .attr("type", "text")
@@ -64,7 +64,7 @@ function createTimeWidgetPage(id, data) {
         .append("div")
         .attr("class", "invalid-tooltip")
         .text(
-            "Column names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
+            "Detail names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
         );
 
     var countdownDiv = form

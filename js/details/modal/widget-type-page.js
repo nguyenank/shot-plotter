@@ -13,7 +13,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
     // explanation text
     mb.append("h6").text("Create New Detail");
     mb.append("div").text(
-        "Pick what type of new widget you would like in the details panel."
+        "Pick what type of widget you would like in the details panel for the new detail."
     );
 
     // widgets
@@ -23,7 +23,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             name: "Radio Buttons",
             id: "#radio-buttons-page",
             desc:
-                "Radio buttons are good for a small number of options, allowing a maximum of 5. The 'Period' column uses radio buttons.",
+                "Radio buttons are good for a small number of options, allowing a maximum of 5. The 'Period' widget uses radio buttons.",
             example: function(id) {
                 let options = [
                     { value: "Option 1" },
@@ -58,7 +58,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             name: "Text Field",
             id: "#text-field-page",
             desc:
-                "A text field is good when you don't know exactly what will be entered in advance. The 'Player' column uses a text field.",
+                "A text field is good when you don't know exactly what will be entered in advance. The 'Player' widget uses a text field.",
             example: function(id) {
                 d3.select(id)
                     .append("div")
@@ -73,7 +73,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             name: "Dropdown",
             id: "#dropdown-page",
             desc:
-                "A dropdown is good when you have more, but still a finite number of options. The 'Type' column uses a dropdown, though you will be unable to add options like in the 'Type' column.",
+                "A dropdown is good when you have more, but still a finite number of options. The 'Type' widget uses a dropdown, though you will be unable to add options like in the 'Type' column.",
             example: id => {
                 var select = d3
                     .select(id)

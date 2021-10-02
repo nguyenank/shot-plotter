@@ -19,7 +19,7 @@ function createRadioButtonsPage(id, data) {
         .attr("class", "modal-body");
 
     // explanation text
-    mb.append("h6").text("Create Radio Buttons Column");
+    mb.append("h6").text("Create Radio Buttons Widget");
 
     // example
     mb.append("div")
@@ -35,13 +35,13 @@ function createRadioButtonsPage(id, data) {
             ? { ...data, id: "sample-radio-buttons" }
             : {
                   id: "sample-radio-buttons",
-                  title: "Column Name",
+                  title: "Detail Name",
                   options: defaultOptions,
               }
     );
 
     mb.append("div").text(
-        "Choose the column name and create options for the text field. There must be 2-5 options. Also select which options should be selected by default."
+        "Enter the detail name and create options for the text field. There must be 2-5 options. Also select which option should be selected by default."
     );
     mb.append("hr");
     // title
@@ -56,7 +56,7 @@ function createRadioButtonsPage(id, data) {
         .append("label")
         .attr("for", "radio-buttons-title")
         .attr("class", "form-label")
-        .text("Column Name");
+        .text("Detail Name");
     nameDiv
         .append("input")
         .attr("type", "text")
@@ -67,7 +67,7 @@ function createRadioButtonsPage(id, data) {
         .append("div")
         .attr("class", "invalid-tooltip")
         .text(
-            "Column names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
+            "Detail names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
         );
     // options
     var optionsDiv = form

@@ -19,7 +19,7 @@ function createTextFieldPage(id, data) {
         .attr("class", "modal-body");
 
     // explanation text
-    mb.append("h6").text("Create Text Field Column");
+    mb.append("h6").text("Create Text Field Widget");
 
     // example
     mb.append("div")
@@ -31,13 +31,13 @@ function createTextFieldPage(id, data) {
             ? { ...data, id: "sample-text-field" }
             : {
                   id: "sample-text-field",
-                  title: "Column Name",
+                  title: "Detail Name",
                   defaultValue: "Default Text",
               }
     );
 
     mb.append("div").text(
-        "Choose the column name and any default text for the text field."
+        "Enter the detail name and any default text for the text field."
     );
     mb.append("hr");
     // text field
@@ -52,7 +52,7 @@ function createTextFieldPage(id, data) {
         .append("label")
         .attr("for", "text-field-title")
         .attr("class", "form-label")
-        .text("Column Name");
+        .text("Detail Name");
     nameDiv
         .append("input")
         .attr("type", "text")
@@ -63,7 +63,7 @@ function createTextFieldPage(id, data) {
         .append("div")
         .attr("class", "invalid-tooltip")
         .text(
-            "Column names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
+            "Detail names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
         );
     var defaultTextDiv = form
         .append("div")
