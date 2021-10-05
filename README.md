@@ -6,8 +6,6 @@ A [web application](https://shot-plotter.netlify.app/) for plotting hockey shots
 
 The web application is primarily built using D3.js.
 
-##### 09/28/2021: You can now modify the number of widgets per row in the details panel on the side.
-
 ### How to Use and Additional Information
 
 #### Shot Details
@@ -71,3 +69,9 @@ The table, by default, shows the last page, which has the last 10 shots recorded
 The shot table information can be download by pressing the _Download_ button. There is a text-field to customize the name of the file; otherwise, it defaults to the day and time when the web app was opened. Files are in .csv format, using comma separators, with the header row as it appears on the table, excluding _\#_, included in the file.
 
 To initialize the table, a .csv file can be uploaded using the _Choose File_ button next to the Upload label. Only .csv files are permitted. The header row must exactly match the header row of the table, excluding _\#_, including order. Any custom shot types will be added in shot order. Custom teams will be added in order as they appear, alternating between the teal and orange team. This means if a shot by the orange team is logged first, when the file is downloaded and later uploaded, the team will be blue, but besides color there is no impact to the web app. _When a file is uploaded, any shots previously in the table are erased._
+
+### Running Locally
+
+To run the application locally, any method of running an HTTP server is needed to prevent browser issues with CORS (cross-origin requests - essentially not allowing the JS files to be loaded using the file:// protocol). Some methods include [http-server in Node.js](https://www.npmjs.com/package/http-server), [http.server in Python](https://docs.python.org/3/library/http.server.html), or even some browser-based options like the [Web Server for Chrome extension](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en), but any option will do.
+
+Then, clone this repository; for most methods, it is sufficient to navigate into the repository folder and run the server, but check the exact way of starting a server for the chosen method. No additional packages need to be installed; additional packages are automatically acquired using CDNs.
