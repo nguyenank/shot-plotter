@@ -2,25 +2,17 @@ import {
     getDetails,
     getCurrentShotTypes,
 } from "../details/details-functions.js";
-import { cfg } from "./config-shots.js";
-
+import { cfg } from "../config.js";
 function createDot(
     svgId,
     id,
-    { type, teamId, coords, coords2, player, legendBool }
+    { typeIndex, teamColor, coords, coords2, player, legendBool }
 ) {
-    var typeIndex = type
-        ? _.findIndex(getCurrentShotTypes(), {
-              value: type,
-          })
-        : 0;
     var className = legendBool
-        ? "legend-shot"
-        : !teamId
-        ? "grey-shot"
-        : teamId === "#blue-team-name"
-        ? "blue-shot"
-        : "orange-shot";
+        ? "legendTeam"
+        : !teamColor
+        ? "greyTeam"
+        : teamColor;
     let g = d3
         .select(svgId)
         .append("g")
@@ -79,10 +71,18 @@ function createShape({
     let g = legendBool
         ? d3.select("#shot-type-legend").select("[id='" + id + "']")
         : d3.select("#dots").select("[id='" + id + "']");
+    const t = d3.transition().duration(cfg.newDotDuration);
     if (typeIndex == 0) {
-        g.append("circle")
+        let circle = g
+            .append("circle")
+            .classed("ghost-shot", ghostBool)
             .attr("cx", coords[0])
-            .attr("cy", coords[1])
+            .attr("cy", coords[1]);
+        if (!legendBool) {
+            // do not transition for legend
+            circle = circle.transition(t);
+        }
+        circle
             .attr(
                 "r",
                 legendBool
@@ -91,24 +91,33 @@ function createShape({
                     ? cfg.polyR / 2
                     : cfg.polyR
             )
-            .attr("class", ghostBool ? className + " ghost-shot" : className);
+            .style("fill", cfg[className])
+            .style("stroke-width", "0.1px")
+            .style("stroke", cfg[className + "Solid"]);
     } else {
         var sides = typeIndex + 2;
-        g.append("polygon")
-            .attr(
-                "points",
-                polygon(
-                    coords[0],
-                    coords[1],
-                    legendBool
-                        ? cfg.legendR
-                        : pointTwoBool || ghostBool
-                        ? cfg.polyR / 2
-                        : cfg.polyR,
-                    sides
-                )
-            )
-            .attr("class", ghostBool ? className + " ghost-shot" : className);
+        if (legendBool) {
+            // do not transition for legend
+            g.append("polygon")
+                .style("fill", cfg[className])
+                .style("stroke-width", "0.1px")
+                .style("stroke", cfg[className + "Solid"])
+                .attr(
+                    "points",
+                    polygon(coords[0], coords[1], cfg.legendR, sides)
+                );
+        } else {
+            g.append("polygon")
+                .classed("ghost-shot", ghostBool)
+                .style("fill", cfg[className])
+                .style("stroke-width", "0.05px")
+                .style("stroke", cfg[className + "Solid"])
+                .attr("points", polygon(coords[0], coords[1], 1, sides));
+            dotSizeHandler(
+                id,
+                pointTwoBool || ghostBool ? cfg.polyR / 2 : cfg.polyR
+            );
+        }
     }
 }
 
@@ -128,4 +137,42 @@ function polygon(cx, cy, r, sides) {
     return points;
 }
 
-export { createDot, polygon };
+function dotSizeHandler(id, scale) {
+    function enlarge() {
+        // https://stackoverflow.com/a/11671373
+        var bbox = d3
+            .select(this)
+            .node()
+            .getBBox();
+        var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
+        var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
+        const t = d3.transition().duration(cfg.selectDuration);
+        d3.select(this)
+            .transition(t)
+            .attr(
+                "transform",
+                `translate(${xShift},${yShift}) scale(${scale},${scale})`
+            );
+    }
+    d3.select("#dots")
+        .select("[id='" + id + "']")
+        .selectAll("circle")
+        .each(enlarge);
+    d3.select("#dots")
+        .select("[id='" + id + "']")
+        .selectAll("polygon")
+        .each(enlarge);
+    let line = d3
+        .select("#dots")
+        .select("[id='" + id + "']")
+        .select("polyline");
+    if (!line.empty()) {
+        if (line.style("opacity") === "0.3") {
+            line.style("opacity", 0.7);
+        } else {
+            line.style("opacity", 0.3);
+        }
+    }
+}
+
+export { createDot, polygon, dotSizeHandler };

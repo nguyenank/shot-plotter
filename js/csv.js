@@ -98,12 +98,16 @@ function uploadCSV(id, uploadId, e) {
 
             // remove invalid class if necessary
             d3.select(uploadId).classed("is-invalid", false);
-            var swapTeamId = "#blue-team-name";
+            var swapTeamColor = "blueTeam";
             clearTable();
             Papa.parse(f, {
                 header: true,
                 step: function(row) {
-                    swapTeamId = processCSV(uploadId, row.data, swapTeamId);
+                    swapTeamColor = processCSV(
+                        uploadId,
+                        row.data,
+                        swapTeamColor
+                    );
                 },
             });
         }
@@ -112,7 +116,7 @@ function uploadCSV(id, uploadId, e) {
     }
 }
 
-function processCSV(uploadId, row, swapTeamId) {
+function processCSV(uploadId, row, swapTeamColor) {
     // only process if current table header (minus shot) is Identical to the current header
     var tableHeader = [];
     d3.select("#shot-table")
@@ -127,7 +131,7 @@ function processCSV(uploadId, row, swapTeamId) {
     var csvHeader = Object.keys(row);
     if (!_.isEqual(tableHeader, csvHeader)) {
         d3.select(uploadId).classed("is-invalid", true);
-        return swapTeamId;
+        return swapTeamColor;
     }
 
     // add any new shot type options
@@ -141,32 +145,30 @@ function processCSV(uploadId, row, swapTeamId) {
         }
     }
 
-    var newSwapTeam = swapTeamId;
+    var newSwapTeam = swapTeamColor;
 
     if (existsDetail("#team")) {
-        var teamId;
+        var teamColor;
 
         // add any new team name
         if (!row.Team) {
-            teamId = "#blue-team-name";
+            teamColor = "blueTeam";
         } else if (
             row.Team === d3.select("#blue-team-name").property("value")
         ) {
-            teamId = "#blue-team-name";
+            teamColor = "blueTeam";
         } else if (
             row.Team === d3.select("#orange-team-name").property("value")
         ) {
-            teamId = "#orange-team-name";
+            teamColor = "orangeTeam";
         } else {
-            d3.select(swapTeamId).property("value", row.Team);
+            d3.select(swapTeamColor).property("value", row.Team);
             teamLegend();
 
-            teamId = swapTeamId;
+            teamColor = swapTeamColor;
             // alternate changing team names
             newSwapTeam =
-                swapTeamId === "#blue-team-name"
-                    ? "#orange-team-name"
-                    : "#blue-team-name";
+                swapTeamColor === "blueTeam" ? "orangeTeam" : "blueTeam";
         }
     }
 
@@ -175,7 +177,7 @@ function processCSV(uploadId, row, swapTeamId) {
 
     let specialData = {
         type: row.Type,
-        teamId: teamId,
+        teamColor: teamColor,
         coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
         player: row.Player,
         numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,

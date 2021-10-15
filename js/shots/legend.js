@@ -4,7 +4,7 @@ import {
     getCurrentShotTypes,
 } from "../details/details-functions.js";
 import { createDot } from "./dot.js";
-import { cfg } from "./config-shots.js";
+import { cfg } from "../config.js";
 
 function setUpLegend() {
     var div = d3.select("#legend").append("div");
@@ -40,11 +40,11 @@ function shotTypeLegend(id = "#shot-type-legend") {
 
     var typeOptions = getCurrentShotTypes();
 
-    for (let option of typeOptions) {
+    typeOptions.forEach(function(value, i) {
         var data = {
             teamId: true,
             player: "",
-            type: option.value,
+            typeIndex: i,
             coords: [xOffset, 0.625 * yOffset],
             legendBool: true,
         };
@@ -55,11 +55,11 @@ function shotTypeLegend(id = "#shot-type-legend") {
                 .append("text")
                 .attr("x", xOffset)
                 .attr("y", yOffset)
-                .text(option.value)
+                .text(typeOptions[i].value)
                 .node()
                 .getComputedTextLength() +
             2 * spacing;
-    }
+    });
     xOffset -= 2 * spacing;
 
     svg.attr("width", xOffset).attr("height", 2 * yOffset);

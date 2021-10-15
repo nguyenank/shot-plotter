@@ -251,15 +251,6 @@ table tfoot #table-navigation {
 table tfoot * * {
   border: 0; }
 
-.blue-row {
-  background-color: rgba(53, 171, 169, 0.7); }
-
-.orange-row {
-  background-color: rgba(234, 142, 72, 0.7); }
-
-.grey-row {
-  background-color: rgba(170, 170, 170, 0.7); }
-
 .ghost-shot {
   opacity: 50%; }
 

@@ -54,7 +54,7 @@ function teamRadioButtons(id, data) {
         .attr("type", "radio")
         .attr("name", "team-bool")
         .attr("id", "blue-team-select")
-        .attr("value", "#blue-team-name");
+        .attr("value", "blueTeam");
     blueDiv
         .append("input")
         .attr("type", "text")
@@ -69,7 +69,7 @@ function teamRadioButtons(id, data) {
         .attr("type", "radio")
         .attr("name", "team-bool")
         .attr("id", "orange-team-select")
-        .attr("value", "#orange-team-name");
+        .attr("value", "orangeTeam");
     orangeDiv
         .append("input")
         .attr("type", "text")

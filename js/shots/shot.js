@@ -1,13 +1,14 @@
 import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
+import { getCurrentShotTypes } from "../details/details-functions.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
     sessionStorage.setItem("shiftHeld", null);
 
     // http://thenewcode.com/1068/Making-Arrows-in-SVG
-    for (let className of ["blue-shot", "orange-shot", "grey-shot"]) {
+    for (let className of ["blueTeam", "orangeTeam", "greyTeam"]) {
         d3.select("#hockey-rink-svg")
             .insert("marker", "g")
             .attr("id", `arrowhead-${className}`)
@@ -95,10 +96,13 @@ function createShotFromEvent(e, point1) {
                     .property("value");
                 break;
             case "shot-type":
-                specialData["type"] = d3
+                const type = d3
                     .select("#" + col.id)
                     .select("select")
                     .property("value");
+                specialData["typeIndex"] = type
+                    ? _.findIndex(getCurrentShotTypes(), { value: type })
+                    : 0;
             case "dropdown":
                 rowData[col.id] = d3
                     .select("#" + col.id)
@@ -112,11 +116,15 @@ function createShotFromEvent(e, point1) {
                     .property("value");
                 break;
             case "team":
-                specialData["teamId"] = d3
+                specialData["teamColor"] = d3
                     .select("input[name='team-bool']:checked")
                     .property("value");
                 rowData[col.id] = d3
-                    .select(specialData["teamId"])
+                    .select(
+                        specialData["teamColor"] === "blueTeam"
+                            ? "#blue-team-name"
+                            : "#orange-team-name"
+                    )
                     .property("value");
                 break;
             case "shot-number":

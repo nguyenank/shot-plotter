@@ -148,7 +148,7 @@ function createHeaderRow(details) {
         });
 }
 
-function createPage(startRow, endRow) {
+function createPage(startRow, endRow, newRow = null) {
     d3.select("#shot-table-body")
         .selectAll("tr")
         .remove();
@@ -156,7 +156,7 @@ function createPage(startRow, endRow) {
     var rows = getRows().slice(startRow - 1, endRow);
 
     for (let { id, rowData, specialData, selected } of rows) {
-        createRowFromData(id, rowData, specialData, selected);
+        createRowFromData(id, rowData, specialData, selected, newRow === id);
     }
 }
 
