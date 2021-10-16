@@ -164,7 +164,7 @@ function deleteHandler(id) {
     updateTableFooter();
 
     const t = d3.transition().duration(cfg.deleteDuration);
-    dotSizeHandler(id, 0, cfg.deleteDuration);
+    dotSizeHandler(id, 0, 0, cfg.deleteDuration);
     d3.select("#shot-table-body")
         .select("[id='" + id + "']")
         .transition(t)
@@ -180,6 +180,7 @@ function deleteHandler(id) {
 function selectHandler(id, checked, teamColor, polygonBool) {
     var row = d3.select("#shot-table-body").select("[id='" + id + "']");
     const t = d3.transition().duration(cfg.selectDuration);
+    const radius = polygonBool ? cfg.polyR : cfg.circleR;
     if (checked) {
         // https://stackoverflow.com/a/23724356
         var toMove = d3
@@ -191,7 +192,8 @@ function selectHandler(id, checked, teamColor, polygonBool) {
             .append(() => toMove);
         dotSizeHandler(
             id,
-            polygonBool ? 1.5 * cfg.polyR : 1.5,
+            cfg.selectedMultiplier * radius,
+            cfg.selectedMultiplier,
             cfg.selectDuration
         );
         row.transition(t).style("background-color", cfg[teamColor]);
@@ -209,7 +211,7 @@ function selectHandler(id, checked, teamColor, polygonBool) {
         d3.select("#dots")
             .select("#normal")
             .insert(() => toMove, "[shot-number='" + shotNumber + "']");
-        dotSizeHandler(id, polygonBool ? cfg.polyR : 1, cfg.selectDuration);
+        dotSizeHandler(id, radius, 1, cfg.selectDuration);
         row.transition(t).style("background-color", null);
     }
 }

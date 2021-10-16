@@ -71,41 +71,35 @@ function createShape({
     let g = legendBool
         ? d3.select("#shot-type-legend").select("[id='" + id + "']")
         : d3.select("#dots").select("[id='" + id + "']");
-    const t = d3.transition().duration(cfg.newDotDuration);
     if (typeIndex == 0) {
         let circle = g
             .append("circle")
             .classed("ghost-shot", ghostBool)
             .attr("cx", coords[0])
-            .attr("cy", coords[1]);
-        if (!legendBool) {
-            // do not transition for legend
-            circle = circle.transition(t);
-        }
-        circle
-            .attr(
-                "r",
-                legendBool
-                    ? cfg.legendR
-                    : pointTwoBool || ghostBool
-                    ? cfg.polyR / 2
-                    : cfg.polyR
-            )
+            .attr("cy", coords[1])
             .style("fill", cfg[className])
             .style("stroke-width", "0.1px")
             .style("stroke", cfg[className + "Solid"]);
+        if (legendBool) {
+            // do not transition for legend
+            circle.attr("r", cfg.legendR);
+        } else {
+            circle.attr("r", 1);
+            dotSizeHandler(
+                id,
+                pointTwoBool || ghostBool ? cfg.circleR / 2 : cfg.circleR,
+                1,
+                cfg.newDotDuration
+            );
+        }
     } else {
         var sides = typeIndex + 2;
         if (legendBool) {
             // do not transition for legend
-            g.append("polygon")
-                .style("fill", cfg[className])
-                .style("stroke-width", "0.1px")
-                .style("stroke", cfg[className + "Solid"])
-                .attr(
-                    "points",
-                    polygon(coords[0], coords[1], cfg.legendR, sides)
-                );
+            g.append("polygon").attr(
+                "points",
+                polygon(coords[0], coords[1], cfg.legendR, sides)
+            );
         } else {
             g.append("polygon")
                 .classed("ghost-shot", ghostBool)
@@ -116,6 +110,7 @@ function createShape({
             dotSizeHandler(
                 id,
                 pointTwoBool || ghostBool ? cfg.polyR / 2 : cfg.polyR,
+                1,
                 cfg.newDotDuration
             );
         }
@@ -138,7 +133,8 @@ function polygon(cx, cy, r, sides) {
     return points;
 }
 
-function dotSizeHandler(id, scale, duration) {
+function dotSizeHandler(id, scaleDot, scaleText, duration) {
+    let scale = scaleText;
     function enlarge() {
         // https://stackoverflow.com/a/11671373
         var bbox = d3
@@ -155,10 +151,13 @@ function dotSizeHandler(id, scale, duration) {
                 `translate(${xShift},${yShift}) scale(${scale},${scale})`
             );
     }
+
     d3.select("#dots")
         .select("[id='" + id + "']")
         .selectAll("text")
         .each(enlarge);
+
+    scale = scaleDot;
     d3.select("#dots")
         .select("[id='" + id + "']")
         .selectAll("circle")
