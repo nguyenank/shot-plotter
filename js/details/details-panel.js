@@ -104,7 +104,7 @@ function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
 }
 
 function customizeButton(id) {
-    var d = d3
+    let d = d3
         .select(id)
         .append("div")
         .attr("class", "center position-relative");

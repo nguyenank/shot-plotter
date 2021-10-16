@@ -36,18 +36,18 @@ function setUpTable() {
         .append("tfoot")
         .append("tr");
 
-    var footerRow = d3
+    let footerRow = d3
         .select("#shot-table")
         .select("tfoot")
         .select("tr")
         .attr("class", "small-text");
 
-    var tableWidth = getHeaderRow().length;
+    const tableWidth = getHeaderRow().length;
     footerRow
         .append("td")
         .attr("colspan", tableWidth / 2)
         .attr("id", "table-description");
-    var nav = footerRow
+    let nav = footerRow
         .append("td")
         .attr(
             "colspan",
@@ -66,7 +66,7 @@ function updateTableFooter() {
 }
 
 function updateTableNavigation(id = "#table-navigation") {
-    var nav = d3.select(id);
+    let nav = d3.select(id);
     nav.selectAll("*").remove();
     if (getStartRow() > 1) {
         // exists a page before; add prev button
@@ -118,16 +118,16 @@ function updateTableDescription(id = "#table-description") {
 }
 
 function createHeaderRow(details) {
-    var headerRow = d3
+    let headerRow = d3
         .select("#shot-table")
         .select("thead")
         .select("tr");
     // clear row
     headerRow.selectAll("*").remove();
 
-    var columns = [{ title: "" }, ...details]; // for check box
-    for (let col of columns) {
-        var c = headerRow
+    const columns = [{ title: "" }, ...details]; // for check box
+    for (const col of columns) {
+        let c = headerRow
             .append("th")
             .attr("scope", "col")
             .text(col.title);
@@ -153,9 +153,9 @@ function createPage(startRow, endRow, newRow = null) {
         .selectAll("tr")
         .remove();
 
-    var rows = getRows().slice(startRow - 1, endRow);
+    const rows = getRows().slice(startRow - 1, endRow);
 
-    for (let { id, rowData, specialData, selected } of rows) {
+    for (const { id, rowData, specialData, selected } of rows) {
         createRowFromData(id, rowData, specialData, selected, newRow === id);
     }
 }

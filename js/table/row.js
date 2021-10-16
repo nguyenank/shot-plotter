@@ -21,7 +21,7 @@ function createNewRow(id, rowData, specialData) {
         { id: id, rowData: rowData, specialData: specialData, selected: false },
     ]);
 
-    var numRows = getNumRows() + 1;
+    const numRows = getNumRows() + 1;
     setNumRows(numRows);
 
     if (numRows == 1) {
@@ -59,7 +59,7 @@ function createRowFromData(
     newRow = null
 ) {
     // create row
-    var row = d3.select("#shot-table-body").append("tr");
+    let row = d3.select("#shot-table-body").append("tr");
 
     teamColor = teamColor ? teamColor : "greyTeam";
 
@@ -71,7 +71,7 @@ function createRowFromData(
         .attr("value", id)
         .attr("id", id)
         .on("change", function() {
-            var checked = d3.select(this).property("checked");
+            const checked = d3.select(this).property("checked");
             setRows(
                 getRows().map(function(row) {
                     if (row.id === id) {
@@ -127,7 +127,7 @@ function deleteHandler(id) {
             return x;
         })
     );
-    var numRows = getNumRows() - 1;
+    const numRows = getNumRows() - 1;
     setNumRows(numRows);
 
     if (numRows === 0) {
@@ -178,12 +178,12 @@ function deleteHandler(id) {
 }
 
 function selectHandler(id, checked, teamColor, polygonBool) {
-    var row = d3.select("#shot-table-body").select("[id='" + id + "']");
+    let row = d3.select("#shot-table-body").select("[id='" + id + "']");
     const t = d3.transition().duration(cfg.selectDuration);
     const radius = polygonBool ? cfg.polyR : cfg.circleR;
     if (checked) {
         // https://stackoverflow.com/a/23724356
-        var toMove = d3
+        let toMove = d3
             .select("#dots")
             .select("[id='" + id + "']")
             .node();
@@ -198,13 +198,15 @@ function selectHandler(id, checked, teamColor, polygonBool) {
         );
         row.transition(t).style("background-color", cfg[teamColor]);
     } else {
-        var shotNumber = d3
-            .select("#dots")
-            .select("[id='" + id + "']")
-            .attr("shot-number");
-        shotNumber = Number(shotNumber) + 1;
+        const shotNumber =
+            Number(
+                d3
+                    .select("#dots")
+                    .select("[id='" + id + "']")
+                    .attr("shot-number")
+            ) + 1;
 
-        var toMove = d3
+        let toMove = d3
             .select("#dots")
             .select("[id='" + id + "']")
             .node();

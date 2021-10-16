@@ -1,5 +1,5 @@
 function downloadArea(id, defaultFileName, onClick, extension) {
-    var wrapper = d3
+    let wrapper = d3
         .select(id)
         .append("div")
         .attr("class", "input-group");
@@ -29,12 +29,12 @@ function downloadArea(id, defaultFileName, onClick, extension) {
 }
 
 function uploadArea(id, uploadId, onChange, warning) {
-    var wrapper = d3
+    let wrapper = d3
         .select(id)
         .append("div")
         .attr("class", "input-group");
 
-    var upload = wrapper
+    let upload = wrapper
         .append("label")
         .attr("for", uploadId)
         .attr("class", "upload-area")

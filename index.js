@@ -40,7 +40,7 @@ function index() {
         }
 
         d3.select("#email").on("click", function() {
-            var y = "znvygb:naxathlranaxathlra@tznvy.pbz";
+            const y = "znvygb:naxathlranaxathlra@tznvy.pbz";
             d3.select(this)
                 .attr("href", decode(y))
                 .on("click", () => {});

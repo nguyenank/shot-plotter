@@ -3,7 +3,7 @@ import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
 
 function createTooltip({ id, title, text }) {
     // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
-    var tooltip = d3
+    let tooltip = d3
         .select("body")
         .append("div")
         .attr("class", "tooltip")
@@ -12,7 +12,7 @@ function createTooltip({ id, title, text }) {
     d3.select(id)
         .selectAll("h3")
         .each(function() {
-            var h = d3.select(this);
+            let h = d3.select(this);
             if (h.text() === title) {
                 h.append("i")
                     .attr("class", "bi bi-info-circle")
@@ -43,11 +43,11 @@ function teamRadioButtons(id, data) {
         .text(data.title)
         .attr("class", "center");
 
-    var wrapper = d3
+    let wrapper = d3
         .select("." + data.class)
         .append("div")
         .attr("class", "form-group");
-    var blueDiv = wrapper.append("div").attr("class", "form-check");
+    let blueDiv = wrapper.append("div").attr("class", "form-check");
     blueDiv
         .append("input")
         .attr("class", "form-check-input")
@@ -62,7 +62,7 @@ function teamRadioButtons(id, data) {
         .attr("value", data.blueTeamName)
         .on("change", () => teamLegend());
 
-    var orangeDiv = wrapper.append("div").attr("class", "form-check");
+    let orangeDiv = wrapper.append("div").attr("class", "form-check");
     orangeDiv
         .append("input")
         .attr("class", "form-check-input")

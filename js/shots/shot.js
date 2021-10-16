@@ -71,8 +71,8 @@ function setUpShots() {
 function createShotFromEvent(e, point1) {
     // https://stackoverflow.com/a/29325047
 
-    var columns = getHeaderRow();
-    var id = uuidv4();
+    const columns = getHeaderRow();
+    const id = uuidv4();
     let rowData = {};
     let specialData = {
         // data for custom specifics like color etc.

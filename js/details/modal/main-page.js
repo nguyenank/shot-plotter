@@ -22,7 +22,7 @@ function createMainPage(id) {
         .selectAll("*")
         .remove();
 
-    var mb = d3
+    let mb = d3
         .select(id)
         .append("div")
         .attr("id", "main-page-mb")
@@ -38,7 +38,7 @@ function createMainPage(id) {
         .on("click", () => {
             $("#explain-text").collapse("toggle");
         });
-    var et = mb
+    let et = mb
         .append("div")
         .attr("id", "explain-text")
         .attr("class", "collapse");
@@ -154,7 +154,7 @@ function createMainPage(id) {
             createReorderColumns("#reorder");
         });
     // footer
-    var footer = d3
+    let footer = d3
         .select(id)
         .append("div")
         .attr("class", "footer-row");
@@ -170,12 +170,12 @@ function createMainPage(id) {
 
 function createReorderColumns(id = "#reorder") {
     // column reordering
-    var columns = getDetails();
+    const columns = getDetails();
 
-    var mb = d3.select(id);
+    let mb = d3.select(id);
     mb.select("#reorder-columns").remove();
 
-    var v = mb
+    let v = mb
         .append("table")
         .attr("id", "reorder-columns")
         .selectAll("td")
@@ -202,9 +202,8 @@ function createReorderColumns(id = "#reorder") {
                         d.hidden ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"
                     )
                     .on("click", function() {
-                        var currentClass = d3.select(this).attr("class");
-                        var newClass =
-                            currentClass === "bi bi-eye-fill"
+                        const newClass =
+                            d3.select(this).attr("class") === "bi bi-eye-fill"
                                 ? "bi bi-eye-slash-fill"
                                 : "bi bi-eye-fill";
                         d3.select(this).attr("class", newClass);
@@ -243,7 +242,7 @@ function createReorderColumns(id = "#reorder") {
                     .append("i")
                     .attr("class", "bi bi-trash-fill")
                     .on("click", function() {
-                        var details = getDetails();
+                        let details = getDetails();
                         _.remove(details, { id: d.id });
                         setDetails(details);
                         d3.select("#reorder-columns")
@@ -252,15 +251,15 @@ function createReorderColumns(id = "#reorder") {
                     });
             }
         });
-    var el = document.getElementById("reorder-columns");
-    var sortable = new Sortable(el, { ghostClass: "reorder-ghost" });
+    const el = document.getElementById("reorder-columns");
+    const sortable = new Sortable(el, { ghostClass: "reorder-ghost" });
 }
 
 function saveChanges(e) {
     saveCurrentDetailSetup();
     twoPointFunctionality();
 
-    var pageSize = d3.select("#page-size-field").property("value");
+    const pageSize = d3.select("#page-size-field").property("value");
 
     if (
         !Number.isInteger(parseInt(pageSize)) ||
@@ -273,7 +272,7 @@ function saveChanges(e) {
     d3.select("#page-size-field").classed("is-invalid", false);
     setRowsPerPage(pageSize);
 
-    var titles = [];
+    let titles = [];
     d3.select("#reorder-columns")
         .selectAll("td")
         .each(function() {
@@ -300,9 +299,9 @@ function saveChanges(e) {
         });
 
     createHeaderRow(titles);
-    var visibleDetails = titles.map(x => _.find(getDetails(), { id: x.id }));
+    const visibleDetails = titles.map(x => _.find(getDetails(), { id: x.id }));
 
-    var widgetsPerRow = parseInt(
+    const widgetsPerRow = parseInt(
         d3.select("#widgets-per-row-dropdown").property("value")
     );
 
@@ -377,14 +376,14 @@ function twoPointFunctionality() {
 }
 
 function createExplainText(id = "#explain-text") {
-    var et = d3.select(id);
+    let et = d3.select(id);
     et.append("hr");
 
     et.append("p").text(
         "To reorder details, click and drag them into the desired order in the row of details below."
     );
 
-    var visText = et
+    let visText = et
         .append("p")
         .text("To toggle if a detail is visible, click on the eye (");
     visText.append("i").attr("class", "bi bi-eye-fill");
@@ -400,7 +399,7 @@ function createExplainText(id = "#explain-text") {
         .text(
             ") indicates the detail is not visible. Only visible details will be included in the side panel and table."
         );
-    var deleteText = et.append("p").text("The trash can (");
+    let deleteText = et.append("p").text("The trash can (");
     deleteText.append("i").attr("class", "bi bi-trash-fill");
     deleteText
         .append("span")
@@ -415,7 +414,7 @@ function createExplainText(id = "#explain-text") {
         "You can change the number of rows that appear on each page of the table; the number must be between 1-999, inclusive."
     );
 
-    var twoPointText = et
+    let twoPointText = et
         .append("p")
         .text(
             "You can also enable switching between 1-location and 2-location events. When enabled, you can hold down the "
@@ -434,7 +433,7 @@ function createExplainText(id = "#explain-text") {
         "You can save your current setup (which includes: detail order, any created details, whether 2-location events are enabled, appearance preferences (i.e. number of widgets per side panel & number of rows per table), and any values currently entered/selected in the details panel) as a .json. That .json file can later be uploaded to recreate that setup."
     );
 
-    var github = et
+    let github = et
         .append("p")
         .text(
             "For more detailed information about customization, and the app in general, visit the "

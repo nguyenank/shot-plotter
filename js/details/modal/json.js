@@ -18,7 +18,7 @@ function setUpJSONDownloadUpload(id) {
 }
 
 function downloadJSON(id) {
-    var fileName = d3
+    let fileName = d3
         .select(id)
         .select(".download-name")
         .property("value");
@@ -30,7 +30,7 @@ function downloadJSON(id) {
                 .attr("placeholder") + ".json";
     }
     saveCurrentDetailSetup();
-    var json = {
+    const json = {
         details: getDetails(),
         rowsPerPage: d3.select("#page-size-field").property("value"),
         widgetsPerRow: d3.select("#widgets-per-row-dropdown").property("value"),
@@ -40,7 +40,7 @@ function downloadJSON(id) {
 
 function uploadJSON(id, uploadId, e) {
     if (/.json$/i.exec(d3.select(uploadId).property("value"))) {
-        var f = e.target.files[0];
+        const f = e.target.files[0];
         if (f) {
             // change text and wipe value to allow for same file upload
             // while preserving name

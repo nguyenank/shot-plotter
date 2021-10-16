@@ -4,7 +4,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
     d3.select(id)
         .selectAll("*")
         .remove();
-    var mb = d3
+    let mb = d3
         .select(id)
         .append("div")
         .attr("id", "widget-type-page-mb")
@@ -17,8 +17,8 @@ function createWidgetTypePage(id = "#widget-type-page") {
     );
 
     // widgets
-    var cards = mb.append("div").attr("class", "cards");
-    var widgets = [
+    let cards = mb.append("div").attr("class", "cards");
+    const widgets = [
         {
             name: "Radio Buttons",
             id: "#radio-buttons-page",
@@ -30,12 +30,12 @@ function createWidgetTypePage(id = "#widget-type-page") {
                     { value: "Option 2", checked: true },
                     { value: "Option 3" },
                 ];
-                var main = d3
+                let main = d3
                     .select(id)
                     .append("div")
                     .attr("class", "center");
                 for (let option of options) {
-                    var div = d3
+                    let div = d3
                         .select(id)
                         .append("div")
                         .attr("class", "form-check vertical");
@@ -75,13 +75,13 @@ function createWidgetTypePage(id = "#widget-type-page") {
             desc:
                 "A dropdown is good when you have more, but still a finite number of options. The 'Type' widget uses a dropdown, though you will be unable to add options like in the 'Type' column.",
             example: id => {
-                var select = d3
+                let select = d3
                     .select(id)
                     .append("div")
                     .attr("style", "width:100%")
                     .append("select")
                     .attr("id", "example-select");
-                let options = [
+                const options = [
                     { value: "Option 1" },
                     { value: "Option 2", selected: true },
                     { value: "Option 3" },
@@ -89,7 +89,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
                     { value: "Option 5" },
                     { value: "Option 6" },
                 ];
-                for (let option of options) {
+                for (const option of options) {
                     select
                         .append("option")
                         .text(option.value)
@@ -191,16 +191,16 @@ function createWidgetTypePage(id = "#widget-type-page") {
         },
     ];
 
-    for (let widget of widgets) {
-        var card = cards.append("div").attr("class", "card");
-        var ch = card
+    for (const widget of widgets) {
+        let card = cards.append("div").attr("class", "card");
+        let ch = card
             .append("div")
             .attr("class", "card-header")
             .each(function() {
                 widget.example(this);
             });
 
-        var cb = card.append("div").attr("class", "card-body");
+        let cb = card.append("div").attr("class", "card-body");
         cb.append("h6")
             .attr("class", "card-title")
             .text(widget.name);
@@ -216,7 +216,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             .on("click", () => changePage(id, widget.id));
     }
     // footer
-    var footer = d3
+    let footer = d3
         .select(id)
         .append("div")
         .attr("class", "footer-row");

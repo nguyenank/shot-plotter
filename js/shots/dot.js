@@ -8,7 +8,7 @@ function createDot(
     id,
     { typeIndex, teamColor, coords, coords2, player, legendBool }
 ) {
-    var className = legendBool
+    const team = legendBool
         ? "legendTeam"
         : !teamColor
         ? "greyTeam"
@@ -17,35 +17,40 @@ function createDot(
         .select(svgId)
         .append("g")
         .attr("id", id);
+
     if (coords2) {
-        let halfcoords = [
-            Math.round((coords[0] + coords2[0]) / 2),
-            Math.round((coords[1] + coords2[1]) / 2),
-        ];
+        // create smaller first dot
         createShape({
             id: id,
             typeIndex: typeIndex,
             coords: coords,
             legendBool: legendBool,
             pointTwoBool: true,
-            className: className,
+            team: team,
         });
+        // create connecting line
+        const halfcoords = [
+            Math.round((coords[0] + coords2[0]) / 2),
+            Math.round((coords[1] + coords2[1]) / 2),
+        ];
         g.append("polyline")
             .attr(
                 "points",
                 `${coords[0]},${coords[1]} ${halfcoords[0]},${halfcoords[1]} ${coords2[0]},${coords2[1]}`
             )
-            .attr("marker-mid", `url(#arrowhead-${className})`)
-            .attr("class", className)
+            .attr("marker-mid", `url(#arrowhead-${team})`)
+            .attr("class", team)
             .style("opacity", 0);
         coords = coords2;
     }
+
+    // create dot
     createShape({
         id: id,
         typeIndex: typeIndex,
         coords: coords,
         legendBool: legendBool,
-        className: className,
+        team: team,
     });
 
     // only display text if two characters or less
@@ -66,25 +71,27 @@ function createShape({
     coords,
     pointTwoBool,
     legendBool,
-    className,
+    team,
 }) {
-    let ghostBool = id === "ghost-dot";
+    const ghostBool = id === "ghost-dot";
     let g = legendBool
         ? d3.select("#shot-type-legend").select("[id='" + id + "']")
         : d3.select("#dots").select("[id='" + id + "']");
     if (typeIndex == 0) {
+        // dot is circle
         let circle = g
             .append("circle")
             .classed("ghost-shot", ghostBool)
             .attr("cx", coords[0])
             .attr("cy", coords[1])
-            .style("fill", cfg[className])
+            .style("fill", cfg[team])
             .style("stroke-width", "0.1px")
-            .style("stroke", cfg[className + "Solid"]);
+            .style("stroke", cfg[team + "Solid"]);
         if (legendBool) {
             // do not transition for legend
             circle.attr("r", cfg.legendR);
         } else {
+            // start with radius 1 then expand to correct size
             circle.attr("r", 1);
             dotSizeHandler(
                 id,
@@ -94,7 +101,8 @@ function createShape({
             );
         }
     } else {
-        var sides = typeIndex + 2;
+        // dot is not circular, instead is a polygon
+        const sides = typeIndex + 2;
         if (legendBool) {
             // do not transition for legend
             g.append("polygon").attr(
@@ -102,11 +110,12 @@ function createShape({
                 polygon(coords[0], coords[1], cfg.legendR, sides)
             );
         } else {
+            // start with radius 1 then expand to correct size
             g.append("polygon")
                 .classed("ghost-shot", ghostBool)
-                .style("fill", cfg[className])
+                .style("fill", cfg[team])
                 .style("stroke-width", "0.05px")
-                .style("stroke", cfg[className + "Solid"])
+                .style("stroke", cfg[team + "Solid"])
                 .attr("points", polygon(coords[0], coords[1], 1, sides));
             dotSizeHandler(
                 id,
@@ -119,8 +128,8 @@ function createShape({
 }
 
 function polygon(cx, cy, r, sides) {
-    var degrees = (2 * Math.PI) / sides;
-    var points = "";
+    const degrees = (2 * Math.PI) / sides;
+    let points = "";
     for (let i = 0; i < sides; i++) {
         // shift by 100 to make triangle point down for max space
         let x = (cx + r * Math.cos(degrees * i + 100))
@@ -140,9 +149,9 @@ function dotSizeHandler(id, scaleDot, scaleText, duration) {
     function enlarge(selection, scale) {
         if (!selection.empty()) {
             // https://stackoverflow.com/a/11671373
-            var bbox = selection.node().getBBox();
-            var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
-            var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
+            const bbox = selection.node().getBBox();
+            const xShift = (1 - scale) * (bbox.x + bbox.width / 2);
+            const yShift = (1 - scale) * (bbox.y + bbox.height / 2);
             selection
                 .transition(t)
                 .attr(
@@ -171,13 +180,16 @@ function dotSizeHandler(id, scaleDot, scaleText, duration) {
         // only one dot
         dots.call(enlarge, scaleDot);
     } else {
+        // scale second dot
         secondDot.call(enlarge, scaleDot);
+
+        // scale first dot
         dots.filter(function(d, i) {
             return i === 0;
         }).call(enlarge, scaleDot / 2);
     }
 
-    let line = d3
+    const line = d3
         .select("#dots")
         .select("[id='" + id + "']")
         .select("polyline");
