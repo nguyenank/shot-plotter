@@ -176,7 +176,9 @@ function processCSV(uploadId, row, swapTeamColor) {
     let id = uuidv4();
 
     let specialData = {
-        type: row.Type,
+        typeIndex: row.Type
+            ? _.findIndex(getCurrentShotTypes(), { value: row.Type })
+            : 0,
         teamColor: teamColor,
         coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
         player: row.Player,
