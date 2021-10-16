@@ -43,6 +43,7 @@ const cfg = {
         { type: "y", title: "Y", id: "y", noWidget: true },
     ],
     defaultRowsPerPage: 10,
+    defaultWidgetsPerRow: 2,
 };
 function getDefaultDetails() {
     return _.cloneDeep(cfg.defaultDetails);

@@ -15,6 +15,7 @@ import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
+import { cfg } from "../config-details.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -143,10 +144,12 @@ function createMainPage(id) {
         .on("click", function() {
             setDetails(getDefaultDetails());
             d3.select("#two-point-enable").property("checked", false);
-            // TODO: abstract-ify this to pull from config
-            d3.select("#page-size-field").property("value", 10);
+            d3.select("#page-size-field").property(
+                "value",
+                cfg.defaultRowsPerPage
+            );
             $("#widgets-per-row-dropdown")
-                .val("2")
+                .val(cfg.defaultWidgetsPerRow)
                 .trigger("change");
             createReorderColumns("#reorder");
         });
