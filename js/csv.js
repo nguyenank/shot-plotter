@@ -2,6 +2,7 @@ import {
     getDetails,
     existsDetail,
     getCurrentShotTypes,
+    getTypeIndex,
 } from "./details/details-functions.js";
 import {
     clearTable,
@@ -176,9 +177,7 @@ function processCSV(uploadId, row, swapTeamColor) {
     let id = uuidv4();
 
     let specialData = {
-        typeIndex: row.Type
-            ? _.findIndex(getCurrentShotTypes(), { value: row.Type })
-            : 0,
+        typeIndex: getTypeIndex(row.Type),
         teamColor: teamColor,
         coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
         player: row.Player,

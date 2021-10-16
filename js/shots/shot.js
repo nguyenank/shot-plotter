@@ -1,7 +1,7 @@
 import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
-import { getCurrentShotTypes } from "../details/details-functions.js";
+import { getTypeIndex } from "../details/details-functions.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
@@ -38,16 +38,20 @@ function setUpShots() {
                           .split(",")
                           .map(parseFloat);
             if (shiftHeld === "true" && firstPoint === null) {
+                // create ghost dot for first point
                 sessionStorage.setItem("firstPoint", d3.pointer(e));
+                const type = d3.select("#shot-type").empty()
+                    ? null
+                    : d3
+                          .select("#shot-type")
+                          .select("select")
+                          .property("value");
                 createDot("#ghost", "ghost-dot", {
                     id: "ghost-dot",
-                    type: d3.select("#shot-type").empty()
-                        ? null
-                        : d3
-                              .select("#shot-type")
-                              .select("select")
-                              .property("value"),
-                    teamId: d3.select("input[name='team-bool']:checked").empty()
+                    typeIndex: getTypeIndex(type),
+                    teamColor: d3
+                        .select("input[name='team-bool']:checked")
+                        .empty()
                         ? null
                         : d3
                               .select("input[name='team-bool']:checked")
@@ -71,7 +75,7 @@ function createShotFromEvent(e, point1) {
     var id = uuidv4();
     let rowData = {};
     let specialData = {
-        // data for custom specfics like color etc.
+        // data for custom specifics like color etc.
         coords: point1 ? point1 : d3.pointer(e),
         coords2: point1 ? d3.pointer(e) : null,
         numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
@@ -100,9 +104,7 @@ function createShotFromEvent(e, point1) {
                     .select("#" + col.id)
                     .select("select")
                     .property("value");
-                specialData["typeIndex"] = type
-                    ? _.findIndex(getCurrentShotTypes(), { value: type })
-                    : 0;
+                specialData["typeIndex"] = getTypeIndex(type);
             case "dropdown":
                 rowData[col.id] = d3
                     .select("#" + col.id)

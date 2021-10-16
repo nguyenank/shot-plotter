@@ -134,7 +134,7 @@ function polygon(cx, cy, r, sides) {
 }
 
 function dotSizeHandler(id, scaleDot, scaleText, duration) {
-    let scale = scaleText;
+    let scale;
     function enlarge() {
         // https://stackoverflow.com/a/11671373
         var bbox = d3
@@ -152,16 +152,56 @@ function dotSizeHandler(id, scaleDot, scaleText, duration) {
             );
     }
 
+    scale = scaleText;
+
     d3.select("#dots")
         .select("[id='" + id + "']")
         .selectAll("text")
         .each(enlarge);
 
     scale = scaleDot;
-    d3.select("#dots")
+
+    const circles = d3
+        .select("#dots")
         .select("[id='" + id + "']")
-        .selectAll("circle")
-        .each(enlarge);
+        .selectAll("circle");
+    const polygons = d3
+        .select("#dots")
+        .select("[id='" + id + "']")
+        .selectAll("polygon");
+
+    // scale two dots differently
+    const secondCircle = circles.filter(function(d, i) {
+        return i === 1;
+    });
+    const secondPolygon = polygons.filter(function(d, i) {
+        return i === 1;
+    });
+
+    if (secondCircle.empty() && secondPolygon.empty()) {
+        // only one dot
+        circles.each(enlarge);
+        polygons.each(enlarge);
+    } else {
+        secondCircle.empty()
+            ? secondPolygon.call(enlarge)
+            : secondCircle.call(enlarge);
+
+        scale = scale / 2;
+
+        circles
+            .filter(function(d, i) {
+                return i === 0;
+            })
+            .call(enlarge);
+
+        polygons
+            .filter(function(d, i) {
+                i === 0;
+            })
+            .call(enlarge);
+    }
+
     d3.select("#dots")
         .select("[id='" + id + "']")
         .selectAll("polygon")

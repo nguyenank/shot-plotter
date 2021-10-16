@@ -32,6 +32,10 @@ function getCurrentShotTypes() {
     return options;
 }
 
+function getTypeIndex(type) {
+    return type ? _.findIndex(getCurrentShotTypes(), { value: type }) : 0;
+}
+
 function changePage(currentPageId, newPageId) {
     d3.select(currentPageId).attr("hidden", true);
     d3.select(newPageId).attr("hidden", null);
@@ -147,6 +151,7 @@ export {
     setDetails,
     existsDetail,
     getCurrentShotTypes,
+    getTypeIndex,
     changePage,
     createId,
     saveCurrentDetailSetup,
