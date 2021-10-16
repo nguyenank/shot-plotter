@@ -164,7 +164,7 @@ function deleteHandler(id) {
     updateTableFooter();
 
     const t = d3.transition().duration(cfg.deleteDuration);
-    dotSizeHandler(id, 0);
+    dotSizeHandler(id, 0, cfg.deleteDuration);
     d3.select("#shot-table-body")
         .select("[id='" + id + "']")
         .transition(t)
@@ -189,7 +189,11 @@ function selectHandler(id, checked, teamColor, polygonBool) {
         d3.select("#dots")
             .select("#selected")
             .append(() => toMove);
-        dotSizeHandler(id, polygonBool ? 1.5 * cfg.polyR : 1.5);
+        dotSizeHandler(
+            id,
+            polygonBool ? 1.5 * cfg.polyR : 1.5,
+            cfg.selectDuration
+        );
         row.transition(t).style("background-color", cfg[teamColor]);
     } else {
         var shotNumber = d3
@@ -205,7 +209,7 @@ function selectHandler(id, checked, teamColor, polygonBool) {
         d3.select("#dots")
             .select("#normal")
             .insert(() => toMove, "[shot-number='" + shotNumber + "']");
-        dotSizeHandler(id, polygonBool ? cfg.polyR : 1);
+        dotSizeHandler(id, polygonBool ? cfg.polyR : 1, cfg.selectDuration);
         row.transition(t).style("background-color", null);
     }
 }

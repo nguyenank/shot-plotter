@@ -13,14 +13,14 @@ import {
     getRowsPerPage,
 } from "./table-functions.js";
 import { createRowFromData } from "./row.js";
-import { cfg } from "./config-table.js";
+import { cfg } from "../details/config-details.js";
 
 function setUpTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
     setStartRow(0);
     setEndRow(0);
     setNumRows(0);
-    setRowsPerPage(cfg.pageSize);
+    setRowsPerPage(cfg.defaultRowsPerPage);
 
     d3.select("#shot-table")
         .append("thead")

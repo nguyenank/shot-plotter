@@ -115,7 +115,8 @@ function createShape({
                 .attr("points", polygon(coords[0], coords[1], 1, sides));
             dotSizeHandler(
                 id,
-                pointTwoBool || ghostBool ? cfg.polyR / 2 : cfg.polyR
+                pointTwoBool || ghostBool ? cfg.polyR / 2 : cfg.polyR,
+                cfg.newDotDuration
             );
         }
     }
@@ -137,7 +138,7 @@ function polygon(cx, cy, r, sides) {
     return points;
 }
 
-function dotSizeHandler(id, scale) {
+function dotSizeHandler(id, scale, duration) {
     function enlarge() {
         // https://stackoverflow.com/a/11671373
         var bbox = d3
@@ -146,7 +147,7 @@ function dotSizeHandler(id, scale) {
             .getBBox();
         var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
         var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
-        const t = d3.transition().duration(cfg.selectDuration);
+        const t = d3.transition().duration(duration);
         d3.select(this)
             .transition(t)
             .attr(
@@ -154,6 +155,10 @@ function dotSizeHandler(id, scale) {
                 `translate(${xShift},${yShift}) scale(${scale},${scale})`
             );
     }
+    d3.select("#dots")
+        .select("[id='" + id + "']")
+        .selectAll("text")
+        .each(enlarge);
     d3.select("#dots")
         .select("[id='" + id + "']")
         .selectAll("circle")
