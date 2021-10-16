@@ -183,6 +183,13 @@ function processCSV(uploadId, row, swapTeamColor) {
         numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
     };
 
+    if (row.X2 && row.Y2) {
+        specialData.coords2 = [
+            parseFloat(row.X2) + 100,
+            -1 * parseFloat(row.Y2) + 42.5,
+        ]; // undo coordinate adjustment
+    }
+
     let headerIds = _.without(
         _.compact(getHeaderRow().map(x => x.id)),
         "shot-number"
