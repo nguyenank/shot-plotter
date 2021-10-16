@@ -257,6 +257,7 @@ function createReorderColumns(id = "#reorder") {
 }
 
 function saveChanges(e) {
+    saveCurrentDetailSetup();
     twoPointFunctionality();
 
     var pageSize = d3.select("#page-size-field").property("value");
