@@ -80,24 +80,25 @@ function teamLegend(id = "#team-legend") {
         return;
     }
 
-    for (let i of [
-        ["blue-shot", d3.select("#blue-team-name").property("value")],
-        ["orange-shot", d3.select("#orange-team-name").property("value")],
+    for (let [teamColor, text] of [
+        ["blueTeam", d3.select("#blue-team-name").property("value")],
+        ["orangeTeam", d3.select("#orange-team-name").property("value")],
     ]) {
         svg.append("rect")
             .attr("x", xOffset - cfg.legendR)
             .attr("y", 0.25 * yOffset)
             .attr("width", 2 * cfg.legendR)
             .attr("height", 2 * cfg.legendR)
-            .attr("class", i[0])
-            .style("stroke-width", "0.02em");
+            .style("fill", cfg[teamColor])
+            .style("stroke-width", "0.05em")
+            .style("stroke", cfg[teamColor + "Solid"]);
         xOffset += spacing;
         xOffset +=
             svg
                 .append("text")
                 .attr("x", xOffset)
                 .attr("y", yOffset)
-                .text(i[1])
+                .text(text)
                 .node()
                 .getComputedTextLength() +
             2 * spacing;

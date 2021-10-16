@@ -36,7 +36,8 @@ function createDot(
                 `${coords[0]},${coords[1]} ${halfcoords[0]},${halfcoords[1]} ${coords2[0]},${coords2[1]}`
             )
             .attr("marker-mid", `url(#arrowhead-${className})`)
-            .attr("class", className);
+            .attr("class", className)
+            .style("opacity", 0);
         coords = coords2;
     }
     createShape({
@@ -134,88 +135,57 @@ function polygon(cx, cy, r, sides) {
 }
 
 function dotSizeHandler(id, scaleDot, scaleText, duration) {
-    let scale;
-    function enlarge() {
-        // https://stackoverflow.com/a/11671373
-        var bbox = d3
-            .select(this)
-            .node()
-            .getBBox();
-        var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
-        var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
-        const t = d3.transition().duration(duration);
-        d3.select(this)
-            .transition(t)
-            .attr(
-                "transform",
-                `translate(${xShift},${yShift}) scale(${scale},${scale})`
-            );
-    }
+    const t = d3.transition().duration(duration);
 
-    scale = scaleText;
+    function enlarge(selection, scale) {
+        if (!selection.empty()) {
+            // https://stackoverflow.com/a/11671373
+            var bbox = selection.node().getBBox();
+            var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
+            var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
+            selection
+                .transition(t)
+                .attr(
+                    "transform",
+                    `translate(${xShift},${yShift}) scale(${scale},${scale})`
+                );
+        }
+    }
 
     d3.select("#dots")
         .select("[id='" + id + "']")
         .selectAll("text")
-        .each(enlarge);
+        .call(enlarge, scaleText);
 
-    scale = scaleDot;
-
-    const circles = d3
+    const dots = d3
         .select("#dots")
         .select("[id='" + id + "']")
-        .selectAll("circle");
-    const polygons = d3
-        .select("#dots")
-        .select("[id='" + id + "']")
-        .selectAll("polygon");
+        .selectAll("circle,polygon");
 
     // scale two dots differently
-    const secondCircle = circles.filter(function(d, i) {
-        return i === 1;
-    });
-    const secondPolygon = polygons.filter(function(d, i) {
+    const secondDot = dots.filter(function(d, i) {
         return i === 1;
     });
 
-    if (secondCircle.empty() && secondPolygon.empty()) {
+    if (secondDot.empty()) {
         // only one dot
-        circles.each(enlarge);
-        polygons.each(enlarge);
+        dots.call(enlarge, scaleDot);
     } else {
-        secondCircle.empty()
-            ? secondPolygon.call(enlarge)
-            : secondCircle.call(enlarge);
-
-        scale = scale / 2;
-
-        circles
-            .filter(function(d, i) {
-                return i === 0;
-            })
-            .call(enlarge);
-
-        polygons
-            .filter(function(d, i) {
-                i === 0;
-            })
-            .call(enlarge);
+        secondDot.call(enlarge, scaleDot);
+        dots.filter(function(d, i) {
+            return i === 0;
+        }).call(enlarge, scaleDot / 2);
     }
 
-    d3.select("#dots")
-        .select("[id='" + id + "']")
-        .selectAll("polygon")
-        .each(enlarge);
     let line = d3
         .select("#dots")
         .select("[id='" + id + "']")
         .select("polyline");
     if (!line.empty()) {
-        if (line.style("opacity") === "0.3") {
-            line.style("opacity", 0.7);
-        } else {
-            line.style("opacity", 0.3);
-        }
+        line.transition(t).style(
+            "opacity",
+            line.style("opacity") === "0.3" ? 0.7 : 0.3
+        );
     }
 }
 
