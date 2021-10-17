@@ -23,6 +23,8 @@ const cfg = {
         polyR: 2.5,
         // font-size of dots
         fontSize: "0.15rem",
+        // stroke-width of line
+        strokeWidth: "0.5px",
     },
 
     floorball: {
@@ -34,6 +36,8 @@ const cfg = {
         circleR: 0.4,
         polyR: 0.5,
         fontSize: "0.03rem",
+        // stroke-width of line
+        strokeWidth: "0.1px",
     },
 };
 

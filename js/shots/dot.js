@@ -42,6 +42,7 @@ function createDot(
             )
             .attr("marker-mid", `url(#arrowhead-${team})`)
             .attr("class", team)
+            .style("stroke-width", cfg[sport].strokeWidth)
             .style("opacity", 0);
         coords = coords2;
     }
