@@ -3,6 +3,8 @@ import {
     getCurrentShotTypes,
 } from "../details/details-functions.js";
 import { cfg } from "../config.js";
+import { sport } from "../../index.js";
+
 function createDot(
     svgId,
     id,
@@ -60,6 +62,7 @@ function createDot(
             .attr("y", coords[1])
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
+            .style("font-size", cfg[sport].fontSize)
             .text(player)
             .attr("class", "dot-text");
     }
@@ -91,11 +94,16 @@ function createShape({
             // do not transition for legend
             circle.attr("r", cfg.legendR);
         } else {
-            // start with radius 1 then expand to correct size
+            // start with radius 1
             circle.attr("r", 1);
+            // tranform it to have radius 0 with no transition
+            dotSizeHandler(id, 0, 1, 0);
+            // tranform to correct radius
             dotSizeHandler(
                 id,
-                pointTwoBool || ghostBool ? cfg.circleR / 2 : cfg.circleR,
+                pointTwoBool || ghostBool
+                    ? cfg[sport].circleR / 2
+                    : cfg[sport].circleR,
                 1,
                 cfg.newDotDuration
             );
@@ -110,16 +118,21 @@ function createShape({
                 polygon(coords[0], coords[1], cfg.legendR, sides)
             );
         } else {
-            // start with radius 1 then expand to correct size
+            // start with radius 1
             g.append("polygon")
                 .classed("ghost-shot", ghostBool)
                 .style("fill", cfg[team])
                 .style("stroke-width", "0.05px")
                 .style("stroke", cfg[team + "Solid"])
                 .attr("points", polygon(coords[0], coords[1], 1, sides));
+            // tranform it to have radius 0 with no transition
+            dotSizeHandler(id, 0, 1, 0);
+            // tranform to correct radius
             dotSizeHandler(
                 id,
-                pointTwoBool || ghostBool ? cfg.polyR / 2 : cfg.polyR,
+                pointTwoBool || ghostBool
+                    ? cfg[sport].polyR / 2
+                    : cfg[sport].polyR,
                 1,
                 cfg.newDotDuration
             );

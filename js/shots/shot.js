@@ -2,6 +2,7 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
+import { sport } from "../../index.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
@@ -9,7 +10,7 @@ function setUpShots() {
 
     // http://thenewcode.com/1068/Making-Arrows-in-SVG
     for (let className of ["blueTeam", "orangeTeam", "greyTeam"]) {
-        d3.select("#hockey-rink-svg")
+        d3.select(`#${sport}-svg`)
             .insert("marker", "g")
             .attr("id", `arrowhead-${className}`)
             .attr("markerWidth", 10)
@@ -22,7 +23,7 @@ function setUpShots() {
             .attr("class", className);
     }
 
-    d3.select("#hockey-rink")
+    d3.select("#playing-area")
         .select("#outside-perimeter")
         .on("click", e => {
             document.getSelection().removeAllRanges();

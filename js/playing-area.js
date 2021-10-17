@@ -1,11 +1,13 @@
 import { cfg } from "./config.js";
+import { sport } from "../index.js";
 
-function setUpPlayingArea(sport, data) {
+function setUpPlayingArea(data) {
     d3.select("#playing-area")
         .node()
         .append(data.documentElement);
 
-    // dimensions of window and playing area
+    // dimensions of padding, window and playing area
+    const padding = 20;
     const maxWidth =
         window.innerWidth >= 768 ? window.innerWidth * 0.7 : window.innerWidth;
     const paWidth = cfg[sport].width;
@@ -14,12 +16,13 @@ function setUpPlayingArea(sport, data) {
 
     // floor resizing factor to the nearest 0.5
     const resize = (
-        (Math.floor(maxWidth / scalar) + Math.round(maxWidth / scalar)) /
+        (Math.floor((maxWidth - 2 * padding) / scalar) +
+            Math.round((maxWidth - 2 * padding) / scalar)) /
         2
     ).toFixed(1);
     d3.select(`#${sport}-svg`)
-        .attr("width", resize * paWidth + 20) // 20 fixed padding
-        .attr("height", resize * paHeight + 20);
+        .attr("width", resize * paWidth + padding)
+        .attr("height", resize * paHeight + padding);
 
     d3.select("#playing-area")
         .select("#transformations")

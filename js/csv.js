@@ -14,8 +14,9 @@ import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
 import { cfg } from "./config.js";
+import { sport } from "../index.js";
 
-function setUpCSVDownloadUpload(sport) {
+function setUpCSVDownloadUpload() {
     // Custom Filename
     const d = new Date(Date.now());
     const defaultFileName = `${(
@@ -36,7 +37,7 @@ function setUpCSVDownloadUpload(sport) {
     uploadArea(
         "#csv-upload-download",
         "csv-upload",
-        e => uploadCSV(sport, "#csv-upload-download", "#csv-upload", e),
+        e => uploadCSV("#csv-upload-download", "#csv-upload", e),
         "Only .csv files are allowed. The column headers in the .csv file must be identical to the column headers in the table, excluding #. Order matters."
     );
 }
@@ -85,7 +86,7 @@ function escape(text) {
     return text.includes(",") ? '"' + text + '"' : text;
 }
 
-function uploadCSV(sport, id, uploadId, e) {
+function uploadCSV(id, uploadId, e) {
     if (/.csv$/i.exec(d3.select(uploadId).property("value"))) {
         const f = e.target.files[0];
         if (f) {
@@ -106,7 +107,6 @@ function uploadCSV(sport, id, uploadId, e) {
                 header: true,
                 step: function(row) {
                     swapTeamColor = processCSV(
-                        sport,
                         uploadId,
                         row.data,
                         swapTeamColor
@@ -119,7 +119,7 @@ function uploadCSV(sport, id, uploadId, e) {
     }
 }
 
-function processCSV(sport, uploadId, row, swapTeamColor) {
+function processCSV(uploadId, row, swapTeamColor) {
     // only process if current table header (minus shot) is Identical to the current header
     let tableHeader = [];
     d3.select("#shot-table")

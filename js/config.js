@@ -21,6 +21,8 @@ const cfg = {
         // radii of various dots
         circleR: 2,
         polyR: 2.5,
+        // font-size of dots
+        fontSize: "0.15rem",
     },
 
     floorball: {
@@ -31,6 +33,7 @@ const cfg = {
         // radii of various dots
         circleR: 0.4,
         polyR: 0.5,
+        fontSize: "0.03rem",
     },
 };
 

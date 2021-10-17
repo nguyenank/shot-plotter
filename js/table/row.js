@@ -13,6 +13,7 @@ import {
 import { updateTableFooter, createPage } from "./table.js";
 import { dotSizeHandler } from "../shots/dot.js";
 import { cfg } from "../config.js";
+import { sport } from "../../index.js";
 
 function createNewRow(id, rowData, specialData) {
     // add row to sessionStorage
@@ -180,7 +181,7 @@ function deleteHandler(id) {
 function selectHandler(id, checked, teamColor, polygonBool) {
     let row = d3.select("#shot-table-body").select("[id='" + id + "']");
     const t = d3.transition().duration(cfg.selectDuration);
-    const radius = polygonBool ? cfg.polyR : cfg.circleR;
+    const radius = polygonBool ? cfg[sport].polyR : cfg[sport].circleR;
     if (checked) {
         // https://stackoverflow.com/a/23724356
         let toMove = d3

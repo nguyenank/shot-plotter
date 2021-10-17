@@ -7,14 +7,15 @@ import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 
+export const sport = "floorball";
+
 function index() {
-    const sport = "floorball";
     d3.xml(`resources/${sport}.svg`).then(data => {
-        setUpPlayingArea(sport, data);
+        setUpPlayingArea(data);
         setUpDetailsPanel();
         setUpTable();
         setUpShots();
-        setUpCSVDownloadUpload(sport);
+        setUpCSVDownloadUpload();
         setUpLegend();
 
         function decode(a) {
