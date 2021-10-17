@@ -32,8 +32,8 @@ function createDot(
         });
         // create connecting line
         const halfcoords = [
-            Math.round((coords[0] + coords2[0]) / 2),
-            Math.round((coords[1] + coords2[1]) / 2),
+            (coords[0] + coords2[0]) / 2,
+            (coords[1] + coords2[1]) / 2,
         ];
         g.append("polyline")
             .attr(
