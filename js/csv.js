@@ -13,8 +13,9 @@ import {
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
+import { cfg } from "./config.js";
 
-function setUpCSVDownloadUpload() {
+function setUpCSVDownloadUpload(sport) {
     // Custom Filename
     const d = new Date(Date.now());
     const defaultFileName = `${(
@@ -35,7 +36,7 @@ function setUpCSVDownloadUpload() {
     uploadArea(
         "#csv-upload-download",
         "csv-upload",
-        e => uploadCSV("#csv-upload-download", "#csv-upload", e),
+        e => uploadCSV(sport, "#csv-upload-download", "#csv-upload", e),
         "Only .csv files are allowed. The column headers in the .csv file must be identical to the column headers in the table, excluding #. Order matters."
     );
 }
@@ -84,7 +85,7 @@ function escape(text) {
     return text.includes(",") ? '"' + text + '"' : text;
 }
 
-function uploadCSV(id, uploadId, e) {
+function uploadCSV(sport, id, uploadId, e) {
     if (/.csv$/i.exec(d3.select(uploadId).property("value"))) {
         const f = e.target.files[0];
         if (f) {
@@ -105,6 +106,7 @@ function uploadCSV(id, uploadId, e) {
                 header: true,
                 step: function(row) {
                     swapTeamColor = processCSV(
+                        sport,
                         uploadId,
                         row.data,
                         swapTeamColor
@@ -117,7 +119,7 @@ function uploadCSV(id, uploadId, e) {
     }
 }
 
-function processCSV(uploadId, row, swapTeamColor) {
+function processCSV(sport, uploadId, row, swapTeamColor) {
     // only process if current table header (minus shot) is Identical to the current header
     let tableHeader = [];
     d3.select("#shot-table")
@@ -178,15 +180,18 @@ function processCSV(uploadId, row, swapTeamColor) {
     let specialData = {
         typeIndex: getTypeIndex(row.Type),
         teamColor: teamColor,
-        coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
+        coords: [
+            parseFloat(row.X) + cfg[sport].width / 2,
+            -1 * parseFloat(row.Y) + cfg[sport].height / 2,
+        ], // undo coordinate adjustment
         player: row.Player,
         numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
     };
 
     if (row.X2 && row.Y2) {
         specialData.coords2 = [
-            parseFloat(row.X2) + 100,
-            -1 * parseFloat(row.Y2) + 42.5,
+            parseFloat(row.X2) + cfg[sport].width / 2,
+            -1 * parseFloat(row.Y2) + cfg[sport].height / 2,
         ]; // undo coordinate adjustment
     }
 

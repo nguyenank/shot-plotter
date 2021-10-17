@@ -135,11 +135,11 @@ function createShotFromEvent(e, point1) {
             case "x":
                 if (col.id === "x2") {
                     let x2 = specialData["coords2"]
-                        ? (specialData["coords2"][0] - 100).toFixed(2)
+                        ? (specialData["coords2"][0] - 20).toFixed(2)
                         : "";
                     rowData[col.id] = x2;
                 } else {
-                    rowData[col.id] = (specialData["coords"][0] - 100).toFixed(
+                    rowData[col.id] = (specialData["coords"][0] - 20).toFixed(
                         2
                     );
                 }
@@ -147,13 +147,13 @@ function createShotFromEvent(e, point1) {
             case "y":
                 if (col.id === "y2") {
                     let y2 = specialData["coords2"]
-                        ? (-1 * (specialData["coords2"][1] - 42.5)).toFixed(2)
+                        ? (-1 * (specialData["coords2"][1] - 10)).toFixed(2)
                         : "";
                     rowData[col.id] = y2;
                 } else {
                     rowData[col.id] = (
                         -1 *
-                        (specialData["coords"][1] - 42.5)
+                        (specialData["coords"][1] - 10)
                     ).toFixed(2);
                 }
                 break;

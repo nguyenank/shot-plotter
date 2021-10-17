@@ -1,4 +1,4 @@
-import { setUpRink } from "./js/rink.js";
+import { setUpPlayingArea } from "./js/playing-area.js";
 import { setUpDetailsPanel } from "./js/details/details-panel.js";
 import { setDetails, getDetails } from "./js/details/details-functions.js";
 import { setUpShots } from "./js/shots/shot.js";
@@ -8,12 +8,13 @@ import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 
 function index() {
-    d3.xml("resources/hockey-rink.svg").then(data => {
-        setUpRink(data);
+    const sport = "floorball";
+    d3.xml(`resources/${sport}.svg`).then(data => {
+        setUpPlayingArea(sport, data);
         setUpDetailsPanel();
         setUpTable();
         setUpShots();
-        setUpCSVDownloadUpload();
+        setUpCSVDownloadUpload(sport);
         setUpLegend();
 
         function decode(a) {

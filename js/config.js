@@ -11,12 +11,27 @@ const cfg = {
     selectDuration: 150,
     deleteDuration: 150,
     newDotDuration: 100,
-    // radii of various dots
-    circleR: 2,
-    polyR: 2.5,
-    legendR: 9,
     // how much larger a dot becomes when selected
     selectedMultiplier: 1.5,
+    legendR: 9,
+
+    hockey: {
+        width: 200,
+        height: 85,
+        // radii of various dots
+        circleR: 2,
+        polyR: 2.5,
+    },
+
+    floorball: {
+        // dimensions of playing area
+        width: 40,
+        height: 20,
+
+        // radii of various dots
+        circleR: 0.4,
+        polyR: 0.5,
+    },
 };
 
 export { cfg };
