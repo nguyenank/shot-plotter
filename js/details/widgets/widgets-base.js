@@ -10,7 +10,7 @@ function createRadioButtons(selectId, { id, title, options }) {
         .attr("class", "center");
 
     for (let option of options) {
-        var div = d3
+        let div = d3
             .select("#" + id)
             .append("div")
             .attr("class", "form-check vertical");
@@ -47,7 +47,7 @@ function createTextField(selectId, { id, title, defaultValue }) {
 }
 
 function createDropdown(selectId, { id, title, options }) {
-    var div = d3
+    let div = d3
         .select(selectId)
         .append("div")
         .attr("class", cfg.detailClass + " " + "even-width")
@@ -56,7 +56,7 @@ function createDropdown(selectId, { id, title, options }) {
         .text(title)
         .attr("class", "center");
 
-    var select = div
+    let select = div
         .append("div")
         .append("select")
         .attr("id", id + "-select")

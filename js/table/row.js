@@ -11,7 +11,8 @@ import {
     getRowsPerPage,
 } from "./table-functions.js";
 import { updateTableFooter, createPage } from "./table.js";
-import { cfg } from "./config-table.js";
+import { dotSizeHandler } from "../shots/dot.js";
+import { cfg } from "../config.js";
 
 function createNewRow(id, rowData, specialData) {
     // add row to sessionStorage
@@ -20,7 +21,7 @@ function createNewRow(id, rowData, specialData) {
         { id: id, rowData: rowData, specialData: specialData, selected: false },
     ]);
 
-    var numRows = getNumRows() + 1;
+    const numRows = getNumRows() + 1;
     setNumRows(numRows);
 
     if (numRows == 1) {
@@ -32,7 +33,7 @@ function createNewRow(id, rowData, specialData) {
     if (numRows - getStartRow() < getRowsPerPage()) {
         // continue adding to current page
         setEndRow(numRows);
-        createRowFromData(id, rowData, specialData, false);
+        createRowFromData(id, rowData, specialData, false, id);
     } else {
         // switch to last page
         let startRow =
@@ -44,15 +45,23 @@ function createNewRow(id, rowData, specialData) {
             .selectAll("tr")
             .remove();
 
-        createPage(startRow, numRows);
+        createPage(startRow, numRows, id);
     }
 
     updateTableFooter();
 }
 
-function createRowFromData(id, rowData, { teamId, numberCol }, selected) {
+function createRowFromData(
+    id,
+    rowData,
+    { teamColor, numberCol, typeIndex },
+    selected,
+    newRow = null
+) {
     // create row
-    var row = d3.select("#shot-table-body").append("tr");
+    let row = d3.select("#shot-table-body").append("tr");
+
+    teamColor = teamColor ? teamColor : "greyTeam";
 
     // create select checkbox
     row.append("th")
@@ -62,7 +71,7 @@ function createRowFromData(id, rowData, { teamId, numberCol }, selected) {
         .attr("value", id)
         .attr("id", id)
         .on("change", function() {
-            var checked = d3.select(this).property("checked");
+            const checked = d3.select(this).property("checked");
             setRows(
                 getRows().map(function(row) {
                     if (row.id === id) {
@@ -71,7 +80,7 @@ function createRowFromData(id, rowData, { teamId, numberCol }, selected) {
                     return row;
                 })
             );
-            selectHandler(id, checked, teamId ? teamId : "#grey");
+            selectHandler(id, checked, teamColor, typeIndex !== 0);
         });
 
     let headerRow = getHeaderRow().map(item => item.id);
@@ -102,41 +111,11 @@ function createRowFromData(id, rowData, { teamId, numberCol }, selected) {
         row.select("input")
             .property("checked", true)
             .dispatch("change");
-    }
-}
-
-function dotSizeHandler(id, scale) {
-    function enlarge() {
-        // https://stackoverflow.com/a/11671373
-        var bbox = d3
-            .select(this)
-            .node()
-            .getBBox();
-        var xShift = (1 - scale) * (bbox.x + bbox.width / 2);
-        var yShift = (1 - scale) * (bbox.y + bbox.height / 2);
-        d3.select(this).attr(
-            "transform",
-            `translate(${xShift},${yShift}) scale(${scale},${scale})`
-        );
-    }
-    d3.select("#dots")
-        .select("[id='" + id + "']")
-        .selectAll("circle")
-        .each(enlarge);
-    d3.select("#dots")
-        .select("[id='" + id + "']")
-        .selectAll("polygon")
-        .each(enlarge);
-    let line = d3
-        .select("#dots")
-        .select("[id='" + id + "']")
-        .select("polyline");
-    if (!line.empty()) {
-        if (line.style("opacity") === "0.3") {
-            line.style("opacity", 0.7);
-        } else {
-            line.style("opacity", 0.3);
-        }
+    } else if (newRow) {
+        // animate changing color when new row is added
+        const t = d3.transition().duration(cfg.newRowDuration);
+        row.style("background-color", cfg[teamColor]);
+        row.transition(t).style("background-color", null);
     }
 }
 
@@ -148,7 +127,7 @@ function deleteHandler(id) {
             return x;
         })
     );
-    var numRows = getNumRows() - 1;
+    const numRows = getNumRows() - 1;
     setNumRows(numRows);
 
     if (numRows === 0) {
@@ -184,52 +163,58 @@ function deleteHandler(id) {
 
     updateTableFooter();
 
+    const t = d3.transition().duration(cfg.deleteDuration);
+    dotSizeHandler(id, 0, 0, cfg.deleteDuration);
     d3.select("#shot-table-body")
         .select("[id='" + id + "']")
+        .transition(t)
         .remove();
     d3.select("#dots")
         .select("[id='" + id + "']")
+        .transition(t)
         .remove();
 
     createPage(getStartRow(), getEndRow());
 }
 
-function selectHandler(id, checked, teamId) {
-    var row = d3.select("#shot-table-body").select("[id='" + id + "']");
+function selectHandler(id, checked, teamColor, polygonBool) {
+    let row = d3.select("#shot-table-body").select("[id='" + id + "']");
+    const t = d3.transition().duration(cfg.selectDuration);
+    const radius = polygonBool ? cfg.polyR : cfg.circleR;
     if (checked) {
         // https://stackoverflow.com/a/23724356
-        var toMove = d3
+        let toMove = d3
             .select("#dots")
             .select("[id='" + id + "']")
             .node();
         d3.select("#dots")
             .select("#selected")
             .append(() => toMove);
-        dotSizeHandler(id, 1.5);
-        row.attr(
-            "class",
-            teamId === "#blue-team-name"
-                ? "blue-row"
-                : teamId === "#grey"
-                ? "grey-row"
-                : "orange-row"
+        dotSizeHandler(
+            id,
+            cfg.selectedMultiplier * radius,
+            cfg.selectedMultiplier,
+            cfg.selectDuration
         );
+        row.transition(t).style("background-color", cfg[teamColor]);
     } else {
-        var shotNumber = d3
-            .select("#dots")
-            .select("[id='" + id + "']")
-            .attr("shot-number");
-        shotNumber = Number(shotNumber) + 1;
+        const shotNumber =
+            Number(
+                d3
+                    .select("#dots")
+                    .select("[id='" + id + "']")
+                    .attr("shot-number")
+            ) + 1;
 
-        var toMove = d3
+        let toMove = d3
             .select("#dots")
             .select("[id='" + id + "']")
             .node();
         d3.select("#dots")
             .select("#normal")
             .insert(() => toMove, "[shot-number='" + shotNumber + "']");
-        dotSizeHandler(id, 1);
-        row.attr("class", "");
+        dotSizeHandler(id, radius, 1, cfg.selectDuration);
+        row.transition(t).style("background-color", null);
     }
 }
 

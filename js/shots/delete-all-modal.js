@@ -1,7 +1,7 @@
 import { clearTable } from "../table/table-functions.js";
 
 function setUpDeleteAllModal(id) {
-    var m = d3
+    let m = d3
         .select(id)
         .attr("class", "modal fade")
         .attr("aria-hidden", true)
@@ -11,7 +11,7 @@ function setUpDeleteAllModal(id) {
         .append("div")
         .attr("class", "modal-content");
 
-    var h = m.append("div").attr("class", "modal-header");
+    let h = m.append("div").attr("class", "modal-header");
     h.append("h5")
         .attr("class", "modal-title")
         .text("Delete All Events");
@@ -21,7 +21,7 @@ function setUpDeleteAllModal(id) {
         .attr("data-bs-dismiss", "modal")
         .attr("aria-label", "Close");
 
-    var mb = m
+    let mb = m
         .append("div")
         .attr("class", "modal-body")
         .text("Are you sure? This will delete all recorded events.");

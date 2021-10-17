@@ -4,10 +4,10 @@ import {
     getCurrentShotTypes,
 } from "../details/details-functions.js";
 import { createDot } from "./dot.js";
-import { cfg } from "./config-shots.js";
+import { cfg } from "../config.js";
 
 function setUpLegend() {
-    var div = d3.select("#legend").append("div");
+    let div = d3.select("#legend").append("div");
     div.append("div")
         .attr("class", "center")
         .append("svg")
@@ -24,10 +24,10 @@ function setUpLegend() {
 }
 
 function shotTypeLegend(id = "#shot-type-legend") {
-    var xOffset = 2 * cfg.legendR;
-    var yOffset = 2 * cfg.legendR;
-    var spacing = 2 * cfg.legendR;
-    var svg = d3.select(id);
+    let xOffset = 2 * cfg.legendR;
+    let yOffset = 2 * cfg.legendR;
+    const spacing = 2 * cfg.legendR;
+    let svg = d3.select(id);
 
     // clear svg
     svg.selectAll("*").remove();
@@ -38,13 +38,13 @@ function shotTypeLegend(id = "#shot-type-legend") {
         return;
     }
 
-    var typeOptions = getCurrentShotTypes();
+    const typeOptions = getCurrentShotTypes();
 
-    for (let option of typeOptions) {
-        var data = {
+    typeOptions.forEach(function(value, i) {
+        let data = {
             teamId: true,
             player: "",
-            type: option.value,
+            typeIndex: i,
             coords: [xOffset, 0.625 * yOffset],
             legendBool: true,
         };
@@ -55,21 +55,21 @@ function shotTypeLegend(id = "#shot-type-legend") {
                 .append("text")
                 .attr("x", xOffset)
                 .attr("y", yOffset)
-                .text(option.value)
+                .text(typeOptions[i].value)
                 .node()
                 .getComputedTextLength() +
             2 * spacing;
-    }
+    });
     xOffset -= 2 * spacing;
 
     svg.attr("width", xOffset).attr("height", 2 * yOffset);
 }
 
 function teamLegend(id = "#team-legend") {
-    var xOffset = 2 * cfg.legendR;
-    var yOffset = 2 * cfg.legendR;
-    var spacing = 2 * cfg.legendR;
-    var svg = d3.select(id);
+    let xOffset = 2 * cfg.legendR;
+    let yOffset = 2 * cfg.legendR;
+    const spacing = 2 * cfg.legendR;
+    const svg = d3.select(id);
 
     // clear svg
     svg.selectAll("*").remove();
@@ -80,24 +80,25 @@ function teamLegend(id = "#team-legend") {
         return;
     }
 
-    for (let i of [
-        ["blue-shot", d3.select("#blue-team-name").property("value")],
-        ["orange-shot", d3.select("#orange-team-name").property("value")],
+    for (let [teamColor, text] of [
+        ["blueTeam", d3.select("#blue-team-name").property("value")],
+        ["orangeTeam", d3.select("#orange-team-name").property("value")],
     ]) {
         svg.append("rect")
             .attr("x", xOffset - cfg.legendR)
             .attr("y", 0.25 * yOffset)
             .attr("width", 2 * cfg.legendR)
             .attr("height", 2 * cfg.legendR)
-            .attr("class", i[0])
-            .style("stroke-width", "0.02em");
+            .style("fill", cfg[teamColor])
+            .style("stroke-width", "0.05em")
+            .style("stroke", cfg[teamColor + "Solid"]);
         xOffset += spacing;
         xOffset +=
             svg
                 .append("text")
                 .attr("x", xOffset)
                 .attr("y", yOffset)
-                .text(i[1])
+                .text(text)
                 .node()
                 .getComputedTextLength() +
             2 * spacing;

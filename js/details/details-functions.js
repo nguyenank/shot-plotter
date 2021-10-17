@@ -11,7 +11,7 @@ function existsDetail(id) {
 }
 
 function getCurrentShotTypes() {
-    var options = [];
+    let options = [];
     if (existsDetail("#shot-type")) {
         d3.select("#shot-type-select")
             .selectAll("option")
@@ -30,6 +30,10 @@ function getCurrentShotTypes() {
             });
     }
     return options;
+}
+
+function getTypeIndex(type) {
+    return type ? _.findIndex(getCurrentShotTypes(), { value: type }) : 0;
 }
 
 function changePage(currentPageId, newPageId) {
@@ -52,8 +56,8 @@ function createId(title) {
 
 function saveCurrentDetailSetup() {
     // based on select2, reorder and tag with hidden
-    var details = getDetails("details");
-    var newDetails = [];
+    const details = getDetails("details");
+    let newDetails = [];
     d3.select("#reorder-columns")
         .selectAll("td")
         .each(function() {
@@ -76,7 +80,7 @@ function saveCurrentDetailSetup() {
             }
             // custom saves for each
             if (!detail.hidden && detail.id) {
-                var d = d3.select("#details").select("#" + detail.id);
+                const d = d3.select("#details").select("#" + detail.id);
                 if (!d.empty()) {
                     switch (detail.type) {
                         case "team":
@@ -147,6 +151,7 @@ export {
     setDetails,
     existsDetail,
     getCurrentShotTypes,
+    getTypeIndex,
     changePage,
     createId,
     saveCurrentDetailSetup,

@@ -42,6 +42,8 @@ const cfg = {
         { type: "x", title: "X", id: "x", noWidget: true },
         { type: "y", title: "Y", id: "y", noWidget: true },
     ],
+    defaultRowsPerPage: 10,
+    defaultWidgetsPerRow: 2,
 };
 function getDefaultDetails() {
     return _.cloneDeep(cfg.defaultDetails);

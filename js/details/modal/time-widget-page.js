@@ -12,7 +12,7 @@ function createTimeWidgetPage(id, data) {
         .selectAll("*")
         .remove();
 
-    var mb = d3
+    let mb = d3
         .select(id)
         .append("div")
         .attr("id", "time-widget-page-mb")
@@ -42,11 +42,11 @@ function createTimeWidgetPage(id, data) {
     );
     mb.append("hr");
     // text field
-    var form = mb
+    let form = mb
         .append("form")
         .attr("class", "need-validation")
         .attr("novalidate", "true");
-    var nameDiv = form
+    let nameDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
     nameDiv
@@ -67,7 +67,7 @@ function createTimeWidgetPage(id, data) {
             "Detail names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
         );
 
-    var countdownDiv = form
+    let countdownDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
     countdownDiv
@@ -103,7 +103,7 @@ function createTimeWidgetPage(id, data) {
             .text(option.text);
     }
 
-    var defaultTimeDiv = form
+    let defaultTimeDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
     defaultTimeDiv
@@ -123,7 +123,7 @@ function createTimeWidgetPage(id, data) {
         .text("Times must be in the form 'MM:SS' or 'M:SS'.");
 
     // footer
-    var footer = d3
+    let footer = d3
         .select(id)
         .append("div")
         .attr("class", "footer-row");
@@ -151,9 +151,9 @@ function createTimeWidgetPage(id, data) {
 }
 
 function createNewTimeWidget(data) {
-    var invalid = false;
+    let invalid = false;
 
-    var title = d3.select("#time-widget-title").property("value");
+    const title = d3.select("#time-widget-title").property("value");
     if (
         title.length < 1 ||
         title.length > 16 ||
@@ -164,14 +164,16 @@ function createNewTimeWidget(data) {
     } else {
         d3.select("#time-widget-title").classed("is-invalid", false);
     }
-    var countdown =
+    const countdown =
         d3
             .select(`input[name="countdown-countup"]:checked`)
             .property("value") === "countdown"
             ? true
             : null;
 
-    var defaultTime = d3.select("#time-widget-default-time").property("value");
+    const defaultTime = d3
+        .select("#time-widget-default-time")
+        .property("value");
     if (!/^\d{1,2}:\d\d$/.test(defaultTime)) {
         d3.select("#time-widget-default-time").classed("is-invalid", true);
         invalid = true;
@@ -182,8 +184,8 @@ function createNewTimeWidget(data) {
         return;
     }
 
-    var details = getDetails();
-    var newDetail = {
+    let details = getDetails();
+    const newDetail = {
         type: "time",
         title: title,
         id: createId(title),

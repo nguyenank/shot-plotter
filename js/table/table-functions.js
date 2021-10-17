@@ -44,7 +44,7 @@ function setRowsPerPage(i) {
 }
 
 function getHeaderRow() {
-    var l = [];
+    let l = [];
     d3.select("#shot-table")
         .select("thead")
         .selectAll("th")
@@ -69,7 +69,7 @@ function clearTable() {
         .selectAll("tr")
         .remove();
 
-    var dots = d3.select("#hockey-rink-svg").select("#dots");
+    let dots = d3.select("#hockey-rink-svg").select("#dots");
 
     dots.select("#normal")
         .selectAll("*")

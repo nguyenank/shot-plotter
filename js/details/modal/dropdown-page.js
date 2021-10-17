@@ -12,7 +12,7 @@ function createDropdownPage(id, data) {
         .selectAll("*")
         .remove();
 
-    var mb = d3
+    let mb = d3
         .select(id)
         .append("div")
         .attr("id", "dropdown-page-mb")
@@ -44,11 +44,11 @@ function createDropdownPage(id, data) {
     );
     mb.append("hr");
     // text field
-    var form = mb
+    let form = mb
         .append("form")
         .attr("class", "need-validation")
         .attr("novalidate", "true");
-    var nameDiv = form
+    let nameDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
     nameDiv
@@ -69,7 +69,7 @@ function createDropdownPage(id, data) {
             "Detail names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
         );
 
-    var optionsDiv = form
+    let optionsDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
     optionsDiv
@@ -93,7 +93,7 @@ function createDropdownPage(id, data) {
         .text("Each option must be 1-50 characters long.");
 
     // footer
-    var footer = d3
+    let footer = d3
         .select(id)
         .append("div")
         .attr("class", "footer-row");
@@ -127,9 +127,9 @@ function createDropdownPage(id, data) {
 }
 
 function createNewDropdown(data) {
-    var invalid = false;
+    let invalid = false;
 
-    var title = d3.select("#dropdown-title").property("value");
+    const title = d3.select("#dropdown-title").property("value");
     if (
         title.length < 1 ||
         title.length > 16 ||
@@ -141,11 +141,11 @@ function createNewDropdown(data) {
         d3.select("#dropdown-title").classed("is-invalid", false);
     }
 
-    var text = d3.select("#dropdown-options").property("value");
-    var optionValues = text.split("\n");
+    const text = d3.select("#dropdown-options").property("value");
+    let optionValues = text.split("\n");
 
     // drop empty value if it is last
-    let last = optionValues.pop();
+    const last = optionValues.pop();
     if (last !== "") {
         optionValues.push(last);
     }
@@ -160,13 +160,13 @@ function createNewDropdown(data) {
         return;
     }
 
-    var options = optionValues.map(value => ({
+    let options = optionValues.map(value => ({
         value: value,
     }));
     options[0] = { ...options[0], selected: true };
 
-    var details = getDetails();
-    var newDetail = {
+    let details = getDetails();
+    const newDetail = {
         type: "dropdown",
         title: title,
         id: createId(title),

@@ -12,7 +12,7 @@ function createTextFieldPage(id, data) {
         .selectAll("*")
         .remove();
 
-    var mb = d3
+    let mb = d3
         .select(id)
         .append("div")
         .attr("id", "text-field-page-mb")
@@ -41,11 +41,11 @@ function createTextFieldPage(id, data) {
     );
     mb.append("hr");
     // text field
-    var form = mb
+    let form = mb
         .append("form")
         .attr("class", "need-validation")
         .attr("novalidate", "true");
-    var nameDiv = form
+    let nameDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
     nameDiv
@@ -65,7 +65,7 @@ function createTextFieldPage(id, data) {
         .text(
             "Detail names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
         );
-    var defaultTextDiv = form
+    let defaultTextDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
     defaultTextDiv
@@ -85,7 +85,7 @@ function createTextFieldPage(id, data) {
         .text("Default text can be at most 32 characters long.");
 
     // footer
-    var footer = d3
+    let footer = d3
         .select(id)
         .append("div")
         .attr("class", "footer-row");
@@ -113,9 +113,9 @@ function createTextFieldPage(id, data) {
 }
 
 function createNewTextField(data) {
-    var invalid = false;
+    let invalid = false;
 
-    var title = d3.select("#text-field-title").property("value");
+    const title = d3.select("#text-field-title").property("value");
     if (
         title.length < 1 ||
         title.length > 16 ||
@@ -127,7 +127,7 @@ function createNewTextField(data) {
         d3.select("#text-field-title").classed("is-invalid", false);
     }
 
-    var text = d3.select("#text-field-default-text").property("value");
+    const text = d3.select("#text-field-default-text").property("value");
     if (text.length >= 32) {
         d3.select("#text-field-default-text").classed("is-invalid", true);
         invalid = true;
@@ -138,8 +138,8 @@ function createNewTextField(data) {
         return;
     }
 
-    var details = getDetails();
-    var newDetail = {
+    let details = getDetails();
+    const newDetail = {
         type: "text-field",
         title: title,
         id: createId(title),

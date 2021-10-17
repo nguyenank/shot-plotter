@@ -12,7 +12,7 @@ function createRadioButtonsPage(id, data) {
         .selectAll("*")
         .remove();
 
-    var mb = d3
+    let mb = d3
         .select(id)
         .append("div")
         .attr("id", "radio-buttons-page-mb")
@@ -45,11 +45,11 @@ function createRadioButtonsPage(id, data) {
     );
     mb.append("hr");
     // title
-    var form = mb
+    let form = mb
         .append("form")
         .attr("class", "need-validation")
         .attr("novalidate", "true");
-    var nameDiv = form
+    let nameDiv = form
         .append("div")
         .attr("class", "form-group position-relative");
     nameDiv
@@ -70,7 +70,7 @@ function createRadioButtonsPage(id, data) {
             "Detail names must be 1-16 characters long, and can only contain alphanumeric characters, dashes, underscores, and spaces."
         );
     // options
-    var optionsDiv = form
+    let optionsDiv = form
         .append("div")
         .attr("class", "form-group position-relative")
         .attr("id", "options-div");
@@ -81,7 +81,7 @@ function createRadioButtonsPage(id, data) {
         .text("Options");
     optionsDiv.append("div").attr("id", "radio-buttons-options");
 
-    let options = data ? data.options : defaultOptions;
+    const options = data ? data.options : defaultOptions;
     options.forEach(createOption);
     createAddOptionButton();
     optionsDiv
@@ -89,7 +89,7 @@ function createRadioButtonsPage(id, data) {
         .attr("class", "invalid-tooltip")
         .text("Options must be 1-32 characters long and unique.");
     // footer
-    var footer = d3
+    let footer = d3
         .select(id)
         .append("div")
         .attr("class", "footer-row");
@@ -120,7 +120,7 @@ function createRadioButtonsPage(id, data) {
 
 function createOption(option, number) {
     number += 1;
-    var div = d3
+    let div = d3
         .select("#radio-buttons-options")
         .append("div")
         .attr("class", "form-check new-option")
@@ -173,9 +173,9 @@ function getNumOptions(id = "#radio-buttons-page") {
 
 function createNewRadioButtons(data) {
     // input sanitization
-    var invalid = false;
+    let invalid = false;
 
-    var title = d3.select("#radio-buttons-title").property("value");
+    const title = d3.select("#radio-buttons-title").property("value");
     if (
         title.length < 1 ||
         title.length > 16 ||
@@ -186,8 +186,8 @@ function createNewRadioButtons(data) {
     } else {
         d3.select("#radio-buttons-title").classed("is-invalid", false);
     }
-    var options = [];
-    var selected = d3
+    let options = [];
+    const selected = d3
         .select(`input[name="radio-buttons-options"]:checked`)
         .property("value");
     d3.select("#radio-buttons-options")
@@ -219,8 +219,8 @@ function createNewRadioButtons(data) {
     }
 
     // actual creation
-    var details = getDetails();
-    var newDetail = {
+    let details = getDetails();
+    const newDetail = {
         type: "radio",
         title: title,
         id: createId(title),

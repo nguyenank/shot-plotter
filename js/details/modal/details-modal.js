@@ -7,7 +7,7 @@ import { createTimeWidgetPage } from "./time-widget-page.js";
 
 function setUpDetailsModal(id) {
     // modal
-    var m = d3
+    let m = d3
         .select(id)
         .attr("class", "modal fade")
         .attr("data-bs-backdrop", "static")
@@ -18,7 +18,7 @@ function setUpDetailsModal(id) {
         .append("div")
         .attr("class", "modal-content");
     // header
-    var h = m.append("div").attr("class", "modal-header");
+    let h = m.append("div").attr("class", "modal-header");
     h.append("h5")
         .attr("class", "modal-title")
         .text("Customize Setup");
@@ -30,7 +30,7 @@ function setUpDetailsModal(id) {
 
     // pages
 
-    var pages = [
+    const pages = [
         { id: "main-page", create: createMainPage },
         { id: "widget-type-page", create: createWidgetTypePage },
         {
@@ -51,7 +51,7 @@ function setUpDetailsModal(id) {
         },
     ];
 
-    for (let page of pages) {
+    for (const page of pages) {
         m.append("div")
             .attr("id", page.id)
             .attr("class", "modal-page")

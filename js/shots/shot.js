@@ -1,13 +1,14 @@
 import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
+import { getTypeIndex } from "../details/details-functions.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
     sessionStorage.setItem("shiftHeld", null);
 
     // http://thenewcode.com/1068/Making-Arrows-in-SVG
-    for (let className of ["blue-shot", "orange-shot", "grey-shot"]) {
+    for (let className of ["blueTeam", "orangeTeam", "greyTeam"]) {
         d3.select("#hockey-rink-svg")
             .insert("marker", "g")
             .attr("id", `arrowhead-${className}`)
@@ -37,16 +38,20 @@ function setUpShots() {
                           .split(",")
                           .map(parseFloat);
             if (shiftHeld === "true" && firstPoint === null) {
+                // create ghost dot for first point
                 sessionStorage.setItem("firstPoint", d3.pointer(e));
+                const type = d3.select("#shot-type").empty()
+                    ? null
+                    : d3
+                          .select("#shot-type")
+                          .select("select")
+                          .property("value");
                 createDot("#ghost", "ghost-dot", {
                     id: "ghost-dot",
-                    type: d3.select("#shot-type").empty()
-                        ? null
-                        : d3
-                              .select("#shot-type")
-                              .select("select")
-                              .property("value"),
-                    teamId: d3.select("input[name='team-bool']:checked").empty()
+                    typeIndex: getTypeIndex(type),
+                    teamColor: d3
+                        .select("input[name='team-bool']:checked")
+                        .empty()
                         ? null
                         : d3
                               .select("input[name='team-bool']:checked")
@@ -66,11 +71,11 @@ function setUpShots() {
 function createShotFromEvent(e, point1) {
     // https://stackoverflow.com/a/29325047
 
-    var columns = getHeaderRow();
-    var id = uuidv4();
+    const columns = getHeaderRow();
+    const id = uuidv4();
     let rowData = {};
     let specialData = {
-        // data for custom specfics like color etc.
+        // data for custom specifics like color etc.
         coords: point1 ? point1 : d3.pointer(e),
         coords2: point1 ? d3.pointer(e) : null,
         numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
@@ -95,10 +100,11 @@ function createShotFromEvent(e, point1) {
                     .property("value");
                 break;
             case "shot-type":
-                specialData["type"] = d3
+                const type = d3
                     .select("#" + col.id)
                     .select("select")
                     .property("value");
+                specialData["typeIndex"] = getTypeIndex(type);
             case "dropdown":
                 rowData[col.id] = d3
                     .select("#" + col.id)
@@ -112,11 +118,15 @@ function createShotFromEvent(e, point1) {
                     .property("value");
                 break;
             case "team":
-                specialData["teamId"] = d3
+                specialData["teamColor"] = d3
                     .select("input[name='team-bool']:checked")
                     .property("value");
                 rowData[col.id] = d3
-                    .select(specialData["teamId"])
+                    .select(
+                        specialData["teamColor"] === "blueTeam"
+                            ? "#blue-team-name"
+                            : "#orange-team-name"
+                    )
                     .property("value");
                 break;
             case "shot-number":
