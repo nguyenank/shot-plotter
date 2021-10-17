@@ -14,7 +14,7 @@ function setUpShots() {
             .attr("id", `arrowhead-${className}`)
             .attr("markerWidth", 10)
             .attr("markerHeight", 5)
-            .attr("refX", 5)
+            .attr("refX", 2.5)
             .attr("refY", 2.5)
             .attr("orient", "auto")
             .append("polygon")
