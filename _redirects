@@ -1,3 +1,3 @@
 # Redirects for Netlify
 /             /html/index 200
-/*            /html/* 200
+/*            /html/:splat 200
