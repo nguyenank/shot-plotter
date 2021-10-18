@@ -2,6 +2,7 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
+import { cfg } from "../config.js";
 import { sport } from "../../setup.js";
 
 function setUpShots() {
@@ -82,6 +83,8 @@ function createShotFromEvent(e, point1) {
         numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
     };
 
+    console.log(d3.pointer(e));
+
     for (let col of columns) {
         switch (col.type) {
             case "radio":
@@ -136,25 +139,33 @@ function createShotFromEvent(e, point1) {
             case "x":
                 if (col.id === "x2") {
                     let x2 = specialData["coords2"]
-                        ? (specialData["coords2"][0] - 20).toFixed(2)
+                        ? (
+                              specialData["coords2"][0] -
+                              cfg[sport].width / 2
+                          ).toFixed(2)
                         : "";
                     rowData[col.id] = x2;
                 } else {
-                    rowData[col.id] = (specialData["coords"][0] - 20).toFixed(
-                        2
-                    );
+                    rowData[col.id] = (
+                        specialData["coords"][0] -
+                        cfg[sport].width / 2
+                    ).toFixed(2);
                 }
                 break;
             case "y":
                 if (col.id === "y2") {
                     let y2 = specialData["coords2"]
-                        ? (-1 * (specialData["coords2"][1] - 10)).toFixed(2)
+                        ? (
+                              -1 *
+                              (specialData["coords2"][1] -
+                                  cfg[sport].height / 2)
+                          ).toFixed(2)
                         : "";
                     rowData[col.id] = y2;
                 } else {
                     rowData[col.id] = (
                         -1 *
-                        (specialData["coords"][1] - 10)
+                        (specialData["coords"][1] - cfg[sport].height / 2)
                     ).toFixed(2);
                 }
                 break;

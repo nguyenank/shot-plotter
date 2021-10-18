@@ -9,6 +9,6 @@ function html(sport) {
         .pipe(dest("../html"));
 }
 
-const sports = ["hockey", "floorball"];
+const sports = ["hockey", "floorball", "basketball-nba"];
 
 exports.default = parallel(sports.map(sport => () => html(sport)));
