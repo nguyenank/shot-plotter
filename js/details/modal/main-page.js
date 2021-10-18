@@ -422,7 +422,7 @@ function createExplainText(id = "#explain-text") {
     twoPointText
         .append("span")
         .text("Shift")
-        .attr("class", "bold");
+        .attr("class", "shift");
     twoPointText
         .append("span")
         .text(

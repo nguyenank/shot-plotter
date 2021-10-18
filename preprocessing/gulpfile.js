@@ -1,6 +1,7 @@
 const { parallel, src, dest } = require("gulp");
 const preprocess = require("gulp-preprocess");
 const rename = require("gulp-rename");
+const sports = require("../supported-sports.json").sports;
 
 function html(sport) {
     return src("./base.html")
@@ -9,6 +10,4 @@ function html(sport) {
         .pipe(dest("../html"));
 }
 
-const sports = ["hockey", "floorball", "basketball-nba"];
-
-exports.default = parallel(sports.map(sport => () => html(sport)));
+exports.default = parallel(sports.map(sport => () => html(sport.id)));

@@ -3,7 +3,34 @@
   border: 1px solid #aaaaaa;
   border-radius: 0.2rem; }
 
+/* index page */
+#index {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+  #index .card {
+    cursor: pointer;
+    width: 30%; }
+    #index .card:hover {
+      box-shadow: 0.75rem 0.75rem 0.2rem #f2f4f5; }
+      #index .card:hover .card-footer a {
+        background-color: #dee0e3; }
+    #index .card .card-header {
+      padding: 0.4rem; }
+    #index .card .bold {
+      font-weight: 400; }
+  #index a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold; }
+
 /* general  */
+h1 {
+  cursor: pointer;
+  font-weight: bold; }
+  h1:hover {
+    text-shadow: 0.15rem 0.15rem 0.05rem #dee0e3; }
+
 body {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
@@ -38,7 +65,7 @@ ul {
 .medium-text {
   font-size: 0.85em; }
 
-.bold {
+.shift {
   font-variant: small-caps;
   font-weight: 500; }
 

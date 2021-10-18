@@ -15,7 +15,46 @@ $orange-solid: rgba(234, 142, 72, 1);
     border-radius: 0.2rem;
 }
 
+/* index page */
+#index {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .card {
+        cursor: pointer;
+        width: 30%;
+
+        &:hover {
+            box-shadow: 0.75rem 0.75rem 0.2rem $off-white;
+            .card-footer a {
+                background-color: $less-light-grey;
+            }
+        }
+
+        .card-header {
+            padding: 0.4rem;
+        }
+
+        .bold {
+            font-weight: 400;
+        }
+    }
+    a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+    }
+}
+
 /* general  */
+h1 {
+    cursor: pointer;
+    font-weight: bold;
+    &:hover {
+        text-shadow: 0.15rem 0.15rem 0.05rem $less-light-grey;
+    }
+}
+
 body {
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
@@ -66,7 +105,7 @@ ul {
     font-size: 0.85em;
 }
 
-.bold {
+.shift {
     font-variant: small-caps;
     font-weight: 500;
 }

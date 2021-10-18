@@ -7,6 +7,19 @@
         stroke-width="1"
     />
     <path
+        id="background"
+        d="M 0 28
+        A 28 28 0 0 1 28 0
+        L 172 0
+        A 28 28 0 0 1 200 28
+        L 200 57
+        A 28 28 0 0 1 172 85
+        L 29 85
+        A 28 28 0 0 1 0 57
+        L 0 28"
+        fill="white"
+    />
+    <path
         id="center-line-decor"
         d="
           M 100 2

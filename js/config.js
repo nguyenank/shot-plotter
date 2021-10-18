@@ -27,6 +27,18 @@ const cfg = {
         strokeWidth: "0.25px",
     },
 
+    "basketball-ncaa": {
+        width: 94,
+        height: 50,
+        // radii of various dots
+        circleR: 1,
+        polyR: 1.25,
+        // font-size of dots
+        fontSize: "0.075rem",
+        // stroke-width of line
+        strokeWidth: "0.25px",
+    },
+
     hockey: {
         width: 200,
         height: 85,
