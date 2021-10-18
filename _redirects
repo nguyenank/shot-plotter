@@ -1,2 +1,3 @@
 # Redirects for Netlify
-/             /hockey
+/             /html/hockey
+/*            /html/*

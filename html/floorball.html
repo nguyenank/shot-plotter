@@ -43,14 +43,17 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="/index.css" />
 </head>
 
 <body>
   <div class="center header">
     <h1>Shot-Plotter</h1>
   </div>
-  <div class="center medium-text">A graphical interface for tracking locational events in sports. Click on the playing area to log an event!</div>
+  <div class="center medium-text">
+    A graphical interface for tracking locational events in sports.
+    Click on the playing area to log an event!
+  </div>
   <hr />
 
   <div class="main">
@@ -72,11 +75,11 @@
   <div id="details-modal"></div>
   <div id="delete-all-modal"></div>
   <hr />
-  <script type="module" src="./setup.js"></script>
+  <script type="module" src="/setup.js"></script>
   <script type="module">
     import {
       setup
-    } from "./setup.js";
+    } from "/setup.js";
     setup("floorball");
   </script>
   <!-- bootstrap -->
