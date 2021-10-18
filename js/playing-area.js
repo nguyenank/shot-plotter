@@ -24,12 +24,19 @@ function setUpPlayingArea(data) {
         .attr("width", resize * paWidth + padding)
         .attr("height", resize * paHeight + padding);
 
-    d3.select("#playing-area")
+    let dots = d3
+        .select("#playing-area")
         .select("#transformations")
         .attr(
             "transform",
             "translate(10,10) scale(" + resize + "," + resize + ")"
-        );
+        )
+        .insert("svg:g", "#outside-perimeter")
+        .attr("id", "dots");
+
+    for (const id of ["ghost", "normal", "selected"]) {
+        dots.append("svg:g").attr("id", id);
+    }
 }
 
 export { setUpPlayingArea };

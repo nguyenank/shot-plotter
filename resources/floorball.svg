@@ -56,11 +56,6 @@
               M 36.35 18.5
               L 36.65 18.5" stroke="#ce3406" fill="transparent" stroke-width="0.1"/>
     </g>
-    <g id = "dots">
-      <g id="ghost"></g>
-      <g id="normal"></g>
-      <g id="selected"></g>
-    </g>
     <path id="outside-perimeter" d="
     M 0 3
     A 3 3 0 0 1 3 0
