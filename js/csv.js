@@ -14,7 +14,7 @@ import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
 import { cfg } from "./config.js";
-import { sport } from "../index.js";
+import { sport } from "../setup.js";
 
 function setUpCSVDownloadUpload() {
     // Custom Filename

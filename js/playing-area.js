@@ -1,5 +1,5 @@
 import { cfg } from "./config.js";
-import { sport } from "../index.js";
+import { sport } from "../setup.js";
 
 function setUpPlayingArea(data) {
     d3.select("#playing-area")

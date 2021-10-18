@@ -3,7 +3,7 @@ import {
     getCurrentShotTypes,
 } from "../details/details-functions.js";
 import { cfg } from "../config.js";
-import { sport } from "../../index.js";
+import { sport } from "../../setup.js";
 
 function createDot(
     svgId,

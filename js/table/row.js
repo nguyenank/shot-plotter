@@ -13,7 +13,7 @@ import {
 import { updateTableFooter, createPage } from "./table.js";
 import { dotSizeHandler } from "../shots/dot.js";
 import { cfg } from "../config.js";
-import { sport } from "../../index.js";
+import { sport } from "../../setup.js";
 
 function createNewRow(id, rowData, specialData) {
     // add row to sessionStorage

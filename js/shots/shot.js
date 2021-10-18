@@ -2,7 +2,7 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
-import { sport } from "../../index.js";
+import { sport } from "../../setup.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);

@@ -7,11 +7,11 @@ import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 
-export let sport = "hockey";
+export let sport;
 
-function index(s) {
+function setup(s) {
     sport = s;
-    d3.xml(`./resources/${sport}.svg`).then(data => {
+    d3.xml(`/resources/${sport}.svg`).then(data => {
         setUpPlayingArea(data);
         setUpDetailsPanel();
         setUpTable();
@@ -65,4 +65,4 @@ function index(s) {
     });
 }
 
-export { index };
+export { setup };

@@ -1,4 +1,4 @@
-import { sport } from "../../index.js";
+import { sport } from "../../setup.js";
 const cfg = {
     detailClass: "detail-module",
     hockey: {
