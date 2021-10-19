@@ -227,7 +227,7 @@ input[type="text"] {
 .card-btn {
   font-size: 0.9rem;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.25rem;
   border: 0; }
 
 .example {
