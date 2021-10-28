@@ -18,15 +18,15 @@
         M 28 50
         L 28 47"></path>
       <g id="inner-left-side">
-                <rect id="left-inner-box" x="0" y="17" width="19" height="16" stroke="white" stroke-width="0.167" fill="#e2b983"></rect>
-        <path id="left-restricted-area" stroke="white" stroke-width="0.167" fill="transparent" d="
+                <rect id="left-inner-box" x="0" y="17" width="19" height="16" stroke="#ea3873" stroke-width="0.167" fill="#e2b983"></rect>
+        <path id="left-restricted-area" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
           M 4 21
           L 5.25 21
           A 4 4 0 0 1 5.25 29
           L 4 29"></path>
         <path
           id="left-outer-hashes"
-          stroke="white"
+          stroke="#ea3873"
           stroke-width="0.167"
           d="
           M 0 14
@@ -49,15 +49,15 @@
           L 11.083 33.5
           M 14.25 33.5
           L 14.25 33"></path>
-        <path id="left-circle-vertical" stroke="white" stroke-width="0.167" d="
+        <path id="left-circle-vertical" stroke="#ea3873" stroke-width="0.167" d="
             M 13 20
             L 13 20.5
             M 13 30
             L 13 29.5"></path>
-        <path id="left-solid-arc" stroke="white" stroke-width="0.167" fill="transparent" d="
+        <path id="left-solid-arc" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
           M 19 19
           A 6 6 0 0 1 19 31"></path>
-        <path id="left-dashed-arc" stroke="white" stroke-width="0.167" fill="transparent" d="
+        <path id="left-dashed-arc" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
           M 19 19
           A 6 6 0 0 0 19 31" stroke-dasharray="1.024 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.024"></path>
         <g id="left-hoop">
@@ -79,15 +79,15 @@
           M 28 50
           L 28 47"></path>
         <g id="inner-right-side">
-                  <rect id="right-inner-box" x="0" y="17" width="19" height="16" stroke="white" stroke-width="0.167" fill="#e2b983"></rect>
-          <path id="right-restricted-area" stroke="white" stroke-width="0.167" fill="transparent" d="
+                  <rect id="right-inner-box" x="0" y="17" width="19" height="16" stroke="#ea3873" stroke-width="0.167" fill="#e2b983"></rect>
+          <path id="right-restricted-area" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
             M 4 21
             L 5.25 21
             A 4 4 0 0 1 5.25 29
             L 4 29"></path>
           <path
             id="right-outer-hashes"
-            stroke="white"
+            stroke="#ea3873"
             stroke-width="0.167"
             d="
             M 0 14
@@ -110,15 +110,15 @@
             L 11.083 33.5
             M 14.25 33.5
             L 14.25 33"></path>
-          <path id="right-circle-vertical" stroke="white" stroke-width="0.167" d="
+          <path id="right-circle-vertical" stroke="#ea3873" stroke-width="0.167" d="
               M 13 20
               L 13 20.5
               M 13 30
               L 13 29.5"></path>
-          <path id="right-solid-arc" stroke="white" stroke-width="0.167" fill="transparent" d="
+          <path id="right-solid-arc" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
             M 19 19
             A 6 6 0 0 1 19 31"></path>
-          <path id="right-dashed-arc" stroke="white" stroke-width="0.167" fill="transparent" d="
+          <path id="right-dashed-arc" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
             M 19 19
             A 6 6 0 0 0 19 31" stroke-dasharray="1.024 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.024"></path>
           <g id="right-hoop">
