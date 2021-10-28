@@ -1,5 +1,5 @@
 import { setUpDeleteAllModal } from "../shots/delete-all-modal.js";
-import { getDefaultDetails } from "../details/config-details.js";
+import { getDefaultDetails } from "../../setup.js";
 import {
     getRows,
     getHeaderRow,
@@ -13,14 +13,14 @@ import {
     getRowsPerPage,
 } from "./table-functions.js";
 import { createRowFromData } from "./row.js";
-import { cfg } from "../details/config-details.js";
+import { cfgDetails } from "../details/config-details.js";
 
 function setUpTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
     setStartRow(0);
     setEndRow(0);
     setNumRows(0);
-    setRowsPerPage(cfg.defaultRowsPerPage);
+    setRowsPerPage(cfgDetails.defaultRowsPerPage);
 
     d3.select("#shot-table")
         .append("thead")

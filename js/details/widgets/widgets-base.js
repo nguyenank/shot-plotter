@@ -1,9 +1,9 @@
-import { cfg } from "../config-details.js";
+import { cfgDetails } from "../config-details.js";
 
 function createRadioButtons(selectId, { id, title, options }) {
     d3.select(selectId)
         .append("div")
-        .attr("class", cfg.detailClass)
+        .attr("class", cfgDetails.detailClass)
         .attr("id", id)
         .append("h3")
         .text(title)
@@ -33,7 +33,7 @@ function createTextField(selectId, { id, title, defaultValue }) {
     let div = d3
         .select(selectId)
         .append("div")
-        .attr("class", cfg.detailClass + " " + "even-width")
+        .attr("class", cfgDetails.detailClass + " " + "even-width")
         .attr("id", id);
     div.append("h3")
         .text(title)
@@ -50,7 +50,7 @@ function createDropdown(selectId, { id, title, options }) {
     let div = d3
         .select(selectId)
         .append("div")
-        .attr("class", cfg.detailClass + " " + "even-width")
+        .attr("class", cfgDetails.detailClass + " " + "even-width")
         .attr("id", id);
     div.append("h3")
         .text(title)
@@ -73,7 +73,7 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
     let div = d3
         .select(selectId)
         .append("div")
-        .attr("class", cfg.detailClass + " even-width")
+        .attr("class", cfgDetails.detailClass + " even-width")
         .attr("id", id);
     div.append("h3")
         .text(title)

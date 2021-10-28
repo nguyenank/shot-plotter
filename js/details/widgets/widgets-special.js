@@ -1,4 +1,4 @@
-import { cfg } from "../config-details.js";
+import { cfgDetails } from "../config-details.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
 
 function createTooltip({ id, title, text }) {
@@ -37,7 +37,7 @@ function createTooltip({ id, title, text }) {
 function teamRadioButtons(id, data) {
     d3.select(id)
         .append("div")
-        .attr("class", cfg.detailClass + " " + data.class)
+        .attr("class", cfgDetails.detailClass + " " + data.class)
         .attr("id", data.id)
         .append("h3")
         .text(data.title)

@@ -2,8 +2,7 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
-import { cfg } from "../config.js";
-import { sport } from "../../setup.js";
+import { sport, cfgSportA } from "../../setup.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
@@ -83,8 +82,6 @@ function createShotFromEvent(e, point1) {
         numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
     };
 
-    console.log(d3.pointer(e));
-
     for (let col of columns) {
         switch (col.type) {
             case "radio":
@@ -141,14 +138,14 @@ function createShotFromEvent(e, point1) {
                     let x2 = specialData["coords2"]
                         ? (
                               specialData["coords2"][0] -
-                              cfg[sport].width / 2
+                              cfgSportA.width / 2
                           ).toFixed(2)
                         : "";
                     rowData[col.id] = x2;
                 } else {
                     rowData[col.id] = (
                         specialData["coords"][0] -
-                        cfg[sport].width / 2
+                        cfgSportA.width / 2
                     ).toFixed(2);
                 }
                 break;
@@ -157,15 +154,14 @@ function createShotFromEvent(e, point1) {
                     let y2 = specialData["coords2"]
                         ? (
                               -1 *
-                              (specialData["coords2"][1] -
-                                  cfg[sport].height / 2)
+                              (specialData["coords2"][1] - cfgSportA.height / 2)
                           ).toFixed(2)
                         : "";
                     rowData[col.id] = y2;
                 } else {
                     rowData[col.id] = (
                         -1 *
-                        (specialData["coords"][1] - cfg[sport].height / 2)
+                        (specialData["coords"][1] - cfgSportA.height / 2)
                     ).toFixed(2);
                 }
                 break;

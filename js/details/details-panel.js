@@ -16,7 +16,7 @@ import {
     getDetails,
     getCurrentShotTypes,
 } from "./details-functions.js";
-import { getDefaultDetails } from "./config-details.js";
+import { getDefaultDetails } from "../../setup.js";
 import { getNumRows } from "../table/table-functions.js";
 
 function setUpDetailsPanel(id = "#details") {

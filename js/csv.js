@@ -13,8 +13,7 @@ import {
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
-import { cfg } from "./config.js";
-import { sport } from "../setup.js";
+import { cfgSportA } from "../setup.js";
 
 function setUpCSVDownloadUpload() {
     // Custom Filename
@@ -181,8 +180,8 @@ function processCSV(uploadId, row, swapTeamColor) {
         typeIndex: getTypeIndex(row.Type),
         teamColor: teamColor,
         coords: [
-            parseFloat(row.X) + cfg[sport].width / 2,
-            -1 * parseFloat(row.Y) + cfg[sport].height / 2,
+            parseFloat(row.X) + cfgSportA.width / 2,
+            -1 * parseFloat(row.Y) + cfgSportA.height / 2,
         ], // undo coordinate adjustment
         player: row.Player,
         numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
@@ -190,8 +189,8 @@ function processCSV(uploadId, row, swapTeamColor) {
 
     if (row.X2 && row.Y2) {
         specialData.coords2 = [
-            parseFloat(row.X2) + cfg[sport].width / 2,
-            -1 * parseFloat(row.Y2) + cfg[sport].height / 2,
+            parseFloat(row.X2) + cfgSportA.width / 2,
+            -1 * parseFloat(row.Y2) + cfgSportA.height / 2,
         ]; // undo coordinate adjustment
     }
 

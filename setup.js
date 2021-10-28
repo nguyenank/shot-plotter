@@ -6,12 +6,20 @@ import { setUpTable } from "./js/table/table.js";
 import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
-import { cfg } from "./js/config.js";
 
 export let sport;
+export let cfgSportA;
+export let getDefaultDetails;
 
 function setup(s) {
     sport = s;
+    d3.json("/supported-sports.json").then(data => {
+        const sportData = _.find(data.sports, { id: sport });
+        cfgSportA = sportData.appearance;
+        getDefaultDetails = function() {
+            return _.cloneDeep(sportData.defaultDetails);
+        };
+    });
     d3.xml(`/resources/${sport}.svg`).then(data => {
         setUpPlayingArea(data);
         setUpDetailsPanel();
@@ -104,7 +112,11 @@ function setUpIndex() {
             a.append("span")
                 .attr("class", "bold")
                 .text(`${attr.replace(/^\w/, c => c.toUpperCase())}: `); // capitalize first letter
-            a.append("span").text(d => d[attr]);
+            a.append("span").text(d =>
+                attr === "dimensions"
+                    ? `${d.appearance.width} x ${d.appearance.height}`
+                    : d[attr]
+            );
         }
 
         // footer
@@ -120,18 +132,17 @@ function setUpIndex() {
             sports.map(sport => d3.xml(`/resources/${sport.id}.svg`))
         ).then(sportsSVGs => {
             sportsSVGs.forEach((sportSVG, i) => {
-                const s = sports[i].id;
+                const name = sports[i].id;
+                const width = parseInt(sports[i].appearance.width);
+                const height = parseInt(sports[i].appearance.height);
                 const node = d3
-                    .select(`#${s}`)
+                    .select(`#${name}`)
                     .select(".card-header")
                     .node()
                     .append(sportSVG.documentElement);
-                d3.select(`#${s}`)
+                d3.select(`#${name}`)
                     .select("svg")
-                    .attr(
-                        "viewBox",
-                        `-1 -1 ${cfg[s].width + 2} ${cfg[s].height + 2}`
-                    );
+                    .attr("viewBox", `-1 -1 ${width + 2} ${height + 2}`);
             });
             d3.selectAll("svg").attr("width", "100%");
         });

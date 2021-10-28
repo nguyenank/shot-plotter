@@ -8,14 +8,14 @@ import {
 } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
-import { getDefaultDetails } from "../config-details.js";
+import { getDefaultDetails } from "../../../setup.js";
 import { setUpJSONDownloadUpload } from "./json.js";
 import { createTextFieldPage } from "./text-field-page.js";
 import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
-import { cfg } from "../config-details.js";
+import { cfgDetails } from "../config-details.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -146,10 +146,10 @@ function createMainPage(id) {
             d3.select("#two-point-enable").property("checked", false);
             d3.select("#page-size-field").property(
                 "value",
-                cfg.defaultRowsPerPage
+                cfgDetails.defaultRowsPerPage
             );
             $("#widgets-per-row-dropdown")
-                .val(cfg.defaultWidgetsPerRow)
+                .val(cfgDetails.defaultWidgetsPerRow)
                 .trigger("change");
             createReorderColumns("#reorder");
         });

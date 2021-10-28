@@ -1,5 +1,4 @@
-import { cfg } from "./config.js";
-import { sport } from "../setup.js";
+import { sport, cfgSportA } from "../setup.js";
 
 function setUpPlayingArea(data) {
     d3.select("#playing-area")
@@ -10,8 +9,8 @@ function setUpPlayingArea(data) {
     const padding = 20;
     const maxWidth =
         window.innerWidth >= 768 ? window.innerWidth * 0.7 : window.innerWidth;
-    const paWidth = cfg[sport].width;
-    const paHeight = cfg[sport].height;
+    const paWidth = cfgSportA.width;
+    const paHeight = cfgSportA.height;
     const scalar = Math.max(paWidth, paHeight);
 
     // floor resizing factor to the nearest 0.5

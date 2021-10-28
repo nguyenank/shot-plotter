@@ -12,8 +12,8 @@ import {
 } from "./table-functions.js";
 import { updateTableFooter, createPage } from "./table.js";
 import { dotSizeHandler } from "../shots/dot.js";
-import { cfg } from "../config.js";
-import { sport } from "../../setup.js";
+import { cfgAppearance } from "../config-appearance.js";
+import { cfgSportA } from "../../setup.js";
 
 function createNewRow(id, rowData, specialData) {
     // add row to sessionStorage
@@ -114,8 +114,8 @@ function createRowFromData(
             .dispatch("change");
     } else if (newRow) {
         // animate changing color when new row is added
-        const t = d3.transition().duration(cfg.newRowDuration);
-        row.style("background-color", cfg[teamColor]);
+        const t = d3.transition().duration(cfgAppearance.newRowDuration);
+        row.style("background-color", cfgAppearance[teamColor]);
         row.transition(t).style("background-color", null);
     }
 }
@@ -164,8 +164,8 @@ function deleteHandler(id) {
 
     updateTableFooter();
 
-    const t = d3.transition().duration(cfg.deleteDuration);
-    dotSizeHandler(id, 0, 0, cfg.deleteDuration);
+    const t = d3.transition().duration(cfgAppearance.deleteDuration);
+    dotSizeHandler(id, 0, 0, cfgAppearance.deleteDuration);
     d3.select("#shot-table-body")
         .select("[id='" + id + "']")
         .transition(t)
@@ -180,8 +180,8 @@ function deleteHandler(id) {
 
 function selectHandler(id, checked, teamColor, polygonBool) {
     let row = d3.select("#shot-table-body").select("[id='" + id + "']");
-    const t = d3.transition().duration(cfg.selectDuration);
-    const radius = polygonBool ? cfg[sport].polyR : cfg[sport].circleR;
+    const t = d3.transition().duration(cfgAppearance.selectDuration);
+    const radius = polygonBool ? cfgSportA.polyR : cfgSportA.circleR;
     if (checked) {
         // https://stackoverflow.com/a/23724356
         let toMove = d3
@@ -193,11 +193,11 @@ function selectHandler(id, checked, teamColor, polygonBool) {
             .append(() => toMove);
         dotSizeHandler(
             id,
-            cfg.selectedMultiplier * radius,
-            cfg.selectedMultiplier,
-            cfg.selectDuration
+            cfgAppearance.selectedMultiplier * radius,
+            cfgAppearance.selectedMultiplier,
+            cfgAppearance.selectDuration
         );
-        row.transition(t).style("background-color", cfg[teamColor]);
+        row.transition(t).style("background-color", cfgAppearance[teamColor]);
     } else {
         const shotNumber =
             Number(
@@ -214,7 +214,7 @@ function selectHandler(id, checked, teamColor, polygonBool) {
         d3.select("#dots")
             .select("#normal")
             .insert(() => toMove, "[shot-number='" + shotNumber + "']");
-        dotSizeHandler(id, radius, 1, cfg.selectDuration);
+        dotSizeHandler(id, radius, 1, cfgAppearance.selectDuration);
         row.transition(t).style("background-color", null);
     }
 }
