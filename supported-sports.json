@@ -72,7 +72,7 @@
                 "circleR": "0.4",
                 "polyR": "0.5",
                 "fontSize": "0.03rem",
-                "strokeWidth": "0.5px"
+                "strokeWidth": "0.075px"
             },
             "defaultDetails": [
                 {
