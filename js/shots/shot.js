@@ -76,6 +76,7 @@ function createShotFromEvent(e, point1) {
     let rowData = {};
     let specialData = {
         // data for custom specifics like color etc.
+        typeIndex: 0,
         coords: point1 ? point1 : d3.pointer(e),
         coords2: point1 ? d3.pointer(e) : null,
         numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
