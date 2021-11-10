@@ -34,6 +34,7 @@ function createMainPage(id) {
         .attr("class", "center")
         .append("button")
         .attr("class", "white-btn small-text")
+        .attr("id", "info-collapse-btn")
         .text("More Info")
         .on("click", () => {
             $("#explain-text").collapse("toggle");
@@ -42,6 +43,13 @@ function createMainPage(id) {
         .append("div")
         .attr("id", "explain-text")
         .attr("class", "collapse");
+
+    $("#explain-text").on("hide.bs.collapse", function() {
+        d3.select("#info-collapse-btn").text("More Info");
+    });
+    $("#explain-text").on("show.bs.collapse", function() {
+        d3.select("#info-collapse-btn").text("Less Info");
+    });
 
     // explanation text
     createExplainText();
