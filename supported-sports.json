@@ -1,7 +1,7 @@
 {
     "sports": [
         {
-            "id": "hockey",
+            "id": "ice-hockey",
             "name": "Ice Hockey",
             "units": "feet",
             "specifications": "National Hockey League (2020-2021)",
