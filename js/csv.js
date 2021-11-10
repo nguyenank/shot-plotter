@@ -138,11 +138,12 @@ function processCSV(uploadId, row, swapTeamColor) {
 
     // add any new shot type options
     if (existsDetail("#shot-type")) {
+        const value = row.Type ? row.Type : row.Outcome;
         const typeOptions = getCurrentShotTypes().map(x => x.value);
-        if (typeOptions.indexOf(row.Type) === -1) {
+        if (typeOptions.indexOf(value) === -1) {
             d3.select("#shot-type-select")
                 .append("option")
-                .text(row.Type);
+                .text(value);
             shotTypeLegend();
         }
     }
