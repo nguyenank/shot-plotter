@@ -144,12 +144,13 @@
                 },
                 {
                     "type": "radio",
-                    "title": "Period",
-                    "id": "period",
+                    "title": "Quarter",
+                    "id": "quarter",
                     "options": [
                         { "value": "1", "checked": true },
                         { "value": "2" },
                         { "value": "3" },
+                        { "value": "4" },
                         { "value": "OT" }
                     ]
                 },
@@ -170,13 +171,12 @@
                 },
                 {
                     "type": "shot-type",
-                    "title": "Type",
+                    "title": "Outcome",
                     "id": "shot-type",
                     "options": [
-                        { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Miss", "selected": true },
+                        { "value": "Make" },
+                        { "value": "Blocked" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -205,12 +205,13 @@
                 },
                 {
                     "type": "radio",
-                    "title": "Period",
-                    "id": "period",
+                    "title": "Quarter",
+                    "id": "quarter",
                     "options": [
                         { "value": "1", "checked": true },
                         { "value": "2" },
                         { "value": "3" },
+                        { "value": "4" },
                         { "value": "OT" }
                     ]
                 },
@@ -231,13 +232,12 @@
                 },
                 {
                     "type": "shot-type",
-                    "title": "Type",
+                    "title": "Outcome",
                     "id": "shot-type",
                     "options": [
-                        { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Miss", "selected": true },
+                        { "value": "Make" },
+                        { "value": "Blocked" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -266,12 +266,13 @@
                 },
                 {
                     "type": "radio",
-                    "title": "Period",
-                    "id": "period",
+                    "title": "Quarter",
+                    "id": "quarter",
                     "options": [
                         { "value": "1", "checked": true },
                         { "value": "2" },
                         { "value": "3" },
+                        { "value": "4" },
                         { "value": "OT" }
                     ]
                 },
@@ -292,13 +293,12 @@
                 },
                 {
                     "type": "shot-type",
-                    "title": "Type",
+                    "title": "Outcome",
                     "id": "shot-type",
                     "options": [
-                        { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Miss", "selected": true },
+                        { "value": "Make" },
+                        { "value": "Blocked" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },

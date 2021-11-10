@@ -23,7 +23,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             name: "Radio Buttons",
             id: "#radio-buttons-page",
             desc:
-                "Radio buttons are good for a small number of options, allowing a maximum of 5. The 'Period' widget uses radio buttons.",
+                "Radio buttons are good for a small number of options, allowing a maximum of 5.",
             example: function(id) {
                 let options = [
                     { value: "Option 1" },
@@ -58,7 +58,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             name: "Text Field",
             id: "#text-field-page",
             desc:
-                "A text field is good when you don't know exactly what will be entered in advance. The 'Player' widget uses a text field.",
+                "A text field is good when you don't know exactly what will be entered in advance and want to allow for any possibilty.",
             example: function(id) {
                 d3.select(id)
                     .append("div")
@@ -73,7 +73,7 @@ function createWidgetTypePage(id = "#widget-type-page") {
             name: "Dropdown",
             id: "#dropdown-page",
             desc:
-                "A dropdown is good when you have more, but still a finite number of options. The 'Type' widget uses a dropdown, though you will be unable to add options like in the 'Type' column.",
+                "A dropdown is good when you have more than 5, but still a finite number of options, or when the options themselves are longer.",
             example: id => {
                 let select = d3
                     .select(id)
