@@ -24,7 +24,7 @@ function setUpShots() {
     }
 
     d3.select("#playing-area")
-        .select("#outside-perimeter")
+        .select("#transformations")
         .on("click", e => {
             document.getSelection().removeAllRanges();
             d3.select("#ghost")
@@ -183,6 +183,12 @@ function createShotFromEvent(e, point1) {
                         .toFixed(2);
                 }
                 break;
+            case "value-calc":
+                rowData[col.id] =
+                    _.startsWith(e.target.id, "left") ||
+                    _.startsWith(e.target.id, "right")
+                        ? 2
+                        : 3;
             default:
                 continue;
         }

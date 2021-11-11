@@ -1,10 +1,11 @@
 <svg id="basketball-nba-svg" xmlns="http://www.w3.org/2000/svg">
   <g id="transformations">
     <rect id="background" x="0" y="0" width="94" height="50" fill="#eacda6"></rect>
+    <!-- <rect id="outside-perimeter" x="0" y="0" width="94" height="50" stroke="black" fill="transparent" stroke-width="0.167"></rect> -->
     <g id="center">
-            <circle id="outer-center-circle" cx="47" cy="25" r="6" stroke="#a5015b" stroke-width="0.167" fill="transparent"></circle>
+      <circle id="outer-center-circle" cx="47" cy="25" r="6" stroke="#a5015b" stroke-width="0.167" fill="transparent"></circle>
       <circle id="inner-center-circle" cx="47" cy="25" r="2" stroke="#a5015b" stroke-width="0.167" fill="transparent"></circle>
-            <line id="center-line" x1="47" y1="0" x2="47" y2="50" stroke="#494949" stroke-width="0.167"></line>
+      <line id="center-line" x1="47" y1="0" x2="47" y2="50" stroke="#494949" stroke-width="0.167"></line>
     </g>
     <g id="left-side">
       <path id="left-outer-arc" fill="transparent" stroke="#a5015b" stroke-width="0.167" d="
@@ -18,7 +19,7 @@
         M 28 50
         L 28 47"></path>
       <g id="inner-left-side">
-                <rect id="left-inner-box" x="0" y="17" width="19" height="16" stroke="#ea3873" stroke-width="0.167" fill="#e2b983"></rect>
+        <rect id="left-inner-box" x="0" y="17" width="19" height="16" stroke="#ea3873" stroke-width="0.167" fill="#e2b983"></rect>
         <path id="left-restricted-area" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
           M 4 21
           L 5.25 21
@@ -68,28 +69,28 @@
       </g>
     </g>
     <g id="right-side" transform="translate(94 50) rotate(180)">
-        <path id="right-outer-arc" fill="#eacda6" stroke="#a5015b" stroke-width="0.167" d="
+      <path id="right-outer-arc" fill="#eacda6" stroke="#a5015b" stroke-width="0.167" d="
           M 0 3
           L 14 3
           A 23.75 23.75 0 0 1 14 47
           L 0 47"></path>
-        <path id="outer-hashes" stroke="#a5015b" stroke-width="0.167" d="
+      <path id="outer-hashes" stroke="#a5015b" stroke-width="0.167" d="
           M 28 0
           L 28 3
           M 28 50
           L 28 47"></path>
-        <g id="inner-right-side">
-                  <rect id="right-inner-box" x="0" y="17" width="19" height="16" stroke="#ea3873" stroke-width="0.167" fill="#e2b983"></rect>
-          <path id="right-restricted-area" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
+      <g id="inner-right-side">
+        <rect id="right-inner-box" x="0" y="17" width="19" height="16" stroke="#ea3873" stroke-width="0.167" fill="#e2b983"></rect>
+        <path id="right-restricted-area" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
             M 4 21
             L 5.25 21
             A 4 4 0 0 1 5.25 29
             L 4 29"></path>
-          <path
-            id="right-outer-hashes"
-            stroke="#ea3873"
-            stroke-width="0.167"
-            d="
+        <path
+          id="right-outer-hashes"
+          stroke="#ea3873"
+          stroke-width="0.167"
+          d="
             M 0 14
             L 0.5 14
             M 7.083 17
@@ -110,25 +111,30 @@
             L 11.083 33.5
             M 14.25 33.5
             L 14.25 33"></path>
-          <path id="right-circle-vertical" stroke="#ea3873" stroke-width="0.167" d="
+        <path id="right-circle-vertical" stroke="#ea3873" stroke-width="0.167" d="
               M 13 20
               L 13 20.5
               M 13 30
               L 13 29.5"></path>
-          <path id="right-solid-arc" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
+        <path id="right-solid-arc" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
             M 19 19
             A 6 6 0 0 1 19 31"></path>
-          <path id="right-dashed-arc" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
+        <path id="right-dashed-arc" stroke="#ea3873" stroke-width="0.167" fill="transparent" d="
             M 19 19
             A 6 6 0 0 0 19 31" stroke-dasharray="1.024 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.29 1.024"></path>
-          <g id="right-hoop">
-            <line x1="4" y1="22" x2="4" y2="28" stroke="#494949" stroke-width="0.167"></line>
-            <line x1="4" y1="25" x2="4.5" y2="25" stroke="#494949" stroke-width="0.167"></line>
-            <circle cx="5.25" cy="25" r="0.75" stroke="#494949" stroke-width="0.167" fill="transparent"></circle>
-          </g>
+        <g id="right-hoop">
+          <line x1="4" y1="22" x2="4" y2="28" stroke="#494949" stroke-width="0.167"></line>
+          <line x1="4" y1="25" x2="4.5" y2="25" stroke="#494949" stroke-width="0.167"></line>
+          <circle cx="5.25" cy="25" r="0.75" stroke="#494949" stroke-width="0.167" fill="transparent"></circle>
         </g>
+      </g>
 
     </g>
-    <rect id="outside-perimeter" x="0" y="0" width="94" height="50" stroke="black" fill="transparent" stroke-width="0.167"></rect>
+    <g id="outside-perimeter">
+      <line x1="0" y1="0" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.167"></line>
+      <line x1="94" y1="50" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.167"></line>
+      <line x1="94" y1="50" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.167"></line>
+      <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.167"></line>
+    </g>
   </g>
 </svg>

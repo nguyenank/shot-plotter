@@ -84,25 +84,6 @@ function createMainPage(id) {
     let appearanceOptions = mb.append("div").attr("id", "appearance-options");
     createAppearanceOptions("#appearance-options");
 
-    mb.append("hr");
-    mb.append("div")
-        .attr("class", "center")
-        .append("button")
-        .attr("class", "grey-btn new-column-btn")
-        .attr("id", "reset-defaults-btn")
-        .text("Reset To Defaults")
-        .on("click", function() {
-            setDetails(getDefaultDetails());
-            d3.select("#two-point-enable").property("checked", false);
-            d3.select("#page-size-field").property(
-                "value",
-                cfgDetails.defaultRowsPerPage
-            );
-            $("#widgets-per-row-dropdown")
-                .val(cfgDetails.defaultWidgetsPerRow)
-                .trigger("change");
-            createReorderColumns("#reorder");
-        });
     // footer
     let footer = d3
         .select(id)
@@ -396,7 +377,7 @@ function createExplainText(id = "#explain-text") {
 }
 function createAppearanceOptions(id = "#appearance-options") {
     const appearanceOptions = d3.select(id);
-    appearanceOptions.append("h6").text("Appearance Options");
+    appearanceOptions.append("h5").text("Appearance Options");
 
     let pageSizeField = appearanceOptions
         .append("div")

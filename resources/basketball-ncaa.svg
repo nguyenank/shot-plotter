@@ -104,6 +104,11 @@
           </g>
         </g>
       </g>
-    <rect id="outside-perimeter" x="0" y="0" width="94" height="50" stroke="black" fill="transparent" stroke-width="0.75"></rect>
+      <g id="outside-perimeter">
+        <line x1="0" y1="0" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
+        <line x1="94" y1="50" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
+        <line x1="94" y1="50" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
+        <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
+      </g>
   </g>
 </svg>
