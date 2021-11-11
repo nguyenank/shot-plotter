@@ -16,6 +16,7 @@ import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
 import { cfgDetails } from "../config-details.js";
+import { sport } from "../../../setup.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -57,6 +58,7 @@ function createMainPage(id) {
     mb.append("hr");
 
     // reorder columns
+    mb.append("h5").text("Details");
     mb.append("div")
         .attr("class", "center")
         .attr("id", "reorder");
@@ -71,83 +73,23 @@ function createMainPage(id) {
             createTextFieldPage("#text-field-page");
             createDropdownPage("#dropdown-page");
             createRadioButtonsPage("#radio-buttons-page");
+            createTimeWidgetPage("#time-widget-page");
             changePage("#main-page", "#widget-type-page");
         });
-    let lowerOptions = mb.append("div").attr("class", "split");
 
-    let leftSide = lowerOptions.append("div");
+    let specialDetails = mb.append("div").attr("id", "special-details-options");
+    createSpecialDetailsOptions("#special-details-options");
 
-    let pageSizeField = leftSide
-        .append("div")
-        .attr("class", "page-size-form position-relative");
-    pageSizeField
-        .append("input")
-        .attr("type", "number")
-        .attr("min", 1)
-        .attr("max", 999)
-        .attr("value", 10)
-        .attr("class", "form-control")
-        .attr("id", "page-size-field");
-    pageSizeField.append("span").text("Rows Per Table Page");
-    pageSizeField
-        .append("div")
-        .attr("class", "invalid-tooltip")
-        .text("Must be an integer between 1 and 999 (inclusive).");
+    mb.append("hr");
+    let appearanceOptions = mb.append("div").attr("id", "appearance-options");
+    createAppearanceOptions("#appearance-options");
 
-    let widgetsPerRowWrapper = leftSide
-        .append("div")
-        .attr("class", "page-size-form");
-    let widgetsPerRowDropdown = widgetsPerRowWrapper
-        .append("select")
-        .attr("id", "widgets-per-row-dropdown")
-        .attr("class", "select2");
-
-    for (let i of [1, 2, 3]) {
-        widgetsPerRowDropdown
-            .append("option")
-            .text(i)
-            .attr("selected", i === 2 ? true : undefined);
-    }
-    widgetsPerRowWrapper
-        .append("span")
-        .text("Widgets Per Panel Row")
-        .attr("class", "widgets-dropdown-label");
-
-    let twoPoint = leftSide
-        .append("div")
-        .attr("class", "form-check form-switch");
-    twoPoint
-        .append("input")
-        .attr("class", "form-check-input")
-        .attr("type", "checkbox")
-        .attr("id", "two-point-enable")
-        .on("click", function() {
-            let checked = d3.select("#two-point-enable").property("checked");
-            if (checked) {
-                setDetails([
-                    ...getDetails(),
-                    { type: "x", title: "X2", id: "x2", noWidget: true },
-                    { type: "y", title: "Y2", id: "y2", noWidget: true },
-                ]);
-            } else {
-                setDetails(
-                    _.remove(
-                        getDetails(),
-                        x => (x.id !== "x2") & (x.id !== "y2")
-                    )
-                );
-            }
-            createReorderColumns();
-        });
-    twoPoint
-        .append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "two-point-enable")
-        .text("Enable 2-Location Events");
-
-    lowerOptions
+    mb.append("hr");
+    mb.append("div")
+        .attr("class", "center")
         .append("button")
         .attr("class", "grey-btn new-column-btn")
+        .attr("id", "reset-defaults-btn")
         .text("Reset To Defaults")
         .on("click", function() {
             setDetails(getDefaultDetails());
@@ -202,8 +144,8 @@ function createReorderColumns(id = "#reorder") {
     v.append("div")
         .attr("class", "reorder-item-icons")
         .each(function(d) {
-            if (d.type != "x" && d.type !== "y") {
-                // no turning off or deleting coordinates
+            if (!(d.noWidget && d.type !== "shot-number")) {
+                // no turning off or deleting any no widget columns (but shot number)
                 d3.select(this)
                     .append("i")
                     .attr("class", d =>
@@ -451,6 +393,121 @@ function createExplainText(id = "#explain-text") {
         .attr("href", "https://github.com/nguyenank/shot-plotter")
         .text("GitHub");
     github.append("span").text(" page.");
+}
+function createAppearanceOptions(id = "#appearance-options") {
+    const appearanceOptions = d3.select(id);
+    appearanceOptions.append("h6").text("Appearance Options");
+
+    let pageSizeField = appearanceOptions
+        .append("div")
+        .attr("class", "page-size-form position-relative");
+    pageSizeField
+        .append("input")
+        .attr("type", "number")
+        .attr("min", 1)
+        .attr("max", 999)
+        .attr("value", 10)
+        .attr("class", "form-control")
+        .attr("id", "page-size-field");
+    pageSizeField.append("span").text("Rows Per Table Page");
+    pageSizeField
+        .append("div")
+        .attr("class", "invalid-tooltip")
+        .text("Must be an integer between 1 and 999 (inclusive).");
+
+    let widgetsPerRowWrapper = appearanceOptions
+        .append("div")
+        .attr("class", "page-size-form");
+    let widgetsPerRowDropdown = widgetsPerRowWrapper
+        .append("select")
+        .attr("id", "widgets-per-row-dropdown")
+        .attr("class", "select2");
+
+    for (let i of [1, 2, 3]) {
+        widgetsPerRowDropdown
+            .append("option")
+            .text(i)
+            .attr("selected", i === 2 ? true : undefined);
+    }
+    widgetsPerRowWrapper
+        .append("span")
+        .text("Widgets Per Panel Row")
+        .attr("class", "widgets-dropdown-label");
+}
+
+function createSpecialDetailsOptions(id = "#special-details-options") {
+    let specialDetails = d3.select(id);
+    specialDetails.append("h6").text("Special Details");
+
+    const sdList = [
+        {
+            id: "two-point-enable",
+            newDetails: [
+                { type: "x", title: "X2", id: "x2", noWidget: true },
+                { type: "y", title: "Y2", id: "y2", noWidget: true },
+            ],
+            label: "2-Location Events",
+        },
+        {
+            id: "distance-calc",
+            newDetails: [
+                {
+                    type: "distance-calc",
+                    title: "Distance",
+                    id: "distance-calc",
+                    noWidget: true,
+                },
+            ],
+            label: "Distance",
+        },
+    ];
+
+    if (_.startsWith(sport, "basketball")) {
+        sdList.push({
+            id: "value-calc",
+            newDetails: [
+                {
+                    type: "value-calc",
+                    title: "Point Value",
+                    id: "value-calc",
+                    noWidget: true,
+                },
+            ],
+            label: "Point Value",
+        });
+    }
+
+    function createDetailToggle({ id, newDetails, label }) {
+        let detail = specialDetails
+            .append("div")
+            .attr("class", "form-check form-switch");
+        detail
+            .append("input")
+            .attr("class", "form-check-input")
+            .attr("type", "checkbox")
+            .attr("id", id)
+            .on("click", function() {
+                let checked = d3.select("#" + id).property("checked");
+                if (checked) {
+                    setDetails([...getDetails(), ...newDetails]);
+                } else {
+                    setDetails(
+                        _.remove(getDetails(), d =>
+                            // keep d if for all new details, d.id is not the same as nd.id
+                            newDetails.every(nd => nd.id !== d.id)
+                        )
+                    );
+                }
+                createReorderColumns();
+            });
+        detail
+            .append("label")
+            .attr("class", "form-check-label")
+            .attr("for", id)
+            .text(label);
+    }
+
+    _.map(sdList, createDetailToggle);
 }
 
 export { createMainPage, createReorderColumns };

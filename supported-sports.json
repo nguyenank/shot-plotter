@@ -13,6 +13,10 @@
                 "fontSize": "0.15rem",
                 "strokeWidth": "0.1px"
             },
+            "goalCoords": [
+                [11, 42.5],
+                [189, 42.5]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -74,6 +78,10 @@
                 "fontSize": "0.03rem",
                 "strokeWidth": "0.075px"
             },
+            "goalCoords": [
+                [3.5, 10],
+                [36.5, 10]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -135,6 +143,10 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
+            "goalCoords": [
+                [5.25, 25],
+                [88.75, 25]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -196,6 +208,10 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
+            "goalCoords": [
+                [5.25, 25],
+                [88.75, 25]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -257,6 +273,10 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
+            "goalCoords": [
+                [5.25, 25],
+                [88.75, 25]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",

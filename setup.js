@@ -9,6 +9,7 @@ import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 
 export let sport;
 export let cfgSportA;
+export let cfgSportGoalCoords;
 export let getDefaultDetails;
 
 function setup(s) {
@@ -17,6 +18,7 @@ function setup(s) {
         .then(data => {
             const sportData = _.find(data.sports, { id: sport });
             cfgSportA = sportData.appearance;
+            cfgSportGoalCoords = sportData.goalCoords;
             getDefaultDetails = function() {
                 return _.cloneDeep(sportData.defaultDetails);
             };
