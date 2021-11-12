@@ -4,7 +4,7 @@ import {
     getCurrentShotTypes,
 } from "../details/details-functions.js";
 import { createDot } from "./dot.js";
-import { cfg } from "../config.js";
+import { cfgAppearance } from "../config-appearance.js";
 
 function setUpLegend() {
     let div = d3.select("#legend").append("div");
@@ -24,9 +24,9 @@ function setUpLegend() {
 }
 
 function shotTypeLegend(id = "#shot-type-legend") {
-    let xOffset = 2 * cfg.legendR;
-    let yOffset = 2 * cfg.legendR;
-    const spacing = 2 * cfg.legendR;
+    let xOffset = 2 * cfgAppearance.legendR;
+    let yOffset = 2 * cfgAppearance.legendR;
+    const spacing = 2 * cfgAppearance.legendR;
     let svg = d3.select(id);
 
     // clear svg
@@ -66,9 +66,9 @@ function shotTypeLegend(id = "#shot-type-legend") {
 }
 
 function teamLegend(id = "#team-legend") {
-    let xOffset = 2 * cfg.legendR;
-    let yOffset = 2 * cfg.legendR;
-    const spacing = 2 * cfg.legendR;
+    let xOffset = 2 * cfgAppearance.legendR;
+    let yOffset = 2 * cfgAppearance.legendR;
+    const spacing = 2 * cfgAppearance.legendR;
     const svg = d3.select(id);
 
     // clear svg
@@ -85,13 +85,13 @@ function teamLegend(id = "#team-legend") {
         ["orangeTeam", d3.select("#orange-team-name").property("value")],
     ]) {
         svg.append("rect")
-            .attr("x", xOffset - cfg.legendR)
+            .attr("x", xOffset - cfgAppearance.legendR)
             .attr("y", 0.25 * yOffset)
-            .attr("width", 2 * cfg.legendR)
-            .attr("height", 2 * cfg.legendR)
-            .style("fill", cfg[teamColor])
+            .attr("width", 2 * cfgAppearance.legendR)
+            .attr("height", 2 * cfgAppearance.legendR)
+            .style("fill", cfgAppearance[teamColor])
             .style("stroke-width", "0.05em")
-            .style("stroke", cfg[teamColor + "Solid"]);
+            .style("stroke", cfgAppearance[teamColor + "Solid"]);
         xOffset += spacing;
         xOffset +=
             svg

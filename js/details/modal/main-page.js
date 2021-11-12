@@ -8,14 +8,14 @@ import {
 } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
-import { getDefaultDetails } from "../config-details.js";
+import { getDefaultDetails } from "../../../setup.js";
 import { setUpJSONDownloadUpload } from "./json.js";
 import { createTextFieldPage } from "./text-field-page.js";
 import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
-import { cfg } from "../config-details.js";
+import { cfgDetails } from "../config-details.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -34,6 +34,7 @@ function createMainPage(id) {
         .attr("class", "center")
         .append("button")
         .attr("class", "white-btn small-text")
+        .attr("id", "info-collapse-btn")
         .text("More Info")
         .on("click", () => {
             $("#explain-text").collapse("toggle");
@@ -42,6 +43,13 @@ function createMainPage(id) {
         .append("div")
         .attr("id", "explain-text")
         .attr("class", "collapse");
+
+    $("#explain-text").on("hide.bs.collapse", function() {
+        d3.select("#info-collapse-btn").text("More Info");
+    });
+    $("#explain-text").on("show.bs.collapse", function() {
+        d3.select("#info-collapse-btn").text("Less Info");
+    });
 
     // explanation text
     createExplainText();
@@ -146,10 +154,10 @@ function createMainPage(id) {
             d3.select("#two-point-enable").property("checked", false);
             d3.select("#page-size-field").property(
                 "value",
-                cfg.defaultRowsPerPage
+                cfgDetails.defaultRowsPerPage
             );
             $("#widgets-per-row-dropdown")
-                .val(cfg.defaultWidgetsPerRow)
+                .val(cfgDetails.defaultWidgetsPerRow)
                 .trigger("change");
             createReorderColumns("#reorder");
         });
@@ -422,7 +430,7 @@ function createExplainText(id = "#explain-text") {
     twoPointText
         .append("span")
         .text("Shift")
-        .attr("class", "bold");
+        .attr("class", "shift");
     twoPointText
         .append("span")
         .text(

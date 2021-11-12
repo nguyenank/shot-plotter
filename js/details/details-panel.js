@@ -16,7 +16,7 @@ import {
     getDetails,
     getCurrentShotTypes,
 } from "./details-functions.js";
-import { getDefaultDetails } from "./config-details.js";
+import { getDefaultDetails } from "../../setup.js";
 import { getNumRows } from "../table/table-functions.js";
 
 function setUpDetailsPanel(id = "#details") {
@@ -69,7 +69,7 @@ function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
                     id: rowId,
                     title: data.title,
                     text:
-                        "Player will appear on shot in rink if player is 2 or less characters long.",
+                        "Player will appear on dot if 2 or less characters long.",
                 });
                 break;
             case "shot-type":
@@ -78,7 +78,7 @@ function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
                     id: rowId,
                     title: data.title,
                     text:
-                        "To add new shot types, type into the dropdown, then select the new option or press Enter.",
+                        "To add new options, type into the dropdown, then select the new option or press Enter.",
                 });
                 $(".select2").select2({
                     tags: true,

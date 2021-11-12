@@ -2,6 +2,7 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
+import { sport, cfgSportA } from "../../setup.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
@@ -9,7 +10,7 @@ function setUpShots() {
 
     // http://thenewcode.com/1068/Making-Arrows-in-SVG
     for (let className of ["blueTeam", "orangeTeam", "greyTeam"]) {
-        d3.select("#hockey-rink-svg")
+        d3.select(`#${sport}-svg`)
             .insert("marker", "g")
             .attr("id", `arrowhead-${className}`)
             .attr("markerWidth", 10)
@@ -22,7 +23,7 @@ function setUpShots() {
             .attr("class", className);
     }
 
-    d3.select("#hockey-rink")
+    d3.select("#playing-area")
         .select("#outside-perimeter")
         .on("click", e => {
             document.getSelection().removeAllRanges();
@@ -136,25 +137,32 @@ function createShotFromEvent(e, point1) {
             case "x":
                 if (col.id === "x2") {
                     let x2 = specialData["coords2"]
-                        ? (specialData["coords2"][0] - 100).toFixed(2)
+                        ? (
+                              specialData["coords2"][0] -
+                              cfgSportA.width / 2
+                          ).toFixed(2)
                         : "";
                     rowData[col.id] = x2;
                 } else {
-                    rowData[col.id] = (specialData["coords"][0] - 100).toFixed(
-                        2
-                    );
+                    rowData[col.id] = (
+                        specialData["coords"][0] -
+                        cfgSportA.width / 2
+                    ).toFixed(2);
                 }
                 break;
             case "y":
                 if (col.id === "y2") {
                     let y2 = specialData["coords2"]
-                        ? (-1 * (specialData["coords2"][1] - 42.5)).toFixed(2)
+                        ? (
+                              -1 *
+                              (specialData["coords2"][1] - cfgSportA.height / 2)
+                          ).toFixed(2)
                         : "";
                     rowData[col.id] = y2;
                 } else {
                     rowData[col.id] = (
                         -1 *
-                        (specialData["coords"][1] - 42.5)
+                        (specialData["coords"][1] - cfgSportA.height / 2)
                     ).toFixed(2);
                 }
                 break;

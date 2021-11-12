@@ -13,6 +13,7 @@ import {
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
+import { cfgSportA } from "../setup.js";
 
 function setUpCSVDownloadUpload() {
     // Custom Filename
@@ -137,11 +138,12 @@ function processCSV(uploadId, row, swapTeamColor) {
 
     // add any new shot type options
     if (existsDetail("#shot-type")) {
+        const value = row.Type ? row.Type : row.Outcome;
         const typeOptions = getCurrentShotTypes().map(x => x.value);
-        if (typeOptions.indexOf(row.Type) === -1) {
+        if (typeOptions.indexOf(value) === -1) {
             d3.select("#shot-type-select")
                 .append("option")
-                .text(row.Type);
+                .text(value);
             shotTypeLegend();
         }
     }
@@ -178,15 +180,18 @@ function processCSV(uploadId, row, swapTeamColor) {
     let specialData = {
         typeIndex: getTypeIndex(row.Type),
         teamColor: teamColor,
-        coords: [parseFloat(row.X) + 100, -1 * parseFloat(row.Y) + 42.5], // undo coordinate adjustment
+        coords: [
+            parseFloat(row.X) + cfgSportA.width / 2,
+            -1 * parseFloat(row.Y) + cfgSportA.height / 2,
+        ], // undo coordinate adjustment
         player: row.Player,
         numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
     };
 
     if (row.X2 && row.Y2) {
         specialData.coords2 = [
-            parseFloat(row.X2) + 100,
-            -1 * parseFloat(row.Y2) + 42.5,
+            parseFloat(row.X2) + cfgSportA.width / 2,
+            -1 * parseFloat(row.Y2) + cfgSportA.height / 2,
         ]; // undo coordinate adjustment
     }
 

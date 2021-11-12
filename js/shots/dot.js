@@ -2,7 +2,9 @@ import {
     getDetails,
     getCurrentShotTypes,
 } from "../details/details-functions.js";
-import { cfg } from "../config.js";
+import { cfgSportA } from "../../setup.js";
+import { cfgAppearance } from "../config-appearance.js";
+
 function createDot(
     svgId,
     id,
@@ -40,6 +42,7 @@ function createDot(
             )
             .attr("marker-mid", `url(#arrowhead-${team})`)
             .attr("class", team)
+            .style("stroke-width", cfgSportA.strokeWidth)
             .style("opacity", 0);
         coords = coords2;
     }
@@ -60,6 +63,7 @@ function createDot(
             .attr("y", coords[1])
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
+            .style("font-size", cfgSportA.fontSize)
             .text(player)
             .attr("class", "dot-text");
     }
@@ -84,20 +88,25 @@ function createShape({
             .classed("ghost-shot", ghostBool)
             .attr("cx", coords[0])
             .attr("cy", coords[1])
-            .style("fill", cfg[team])
+            .style("fill", cfgAppearance[team])
             .style("stroke-width", "0.1px")
-            .style("stroke", cfg[team + "Solid"]);
+            .style("stroke", cfgAppearance[team + "Solid"]);
         if (legendBool) {
             // do not transition for legend
-            circle.attr("r", cfg.legendR);
+            circle.attr("r", cfgAppearance.legendR);
         } else {
-            // start with radius 1 then expand to correct size
+            // start with radius 1
             circle.attr("r", 1);
+            // tranform it to have radius 0 with no transition
+            dotSizeHandler(id, 0, 1, 0);
+            // tranform to correct radius
             dotSizeHandler(
                 id,
-                pointTwoBool || ghostBool ? cfg.circleR / 2 : cfg.circleR,
+                pointTwoBool || ghostBool
+                    ? cfgSportA.circleR / 2
+                    : cfgSportA.circleR,
                 1,
-                cfg.newDotDuration
+                cfgAppearance.newDotDuration
             );
         }
     } else {
@@ -107,21 +116,26 @@ function createShape({
             // do not transition for legend
             g.append("polygon").attr(
                 "points",
-                polygon(coords[0], coords[1], cfg.legendR, sides)
+                polygon(coords[0], coords[1], cfgAppearance.legendR, sides)
             );
         } else {
-            // start with radius 1 then expand to correct size
+            // start with radius 1
             g.append("polygon")
                 .classed("ghost-shot", ghostBool)
-                .style("fill", cfg[team])
+                .style("fill", cfgAppearance[team])
                 .style("stroke-width", "0.05px")
-                .style("stroke", cfg[team + "Solid"])
+                .style("stroke", cfgAppearance[team + "Solid"])
                 .attr("points", polygon(coords[0], coords[1], 1, sides));
+            // tranform it to have radius 0 with no transition
+            dotSizeHandler(id, 0, 1, 0);
+            // tranform to correct radius
             dotSizeHandler(
                 id,
-                pointTwoBool || ghostBool ? cfg.polyR / 2 : cfg.polyR,
+                pointTwoBool || ghostBool
+                    ? cfgSportA.polyR / 2
+                    : cfgSportA.polyR,
                 1,
-                cfg.newDotDuration
+                cfgAppearance.newDotDuration
             );
         }
     }

@@ -1,10 +1,23 @@
-<svg id="hockey-rink-svg" xmlns="http://www.w3.org/2000/svg">
+<svg id="ice-hockey-svg" xmlns="http://www.w3.org/2000/svg">
     <g id="transformations"><path
         id="center-line"
         d="M 100 0
           L 100 85"
         stroke="#C8102e"
         stroke-width="1"
+    />
+    <path
+        id="background"
+        d="M 0 28
+        A 28 28 0 0 1 28 0
+        L 172 0
+        A 28 28 0 0 1 200 28
+        L 200 57
+        A 28 28 0 0 1 172 85
+        L 29 85
+        A 28 28 0 0 1 0 57
+        L 0 28"
+        fill="white"
     />
     <path
         id="center-line-decor"
@@ -410,11 +423,6 @@
         fill="transparent"
         stroke="black"
     />
-    <g id = "dots">
-      <g id="ghost"></g>
-      <g id="normal"></g>
-      <g id="selected"></g>
-    </g>
     <path
         id="outside-perimeter"
         d="M 0 28

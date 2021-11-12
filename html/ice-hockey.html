@@ -4,6 +4,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg">
+  <link rel="mask-icon" href="/resources/favicon.svg" color="red">
+
   <title>Shot-Plotter</title>
 
   <!-- Google fonts -->
@@ -43,14 +46,17 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="/index.css" />
 </head>
 
 <body>
   <div class="center header">
     <h1>Shot-Plotter</h1>
   </div>
-  <div class="center medium-text">A graphical interface for tracking locational events in ice hockey. Click on the rink to log an event!</div>
+  <div class="center medium-text">
+    A graphical interface for tracking locational events in sports.
+    Click on the playing area to log an event!
+  </div>
   <hr />
 
   <div class="main">
@@ -60,7 +66,7 @@
         <div class="center">
           <div class="two-point-toggle"></div>
         </div>
-        <div id="hockey-rink"></div>
+        <div id="playing-area"></div>
         <div class="center">
           <div id="legend"></div>
         </div>
@@ -72,12 +78,12 @@
   <div id="details-modal"></div>
   <div id="delete-all-modal"></div>
   <hr />
-  <script type="module" src="index.js"></script>
+  <script type="module" src="/setup.js"></script>
   <script type="module">
     import {
-      index
-    } from "./index.js";
-    index();
+      setup
+    } from "/setup.js";
+    setup("ice-hockey");
   </script>
   <!-- bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

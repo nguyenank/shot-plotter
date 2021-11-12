@@ -109,4 +109,5 @@ dist
 *.css.map
 .sass-cache/
 sass/
-*.scss
+
+package-lock.json

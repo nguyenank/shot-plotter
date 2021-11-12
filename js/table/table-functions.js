@@ -69,7 +69,7 @@ function clearTable() {
         .selectAll("tr")
         .remove();
 
-    let dots = d3.select("#hockey-rink-svg").select("#dots");
+    let dots = d3.select("#playing-area").select("#dots");
 
     dots.select("#normal")
         .selectAll("*")

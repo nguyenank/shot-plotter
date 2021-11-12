@@ -1,4 +1,4 @@
-const cfg = {
+const cfgAppearance = {
     // team colors
     blueTeam: "rgba(53, 171, 169, 0.7)",
     orangeTeam: "rgba(234, 142, 72, 0.7)",
@@ -11,12 +11,9 @@ const cfg = {
     selectDuration: 150,
     deleteDuration: 150,
     newDotDuration: 100,
-    // radii of various dots
-    circleR: 2,
-    polyR: 2.5,
-    legendR: 9,
     // how much larger a dot becomes when selected
     selectedMultiplier: 1.5,
+    legendR: 9,
 };
 
-export { cfg };
+export { cfgAppearance };
