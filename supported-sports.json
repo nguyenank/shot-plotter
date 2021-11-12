@@ -11,7 +11,7 @@
                 "circleR": "2",
                 "polyR": "2.5",
                 "fontSize": "0.15rem",
-                "strokeWidth": "0.1px"
+                "strokeWidth": "0.5px"
             },
             "goalCoords": [
                 [11, 42.5],
