@@ -2,7 +2,7 @@
     "sports": [
         {
             "id": "ice-hockey",
-            "name": "Ice Hockey",
+            "name": "Ice Hockey (NHL)",
             "units": "feet",
             "specifications": "National Hockey League (2020-2021)",
             "appearance": {
@@ -12,6 +12,67 @@
                 "polyR": "2.5",
                 "fontSize": "0.15rem",
                 "strokeWidth": "0.5px"
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Period",
+                    "id": "period",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
+            "id": "ice-hockey-iihf",
+            "name": "Ice Hockey (IIHF)",
+            "units": "meters",
+            "specifications": "International Ice Hockey Federation (2014-2018)",
+            "appearance": {
+                "width": "60",
+                "height": "30",
+                "circleR": "0.66",
+                "polyR": "0.83",
+                "fontSize": "0.05rem",
+                "strokeWidth": "0.17px"
             },
             "defaultDetails": [
                 {
