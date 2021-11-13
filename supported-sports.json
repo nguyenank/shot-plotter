@@ -78,6 +78,10 @@
                 "fontSize": "0.045rem",
                 "strokeWidth": "0.15px"
             },
+            "goalCoords": [
+                [4, 15],
+                [56, 15]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
