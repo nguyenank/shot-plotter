@@ -1,247 +1,300 @@
 <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg">
   <g id="transformations">
-    <path id="background" d="M 0 28
-        A 28 28 0 0 1 28 0
-        L 172 0
-        A 28 28 0 0 1 200 28
-        L 200 57
-        A 28 28 0 0 1 172 85
-        L 29 85
-        A 28 28 0 0 1 0 57
-        L 0 28" fill="white"/>
-        <path id="center-line" d="M 30 0
-              L 30 30" stroke="#C8102e" stroke-width="0.3"/>
-    <g id="goal-lines">
-      <path id="left-goal-line" d="M 11 6
-            L 11 79" stroke="#C8102e" stroke-width="0.166667"/>
-      <path id="right-goal-line" d="M 189 6
-            L 189 79" stroke="#C8102e" stroke-width="0.166667"/>
-    </g>
+    <path
+      id="background"
+      d="M 0 8.5
+            A 8.5 8.5 0 0 1 8.5 0
+            L 51.5 0
+            A 8.5 8.5 0 0 1 60 8.5
+            L 60 21.5
+            A 8.5 8.5 0 0 1 51.5 30
+            L 8.5 30
+            A 8.5 8.5 0 0 1 0 21.5
+            L 0 8.5"
+      fill="white"/>
+    <circle id="center-dot" cx="30" cy="15" r="0.15" fill="#3F93CE"/>
+    <circle id="center-circle" cx="30" cy="15" r="4.5" stroke="#3F93CE" stroke-width="0.05" fill="transparent"/>
+    <path id="center-line" d="M 30 0
+              L 30 14.75
+              M 30 15.25
+              L 30 30" stroke="#BE352A" stroke-width="0.3"/>
     <g id="goal-creases">
       <g id="left-goalie-crease">
-        <path d="
-                  M 0 56.5
-                  L 11 53.5
-                  M 0 28.5
-                  L 11 31.5" stroke="#C8102e" stroke-width="0.1667"/>
+        <path id="left-goal-crease" d="
+                  M 4 13.2
+                  A 1.8 1.8 0 0 1 4 16.8" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
         <path
-          id="left-goal-crease"
+          id="left-goal-crease-markings"
           d="
-                  M 11 38.5
-                  L 15.5 38.5
-                  A 6 6 0 0 1 15.5 46.5
-                  L 11 46.5
-                  M 15 38.5
-                  L 15 38.9166667
-                  M 15 46.5
-                  L 15 46.08333333"
-          stroke="#C8102e"
-          fill="#E6F9FF"
-          stroke-width="0.1667"/>
-        <path id="left-goal" d="
-                  M 11 39.5
-                  L 9 39.5
-                  A 5 5 0 0 0 9 45.5
-                  L 11 45.5" stroke="black" fill="transparent" stroke-width="0.1667"/>
-      </g>
-      <g id="right-goalie-crease">
-        <path d="
-                  M 200 56.5
-                  L 189 53.5
-                  M 200 28.5
-                  L 189 31.5" stroke="#C8102e" stroke-width="0.1667"/>
+                  M 5.22 16.25
+                  L 5.22 16.1
+                  M 5.22 16.25
+                  L 5.07 16.25
+
+                  M 5.22 13.75
+                  L 5.22 13.9
+                  M 5.22 13.75
+                  L 5.07 13.75"
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="#E6F9FF"/>
         <path
-          id="right-goal-crease"
+          id="left-goal"
           d="
-                  M 189 38.5
-                  L 184.5 38.5
-                  A 6 6 0 0 0 184.5 46.5
-                  L 189 46.5
-                  M 185 38.5
-                  L 185 38.9166667
-                  M 185 46.5
-                  L 185 46.08333333"
-          stroke="#C8102e"
-          fill="#E6F9FF"
-          stroke-width="0.1667"/>
-        <path id="right-goal" d="
-                  M 189 39.5
-                  L 191 39.5
-                  A 5 5 0 0 1 191 45.5
-                  L 189 45.5" stroke="black" fill="transparent" stroke-width="0.1667"/>
+                  M 4 14.085
+                  L 3.6 14.085
+                  A 0.4 0.4 0 0 0 3.4 14.485
+                  L 3.4 15.515
+                  A 0.4 0.4 0 0 0 3.6 15.915
+                  L 4 15.915
+
+                  L 3.38 16.025
+                  A 0.5 0.5 0 0 1 2.88 15.525
+                  L 2.88 14.475
+                  A 0.5 0.5 0 0 1 3.38 13.975
+                  L 4 14.085
+                  "
+          stroke="#777777"
+          fill="#fafafa"
+          stroke-width="0.05"/>
       </g>
+      <g id="right-goalie-crease" transform="rotate(180, 30, 15)">
+          <path id="right-goal-crease" d="
+                    M 4 13.2
+                    A 1.8 1.8 0 0 1 4 16.8" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
+          <path
+            id="right-goal-crease-markings"
+            d="
+                    M 5.22 16.25
+                    L 5.22 16.1
+                    M 5.22 16.25
+                    L 5.07 16.25
+
+                    M 5.22 13.75
+                    L 5.22 13.9
+                    M 5.22 13.75
+                    L 5.07 13.75"
+            stroke="#BE352A"
+            stroke-width="0.05"
+            fill="#E6F9FF"/>
+          <path
+            id="right-goal"
+            d="
+                    M 4 14.085
+                    L 3.6 14.085
+                    A 0.4 0.4 0 0 0 3.4 14.485
+                    L 3.4 15.515
+                    A 0.4 0.4 0 0 0 3.6 15.915
+                    L 4 15.915
+
+                    L 3.38 16.025
+                    A 0.5 0.5 0 0 1 2.88 15.525
+                    L 2.88 14.475
+                    A 0.5 0.5 0 0 1 3.38 13.975
+                    L 4 14.085
+                    "
+            stroke="#777777"
+            fill="#fafafa"
+            stroke-width="0.05"/>
+
+      </g>
+    </g>
+    <g id="goal-lines">
+      <path id="left-goal-line" d="M 4 1.25
+            L 4 28.75" stroke="#BE352A" stroke-width="0.05"/>
+      <path id="right-goal-line" d="M 56 1.25
+            L 56 28.75" stroke="#BE352A" stroke-width="0.05"/>
     </g>
     <g id="blue-lines">
-      <path id="left-blue-line" d="M 75 0
-          L 75 85" stroke="#0033A0" stroke-width="1"/>
-      <path id="right-blue-line" d="M 125 0
-          L 125 85" stroke="#0033A0" stroke-width="1"/>
+      <path id="left-blue-line" d="M 22.86 0
+          L 22.86 30" stroke="#3F93CE" stroke-width="0.3"/>
+      <path id="right-blue-line" d="M 37.14 0
+          L 37.14 30" stroke="#3F93CE" stroke-width="0.3"/>
     </g>
-    <g id="center-faceoff-spots">
-      <circle id="top-left-spot" cx="80" cy="20.5" r="1" fill="#0033A0"/>
-      <circle id="top-right-spot" cx="120" cy="20.5" r="1" fill="#0033A0"/>
-      <circle id="bottom-left-spot" cx="80" cy="64.5" r="1" fill="#0033A0"/>
-      <circle id="bottom-right-spot" cx="120" cy="64.5" r="1" fill="#0033A0"/>
+
+    <g id="faceoff-dots">
+      <g transform="translate(24.36, 8)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+      </g>
+
+      <g transform="translate(35.64, 8)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+      </g>
+      <g transform="translate(24.36, 22)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+      </g>
+
+      <g transform="translate(35.64, 22)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+      </g>
     </g>
-    <g id="center-circles">
-      <circle id="outer-center-circle" cx="100" cy="42.5" r="15" stroke="#0033A0" stroke-width="0.1666667" fill="transparent"/>
-      <circle id="middle-center-circle" cx="100" cy="42.5" r=".5" fill="#0033A0"/>
-    </g>
+
     <g id="faceoff-circles">
-      <g id="bottom-left-faceoff-circle">
-        <circle id="center-circle" cx="31" cy="64.5" r="1" fill="#C8102e"/>
-        <circle id="center-circle" cx="31" cy="64.5" r="15" stroke="#C8102e" fill="transparent" stroke-width=".16667"/>
+      <g transform="translate(10, 8)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+        <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <path stroke="#BE352A" stroke-width="0.05" fill="transparent" d="
+          M -0.85 4.4
+          L -0.85 5
+          M 0.85 4.4
+          L 0.85 5
+          M -0.85 -4.4
+          L -0.85 -5
+          M 0.85 -4.4
+          L 0.85 -5
+        "/>
         <path
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="transparent"
           d="
-            M 28.125 49.75
-            L 28.125 47.75
-            M 33.875 49.75
-            L 33.875 47.75
-            M 28.125 79.25
-            L 28.125 81.25
-            M 33.875 79.25
-            L 33.875 81.25
-            "
-          stroke="#C8102e"
-          fill="transparent"
-          stroke-width=".16667"/>
-        <path
-          d="M 25 65.3333333
-               L 28.9166667 65.3333333
-               L 28.9166667 68.25
-               M 28.9166667 60.75
-               L 28.9166667 63.6666667
-               L 25 63.6666667
-               M 37 65.3333333
-               L 33.08333333 65.3333333
-               L 33.08333333 68.25
-               M 33.08333333 60.75
-               L 33.08333333 63.6666667
-               L 37 63.6666667
-               "
-          stroke="#C8102e"
-          fill="transparent"
-          stroke-width=".16667"/>
+          M 0.6 1.1
+          L 0.6 0.225
+          L 1.8 0.225
+
+          M -0.6 1.1
+          L -0.6 0.225
+          L -1.8 0.225
+
+          M 0.6 -1.1
+          L 0.6 -0.225
+          L 1.8 -0.225
+
+          M -0.6 -1.1
+          L -0.6 -0.225
+          L -1.8 -0.225
+        "/>
       </g>
-      <g id="bottom-right-faceoff-circle">
-        <circle id="center-circle" cx="169" cy="64.5" r="1" fill="#C8102e"/>
-        <circle id="center-circle" cx="169" cy="64.5" r="15" stroke="#C8102e" fill="transparent" stroke-width=".16667"/>
+      <g transform="translate(50, 8)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+        <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <path stroke="#BE352A" stroke-width="0.05" fill="transparent" d="
+          M -0.85 4.4
+          L -0.85 5
+          M 0.85 4.4
+          L 0.85 5
+          M -0.85 -4.4
+          L -0.85 -5
+          M 0.85 -4.4
+          L 0.85 -5
+        "/>
         <path
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="transparent"
           d="
-            M 166.125 49.75
-            L 166.125 47.75
-            M 171.875 49.75
-            L 171.875 47.75
-            M 166.125 79.25
-            L 166.125 81.25
-            M 171.875 79.25
-            L 171.875 81.25
-            "
-          stroke="#C8102e"
-          fill="transparent"
-          stroke-width=".16667"/>
-        <path
-          d="M 163 65.3333333
-               L 166.9166667 65.3333333
-               L 166.9166667 68.25
-               M 166.9166667 60.75
-               L 166.9166667 63.6666667
-               L 163 63.6666667
-               M 175 65.3333333
-               L 171.08333333 65.3333333
-               L 171.08333333 68.25
-               M 171.08333333 60.75
-               L 171.08333333 63.6666667
-               L 175 63.6666667
-               "
-          stroke="#C8102e"
-          fill="transparent"
-          stroke-width=".16667"/>
+          M 0.6 1.1
+          L 0.6 0.225
+          L 1.8 0.225
+
+          M -0.6 1.1
+          L -0.6 0.225
+          L -1.8 0.225
+
+          M 0.6 -1.1
+          L 0.6 -0.225
+          L 1.8 -0.225
+
+          M -0.6 -1.1
+          L -0.6 -0.225
+          L -1.8 -0.225
+        "/>
       </g>
-      <g id="top-right-faceoff-circle">
-        <circle id="center-circle" cx="169" cy="20.5" r="1" fill="#C8102e"/>
-        <circle id="center-circle" cx="169" cy="20.5" r="15" stroke="#C8102e" fill="transparent" stroke-width=".16667"/>
+      <g transform="translate(10, 22)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+        <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <path stroke="#BE352A" stroke-width="0.05" fill="transparent" d="
+          M -0.85 4.4
+          L -0.85 5
+          M 0.85 4.4
+          L 0.85 5
+          M -0.85 -4.4
+          L -0.85 -5
+          M 0.85 -4.4
+          L 0.85 -5
+        "/>
         <path
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="transparent"
           d="
-            M 166.125 5.75
-            L 166.125 3.75
-            M 171.875 5.75
-            L 171.875 3.75
-            M 166.125 35.25
-            L 166.125 37.25
-            M 171.875 35.25
-            L 171.875 37.25
-            "
-          stroke="#C8102e"
-          fill="transparent"
-          stroke-width=".16667"/>
-        <path
-          d="M 163 21.3333333
-               L 166.9166667 21.3333333
-               L 166.9166667 24.25
-               M 166.9166667 16.75
-               L 166.9166667 19.6666667
-               L 163 19.6666667
-               M 175 21.3333333
-               L 171.08333333 21.3333333
-               L 171.08333333 24.25
-               M 171.08333333 16.75
-               L 171.08333333 19.6666667
-               L 175 19.6666667
-               "
-          stroke="#C8102e"
-          fill="transparent"
-          stroke-width=".16667"/>
+          M 0.6 1.1
+          L 0.6 0.225
+          L 1.8 0.225
+
+          M -0.6 1.1
+          L -0.6 0.225
+          L -1.8 0.225
+
+          M 0.6 -1.1
+          L 0.6 -0.225
+          L 1.8 -0.225
+
+          M -0.6 -1.1
+          L -0.6 -0.225
+          L -1.8 -0.225
+        "/>
       </g>
-      <g id="top-left-faceoff-circle">
-        <circle id="center-circle" cx="31" cy="20.5" r="1" fill="#C8102e"/>
-        <circle id="center-circle" cx="31" cy="20.5" r="15" stroke="#C8102e" fill="transparent" stroke-width=".16667"/>
+      <g transform="translate(50, 22)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+        <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <path stroke="#BE352A" stroke-width="0.05" fill="transparent" d="
+          M -0.85 4.4
+          L -0.85 5
+          M 0.85 4.4
+          L 0.85 5
+          M -0.85 -4.4
+          L -0.85 -5
+          M 0.85 -4.4
+          L 0.85 -5
+        "/>
         <path
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="transparent"
           d="
-            M 28.125 5.75
-            L 28.125 3.75
-            M 33.875 5.75
-            L 33.875 3.75
-            M 28.125 35.25
-            L 28.125 37.25
-            M 33.875 35.25
-            L 33.875 37.25
-            "
-          stroke="#C8102e"
-          fill="transparent"
-          stroke-width=".16667"/>
-        <path
-          d="M 25 21.3333333
-               L 28.9166667 21.3333333
-               L 28.9166667 24.25
-               M 28.9166667 16.75
-               L 28.9166667 19.6666667
-               L 25 19.6666667
-               M 37 21.3333333
-               L 33.08333333 21.3333333
-               L 33.08333333 24.25
-               M 33.08333333 16.75
-               L 33.08333333 19.6666667
-               L 37 19.6666667
-               "
-          stroke="#C8102e"
-          fill="transparent"
-          stroke-width=".16667"/>
+          M 0.6 1.1
+          L 0.6 0.225
+          L 1.8 0.225
+
+          M -0.6 1.1
+          L -0.6 0.225
+          L -1.8 0.225
+
+          M 0.6 -1.1
+          L 0.6 -0.225
+          L 1.8 -0.225
+
+          M -0.6 -1.1
+          L -0.6 -0.225
+          L -1.8 -0.225
+        "/>
       </g>
     </g>
-    <path id="scorekeeper" d="M 90 85 A 10 10 0 0 1 110 85" stroke-width="0.16667" fill="transparent" stroke="black"/>
+
+    <path id="officials-crease" d="M 27 30
+        A 3 3 0 0 1 33 30" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+
     <path
       id="outside-perimeter"
-      d="M 0 28
-        A 28 28 0 0 1 28 0
-        L 172 0
-        A 28 28 0 0 1 200 28
-        L 200 57
-        A 28 28 0 0 1 172 85
-        L 29 85
-        A 28 28 0 0 1 0 57
-        L 0 28"
+      d="M 0 8.5
+        A 8.5 8.5 0 0 1 8.5 0
+        L 51.5 0
+        A 8.5 8.5 0 0 1 60 8.5
+        L 60 21.5
+        A 8.5 8.5 0 0 1 51.5 30
+        L 8.5 30
+        A 8.5 8.5 0 0 1 0 21.5
+        L 0 8.5"
       stroke="black"
       fill="transparent"
-      stroke-width="1"/></g>
+      stroke-width="0.1"/></g>
 </svg>
