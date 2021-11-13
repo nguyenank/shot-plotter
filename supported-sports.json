@@ -69,10 +69,10 @@
             "appearance": {
                 "width": "60",
                 "height": "30",
-                "circleR": "0.66",
-                "polyR": "0.83",
-                "fontSize": "0.05rem",
-                "strokeWidth": "0.17px"
+                "circleR": "0.6",
+                "polyR": "0.8",
+                "fontSize": "0.045rem",
+                "strokeWidth": "0.15px"
             },
             "defaultDetails": [
                 {
