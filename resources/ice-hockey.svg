@@ -1,11 +1,5 @@
 <svg id="ice-hockey-svg" xmlns="http://www.w3.org/2000/svg">
-    <g id="transformations"><path
-        id="center-line"
-        d="M 100 0
-          L 100 85"
-        stroke="#C8102e"
-        stroke-width="1"
-    />
+    <g id="transformations">
     <path
         id="background"
         d="M 0 28
@@ -18,6 +12,13 @@
         A 28 28 0 0 1 0 57
         L 0 28"
         fill="white"
+    />
+    <path
+        id="center-line"
+        d="M 100 0
+          L 100 85"
+        stroke="#C8102e"
+        stroke-width="1"
     />
     <path
         id="center-line-decor"
