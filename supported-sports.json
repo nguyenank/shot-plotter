@@ -13,10 +13,6 @@
                 "fontSize": "0.15rem",
                 "strokeWidth": "0.5px"
             },
-            "goalCoords": [
-                [11, 42.5],
-                [189, 42.5]
-            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -78,10 +74,6 @@
                 "fontSize": "0.045rem",
                 "strokeWidth": "0.15px"
             },
-            "goalCoords": [
-                [4, 15],
-                [56, 15]
-            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -143,10 +135,6 @@
                 "fontSize": "0.03rem",
                 "strokeWidth": "0.075px"
             },
-            "goalCoords": [
-                [3.5, 10],
-                [36.5, 10]
-            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -208,10 +196,6 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
-            "goalCoords": [
-                [5.25, 25],
-                [88.75, 25]
-            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -273,10 +257,6 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
-            "goalCoords": [
-                [5.25, 25],
-                [88.75, 25]
-            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -338,10 +318,6 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
-            "goalCoords": [
-                [5.25, 25],
-                [88.75, 25]
-            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -384,6 +360,67 @@
                         { "value": "Miss", "selected": true },
                         { "value": "Make" },
                         { "value": "Blocked" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
+            "id": "football-nfl",
+            "name": "Football (NFL)",
+            "units": "yards",
+            "specifications": "National Football League (2021)",
+            "appearance": {
+                "width": "120",
+                "height": "53.33",
+                "circleR": "1.2",
+                "polyR": "1.5",
+                "fontSize": "0.09rem",
+                "strokeWidth": "0.3px"
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Period",
+                    "id": "period",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
