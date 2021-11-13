@@ -43,7 +43,12 @@ function changePage(currentPageId, newPageId) {
 
 function createId(title) {
     // lowercase and replace all whitespace
-    let id = title.toLowerCase().replace(/\s/g, "-");
+    // if starts with a number, insert a dummy letter "a" at start
+    let id = title
+        .toLowerCase()
+        .replace(/\s/g, "-") // lowercase and replace all whitespace
+        .replace(/^\d/, d => "a" + d);
+
     while (
         _.findIndex(getDetails(), { id: id }) !== -1 ||
         id === "x2" ||
