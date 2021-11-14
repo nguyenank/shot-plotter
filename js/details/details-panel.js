@@ -116,12 +116,13 @@ function customizeButton(id) {
             if (getNumRows() === 0) {
                 // update details storage with shot options b/c this
                 // was the most convenient place
-                let options = getCurrentShotTypes();
+                const options = getCurrentShotTypes();
                 let details = getDetails();
-                details[_.findIndex(details, { id: "shot-type" })][
-                    "options"
-                ] = options;
-                setDetails(details);
+                const typeIndex = _.findIndex(details, { id: "shot-type" });
+                if (typeIndex !== -1) {
+                    details[typeIndex]["options"] = options;
+                    setDetails(details);
+                }
 
                 // make sure main page is showing
                 let m = d3.select("#details-modal").select(".modal-content");
