@@ -425,6 +425,25 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
     let specialDetails = d3.select(id);
     specialDetails.append("h6").text("Special Details");
 
+    let scoringArea;
+    switch (sport) {
+        case "basketball-nba":
+        case "basketball-ncaa":
+        case "basketball-wnba":
+            scoringArea = "hoop";
+            break;
+        case "floorball":
+        case "ice-hockey-iihf":
+        case "ice-hockey":
+            scoringArea = "net";
+            break;
+        case "football-ncaa":
+        case "football-nfl":
+            scoringArea = "end zone (center)";
+            break;
+        default:
+            scoringArea = "scoring area";
+    }
     const sdList = [
         {
             id: "two-point-enable",
@@ -433,6 +452,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                 { type: "y", title: "Y2", id: "y2", noWidget: true },
             ],
             label: "2-Location Events",
+            description: "create events with 2 locations",
         },
         {
             id: "distance-calc",
@@ -445,6 +465,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                 },
             ],
             label: "Distance",
+            description: `distance to closest ${scoringArea} for 1-location events; distance between locations for 2-location events`,
         },
     ];
 
@@ -463,7 +484,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
         });
     }
 
-    function createDetailToggle({ id, newDetails, label }) {
+    function createDetailToggle({ id, newDetails, label, description }) {
         let detail = specialDetails
             .append("div")
             .attr("class", "form-check form-switch");
@@ -490,7 +511,10 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             .append("label")
             .attr("class", "form-check-label")
             .attr("for", id)
-            .text(label);
+            .text(label)
+            .append("span")
+            .attr("class", "smaller-text")
+            .text(" - " + description);
     }
 
     _.map(sdList, createDetailToggle);

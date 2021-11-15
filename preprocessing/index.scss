@@ -25,6 +25,10 @@ $orange-solid: rgba(234, 142, 72, 1);
     text-align: left;
   }
 };
+
+.smaller-text {
+  font-size: 0.75rem;
+}
 /* index page */
 #index {
   display: flex;

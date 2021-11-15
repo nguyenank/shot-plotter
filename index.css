@@ -14,6 +14,10 @@ table tbody, table thead, .example, .reorder-ghost, .grey-btn, .shot-info, .whit
   text-align: left;
 }
 
+.smaller-text {
+  font-size: 0.75rem;
+}
+
 /* index page */
 #index {
   display: flex;
