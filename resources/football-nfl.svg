@@ -1,29 +1,7 @@
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id="football-nfl-svg">
   <g id="transformations">
-    <defs>
-      <style type='text/css'>
-        <![CDATA[
-        .svglite circle,
-        .svglite line,
-        .svglite path,
-        .svglite polygon,
-        .svglite polyline,
-        .svglite rect {
-          fill: none;
-          stroke: #000000;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          stroke-miterlimit: 10.00;
-        }
-
-        ]]>
-      </style>
-    </defs>
     <g transform="scale(0.1963, 0.1963) translate(-55.72, -143.92)">
-      <polygon points='35.34,425.79 361.37,425.79 361.37,123.62 35.34,123.62 35.34,425.79 677,425.79 361.37,425.79 361.37,123.62 677,123.62 677,425.79 ' style='stroke-width: 1.07; stroke: none; fill: #196F0C;'/>
-      <polygon points='45.53,425.79 361.37,425.79 361.37,415.61 45.53,415.61 45.53,425.79 677.21,425.79 361.37,425.79 361.37,415.61 677.21,415.61 677.21,425.79 ' style='stroke-width: 1.07; stroke: none; fill: #fff;'/>
-      <polygon points='45.53,143.92 361.37,143.92 361.37,133.73 45.53,133.73 45.53,143.92 677.21,143.92 361.37,143.92 361.37,133.73 677.21,133.73 677.21,143.92 ' style='stroke-width: 1.07; stroke: none; fill: #fff;'/>
-      <polygon points='45.53,423.25 55.72,423.25 55.72,136.28 45.53,136.28 45.53,423.25 677.21,423.25 667.02,423.25 667.02,136.28 677.21,136.28 677.21,423.25 ' style='stroke-width: 1.07; stroke: none; fill: #fff;'/>
+      <polygon points='55.72,423.25 361.37,423.25 361.37,143.92 55.72,143.92 55.72,423.25 667.02,423.25 361.37,423.25 361.37,143.92 667.02,143.92 667.02,423.25 ' style='stroke-width: 1.07; stroke: none; fill: #427531;'/>
       <polygon points='105.53,415.61 106.66,415.61 106.66,143.92 105.53,143.92 105.53,415.61 617.21,415.61 616.08,415.61 616.08,143.92 617.21,143.92 617.21,415.61 ' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;'/>
       <polygon points='111.47,414.47 112.04,414.47 112.04,411.08 111.47,411.08 111.47,414.47 611.27,414.47 610.70,414.47 610.70,411.08 611.27,411.08 611.27,414.47 ' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;'/>
       <polygon points='121.66,298.86 122.23,298.86 122.23,295.47 121.66,295.47 121.66,298.86 601.08,298.86 600.51,298.86 600.51,295.47 601.08,295.47 601.08,298.86 ' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;'/>
