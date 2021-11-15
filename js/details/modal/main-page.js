@@ -16,7 +16,7 @@ import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
 import { cfgDetails } from "../config-details.js";
-import { sport } from "../../../setup.js";
+import { sport, cfgDefaultEnable } from "../../../setup.js";
 
 function createMainPage(id) {
     d3.select(id)
@@ -97,6 +97,11 @@ function createMainPage(id) {
         .attr("class", "grey-btn save-changes-btn")
         .text("Save Changes")
         .on("click", e => saveChanges(e));
+
+    if (_.indexOf(cfgDefaultEnable, "two-location") !== -1) {
+        d3.select("#two-point-enable").property("checked", true);
+        twoPointFunctionality();
+    }
 }
 
 function createReorderColumns(id = "#reorder") {

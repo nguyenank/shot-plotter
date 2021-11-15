@@ -13,6 +13,10 @@
                 "fontSize": "0.15rem",
                 "strokeWidth": "0.5px"
             },
+            "goalCoords": [
+                [11, 42.5],
+                [189, 42.5]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -74,6 +78,10 @@
                 "fontSize": "0.045rem",
                 "strokeWidth": "0.15px"
             },
+            "goalCoords": [
+                [4, 15],
+                [56, 15]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -135,6 +143,10 @@
                 "fontSize": "0.03rem",
                 "strokeWidth": "0.075px"
             },
+            "goalCoords": [
+                [3.5, 10],
+                [36.5, 10]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -196,6 +208,10 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
+            "goalCoords": [
+                [5.25, 25],
+                [88.75, 25]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -257,6 +273,10 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
+            "goalCoords": [
+                [5.25, 25],
+                [88.75, 25]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -318,6 +338,10 @@
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px"
             },
+            "goalCoords": [
+                [5.25, 25],
+                [88.75, 25]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -379,6 +403,11 @@
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px"
             },
+            "goalCoords": [
+                [10, 26.665],
+                [110, 26.665]
+            ],
+            "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -388,12 +417,13 @@
                 },
                 {
                     "type": "radio",
-                    "title": "Period",
-                    "id": "period",
+                    "title": "Quarter",
+                    "id": "quarter",
                     "options": [
                         { "value": "1", "checked": true },
                         { "value": "2" },
                         { "value": "3" },
+                        { "value": "4" },
                         { "value": "OT" }
                     ]
                 },
@@ -408,19 +438,21 @@
                 },
                 {
                     "type": "player",
-                    "title": "Player",
+                    "title": "Receiver",
                     "id": "player-input",
                     "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
-                    "title": "Type",
+                    "title": "Outcome",
                     "id": "shot-type",
                     "options": [
-                        { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Complete", "selected": true },
+                        { "value": "Incomplete" },
+                        { "value": "Drop" },
+                        { "value": "Interception" },
+                        { "value": "Pass Breakup" },
+                        { "value": "Throw Away" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -440,6 +472,11 @@
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px"
             },
+            "goalCoords": [
+                [10, 26.665],
+                [110, 26.665]
+            ],
+            "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -449,12 +486,13 @@
                 },
                 {
                     "type": "radio",
-                    "title": "Period",
-                    "id": "period",
+                    "title": "Quarter",
+                    "id": "quarter",
                     "options": [
                         { "value": "1", "checked": true },
                         { "value": "2" },
                         { "value": "3" },
+                        { "value": "4" },
                         { "value": "OT" }
                     ]
                 },
@@ -469,19 +507,21 @@
                 },
                 {
                     "type": "player",
-                    "title": "Player",
+                    "title": "Receiver",
                     "id": "player-input",
                     "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
-                    "title": "Type",
+                    "title": "Outcome",
                     "id": "shot-type",
                     "options": [
-                        { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Complete", "selected": true },
+                        { "value": "Incomplete" },
+                        { "value": "Drop" },
+                        { "value": "Interception" },
+                        { "value": "Pass Breakup" },
+                        { "value": "Throw Away" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
