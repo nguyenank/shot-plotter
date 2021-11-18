@@ -475,13 +475,13 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             newDetails: [
                 {
                     type: "value-calc",
-                    title: "Point Value",
+                    title: "Shot Value",
                     id: "value-calc",
                     noWidget: true,
                 },
             ],
-            description: `whether an event would be worth 2 or 3 points`,
-            label: "Point Value",
+            description: `whether a shot would be worth 2 or 3 points`,
+            label: "Shot Value",
         });
     }
 
