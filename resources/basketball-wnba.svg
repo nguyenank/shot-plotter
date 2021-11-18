@@ -136,5 +136,15 @@
       <line x1="94" y1="50" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.167"></line>
       <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.167"></line>
     </g>
-</g>
+    <path id="left-arc" fill="transparent" d="
+      M 0 3
+      L 7.78 3
+      A 22.15 22.15 0 0 1 7.78 47
+      L 0 47"></path>
+    <path id="right-arc" transform="translate(94 50) rotate(180)" fill="transparent" d="
+        M 0 3
+        L 7.78 3
+        A 22.15 22.15 0 0 1 7.78 47
+        L 0 47"></path>
+  </g>
 </svg>

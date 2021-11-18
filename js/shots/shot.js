@@ -185,10 +185,10 @@ function createShotFromEvent(e, point1) {
                 break;
             case "value-calc":
                 rowData[col.id] =
-                    _.startsWith(e.target.id, "left") ||
-                    _.startsWith(e.target.id, "right")
+                    e.target.id === "left-arc" || e.target.id === "right-arc"
                         ? 2
                         : 3;
+
             default:
                 continue;
         }

@@ -30,7 +30,7 @@ function setUpPlayingArea(data) {
             "transform",
             "translate(10,10) scale(" + resize + "," + resize + ")"
         )
-        .append("svg:g")
+        .insert("svg:g", "#outside-perimeter")
         .attr("id", "dots");
 
     for (const id of ["ghost", "normal", "selected"]) {

@@ -480,6 +480,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                     noWidget: true,
                 },
             ],
+            description: `whether an event would be worth 2 or 3 points`,
             label: "Point Value",
         });
     }
