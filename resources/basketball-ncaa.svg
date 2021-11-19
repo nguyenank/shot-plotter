@@ -105,20 +105,20 @@
       </g>
     </g>
     <g id="outside-perimeter">
-      <line x1="0" y1="0" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
+      <line x1="-0.4" y1="0" x2="94.4" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
       <line x1="94" y1="50" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
-      <line x1="94" y1="50" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
+      <line x1="94.4" y1="50" x2="-0.4" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
       <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
     </g>
     <path id="left-arc" fill="transparent" d="
-        M 0 3.34
-        L 9.86 3.34
-        A 22.15 22.15 0 0 1 9.86 46.66
-        L 0 46.66"></path>
+        M 0 3.173
+        L 9.86 3.173
+        A 22.15 22.15 0 0 1 9.86 46.827
+        L 0 46.827"></path>
     <path id="right-arc" transform="translate(94 50) rotate(180)" fill="transparent" d="
-          M 0 3.34
-          L 9.86 3.34
-          A 22.15 22.15 0 0 1 9.86 46.66
-          L 0 46.66"></path>
+        M 0 3.173
+        L 9.86 3.173
+        A 22.15 22.15 0 0 1 9.86 46.827
+        L 0 46.827"></path>
   </g>
 </svg>
