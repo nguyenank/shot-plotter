@@ -2,9 +2,12 @@
 
 ![A screenshot of the web application.](./resources/ice-hockey-screenshot.png)
 
+**12/03: American football fields (NCAA, NFL) are now available! There are now options for special, calculated detail columns: Distance and Shot Value (basketball)!**
+
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
-Currently six types of sports/playing areas are supported: ice hockey (NHL, IIHF), floorball (IFF), and basketball (NBA, NCAA, WNBA).
+Currently eight types of sports/playing areas are supported: ice hockey (NHL, IIHF), floorball (IFF), basketball (NBA, NCAA, WNBA), and American football (NFL, NCAA).
+
 ![A screenshot of the main page of the web application allowing you to pick between sports.](./resources/sport-select-screenshot.png)
 
 The web application is primarily built using D3.js.
@@ -35,7 +38,11 @@ The number of widgets can be changed from its default value of 2 to 1 or 3 by ch
 
 The default number of events per table page can be modified by changing the number in the field labelled _Rows Per Table Page_. The default number is 10; the number must be an integer between 1 and 999 (inclusive).
 
-Using the _Enable 2-Location Events_ toggle, the ability to have 2-location events can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted.
+Special details can be added, which are details that do not take inputs but are specially calculated. Currently there a 3 types of special details:
+
+-   **2-Location Events:** Using the _Enable 2-Location Events_ toggle, the ability to have 2-location events can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted.
+-   **Distance:** For 1-location events, this detail will be the distance between the event and the closest net/hoop/end zone line center/etc. For 2-location events, this detail will be the be the distance between the two indicated locations.
+-   **Shot Value (basketball only):** This detail is the number of points (2 or 3) a shot from the indicated location would be worth. For 2-location events, it will be the number of points for the second location.
 
 Default details can be restored by clicking on the _Reset to Defaults_ button.
 
@@ -60,6 +67,8 @@ When 2-location events are enabled, 2-location events can be plotted by either h
 The playing area matches the specifications from the governing body as specified on the main page. For all playing areas, the center of the playing area has coordinates (0,0), the positive x-axis is to the right, and the positive y-axis is upward.
 
 Credit to [Bill Tran's guide on creating the NHL rink using TidyVerse](https://thewincolumn.ca/2021/01/15/r-tutorial-creating-an-nhl-rink-using-the-tidyverse/) for aid in interpreting the rule descriptions for the ice hockey rink and for the hex codes for the colors.
+
+Massive credit to the [sportyR package](https://github.com/rossdrucker/sportyR) created by [Ross Drucker](https://twitter.com/rossdrucker9), using which the American Football fields (NFL and NCAA) were constructed.
 
 The playing area size is not pinned to the window size. This allows you to zoom in and place the event exactly where you want it, but does mean the layout can become strange if you change your window size. Refreshing will readjust the size to match the current window size.
 
