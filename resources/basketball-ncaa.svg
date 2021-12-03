@@ -4,7 +4,7 @@
     <g id="center">
       <circle id="outer-center-circle" cx="47" cy="25" r="6" stroke="#4350db" stroke-width="0.167" fill="#e2b983"></circle>
       <line id="center-line" x1="47" y1="0" x2="47" y2="50" stroke="#2a1e99" stroke-width="0.167"></line>
-            <circle id="inner-center-circle" cx="47" cy="25" r="2" stroke="#4350db" stroke-width="0.167" fill="transparent"></circle>
+      <circle id="inner-center-circle" cx="47" cy="25" r="2" stroke="#4350db" stroke-width="0.167" fill="transparent"></circle>
     </g>
     <g id="left-side">
       <path id="left-outer-arc" fill="#e2b983" stroke="#2a1e99" stroke-width="0.167" d="
@@ -56,22 +56,22 @@
       </g>
     </g>
     <g id="right-side" transform="translate(94 50) rotate(180)">
-        <path id="right-outer-arc" fill="#e2b983" stroke="#2a1e99" stroke-width="0.167" d="
+      <path id="right-outer-arc" fill="#e2b983" stroke="#2a1e99" stroke-width="0.167" d="
           M 0 3.34
           L 9.86 3.34
           A 22.15 22.15 0 0 1 9.86 46.66
           L 0 46.66"></path>
-        <path id="outer-hashes" stroke="#2a1e99" stroke-width="0.167" d="
+      <path id="outer-hashes" stroke="#2a1e99" stroke-width="0.167" d="
           M 28 0
           L 28 3"></path>
-        <g id="inner-right-side">
-          <rect id="right-top-solid-hash" fill="#4350db" x="7" y="18.25" width="1" height="0.75"></rect>
-          <rect id="right-bottom-solid-hash" fill="#4350db" x="7" y="31" width="1" height="0.75"></rect>
-          <path
-            id="right-outer-hashes"
-            stroke="#4350db"
-            stroke-width="0.167"
-            d="
+      <g id="inner-right-side">
+        <rect id="right-top-solid-hash" fill="#4350db" x="7" y="18.25" width="1" height="0.75"></rect>
+        <rect id="right-bottom-solid-hash" fill="#4350db" x="7" y="31" width="1" height="0.75"></rect>
+        <path
+          id="right-outer-hashes"
+          stroke="#4350db"
+          stroke-width="0.167"
+          d="
             M 0 16
             L 1 16
             M 11.083 19
@@ -88,22 +88,37 @@
             L 14.25 31
             M 17.42 31.5
             L 17.42 31"></path>
-          <path id="right-solid-arc" stroke="#4350db" stroke-width="0.167" fill="#eacda6" d="
+        <path id="right-solid-arc" stroke="#4350db" stroke-width="0.167" fill="#eacda6" d="
             M 19 19
             A 6 6 0 0 1 19 31"></path>
-          <rect id="right-inner-box" x="0" y="19" width="19" height="12" stroke="#4350db" stroke-width="0.167" fill="#eacda6"></rect>
-          <path id="right-restricted-area" stroke="#4350db" stroke-width="0.167" fill="transparent" d="
+        <rect id="right-inner-box" x="0" y="19" width="19" height="12" stroke="#4350db" stroke-width="0.167" fill="#eacda6"></rect>
+        <path id="right-restricted-area" stroke="#4350db" stroke-width="0.167" fill="transparent" d="
                       M 4 21
                       L 5.25 21
                       A 4 4 0 0 1 5.25 29
                       L 4 29"></path>
-          <g id="right-hoop">
-            <line x1="4" y1="22" x2="4" y2="28" stroke="#494949" stroke-width="0.167"></line>
-            <line x1="4" y1="25" x2="4.5" y2="25" stroke="#494949" stroke-width="0.167"></line>
-            <circle cx="5.25" cy="25" r="0.75" stroke="#494949" stroke-width="0.167" fill="transparent"></circle>
-          </g>
+        <g id="right-hoop">
+          <line x1="4" y1="22" x2="4" y2="28" stroke="#494949" stroke-width="0.167"></line>
+          <line x1="4" y1="25" x2="4.5" y2="25" stroke="#494949" stroke-width="0.167"></line>
+          <circle cx="5.25" cy="25" r="0.75" stroke="#494949" stroke-width="0.167" fill="transparent"></circle>
         </g>
       </g>
-    <rect id="outside-perimeter" x="0" y="0" width="94" height="50" stroke="black" fill="transparent" stroke-width="0.75"></rect>
+    </g>
+    <g id="outside-perimeter">
+      <line x1="-0.4" y1="0" x2="94.4" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
+      <line x1="94" y1="50" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
+      <line x1="94.4" y1="50" x2="-0.4" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
+      <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
+    </g>
+    <path id="left-arc" fill="transparent" d="
+        M 0 3.173
+        L 9.86 3.173
+        A 22.15 22.15 0 0 1 9.86 46.827
+        L 0 46.827"></path>
+    <path id="right-arc" transform="translate(94 50) rotate(180)" fill="transparent" d="
+        M 0 3.173
+        L 9.86 3.173
+        A 22.15 22.15 0 0 1 9.86 46.827
+        L 0 46.827"></path>
   </g>
 </svg>

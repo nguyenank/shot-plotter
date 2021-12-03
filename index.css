@@ -4,6 +4,20 @@ table tbody, table thead, .example, .reorder-ghost, .grey-btn, .shot-info, .whit
   border-radius: 0.2rem;
 }
 
+#special-details-options, #appearance-options {
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+#special-details-options h6, #appearance-options h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.smaller-text {
+  font-size: 0.75rem;
+}
+
 /* index page */
 #index {
   display: flex;
@@ -98,30 +112,6 @@ ul {
   align-items: center;
 }
 
-.split {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin: 2rem 0 0;
-  font-size: 0.85rem;
-  font-weight: 400;
-}
-.split .form-switch {
-  margin-bottom: 0;
-}
-.split .page-size-form {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-.split .page-size-form #page-size-field {
-  width: 3rem;
-  padding: 0.1rem;
-  font-size: 0.85rem;
-  margin-right: 0.5rem;
-  border: 1px solid #aaaaaa;
-}
-
 /* shot info */
 .shot-info {
   width: 30%;
@@ -170,7 +160,7 @@ input[type=text] {
 .uninteractable {
   background-color: #eaecef;
 }
-.uninteractable:hover, .uninteractable:active, .uninteractable:focus {
+.uninteractable:active, .uninteractable:focus, .uninteractable:hover {
   background-color: #eaecef;
 }
 
@@ -204,6 +194,11 @@ input[type=text] {
   font-size: 1rem;
 }
 
+#main-page-mb h5 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
 #main-page-mb p {
   margin-bottom: 0.3rem;
   font-size: 0.85rem;
@@ -258,6 +253,27 @@ input[type=text] {
   justify-content: space-around;
 }
 
+#appearance-options .page-size-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+#appearance-options .page-size-form #page-size-field {
+  width: 3rem;
+  padding: 0.1rem;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  border: 1px solid #aaaaaa;
+}
+
+#special-details-options .form-switch {
+  margin-bottom: 0;
+}
+
+#reset-defaults-btn {
+  font-size: 0.85rem;
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -272,7 +288,7 @@ input[type=text] {
 }
 
 .card-footer {
-  padding: 0rem;
+  padding: 0;
   border-color: #aaaaaa;
 }
 
@@ -321,7 +337,7 @@ input[type=text] {
   font-weight: 400;
 }
 .two-point-toggle .form-switch {
-  padding-left: 0rem;
+  padding-left: 0;
 }
 .two-point-toggle .form-switch .form-check-input {
   margin: 0.3rem 1rem 0;

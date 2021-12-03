@@ -9,7 +9,9 @@ import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 
 export let sport;
 export let cfgSportA;
+export let cfgSportGoalCoords;
 export let getDefaultDetails;
+export let cfgDefaultEnable;
 
 function setup(s) {
     sport = s;
@@ -17,9 +19,11 @@ function setup(s) {
         .then(data => {
             const sportData = _.find(data.sports, { id: sport });
             cfgSportA = sportData.appearance;
+            cfgSportGoalCoords = sportData.goalCoords;
             getDefaultDetails = function() {
                 return _.cloneDeep(sportData.defaultDetails);
             };
+            cfgDefaultEnable = sportData.defaultEnable;
             return d3.xml(`/resources/${sport}.svg`);
         })
         .then(data => {

@@ -130,6 +130,21 @@
       </g>
 
     </g>
-  <rect id="outside-perimeter" x="0" y="0" width="94" height="50" stroke="black" fill="transparent" stroke-width="0.167"></rect>
-</g>
+    <g id="outside-perimeter">
+      <line x1="0" y1="0" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.167"></line>
+      <line x1="94" y1="50" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.167"></line>
+      <line x1="94" y1="50" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.167"></line>
+      <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.167"></line>
+    </g>
+    <path id="left-arc" fill="transparent" d="
+      M 0 2.833
+      L 7.78 2.833
+      A 22.15 22.15 0 0 1 7.78 47.167
+      L 0 47.167"></path>
+    <path id="right-arc" transform="translate(94 50) rotate(180)" fill="transparent" d="
+      M 0 2.833
+      L 7.78 2.833
+      A 22.15 22.15 0 0 1 7.78 47.167
+      L 0 47.167" />
+  </g>
 </svg>
