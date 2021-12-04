@@ -1,9 +1,7 @@
 import { sport, cfgSportA } from "../setup.js";
 
 function setUpPlayingArea(data) {
-    d3.select("#playing-area")
-        .node()
-        .append(data.documentElement);
+    d3.select("#playing-area").node().append(data.documentElement);
 
     // dimensions of padding, window and playing area
     const padding = 20;

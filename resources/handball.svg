@@ -1,0 +1,187 @@
+<svg id="handball-svg" xmlns="http://www.w3.org/2000/svg">
+  <g id="transformations">
+    <!-- <path id="background" d=" M 0 0 L 40 0 L 40 20 L 0 20 Z" stroke="transparent" fill="#9dcaf9" ></path> -->
+    <path id="background" d="
+    M 0 0
+    L 40 0
+    L 40 20
+    L 0 20
+    Z" stroke="transparent" fill="#2162b7"></path>
+    <path id="center-line" d="
+    M 20 0
+    L 20 20
+    " stroke="white" fill="transparent" stroke-width="0.05"></path>
+    <g id="left-side">
+      <path id="left-free-throw-line" d="
+      M 2.958 0
+      A 9 9 0 0 1 9 8.5
+      L 9 11.5
+      A 9 9 0 0 1 2.958 20
+      " stroke="white" fill="transparent" stroke-width="0.05" stroke-dasharray="0.15"></path>
+      <path id="left-goal-area-line" d="
+      M 0 2.5
+      A 6 6 0 0 1 6 8.5
+      L 6 11.5
+      A 6 6 0 0 1 0 17.5
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="left-seven-meter-line" d="
+      M 7 9.5
+      L 7 10.5
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="left-goalkeeper-restraining-line" d="
+      M 4 9.925
+      L 4 10.075
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="left-substitution-line" d="
+      M 15.5 20.075
+      L 15.5 19.925
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="left-goal" d="
+      M 0 8.5
+      L -0.075 8.5
+      A 0.075 0.075 0 0 0 -0.15 8.575
+      L -0.15 11.425
+      A 0.075 0.075 1 0 0 -0.075 11.5
+      L 0 11.5
+      " stroke="#888" fill="transparent" stroke-width="0.05"></path>
+      <path
+        id="left-goal-hatches"
+        d="
+        M 0 8.65
+        L -0.15 8.65
+      M 0 8.8
+      L -0.15 8.8
+      M 0 8.95
+      L -0.15 8.95
+      M 0 9.1
+      L -0.15 9.1
+      M 0 9.25
+      L -0.15 9.25
+      M 0 9.4
+      L -0.15 9.4
+      M 0 9.55
+      L -0.15 9.55
+      M 0 9.7
+      L -0.15 9.7
+      M 0 9.85
+      L -0.15 9.85
+      M 0 10
+      L -0.15 10
+      M 0 10.15
+      L -0.15 10.15
+      M 0 10.3
+      L -0.15 10.3
+      M 0 10.45
+      L -0.15 10.45
+      M 0 10.6
+      L -0.15 10.6
+      M 0 10.75
+      L -0.15 10.75
+      M 0 10.9
+      L -0.15 10.9
+      M 0 11.05
+      L -0.15 11.05
+      M 0 11.2
+      L -0.15 11.2
+      M 0 11.35
+      L -0.15 11.35
+      "
+        stroke="#aaa"
+        fill="transparent"
+        stroke-width="0.03"></path>
+      <path id="goal-line" d="
+      M 0 8.5
+      L 0 11.5
+      " stroke="#000" fill="transparent" stroke-width="0.08"></path>
+    </g>
+    <g id="right-side" transform="translate(40 20) rotate(180)">
+      <path id="right-free-throw-line" d="
+      M 2.958 0
+      A 9 9 0 0 1 9 8.5
+      L 9 11.5
+      A 9 9 0 0 1 2.958 20
+      " stroke="white" fill="transparent" stroke-width="0.05" stroke-dasharray="0.15"></path>
+      <path id="right-goal-area-line" d="
+      M 0 2.5
+      A 6 6 0 0 1 6 8.5
+      L 6 11.5
+      A 6 6 0 0 1 0 17.5
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="right-seven-meter-line" d="
+      M 7 9.5
+      L 7 10.5
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="right-goalkeeper-restraining-line" d="
+      M 4 9.925
+      L 4 10.075
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="right-substitution-line" d="
+      M 15.5 20.075
+      L 15.5 19.925
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="right-goal" d="
+      M 0 8.5
+      L -0.075 8.5
+      A 0.075 0.075 0 0 0 -0.15 8.575
+      L -0.15 11.425
+      A 0.075 0.075 1 0 0 -0.075 11.5
+      L 0 11.5
+      " stroke="#888" fill="transparent" stroke-width="0.05"></path>
+      <path
+        id="right-goal-hatches"
+        d="
+        M 0 8.65
+        L -0.15 8.65
+      M 0 8.8
+      L -0.15 8.8
+      M 0 8.95
+      L -0.15 8.95
+      M 0 9.1
+      L -0.15 9.1
+      M 0 9.25
+      L -0.15 9.25
+      M 0 9.4
+      L -0.15 9.4
+      M 0 9.55
+      L -0.15 9.55
+      M 0 9.7
+      L -0.15 9.7
+      M 0 9.85
+      L -0.15 9.85
+      M 0 10
+      L -0.15 10
+      M 0 10.15
+      L -0.15 10.15
+      M 0 10.3
+      L -0.15 10.3
+      M 0 10.45
+      L -0.15 10.45
+      M 0 10.6
+      L -0.15 10.6
+      M 0 10.75
+      L -0.15 10.75
+      M 0 10.9
+      L -0.15 10.9
+      M 0 11.05
+      L -0.15 11.05
+      M 0 11.2
+      L -0.15 11.2
+      M 0 11.35
+      L -0.15 11.35
+      "
+        stroke="#aaa"
+        fill="transparent"
+        stroke-width="0.03"></path>
+      <path id="goal-line" d="
+      M 0 8.5
+      L 0 11.5
+      " stroke="#000" fill="transparent" stroke-width="0.08"></path>
+    </g>
+    <path id="outside-perimeter" d="
+    M 0 0
+    L 40 0
+    L 40 20
+    L 0 20
+    Z" stroke="#000" fill="transparent" stroke-width="0.05"></path>
+  </g>
+</svg>

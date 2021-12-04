@@ -2,7 +2,12 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
-import { sport, cfgSportA, cfgSportGoalCoords } from "../../setup.js";
+import {
+    sport,
+    cfgSportA,
+    cfgSportGoalCoords,
+    perimeterId,
+} from "../../setup.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
@@ -24,12 +29,10 @@ function setUpShots() {
     }
 
     d3.select("#playing-area")
-        .select("#transformations")
-        .on("click", e => {
+        .select(perimeterId)
+        .on("click", (e) => {
             document.getSelection().removeAllRanges();
-            d3.select("#ghost")
-                .selectAll("*")
-                .remove();
+            d3.select("#ghost").selectAll("*").remove();
             let shiftHeld = sessionStorage.getItem("shiftHeld");
             let firstPoint =
                 sessionStorage.getItem("firstPoint") === "null"
@@ -176,7 +179,7 @@ function createShotFromEvent(e, point1) {
                     // else if 1 coordinate event, record distance to nearest goal
                     rowData[col.id] = math
                         .min(
-                            _.map(cfgSportGoalCoords, g =>
+                            _.map(cfgSportGoalCoords, (g) =>
                                 math.distance(g, specialData["coords"])
                             )
                         )

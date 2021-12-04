@@ -12,21 +12,23 @@ export let cfgSportA;
 export let cfgSportGoalCoords;
 export let getDefaultDetails;
 export let cfgDefaultEnable;
+export let perimeterId;
 
 function setup(s) {
     sport = s;
     d3.json("/supported-sports.json")
-        .then(data => {
+        .then((data) => {
             const sportData = _.find(data.sports, { id: sport });
             cfgSportA = sportData.appearance;
             cfgSportGoalCoords = sportData.goalCoords;
-            getDefaultDetails = function() {
+            perimeterId = sportData.perimeter;
+            getDefaultDetails = function () {
                 return _.cloneDeep(sportData.defaultDetails);
             };
             cfgDefaultEnable = sportData.defaultEnable;
             return d3.xml(`/resources/${sport}.svg`);
         })
-        .then(data => {
+        .then((data) => {
             setUpPlayingArea(data);
             setUpDetailsPanel();
             setUpTable();
@@ -41,7 +43,7 @@ function setup(s) {
                 });
 
             function decode(a) {
-                return a.replace(/[a-zA-Z]/g, function(c) {
+                return a.replace(/[a-zA-Z]/g, function (c) {
                     return String.fromCharCode(
                         (c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13)
                             ? c
@@ -54,7 +56,7 @@ function setup(s) {
 
             // ROT13 encryption for email
             function decode(a) {
-                return a.replace(/[a-zA-Z]/g, function(c) {
+                return a.replace(/[a-zA-Z]/g, function (c) {
                     return String.fromCharCode(
                         (c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13)
                             ? c
@@ -63,31 +65,29 @@ function setup(s) {
                 });
             }
 
-            d3.select("#email").on("click", function() {
+            d3.select("#email").on("click", function () {
                 const y = "znvygb:naxathlranaxathlra@tznvy.pbz";
                 d3.select(this)
                     .attr("href", decode(y))
                     .on("click", () => {});
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 select2Dropdown();
-                $("#shot-type-select").on("change", function(e) {
+                $("#shot-type-select").on("change", function (e) {
                     // update legend
                     shotTypeLegend();
 
                     // https://stackoverflow.com/a/54047075
                     // do not delete new options
-                    $(this)
-                        .find("option")
-                        .removeAttr("data-select2-tag");
+                    $(this).find("option").removeAttr("data-select2-tag");
                 });
             });
         });
 }
 
 function setUpIndex() {
-    d3.json("/supported-sports.json").then(data => {
+    d3.json("/supported-sports.json").then((data) => {
         const sports = data.sports;
         // set up card and link
         d3.select("#index")
@@ -95,8 +95,8 @@ function setUpIndex() {
             .data(sports)
             .join("div")
             .attr("class", "card")
-            .attr("href", d => `./${d.id}`)
-            .attr("id", d => d.id)
+            .attr("href", (d) => `./${d.id}`)
+            .attr("id", (d) => d.id)
             .on("click", (e, d) => {
                 window.location = `./${d.id}`;
             })
@@ -104,21 +104,18 @@ function setUpIndex() {
             .attr("class", "card-header");
 
         // card body text
-        let cb = d3
-            .selectAll(".card")
-            .append("div")
-            .attr("class", "card-body");
+        let cb = d3.selectAll(".card").append("div").attr("class", "card-body");
         cb.append("h6")
             .attr("class", "card-title")
-            .text(d => d.name);
+            .text((d) => d.name);
         let text = cb.append("div").attr("class", "card-text");
 
         for (const attr of ["dimensions", "units", "specifications"]) {
             let a = text.append("div");
             a.append("span")
                 .attr("class", "bold")
-                .text(`${attr.replace(/^\w/, c => c.toUpperCase())}: `); // capitalize first letter
-            a.append("span").text(d =>
+                .text(`${attr.replace(/^\w/, (c) => c.toUpperCase())}: `); // capitalize first letter
+            a.append("span").text((d) =>
                 attr === "dimensions"
                     ? `${d.appearance.width} x ${d.appearance.height}`
                     : d[attr]
@@ -132,11 +129,11 @@ function setUpIndex() {
             .append("button")
             .attr("type", "button")
             .attr("class", "grey-btn card-btn")
-            .text(d => `Go To ${d.name}`);
+            .text((d) => `Go To ${d.name}`);
         // set up svg's
         return Promise.all(
-            sports.map(sport => d3.xml(`/resources/${sport.id}.svg`))
-        ).then(sportsSVGs => {
+            sports.map((sport) => d3.xml(`/resources/${sport.id}.svg`))
+        ).then((sportsSVGs) => {
             sportsSVGs.forEach((sportSVG, i) => {
                 const name = sports[i].id;
                 const width = parseInt(sports[i].appearance.width);
