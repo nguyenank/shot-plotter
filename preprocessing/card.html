@@ -1,4 +1,4 @@
-<div class="card" href="./<!-- @echo ID -->" id="<!-- @echo ID -->">
+<a href="./<!-- @echo ID -->" class="card" id="<!-- @echo ID -->">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <!-- endinject -->
@@ -8,9 +8,11 @@
       <!-- @echo NAME -->
     </h6>
     <div class="card-text">
-      <div><span class="bold">Dimensions: </span><span>
+      <div>
+        <span class="bold">Dimensions: </span><span>
           <!-- @echo DIMS -->
-        </span> </div>
+        </span>
+      </div>
       <div>
         <span class="bold">Units: </span><span>
           <!-- @echo UNITS -->
@@ -24,8 +26,9 @@
     </div>
   </div>
   <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">Go To
+    <button type="button" class="grey-btn card-btn">
+      Go To
       <!-- @echo NAME -->
     </button>
   </div>
-</div>
+</a>
