@@ -145,6 +145,7 @@
                 "fontSize": "0.03rem",
                 "strokeWidth": "0.075px"
             },
+            "perimeter": "#outside-perimeter",
             "goalCoords": [
                 [3.5, 10],
                 [36.5, 10]
