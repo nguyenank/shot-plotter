@@ -230,7 +230,6 @@
                     "options": [
                         { "value": "1", "checked": true },
                         { "value": "2" },
-                        { "value": "3" },
                         { "value": "OT" }
                     ]
                 },
