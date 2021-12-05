@@ -6,7 +6,7 @@
 
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
-Currently eight types of sports/playing areas are supported: ice hockey (NHL, IIHF), floorball (IFF), basketball (NBA, NCAA, WNBA), and American football (NFL, NCAA).
+Currently 9 types of sports/playing areas are supported: ice hockey (NHL, IIHF), floorball (IFF), handball (IHF), basketball (NBA, NCAA, WNBA), and American football (NFL, NCAA).
 
 ![A screenshot of the main page of the web application allowing you to pick between sports.](./resources/sport-select-screenshot.png)
 

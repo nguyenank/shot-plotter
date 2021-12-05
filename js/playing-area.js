@@ -1,10 +1,6 @@
 import { sport, cfgSportA } from "../setup.js";
 
-function setUpPlayingArea(data) {
-    d3.select("#playing-area")
-        .node()
-        .append(data.documentElement);
-
+function setUpPlayingArea() {
     // dimensions of padding, window and playing area
     const padding = 20;
     const maxWidth =
@@ -20,6 +16,7 @@ function setUpPlayingArea(data) {
         2
     ).toFixed(1);
     d3.select(`#${sport}-svg`)
+        .attr("viewBox", undefined)
         .attr("width", resize * paWidth + padding)
         .attr("height", resize * paHeight + padding);
 

@@ -70,7 +70,311 @@
         <div class="center">
           <div class="two-point-toggle"></div>
         </div>
-        <div id="playing-area"></div>
+        <div id="playing-area">
+          <!-- inject:playingarea -->
+          <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
+  <g id="transformations">
+    <path
+      id="background"
+      d="M 0 8.5
+            A 8.5 8.5 0 0 1 8.5 0
+            L 51.5 0
+            A 8.5 8.5 0 0 1 60 8.5
+            L 60 21.5
+            A 8.5 8.5 0 0 1 51.5 30
+            L 8.5 30
+            A 8.5 8.5 0 0 1 0 21.5
+            L 0 8.5"
+      fill="white"/>
+    <circle id="center-dot" cx="30" cy="15" r="0.15" fill="#3F93CE"/>
+    <circle id="center-circle" cx="30" cy="15" r="4.5" stroke="#3F93CE" stroke-width="0.05" fill="transparent"/>
+    <path id="center-line" d="M 30 0
+              L 30 14.75
+              M 30 15.25
+              L 30 30" stroke="#BE352A" stroke-width="0.3"/>
+    <g id="goal-creases">
+      <g id="left-goalie-crease">
+        <path id="left-goal-crease" d="
+                  M 4 13.2
+                  A 1.8 1.8 0 0 1 4 16.8" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
+        <path
+          id="left-goal-crease-markings"
+          d="
+                  M 5.22 16.25
+                  L 5.22 16.1
+                  M 5.22 16.25
+                  L 5.07 16.25
+
+                  M 5.22 13.75
+                  L 5.22 13.9
+                  M 5.22 13.75
+                  L 5.07 13.75"
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="#E6F9FF"/>
+        <path
+          id="left-goal"
+          d="
+                  M 4 14.085
+                  L 3.6 14.085
+                  A 0.4 0.4 0 0 0 3.4 14.485
+                  L 3.4 15.515
+                  A 0.4 0.4 0 0 0 3.6 15.915
+                  L 4 15.915
+
+                  L 3.38 16.025
+                  A 0.5 0.5 0 0 1 2.88 15.525
+                  L 2.88 14.475
+                  A 0.5 0.5 0 0 1 3.38 13.975
+                  L 4 14.085
+                  "
+          stroke="#777777"
+          fill="#fafafa"
+          stroke-width="0.05"/>
+      </g>
+      <g id="right-goalie-crease" transform="rotate(180, 30, 15)">
+          <path id="right-goal-crease" d="
+                    M 4 13.2
+                    A 1.8 1.8 0 0 1 4 16.8" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
+          <path
+            id="right-goal-crease-markings"
+            d="
+                    M 5.22 16.25
+                    L 5.22 16.1
+                    M 5.22 16.25
+                    L 5.07 16.25
+
+                    M 5.22 13.75
+                    L 5.22 13.9
+                    M 5.22 13.75
+                    L 5.07 13.75"
+            stroke="#BE352A"
+            stroke-width="0.05"
+            fill="#E6F9FF"/>
+          <path
+            id="right-goal"
+            d="
+                    M 4 14.085
+                    L 3.6 14.085
+                    A 0.4 0.4 0 0 0 3.4 14.485
+                    L 3.4 15.515
+                    A 0.4 0.4 0 0 0 3.6 15.915
+                    L 4 15.915
+
+                    L 3.38 16.025
+                    A 0.5 0.5 0 0 1 2.88 15.525
+                    L 2.88 14.475
+                    A 0.5 0.5 0 0 1 3.38 13.975
+                    L 4 14.085
+                    "
+            stroke="#777777"
+            fill="#fafafa"
+            stroke-width="0.05"/>
+
+      </g>
+    </g>
+    <g id="goal-lines">
+      <path id="left-goal-line" d="M 4 1.25
+            L 4 28.75" stroke="#BE352A" stroke-width="0.05"/>
+      <path id="right-goal-line" d="M 56 1.25
+            L 56 28.75" stroke="#BE352A" stroke-width="0.05"/>
+    </g>
+    <g id="blue-lines">
+      <path id="left-blue-line" d="M 22.86 0
+          L 22.86 30" stroke="#3F93CE" stroke-width="0.3"/>
+      <path id="right-blue-line" d="M 37.14 0
+          L 37.14 30" stroke="#3F93CE" stroke-width="0.3"/>
+    </g>
+
+    <g id="faceoff-dots">
+      <g transform="translate(24.36, 8)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+      </g>
+
+      <g transform="translate(35.64, 8)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+      </g>
+      <g transform="translate(24.36, 22)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+      </g>
+
+      <g transform="translate(35.64, 22)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+      </g>
+    </g>
+
+    <g id="faceoff-circles">
+      <g transform="translate(10, 8)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+        <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <path stroke="#BE352A" stroke-width="0.05" fill="transparent" d="
+          M -0.85 4.4
+          L -0.85 5
+          M 0.85 4.4
+          L 0.85 5
+          M -0.85 -4.4
+          L -0.85 -5
+          M 0.85 -4.4
+          L 0.85 -5
+        "/>
+        <path
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="transparent"
+          d="
+          M 0.6 1.1
+          L 0.6 0.225
+          L 1.8 0.225
+
+          M -0.6 1.1
+          L -0.6 0.225
+          L -1.8 0.225
+
+          M 0.6 -1.1
+          L 0.6 -0.225
+          L 1.8 -0.225
+
+          M -0.6 -1.1
+          L -0.6 -0.225
+          L -1.8 -0.225
+        "/>
+      </g>
+      <g transform="translate(50, 8)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+        <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <path stroke="#BE352A" stroke-width="0.05" fill="transparent" d="
+          M -0.85 4.4
+          L -0.85 5
+          M 0.85 4.4
+          L 0.85 5
+          M -0.85 -4.4
+          L -0.85 -5
+          M 0.85 -4.4
+          L 0.85 -5
+        "/>
+        <path
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="transparent"
+          d="
+          M 0.6 1.1
+          L 0.6 0.225
+          L 1.8 0.225
+
+          M -0.6 1.1
+          L -0.6 0.225
+          L -1.8 0.225
+
+          M 0.6 -1.1
+          L 0.6 -0.225
+          L 1.8 -0.225
+
+          M -0.6 -1.1
+          L -0.6 -0.225
+          L -1.8 -0.225
+        "/>
+      </g>
+      <g transform="translate(10, 22)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+        <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <path stroke="#BE352A" stroke-width="0.05" fill="transparent" d="
+          M -0.85 4.4
+          L -0.85 5
+          M 0.85 4.4
+          L 0.85 5
+          M -0.85 -4.4
+          L -0.85 -5
+          M 0.85 -4.4
+          L 0.85 -5
+        "/>
+        <path
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="transparent"
+          d="
+          M 0.6 1.1
+          L 0.6 0.225
+          L 1.8 0.225
+
+          M -0.6 1.1
+          L -0.6 0.225
+          L -1.8 0.225
+
+          M 0.6 -1.1
+          L 0.6 -0.225
+          L 1.8 -0.225
+
+          M -0.6 -1.1
+          L -0.6 -0.225
+          L -1.8 -0.225
+        "/>
+      </g>
+      <g transform="translate(50, 22)">
+        <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
+        <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+        <path stroke="#BE352A" stroke-width="0.05" fill="transparent" d="
+          M -0.85 4.4
+          L -0.85 5
+          M 0.85 4.4
+          L 0.85 5
+          M -0.85 -4.4
+          L -0.85 -5
+          M 0.85 -4.4
+          L 0.85 -5
+        "/>
+        <path
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="transparent"
+          d="
+          M 0.6 1.1
+          L 0.6 0.225
+          L 1.8 0.225
+
+          M -0.6 1.1
+          L -0.6 0.225
+          L -1.8 0.225
+
+          M 0.6 -1.1
+          L 0.6 -0.225
+          L 1.8 -0.225
+
+          M -0.6 -1.1
+          L -0.6 -0.225
+          L -1.8 -0.225
+        "/>
+      </g>
+    </g>
+
+    <path id="officials-crease" d="M 27 30
+        A 3 3 0 0 1 33 30" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
+
+    <path
+      id="outside-perimeter"
+      d="M 0 8.5
+        A 8.5 8.5 0 0 1 8.5 0
+        L 51.5 0
+        A 8.5 8.5 0 0 1 60 8.5
+        L 60 21.5
+        A 8.5 8.5 0 0 1 51.5 30
+        L 8.5 30
+        A 8.5 8.5 0 0 1 0 21.5
+        L 0 8.5"
+      stroke="black"
+      fill="transparent"
+      stroke-width="0.1"/></g>
+</svg>
+
+          <!-- endinject -->
+        </div>
         <div class="center">
           <div id="legend"></div>
         </div>

@@ -70,7 +70,300 @@
         <div class="center">
           <div class="two-point-toggle"></div>
         </div>
-        <div id="playing-area"></div>
+        <div id="playing-area">
+          <!-- inject:playingarea -->
+          <svg id="ice-hockey-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 202 87">
+  <g id="transformations">
+    <path id="background" d="M 0 28
+        A 28 28 0 0 1 28 0
+        L 172 0
+        A 28 28 0 0 1 200 28
+        L 200 57
+        A 28 28 0 0 1 172 85
+        L 29 85
+        A 28 28 0 0 1 0 57
+        L 0 28" fill="white"/>
+    <path id="center-line" d="M 100 0
+          L 100 85" stroke="#C8102e" stroke-width="1"/>
+    <path
+      id="center-line-decor"
+      d="
+          M 100 2
+          L 100 5
+          M 100 8
+          L 100 11
+          M 100 14
+          L 100 17
+          M 100 20
+          L 100 23
+          M 100 26
+          L 100 29
+          M 100 32
+          L 100 35
+          M 100 38
+          L 100 41
+          M 100 44
+          L 100 47
+          M 100 50
+          L 100 53
+          M 100 56
+          L 100 59
+          M 100 62
+          L 100 65
+          M 100 68
+          L 100 71
+          M 100 74
+          L 100 77
+          M 100 80
+          L 100 83
+          "
+      stroke="white"
+      stroke-width=".25"/>
+    <g id="goal-lines">
+      <path id="left-goal-line" d="M 11 6
+            L 11 79" stroke="#C8102e" stroke-width="0.166667"/>
+      <path id="right-goal-line" d="M 189 6
+            L 189 79" stroke="#C8102e" stroke-width="0.166667"/>
+    </g>
+    <g id="goal-creases">
+      <g id="left-goalie-crease">
+        <path d="
+                  M 0 56.5
+                  L 11 53.5
+                  M 0 28.5
+                  L 11 31.5" stroke="#C8102e" stroke-width="0.1667"/>
+        <path
+          id="left-goal-crease"
+          d="
+                  M 11 38.5
+                  L 15.5 38.5
+                  A 6 6 0 0 1 15.5 46.5
+                  L 11 46.5
+                  M 15 38.5
+                  L 15 38.9166667
+                  M 15 46.5
+                  L 15 46.08333333"
+          stroke="#C8102e"
+          fill="#E6F9FF"
+          stroke-width="0.1667"/>
+        <path id="left-goal" d="
+                  M 11 39.5
+                  L 9 39.5
+                  A 5 5 0 0 0 9 45.5
+                  L 11 45.5" stroke="black" fill="transparent" stroke-width="0.1667"/>
+      </g>
+      <g id="right-goalie-crease">
+        <path d="
+                  M 200 56.5
+                  L 189 53.5
+                  M 200 28.5
+                  L 189 31.5" stroke="#C8102e" stroke-width="0.1667"/>
+        <path
+          id="right-goal-crease"
+          d="
+                  M 189 38.5
+                  L 184.5 38.5
+                  A 6 6 0 0 0 184.5 46.5
+                  L 189 46.5
+                  M 185 38.5
+                  L 185 38.9166667
+                  M 185 46.5
+                  L 185 46.08333333"
+          stroke="#C8102e"
+          fill="#E6F9FF"
+          stroke-width="0.1667"/>
+        <path id="right-goal" d="
+                  M 189 39.5
+                  L 191 39.5
+                  A 5 5 0 0 1 191 45.5
+                  L 189 45.5" stroke="black" fill="transparent" stroke-width="0.1667"/>
+      </g>
+    </g>
+    <g id="blue-lines">
+      <path id="left-blue-line" d="M 75 0
+          L 75 85" stroke="#0033A0" stroke-width="1"/>
+      <path id="right-blue-line" d="M 125 0
+          L 125 85" stroke="#0033A0" stroke-width="1"/>
+    </g>
+    <g id="center-faceoff-spots">
+      <circle id="top-left-spot" cx="80" cy="20.5" r="1" stroke="#C8102e" stroke-width="0.1667" fill="transparent"/>
+      <rect x="79.4" y="19.57" width="1.2" height="1.85" fill="#C8102e"/>
+      <circle id="top-right-spot" cx="120" cy="20.5" r="1" stroke="#C8102e" stroke-width="0.1667" fill="transparent"/>
+      <rect x="119.4" y="19.57" width="1.2" height="1.85" fill="#C8102e"/>
+      <circle id="bottom-left-spot" cx="80" cy="64.5" r="1" stroke="#C8102e" stroke-width="0.1667" fill="transparent"/>
+      <rect x="79.4" y="63.57" width="1.2" height="1.85" fill="#C8102e"/>
+      <circle id="bottom-right-spot" cx="120" cy="64.5" r="1" stroke="#C8102e" stroke-width="0.1667" fill="transparent"/>
+      <rect x="119.4" y="63.57" width="1.2" height="1.85" fill="#C8102e"/>
+    </g>
+    <g id="center-circles">
+      <circle id="outer-center-circle" cx="100" cy="42.5" r="15" stroke="#0033A0" stroke-width="0.1666667" fill="transparent"/>
+      <circle id="middle-center-circle" cx="100" cy="42.5" r=".5" fill="#0033A0"/>
+    </g>
+    <g id="faceoff-circles">
+      <g id="bottom-left-faceoff-circle">
+        <circle id="center-circle" cx="31" cy="64.5" r="1" stroke="#C8102e" stroke-width="0.1667" fill="transparent"/>
+        <rect x="30.4" y="63.57" width="1.2" height="1.85" fill="#C8102e"/>
+        <circle id="center-circle" cx="31" cy="64.5" r="15" stroke="#C8102e" fill="transparent" stroke-width=".16667"/>
+        <path
+          d="
+            M 28.125 49.75
+            L 28.125 47.75
+            M 33.875 49.75
+            L 33.875 47.75
+            M 28.125 79.25
+            L 28.125 81.25
+            M 33.875 79.25
+            L 33.875 81.25
+            "
+          stroke="#C8102e"
+          fill="transparent"
+          stroke-width=".16667"/>
+        <path
+          d="M 25 65.3333333
+               L 28.9166667 65.3333333
+               L 28.9166667 68.25
+               M 28.9166667 60.75
+               L 28.9166667 63.6666667
+               L 25 63.6666667
+               M 37 65.3333333
+               L 33.08333333 65.3333333
+               L 33.08333333 68.25
+               M 33.08333333 60.75
+               L 33.08333333 63.6666667
+               L 37 63.6666667
+               "
+          stroke="#C8102e"
+          fill="transparent"
+          stroke-width=".16667"/>
+      </g>
+      <g id="bottom-right-faceoff-circle">
+        <circle id="center-circle" cx="169" cy="64.5" r="1" stroke="#C8102e" stroke-width="0.1667" fill="transparent"/>
+        <rect x="168.4" y="63.57" width="1.2" height="1.85" fill="#C8102e"/>
+        <circle id="center-circle" cx="169" cy="64.5" r="15" stroke="#C8102e" fill="transparent" stroke-width=".16667"/>
+        <path
+          d="
+            M 166.125 49.75
+            L 166.125 47.75
+            M 171.875 49.75
+            L 171.875 47.75
+            M 166.125 79.25
+            L 166.125 81.25
+            M 171.875 79.25
+            L 171.875 81.25
+            "
+          stroke="#C8102e"
+          fill="transparent"
+          stroke-width=".16667"/>
+        <path
+          d="M 163 65.3333333
+               L 166.9166667 65.3333333
+               L 166.9166667 68.25
+               M 166.9166667 60.75
+               L 166.9166667 63.6666667
+               L 163 63.6666667
+               M 175 65.3333333
+               L 171.08333333 65.3333333
+               L 171.08333333 68.25
+               M 171.08333333 60.75
+               L 171.08333333 63.6666667
+               L 175 63.6666667
+               "
+          stroke="#C8102e"
+          fill="transparent"
+          stroke-width=".16667"/>
+      </g>
+      <g id="top-right-faceoff-circle">
+        <circle id="center-circle" cx="169" cy="20.5" r="1" stroke="#C8102e" stroke-width="0.1667" fill="transparent"/>
+        <rect x="168.4" y="19.57" width="1.2" height="1.85" fill="#C8102e"/>
+        <circle id="center-circle" cx="169" cy="20.5" r="15" stroke="#C8102e" fill="transparent" stroke-width=".16667"/>
+        <path
+          d="
+            M 166.125 5.75
+            L 166.125 3.75
+            M 171.875 5.75
+            L 171.875 3.75
+            M 166.125 35.25
+            L 166.125 37.25
+            M 171.875 35.25
+            L 171.875 37.25
+            "
+          stroke="#C8102e"
+          fill="transparent"
+          stroke-width=".16667"/>
+        <path
+          d="M 163 21.3333333
+               L 166.9166667 21.3333333
+               L 166.9166667 24.25
+               M 166.9166667 16.75
+               L 166.9166667 19.6666667
+               L 163 19.6666667
+               M 175 21.3333333
+               L 171.08333333 21.3333333
+               L 171.08333333 24.25
+               M 171.08333333 16.75
+               L 171.08333333 19.6666667
+               L 175 19.6666667
+               "
+          stroke="#C8102e"
+          fill="transparent"
+          stroke-width=".16667"/>
+      </g>
+      <g id="top-left-faceoff-circle">
+        <circle id="center-circle" cx="31" cy="20.5" r="1" stroke="#C8102e" stroke-width="0.1667" fill="transparent"/>
+        <rect x="30.4" y="19.57" width="1.2" height="1.85" fill="#C8102e"/>
+        <circle id="center-circle" cx="31" cy="20.5" r="15" stroke="#C8102e" fill="transparent" stroke-width=".16667"/>
+        <path
+          d="
+            M 28.125 5.75
+            L 28.125 3.75
+            M 33.875 5.75
+            L 33.875 3.75
+            M 28.125 35.25
+            L 28.125 37.25
+            M 33.875 35.25
+            L 33.875 37.25
+            "
+          stroke="#C8102e"
+          fill="transparent"
+          stroke-width=".16667"/>
+        <path
+          d="M 25 21.3333333
+               L 28.9166667 21.3333333
+               L 28.9166667 24.25
+               M 28.9166667 16.75
+               L 28.9166667 19.6666667
+               L 25 19.6666667
+               M 37 21.3333333
+               L 33.08333333 21.3333333
+               L 33.08333333 24.25
+               M 33.08333333 16.75
+               L 33.08333333 19.6666667
+               L 37 19.6666667
+               "
+          stroke="#C8102e"
+          fill="transparent"
+          stroke-width=".16667"/>
+      </g>
+    </g>
+    <path id="scorekeeper" d="M 90 85 A 10 10 0 0 1 110 85" stroke-width="0.16667" fill="transparent" stroke="black"/>
+    <path
+      id="outside-perimeter"
+      d="M 0 28
+        A 28 28 0 0 1 28 0
+        L 172 0
+        A 28 28 0 0 1 200 28
+        L 200 57
+        A 28 28 0 0 1 172 85
+        L 29 85
+        A 28 28 0 0 1 0 57
+        L 0 28"
+      stroke="black"
+      fill="transparent"
+      stroke-width="1"/></g>
+</svg>
+
+          <!-- endinject -->
+        </div>
         <div class="center">
           <div id="legend"></div>
         </div>
