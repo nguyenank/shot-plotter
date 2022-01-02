@@ -72,74 +72,190 @@
         </div>
         <div id="playing-area">
           <!-- inject:playingarea -->
-          <svg id ="floorball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
+          <svg id="handball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
   <g id="transformations">
     <path id="background" d="
-    M 0 3
-    A 3 3 0 0 1 3 0
-    L 37 0
-    A 3 3 0 0 1 40 3
-    L 40 17
-    A 3 3 0 0 1 37 20
-    L 3 20
-    A 3 3 0 0 1 0 17
-    L 0 3" fill="#2162b7"></path>
-    <g id="center-markings">
-      <path id="center-line" d="M 20 0 L 20 20" stroke="#fff" fill="transparent" stroke-width="0.05"></path>
-      <circle id="center-dot" cx="20" cy="10" r="0.15" fill="#fff"/>
+    M 0 0
+    L 40 0
+    L 40 20
+    L 0 20
+    Z" stroke="transparent" fill="#2162b7"></path>
+    <path id="center-line" d="
+    M 20 0
+    L 20 20
+    " stroke="white" fill="transparent" stroke-width="0.05"></path>
+    <g id="left-side">
+      <path id="left-free-throw-line" d="
+      M 2.958 0
+      A 9 9 0 0 1 9 8.5
+      L 9 11.5
+      A 9 9 0 0 1 2.958 20
+      " stroke="white" fill="transparent" stroke-width="0.05" stroke-dasharray="0.15"></path>
+      <path id="left-goal-area-line" d="
+      M 0 2.5
+      A 6 6 0 0 1 6 8.5
+      L 6 11.5
+      A 6 6 0 0 1 0 17.5
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="left-seven-meter-line" d="
+      M 7 9.5
+      L 7 10.5
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="left-goalkeeper-restraining-line" d="
+      M 4 9.925
+      L 4 10.075
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="left-substitution-line" d="
+      M 15.5 20.075
+      L 15.5 19.925
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="left-goal" d="
+      M 0 8.5
+      L -0.075 8.5
+      A 0.075 0.075 0 0 0 -0.15 8.575
+      L -0.15 11.425
+      A 0.075 0.075 1 0 0 -0.075 11.5
+      L 0 11.5
+      " stroke="#888" fill="transparent" stroke-width="0.05"></path>
+      <path
+        id="left-goal-hatches"
+        d="
+        M 0 8.65
+        L -0.15 8.65
+      M 0 8.8
+      L -0.15 8.8
+      M 0 8.95
+      L -0.15 8.95
+      M 0 9.1
+      L -0.15 9.1
+      M 0 9.25
+      L -0.15 9.25
+      M 0 9.4
+      L -0.15 9.4
+      M 0 9.55
+      L -0.15 9.55
+      M 0 9.7
+      L -0.15 9.7
+      M 0 9.85
+      L -0.15 9.85
+      M 0 10
+      L -0.15 10
+      M 0 10.15
+      L -0.15 10.15
+      M 0 10.3
+      L -0.15 10.3
+      M 0 10.45
+      L -0.15 10.45
+      M 0 10.6
+      L -0.15 10.6
+      M 0 10.75
+      L -0.15 10.75
+      M 0 10.9
+      L -0.15 10.9
+      M 0 11.05
+      L -0.15 11.05
+      M 0 11.2
+      L -0.15 11.2
+      M 0 11.35
+      L -0.15 11.35
+      "
+        stroke="#aaa"
+        fill="transparent"
+        stroke-width="0.03"></path>
+      <path id="goal-line" d="
+      M 0 8.5
+      L 0 11.5
+      " stroke="#000" fill="transparent" stroke-width="0.08"></path>
     </g>
-    <g id="left-goal">
-      <rect id="left-goal-crease" x="2.85" y="7.5" width="4" height="5" stroke="#fff" fill="transparent" stroke-width="0.05"></rect>
-      <rect id="left-goal-area" x="3.5" y="8.75" width="1" height="2.5" stroke="#fff" fill="transparent" stroke-width="0.05"></rect>
-      <path id="left-goal-lines" d="M 3.5 9.2 L 3.175 9.2 M 3.175 10.8 L 3.5 10.8" stroke="#fff" fill="transparent" stroke-width="0.05"></path>
-    </g>
-    <g id="right-goal">
-      <rect id="right-goal-crease" x="33.15" y="7.5" width="4" height="5" stroke="#fff" fill="transparent" stroke-width="0.05"></rect>
-      <rect id="right-goal-area" x="35.5" y="8.75" width="1" height="2.5" stroke="#fff" fill="transparent" stroke-width="0.05"></rect>
-      <path id="right-goal-lines" d="M 36.5 9.2 L 36.825 9.2 M 36.825 10.8 L 36.5 10.8" stroke="#fff" fill="transparent" stroke-width="0.05"></path>
-    </g>
-    <g id="faceoff-spots">
-      <path id="top-left-faceoff" d="
-        M 3.5 1.35
-        L 3.5 1.65
-        M 3.35 1.5
-        L 3.65 1.5" stroke="#fff" fill="transparent" stroke-width="0.1"/>
-      <path id="bottom-left-faceoff" d="
-        M 3.5 18.35
-          L 3.5 18.65
-          M 3.35 18.5
-          L 3.65 18.5" stroke="#fff" fill="transparent" stroke-width="0.1"/>
-      <path id="top-center-faceoff" d="
-        M 20 1.35
-        L 20 1.65
-        M 19.85 1.5
-        L 20.15 1.5" stroke="#fff" fill="transparent" stroke-width="0.1"/>
-      <path id="bottom-center-faceoff" d="
-        M 20 18.35
-          L 20 18.65
-          M 19.85 18.5
-          L 20.15 18.5" stroke="#fff" fill="transparent" stroke-width="0.1"/>
-      <path id="top-right-faceoff" d="
-            M 36.5 1.35
-            L 36.5 1.65
-            M 36.35 1.5
-            L 36.65 1.5" stroke="#fff" fill="transparent" stroke-width="0.1"/>
-      <path id="bottom-right-faceoff" d="
-            M 36.5 18.35
-              L 36.5 18.65
-              M 36.35 18.5
-              L 36.65 18.5" stroke="#fff" fill="transparent" stroke-width="0.1"/>
+    <g id="right-side" transform="translate(40 20) rotate(180)">
+      <path id="right-free-throw-line" d="
+      M 2.958 0
+      A 9 9 0 0 1 9 8.5
+      L 9 11.5
+      A 9 9 0 0 1 2.958 20
+      " stroke="white" fill="transparent" stroke-width="0.05" stroke-dasharray="0.15"></path>
+      <path id="right-goal-area-line" d="
+      M 0 2.5
+      A 6 6 0 0 1 6 8.5
+      L 6 11.5
+      A 6 6 0 0 1 0 17.5
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="right-seven-meter-line" d="
+      M 7 9.5
+      L 7 10.5
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="right-goalkeeper-restraining-line" d="
+      M 4 9.925
+      L 4 10.075
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="right-substitution-line" d="
+      M 15.5 20.075
+      L 15.5 19.925
+      " stroke="white" fill="transparent" stroke-width="0.05"></path>
+      <path id="right-goal" d="
+      M 0 8.5
+      L -0.075 8.5
+      A 0.075 0.075 0 0 0 -0.15 8.575
+      L -0.15 11.425
+      A 0.075 0.075 1 0 0 -0.075 11.5
+      L 0 11.5
+      " stroke="#888" fill="transparent" stroke-width="0.05"></path>
+      <path
+        id="right-goal-hatches"
+        d="
+        M 0 8.65
+        L -0.15 8.65
+      M 0 8.8
+      L -0.15 8.8
+      M 0 8.95
+      L -0.15 8.95
+      M 0 9.1
+      L -0.15 9.1
+      M 0 9.25
+      L -0.15 9.25
+      M 0 9.4
+      L -0.15 9.4
+      M 0 9.55
+      L -0.15 9.55
+      M 0 9.7
+      L -0.15 9.7
+      M 0 9.85
+      L -0.15 9.85
+      M 0 10
+      L -0.15 10
+      M 0 10.15
+      L -0.15 10.15
+      M 0 10.3
+      L -0.15 10.3
+      M 0 10.45
+      L -0.15 10.45
+      M 0 10.6
+      L -0.15 10.6
+      M 0 10.75
+      L -0.15 10.75
+      M 0 10.9
+      L -0.15 10.9
+      M 0 11.05
+      L -0.15 11.05
+      M 0 11.2
+      L -0.15 11.2
+      M 0 11.35
+      L -0.15 11.35
+      "
+        stroke="#aaa"
+        fill="transparent"
+        stroke-width="0.03"></path>
+      <path id="goal-line" d="
+      M 0 8.5
+      L 0 11.5
+      " stroke="#000" fill="transparent" stroke-width="0.08"></path>
     </g>
     <path id="outside-perimeter" d="
-    M 0 3
-    A 3 3 0 0 1 3 0
-    L 37 0
-    A 3 3 0 0 1 40 3
-    L 40 17
-    A 3 3 0 0 1 37 20
-    L 3 20
-    A 3 3 0 0 1 0 17
-    L 0 3" stroke="black" fill="transparent" stroke-width="0.05"></path>
+    M 0 0
+    L 40 0
+    L 40 20
+    L 0 20
+    Z" stroke="#000" fill="transparent" stroke-width="0.05"></path>
   </g>
 </svg>
 
@@ -161,7 +277,7 @@
     import {
       setup
     } from "/setup.js";
-    setup("floorball");
+    setup("handball");
   </script>
   <!-- bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

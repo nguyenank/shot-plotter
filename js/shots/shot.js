@@ -2,7 +2,12 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
-import { sport, cfgSportA, cfgSportGoalCoords } from "../../setup.js";
+import {
+    sport,
+    cfgSportA,
+    cfgSportGoalCoords,
+    perimeterId,
+} from "../../setup.js";
 
 function setUpShots() {
     sessionStorage.setItem("firstPoint", null);
@@ -24,7 +29,7 @@ function setUpShots() {
     }
 
     d3.select("#playing-area")
-        .select("#transformations")
+        .select(perimeterId)
         .on("click", (e) => {
             document.getSelection().removeAllRanges();
             d3.select("#ghost").selectAll("*").remove();
