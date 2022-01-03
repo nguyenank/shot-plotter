@@ -241,7 +241,8 @@ function heatMap() {
             .attr("id", color + "-heat-map-svg")
             .attr(
                 "display",
-                d3.select("#" + color + "-heat-map").property("checked")
+                (color !== "blueTeam" && color !== "orangeTeam") ||
+                    d3.select("#" + color + "-heat-map").property("checked")
                     ? "auto"
                     : "none"
             )
