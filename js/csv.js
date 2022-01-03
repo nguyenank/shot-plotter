@@ -10,6 +10,7 @@ import {
     getRows,
     getNumRows,
 } from "./table/table-functions.js";
+import { regenHeatMapTeamNames } from "./toggles.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
@@ -155,6 +156,7 @@ function processCSV(uploadId, row, swapTeamColor) {
                     : "#orange-team-name";
             d3.select(swapTeamId).property("value", row.Team);
             teamLegend();
+            regenHeatMapTeamNames();
 
             teamColor = swapTeamColor;
             // alternate changing team names

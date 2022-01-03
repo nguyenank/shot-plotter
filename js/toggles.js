@@ -1,5 +1,6 @@
 import { getRows } from "./table/table-functions.js";
 import { perimeterId, cfgSportA } from "../setup.js";
+import { existsDetail } from "./details/details-functions.js";
 
 export function setUpToggles() {
     const toggles = d3.select("#toggles");
@@ -11,8 +12,71 @@ export function setUpToggles() {
         .append("div")
         .attr("class", "toggle-area center")
         .attr("id", "heat-map-toggle-area");
+    toggles
+        .append("div")
+        .attr("class", "toggle-area center")
+        .attr("id", "heat-map-team-select")
+        .style("display", "none");
+
+    setupHeatMapTeamSelect();
     twoPointFunctionality();
     heatMapFunctionality();
+}
+
+function setupHeatMapTeamSelect() {
+    const checks = d3.select("#heat-map-team-select");
+
+    const div1 = checks
+        .append("div")
+        .attr("class", "form-check form-check-inline");
+    div1.append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "checkbox")
+        .property("checked", true)
+        .attr("id", "blueTeam-heat-map")
+        .attr("value", "blueTeam-heat-map")
+        .on("change", function () {
+            if (d3.select(this).property("checked")) {
+                d3.select("#blueTeam-heat-map-svg").attr("display", "auto");
+            } else {
+                d3.select("#blueTeam-heat-map-svg").attr("display", "none");
+            }
+        });
+    div1.append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "blueTeam-heat-map")
+        .attr("id", "blueTeam-heat-map-label")
+        .text("Home");
+    const div2 = checks
+        .append("div")
+        .attr("class", "form-check form-check-inline");
+    div2.append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "checkbox")
+        .property("checked", true)
+        .attr("id", "orangeTeam-heat-map")
+        .attr("value", "orangeTeam-heat-map")
+        .on("change", function () {
+            if (d3.select(this).property("checked")) {
+                d3.select("#orangeTeam-heat-map-svg").attr("display", "auto");
+            } else {
+                d3.select("#orangeTeam-heat-map-svg").attr("display", "none");
+            }
+        });
+    div2.append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "orangeTeam-heat-map")
+        .attr("id", "orangeTeam-heat-map-label")
+        .text("Away");
+}
+
+export function regenHeatMapTeamNames() {
+    d3.select("#blueTeam-heat-map-label").text(
+        d3.select("#blue-team-name").property("value")
+    );
+    d3.select("#orangeTeam-heat-map-label").text(
+        d3.select("#orange-team-name").property("value")
+    );
 }
 
 export function twoPointFunctionality() {
@@ -53,7 +117,7 @@ export function twoPointFunctionality() {
             .attr("class", "form-check-input")
             .attr("type", "checkbox")
             .attr("id", "two-point-toggle")
-            .on("click", () =>
+            .on("change", () =>
                 d3.select("#two-point-toggle").property("checked")
                     ? setOn()
                     : setOff()
@@ -76,12 +140,17 @@ export function heatMapFunctionality() {
         d3.select(perimeterId).attr("pointer-events", "none");
         d3.select("#dots").attr("display", "none");
         heatMap();
+        if (existsDetail("#team")) {
+            regenHeatMapTeamNames();
+            d3.select("#heat-map-team-select").style("display", "flex");
+        }
     }
     function setOff() {
         d3.select("#heat-map-toggle").property("checked", false);
         d3.select(perimeterId).attr("pointer-events", "auto");
         d3.select("#dots").attr("display", "contents");
         d3.select("#heat-map").selectAll("*").remove();
+        d3.select("#heat-map-team-select").style("display", "none");
     }
     if (d3.select("#heat-map-enable").property("checked")) {
         d3.select("#heat-map-toggle-area").selectAll("*").remove();
@@ -101,7 +170,7 @@ export function heatMapFunctionality() {
             .attr("class", "form-check-input")
             .attr("type", "checkbox")
             .attr("id", "heat-map-toggle")
-            .on("click", () =>
+            .on("change", () =>
                 d3.select("#heat-map-toggle").property("checked")
                     ? setOn()
                     : setOff()
@@ -114,6 +183,7 @@ export function heatMapFunctionality() {
     } else {
         setOff();
         d3.select("#heat-map-toggle-area").selectAll("*").remove();
+        d3.select("#heat-map-team-select").selectAll("*").remove();
     }
 }
 
@@ -126,8 +196,6 @@ function heatMap() {
         x: r.specialData.coords[0],
         y: r.specialData.coords[1],
     }));
-
-    console.log(data);
 
     function colorFunc(colorName) {
         let color;
@@ -170,6 +238,13 @@ function heatMap() {
             .bandwidth(4)(groupedData[color]);
         d3.select("#heat-map")
             .insert("g", "g")
+            .attr("id", color + "-heat-map-svg")
+            .attr(
+                "display",
+                d3.select("#" + color + "-heat-map").property("checked")
+                    ? "auto"
+                    : "none"
+            )
             .attr("transform", `scale(${unscale},${unscale})`)
             .selectAll("path")
             .data(densityData)

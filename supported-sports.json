@@ -80,7 +80,7 @@
                 "polyR": "0.8",
                 "fontSize": "0.045rem",
                 "strokeWidth": "0.15px",
-                "heatMapScale": 2.4
+                "heatMapScale": 3.25
             },
             "goalCoords": [
                 [4, 15],
