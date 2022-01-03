@@ -10,9 +10,6 @@ import {
 } from "../../setup.js";
 
 function setUpShots() {
-    sessionStorage.setItem("firstPoint", null);
-    sessionStorage.setItem("shiftHeld", null);
-
     // http://thenewcode.com/1068/Making-Arrows-in-SVG
     for (let className of ["blueTeam", "orangeTeam", "greyTeam"]) {
         d3.select(`#${sport}-svg`)
@@ -199,45 +196,6 @@ function createShotFromEvent(e, point1) {
 
     createDot("#normal", id, specialData);
     createNewRow(id, rowData, specialData);
-    heatMap();
-}
-
-function heatMap() {
-    d3.select("#heat-map").remove();
-
-    const svg = d3
-        .select("#transformations")
-        .append("g")
-        .attr("id", "heat-map");
-    const color = d3
-        .scaleLinear()
-        .domain([0, 0.01]) // Points per square pixel.
-        .range(["rgba(255, 255, 255, 0.3)", "rgba(255,0,0,0.3)"]);
-
-    // Add X axis
-
-    // compute the density data
-    const data = _.map(getRows(), (r) => ({
-        x: r.specialData.coords[0],
-        y: r.specialData.coords[1],
-    }));
-    const densityData = d3
-        .contourDensity()
-        .x((d) => {
-            return d.x;
-        })
-        .y((d) => d.y)
-        .bandwidth(5)(data);
-
-    svg.insert("g", "g")
-        .selectAll("path")
-        .data(densityData)
-        .enter()
-        .append("path")
-        .attr("d", d3.geoPath())
-        .attr("fill", function (d) {
-            return color(d.value);
-        });
 }
 
 function createShotFromData(id, rowData, specialData) {

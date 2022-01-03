@@ -331,14 +331,15 @@ input[type=text] {
   fill: white;
 }
 
-.two-point-toggle {
+.toggle-area {
   display: flex;
   font-weight: 400;
+  gap: 0.3rem;
 }
-.two-point-toggle .form-switch {
+.toggle-area .form-switch {
   padding-left: 0;
 }
-.two-point-toggle .form-switch .form-check-input {
+.toggle-area .form-switch .form-check-input {
   margin: 0.3rem 1rem 0;
 }
 

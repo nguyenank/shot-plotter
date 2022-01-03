@@ -33,6 +33,8 @@ function setUpPlayingArea() {
     for (const id of ["ghost", "normal", "selected"]) {
         dots.append("svg:g").attr("id", id);
     }
+
+    d3.select("#transformations").append("g").attr("id", "heat-map");
 }
 
 export { setUpPlayingArea };

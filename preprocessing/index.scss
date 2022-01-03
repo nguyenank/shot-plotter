@@ -381,10 +381,11 @@ input[type="text"] {
 }
 // toggle & legend
 
-.two-point-toggle {
+.toggle-area {
   display: flex;
   // font-size: 0.85rem;
   font-weight: 400;
+  gap: 0.3rem;
 
   .form-switch {
     padding-left: 0;

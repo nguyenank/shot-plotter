@@ -17,11 +17,10 @@ import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
 import { cfgDetails } from "../config-details.js";
 import { sport, cfgDefaultEnable } from "../../../setup.js";
+import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
 
 function createMainPage(id) {
-    d3.select(id)
-        .selectAll("*")
-        .remove();
+    d3.select(id).selectAll("*").remove();
 
     let mb = d3
         .select(id)
@@ -45,10 +44,10 @@ function createMainPage(id) {
         .attr("id", "explain-text")
         .attr("class", "collapse");
 
-    $("#explain-text").on("hide.bs.collapse", function() {
+    $("#explain-text").on("hide.bs.collapse", function () {
         d3.select("#info-collapse-btn").text("More Info");
     });
-    $("#explain-text").on("show.bs.collapse", function() {
+    $("#explain-text").on("show.bs.collapse", function () {
         d3.select("#info-collapse-btn").text("Less Info");
     });
 
@@ -59,16 +58,14 @@ function createMainPage(id) {
 
     // reorder columns
     mb.append("h5").text("Details");
-    mb.append("div")
-        .attr("class", "center")
-        .attr("id", "reorder");
+    mb.append("div").attr("class", "center").attr("id", "reorder");
     createReorderColumns("#reorder");
     mb.append("div")
         .attr("class", "center")
         .append("button")
         .attr("class", "grey-btn new-column-btn")
         .text("Create New Detail")
-        .on("click", function() {
+        .on("click", function () {
             saveCurrentDetailSetup();
             createTextFieldPage("#text-field-page");
             createDropdownPage("#dropdown-page");
@@ -85,10 +82,7 @@ function createMainPage(id) {
     createAppearanceOptions("#appearance-options");
 
     // footer
-    let footer = d3
-        .select(id)
-        .append("div")
-        .attr("class", "footer-row");
+    let footer = d3.select(id).append("div").attr("class", "footer-row");
     footer.append("div").attr("id", "json-upload-download");
     setUpJSONDownloadUpload("#json-upload-download");
     footer
@@ -96,7 +90,7 @@ function createMainPage(id) {
         .attr("type", "button")
         .attr("class", "grey-btn save-changes-btn")
         .text("Save Changes")
-        .on("click", e => saveChanges(e));
+        .on("click", (e) => saveChanges(e));
 
     if (_.indexOf(cfgDefaultEnable, "two-location") !== -1) {
         d3.select("#two-point-enable").property("checked", true);
@@ -119,25 +113,25 @@ function createReorderColumns(id = "#reorder") {
         .enter()
         .append("td")
         .attr("class", "reorder-item")
-        .attr("data-id", d => d.id)
-        .attr("data-type", d => d.type);
+        .attr("data-id", (d) => d.id)
+        .attr("data-type", (d) => d.type);
     // text
     v.append("div")
-        .text(d => d.title)
+        .text((d) => d.title)
         .attr("class", "center");
 
     // icons
     v.append("div")
         .attr("class", "reorder-item-icons")
-        .each(function(d) {
+        .each(function (d) {
             if (!(d.noWidget && d.type !== "shot-number")) {
                 // no turning off or deleting any no widget columns (but shot number)
                 d3.select(this)
                     .append("i")
-                    .attr("class", d =>
+                    .attr("class", (d) =>
                         d.hidden ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"
                     )
-                    .on("click", function() {
+                    .on("click", function () {
                         const newClass =
                             d3.select(this).attr("class") === "bi bi-eye-fill"
                                 ? "bi bi-eye-slash-fill"
@@ -148,7 +142,7 @@ function createReorderColumns(id = "#reorder") {
                     d3.select(this)
                         .append("i")
                         .attr("class", "bi bi-pencil-square")
-                        .on("click", function() {
+                        .on("click", function () {
                             saveCurrentDetailSetup();
                             let details = _.find(getDetails(), { id: d.id });
                             let pageId;
@@ -177,7 +171,7 @@ function createReorderColumns(id = "#reorder") {
                 d3.select(this)
                     .append("i")
                     .attr("class", "bi bi-trash-fill")
-                    .on("click", function() {
+                    .on("click", function () {
                         let details = getDetails();
                         _.remove(details, { id: d.id });
                         setDetails(details);
@@ -194,6 +188,7 @@ function createReorderColumns(id = "#reorder") {
 function saveChanges(e) {
     saveCurrentDetailSetup();
     twoPointFunctionality();
+    heatMapFunctionality();
 
     const pageSize = d3.select("#page-size-field").property("value");
 
@@ -211,7 +206,7 @@ function saveChanges(e) {
     let titles = [];
     d3.select("#reorder-columns")
         .selectAll("td")
-        .each(function() {
+        .each(function () {
             if (
                 d3
                     .select(this)
@@ -224,10 +219,7 @@ function saveChanges(e) {
                     .select("i")
                     .attr("class") !== "bi bi-eye-slash-fill"
             ) {
-                let title = d3
-                    .select(this)
-                    .select(".center")
-                    .text();
+                let title = d3.select(this).select(".center").text();
                 let dataId = d3.select(this).attr("data-id");
                 let dataType = d3.select(this).attr("data-type");
                 titles.push({ id: dataId, type: dataType, title: title });
@@ -235,7 +227,9 @@ function saveChanges(e) {
         });
 
     createHeaderRow(titles);
-    const visibleDetails = titles.map(x => _.find(getDetails(), { id: x.id }));
+    const visibleDetails = titles.map((x) =>
+        _.find(getDetails(), { id: x.id })
+    );
 
     const widgetsPerRow = parseInt(
         d3.select("#widgets-per-row-dropdown").property("value")
@@ -246,69 +240,6 @@ function saveChanges(e) {
     shotTypeLegend();
     teamLegend();
     $("#details-modal").modal("hide"); // default js doesn't work for some reason
-}
-
-function twoPointFunctionality() {
-    function setOn() {
-        sessionStorage.setItem("shiftHeld", true);
-        d3.select("#two-point-toggle").property("checked", true);
-    }
-    function setOff() {
-        d3.select("#two-point-toggle").property("checked", false);
-        sessionStorage.setItem("shiftHeld", false);
-        sessionStorage.setItem("firstPoint", null);
-        d3.select("#ghost")
-            .selectAll("*")
-            .remove();
-    }
-    if (d3.select("#two-point-enable").property("checked")) {
-        d3.select("body")
-            .on("keydown", function(e) {
-                if (e.key === "Shift") {
-                    setOn();
-                }
-            })
-            .on("keyup", function(e) {
-                if (e.key === "Shift") {
-                    setOff();
-                }
-            });
-        d3.select(".two-point-toggle")
-            .selectAll("*")
-            .remove();
-        d3.select(".two-point-toggle")
-            .append("label")
-            .attr("class", "form-check-label")
-            .attr("for", "two-point-toggle")
-            .text("1-Location");
-        let toggle = d3
-            .select(".two-point-toggle")
-            .append("div")
-            .attr("class", "form-check form-switch");
-        toggle
-            .append("input")
-            .attr("class", "form-check-input")
-            .attr("type", "checkbox")
-            .attr("id", "two-point-toggle")
-            .on("click", () =>
-                d3.select("#two-point-toggle").property("checked")
-                    ? setOn()
-                    : setOff()
-            );
-        toggle
-            .append("label")
-            .attr("class", "form-check-label")
-            .attr("for", "two-point-toggle")
-            .text("2-Location");
-    } else {
-        setOff();
-        d3.select("body")
-            .on("keydown", null)
-            .on("keyup", null);
-        d3.select(".two-point-toggle")
-            .selectAll("*")
-            .remove();
-    }
 }
 
 function createExplainText(id = "#explain-text") {
@@ -355,10 +286,7 @@ function createExplainText(id = "#explain-text") {
         .text(
             "You can also enable switching between 1-location and 2-location events. When enabled, you can hold down the "
         );
-    twoPointText
-        .append("span")
-        .text("Shift")
-        .attr("class", "shift");
+    twoPointText.append("span").text("Shift").attr("class", "shift");
     twoPointText
         .append("span")
         .text(
@@ -380,6 +308,7 @@ function createExplainText(id = "#explain-text") {
         .text("GitHub");
     github.append("span").text(" page.");
 }
+
 function createAppearanceOptions(id = "#appearance-options") {
     const appearanceOptions = d3.select(id);
     appearanceOptions.append("h5").text("Appearance Options");
@@ -419,6 +348,35 @@ function createAppearanceOptions(id = "#appearance-options") {
         .append("span")
         .text("Widgets Per Panel Row")
         .attr("class", "widgets-dropdown-label");
+
+    let heatMapToggle = appearanceOptions
+        .append("div")
+        .attr("class", "form-check form-switch");
+    heatMapToggle
+        .append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "checkbox")
+        .attr("id", "heat-map-enable")
+        .on("click", function () {
+            if (d3.select(this).property("checked")) {
+                // is becoming checked on this click
+                d3.select("#two-point-enable").property("checked", false);
+                d3.select("#two-point-enable").property("disabled", true);
+            } else {
+                d3.select("#two-point-enable").property("disabled", false);
+            }
+        });
+    heatMapToggle
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "heat-map-enable")
+        .text("Heat Map View")
+        .append("span")
+        .attr("class", "smaller-text")
+        .text(
+            " - " +
+                `Switch between event dot and heat map view on playing area. Incompatible with 2-Location Events.`
+        );
 }
 
 function createSpecialDetailsOptions(id = "#special-details-options") {
@@ -444,6 +402,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
         default:
             scoringArea = "scoring area";
     }
+
     const sdList = [
         {
             id: "two-point-enable",
@@ -452,7 +411,15 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                 { type: "y", title: "Y2", id: "y2", noWidget: true },
             ],
             label: "2-Location Events",
-            description: "create events with 2 locations",
+            onChecked: () => {
+                d3.select("#heat-map-enable").property("checked", false);
+                d3.select("#heat-map-enable").property("disabled", true);
+            },
+            onUnchecked: () => {
+                d3.select("#heat-map-enable").property("disabled", false);
+            },
+            description:
+                "Create events with 2 locations. Incompatible with Heat Map View.",
         },
         {
             id: "distance-calc",
@@ -465,7 +432,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                 },
             ],
             label: "Distance",
-            description: `distance to closest ${scoringArea} for 1-location events; distance between locations for 2-location events`,
+            description: `Distance to closest ${scoringArea} for 1-location events; distance between locations for 2-location events`,
         },
     ];
 
@@ -480,12 +447,19 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                     noWidget: true,
                 },
             ],
-            description: `whether a shot would be worth 2 or 3 points`,
+            description: `Whether a shot would be worth 2 or 3 points.`,
             label: "Shot Value",
         });
     }
 
-    function createDetailToggle({ id, newDetails, label, description }) {
+    function createDetailToggle({
+        id,
+        newDetails,
+        label,
+        description,
+        onChecked,
+        onUnchecked,
+    }) {
         let detail = specialDetails
             .append("div")
             .attr("class", "form-check form-switch");
@@ -494,17 +468,23 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             .attr("class", "form-check-input")
             .attr("type", "checkbox")
             .attr("id", id)
-            .on("click", function() {
+            .on("click", function () {
                 let checked = d3.select("#" + id).property("checked");
                 if (checked) {
                     setDetails([...getDetails(), ...newDetails]);
+                    if (onChecked) {
+                        onChecked();
+                    }
                 } else {
                     setDetails(
-                        _.remove(getDetails(), d =>
+                        _.remove(getDetails(), (d) =>
                             // keep d if for all new details, d.id is not the same as nd.id
-                            newDetails.every(nd => nd.id !== d.id)
+                            newDetails.every((nd) => nd.id !== d.id)
                         )
                     );
+                    if (onUnchecked) {
+                        onUnchecked();
+                    }
                 }
                 createReorderColumns();
             });
