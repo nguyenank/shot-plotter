@@ -373,6 +373,20 @@
     <!-- inject:cardplayingarea -->
     <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <path
+        d="
+            M 0 8.5
+            A 8.5 8.5 0 0 1 8.5 0
+            L 51.5 0
+            A 8.5 8.5 0 0 1 60 8.5
+            L 60 21.5
+            A 8.5 8.5 0 0 1 51.5 30
+            L 8.5 30
+            A 8.5 8.5 0 0 1 0 21.5
+            L 0 8.5"
+            />
+    </clipPath>
     <path
       id="background"
       d="M 0 8.5
@@ -432,12 +446,12 @@
           stroke-width="0.05"/>
       </g>
       <g id="right-goalie-crease" transform="rotate(180, 30, 15)">
-          <path id="right-goal-crease" d="
+        <path id="right-goal-crease" d="
                     M 4 13.2
                     A 1.8 1.8 0 0 1 4 16.8" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
-          <path
-            id="right-goal-crease-markings"
-            d="
+        <path
+          id="right-goal-crease-markings"
+          d="
                     M 5.22 16.25
                     L 5.22 16.1
                     M 5.22 16.25
@@ -447,12 +461,12 @@
                     L 5.22 13.9
                     M 5.22 13.75
                     L 5.07 13.75"
-            stroke="#BE352A"
-            stroke-width="0.05"
-            fill="#E6F9FF"/>
-          <path
-            id="right-goal"
-            d="
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="#E6F9FF"/>
+        <path
+          id="right-goal"
+          d="
                     M 4 14.085
                     L 3.6 14.085
                     A 0.4 0.4 0 0 0 3.4 14.485
@@ -466,9 +480,9 @@
                     A 0.5 0.5 0 0 1 3.38 13.975
                     L 4 14.085
                     "
-            stroke="#777777"
-            fill="#fafafa"
-            stroke-width="0.05"/>
+          stroke="#777777"
+          fill="#fafafa"
+          stroke-width="0.05"/>
 
       </g>
     </g>
@@ -708,6 +722,18 @@
     <!-- inject:cardplayingarea -->
     <svg id ="floorball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <path d="
+      M 0 3
+      A 3 3 0 0 1 3 0
+      L 37 0
+      A 3 3 0 0 1 40 3
+      L 40 17
+      A 3 3 0 0 1 37 20
+      L 3 20
+      A 3 3 0 0 1 0 17
+      L 0 3" />
+    </clipPath>
     <path id="background" d="
     M 0 3
     A 3 3 0 0 1 3 0
@@ -813,6 +839,13 @@
     <!-- inject:cardplayingarea -->
     <svg id="handball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <path d="  M 0 0
+        L 40 0
+        L 40 20
+        L 0 20
+        Z"/>
+    </clipPath>
     <path id="background" d="
     M 0 0
     L 40 0
@@ -1034,8 +1067,10 @@
     <!-- inject:cardplayingarea -->
     <svg id="basketball-nba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect x="0" y="0" width="94" height="50">
+    </clipPath>
     <rect id="background" x="0" y="0" width="94" height="50" fill="#eacda6"></rect>
-    <!-- <rect id="outside-perimeter" x="0" y="0" width="94" height="50" stroke="black" fill="transparent" stroke-width="0.167"></rect> -->
     <g id="center">
       <circle id="outer-center-circle" cx="47" cy="25" r="6" stroke="#a5015b" stroke-width="0.167" fill="transparent"></circle>
       <circle id="inner-center-circle" cx="47" cy="25" r="2" stroke="#a5015b" stroke-width="0.167" fill="transparent"></circle>
@@ -1219,6 +1254,9 @@
     <!-- inject:cardplayingarea -->
     <svg id="basketball-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect x="0" y="0" width="94" height="50">
+    </clipPath>
     <rect id="background" x="0" y="0" width="94" height="50" fill="#eacda6"></rect>
     <g id="center">
       <circle id="outer-center-circle" cx="47" cy="25" r="6" stroke="#4350db" stroke-width="0.167" fill="#e2b983"></circle>
@@ -1378,6 +1416,9 @@
     <!-- inject:cardplayingarea -->
     <svg id="basketball-wnba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect x="0" y="0" width="94" height="50">
+    </clipPath>
     <rect id="background" x="0" y="0" width="94" height="50" fill="#e2b983"></rect>
     <g id="center">
       <circle id="outer-center-circle" cx="47" cy="25" r="6" stroke="#10750c" stroke-width="0.167" fill="#eacda6"></circle>
@@ -1563,6 +1604,9 @@
     <!-- inject:cardplayingarea -->
     <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55" id="football-nfl-svg">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="120" height="53.33333"/>
+    </clipPath>
     <g transform="scale(0.1963, 0.1963) translate(-55.72, -143.92)">
       <polygon points='55.72,423.25 361.37,423.25 361.37,143.92 55.72,143.92 55.72,423.25 667.02,423.25 361.37,423.25 361.37,143.92 667.02,143.92 667.02,423.25 ' style='stroke-width: 1.07; stroke: none; fill: #036602;'/>
       <polygon points='105.53,415.61 106.66,415.61 106.66,143.92 105.53,143.92 105.53,415.61 617.21,415.61 616.08,415.61 616.08,143.92 617.21,143.92 617.21,415.61 ' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;'/>
@@ -1839,6 +1883,9 @@
     <!-- inject:cardplayingarea -->
     <svg id="football-ncaa-svg" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="120" height="53.33333"/>
+    </clipPath>
     <g transform="scale(0.1963, 0.1963) translate(-55.72, -143.92)">
       <polygon points='55.72,423.25 361.37,423.25 361.37,143.92 55.72,143.92 55.72,423.25 667.02,423.25 361.37,423.25 361.37,143.92 667.02,143.92 667.02,423.25 ' style='stroke-width: 1.07; stroke: none; fill: #036602;'/>
       <polygon points='105.53,415.61 106.66,415.61 106.66,143.92 105.53,143.92 105.53,415.61 617.21,415.61 616.08,415.61 616.08,143.92 617.21,143.92 617.21,415.61 ' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;'/>

@@ -1,5 +1,12 @@
 <svg id="handball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <path d="  M 0 0
+        L 40 0
+        L 40 20
+        L 0 20
+        Z"/>
+    </clipPath>
     <path id="background" d="
     M 0 0
     L 40 0

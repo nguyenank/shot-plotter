@@ -5,11 +5,11 @@ export function setUpToggles() {
     const toggles = d3.select("#toggles");
     toggles
         .append("div")
-        .attr("class", "toggle-area")
+        .attr("class", "toggle-area center")
         .attr("id", "two-point-toggle-area");
     toggles
         .append("div")
-        .attr("class", "toggle-area")
+        .attr("class", "toggle-area center")
         .attr("id", "heat-map-toggle-area");
     twoPointFunctionality();
     heatMapFunctionality();

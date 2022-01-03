@@ -67,12 +67,26 @@
     <div id="details" class="shot-info"></div>
     <div class="center">
       <div>
-        <div class="center" id="toggles">
+        <div id="toggles">
         </div>
         <div id="playing-area">
           <!-- inject:playingarea -->
           <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <path
+        d="
+            M 0 8.5
+            A 8.5 8.5 0 0 1 8.5 0
+            L 51.5 0
+            A 8.5 8.5 0 0 1 60 8.5
+            L 60 21.5
+            A 8.5 8.5 0 0 1 51.5 30
+            L 8.5 30
+            A 8.5 8.5 0 0 1 0 21.5
+            L 0 8.5"
+            />
+    </clipPath>
     <path
       id="background"
       d="M 0 8.5
@@ -132,12 +146,12 @@
           stroke-width="0.05"/>
       </g>
       <g id="right-goalie-crease" transform="rotate(180, 30, 15)">
-          <path id="right-goal-crease" d="
+        <path id="right-goal-crease" d="
                     M 4 13.2
                     A 1.8 1.8 0 0 1 4 16.8" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
-          <path
-            id="right-goal-crease-markings"
-            d="
+        <path
+          id="right-goal-crease-markings"
+          d="
                     M 5.22 16.25
                     L 5.22 16.1
                     M 5.22 16.25
@@ -147,12 +161,12 @@
                     L 5.22 13.9
                     M 5.22 13.75
                     L 5.07 13.75"
-            stroke="#BE352A"
-            stroke-width="0.05"
-            fill="#E6F9FF"/>
-          <path
-            id="right-goal"
-            d="
+          stroke="#BE352A"
+          stroke-width="0.05"
+          fill="#E6F9FF"/>
+        <path
+          id="right-goal"
+          d="
                     M 4 14.085
                     L 3.6 14.085
                     A 0.4 0.4 0 0 0 3.4 14.485
@@ -166,9 +180,9 @@
                     A 0.5 0.5 0 0 1 3.38 13.975
                     L 4 14.085
                     "
-            stroke="#777777"
-            fill="#fafafa"
-            stroke-width="0.05"/>
+          stroke="#777777"
+          fill="#fafafa"
+          stroke-width="0.05"/>
 
       </g>
     </g>

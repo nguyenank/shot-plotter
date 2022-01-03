@@ -94,6 +94,9 @@ function createMainPage(id) {
 
     if (_.indexOf(cfgDefaultEnable, "two-location") !== -1) {
         d3.select("#two-point-enable").property("checked", true);
+        d3.select("#heat-map-enable")
+            .property("checked", false)
+            .property("disabled", true);
         twoPointFunctionality();
     }
 }
@@ -187,8 +190,8 @@ function createReorderColumns(id = "#reorder") {
 
 function saveChanges(e) {
     saveCurrentDetailSetup();
-    twoPointFunctionality();
     heatMapFunctionality();
+    twoPointFunctionality();
 
     const pageSize = d3.select("#page-size-field").property("value");
 
@@ -361,8 +364,9 @@ function createAppearanceOptions(id = "#appearance-options") {
         .on("click", function () {
             if (d3.select(this).property("checked")) {
                 // is becoming checked on this click
-                d3.select("#two-point-enable").property("checked", false);
-                d3.select("#two-point-enable").property("disabled", true);
+                d3.select("#two-point-enable")
+                    .property("checked", false)
+                    .property("disabled", true);
             } else {
                 d3.select("#two-point-enable").property("disabled", false);
             }
@@ -376,7 +380,7 @@ function createAppearanceOptions(id = "#appearance-options") {
         .attr("class", "smaller-text")
         .text(
             " - " +
-                `Switch between event dot and heat map view on playing area. Incompatible with 2-Location Events.`
+                `Switch between event dot and heat map view for playing area. Cannot add events in heat map view. Incompatible with 2-Location Events.`
         );
 }
 
