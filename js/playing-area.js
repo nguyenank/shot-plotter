@@ -23,6 +23,7 @@ function setUpPlayingArea() {
     let dots = d3
         .select("#playing-area")
         .select("#transformations")
+        .attr("clip-path", "url(#clipBorder)")
         .attr(
             "transform",
             "translate(10,10) scale(" + resize + "," + resize + ")"
@@ -34,7 +35,9 @@ function setUpPlayingArea() {
         dots.append("svg:g").attr("id", id);
     }
 
-    d3.select("#transformations").append("g").attr("id", "heat-map");
+    d3.select("#transformations")
+        .insert("g", "#outside-perimeter")
+        .attr("id", "heat-map");
 }
 
 export { setUpPlayingArea };

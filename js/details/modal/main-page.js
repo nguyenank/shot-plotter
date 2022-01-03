@@ -357,6 +357,7 @@ function createAppearanceOptions(id = "#appearance-options") {
         .attr("class", "form-check-input")
         .attr("type", "checkbox")
         .attr("id", "heat-map-enable")
+        .attr("checked", true)
         .on("click", function () {
             if (d3.select(this).property("checked")) {
                 // is becoming checked on this click

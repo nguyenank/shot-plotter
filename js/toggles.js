@@ -1,4 +1,5 @@
 import { getRows } from "./table/table-functions.js";
+import { perimeterId } from "../setup.js";
 
 export function setUpToggles() {
     const toggles = d3.select("#toggles");
@@ -72,10 +73,14 @@ export function twoPointFunctionality() {
 export function heatMapFunctionality() {
     function setOn() {
         d3.select("#heat-map-toggle").property("checked", true);
+        d3.select(perimeterId).attr("pointer-events", "none");
+        d3.select("#dots").attr("display", "none");
         heatMap();
     }
     function setOff() {
         d3.select("#heat-map-toggle").property("checked", false);
+        d3.select(perimeterId).attr("pointer-events", "auto");
+        d3.select("#dots").attr("display", "contents");
         d3.select("#heat-map").selectAll("*").remove();
     }
     if (d3.select("#heat-map-enable").property("checked")) {
@@ -115,34 +120,53 @@ export function heatMapFunctionality() {
 function heatMap() {
     d3.select("#heat-map").selectAll("*").remove();
 
-    const color = d3
-        .scaleLinear()
-        .domain([0, 0.01]) // Points per square pixel.
-        .range(["rgba(255, 255, 255, 0.3)", "rgba(234, 142, 72, 0.3)"]);
-
-    // Add X axis
+    function colorFunc(colorName) {
+        let color;
+        switch (colorName) {
+            case "blueTeam":
+                color = "rgba(53, 171, 169, 0.3)";
+                break;
+            case "orangeTeam":
+                color = "rgba(234, 142, 72, 0.3)";
+                break;
+            default:
+                color = "rgba(170, 170, 170, 0.3)";
+                break;
+        }
+        return d3
+            .scaleLinear()
+            .domain([0, 0.01]) // Points per square pixel.
+            .range(["rgba(255, 255, 255, 0.3)", color]);
+    }
 
     // compute the density data
     const data = _.map(getRows(), (r) => ({
+        team: r.specialData.teamColor,
         x: r.specialData.coords[0],
         y: r.specialData.coords[1],
     }));
-    const densityData = d3
-        .contourDensity()
-        .x((d) => {
-            return d.x;
-        })
-        .y((d) => d.y)
-        .bandwidth(5)(data);
 
-    d3.select("#heat-map")
-        .insert("g", "g")
-        .selectAll("path")
-        .data(densityData)
-        .enter()
-        .append("path")
-        .attr("d", d3.geoPath())
-        .attr("fill", function (d) {
-            return color(d.value);
-        });
+    const groupedData = _.groupBy(data, "team");
+
+    for (const color in groupedData) {
+        const colorRange = colorFunc(color);
+        const densityData = d3
+            .contourDensity()
+            .x((d) => {
+                return d.x;
+            })
+            .y((d) => d.y)
+            .bandwidth(5)(groupedData[color]);
+
+        d3.select("#heat-map")
+            .insert("g", "g")
+            .selectAll("path")
+            .data(densityData)
+            .enter()
+            .append("path")
+            .attr("d", d3.geoPath())
+            .attr("fill", function (d) {
+                return colorRange(d.value);
+            });
+    }
 }
