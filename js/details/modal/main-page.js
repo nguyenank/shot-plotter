@@ -387,7 +387,13 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
     specialDetails.append("h6").text("Special Details");
 
     let scoringArea;
+    let distanceDescription;
     switch (sport) {
+        case "volleyball-ncaa":
+        case "football-ncaa":
+        case "football-nfl":
+            distanceDescription = `Distance between locations for 2-location events.`;
+            break;
         case "basketball-nba":
         case "basketball-ncaa":
         case "basketball-wnba":
@@ -398,13 +404,13 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
         case "ice-hockey":
             scoringArea = "net";
             break;
-        case "football-ncaa":
-        case "football-nfl":
-            scoringArea = "end zone (center)";
-            break;
         default:
             scoringArea = "scoring area";
     }
+
+    distanceDescription = scoringArea
+        ? `Distance to closest ${scoringArea} for 1-location events; distance between locations for 2-location events.`
+        : distanceDescription;
 
     const sdList = [
         {
@@ -435,7 +441,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                 },
             ],
             label: "Distance",
-            description: `Distance to closest ${scoringArea} for 1-location events; distance between locations for 2-location events`,
+            description: distanceDescription,
         },
     ];
 
@@ -452,6 +458,22 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             ],
             description: `Whether a shot would be worth 2 or 3 points.`,
             label: "Shot Value",
+        });
+    }
+
+    if (_.startsWith(sport, "volleyball")) {
+        sdList.push({
+            id: "in-out",
+            newDetails: [
+                {
+                    type: "in-out",
+                    title: "In/Out",
+                    id: "in-out",
+                    noWidget: true,
+                },
+            ],
+            description: `Whether a ball is in or out.`,
+            label: "In/Out",
         });
     }
 

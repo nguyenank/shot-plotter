@@ -5,6 +5,7 @@
             "name": "Ice Hockey (NHL)",
             "units": "feet",
             "specifications": "National Hockey League (2020-2021)",
+            "dimensions": "200 x 85",
             "perimeter": "#outside-perimeter",
             "appearance": {
                 "width": "200",
@@ -72,6 +73,7 @@
             "name": "Ice Hockey (IIHF)",
             "units": "meters",
             "specifications": "International Ice Hockey Federation (2021-2022)",
+            "dimensions": "60 x 30",
             "perimeter": "#outside-perimeter",
             "appearance": {
                 "width": "60",
@@ -139,6 +141,7 @@
             "name": "Floorball",
             "units": "meters",
             "specifications": "International Floorball Federation (2018)",
+            "dimensions": "40 x 20",
             "appearance": {
                 "width": "40",
                 "height": "20",
@@ -268,10 +271,74 @@
             ]
         },
         {
+            "id": "volleyball-ncaa",
+            "name": "Volleyball (NCAA)",
+            "units": "meters",
+            "specifications": "National Collegiate Athletic Association (2020-2021)",
+            "dimensions": "18 x 9 (27 x 15 including free zone)",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "27",
+                "height": "15",
+                "circleR": "0.27",
+                "polyR": "0.33",
+                "fontSize": "0.02rem",
+                "strokeWidth": "0.067px",
+                "heatMapScale": 7.5
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Period",
+                    "id": "period",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "basketball-nba",
             "name": "Basketball (NBA)",
             "units": "feet",
             "specifications": "National Basketball Association (2020-2021)",
+            "dimensions": "94 x 50",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -339,6 +406,7 @@
             "name": "Basketball (NCAA)",
             "units": "feet",
             "specifications": "National Collegiate Athletic Association (2021-2022)",
+            "dimensions": "94 x 50",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -406,6 +474,7 @@
             "name": "Basketball (WNBA)",
             "units": "feet",
             "specifications": "Women's National Basketball Association (2021)",
+            "dimensions": "94 x 50",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -473,6 +542,7 @@
             "name": "Football (NFL)",
             "units": "yards",
             "specifications": "National Football League (2021)",
+            "dimensions": "120 x 53.33",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -483,10 +553,6 @@
                 "strokeWidth": "0.3px",
                 "heatMapScale": 1.67
             },
-            "goalCoords": [
-                [10, 26.665],
-                [110, 26.665]
-            ],
             "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
@@ -541,6 +607,7 @@
             "name": "Football (NCAA)",
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2021)",
+            "dimensions": "120 x 53.33",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -551,10 +618,6 @@
                 "strokeWidth": "0.3px",
                 "heatMapScale": 1.67
             },
-            "goalCoords": [
-                [10, 26.665],
-                [110, 26.665]
-            ],
             "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {

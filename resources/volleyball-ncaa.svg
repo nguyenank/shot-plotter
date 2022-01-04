@@ -1,0 +1,49 @@
+<svg id="volleyball-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 29 17">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <path d="M 0 0
+        L 27 0
+        L 27 15
+        L 0 15
+        Z"/>
+    </clipPath>
+    <path id="background" d="M 0 0
+      L 27 0
+      L 27 15
+      L 0 15
+      Z" fill="#2162b7"/>
+      <g id="court" transform="translate(4.5, 3)">
+        <path id="court-background" d="
+          M 0 0
+          L 18 0
+          L 18 9
+          L 0 9
+          Z" fill="#e2b983" stroke="white" stroke-width="0.05"/>
+        <line id="center-line" x1="9" y1="0" x2="9" y2="9" stroke="white" stroke-width="0.05" stroke-dasharray="0.1 0.05"/>
+        <line id="left-attack-line" x1="6" y1="0" x2="6" y2="9" stroke="white" stroke-width="0.05"/>
+        <line id="left-attack-line-top-extension" x1="6" y1="-1.75" x2="6" y2="0" stroke="white" stroke-width="0.05" stroke-dasharray="0.15 0.2"/>
+        <line id="left-attack-line-bottom-extension" x1="6" y1="10.75" x2="6" y2="9" stroke="white" stroke-width="0.05" stroke-dasharray="0.15 0.2"/>
+
+        <line id="right-attack-line" x1="12" y1="0" x2="12" y2="9" stroke="white" stroke-width="0.05"/>
+        <line id="right-attack-line-top-extension" x1="12" y1="-1.75" x2="12" y2="0" stroke="white" stroke-width="0.05" stroke-dasharray="0.15 0.2"/>
+        <line id="right-attack-line-bottom-extension" x1="12" y1="10.75" x2="12" y2="9" stroke="white" stroke-width="0.05" stroke-dasharray="0.15 0.2"/>
+
+        <path id="service-zone-extensions" d="
+            M -0.2 0
+            L -0.35 0
+            M -0.2 9
+            L -0.35 9
+            M 18.2 0
+            L 18.35 0
+            M 18.2 9
+            L 18.35 9" stroke="white" stroke-width="0.05" fill="transparent"/>
+
+        <path id="court-edges" d="
+          M 0 0
+          L 18 0
+          L 18 9
+          L 0 9
+          Z" fill="transparent" stroke="white" stroke-width="0.05"/>
+      </g>
+  </g>
+</svg>

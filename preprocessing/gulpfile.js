@@ -28,7 +28,7 @@ function card(sport) {
                 context: {
                     ID: sport.id,
                     NAME: sport.name,
-                    DIMS: `${sport.appearance.width} x ${sport.appearance.height}`,
+                    DIMS: sport.dimensions,
                     UNITS: sport.units,
                     SPECS: sport.specifications,
                 },

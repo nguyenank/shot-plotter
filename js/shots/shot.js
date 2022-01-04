@@ -175,13 +175,17 @@ function createShotFromEvent(e, point1) {
                         .toFixed(2);
                 } else {
                     // else if 1 coordinate event, record distance to nearest goal
-                    rowData[col.id] = math
-                        .min(
-                            _.map(cfgSportGoalCoords, (g) =>
-                                math.distance(g, specialData["coords"])
+                    if (cfgSportGoalCoords) {
+                        rowData[col.id] = math
+                            .min(
+                                _.map(cfgSportGoalCoords, (g) =>
+                                    math.distance(g, specialData["coords"])
+                                )
                             )
-                        )
-                        .toFixed(2);
+                            .toFixed(2);
+                    } else {
+                        rowData[col.id] = "";
+                    }
                 }
                 break;
             case "value-calc":
@@ -189,7 +193,8 @@ function createShotFromEvent(e, point1) {
                     e.target.id === "left-arc" || e.target.id === "right-arc"
                         ? 2
                         : 3;
-
+            case "in-out":
+                rowData[col.id] = e.target.id === "court-edges" ? "In" : "Out";
             default:
                 continue;
         }
