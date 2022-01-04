@@ -48,7 +48,7 @@ function getHeaderRow() {
     d3.select("#shot-table")
         .select("thead")
         .selectAll("th")
-        .each(function() {
+        .each(function () {
             let dataId = d3.select(this).attr("data-id");
             let dataType = d3.select(this).attr("data-type");
             l.push({ id: dataId, type: dataType });
@@ -65,18 +65,14 @@ function clearTable() {
 
     d3.select("#customize-btn").classed("uninteractable", false);
 
-    d3.select("#shot-table-body")
-        .selectAll("tr")
-        .remove();
+    d3.select("#shot-table-body").selectAll("tr").remove();
 
     let dots = d3.select("#playing-area").select("#dots");
 
-    dots.select("#normal")
-        .selectAll("*")
-        .remove();
-    dots.select("#selected")
-        .selectAll("*")
-        .remove();
+    dots.select("#normal").selectAll("*").remove();
+    dots.select("#selected").selectAll("*").remove();
+
+    d3.select("#heat-map").selectAll("*").remove();
 }
 
 export {

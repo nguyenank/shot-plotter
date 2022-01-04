@@ -136,8 +136,6 @@ export function twoPointFunctionality() {
 
 export function heatMapFunctionality() {
     function setOn() {
-        d3.select("#heat-map-toggle").property("checked", true);
-        d3.select(perimeterId).attr("pointer-events", "none");
         d3.select("#dots").attr("display", "none");
         heatMap();
         if (existsDetail("#team")) {
@@ -146,8 +144,6 @@ export function heatMapFunctionality() {
         }
     }
     function setOff() {
-        d3.select("#heat-map-toggle").property("checked", false);
-        d3.select(perimeterId).attr("pointer-events", "auto");
         d3.select("#dots").attr("display", "contents");
         d3.select("#heat-map").selectAll("*").remove();
         d3.select("#heat-map-team-select").style("display", "none");
@@ -187,7 +183,7 @@ export function heatMapFunctionality() {
     }
 }
 
-function heatMap() {
+export function heatMap() {
     d3.select("#heat-map").selectAll("*").remove();
 
     // compute the density data
