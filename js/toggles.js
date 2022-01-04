@@ -179,7 +179,7 @@ export function heatMapFunctionality() {
     } else {
         setOff();
         d3.select("#heat-map-toggle-area").selectAll("*").remove();
-        d3.select("#heat-map-team-select").selectAll("*").remove();
+        d3.select("#heat-map-team-select").style("display", "none");
     }
 }
 

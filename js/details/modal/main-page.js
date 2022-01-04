@@ -360,7 +360,6 @@ function createAppearanceOptions(id = "#appearance-options") {
         .attr("class", "form-check-input")
         .attr("type", "checkbox")
         .attr("id", "heat-map-enable")
-        .attr("checked", true)
         .on("change", function () {
             if (d3.select(this).property("checked")) {
                 d3.select("#two-point-enable")
