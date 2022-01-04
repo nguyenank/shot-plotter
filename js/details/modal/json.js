@@ -56,7 +56,7 @@ function uploadJSON(id, uploadId, e) {
                         "value",
                         json.rowsPerPage ? json.rowsPerPage : 10
                     );
-                    d3.select("heat-map-enable").property(
+                    d3.select("#heat-map-enable").property(
                         "checked",
                         json.heatMapView ? json.heatMapView : false
                         // TODO: do the disable stuff for two-point & heat map here too
@@ -69,11 +69,26 @@ function uploadJSON(id, uploadId, e) {
 
                 setDetails(details);
                 createReorderColumns("#reorder");
-                if (_.find(details, { id: "x2" })) {
-                    d3.select("#two-point-enable").property("checked", true);
-                } else {
-                    d3.select("#two-point-enable").property("checked", false);
+                const detailToggles = [
+                    { id: "x2", selector: "#two-point-enable" },
+                    { id: "distance-calc", selector: "#distance-calc" },
+                    { id: "value-calc", selector: "#value-calc" },
+                ];
+                for (const detailToggle of detailToggles) {
+                    if (_.find(details, { id: detailToggle.id })) {
+                        d3.select(detailToggle.selector).property(
+                            "checked",
+                            true
+                        );
+                    } else {
+                        d3.select(detailToggle.selector).property(
+                            "checked",
+                            false
+                        );
+                    }
                 }
+                setDetails(details);
+                createReorderColumns("#reorder");
             });
         }
     } else {
