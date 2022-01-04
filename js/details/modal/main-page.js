@@ -361,9 +361,8 @@ function createAppearanceOptions(id = "#appearance-options") {
         .attr("type", "checkbox")
         .attr("id", "heat-map-enable")
         .attr("checked", true)
-        .on("click", function () {
+        .on("change", function () {
             if (d3.select(this).property("checked")) {
-                // is becoming checked on this click
                 d3.select("#two-point-enable")
                     .property("checked", false)
                     .property("disabled", true);
@@ -380,7 +379,7 @@ function createAppearanceOptions(id = "#appearance-options") {
         .attr("class", "smaller-text")
         .text(
             " - " +
-                `Switch between event dot and heat map view for playing area. Cannot add events in heat map view. Incompatible with 2-Location Events.`
+                `Switch between event dot and heat map view for playing area. Incompatible with 2-Location Events.`
         );
 }
 

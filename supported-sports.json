@@ -71,7 +71,7 @@
             "id": "ice-hockey-iihf",
             "name": "Ice Hockey (IIHF)",
             "units": "meters",
-            "specifications": "International Ice Hockey Federation (2014-2018)",
+            "specifications": "International Ice Hockey Federation (2021-2022)",
             "perimeter": "#outside-perimeter",
             "appearance": {
                 "width": "60",
