@@ -13,7 +13,9 @@
                 "polyR": "2.5",
                 "fontSize": "0.15rem",
                 "strokeWidth": "0.5px",
-                "heatMapScale": 1
+                "heatMapScale": 1,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
             },
             "goalCoords": [
                 [11, 42.5],
@@ -80,7 +82,9 @@
                 "polyR": "0.8",
                 "fontSize": "0.045rem",
                 "strokeWidth": "0.15px",
-                "heatMapScale": 3.33
+                "heatMapScale": 3.33,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
             },
             "goalCoords": [
                 [4, 15],
@@ -146,7 +150,9 @@
                 "polyR": "0.5",
                 "fontSize": "0.03rem",
                 "strokeWidth": "0.075px",
-                "heatMapScale": 5
+                "heatMapScale": 5,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
             },
             "perimeter": "#outside-perimeter",
             "goalCoords": [
@@ -214,7 +220,9 @@
                 "polyR": "0.5",
                 "fontSize": "0.03rem",
                 "strokeWidth": "0.075px",
-                "heatMapScale": 5
+                "heatMapScale": 5,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
             },
             "goalCoords": [
                 [0, 10],
@@ -280,7 +288,9 @@
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px",
-                "heatMapScale": 2
+                "heatMapScale": 2,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
             },
             "goalCoords": [
                 [5.25, 25],
@@ -347,7 +357,9 @@
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px",
-                "heatMapScale": 2
+                "heatMapScale": 2,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
             },
             "goalCoords": [
                 [5.25, 25],
@@ -414,7 +426,9 @@
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px",
-                "heatMapScale": 2
+                "heatMapScale": 2,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
             },
             "goalCoords": [
                 [5.25, 25],
@@ -481,7 +495,10 @@
                 "polyR": "1.5",
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px",
-                "heatMapScale": 1.67
+                "heatMapScale": 1.67,
+                "heatMapLowOpacity": 0.05,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
             },
             "goalCoords": [
                 [10, 26.665],
@@ -549,7 +566,9 @@
                 "polyR": "1.5",
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px",
-                "heatMapScale": 1.67
+                "heatMapScale": 1.67,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
             },
             "goalCoords": [
                 [10, 26.665],
