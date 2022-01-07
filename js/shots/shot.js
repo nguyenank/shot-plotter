@@ -193,8 +193,11 @@ function createShotFromEvent(e, point1) {
                     e.target.id === "left-arc" || e.target.id === "right-arc"
                         ? 2
                         : 3;
+                break;
             case "in-out":
-                rowData[col.id] = e.target.id === "court-edges" ? "In" : "Out";
+                rowData[col.id] =
+                    e.target.id === "outside-perimeter" ? "In" : "Out";
+                break;
             default:
                 continue;
         }

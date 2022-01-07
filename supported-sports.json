@@ -280,8 +280,8 @@
             ]
         },
         {
-            "id": "volleyball-ncaa",
-            "name": "Volleyball (NCAA)",
+            "id": "volleyball",
+            "name": "Volleyball",
             "units": "meters",
             "specifications": "National Collegiate Athletic Association (2020-2021)",
             "dimensions": "18 x 9 (27 x 15 including free zone)",
