@@ -194,20 +194,22 @@ export function heatMap() {
     }));
 
     function colorFunc(colorName) {
+        const lowOpacity = cfgSportA.heatMapLowOpacity;
+        const highOpacity = cfgSportA.heatMapHighOpacity;
         let color;
         let bgColor;
         switch (colorName) {
             case "blueTeam":
-                bgColor = "rgba(53, 171, 169, 0.01)";
-                color = "rgba(53, 171, 169, 0.2)";
+                bgColor = `rgba(53, 171, 169, ${lowOpacity})`;
+                color = `rgba(53, 171, 169, ${highOpacity})`;
                 break;
             case "orangeTeam":
-                bgColor = "rgba(234, 142, 72, 0.01)";
-                color = "rgba(234, 142, 72, 0.2)";
+                bgColor = `rgba(234, 142, 72, ${lowOpacity})`;
+                color = `rgba(234, 142, 72, ${highOpacity})`;
                 break;
             default:
-                bgColor = "rgba(170, 170, 170, 0.01)";
-                color = "rgba(170, 170, 170, 0.2)";
+                bgColor = `rgba(170, 170, 170, ${lowOpacity})`;
+                color = `rgba(170, 170, 170, ${highOpacity})`;
                 break;
         }
         return d3
@@ -229,7 +231,7 @@ export function heatMap() {
                 return d.x * scale;
             })
             .y((d) => d.y * scale)
-            .thresholds(20)
+            .thresholds(10)
             .cellSize(2)
             .bandwidth(4)(groupedData[color]);
         d3.select("#heat-map")
