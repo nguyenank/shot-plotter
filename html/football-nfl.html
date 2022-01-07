@@ -4,8 +4,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg">
-  <link rel="mask-icon" href="/resources/favicon.svg" color="red">
+  <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg" />
+  <link rel="mask-icon" href="/resources/favicon.svg" color="red" />
 
   <title>Shot-Plotter</title>
 
@@ -55,6 +55,12 @@
 </head>
 
 <body>
+  <!-- inject:banner -->
+  <div class="alert alert-info" role="alert">
+  <b>01/07/22:</b> Heat maps (2D density plots) are now available! Switch between traditional, event dot view and a new view that shows event location density for each team. To enable this feature, click
+  <u>Customize Setup</u> in the details panel.
+</div>
+  <!-- endinject -->
   <div class="center header">
     <h1>Shot-Plotter</h1>
   </div>
@@ -68,13 +74,15 @@
     <div id="details" class="shot-info"></div>
     <div class="center">
       <div>
-        <div class="center">
-          <div class="two-point-toggle"></div>
+        <div id="toggles">
         </div>
         <div id="playing-area">
           <!-- inject:playingarea -->
           <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55" id="football-nfl-svg">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="120" height="53.33333"/>
+    </clipPath>
     <g transform="scale(0.1963, 0.1963) translate(-55.72, -143.92)">
       <polygon points='55.72,423.25 361.37,423.25 361.37,143.92 55.72,143.92 55.72,423.25 667.02,423.25 361.37,423.25 361.37,143.92 667.02,143.92 667.02,423.25 ' style='stroke-width: 1.07; stroke: none; fill: #036602;'/>
       <polygon points='105.53,415.61 106.66,415.61 106.66,143.92 105.53,143.92 105.53,415.61 617.21,415.61 616.08,415.61 616.08,143.92 617.21,143.92 617.21,415.61 ' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;'/>
@@ -343,8 +351,10 @@
     Website built by An Nguyen primarily using D3.js. Source code and
     details on how to use the app are available on
     <a href="https://github.com/nguyenank/shot-plotter">Github</a>.
-    Playing area made using <a href="https://github.com/rossdrucker/sportyR">sportyR</a>,
-    an R package by <a href="https://twitter.com/rossdrucker9">Ross Drucker</a>.
+    Playing area made using
+    <a href="https://github.com/rossdrucker/sportyR">sportyR</a>, an R
+    package by
+    <a href="https://twitter.com/rossdrucker9">Ross Drucker</a>.
     Contact me with bugs/feedback/suggestions/etc. on
     <a href="https://twitter.com/nguyenank_">Twitter</a> or by
     <a id="email" href="">email</a>.

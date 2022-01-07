@@ -11,6 +11,7 @@ import {
     getRowsPerPage,
 } from "./table-functions.js";
 import { updateTableFooter, createPage } from "./table.js";
+import { heatMap } from "../toggles.js";
 import { dotSizeHandler } from "../shots/dot.js";
 import { cfgAppearance } from "../config-appearance.js";
 import { cfgSportA } from "../../setup.js";
@@ -42,9 +43,7 @@ function createNewRow(id, rowData, specialData) {
         setStartRow(startRow);
         setEndRow(numRows);
 
-        d3.select("#shot-table-body")
-            .selectAll("tr")
-            .remove();
+        d3.select("#shot-table-body").selectAll("tr").remove();
 
         createPage(startRow, numRows, id);
     }
@@ -71,10 +70,10 @@ function createRowFromData(
         .attr("type", "checkbox")
         .attr("value", id)
         .attr("id", id)
-        .on("change", function() {
+        .on("change", function () {
             const checked = d3.select(this).property("checked");
             setRows(
-                getRows().map(function(row) {
+                getRows().map(function (row) {
                     if (row.id === id) {
                         row.selected = checked;
                     }
@@ -84,11 +83,11 @@ function createRowFromData(
             selectHandler(id, checked, teamColor, typeIndex !== 0);
         });
 
-    let headerRow = getHeaderRow().map(item => item.id);
+    let headerRow = getHeaderRow().map((item) => item.id);
     _.pull(headerRow, null);
 
     // row data
-    headerRow.forEach(item => {
+    headerRow.forEach((item) => {
         if (item === "shot-number") {
             row.append("th")
                 .attr("scope", "col")
@@ -109,9 +108,7 @@ function createRowFromData(
     row.attr("selected", false);
 
     if (selected) {
-        row.select("input")
-            .property("checked", true)
-            .dispatch("change");
+        row.select("input").property("checked", true).dispatch("change");
     } else if (newRow) {
         // animate changing color when new row is added
         const t = d3.transition().duration(cfgAppearance.newRowDuration);
@@ -123,7 +120,7 @@ function createRowFromData(
 function deleteHandler(id) {
     event.stopPropagation();
     setRows(
-        _.differenceBy(getRows(), [{ id: id }], "id").map(function(x, i) {
+        _.differenceBy(getRows(), [{ id: id }], "id").map(function (x, i) {
             x.rowData["shot-number"] = i + 1;
             return x;
         })
@@ -174,7 +171,7 @@ function deleteHandler(id) {
         .select("[id='" + id + "']")
         .transition(t)
         .remove();
-
+    heatMap();
     createPage(getStartRow(), getEndRow());
 }
 

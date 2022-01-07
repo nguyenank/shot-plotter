@@ -4,8 +4,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg">
-  <link rel="mask-icon" href="/resources/favicon.svg" color="red">
+  <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg" />
+  <link rel="mask-icon" href="/resources/favicon.svg" color="red" />
 
   <title>Shot-Plotter</title>
 
@@ -54,6 +54,12 @@
 </head>
 
 <body>
+  <!-- inject:banner -->
+  <div class="alert alert-info" role="alert">
+  <b>01/07/22:</b> Heat maps (2D density plots) are now available! Switch between traditional, event dot view and a new view that shows event location density for each team. To enable this feature, click
+  <u>Customize Setup</u> in the details panel.
+</div>
+  <!-- endinject -->
   <div class="center header">
     <h1>Shot-Plotter</h1>
   </div>
@@ -67,13 +73,15 @@
     <div id="details" class="shot-info"></div>
     <div class="center">
       <div>
-        <div class="center">
-          <div class="two-point-toggle"></div>
+        <div id="toggles">
         </div>
         <div id="playing-area">
           <!-- inject:playingarea -->
           <svg id="basketball-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect x="0" y="0" width="94" height="50">
+    </clipPath>
     <rect id="background" x="0" y="0" width="94" height="50" fill="#eacda6"></rect>
     <g id="center">
       <circle id="outer-center-circle" cx="47" cy="25" r="6" stroke="#4350db" stroke-width="0.167" fill="#e2b983"></circle>

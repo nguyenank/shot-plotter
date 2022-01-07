@@ -1,5 +1,19 @@
 <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <path
+        d="
+            M 0 8.5
+            A 8.5 8.5 0 0 1 8.5 0
+            L 51.5 0
+            A 8.5 8.5 0 0 1 60 8.5
+            L 60 21.5
+            A 8.5 8.5 0 0 1 51.5 30
+            L 8.5 30
+            A 8.5 8.5 0 0 1 0 21.5
+            L 0 8.5"
+            />
+    </clipPath>
     <path
       id="background"
       d="M 0 8.5
@@ -20,21 +34,23 @@
               L 30 30" stroke="#BE352A" stroke-width="0.3"/>
     <g id="goal-creases">
       <g id="left-goalie-crease">
+        <path id="left-trapezoid" d="
+                  M 4 11.6
+                  L 0 10.7
+                  M 4 18.4
+                  L 0 19.3" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
         <path id="left-goal-crease" d="
-                  M 4 13.2
-                  A 1.8 1.8 0 0 1 4 16.8" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
+                  M 4 13.775
+                  L 5.36 13.775
+                  A 1.83 1.83 0 0 1 5.36 16.225
+                  L 4 16.225" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
         <path
           id="left-goal-crease-markings"
           d="
-                  M 5.22 16.25
-                  L 5.22 16.1
-                  M 5.22 16.25
-                  L 5.07 16.25
-
-                  M 5.22 13.75
-                  L 5.22 13.9
-                  M 5.22 13.75
-                  L 5.07 13.75"
+                  M 5.22 13.775
+                  L 5.22 13.975
+                  M 5.22 16.225
+                  L 5.22 16.025"
           stroke="#BE352A"
           stroke-width="0.05"
           fill="#E6F9FF"/>
@@ -59,21 +75,23 @@
           stroke-width="0.05"/>
       </g>
       <g id="right-goalie-crease" transform="rotate(180, 30, 15)">
+          <path id="right-trapezoid" d="
+                    M 4 11.6
+                    L 0 10.7
+                    M 4 18.4
+                    L 0 19.3" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
           <path id="right-goal-crease" d="
-                    M 4 13.2
-                    A 1.8 1.8 0 0 1 4 16.8" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
+                    M 4 13.775
+                    L 5.36 13.775
+                    A 1.83 1.83 0 0 1 5.36 16.225
+                    L 4 16.225" stroke="#BE352A" stroke-width="0.05" fill="#D5E2F2"/>
           <path
             id="right-goal-crease-markings"
             d="
-                    M 5.22 16.25
-                    L 5.22 16.1
-                    M 5.22 16.25
-                    L 5.07 16.25
-
-                    M 5.22 13.75
-                    L 5.22 13.9
-                    M 5.22 13.75
-                    L 5.07 13.75"
+                    M 5.22 13.775
+                    L 5.22 13.975
+                    M 5.22 16.225
+                    L 5.22 16.025"
             stroke="#BE352A"
             stroke-width="0.05"
             fill="#E6F9FF"/>
@@ -96,7 +114,6 @@
             stroke="#777777"
             fill="#fafafa"
             stroke-width="0.05"/>
-
       </g>
     </g>
     <g id="goal-lines">

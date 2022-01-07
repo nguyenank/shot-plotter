@@ -1,5 +1,8 @@
 <svg id="football-ncaa-svg" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55">
   <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="120" height="53.33333"/>
+    </clipPath>
     <g transform="scale(0.1963, 0.1963) translate(-55.72, -143.92)">
       <polygon points='55.72,423.25 361.37,423.25 361.37,143.92 55.72,143.92 55.72,423.25 667.02,423.25 361.37,423.25 361.37,143.92 667.02,143.92 667.02,423.25 ' style='stroke-width: 1.07; stroke: none; fill: #036602;'/>
       <polygon points='105.53,415.61 106.66,415.61 106.66,143.92 105.53,143.92 105.53,415.61 617.21,415.61 616.08,415.61 616.08,143.92 617.21,143.92 617.21,415.61 ' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;'/>

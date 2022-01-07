@@ -1,4 +1,5 @@
 import { cfgDetails } from "../config-details.js";
+import { regenHeatMapTeamNames } from "../../toggles.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
 
 function createTooltip({ id, title, text }) {
@@ -11,12 +12,12 @@ function createTooltip({ id, title, text }) {
         .text(text);
     d3.select(id)
         .selectAll("h3")
-        .each(function() {
+        .each(function () {
             let h = d3.select(this);
             if (h.text() === title) {
                 h.append("i")
                     .attr("class", "bi bi-info-circle")
-                    .on("mouseover", function(e) {
+                    .on("mouseover", function (e) {
                         tooltip
                             .transition()
                             .duration(200)
@@ -24,7 +25,7 @@ function createTooltip({ id, title, text }) {
                             .style("left", e.pageX + 10 + "px")
                             .style("top", e.pageY - 28 + "px");
                     })
-                    .on("mouseout", function() {
+                    .on("mouseout", function () {
                         tooltip
                             .transition()
                             .duration(200)
@@ -60,7 +61,10 @@ function teamRadioButtons(id, data) {
         .attr("type", "text")
         .attr("id", "blue-team-name")
         .attr("value", data.blueTeamName)
-        .on("change", () => teamLegend());
+        .on("change", () => {
+            teamLegend();
+            regenHeatMapTeamNames();
+        });
 
     let orangeDiv = wrapper.append("div").attr("class", "form-check");
     orangeDiv
@@ -75,7 +79,10 @@ function teamRadioButtons(id, data) {
         .attr("type", "text")
         .attr("id", "orange-team-name")
         .attr("value", data.orangeTeamName)
-        .on("change", () => teamLegend());
+        .on("change", () => {
+            teamLegend();
+            regenHeatMapTeamNames();
+        });
 
     wrapper.select("#" + data.checked).attr("checked", true);
 }
@@ -93,15 +100,13 @@ function select2Dropdown() {
         .select2({
             tags: true,
         })
-        .on("change", function(e) {
+        .on("change", function (e) {
             // update legend
             shotTypeLegend();
 
             // https://stackoverflow.com/a/54047075
             // do not delete new options
-            $(this)
-                .find("option")
-                .removeAttr("data-select2-tag");
+            $(this).find("option").removeAttr("data-select2-tag");
         });
     $("#example-select").select2({
         dropdownParent: $(".cards"),

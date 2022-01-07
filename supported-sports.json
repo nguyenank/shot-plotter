@@ -12,7 +12,10 @@
                 "circleR": "2",
                 "polyR": "2.5",
                 "fontSize": "0.15rem",
-                "strokeWidth": "0.5px"
+                "strokeWidth": "0.5px",
+                "heatMapScale": 1,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
             },
             "goalCoords": [
                 [11, 42.5],
@@ -70,7 +73,7 @@
             "id": "ice-hockey-iihf",
             "name": "Ice Hockey (IIHF)",
             "units": "meters",
-            "specifications": "International Ice Hockey Federation (2014-2018)",
+            "specifications": "International Ice Hockey Federation (2021-2022)",
             "perimeter": "#outside-perimeter",
             "appearance": {
                 "width": "60",
@@ -78,7 +81,10 @@
                 "circleR": "0.6",
                 "polyR": "0.8",
                 "fontSize": "0.045rem",
-                "strokeWidth": "0.15px"
+                "strokeWidth": "0.15px",
+                "heatMapScale": 3.33,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
             },
             "goalCoords": [
                 [4, 15],
@@ -143,7 +149,10 @@
                 "circleR": "0.4",
                 "polyR": "0.5",
                 "fontSize": "0.03rem",
-                "strokeWidth": "0.075px"
+                "strokeWidth": "0.075px",
+                "heatMapScale": 5,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
             },
             "perimeter": "#outside-perimeter",
             "goalCoords": [
@@ -210,7 +219,10 @@
                 "circleR": "0.4",
                 "polyR": "0.5",
                 "fontSize": "0.03rem",
-                "strokeWidth": "0.075px"
+                "strokeWidth": "0.075px",
+                "heatMapScale": 5,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
             },
             "goalCoords": [
                 [0, 10],
@@ -275,7 +287,10 @@
                 "circleR": "1",
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
-                "strokeWidth": "0.25px"
+                "strokeWidth": "0.25px",
+                "heatMapScale": 2,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
             },
             "goalCoords": [
                 [5.25, 25],
@@ -341,7 +356,10 @@
                 "circleR": "1",
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
-                "strokeWidth": "0.25px"
+                "strokeWidth": "0.25px",
+                "heatMapScale": 2,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
             },
             "goalCoords": [
                 [5.25, 25],
@@ -407,7 +425,10 @@
                 "circleR": "1",
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
-                "strokeWidth": "0.25px"
+                "strokeWidth": "0.25px",
+                "heatMapScale": 2,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
             },
             "goalCoords": [
                 [5.25, 25],
@@ -473,7 +494,11 @@
                 "circleR": "1.2",
                 "polyR": "1.5",
                 "fontSize": "0.09rem",
-                "strokeWidth": "0.3px"
+                "strokeWidth": "0.3px",
+                "heatMapScale": 1.67,
+                "heatMapLowOpacity": 0.05,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
             },
             "goalCoords": [
                 [10, 26.665],
@@ -540,7 +565,10 @@
                 "circleR": "1.2",
                 "polyR": "1.5",
                 "fontSize": "0.09rem",
-                "strokeWidth": "0.3px"
+                "strokeWidth": "0.3px",
+                "heatMapScale": 1.67,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
             },
             "goalCoords": [
                 [10, 26.665],

@@ -12,28 +12,24 @@ function setUpJSONDownloadUpload(id) {
     uploadArea(
         id,
         "json-upload",
-        e => uploadJSON(id, "#json-upload", e),
+        (e) => uploadJSON(id, "#json-upload", e),
         "Only .json files are allowed."
     );
 }
 
 function downloadJSON(id) {
-    let fileName = d3
-        .select(id)
-        .select(".download-name")
-        .property("value");
+    let fileName = d3.select(id).select(".download-name").property("value");
     if (!fileName) {
         fileName =
-            d3
-                .select(id)
-                .select(".download-name")
-                .attr("placeholder") + ".json";
+            d3.select(id).select(".download-name").attr("placeholder") +
+            ".json";
     }
     saveCurrentDetailSetup();
     const json = {
         details: getDetails(),
         rowsPerPage: d3.select("#page-size-field").property("value"),
         widgetsPerRow: d3.select("#widgets-per-row-dropdown").property("value"),
+        heatMapView: d3.select("#heat-map-enable").property("checked"),
     };
     download(JSON.stringify(json, null, 2), fileName, "application/json");
 }
@@ -44,14 +40,10 @@ function uploadJSON(id, uploadId, e) {
         if (f) {
             // change text and wipe value to allow for same file upload
             // while preserving name
-            d3.select(id)
-                .select(".upload-name-text")
-                .text(f.name);
-            d3.select(id)
-                .select(".upload")
-                .property("value", "");
+            d3.select(id).select(".upload-name-text").text(f.name);
+            d3.select(id).select(".upload").property("value", "");
             // TODO: some actual input sanitization
-            f.text().then(function(text) {
+            f.text().then(function (text) {
                 let json = JSON.parse(text);
                 let details;
                 if (Array.isArray(json)) {
@@ -64,6 +56,11 @@ function uploadJSON(id, uploadId, e) {
                         "value",
                         json.rowsPerPage ? json.rowsPerPage : 10
                     );
+                    d3.select("#heat-map-enable").property(
+                        "checked",
+                        json.heatMapView ? json.heatMapView : false
+                        // TODO: do the disable stuff for two-point & heat map here too
+                    );
                     $("#widgets-per-row-dropdown").val(
                         json.widgetsPerRow ? json.widgetsPerRow : "2"
                     );
@@ -72,17 +69,30 @@ function uploadJSON(id, uploadId, e) {
 
                 setDetails(details);
                 createReorderColumns("#reorder");
-                if (_.find(details, { id: "x2" })) {
-                    d3.select("#two-point-enable").property("checked", true);
-                } else {
-                    d3.select("#two-point-enable").property("checked", false);
+                const detailToggles = [
+                    { id: "x2", selector: "#two-point-enable" },
+                    { id: "distance-calc", selector: "#distance-calc" },
+                    { id: "value-calc", selector: "#value-calc" },
+                ];
+                for (const detailToggle of detailToggles) {
+                    if (_.find(details, { id: detailToggle.id })) {
+                        d3.select(detailToggle.selector).property(
+                            "checked",
+                            true
+                        );
+                    } else {
+                        d3.select(detailToggle.selector).property(
+                            "checked",
+                            false
+                        );
+                    }
                 }
+                setDetails(details);
+                createReorderColumns("#reorder");
             });
         }
     } else {
-        d3.select(id)
-            .select("#json-upload")
-            .classed("is-invalid", true);
+        d3.select(id).select("#json-upload").classed("is-invalid", true);
     }
 }
 

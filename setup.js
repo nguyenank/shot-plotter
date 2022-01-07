@@ -1,6 +1,7 @@
 import { setUpPlayingArea } from "./js/playing-area.js";
 import { setUpDetailsPanel } from "./js/details/details-panel.js";
 import { setDetails, getDetails } from "./js/details/details-functions.js";
+import { setUpToggles } from "./js/toggles.js";
 import { setUpShots } from "./js/shots/shot.js";
 import { setUpTable } from "./js/table/table.js";
 import { setUpCSVDownloadUpload } from "./js/csv.js";
@@ -28,6 +29,7 @@ export function setup(s) {
 
         setUpPlayingArea();
         setUpDetailsPanel();
+        setUpToggles();
         setUpTable();
         setUpShots();
         setUpCSVDownloadUpload();

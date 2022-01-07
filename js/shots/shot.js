@@ -2,6 +2,7 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import { getHeaderRow, getNumRows } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
+import { heatMap } from "../toggles.js";
 import {
     sport,
     cfgSportA,
@@ -10,9 +11,6 @@ import {
 } from "../../setup.js";
 
 function setUpShots() {
-    sessionStorage.setItem("firstPoint", null);
-    sessionStorage.setItem("shiftHeld", null);
-
     // http://thenewcode.com/1068/Making-Arrows-in-SVG
     for (let className of ["blueTeam", "orangeTeam", "greyTeam"]) {
         d3.select(`#${sport}-svg`)
@@ -199,11 +197,23 @@ function createShotFromEvent(e, point1) {
 
     createDot("#normal", id, specialData);
     createNewRow(id, rowData, specialData);
+    if (
+        !d3.select("#heat-map-toggle").empty() &&
+        d3.select("#heat-map-toggle").property("checked")
+    ) {
+        heatMap();
+    }
 }
 
 function createShotFromData(id, rowData, specialData) {
     createDot("#normal", id, specialData);
     createNewRow(id, rowData, specialData);
+    if (
+        !d3.select("#heat-map-toggle").empty() &&
+        d3.select("#heat-map-toggle").property("checked")
+    ) {
+        heatMap();
+    }
 }
 
 export { setUpShots, createShotFromData };

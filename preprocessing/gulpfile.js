@@ -1,9 +1,12 @@
 const { parallel, series, src, dest } = require("gulp");
+const gulpif = require("gulp-if");
 const preprocess = require("gulp-preprocess");
 const rename = require("gulp-rename");
 const inject = require("gulp-inject");
 const del = require("del");
 const sports = require("../supported-sports.json").sports;
+
+const banner = true;
 
 function html(sport) {
     return src("./base.html")
@@ -16,6 +19,18 @@ function html(sport) {
                     return file.contents.toString("utf8");
                 },
             })
+        )
+        .pipe(
+            gulpif(
+                banner,
+                inject(src(`./banner.html`), {
+                    starttag: "<!-- inject:banner -->",
+                    transform: function (filePath, file) {
+                        // return file contents as string
+                        return file.contents.toString("utf8");
+                    },
+                })
+            )
         )
         .pipe(rename(`${sport}.html`))
         .pipe(dest("../html"));
@@ -58,6 +73,18 @@ function index() {
                     return file.contents.toString("utf8");
                 },
             })
+        )
+        .pipe(
+            gulpif(
+                banner,
+                inject(src(`./banner.html`), {
+                    starttag: "<!-- inject:banner -->",
+                    transform: function (filePath, file) {
+                        // return file contents as string
+                        return file.contents.toString("utf8");
+                    },
+                })
+            )
         )
         .pipe(rename(`index.html`))
         .pipe(dest("../html"));

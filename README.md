@@ -2,7 +2,7 @@
 
 ![A screenshot of the web application.](./resources/ice-hockey-screenshot.png)
 
-**12/03: American football fields (NCAA, NFL) are now available! There are now options for special, calculated detail columns: Distance and Shot Value (basketball)!**
+**01/07/22: Heat maps (2D density plots) are now available! You can now add a toggle to switch between the normal event dot view, and a new view that shows the location density of events for each team.**
 
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
@@ -34,15 +34,17 @@ Details logged for each event can be customized by clicking on the _Customize De
 
 Clicking the _Customize Setup_ button will bring up a modal with a list of the current details. Drag-and-drop detail names to reorder them. Click on the eye icon to toggle whether it is visible. Click on the trash can icon to delete details. For created details, click on the pencil-in-a-square icon to edit those details. Reordering details changes their position in both the details panel and the table. The _X_ and _Y_ details cannot be hidden or deleted.
 
-The number of widgets can be changed from its default value of 2 to 1 or 3 by choosing a new value in the dropdown labelled _Widgets per Panel Row_.
-
-The default number of events per table page can be modified by changing the number in the field labelled _Rows Per Table Page_. The default number is 10; the number must be an integer between 1 and 999 (inclusive).
-
 Special details can be added, which are details that do not take inputs but are specially calculated. Currently there a 3 types of special details:
 
--   **2-Location Events:** Using the _Enable 2-Location Events_ toggle, the ability to have 2-location events can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted.
+-   **2-Location Events:** Using the _Enable 2-Location Events_ toggle, the ability to have 2-location events can be enabled. When enabled, _X2_ and _Y2_ details are added to the list of details. Like the _X_ and _Y_ details, the _X2_ and _Y2_ details cannot be hidden or deleted. When 2-location events are enabled, 2-location events can be plotted by either holding down the SHIFT button and clicking on two points in the playing area or by switching between 1-location and 2-location mode using the toggle above the playing area. This option is incompatible with Heat Map View.
 -   **Distance:** For 1-location events, this detail will be the distance between the event and the closest net/hoop/end zone line center/etc. For 2-location events, this detail will be the be the distance between the two indicated locations.
 -   **Shot Value (basketball only):** This detail is the number of points (2 or 3) a shot from the indicated location would be worth. For 2-location events, it will be the number of points for the second location.
+
+There are several appearance options, which modify the appearance of the application but do not impact the data tracked. There are currently 3 appearance options:
+
+-   **Widgets per Panel Row:** The number of widgets can be changed from its default value of 2 to 1 or 3 by choosing a new value in the dropdown labelled _Widgets per Panel Row_.
+-   **Rows per Table Page:** The default number of events per table page can be modified by changing the number in the field labelled _Rows Per Table Page_. The default number is 10; the number must be an integer between 1 and 999 (inclusive).
+-   **Heat Map View:** By toggling on the option labelled _Heat Map View_, the option for heat maps (2D density plots) view is enabled. This adds a toggle above the playing area that allows switching between the traditional view with event dots and view that shows the location density of events per team (if Team is a current detail). Two checkboxes below the toggle allow hiding and showing the heat map for each team. This option is incompatible with 2-Location Events.
 
 Default details can be restored by clicking on the _Reset to Defaults_ button.
 
@@ -61,8 +63,6 @@ A time widget is a timer you can choose to have count up or countdown. The start
 #### Playing Area
 
 To plot events, simply click on the playin area where the event happened. When clicked, a dot will be added of the appropriate color based on team, shape based on type, and text based on player, and a row will be made in the table.
-
-When 2-location events are enabled, 2-location events can be plotted by either holding down the **Shift** button and clicking on two points in the playing area or by switching between 1-location and 2-location mode using the toggle above the playing area.
 
 The playing area matches the specifications from the governing body as specified on the main page. For all playing areas, the center of the playing area has coordinates (0,0), the positive x-axis is to the right, and the positive y-axis is upward.
 
