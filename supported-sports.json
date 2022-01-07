@@ -210,6 +210,7 @@
             "units": "meters",
             "specifications": "International Handball Federation (2016)",
             "perimeter": "#outside-perimeter",
+            "dimensions": "40 x 20",
             "appearance": {
                 "width": "40",
                 "height": "20",
