@@ -304,12 +304,14 @@
                 },
                 {
                     "type": "radio",
-                    "title": "Period",
-                    "id": "period",
+                    "title": "Set",
+                    "id": "set",
                     "options": [
                         { "value": "1", "checked": true },
                         { "value": "2" },
-                        { "value": "OT" }
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "5" }
                     ]
                 },
                 {
@@ -332,10 +334,11 @@
                     "title": "Type",
                     "id": "shot-type",
                     "options": [
-                        { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Tip", "selected": true },
+                        { "value": "Roll" },
+                        { "value": "Attack" },
+                        { "value": "Kill" },
+                        { "value": "Error" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
