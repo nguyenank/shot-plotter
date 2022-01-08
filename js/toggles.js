@@ -184,6 +184,13 @@ export function heatMapFunctionality() {
 }
 
 export function heatMap() {
+    if (
+        d3.select("#heat-map-toggle").empty() ||
+        !d3.select("#heat-map-toggle").property("checked")
+    ) {
+        // do not generate heat map if feature not enabled
+        return;
+    }
     d3.select("#heat-map").selectAll("*").remove();
 
     // compute the density data

@@ -197,23 +197,13 @@ function createShotFromEvent(e, point1) {
 
     createDot("#normal", id, specialData);
     createNewRow(id, rowData, specialData);
-    if (
-        !d3.select("#heat-map-toggle").empty() &&
-        d3.select("#heat-map-toggle").property("checked")
-    ) {
-        heatMap();
-    }
+    heatMap();
 }
 
 function createShotFromData(id, rowData, specialData) {
     createDot("#normal", id, specialData);
     createNewRow(id, rowData, specialData);
-    if (
-        !d3.select("#heat-map-toggle").empty() &&
-        d3.select("#heat-map-toggle").property("checked")
-    ) {
-        heatMap();
-    }
+    heatMap();
 }
 
 export { setUpShots, createShotFromData };
