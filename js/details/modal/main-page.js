@@ -387,12 +387,11 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
     specialDetails.append("h6").text("Special Details");
 
     let scoringArea;
-    let distanceDescription;
     switch (sport) {
-        case "volleyball-ncaa":
+        case "volleyball":
         case "football-ncaa":
         case "football-nfl":
-            distanceDescription = `Distance between locations for 2-location events.`;
+            scoringArea = null;
             break;
         case "basketball-nba":
         case "basketball-ncaa":
@@ -402,15 +401,18 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
         case "floorball":
         case "ice-hockey-iihf":
         case "ice-hockey":
+        case "mens-lacrosse":
+        case "womens-lacrosse":
             scoringArea = "net";
             break;
         default:
             scoringArea = "scoring area";
+            break;
     }
 
-    distanceDescription = scoringArea
+    const distanceDescription = scoringArea
         ? `Distance to closest ${scoringArea} for 1-location events; distance between locations for 2-location events.`
-        : distanceDescription;
+        : `Distance between locations for 2-location events.`;
 
     const sdList = [
         {
