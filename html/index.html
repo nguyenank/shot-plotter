@@ -23,8 +23,7 @@
 <body>
   <!-- inject:banner -->
   <div class="alert alert-info" role="alert">
-  <b>01/07/22:</b> Heat maps (2D density plots) are now available! Switch between traditional, event dot view and a new view that shows event location density for each team. To enable this feature, click
-  <u>Customize Setup</u> in the details panel.
+  <b>01/14/22:</b> Volleyball, men's lacrosse, and women's lacrosse have been added!
 </div>
   <!-- endinject -->
   <div class="center header">
@@ -1688,6 +1687,418 @@
     <button type="button" class="grey-btn card-btn">
       Go To
       Basketball (WNBA)
+    </button>
+  </div>
+</a>
+    <a href="./mens-lacrosse" class="card" id="mens-lacrosse">
+  <div class="card-header">
+    <!-- inject:cardplayingarea -->
+    <svg id="mens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 112 62">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect id="background" x="0" width="110" y="0" height="60"/>
+    </clipPath>
+    <rect id="background" x="0" width="110" y="0" height="60" fill="#036602"/>
+    <line id="center-line" x1="55" y1="0" x2="55" y2="60" stroke-width="0.111" stroke="white" fill="transparent"/>
+    <rect id="center-line-square" x="54.9445" y="29.9445" width="0.111" height="0.111" fill="orange"/>
+    <g id="lines">
+      <line id="top-wing-area" x1="45" y1="10" x2="65" y2="10" stroke-width="0.083" stroke="white"/>
+      <line id="bottom-wing-area" x1="45" y1="50" x2="65" y2="50" stroke-width="0.083" stroke="white"/>
+      <line id="top-left-line" x1="0" y1="10" x2="35" y2="10" stroke-width="0.111" stroke="white"/>
+      <line id="bottom-left-line" x1="0" y1="50" x2="35" y2="50" stroke-width="0.111" stroke="white"/>
+      <line id="left-line" x1="35" y1="0" x2="35" y2="60" stroke-width="0.111" stroke="white"/>
+
+      <line id="top-right-line" x1="75" y1="10" x2="110" y2="10" stroke-width="0.111" stroke="white"/>
+      <line id="bottom-left-line" x1="75" y1="50" x2="110" y2="50" stroke-width="0.111" stroke="white"/>
+      <line id="left-line" x1="75" y1="0" x2="75" y2="60" stroke-width="0.11" stroke="white"/>
+    </g>
+    <g id="right-goal">
+      <circle id="right-goal-crease" cx="95" cy="30" r="3" fill="transparent" stroke-width="0.083" stroke="white"/>
+      <path id="right-goal-mouth" d="M 95 28
+             L 95 32
+             A 2 2 1 1 1 95 28" stroke-width="0.056" fill="transparent" stroke="white"/>
+             <clipPath id="right-goal-clip">
+               <path d="M 95 29
+                 L 95.66 28.66
+                 L 97.33 30
+                 L 95.66 31.33
+                 L 95 31"/>
+             </clipPath>
+      <path
+        id="right-goal-mesh"
+        d="
+          M 95.33 28
+          L 95.33 32
+          M 95.66 28
+          L 95.66 32
+          M 96 28
+          L 96 32
+          M 96.33 28
+          L 96.33 32
+          M 96.66 28
+          L 96.66 32
+          M 97 28
+          L 97 32
+
+          M 95 28.66
+          L 98 28.66
+          M 95 29
+          L 98 29
+          M 95 29.33
+          L 98 29.33
+          M 95 29.66
+          L 98 29.66
+          M 95 30
+          L 98 30
+          M 95 30.33
+          L 98 30.33
+          M 95 30.66
+          L 98 30.66
+          M 95 31
+          L 98 31
+          "
+        stroke="#cccccc"
+        stroke-width="0.03"
+        fill="transparent"
+        clip-path="url(#right-goal-clip)"/>
+      <path id="right-goal-frame" d="
+            M 95 29
+            L 95.66 28.66
+            L 97.33 30
+            L 95.66 31.33
+            L 95 31" stroke="orange" stroke-width="0.053" fill="transparent"/>
+    </g>
+      <g id="left-goal" transform="translate(-80 0) rotate(180,95,30)">
+        <circle id="left-goal-crease" cx="95" cy="30" r="3" fill="transparent" stroke-width="0.083" stroke="white"/>
+        <path id="left-goal-mouth" d="M 95 28
+             L 95 32
+             A 2 2 1 1 1 95 28" stroke-width="0.056" fill="transparent" stroke="white"/>
+             <clipPath id="left-goal-clip">
+               <path d="M 95 29
+                 L 95.66 28.66
+                 L 97.33 30
+                 L 95.66 31.33
+                 L 95 31"/>
+             </clipPath>
+        <path
+          id="left-goal-mesh"
+          d="
+          M 95.33 28
+          L 95.33 32
+          M 95.66 28
+          L 95.66 32
+          M 96 28
+          L 96 32
+          M 96.33 28
+          L 96.33 32
+          M 96.66 28
+          L 96.66 32
+          M 97 28
+          L 97 32
+
+          M 95 28.66
+          L 98 28.66
+          M 95 29
+          L 98 29
+          M 95 29.33
+          L 98 29.33
+          M 95 29.66
+          L 98 29.66
+          M 95 30
+          L 98 30
+          M 95 30.33
+          L 98 30.33
+          M 95 30.66
+          L 98 30.66
+          M 95 31
+          L 98 31
+          "
+          stroke="#cccccc"
+          stroke-width="0.03"
+          fill="transparent" clip-path="url(#left-goal-clip)"/>
+        <path id="left-goal-frame" d="
+            M 95 29
+            L 95.66 28.66
+            L 97.33 30
+            L 95.66 31.33
+            L 95 31" stroke="orange" stroke-width="0.053" fill="transparent"/>
+      </g>
+    <path id="border" d=" M 0 0 L 110 0 L 110 60 L 0 60 Z" stroke-width="0.11" stroke="orange" fill="transparent"/>
+  </g>
+</svg>
+
+    <!-- endinject -->
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">
+      Men's Lacrosse
+    </h6>
+    <div class="card-text">
+      <div>
+        <span class="bold">Dimensions: </span><span>
+          110 x 60
+        </span>
+      </div>
+      <div>
+        <span class="bold">Units: </span><span>
+          yards
+        </span>
+      </div>
+      <div>
+        <span class="bold">Specifications: </span><span>
+          National Collegiate Athletic Association (2021-2022)
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-center white-bg">
+    <button type="button" class="grey-btn card-btn">
+      Go To
+      Men's Lacrosse
+    </button>
+  </div>
+</a>
+    <a href="./womens-lacrosse" class="card" id="womens-lacrosse">
+  <div class="card-header">
+    <!-- inject:cardplayingarea -->
+    <svg id="womens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 67">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect id="background" x="0" width="120" y="0" height="65"/>
+    </clipPath>
+    <rect id="background" x="0" width="120" y="0" height="65" fill="#036602"/>
+    <circle id="center-circle" cx="60" cy="32.5" r="10" stroke-width="0.111" stroke="white" fill="transparent"/>
+    <line id="center-line" x1="60" y1="30.847" x2="60" y2="34.153" stroke-width="0.111" stroke="white"/>
+    <g id="lines">
+      <line id="left-line" x1="40" y1="0" x2="40" y2="65" stroke-width="0.11" stroke="orange"/>
+      <line id="right-line" x1="80" y1="0" x2="80" y2="65" stroke-width="0.11" stroke="orange"/>
+    </g>
+    <g id="left-goal">
+      <g id="left-goal-inner">
+        <circle id="left-goal-circle" cx="10" cy="32.5" r="2.833" fill="transparent" stroke-width="0.083" stroke="white"/>
+        <line id="left-goal-line" x1="10" y1="31.5" x2="10" y2="33.5" stroke-width="0.056" fill="transparent" stroke="white"/>
+        <clipPath id="left-goal-clip">
+          <path d="M 10 31.5
+           L 7.67 32.5
+           L 10 33.5"/>
+        </clipPath>
+        <path
+          id="left-goal-mesh"
+          d="
+        M 8 31
+        L 8 34
+        M 8.33 31
+        L 8.33 34
+        M 8.66 31
+        L 8.66 34
+        M 9 31
+        L 9 34
+        M 9.33 31
+        L 9.33 34
+        M 9.66 31
+        L 9.66 34
+
+        M 7.5 31.66
+        L 10 31.66
+        M 7.5 32
+        L 10 32
+        M 7.5 32.33
+        L 10 32.33
+        M 7.5 32.66
+        L 10 32.66
+        M 7.5 33
+        L 10 33
+        M 7.5 33.33
+        L 10 33.33
+          "
+          stroke="#cccccc"
+          stroke-width="0.03"
+          fill="transparent"
+          clip-path="url(#left-goal-clip)"/>
+        <path id="left-goal-frame" d="M 10 31.5
+          L 7.67 32.5
+          L 10 33.5" stroke="orange" stroke-width="0.053" fill="transparent"/>
+      </g>
+      <g id="left-goal-fan">
+        <path id="left-eight-meter-arc" d="
+          M 10 29.67
+          L 16.66 23.01
+          M 10 35.33
+          L 16.66 42
+          A 11.61 11.61 0 0 0 16.66 23.01
+          " stroke-width="0.11" stroke="white" fill="transparent"/>
+        <path
+          id="left-arc-hashes"
+          d="
+              M 10 20.89
+              L 10.33 20.89
+
+              M 10 44.11
+              L 10.33 44.11
+
+              M 21.44 32.5
+              L 21.77 32.5
+
+              M 20.62 28.25
+              L 20.94 28.13
+
+              M 20.62 36.75
+              L 20.94 36.87
+
+              M 18.17 24.49
+              L 18.41 24.25
+
+              M 18.17 40.51
+              L 18.41 40.75
+
+              M 14.08 21.81
+              L 14.2 21.49
+
+              M 14.08 43.19
+              L 14.2 43.5
+              "
+          stroke-width="0.11"
+          stroke="white"
+          fill="transparent"/>
+        <path id="left-twelve-meter-fan" d="
+          M 10 29.67
+          L 10 16.58
+          A 15.92 15.92 1 1 1 10 48.42
+          L 10 35.33
+          " stroke-width="0.083" stroke="white" fill="transparent"/>
+        <circle id="top-left-circle" cx="5" cy="20.89" r="0.083" fill="white"/>
+        <circle id="bottom-left-circle" cx="5" cy="44.11" r="0.083" fill="white"/>
+      </g>
+    </g>
+    <g id="right-goal" transform="rotate(180,10,32.5) translate(-100 0)">
+      <g id="right-goal-inner">
+        <circle id="right-goal-circle" cx="10" cy="32.5" r="2.833" fill="transparent" stroke-width="0.083" stroke="white"/>
+        <line id="right-goal-line" x1="10" y1="31.5" x2="10" y2="33.5" stroke-width="0.056" fill="transparent" stroke="white"/>
+        <clipPath id="right-goal-clip">
+          <path d="M 10 31.5
+           L 7.67 32.5
+           L 10 33.5"/>
+        </clipPath>
+        <path
+          id="right-goal-mesh"
+          d="
+        M 8 31
+        L 8 34
+        M 8.33 31
+        L 8.33 34
+        M 8.66 31
+        L 8.66 34
+        M 9 31
+        L 9 34
+        M 9.33 31
+        L 9.33 34
+        M 9.66 31
+        L 9.66 34
+
+        M 7.5 31.66
+        L 10 31.66
+        M 7.5 32
+        L 10 32
+        M 7.5 32.33
+        L 10 32.33
+        M 7.5 32.66
+        L 10 32.66
+        M 7.5 33
+        L 10 33
+        M 7.5 33.33
+        L 10 33.33
+          "
+          stroke="#cccccc"
+          stroke-width="0.03"
+          fill="transparent"
+          clip-path="url(#right-goal-clip)"/>
+        <path id="right-goal-frame" d="M 10 31.5
+          L 7.67 32.5
+          L 10 33.5" stroke="orange" stroke-width="0.053" fill="transparent"/>
+      </g>
+      <g id="right-goal-fan">
+        <path id="right-eight-meter-arc" d="
+          M 10 29.67
+          L 16.66 23.01
+          M 10 35.33
+          L 16.66 42
+          A 11.61 11.61 0 0 0 16.66 23.01
+          " stroke-width="0.11" stroke="white" fill="transparent"/>
+        <path
+          id="right-arc-hashes"
+          d="
+              M 10 20.89
+              L 10.33 20.89
+
+              M 10 44.11
+              L 10.33 44.11
+
+              M 21.44 32.5
+              L 21.77 32.5
+
+              M 20.62 28.25
+              L 20.94 28.13
+
+              M 20.62 36.75
+              L 20.94 36.87
+
+              M 18.17 24.49
+              L 18.41 24.25
+
+              M 18.17 40.51
+              L 18.41 40.75
+
+              M 14.08 21.81
+              L 14.2 21.49
+
+              M 14.08 43.19
+              L 14.2 43.5
+              "
+          stroke-width="0.11"
+          stroke="white"
+          fill="transparent"/>
+        <path id="right-twelve-meter-fan" d="
+          M 10 29.67
+          L 10 16.58
+          A 15.92 15.92 1 1 1 10 48.42
+          L 10 35.33
+          " stroke-width="0.083" stroke="white" fill="transparent"/>
+        <circle id="top-right-circle" cx="5" cy="20.89" r="0.083" fill="white"/>
+        <circle id="bottom-right-circle" cx="5" cy="44.11" r="0.083" fill="white"/>
+      </g>
+    </g>
+    <path id="border" d=" M 0 0 L 120 0 L 120 65 L 0 65 Z" stroke-width="0.11" stroke="black" fill="transparent"/>
+  </g>
+</svg>
+
+    <!-- endinject -->
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">
+      Women's Lacrosse
+    </h6>
+    <div class="card-text">
+      <div>
+        <span class="bold">Dimensions: </span><span>
+          120 x 65
+        </span>
+      </div>
+      <div>
+        <span class="bold">Units: </span><span>
+          yards
+        </span>
+      </div>
+      <div>
+        <span class="bold">Specifications: </span><span>
+          National Collegiate Athletic Association (2022-2023)
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-center white-bg">
+    <button type="button" class="grey-btn card-btn">
+      Go To
+      Women's Lacrosse
     </button>
   </div>
 </a>

@@ -55,10 +55,6 @@
 
 <body>
   <!-- inject:banner -->
-  <div class="alert alert-info" role="alert">
-  <b>01/07/22:</b> Heat maps (2D density plots) are now available! Switch between traditional, event dot view and a new view that shows event location density for each team. To enable this feature, click
-  <u>Customize Setup</u> in the details panel.
-</div>
   <!-- endinject -->
   <div class="center header">
     <h1>Shot-Plotter</h1>
@@ -77,53 +73,137 @@
         </div>
         <div id="playing-area">
           <!-- inject:playingarea -->
-          <svg id="volleyball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 29 17">
+          <svg id="mens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 112 62">
   <g id="transformations">
     <clipPath id="clipBorder">
-      <path d="M 0 0
-        L 27 0
-        L 27 15
-        L 0 15
-        Z"/>
+      <rect id="background" x="0" width="110" y="0" height="60"/>
     </clipPath>
-    <path id="background" d="M 0 0
-      L 27 0
-      L 27 15
-      L 0 15
-      Z" fill="#2162b7"/>
-      <g id="court" transform="translate(4.5, 3)">
-        <path id="court-background" d="
-          M 0 0
-          L 18 0
-          L 18 9
-          L 0 9
-          Z" fill="#e2b983" stroke="white" stroke-width="0.05"/>
-        <line id="center-line" x1="9" y1="0" x2="9" y2="9" stroke="white" stroke-width="0.05" stroke-dasharray="0.1 0.05"/>
-        <line id="left-attack-line" x1="6" y1="0" x2="6" y2="9" stroke="white" stroke-width="0.05"/>
-        <line id="left-attack-line-top-extension" x1="6" y1="-1.75" x2="6" y2="0" stroke="white" stroke-width="0.05" stroke-dasharray="0.15 0.2"/>
-        <line id="left-attack-line-bottom-extension" x1="6" y1="10.75" x2="6" y2="9" stroke="white" stroke-width="0.05" stroke-dasharray="0.15 0.2"/>
+    <rect id="background" x="0" width="110" y="0" height="60" fill="#036602"/>
+    <line id="center-line" x1="55" y1="0" x2="55" y2="60" stroke-width="0.111" stroke="white" fill="transparent"/>
+    <rect id="center-line-square" x="54.9445" y="29.9445" width="0.111" height="0.111" fill="orange"/>
+    <g id="lines">
+      <line id="top-wing-area" x1="45" y1="10" x2="65" y2="10" stroke-width="0.083" stroke="white"/>
+      <line id="bottom-wing-area" x1="45" y1="50" x2="65" y2="50" stroke-width="0.083" stroke="white"/>
+      <line id="top-left-line" x1="0" y1="10" x2="35" y2="10" stroke-width="0.111" stroke="white"/>
+      <line id="bottom-left-line" x1="0" y1="50" x2="35" y2="50" stroke-width="0.111" stroke="white"/>
+      <line id="left-line" x1="35" y1="0" x2="35" y2="60" stroke-width="0.111" stroke="white"/>
 
-        <line id="right-attack-line" x1="12" y1="0" x2="12" y2="9" stroke="white" stroke-width="0.05"/>
-        <line id="right-attack-line-top-extension" x1="12" y1="-1.75" x2="12" y2="0" stroke="white" stroke-width="0.05" stroke-dasharray="0.15 0.2"/>
-        <line id="right-attack-line-bottom-extension" x1="12" y1="10.75" x2="12" y2="9" stroke="white" stroke-width="0.05" stroke-dasharray="0.15 0.2"/>
+      <line id="top-right-line" x1="75" y1="10" x2="110" y2="10" stroke-width="0.111" stroke="white"/>
+      <line id="bottom-left-line" x1="75" y1="50" x2="110" y2="50" stroke-width="0.111" stroke="white"/>
+      <line id="left-line" x1="75" y1="0" x2="75" y2="60" stroke-width="0.11" stroke="white"/>
+    </g>
+    <g id="right-goal">
+      <circle id="right-goal-crease" cx="95" cy="30" r="3" fill="transparent" stroke-width="0.083" stroke="white"/>
+      <path id="right-goal-mouth" d="M 95 28
+             L 95 32
+             A 2 2 1 1 1 95 28" stroke-width="0.056" fill="transparent" stroke="white"/>
+             <clipPath id="right-goal-clip">
+               <path d="M 95 29
+                 L 95.66 28.66
+                 L 97.33 30
+                 L 95.66 31.33
+                 L 95 31"/>
+             </clipPath>
+      <path
+        id="right-goal-mesh"
+        d="
+          M 95.33 28
+          L 95.33 32
+          M 95.66 28
+          L 95.66 32
+          M 96 28
+          L 96 32
+          M 96.33 28
+          L 96.33 32
+          M 96.66 28
+          L 96.66 32
+          M 97 28
+          L 97 32
 
-        <path id="service-zone-extensions" d="
-            M -0.2 0
-            L -0.35 0
-            M -0.2 9
-            L -0.35 9
-            M 18.2 0
-            L 18.35 0
-            M 18.2 9
-            L 18.35 9" stroke="white" stroke-width="0.05" fill="transparent"/>
+          M 95 28.66
+          L 98 28.66
+          M 95 29
+          L 98 29
+          M 95 29.33
+          L 98 29.33
+          M 95 29.66
+          L 98 29.66
+          M 95 30
+          L 98 30
+          M 95 30.33
+          L 98 30.33
+          M 95 30.66
+          L 98 30.66
+          M 95 31
+          L 98 31
+          "
+        stroke="#cccccc"
+        stroke-width="0.03"
+        fill="transparent"
+        clip-path="url(#right-goal-clip)"/>
+      <path id="right-goal-frame" d="
+            M 95 29
+            L 95.66 28.66
+            L 97.33 30
+            L 95.66 31.33
+            L 95 31" stroke="orange" stroke-width="0.053" fill="transparent"/>
+    </g>
+      <g id="left-goal" transform="translate(-80 0) rotate(180,95,30)">
+        <circle id="left-goal-crease" cx="95" cy="30" r="3" fill="transparent" stroke-width="0.083" stroke="white"/>
+        <path id="left-goal-mouth" d="M 95 28
+             L 95 32
+             A 2 2 1 1 1 95 28" stroke-width="0.056" fill="transparent" stroke="white"/>
+             <clipPath id="left-goal-clip">
+               <path d="M 95 29
+                 L 95.66 28.66
+                 L 97.33 30
+                 L 95.66 31.33
+                 L 95 31"/>
+             </clipPath>
+        <path
+          id="left-goal-mesh"
+          d="
+          M 95.33 28
+          L 95.33 32
+          M 95.66 28
+          L 95.66 32
+          M 96 28
+          L 96 32
+          M 96.33 28
+          L 96.33 32
+          M 96.66 28
+          L 96.66 32
+          M 97 28
+          L 97 32
 
-        <path id="court-edges" d="
-          M 0 0
-          L 18 0
-          L 18 9
-          L 0 9
-          Z" fill="transparent" stroke="white" stroke-width="0.05"/>
+          M 95 28.66
+          L 98 28.66
+          M 95 29
+          L 98 29
+          M 95 29.33
+          L 98 29.33
+          M 95 29.66
+          L 98 29.66
+          M 95 30
+          L 98 30
+          M 95 30.33
+          L 98 30.33
+          M 95 30.66
+          L 98 30.66
+          M 95 31
+          L 98 31
+          "
+          stroke="#cccccc"
+          stroke-width="0.03"
+          fill="transparent" clip-path="url(#left-goal-clip)"/>
+        <path id="left-goal-frame" d="
+            M 95 29
+            L 95.66 28.66
+            L 97.33 30
+            L 95.66 31.33
+            L 95 31" stroke="orange" stroke-width="0.053" fill="transparent"/>
       </g>
+    <path id="border" d=" M 0 0 L 110 0 L 110 60 L 0 60 Z" stroke-width="0.11" stroke="orange" fill="transparent"/>
   </g>
 </svg>
 
@@ -145,7 +225,7 @@
     import {
       setup
     } from "/setup.js";
-    setup("volleyball-ncaa");
+    setup("mens-lacrosse");
   </script>
   <!-- bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
