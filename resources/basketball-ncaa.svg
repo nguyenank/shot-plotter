@@ -108,10 +108,10 @@
       </g>
     </g>
     <g id="outside-perimeter">
-      <line x1="-0.4" y1="0" x2="94.4" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
-      <line x1="94" y1="50" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.75"></line>
-      <line x1="94.4" y1="50" x2="-0.4" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
-      <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.75"></line>
+      <line x1="-0.4" y1="0" x2="94.4" y2="0" stroke="black" fill="transparent" stroke-width="0.67"></line>
+      <line x1="94" y1="50" x2="94" y2="0" stroke="black" fill="transparent" stroke-width="0.67"></line>
+      <line x1="94.4" y1="50" x2="-0.4" y2="50" stroke="black" fill="transparent" stroke-width="0.67"></line>
+      <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.67"></line>
     </g>
     <path id="left-arc" fill="transparent" d="
         M 0 3.173

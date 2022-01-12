@@ -2,11 +2,11 @@
 
 ![A screenshot of the web application.](./resources/ice-hockey-screenshot.png)
 
-**01/07/22: Heat maps (2D density plots) are now available! You can now add a toggle to switch between the normal event dot view, and a new view that shows the location density of events for each team.**
+**01/14/22: Volleyball, men's lacrosse, and women's lacrosse (all NCAA) have been added to the list of supported sports!**
 
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
-Currently 9 types of sports/playing areas are supported: ice hockey (NHL, IIHF), floorball (IFF), handball (IHF), basketball (NBA, NCAA, WNBA), and American football (NFL, NCAA).
+Currently 12 different playing areas across 8 different sports are supported: ice hockey (NHL, IIHF), floorball (IFF), handball (IHF), volleyball (NCAA), basketball (NBA, NCAA, WNBA), men's lacrosse (NCAA), women's lacrosse (NCAA), and American football (NFL, NCAA).
 
 ![A screenshot of the main page of the web application allowing you to pick between sports.](./resources/sport-select-screenshot.png)
 
