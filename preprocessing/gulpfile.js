@@ -6,7 +6,8 @@ const inject = require("gulp-inject");
 const del = require("del");
 const sports = require("../supported-sports.json").sports;
 
-const banner = true;
+const indexBanner = true;
+const banner = false;
 
 function html(sport) {
     return src("./base.html")
@@ -43,7 +44,7 @@ function card(sport) {
                 context: {
                     ID: sport.id,
                     NAME: sport.name,
-                    DIMS: `${sport.appearance.width} x ${sport.appearance.height}`,
+                    DIMS: sport.dimensions,
                     UNITS: sport.units,
                     SPECS: sport.specifications,
                 },
@@ -76,7 +77,7 @@ function index() {
         )
         .pipe(
             gulpif(
-                banner,
+                banner || indexBanner,
                 inject(src(`./banner.html`), {
                     starttag: "<!-- inject:banner -->",
                     transform: function (filePath, file) {
