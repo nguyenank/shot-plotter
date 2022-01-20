@@ -352,6 +352,14 @@ input[type=text] {
 table thead {
   padding: 1rem 0;
 }
+table thead #filters {
+  background-color: #f2f4f5;
+}
+table thead .rowspan {
+  border-left: 1px solid #aaaaaa;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+}
 table tbody {
   background-color: white;
 }

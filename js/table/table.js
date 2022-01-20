@@ -137,7 +137,11 @@ function createHeaderRow(details) {
     }
 
     // for trash can
-    let r = headerRow.append("th").attr("scope", "col");
+    let r = headerRow
+        .append("th")
+        .attr("scope", "col")
+        .attr("rowspan", "2")
+        .attr("class", "rowspan");
     r.append("i")
         .attr("class", "bi-trash-fill")
         .on("click", () => {
@@ -152,8 +156,8 @@ function createFilterRow(details) {
     // clear row
     filterRow.selectAll("*").remove();
 
-    // add blanks for check box & trash can
-    const columns = [{ type: "" }, ...details, { type: "" }];
+    // add blanks for check box
+    const columns = [{ type: "" }, ...details];
     for (const col of columns) {
         let c = filterRow.append("td").attr("scope", "col");
 
