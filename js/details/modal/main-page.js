@@ -1,4 +1,4 @@
-import { createHeaderRow } from "../../table/table.js";
+import { createTableHeader } from "../../table/table.js";
 import { setRowsPerPage } from "../../table/table-functions.js";
 import {
     getDetails,
@@ -229,7 +229,7 @@ function saveChanges(e) {
             }
         });
 
-    createHeaderRow(titles);
+    createTableHeader(titles);
     const visibleDetails = titles.map((x) =>
         _.find(getDetails(), { id: x.id })
     );

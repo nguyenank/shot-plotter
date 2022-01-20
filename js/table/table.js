@@ -22,19 +22,16 @@ function setUpTable() {
     setNumRows(0);
     setRowsPerPage(cfgDetails.defaultRowsPerPage);
 
-    d3.select("#shot-table")
-        .append("thead")
-        .append("tr");
+    const thead = d3.select("#shot-table").append("thead");
 
-    createHeaderRow(getDefaultDetails());
+    thead.append("tr").attr("id", "column-names");
+    thead.append("tr").attr("id", "filters");
 
-    d3.select("#shot-table")
-        .append("tbody")
-        .attr("id", "shot-table-body");
+    createTableHeader(getDefaultDetails());
 
-    d3.select("#shot-table")
-        .append("tfoot")
-        .append("tr");
+    d3.select("#shot-table").append("tbody").attr("id", "shot-table-body");
+
+    d3.select("#shot-table").append("tfoot").append("tr");
 
     let footerRow = d3
         .select("#shot-table")
@@ -74,7 +71,7 @@ function updateTableNavigation(id = "#table-navigation") {
         b.append("i").attr("class", "bi bi-chevron-double-left");
         b.append("span").text("Prev");
 
-        b.on("click", function() {
+        b.on("click", function () {
             setStartRow(
                 getStartRow() - getRowsPerPage() < 1
                     ? 1
@@ -94,7 +91,7 @@ function updateTableNavigation(id = "#table-navigation") {
         b.append("span").text("Next");
         b.append("i").attr("class", "bi bi-chevron-double-right");
 
-        b.on("click", function() {
+        b.on("click", function () {
             let end =
                 getEndRow() + getRowsPerPage() < getNumRows()
                     ? getEndRow() + getRowsPerPage()
@@ -117,20 +114,22 @@ function updateTableDescription(id = "#table-description") {
         );
 }
 
+function createTableHeader(details) {
+    createHeaderRow(details);
+    createFilterRow(details);
+}
+
 function createHeaderRow(details) {
     let headerRow = d3
         .select("#shot-table")
         .select("thead")
-        .select("tr");
+        .select("#column-names");
     // clear row
     headerRow.selectAll("*").remove();
 
     const columns = [{ title: "" }, ...details]; // for check box
     for (const col of columns) {
-        let c = headerRow
-            .append("th")
-            .attr("scope", "col")
-            .text(col.title);
+        let c = headerRow.append("th").attr("scope", "col").text(col.title);
         if (col.id) {
             c.attr("data-id", col.id);
         }
@@ -148,10 +147,51 @@ function createHeaderRow(details) {
         });
 }
 
+function createFilterRow(details) {
+    let filterRow = d3.select("#shot-table").select("thead").select("#filters");
+    // clear row
+    filterRow.selectAll("*").remove();
+
+    // add blanks for check box & trash can
+    const columns = [{ type: "blank" }, ...details, { type: "blank" }];
+    for (const col of columns) {
+        let c = filterRow.append("th").attr("scope", "col");
+
+        switch (col.type) {
+            case "radio":
+
+            case "player":
+
+            case "text-field":
+
+            case "shot-type":
+
+            case "dropdown":
+
+            case "time":
+
+            case "team":
+
+            case "shot-number":
+
+            case "x":
+
+            case "y":
+
+            case "distance-calc":
+
+            case "value-calc":
+
+            case "in-out":
+
+            default:
+                c.text(col.type);
+        }
+    }
+}
+
 function createPage(startRow, endRow, newRow = null) {
-    d3.select("#shot-table-body")
-        .selectAll("tr")
-        .remove();
+    d3.select("#shot-table-body").selectAll("tr").remove();
 
     const rows = getRows().slice(startRow - 1, endRow);
 
@@ -160,4 +200,4 @@ function createPage(startRow, endRow, newRow = null) {
     }
 }
 
-export { setUpTable, createHeaderRow, updateTableFooter, createPage };
+export { setUpTable, createTableHeader, updateTableFooter, createPage };
