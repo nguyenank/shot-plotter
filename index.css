@@ -352,13 +352,18 @@ input[type=text] {
 table thead {
   padding: 1rem 0;
 }
-table thead #filters {
-  background-color: #f2f4f5;
+table thead:first-child th {
+  padding-bottom: 0;
 }
-table thead .rowspan {
-  border-left: 1px solid #aaaaaa;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
+table thead tr:nth-child(2) td {
+  padding-top: 0;
+}
+table thead tr {
+  border-bottom: 1px solid #eaecef;
+}
+table thead th.row-span {
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
 }
 table tbody {
   background-color: white;
@@ -372,6 +377,10 @@ table tfoot #table-navigation span {
 }
 table tfoot * * {
   border: 0;
+}
+table .centered-cell {
+  text-align: center;
+  vertical-align: middle;
 }
 
 .ghost-shot {

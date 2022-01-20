@@ -65,7 +65,8 @@ function createRowFromData(
 
     // create select checkbox
     row.append("th")
-        .attr("scope", "col")
+        .attr("scope", "row")
+        .attr("class", "centered-cell")
         .append("input")
         .attr("type", "checkbox")
         .attr("value", id)
@@ -100,7 +101,8 @@ function createRowFromData(
 
     // trash can
     row.append("th")
-        .attr("scope", "col")
+        .attr("scope", "row")
+        .attr("class", "centered-cell")
         .append("i")
         .attr("class", "bi bi-trash")
         .on("click", () => deleteHandler(id));

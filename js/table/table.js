@@ -127,8 +127,16 @@ function createHeaderRow(details) {
     // clear row
     headerRow.selectAll("*").remove();
 
+    // for checkbox
+    headerRow
+        .append("th")
+        .attr("scope", "col")
+        .attr("rowspan", "2")
+        .attr("class", "row-span centered-cell")
+        .text("");
+
     const columns = [{ title: "" }, ...details]; // for check box
-    for (const col of columns) {
+    for (const col of details) {
         let c = headerRow.append("th").attr("scope", "col").text(col.title);
         if (col.id) {
             c.attr("data-id", col.id);
@@ -141,7 +149,7 @@ function createHeaderRow(details) {
         .append("th")
         .attr("scope", "col")
         .attr("rowspan", "2")
-        .attr("class", "rowspan");
+        .attr("class", "row-span centered-cell");
     r.append("i")
         .attr("class", "bi-trash-fill")
         .on("click", () => {
@@ -158,7 +166,7 @@ function createFilterRow(details) {
 
     // add blanks for check box
     const columns = [{ type: "" }, ...details];
-    for (const col of columns) {
+    for (const col of details) {
         let c = filterRow.append("td").attr("scope", "col");
 
         switch (col.type) {

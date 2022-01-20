@@ -406,14 +406,25 @@ table {
     @extend %box;
     padding: 1rem 0;
 
-    #filters {
-      background-color: $off-white;
+    &:first-child {
+      th {
+        padding-bottom: 0;
+      }
     }
 
-    .rowspan {
-      border-left: 1px solid $medium-grey;
-      border-top-right-radius: 0.2rem;
-      border-bottom-right-radius: 0.2rem;
+    tr:nth-child(2) {
+      td {
+        padding-top: 0;
+      }
+    }
+
+    tr {
+      border-bottom: 1px solid $light-grey;
+    }
+
+    th.row-span {
+      border-bottom: 1px solid black;
+      padding-bottom: 0.5rem;
     }
   }
 
@@ -437,6 +448,11 @@ table {
         border: 0;
       }
     }
+  }
+
+  .centered-cell {
+    text-align: center;
+    vertical-align: middle;
   }
 }
 
