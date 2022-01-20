@@ -153,9 +153,9 @@ function createFilterRow(details) {
     filterRow.selectAll("*").remove();
 
     // add blanks for check box & trash can
-    const columns = [{ type: "blank" }, ...details, { type: "blank" }];
+    const columns = [{ type: "" }, ...details, { type: "" }];
     for (const col of columns) {
-        let c = filterRow.append("th").attr("scope", "col");
+        let c = filterRow.append("td").attr("scope", "col");
 
         switch (col.type) {
             case "radio":
