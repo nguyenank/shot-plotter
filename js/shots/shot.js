@@ -169,20 +169,25 @@ function createShotFromEvent(e, point1) {
                 break;
             case "distance-calc":
                 // if 2 coordinate event, record distance between points
+                function distance([x1, y1], [x2, y2]) {
+                    return Math.sqrt(
+                        Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)
+                    );
+                }
+
                 if (specialData["coords2"]) {
-                    rowData[col.id] = math
-                        .distance(specialData["coords"], specialData["coords2"])
-                        .toFixed(2);
+                    rowData[col.id] = distance(
+                        specialData["coords"],
+                        specialData["coords2"]
+                    ).toFixed(2);
                 } else {
                     // else if 1 coordinate event, record distance to nearest goal
                     if (cfgSportGoalCoords) {
-                        rowData[col.id] = math
-                            .min(
-                                _.map(cfgSportGoalCoords, (g) =>
-                                    math.distance(g, specialData["coords"])
-                                )
+                        rowData[col.id] = Math.min(
+                            ..._.map(cfgSportGoalCoords, (g) =>
+                                distance(g, specialData["coords"])
                             )
-                            .toFixed(2);
+                        ).toFixed(2);
                     } else {
                         rowData[col.id] = "";
                     }
