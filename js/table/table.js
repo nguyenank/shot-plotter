@@ -183,9 +183,9 @@ function createFilterRow(details) {
             case "time":
 
             case "team":
-
             case "shot-number":
-
+                minMax(c.append("div"));
+                break;
             case "x":
 
             case "y":
@@ -200,6 +200,20 @@ function createFilterRow(details) {
                 c.text(col.type);
         }
     }
+}
+
+function minMax(cell) {
+    cell.classed("min-max", true);
+    cell.append("input")
+        // .attr("class", "form-control")
+        .attr("type", "number")
+        .attr("min", 1)
+        .attr("placeholder", "min");
+    cell.append("span").text("to");
+    cell.append("input")
+        // .attr("class", "form-control")
+        .attr("type", "number")
+        .attr("placeholder", "max");
 }
 
 function createPage(startRow, endRow, newRow = null) {

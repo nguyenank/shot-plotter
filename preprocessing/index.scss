@@ -426,6 +426,25 @@ table {
       border-bottom: 1px solid black;
       padding-bottom: 0.5rem;
     }
+
+    .min-max {
+      input {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+        border: 1px solid $medium-grey;
+        border-radius: 0.25rem;
+        padding: 0 0.5rem;
+        width: 3.1em;
+        margin: 0;
+        box-sizing: content-box;
+      }
+
+      span {
+        text-align: center;
+        margin: 1em;
+        font-weight: 500;
+      }
+    }
   }
 
   tbody {
