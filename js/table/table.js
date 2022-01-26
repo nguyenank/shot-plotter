@@ -171,49 +171,72 @@ function createFilterRow(details) {
 
         switch (col.type) {
             case "radio":
-
-            case "player":
-
-            case "text-field":
-
             case "shot-type":
-
             case "dropdown":
-
-            case "time":
-
-            case "team":
-            case "shot-number":
-                minMax(c.append("div"));
+                dropdownFilter(
+                    c,
+                    _.map(col.options, (o) => o.value)
+                );
                 break;
-            case "x":
-
-            case "y":
-
-            case "distance-calc":
-
+            case "team":
+                dropdownFilter(c, [col.blueTeamName, col.orangeTeamName]);
+                break;
             case "value-calc":
-
+                dropdownFilter(c, [2, 3]);
+                break;
             case "in-out":
-
+                dropdownFilter(c, ["In", "Out"]);
+                break;
+            case "player":
+            case "text-field":
+                textFilter(c);
+                break;
+            case "time":
+                minMaxTimeFilter(c);
+                break;
+            case "shot-number":
+            case "x":
+            case "y":
+            case "distance-calc":
+                minMaxFilter(c);
+                break;
             default:
-                c.text(col.type);
+                break;
         }
     }
 }
 
-function minMax(cell) {
-    cell.classed("min-max", true);
+function minMaxFilter(cell) {
+    cell.classed("filter", true);
     cell.append("input")
-        // .attr("class", "form-control")
         .attr("type", "number")
         .attr("min", 1)
         .attr("placeholder", "min");
     cell.append("span").text("to");
+    cell.append("input").attr("type", "number").attr("placeholder", "max");
+}
+
+function minMaxTimeFilter(cell) {
+    cell.classed("filter", true);
+    cell.classed("min-max-time", true);
+    cell.append("input").attr("type", "text").attr("placeholder", "MM:ss");
+    cell.append("span").text("< _ <");
+    cell.append("input").attr("type", "text").attr("placeholder", "MM:ss");
+}
+
+function textFilter(cell) {
+    cell.classed("filter", true);
+    cell.classed("text-filter", true);
     cell.append("input")
-        // .attr("class", "form-control")
-        .attr("type", "number")
-        .attr("placeholder", "max");
+        .attr("type", "text")
+        .attr("placeholder", "...filter...");
+}
+
+function dropdownFilter(cell, options) {
+    const s = cell.append("select").attr("class", "filter-dropdown");
+    for (const option of options) {
+        s.append("option").text(option);
+    }
 }
 
 function createPage(startRow, endRow, newRow = null) {

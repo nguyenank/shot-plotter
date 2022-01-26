@@ -119,6 +119,13 @@ function select2Dropdown() {
         width: "3em",
         dropdownCssClass: "small-text",
     });
+
+    $(".filter-dropdown").select2({
+        width: "100%",
+        dropdownCssClass: "small-text",
+        selectionCssClass: "small-text",
+        multiple: true,
+    });
 }
 
 export { createTooltip, teamRadioButtons, select2Dropdown };
