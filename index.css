@@ -322,7 +322,7 @@ input[type=text] {
 
 .textarea {
   resize: none;
-  border-color: #aaaaaa;
+  border-color: #8a8a8a;
 }
 
 /* rink */
@@ -349,6 +349,11 @@ input[type=text] {
 }
 
 /* shot table */
+table *::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #8a8a8a;
+}
 table thead {
   padding: 1rem 0;
 }
@@ -379,6 +384,11 @@ table thead .filter input {
 }
 table thead .filter input[type=number] {
   width: 3.1em;
+}
+table thead .filter .smaller-text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
 }
 table thead .filter span {
   text-align: center;

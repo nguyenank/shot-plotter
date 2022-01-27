@@ -1,6 +1,7 @@
 import { cfgDetails } from "../config-details.js";
 import { regenHeatMapTeamNames } from "../../toggles.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
+import { updateDropdownFilter } from "../../table/filter.js";
 
 function createTooltip({ id, title, text }) {
     // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
@@ -90,6 +91,22 @@ function teamRadioButtons(id, data) {
 function select2Dropdown() {
     $(".select2").select2({});
 
+    $(".filter-dropdown")
+        .select2({
+            width: "100%",
+            dropdownCssClass: "smaller-text",
+            selectionCssClass: "smaller-text",
+            placeholder: "filter",
+        })
+        .on("change", function (e) {
+            const col_id = $(this).parent().attr("data-col-id");
+            const options = _.map(
+                _.filter($(this).select2("data"), "selected"),
+                (o) => o.text
+            );
+            updateDropdownFilter(col_id, options);
+        });
+
     $("#sample-dropdown-select").select2({
         dropdownParent: $("#sample-dropdown"),
         width: "100%",
@@ -118,13 +135,6 @@ function select2Dropdown() {
         dropdownParent: $("#main-page-mb"),
         width: "3em",
         dropdownCssClass: "small-text",
-    });
-
-    $(".filter-dropdown").select2({
-        width: "100%",
-        dropdownCssClass: "small-text",
-        selectionCssClass: "small-text",
-        multiple: true,
     });
 }
 

@@ -150,11 +150,24 @@ function textFilter(cell) {
 }
 
 function dropdownFilter(cell, options) {
-    const s = cell.append("select").attr("class", "filter-dropdown");
+    const col_id = cell.attr("data-col-id");
+    const s = cell
+        .append("select")
+        .attr("class", "filter-dropdown")
+        .attr("multiple", true);
+    // .on("change", updateFilter);
     for (const option of options) {
-        s.append("option").text(option);
+        s.append("option").text(option).attr("selected", undefined);
     }
 }
+
+export const updateDropdownFilter = (col_id, options) => {
+    addFilter({
+        col_id: col_id,
+        type: "dropdown-filter",
+        options: options,
+    });
+};
 
 function addFilter(filter) {
     const filters = getFilters();

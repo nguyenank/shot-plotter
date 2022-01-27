@@ -372,7 +372,7 @@ input[type="text"] {
 
 .textarea {
   resize: none;
-  border-color: $medium-grey;
+  border-color: #8a8a8a;
 }
 /* rink */
 .dot-text {
@@ -402,6 +402,12 @@ input[type="text"] {
 }
 /* shot table */
 table {
+  *::placeholder {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    color: #8a8a8a;
+  }
+
   thead {
     @extend %box;
     padding: 1rem 0;
@@ -442,6 +448,12 @@ table {
         &[type="number"] {
           width: 3.1em;
         }
+      }
+
+      .smaller-text {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+        font-size: 0.8rem;
       }
 
       span {
