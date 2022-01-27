@@ -85,11 +85,47 @@ function minMaxFilter(cell) {
 }
 
 function minMaxTimeFilter(cell) {
+    const col_id = cell.attr("data-col-id");
+
+    const timeFormat = (s) => {
+        if (!/^\d{2}:\d{2}$/.test(s)) return null;
+        const [minutes, seconds] = s.split(":");
+        if (parseInt(seconds) > 59) return null;
+        return { minutes: parseInt(minutes), seconds: parseInt(seconds) };
+    };
+
+    const updateFilter = () => {
+        addFilter({
+            col_id: col_id,
+            type: "min-max-time",
+            min: timeFormat(
+                d3
+                    .select(`td[data-col-id="${col_id}"]`)
+                    .select("#min")
+                    .property("value")
+            ),
+            max: timeFormat(
+                d3
+                    .select(`td[data-col-id="${col_id}"]`)
+                    .select("#max")
+                    .property("value")
+            ),
+        });
+    };
+
     cell.classed("filter", true);
     cell.classed("min-max-time", true);
-    cell.append("input").attr("type", "text").attr("placeholder", "MM:ss");
+    cell.append("input")
+        .attr("type", "text")
+        .attr("placeholder", "MM:ss")
+        .attr("id", "min")
+        .on("change", updateFilter);
     cell.append("span").text("< _ <");
-    cell.append("input").attr("type", "text").attr("placeholder", "MM:ss");
+    cell.append("input")
+        .attr("type", "text")
+        .attr("placeholder", "MM:ss")
+        .attr("id", "max")
+        .on("change", updateFilter);
 }
 
 function textFilter(cell) {
