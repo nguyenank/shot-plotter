@@ -6,7 +6,10 @@ export function createFilterRow(details) {
     // add blanks for check box
     const columns = [{ type: "" }, ...details];
     for (const col of details) {
-        let c = filterRow.append("td").attr("scope", "col");
+        let c = filterRow
+            .append("td")
+            .attr("scope", "col")
+            .attr("data-col-id", col.id);
 
         switch (col.type) {
             case "radio":
@@ -46,13 +49,39 @@ export function createFilterRow(details) {
 }
 
 function minMaxFilter(cell) {
+    const col_id = cell.attr("data-col-id");
+
+    const updateFilter = () => {
+        addFilter({
+            col_id: col_id,
+            type: "min-max",
+            min: parseFloat(
+                d3
+                    .select(`td[data-col-id="${col_id}"]`)
+                    .select("#min")
+                    .property("value")
+            ),
+            max: parseFloat(
+                d3
+                    .select(`td[data-col-id="${col_id}"]`)
+                    .select("#max")
+                    .property("value")
+            ),
+        });
+    };
     cell.classed("filter", true);
     cell.append("input")
         .attr("type", "number")
         .attr("min", 1)
-        .attr("placeholder", "min");
+        .attr("id", "min")
+        .attr("placeholder", "min")
+        .on("change", updateFilter);
     cell.append("span").text("to");
-    cell.append("input").attr("type", "number").attr("placeholder", "max");
+    cell.append("input")
+        .attr("type", "number")
+        .attr("id", "max")
+        .attr("placeholder", "max")
+        .on("change", updateFilter);
 }
 
 function minMaxTimeFilter(cell) {
@@ -76,4 +105,22 @@ function dropdownFilter(cell, options) {
     for (const option of options) {
         s.append("option").text(option);
     }
+}
+
+function addFilter(filter) {
+    const filters = getFilters();
+    let newFilters;
+    if (_.find(filters, (f) => f.col_id === filter.col_id)) {
+        // is in filters already
+        newFilters = _.map(getFilters(), (f) =>
+            f.col_id === filter.col_id ? filter : f
+        );
+    } else {
+        newFilters = [...getFilters(), filter];
+    }
+    sessionStorage.setItem("filters", JSON.stringify(newFilters));
+}
+
+function getFilters() {
+    return JSON.parse(sessionStorage.getItem("filters"));
 }

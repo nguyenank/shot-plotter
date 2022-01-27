@@ -18,6 +18,7 @@ import { cfgDetails } from "../details/config-details.js";
 
 function setUpTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
+    sessionStorage.setItem("filters", JSON.stringify([]));
     setStartRow(0);
     setEndRow(0);
     setNumRows(0);
