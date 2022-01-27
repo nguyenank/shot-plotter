@@ -129,11 +129,24 @@ function minMaxTimeFilter(cell) {
 }
 
 function textFilter(cell) {
+    const col_id = cell.attr("data-col-id");
+    const updateFilter = () => {
+        addFilter({
+            col_id: col_id,
+            type: "text-filter",
+            search_string: d3
+                .select(`td[data-col-id="${col_id}"]`)
+                .select("input")
+                .property("value"),
+        });
+    };
+
     cell.classed("filter", true);
     cell.classed("text-filter", true);
     cell.append("input")
         .attr("type", "text")
-        .attr("placeholder", "...filter...");
+        .attr("placeholder", "...filter...")
+        .on("change", updateFilter);
 }
 
 function dropdownFilter(cell, options) {
