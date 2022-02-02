@@ -213,10 +213,26 @@ function updateFilteredRows() {
                 }
                 break;
             case "text-filter":
-                const s = _.escape(filter.search_string).toLowerCase();
-                filteredRows = _.filter(filteredRows, (r) =>
-                    new RegExp(s).test(r.rowData[filter.col_id].toLowerCase())
-                );
+                // check for quotes to do exact matching
+                const search_string = filter.search_string;
+                const first = search_string[0];
+                const last = search_string[search_string.length - 1];
+                const s = search_string.toLowerCase();
+                if (first === last && (first === "'" || first === '"')) {
+                    console.log("if");
+                    const s_cropped = s.substring(1, s.length - 1);
+                    filteredRows = _.filter(
+                        filteredRows,
+                        (r) =>
+                            s_cropped === r.rowData[filter.col_id].toLowerCase()
+                    );
+                } else {
+                    filteredRows = _.filter(filteredRows, (r) =>
+                        new RegExp(s).test(
+                            r.rowData[filter.col_id].toLowerCase()
+                        )
+                    );
+                }
                 break;
             case "filter-dropdown":
                 break;
