@@ -96,7 +96,7 @@ function select2Dropdown() {
             width: "100%",
             dropdownCssClass: "smaller-text",
             selectionCssClass: "smaller-text",
-            placeholder: "filter",
+            placeholder: "click for options",
         })
         .on("change", function (e) {
             const col_id = $(this).parent().attr("data-col-id");

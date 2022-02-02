@@ -11,6 +11,14 @@ function getRows() {
     return JSON.parse(sessionStorage.getItem("rows"));
 }
 
+function setFilteredRows(rows) {
+    sessionStorage.setItem("filteredRows", JSON.stringify(rows));
+}
+
+function getFilteredRows() {
+    return JSON.parse(sessionStorage.getItem("filteredRows"));
+}
+
 function getStartRow() {
     return parseInt(sessionStorage.getItem("startRow"));
 }
@@ -78,6 +86,8 @@ function clearTable() {
 export {
     setRows,
     getRows,
+    setFilteredRows,
+    getFilteredRows,
     getHeaderRow,
     clearTable,
     getStartRow,

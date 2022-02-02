@@ -1,3 +1,9 @@
+import {
+    getRows,
+    setFilteredRows,
+    getFilteredRows,
+} from "./table-functions.js";
+
 export function createFilterRow(details) {
     let filterRow = d3.select("#shot-table").select("thead").select("#filters");
     // clear row
@@ -72,7 +78,6 @@ function minMaxFilter(cell) {
     cell.classed("filter", true);
     cell.append("input")
         .attr("type", "number")
-        .attr("min", 1)
         .attr("id", "min")
         .attr("placeholder", "min")
         .on("change", updateFilter);
@@ -88,7 +93,7 @@ function minMaxTimeFilter(cell) {
     const col_id = cell.attr("data-col-id");
 
     const timeFormat = (s) => {
-        if (!/^\d{2}:\d{2}$/.test(s)) return null;
+        if (!/^\d{1,2}:\d{2}$/.test(s)) return null;
         const [minutes, seconds] = s.split(":");
         if (parseInt(seconds) > 59) return null;
         return { minutes: parseInt(minutes), seconds: parseInt(seconds) };
@@ -155,7 +160,6 @@ function dropdownFilter(cell, options) {
         .append("select")
         .attr("class", "filter-dropdown")
         .attr("multiple", true);
-    // .on("change", updateFilter);
     for (const option of options) {
         s.append("option").text(option).attr("selected", undefined);
     }
@@ -181,8 +185,81 @@ function addFilter(filter) {
         newFilters = [...getFilters(), filter];
     }
     sessionStorage.setItem("filters", JSON.stringify(newFilters));
+    updateFilteredRows();
 }
 
 function getFilters() {
     return JSON.parse(sessionStorage.getItem("filters"));
+}
+
+function updateFilteredRows() {
+    const currentFilters = getFilters();
+    const rows = getRows();
+    let filteredRows = rows;
+    for (const filter of currentFilters) {
+        switch (filter.type) {
+            case "min-max":
+                if (filter.min !== null) {
+                    filteredRows = _.filter(
+                        filteredRows,
+                        (r) => r.rowData[filter.col_id] > filter.min
+                    );
+                }
+                if (filter.max !== null) {
+                    filteredRows = _.filter(
+                        filteredRows,
+                        (r) => r.rowData[filter.col_id] < filter.max
+                    );
+                }
+                break;
+            case "text-filter":
+                const s = _.escape(filter.search_string).toLowerCase();
+                filteredRows = _.filter(filteredRows, (r) =>
+                    new RegExp(s).test(r.rowData[filter.col_id].toLowerCase())
+                );
+                break;
+            case "filter-dropdown":
+                break;
+            case "min-max-time":
+                const getTime = (s) => {
+                    const [min, sec] = s.split(":");
+                    return { minutes: min, seconds: sec };
+                };
+                if (filter.min) {
+                    filteredRows = _.filter(filteredRows, (r) => {
+                        const rTime = getTime(r.rowData[filter.col_id]);
+                        if (rTime.minutes > filter.min.minutes) {
+                            return true;
+                        } else if (
+                            rTime.minutes === filter.min.minutes &&
+                            rTime.seconds > filter.min.seconds
+                        ) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    });
+                }
+                if (filter.max) {
+                    filteredRows = _.filter(filteredRows, (r) => {
+                        const rTime = getTime(r.rowData[filter.col_id]);
+                        if (rTime.minutes < filter.max.minutes) {
+                            return true;
+                        } else if (
+                            rTime.minutes === filter.max.minutes &&
+                            rTime.seconds < filter.max.seconds
+                        ) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    });
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    setFilteredRows(filteredRows);
 }
