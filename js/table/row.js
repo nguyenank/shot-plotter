@@ -17,12 +17,6 @@ import { cfgAppearance } from "../config-appearance.js";
 import { cfgSportA } from "../../setup.js";
 
 function createNewRow(id, rowData, specialData) {
-    // add row to sessionStorage
-    setRows([
-        ...getRows(),
-        { id: id, rowData: rowData, specialData: specialData, selected: false },
-    ]);
-
     const numRows = getNumRows() + 1;
     setNumRows(numRows);
 

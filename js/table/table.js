@@ -1,7 +1,7 @@
 import { setUpDeleteAllModal } from "../shots/delete-all-modal.js";
 import { getDefaultDetails } from "../../setup.js";
 import {
-    getRows,
+    getFilteredRows,
     getHeaderRow,
     setStartRow,
     setEndRow,
@@ -18,6 +18,7 @@ import { cfgDetails } from "../details/config-details.js";
 
 function setUpTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
+    sessionStorage.setItem("filteredRows", JSON.stringify([]));
     sessionStorage.setItem("filters", JSON.stringify([]));
     setStartRow(0);
     setEndRow(0);
@@ -163,9 +164,7 @@ function createHeaderRow(details) {
 
 function createPage(startRow, endRow, newRow = null) {
     d3.select("#shot-table-body").selectAll("tr").remove();
-
-    const rows = getRows().slice(startRow - 1, endRow);
-
+    const rows = getFilteredRows().slice(startRow - 1, endRow);
     for (const { id, rowData, specialData, selected } of rows) {
         createRowFromData(id, rowData, specialData, selected, newRow === id);
     }

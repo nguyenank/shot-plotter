@@ -1,8 +1,19 @@
 import {
     getRows,
-    setFilteredRows,
+    setStartRow,
+    getStartRow,
+    setEndRow,
+    getEndRow,
+    setRows,
+    getNumRows,
+    setNumRows,
+    getRowsPerPage,
     getFilteredRows,
+    setFilteredRows,
 } from "./table-functions.js";
+import { dotsVisibility } from "../shots/dot.js";
+
+import { createPage, updateTableFooter } from "./table.js";
 
 export function createFilterRow(details) {
     let filterRow = d3.select("#shot-table").select("thead").select("#filters");
@@ -184,17 +195,26 @@ function addFilter(filter) {
     } else {
         newFilters = [...getFilters(), filter];
     }
+
     sessionStorage.setItem("filters", JSON.stringify(newFilters));
-    updateFilteredRows();
+    setFilteredRows(filterRows(getRows()));
+
+    const numRows = getFilteredRows().length;
+    setNumRows(numRows);
+    setStartRow(1);
+    setEndRow(numRows < getRowsPerPage() ? numRows : getRowsPerPage());
+    updateTableFooter();
+    createPage(1, getEndRow());
+    dotsVisibility();
 }
 
 function getFilters() {
     return JSON.parse(sessionStorage.getItem("filters"));
 }
 
-function updateFilteredRows() {
+export function filterRows(rows) {
     const currentFilters = getFilters();
-    const rows = getRows();
+
     let filteredRows = rows;
     for (const filter of currentFilters) {
         switch (filter.type) {
@@ -281,6 +301,5 @@ function updateFilteredRows() {
                 break;
         }
     }
-
-    setFilteredRows(filteredRows);
+    return filteredRows;
 }

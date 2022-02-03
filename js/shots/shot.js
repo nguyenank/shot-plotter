@@ -1,8 +1,16 @@
 import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
-import { getHeaderRow, getNumRows } from "../table/table-functions.js";
+import {
+    getHeaderRow,
+    getNumRows,
+    setRows,
+    getRows,
+    setFilteredRows,
+    getFilteredRows,
+} from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
 import { heatMap } from "../toggles.js";
+import { filterRows } from "../table/filter.js";
 import {
     sport,
     cfgSportA,
@@ -133,7 +141,7 @@ function createShotFromEvent(e, point1) {
                     .property("value");
                 break;
             case "shot-number":
-                rowData[col.id] = getNumRows() + 1;
+                rowData[col.id] = getRows().length + 1;
                 break;
             case "x":
                 if (col.id === "x2") {
@@ -208,15 +216,27 @@ function createShotFromEvent(e, point1) {
         }
     }
 
-    createDot("#normal", id, specialData);
-    createNewRow(id, rowData, specialData);
-    heatMap();
+    // add row to sessionStorage
+    createShotFromData(id, rowData, specialData);
 }
 
 function createShotFromData(id, rowData, specialData) {
-    createDot("#normal", id, specialData);
-    createNewRow(id, rowData, specialData);
-    heatMap();
+    const newRow = {
+        id: id,
+        rowData: rowData,
+        specialData: specialData,
+        selected: false,
+    };
+
+    setRows([...getRows(), newRow]);
+    if (filterRows([newRow]).length == 1) {
+        createDot("#normal", id, specialData, "visible");
+        createNewRow(id, rowData, specialData);
+        setFilteredRows([...getFilteredRows(), newRow]);
+        heatMap();
+    } else {
+        createDot("#normal", id, specialData, "hidden");
+    }
 }
 
 export { setUpShots, createShotFromData };

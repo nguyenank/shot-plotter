@@ -4,11 +4,13 @@ import {
 } from "../details/details-functions.js";
 import { cfgSportA } from "../../setup.js";
 import { cfgAppearance } from "../config-appearance.js";
+import { getFilteredRows } from "../table/table-functions.js";
 
 function createDot(
     svgId,
     id,
-    { typeIndex, teamColor, coords, coords2, player, legendBool }
+    { typeIndex, teamColor, coords, coords2, player, legendBool },
+    visible
 ) {
     const team = legendBool
         ? "legendTeam"
@@ -18,7 +20,8 @@ function createDot(
     let g = d3
         .select(svgId)
         .append("g")
-        .attr("id", id);
+        .attr("id", id)
+        .style("visibility", visible);
 
     if (coords2) {
         // create smaller first dot
@@ -186,7 +189,7 @@ function dotSizeHandler(id, scaleDot, scaleText, duration) {
         .selectAll("circle,polygon");
 
     // scale two dots differently
-    const secondDot = dots.filter(function(d, i) {
+    const secondDot = dots.filter(function (d, i) {
         return i === 1;
     });
 
@@ -198,7 +201,7 @@ function dotSizeHandler(id, scaleDot, scaleText, duration) {
         secondDot.call(enlarge, scaleDot);
 
         // scale first dot
-        dots.filter(function(d, i) {
+        dots.filter(function (d, i) {
             return i === 0;
         }).call(enlarge, scaleDot / 2);
     }
@@ -215,4 +218,20 @@ function dotSizeHandler(id, scaleDot, scaleText, duration) {
     }
 }
 
-export { createDot, polygon, dotSizeHandler };
+function dotsVisibility() {
+    const dots = d3
+        .select("#dots")
+        .selectAll("g")
+        .selectAll("g")
+        .each(function (d) {
+            const dot = d3.select(this);
+            const id = dot.attr("id");
+            const visibleIds = _.map(getFilteredRows(), (r) => r.id);
+            dot.style(
+                "visibility",
+                visibleIds.includes(id) ? "visible" : "hidden"
+            );
+        });
+}
+
+export { createDot, polygon, dotSizeHandler, dotsVisibility };
