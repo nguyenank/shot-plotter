@@ -219,7 +219,6 @@ function updateFilteredRows() {
                 const last = search_string[search_string.length - 1];
                 const s = search_string.toLowerCase();
                 if (first === last && (first === "'" || first === '"')) {
-                    console.log("if");
                     const s_cropped = s.substring(1, s.length - 1);
                     filteredRows = _.filter(
                         filteredRows,
@@ -234,7 +233,13 @@ function updateFilteredRows() {
                     );
                 }
                 break;
-            case "filter-dropdown":
+            case "dropdown-filter":
+                console.log(filter.options);
+                if (filter.options.length > 0) {
+                    filteredRows = _.filter(filteredRows, (r) =>
+                        filter.options.includes(r.rowData[filter.col_id])
+                    );
+                }
                 break;
             case "min-max-time":
                 const getTime = (s) => {
