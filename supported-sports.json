@@ -14,7 +14,7 @@
                 "polyR": "2.5",
                 "fontSize": "0.15rem",
                 "strokeWidth": "0.5px",
-                "heatMapScale": 1,
+                "heatMapScale": 1.25,
                 "heatMapLowOpacity": 0.01,
                 "heatMapHighOpacity": 0.25
             },
@@ -84,7 +84,7 @@
                 "polyR": "0.8",
                 "fontSize": "0.045rem",
                 "strokeWidth": "0.15px",
-                "heatMapScale": 3.33,
+                "heatMapScale": 4.17,
                 "heatMapLowOpacity": 0.01,
                 "heatMapHighOpacity": 0.25
             },
@@ -153,7 +153,7 @@
                 "polyR": "0.5",
                 "fontSize": "0.03rem",
                 "strokeWidth": "0.075px",
-                "heatMapScale": 5,
+                "heatMapScale": 6.25,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
@@ -224,7 +224,7 @@
                 "polyR": "0.5",
                 "fontSize": "0.03rem",
                 "strokeWidth": "0.075px",
-                "heatMapScale": 5,
+                "heatMapScale": 6.25,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
@@ -293,7 +293,7 @@
                 "polyR": "0.33",
                 "fontSize": "0.02rem",
                 "strokeWidth": "0.067px",
-                "heatMapScale": 7.5,
+                "heatMapScale": 9.26,
                 "heatMapLowOpacity": 0.05,
                 "heatMapHighOpacity": 0.3
             },
@@ -361,7 +361,7 @@
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px",
-                "heatMapScale": 2,
+                "heatMapScale": 2.66,
                 "heatMapLowOpacity": 0.05,
                 "heatMapHighOpacity": 0.3
             },
@@ -431,7 +431,7 @@
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px",
-                "heatMapScale": 2,
+                "heatMapScale": 2.66,
                 "heatMapLowOpacity": 0.05,
                 "heatMapHighOpacity": 0.3
             },
@@ -501,7 +501,7 @@
                 "polyR": "1.25",
                 "fontSize": "0.075rem",
                 "strokeWidth": "0.25px",
-                "heatMapScale": 2,
+                "heatMapScale": 2.66,
                 "heatMapLowOpacity": 0.05,
                 "heatMapHighOpacity": 0.3
             },
@@ -571,7 +571,7 @@
                 "polyR": "1.375",
                 "fontSize": "0.0825rem",
                 "strokeWidth": "0.275px",
-                "heatMapScale": 1.82,
+                "heatMapScale": 2.27,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
@@ -643,7 +643,7 @@
                 "polyR": "1.5",
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px",
-                "heatMapScale": 1.67,
+                "heatMapScale": 2.08,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
@@ -715,7 +715,7 @@
                 "polyR": "1.5",
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px",
-                "heatMapScale": 1.67,
+                "heatMapScale": 2.08,
                 "heatMapLowOpacity": 0.05,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
@@ -783,7 +783,7 @@
                 "polyR": "1.5",
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px",
-                "heatMapScale": 1.67,
+                "heatMapScale": 2.08,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
