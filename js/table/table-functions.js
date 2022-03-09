@@ -73,7 +73,8 @@ function getHeaderRow() {
 }
 
 function clearTable() {
-    sessionStorage.setItem("rows", JSON.stringify([]));
+    setRows([]);
+    setFilteredRows([]);
     setStartRow(0);
     setEndRow(0);
     setNumRows(0);
