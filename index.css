@@ -357,18 +357,41 @@ table *::placeholder {
 table thead {
   padding: 1rem 0;
 }
-table thead:first-child th {
-  padding-bottom: 0;
+table thead td,
+table thead th {
+  border-left: 1px solid #aaaaaa;
+  border-right: 1px solid #aaaaaa;
 }
-table thead tr:nth-child(2) td {
+table thead td {
+  border-bottom: 1px solid black;
+}
+table thead th {
+  border-bottom: 0;
+}
+table thead #filters {
+  visibility: collapse;
+}
+table thead #filters td {
   padding-top: 0;
-}
-table thead tr {
-  border-bottom: 1px solid #eaecef;
 }
 table thead th.row-span {
   border-bottom: 1px solid black;
   padding-bottom: 0.5rem;
+}
+table thead .bi-funnel-fill:hover {
+  color: #aaaaaa;
+  text-shadow: 0.1rem 0.1rem black;
+  cursor: pointer;
+}
+table thead .bi-funnel-fill.open {
+  color: #aaaaaa;
+  text-shadow: 0.1rem 0.1rem black;
+  cursor: pointer;
+}
+table thead .bi-funnel-fill.open:hover {
+  color: black;
+  text-shadow: 0;
+  cursor: pointer;
 }
 table thead .filter {
   font-size: 0.8rem;

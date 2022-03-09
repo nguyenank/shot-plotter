@@ -136,7 +136,23 @@ function createHeaderRow(details) {
         .attr("scope", "col")
         .attr("rowspan", "2")
         .attr("class", "row-span centered-cell")
-        .text("");
+        .append("i")
+        .attr("class", "bi bi-funnel-fill")
+        .on("click", function () {
+          // toggle whether filterRow is visible or not
+            const filterRow = d3.select("#filters");
+            const headerRow = d3.select("#column-names").selectAll("th");
+            const filterIcon = d3.select(this);
+            if (filterRow.style("visibility") === "collapse") {
+                filterRow.style("visibility", "visible");
+                filterIcon.classed("open", true);
+                headerRow.style("padding-bottom", 0);
+            } else {
+                filterRow.style("visibility", "collapse");
+                                filterIcon.classed("open", false);
+                headerRow.style("padding-bottom", "0.5rem");
+            }
+        });
 
     const columns = [{ title: "" }, ...details]; // for check box
     for (const col of details) {

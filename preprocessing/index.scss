@@ -412,25 +412,49 @@ table {
     @extend %box;
     padding: 1rem 0;
 
-    &:first-child {
-      th {
-        padding-bottom: 0;
-      }
+    td,
+    th {
+      border-left: 1px solid $medium-grey;
+      border-right: 1px solid $medium-grey;
     }
 
-    tr:nth-child(2) {
+    td {
+      border-bottom: 1px solid black;
+    }
+
+    th {
+      border-bottom: 0;
+    }
+
+    #filters {
+      visibility: collapse;
+
       td {
         padding-top: 0;
       }
     }
 
-    tr {
-      border-bottom: 1px solid $light-grey;
-    }
-
     th.row-span {
       border-bottom: 1px solid black;
       padding-bottom: 0.5rem;
+    }
+
+    .bi-funnel-fill:hover {
+      color: $medium-grey;
+      text-shadow: 0.1rem 0.1rem black;
+      cursor: pointer;
+    }
+
+    .bi-funnel-fill.open {
+      color: $medium-grey;
+      text-shadow: 0.1rem 0.1rem black;
+      cursor: pointer;
+
+      &:hover {
+        color: black;
+        text-shadow: 0;
+        cursor: pointer;
+      }
     }
 
     .filter {
