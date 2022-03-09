@@ -11,6 +11,7 @@ import {
     getNumRows,
     setRowsPerPage,
     getRowsPerPage,
+    getRows,
 } from "./table-functions.js";
 import { createRowFromData } from "./row.js";
 import { createFilterRow } from "./filter.js";
@@ -108,13 +109,21 @@ function updateTableNavigation(id = "#table-navigation") {
 }
 
 function updateTableDescription(id = "#table-description") {
-    let totalRowCount = getNumRows();
+    const totalRowCount = getNumRows();
+    const allRowCount = getRows().length;
+    let text = `Displaying ${
+        totalRowCount === 0 ? 0 : getStartRow()
+    } - ${getEndRow()} of ${totalRowCount} rows`;
+
+    if (allRowCount !== totalRowCount) {
+        text += ` (filtered from ${allRowCount} rows)`;
+    }
+    text += ".";
+
     let startRow = d3
         .select(id)
         .attr("colspan", getHeaderRow().length / 2)
-        .text(
-            `Displaying ${getStartRow()} - ${getEndRow()} of ${totalRowCount} rows.`
-        );
+        .text(text);
 }
 
 function createTableHeader(details) {
@@ -139,7 +148,7 @@ function createHeaderRow(details) {
         .append("i")
         .attr("class", "bi bi-funnel-fill")
         .on("click", function () {
-          // toggle whether filterRow is visible or not
+            // toggle whether filterRow is visible or not
             const filterRow = d3.select("#filters");
             const headerRow = d3.select("#column-names").selectAll("th");
             const filterIcon = d3.select(this);
@@ -149,7 +158,7 @@ function createHeaderRow(details) {
                 headerRow.style("padding-bottom", 0);
             } else {
                 filterRow.style("visibility", "collapse");
-                                filterIcon.classed("open", false);
+                filterIcon.classed("open", false);
                 headerRow.style("padding-bottom", "0.5rem");
             }
         });

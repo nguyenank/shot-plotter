@@ -254,7 +254,6 @@ export function filterRows(rows) {
                 }
                 break;
             case "dropdown-filter":
-                console.log(filter.options);
                 if (filter.options.length > 0) {
                     filteredRows = _.filter(filteredRows, (r) =>
                         filter.options.includes(r.rowData[filter.col_id])
