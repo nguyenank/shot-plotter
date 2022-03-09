@@ -222,13 +222,13 @@ export function filterRows(rows) {
                 if (filter.min !== null) {
                     filteredRows = _.filter(
                         filteredRows,
-                        (r) => r.rowData[filter.col_id] > filter.min
+                        (r) => r.rowData[filter.col_id] >= filter.min
                     );
                 }
                 if (filter.max !== null) {
                     filteredRows = _.filter(
                         filteredRows,
-                        (r) => r.rowData[filter.col_id] < filter.max
+                        (r) => r.rowData[filter.col_id] <= filter.max
                     );
                 }
                 break;
