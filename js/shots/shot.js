@@ -231,8 +231,8 @@ function createShotFromData(id, rowData, specialData) {
     setRows([...getRows(), newRow]);
     if (filterRows([newRow]).length == 1) {
         createDot("#normal", id, specialData, "visible");
-        createNewRow(id, rowData, specialData);
         setFilteredRows([...getFilteredRows(), newRow]);
+        createNewRow(id, rowData, specialData);
         heatMap();
     } else {
         createDot("#normal", id, specialData, "hidden");
