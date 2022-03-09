@@ -1,4 +1,4 @@
-import { getRows } from "./table/table-functions.js";
+import { getFilteredRows } from "./table/table-functions.js";
 import { perimeterId, cfgSportA } from "../setup.js";
 import { existsDetail } from "./details/details-functions.js";
 
@@ -18,56 +18,8 @@ export function setUpToggles() {
         .attr("id", "heat-map-team-select")
         .style("display", "none");
 
-    setupHeatMapTeamSelect();
     twoPointFunctionality();
     heatMapFunctionality();
-}
-
-function setupHeatMapTeamSelect() {
-    const checks = d3.select("#heat-map-team-select");
-
-    const div1 = checks
-        .append("div")
-        .attr("class", "form-check form-check-inline");
-    div1.append("input")
-        .attr("class", "form-check-input")
-        .attr("type", "checkbox")
-        .property("checked", true)
-        .attr("id", "blueTeam-heat-map")
-        .attr("value", "blueTeam-heat-map")
-        .on("change", function () {
-            if (d3.select(this).property("checked")) {
-                d3.select("#blueTeam-heat-map-svg").attr("display", "auto");
-            } else {
-                d3.select("#blueTeam-heat-map-svg").attr("display", "none");
-            }
-        });
-    div1.append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "blueTeam-heat-map")
-        .attr("id", "blueTeam-heat-map-label")
-        .text("Home");
-    const div2 = checks
-        .append("div")
-        .attr("class", "form-check form-check-inline");
-    div2.append("input")
-        .attr("class", "form-check-input")
-        .attr("type", "checkbox")
-        .property("checked", true)
-        .attr("id", "orangeTeam-heat-map")
-        .attr("value", "orangeTeam-heat-map")
-        .on("change", function () {
-            if (d3.select(this).property("checked")) {
-                d3.select("#orangeTeam-heat-map-svg").attr("display", "auto");
-            } else {
-                d3.select("#orangeTeam-heat-map-svg").attr("display", "none");
-            }
-        });
-    div2.append("label")
-        .attr("class", "form-check-label")
-        .attr("for", "orangeTeam-heat-map")
-        .attr("id", "orangeTeam-heat-map-label")
-        .text("Away");
 }
 
 export function regenHeatMapTeamNames() {
@@ -194,7 +146,7 @@ export function heatMap() {
     d3.select("#heat-map").selectAll("*").remove();
 
     // compute the density data
-    const data = _.map(getRows(), (r) => ({
+    const data = _.map(getFilteredRows(), (r) => ({
         team: r.specialData.teamColor,
         x: r.specialData.coords[0],
         y: r.specialData.coords[1],
@@ -244,13 +196,6 @@ export function heatMap() {
         d3.select("#heat-map")
             .insert("g", "g")
             .attr("id", color + "-heat-map-svg")
-            .attr(
-                "display",
-                (color !== "blueTeam" && color !== "orangeTeam") ||
-                    d3.select("#" + color + "-heat-map").property("checked")
-                    ? "auto"
-                    : "none"
-            )
             .attr("transform", `scale(${unscale},${unscale})`)
             .selectAll("path")
             .data(densityData)

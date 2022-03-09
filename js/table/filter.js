@@ -11,6 +11,7 @@ import {
     setFilteredRows,
 } from "./table-functions.js";
 import { dotsVisibility } from "../shots/dot.js";
+import { heatMap } from "../toggles.js";
 
 import { createPage, updateTableFooter } from "./table.js";
 
@@ -205,6 +206,7 @@ function addFilter(filter) {
     updateTableFooter();
     createPage(1, getEndRow());
     dotsVisibility();
+    heatMap();
 }
 
 function getFilters() {
