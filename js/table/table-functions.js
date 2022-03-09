@@ -43,6 +43,14 @@ function setNumRows(i) {
     sessionStorage.setItem("numRows", i);
 }
 
+function getNumFilteredRows() {
+    return parseInt(sessionStorage.getItem("numFilteredRows"));
+}
+
+function setNumFilteredRows(i) {
+    sessionStorage.setItem("numFilteredRows", i);
+}
+
 function getRowsPerPage() {
     return parseInt(sessionStorage.getItem("rowsPerPage"));
 }
@@ -69,6 +77,7 @@ function clearTable() {
     setStartRow(0);
     setEndRow(0);
     setNumRows(0);
+    setNumFilteredRows(0);
     updateTableFooter();
 
     d3.select("#customize-btn").classed("uninteractable", false);
@@ -98,4 +107,6 @@ export {
     setNumRows,
     getRowsPerPage,
     setRowsPerPage,
+    getNumFilteredRows,
+    setNumFilteredRows,
 };

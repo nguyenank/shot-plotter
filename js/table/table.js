@@ -9,6 +9,8 @@ import {
     getEndRow,
     setNumRows,
     getNumRows,
+    getNumFilteredRows,
+    setNumFilteredRows,
     setRowsPerPage,
     getRowsPerPage,
     getRows,
@@ -24,6 +26,7 @@ function setUpTable() {
     setStartRow(0);
     setEndRow(0);
     setNumRows(0);
+    setNumFilteredRows(0);
     setRowsPerPage(cfgDetails.defaultRowsPerPage);
 
     const thead = d3.select("#shot-table").append("thead");
@@ -89,7 +92,7 @@ function updateTableNavigation(id = "#table-navigation") {
     nav.append("span").text(
         `  Page ${parseInt((getEndRow() - 1) / getRowsPerPage()) + 1}  `
     );
-    if (getNumRows() !== getEndRow()) {
+    if (getNumFilteredRows() !== getEndRow()) {
         // exists another page after; add next button
         let b = nav.append("button").attr("class", "grey-btn");
         b.append("span").text("Next");
@@ -97,9 +100,9 @@ function updateTableNavigation(id = "#table-navigation") {
 
         b.on("click", function () {
             let end =
-                getEndRow() + getRowsPerPage() < getNumRows()
+                getEndRow() + getRowsPerPage() < getNumFilteredRows()
                     ? getEndRow() + getRowsPerPage()
-                    : getNumRows();
+                    : getNumFilteredRows();
             setStartRow(getEndRow() + 1);
             setEndRow(end);
             createPage(getStartRow(), end);
@@ -109,14 +112,14 @@ function updateTableNavigation(id = "#table-navigation") {
 }
 
 function updateTableDescription(id = "#table-description") {
-    const totalRowCount = getNumRows();
-    const allRowCount = getRows().length;
+    const numFilteredRows = getNumFilteredRows();
+    const numRows = getNumRows();
     let text = `Displaying ${
-        totalRowCount === 0 ? 0 : getStartRow()
-    } - ${getEndRow()} of ${totalRowCount} rows`;
+        numFilteredRows === 0 ? 0 : getStartRow()
+    } - ${getEndRow()} of ${numFilteredRows} rows`;
 
-    if (allRowCount !== totalRowCount) {
-        text += ` (filtered from ${allRowCount} rows)`;
+    if (numRows !== numFilteredRows) {
+        text += ` (filtered from ${numRows} rows)`;
     }
     text += ".";
 

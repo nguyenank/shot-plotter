@@ -2,11 +2,11 @@ import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import {
     getHeaderRow,
-    getNumRows,
     setRows,
     getRows,
     setFilteredRows,
     getFilteredRows,
+    getNumRows,
 } from "../table/table-functions.js";
 import { getTypeIndex } from "../details/details-functions.js";
 import { heatMap } from "../toggles.js";
@@ -141,7 +141,7 @@ function createShotFromEvent(e, point1) {
                     .property("value");
                 break;
             case "shot-number":
-                rowData[col.id] = getRows().length + 1;
+                rowData[col.id] = getNumRows() + 1;
                 break;
             case "x":
                 if (col.id === "x2") {

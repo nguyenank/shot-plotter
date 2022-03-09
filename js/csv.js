@@ -4,12 +4,7 @@ import {
     getCurrentShotTypes,
     getTypeIndex,
 } from "./details/details-functions.js";
-import {
-    clearTable,
-    getHeaderRow,
-    getRows,
-    getNumRows,
-} from "./table/table-functions.js";
+import { clearTable, getHeaderRow, getRows } from "./table/table-functions.js";
 import { updateTableFooter } from "./table/table.js";
 import { regenHeatMapTeamNames } from "./toggles.js";
 import { createShotFromData } from "./shots/shot.js";

@@ -5,8 +5,7 @@ import {
     setEndRow,
     getEndRow,
     setRows,
-    getNumRows,
-    setNumRows,
+    setNumFilteredRows,
     getRowsPerPage,
     getFilteredRows,
     setFilteredRows,
@@ -200,7 +199,7 @@ function addFilter(filter) {
     setFilteredRows(filterRows(getRows()));
 
     const numRows = getFilteredRows().length;
-    setNumRows(numRows);
+    setNumFilteredRows(numRows);
     setStartRow(1);
     setEndRow(numRows < getRowsPerPage() ? numRows : getRowsPerPage());
     updateTableFooter();

@@ -8,8 +8,12 @@ import {
     setRows,
     getNumRows,
     setNumRows,
+    setFilteredRows,
+    setNumFilteredRows,
+    getNumFilteredRows,
     getRowsPerPage,
 } from "./table-functions.js";
+import { filterRows } from "./filter.js";
 import { updateTableFooter, createPage } from "./table.js";
 import { heatMap } from "../toggles.js";
 import { dotSizeHandler } from "../shots/dot.js";
@@ -20,26 +24,31 @@ function createNewRow(id, rowData, specialData) {
     const numRows = getNumRows() + 1;
     setNumRows(numRows);
 
-    if (numRows == 1) {
+    const numFilteredRows = getNumFilteredRows() + 1;
+    setNumFilteredRows(numFilteredRows);
+
+    if (numFilteredRows == 1) {
         // first row
         setStartRow(1);
         d3.select("#customize-btn").classed("uninteractable", true);
     }
 
-    if (numRows - getStartRow() < getRowsPerPage()) {
+    if (numFilteredRows - getStartRow() < getRowsPerPage()) {
         // continue adding to current page
-        setEndRow(numRows);
+        setEndRow(numFilteredRows);
         createRowFromData(id, rowData, specialData, false, id);
     } else {
         // switch to last page
         let startRow =
-            getRowsPerPage() === 1 ? numRows : numRows - getRowsPerPage() + 1;
+            getRowsPerPage() === 1
+                ? numFilteredRows
+                : numFilteredRows - getRowsPerPage() + 1;
         setStartRow(startRow);
-        setEndRow(numRows);
+        setEndRow(numFilteredRows);
 
         d3.select("#shot-table-body").selectAll("tr").remove();
 
-        createPage(startRow, numRows, id);
+        createPage(startRow, numFilteredRows, id);
     }
 
     updateTableFooter();
@@ -115,23 +124,31 @@ function createRowFromData(
 
 function deleteHandler(id) {
     event.stopPropagation();
-    setRows(
-        _.differenceBy(getRows(), [{ id: id }], "id").map(function (x, i) {
-            x.rowData["shot-number"] = i + 1;
-            return x;
-        })
-    );
+    const rows = _.differenceBy(getRows(), [{ id: id }], "id").map(function (
+        x,
+        i
+    ) {
+        x.rowData["shot-number"] = i + 1;
+        return x;
+    });
+    setRows(rows);
+
+    setFilteredRows(filterRows(rows));
+
     const numRows = getNumRows() - 1;
     setNumRows(numRows);
 
-    if (numRows === 0) {
+    const numFilteredRows = getNumFilteredRows() - 1;
+    setNumFilteredRows(numFilteredRows);
+
+    if (numFilteredRows === 0) {
         d3.select("#customize-btn").classed("uninteractable", false);
     }
 
-    if (getEndRow() > numRows) {
+    if (getEndRow() > numFilteredRows) {
         // deleted row is from last page
 
-        setEndRow(numRows);
+        setEndRow(numFilteredRows);
 
         if (getEndRow() === 0) {
             // set start index to 0
