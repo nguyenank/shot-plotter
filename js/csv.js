@@ -10,6 +10,7 @@ import {
     getRows,
     getNumRows,
 } from "./table/table-functions.js";
+import { updateTableFooter } from "./table/table.js";
 import { regenHeatMapTeamNames } from "./toggles.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
@@ -100,6 +101,7 @@ function uploadCSV(id, uploadId, e) {
                     );
                 },
             });
+            updateTableFooter();
         }
     } else {
         d3.select(uploadId).classed("is-invalid", true);
@@ -191,7 +193,9 @@ function processCSV(uploadId, row, swapTeamColor) {
         "shot-number"
     );
     let rowData =
-        specialData.numberCol !== -2 ? { "shot-number": getNumRows() + 1 } : {};
+        specialData.numberCol !== -2
+            ? { "shot-number": getRows().length + 1 }
+            : {};
     _.forEach(_.zip(headerIds, Object.values(row)), function ([header, value]) {
         rowData[header] = value;
     });
