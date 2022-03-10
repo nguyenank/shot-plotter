@@ -20,7 +20,10 @@ export function createFilterRow(details) {
     // clear row
     filterRow.selectAll("*").remove();
 
-    const visDetails = _.filter(details, ["hidden", null]);
+    const visDetails = _.filter(
+        details,
+        (d) => d.hidden === undefined || d.hidden === null
+    );
 
     for (const col of visDetails) {
         let c = filterRow
@@ -63,6 +66,24 @@ export function createFilterRow(details) {
                 break;
         }
     }
+}
+
+export function select2Filter() {
+    $(".filter-dropdown")
+        .select2({
+            width: "100%",
+            dropdownCssClass: "smaller-text",
+            selectionCssClass: "smaller-text",
+            placeholder: "click for options",
+        })
+        .on("change", function (e) {
+            const col_id = $(this).parent().attr("data-col-id");
+            const options = _.map(
+                _.filter($(this).select2("data"), "selected"),
+                (o) => o.text
+            );
+            updateDropdownFilter(col_id, options);
+        });
 }
 
 function minMaxFilter(cell) {

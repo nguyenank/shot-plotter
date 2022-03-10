@@ -5,7 +5,7 @@ import {
     getTypeIndex,
     saveCurrentDetailSetup,
 } from "./details/details-functions.js";
-import { createFilterRow, updateDropdownFilter } from "./table/filter.js";
+import { createFilterRow, select2Filter } from "./table/filter.js";
 import { clearTable, getHeaderRow, getRows } from "./table/table-functions.js";
 import { updateTableFooter } from "./table/table.js";
 import { createShotFromData } from "./shots/shot.js";
@@ -131,21 +131,7 @@ function processCSV(uploadId, row, swapTeamColor) {
             shotTypeLegend();
             saveCurrentDetailSetup();
             createFilterRow(getDetails());
-            $(".filter-dropdown")
-                .select2({
-                    width: "100%",
-                    dropdownCssClass: "smaller-text",
-                    selectionCssClass: "smaller-text",
-                    placeholder: "click for options",
-                })
-                .on("change", function (e) {
-                    const col_id = $(this).parent().attr("data-col-id");
-                    const options = _.map(
-                        _.filter($(this).select2("data"), "selected"),
-                        (o) => o.text
-                    );
-                    updateDropdownFilter(col_id, options);
-                });
+            select2Filter();
         }
     }
 
@@ -173,21 +159,7 @@ function processCSV(uploadId, row, swapTeamColor) {
             teamLegend();
             saveCurrentDetailSetup();
             createFilterRow(getDetails());
-            $(".filter-dropdown")
-                .select2({
-                    width: "100%",
-                    dropdownCssClass: "smaller-text",
-                    selectionCssClass: "smaller-text",
-                    placeholder: "click for options",
-                })
-                .on("change", function (e) {
-                    const col_id = $(this).parent().attr("data-col-id");
-                    const options = _.map(
-                        _.filter($(this).select2("data"), "selected"),
-                        (o) => o.text
-                    );
-                    updateDropdownFilter(col_id, options);
-                });
+            select2Filter();
 
             teamColor = swapTeamColor;
             // alternate changing team names

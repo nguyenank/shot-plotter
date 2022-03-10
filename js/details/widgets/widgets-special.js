@@ -1,6 +1,10 @@
 import { cfgDetails } from "../config-details.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
-import { updateDropdownFilter, createFilterRow } from "../../table/filter.js";
+import {
+    updateDropdownFilter,
+    createFilterRow,
+    select2Filter,
+} from "../../table/filter.js";
 import { saveCurrentDetailSetup, getDetails } from "../details-functions.js";
 
 function createTooltip({ id, title, text }) {
@@ -55,21 +59,7 @@ function teamRadioButtons(id, data) {
         teamLegend();
         saveCurrentDetailSetup();
         createFilterRow(getDetails());
-        $(".filter-dropdown")
-            .select2({
-                width: "100%",
-                dropdownCssClass: "smaller-text",
-                selectionCssClass: "smaller-text",
-                placeholder: "click for options",
-            })
-            .on("change", function (e) {
-                const col_id = $(this).parent().attr("data-col-id");
-                const options = _.map(
-                    _.filter($(this).select2("data"), "selected"),
-                    (o) => o.text
-                );
-                updateDropdownFilter(col_id, options);
-            });
+        select2Filter();
     };
 
     blueDiv
@@ -107,21 +97,7 @@ function teamRadioButtons(id, data) {
 function select2Dropdown() {
     $(".select2").select2({});
 
-    $(".filter-dropdown")
-        .select2({
-            width: "100%",
-            dropdownCssClass: "smaller-text",
-            selectionCssClass: "smaller-text",
-            placeholder: "click for options",
-        })
-        .on("change", function (e) {
-            const col_id = $(this).parent().attr("data-col-id");
-            const options = _.map(
-                _.filter($(this).select2("data"), "selected"),
-                (o) => o.text
-            );
-            updateDropdownFilter(col_id, options);
-        });
+    select2Filter();
 
     $("#sample-dropdown-select").select2({
         dropdownParent: $("#sample-dropdown"),
@@ -139,21 +115,7 @@ function select2Dropdown() {
 
             saveCurrentDetailSetup();
             createFilterRow(getDetails());
-            $(".filter-dropdown")
-                .select2({
-                    width: "100%",
-                    dropdownCssClass: "smaller-text",
-                    selectionCssClass: "smaller-text",
-                    placeholder: "click for options",
-                })
-                .on("change", function (e) {
-                    const col_id = $(this).parent().attr("data-col-id");
-                    const options = _.map(
-                        _.filter($(this).select2("data"), "selected"),
-                        (o) => o.text
-                    );
-                    updateDropdownFilter(col_id, options);
-                });
+            select2Filter();
 
             // https://stackoverflow.com/a/54047075
             // do not delete new options

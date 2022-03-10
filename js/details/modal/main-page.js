@@ -18,7 +18,7 @@ import { createWidgetTypePage } from "./widget-type-page.js";
 import { cfgDetails } from "../config-details.js";
 import { sport, cfgDefaultEnable } from "../../../setup.js";
 import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
-import { createFilterRow } from "../../table/filter.js";
+import { createFilterRow, select2Filter } from "../../table/filter.js";
 
 function createMainPage(id) {
     d3.select(id).selectAll("*").remove();
@@ -244,22 +244,8 @@ function saveChanges(e) {
     shotTypeLegend();
     teamLegend();
     createFilterRow(getDetails());
+    select2Filter();
 
-    $(".filter-dropdown")
-        .select2({
-            width: "100%",
-            dropdownCssClass: "smaller-text",
-            selectionCssClass: "smaller-text",
-            placeholder: "click for options",
-        })
-        .on("change", function (e) {
-            const col_id = $(this).parent().attr("data-col-id");
-            const options = _.map(
-                _.filter($(this).select2("data"), "selected"),
-                (o) => o.text
-            );
-            updateDropdownFilter(col_id, options);
-        });
     $("#details-modal").modal("hide"); // default js doesn't work for some reason
 }
 
