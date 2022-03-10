@@ -20,9 +20,9 @@ export function createFilterRow(details) {
     // clear row
     filterRow.selectAll("*").remove();
 
-    // add blanks for check box
-    const columns = [{ type: "" }, ...details];
-    for (const col of details) {
+    const visDetails = _.filter(details, ["hidden", null]);
+
+    for (const col of visDetails) {
         let c = filterRow
             .append("td")
             .attr("scope", "col")
