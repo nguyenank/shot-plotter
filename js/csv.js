@@ -3,10 +3,11 @@ import {
     existsDetail,
     getCurrentShotTypes,
     getTypeIndex,
+    saveCurrentDetailSetup,
 } from "./details/details-functions.js";
+import { createFilterRow, updateDropdownFilter } from "./table/filter.js";
 import { clearTable, getHeaderRow, getRows } from "./table/table-functions.js";
 import { updateTableFooter } from "./table/table.js";
-import { regenHeatMapTeamNames } from "./toggles.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
@@ -73,7 +74,7 @@ function escape(text) {
     return text.includes(",") ? '"' + text + '"' : text;
 }
 
-function uploadCSV(id, uploadId, e) {
+async function uploadCSV(id, uploadId, e) {
     if (/.csv$/i.exec(d3.select(uploadId).property("value"))) {
         const f = e.target.files[0];
         if (f) {
@@ -128,6 +129,23 @@ function processCSV(uploadId, row, swapTeamColor) {
         if (typeOptions.indexOf(value) === -1) {
             d3.select("#shot-type-select").append("option").text(value);
             shotTypeLegend();
+            saveCurrentDetailSetup();
+            createFilterRow(getDetails());
+            $(".filter-dropdown")
+                .select2({
+                    width: "100%",
+                    dropdownCssClass: "smaller-text",
+                    selectionCssClass: "smaller-text",
+                    placeholder: "click for options",
+                })
+                .on("change", function (e) {
+                    const col_id = $(this).parent().attr("data-col-id");
+                    const options = _.map(
+                        _.filter($(this).select2("data"), "selected"),
+                        (o) => o.text
+                    );
+                    updateDropdownFilter(col_id, options);
+                });
         }
     }
 
@@ -153,7 +171,23 @@ function processCSV(uploadId, row, swapTeamColor) {
                     : "#orange-team-name";
             d3.select(swapTeamId).property("value", row.Team);
             teamLegend();
-            regenHeatMapTeamNames();
+            saveCurrentDetailSetup();
+            createFilterRow(getDetails());
+            $(".filter-dropdown")
+                .select2({
+                    width: "100%",
+                    dropdownCssClass: "smaller-text",
+                    selectionCssClass: "smaller-text",
+                    placeholder: "click for options",
+                })
+                .on("change", function (e) {
+                    const col_id = $(this).parent().attr("data-col-id");
+                    const options = _.map(
+                        _.filter($(this).select2("data"), "selected"),
+                        (o) => o.text
+                    );
+                    updateDropdownFilter(col_id, options);
+                });
 
             teamColor = swapTeamColor;
             // alternate changing team names

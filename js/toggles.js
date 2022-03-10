@@ -22,15 +22,6 @@ export function setUpToggles() {
     heatMapFunctionality();
 }
 
-export function regenHeatMapTeamNames() {
-    d3.select("#blueTeam-heat-map-label").text(
-        d3.select("#blue-team-name").property("value")
-    );
-    d3.select("#orangeTeam-heat-map-label").text(
-        d3.select("#orange-team-name").property("value")
-    );
-}
-
 export function twoPointFunctionality() {
     function setOn() {
         sessionStorage.setItem("shiftHeld", true);

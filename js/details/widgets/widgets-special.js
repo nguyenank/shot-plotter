@@ -1,7 +1,7 @@
 import { cfgDetails } from "../config-details.js";
-import { regenHeatMapTeamNames } from "../../toggles.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
-import { updateDropdownFilter } from "../../table/filter.js";
+import { updateDropdownFilter, createFilterRow } from "../../table/filter.js";
+import { saveCurrentDetailSetup, getDetails } from "../details-functions.js";
 
 function createTooltip({ id, title, text }) {
     // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
@@ -50,6 +50,28 @@ function teamRadioButtons(id, data) {
         .append("div")
         .attr("class", "form-group");
     let blueDiv = wrapper.append("div").attr("class", "form-check");
+
+    const changeFunction = () => {
+        teamLegend();
+        saveCurrentDetailSetup();
+        createFilterRow(getDetails());
+        $(".filter-dropdown")
+            .select2({
+                width: "100%",
+                dropdownCssClass: "smaller-text",
+                selectionCssClass: "smaller-text",
+                placeholder: "click for options",
+            })
+            .on("change", function (e) {
+                const col_id = $(this).parent().attr("data-col-id");
+                const options = _.map(
+                    _.filter($(this).select2("data"), "selected"),
+                    (o) => o.text
+                );
+                updateDropdownFilter(col_id, options);
+            });
+    };
+
     blueDiv
         .append("input")
         .attr("class", "form-check-input")
@@ -62,10 +84,7 @@ function teamRadioButtons(id, data) {
         .attr("type", "text")
         .attr("id", "blue-team-name")
         .attr("value", data.blueTeamName)
-        .on("change", () => {
-            teamLegend();
-            regenHeatMapTeamNames();
-        });
+        .on("change", changeFunction);
 
     let orangeDiv = wrapper.append("div").attr("class", "form-check");
     orangeDiv
@@ -80,10 +99,7 @@ function teamRadioButtons(id, data) {
         .attr("type", "text")
         .attr("id", "orange-team-name")
         .attr("value", data.orangeTeamName)
-        .on("change", () => {
-            teamLegend();
-            regenHeatMapTeamNames();
-        });
+        .on("change", changeFunction);
 
     wrapper.select("#" + data.checked).attr("checked", true);
 }
@@ -120,6 +136,24 @@ function select2Dropdown() {
         .on("change", function (e) {
             // update legend
             shotTypeLegend();
+
+            saveCurrentDetailSetup();
+            createFilterRow(getDetails());
+            $(".filter-dropdown")
+                .select2({
+                    width: "100%",
+                    dropdownCssClass: "smaller-text",
+                    selectionCssClass: "smaller-text",
+                    placeholder: "click for options",
+                })
+                .on("change", function (e) {
+                    const col_id = $(this).parent().attr("data-col-id");
+                    const options = _.map(
+                        _.filter($(this).select2("data"), "selected"),
+                        (o) => o.text
+                    );
+                    updateDropdownFilter(col_id, options);
+                });
 
             // https://stackoverflow.com/a/54047075
             // do not delete new options
