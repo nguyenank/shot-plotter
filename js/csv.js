@@ -5,7 +5,11 @@ import {
     getTypeIndex,
     saveCurrentDetailSetup,
 } from "./details/details-functions.js";
-import { createFilterRow, select2Filter } from "./table/filter.js";
+import {
+    createFilterRow,
+    select2Filter,
+    existFilters,
+} from "./table/filter.js";
 import {
     clearTable,
     getHeaderRow,
@@ -39,6 +43,13 @@ function setUpCSVDownloadUpload() {
         (e) => uploadCSV("#csv-upload-download", "#csv-upload", e),
         "Only .csv files are allowed. The column headers in the .csv file must be identical to the column headers in the table, excluding #. Order matters."
     );
+}
+
+export function toggleDownloadText() {
+    const node = d3
+        .select("#csv-upload-download")
+        .select("button")
+        .text(existFilters() ? "Download Filtered" : "Download");
 }
 
 function downloadCSV(id) {

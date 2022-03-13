@@ -14,7 +14,12 @@ import {
 import { dotsVisibility } from "../shots/dot.js";
 import { heatMap } from "../toggles.js";
 import { getDetails } from "../details/details-functions.js";
-import { createPage, updateTableFooter } from "./table.js";
+import {
+    createPage,
+    updateTableFooter,
+    toggleClearFiltersIcon,
+} from "./table.js";
+import { toggleDownloadText } from "../csv.js";
 
 export function createFilterRow(details) {
     let filterRow = d3.select("#shot-table").select("thead").select("#filters");
@@ -255,6 +260,8 @@ function afterFiltersUpdate() {
     setEndRow(
         numFilteredRows < getRowsPerPage() ? numFilteredRows : getRowsPerPage()
     );
+    toggleClearFiltersIcon();
+    toggleDownloadText();
     updateTableFooter();
     createPage(1, getEndRow());
     dotsVisibility();
@@ -263,6 +270,10 @@ function afterFiltersUpdate() {
 
 function getFilters() {
     return JSON.parse(sessionStorage.getItem("filters"));
+}
+
+export function existFilters() {
+    return getFilters().length > 0;
 }
 
 export function filterRows(rows) {

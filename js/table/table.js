@@ -16,7 +16,7 @@ import {
     getRows,
 } from "./table-functions.js";
 import { createRowFromData } from "./row.js";
-import { createFilterRow, clearFilters } from "./filter.js";
+import { createFilterRow, clearFilters, existFilters } from "./filter.js";
 import { cfgDetails } from "../details/config-details.js";
 
 function setUpTable() {
@@ -118,7 +118,7 @@ function updateTableDescription(id = "#table-description") {
         numFilteredRows === 0 ? 0 : getStartRow()
     } - ${getEndRow()} of ${numFilteredRows} rows`;
 
-    if (numRows !== numFilteredRows) {
+    if (existFilters()) {
         text += ` (filtered from ${numRows} rows)`;
     }
     text += ".";
@@ -156,7 +156,7 @@ function createHeaderRow(details) {
             const filterRow = d3.select("#filters");
             const headerRow = d3.select("#column-names").selectAll("th");
             const filterIcon = d3.select(this);
-            const clearFilterIcon = d3.select("#clear-filter-icon");
+            const clearFiltersIcon = d3.select("#clear-filter-icon");
             if (filterRow.style("visibility") === "collapse") {
                 filterRow.style("visibility", "visible");
                 filterIcon.classed("open", true);
@@ -167,12 +167,12 @@ function createHeaderRow(details) {
                         node.style("padding-bottom", 0);
                     }
                 });
-                clearFilterIcon.style("display", "block");
+                toggleClearFiltersIcon();
             } else {
                 filterRow.style("visibility", "collapse");
                 filterIcon.classed("open", false);
                 headerRow.style("padding-bottom", "0.5rem");
-                clearFilterIcon.style("display", "none");
+                clearFiltersIcon.style("display", "none");
             }
         });
 
@@ -205,6 +205,16 @@ function createHeaderRow(details) {
                 document.getElementById("delete-all-modal")
             ).show();
         });
+}
+
+export function toggleClearFiltersIcon() {
+    const filterRow = d3.select("#filters");
+    const clearFiltersIcon = d3.select("#clear-filter-icon");
+    filterRow.style("visibility") === "collapse"
+        ? clearFiltersIcon.style("display", "none")
+        : existFilters()
+        ? clearFiltersIcon.style("display", "block")
+        : clearFiltersIcon.style("display", "none");
 }
 
 function createPage(startRow, endRow, newRow = null) {
