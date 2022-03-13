@@ -232,7 +232,6 @@ function createShotFromData(id, rowData, specialData) {
 
     const newRows = [...getRows(), newRow];
     setRows(newRows);
-    setNumRows(newRows.length);
     updateTableFooter();
     if (filterRows([newRow]).length == 1) {
         createDot("#normal", id, specialData, "visible");

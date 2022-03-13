@@ -6,7 +6,12 @@ import {
     saveCurrentDetailSetup,
 } from "./details/details-functions.js";
 import { createFilterRow, select2Filter } from "./table/filter.js";
-import { clearTable, getHeaderRow, getRows } from "./table/table-functions.js";
+import {
+    clearTable,
+    getHeaderRow,
+    getFilteredRows,
+    getRows,
+} from "./table/table-functions.js";
 import { updateTableFooter } from "./table/table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
@@ -51,7 +56,7 @@ function downloadCSV(id) {
             }
         });
     csv = csv.slice(0, -1) + "\n";
-    const rows = getRows();
+    const rows = getFilteredRows();
     for (let row of rows) {
         for (let col of _.compact(header)) {
             if (col !== "shot-number") {
