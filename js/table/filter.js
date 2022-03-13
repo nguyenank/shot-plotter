@@ -91,21 +91,25 @@ function minMaxFilter(cell) {
     const col_id = cell.attr("data-col-id");
 
     const updateFilter = () => {
+        const min = parseFloat(
+            d3
+                .select(`td[data-col-id="${col_id}"]`)
+                .select("#min")
+                .property("value")
+        );
+        const max = parseFloat(
+            d3
+                .select(`td[data-col-id="${col_id}"]`)
+                .select("#max")
+                .property("value")
+        );
+
         addFilter({
             col_id: col_id,
             type: "min-max",
-            min: parseFloat(
-                d3
-                    .select(`td[data-col-id="${col_id}"]`)
-                    .select("#min")
-                    .property("value")
-            ),
-            max: parseFloat(
-                d3
-                    .select(`td[data-col-id="${col_id}"]`)
-                    .select("#max")
-                    .property("value")
-            ),
+            min: min,
+            max: max,
+            delete: isNaN(min) && isNaN(max),
         });
     };
     cell.classed("filter", true);
@@ -133,21 +137,24 @@ function minMaxTimeFilter(cell) {
     };
 
     const updateFilter = () => {
+        const min = timeFormat(
+            d3
+                .select(`td[data-col-id="${col_id}"]`)
+                .select("#min")
+                .property("value")
+        );
+        const max = timeFormat(
+            d3
+                .select(`td[data-col-id="${col_id}"]`)
+                .select("#max")
+                .property("value")
+        );
         addFilter({
             col_id: col_id,
             type: "min-max-time",
-            min: timeFormat(
-                d3
-                    .select(`td[data-col-id="${col_id}"]`)
-                    .select("#min")
-                    .property("value")
-            ),
-            max: timeFormat(
-                d3
-                    .select(`td[data-col-id="${col_id}"]`)
-                    .select("#max")
-                    .property("value")
-            ),
+            min: min,
+            max: max,
+            delete: min === null && max === null,
         });
     };
 
@@ -158,7 +165,7 @@ function minMaxTimeFilter(cell) {
         .attr("placeholder", "MM:ss")
         .attr("id", "min")
         .on("change", updateFilter);
-    cell.append("span").text("< _ <");
+    cell.append("span").text("to");
     cell.append("input")
         .attr("type", "text")
         .attr("placeholder", "MM:ss")
@@ -169,13 +176,15 @@ function minMaxTimeFilter(cell) {
 function textFilter(cell) {
     const col_id = cell.attr("data-col-id");
     const updateFilter = () => {
+        const search_string = d3
+            .select(`td[data-col-id="${col_id}"]`)
+            .select("input")
+            .property("value");
         addFilter({
             col_id: col_id,
             type: "text-filter",
-            search_string: d3
-                .select(`td[data-col-id="${col_id}"]`)
-                .select("input")
-                .property("value"),
+            search_string: search_string,
+            delete: search_string.length === 0,
         });
     };
 
@@ -203,6 +212,7 @@ export const updateDropdownFilter = (col_id, options) => {
         col_id: col_id,
         type: "dropdown-filter",
         options: options,
+        delete: options.length === 0,
     });
 };
 
@@ -211,36 +221,40 @@ function addFilter(filter) {
     let newFilters;
     if (_.find(filters, (f) => f.col_id === filter.col_id)) {
         // is in filters already
-        newFilters = _.map(getFilters(), (f) =>
-            f.col_id === filter.col_id ? filter : f
-        );
+        if (filter.delete) {
+            // delete existing filter
+            newFilters = _.filter(filters, (f) => f.col_id !== filter.col_id);
+        } else {
+            // replace existing filter
+            newFilters = _.map(filters, (f) =>
+                f.col_id === filter.col_id ? filter : f
+            );
+        }
     } else {
-        newFilters = [...getFilters(), filter];
+        // leave alone if delete or add new filter
+        newFilters = filter.delete ? filters : [...filters, filter];
     }
 
     sessionStorage.setItem("filters", JSON.stringify(newFilters));
     setFilteredRows(filterRows(getRows()));
-
-    const numRows = getFilteredRows().length;
-    setNumFilteredRows(numRows);
-    setStartRow(1);
-    setEndRow(numRows < getRowsPerPage() ? numRows : getRowsPerPage());
-    updateTableFooter();
-    createPage(1, getEndRow());
-    dotsVisibility();
-    heatMap();
+    afterFiltersUpdate();
 }
 
 export function clearFilters() {
     sessionStorage.setItem("filters", JSON.stringify([]));
     createFilterRow(getDetails());
     select2Filter();
-
     setFilteredRows(getRows());
-    const numRows = getNumRows();
-    setNumFilteredRows(numRows);
+    afterFiltersUpdate();
+}
+
+function afterFiltersUpdate() {
+    const numFilteredRows = getFilteredRows().length;
+    setNumFilteredRows(numFilteredRows);
     setStartRow(1);
-    setEndRow(numRows < getRowsPerPage() ? numRows : getRowsPerPage());
+    setEndRow(
+        numFilteredRows < getRowsPerPage() ? numFilteredRows : getRowsPerPage()
+    );
     updateTableFooter();
     createPage(1, getEndRow());
     dotsVisibility();
