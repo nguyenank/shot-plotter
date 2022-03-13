@@ -240,6 +240,7 @@ function createShotFromData(id, rowData, specialData) {
         heatMap();
     } else {
         createDot("#normal", id, specialData, "hidden");
+        setNumRows(newRows.length);
         updateTableFooter();
     }
 }
