@@ -6,13 +6,14 @@ import {
     getEndRow,
     setRows,
     setNumFilteredRows,
+    getNumRows,
     getRowsPerPage,
     getFilteredRows,
     setFilteredRows,
 } from "./table-functions.js";
 import { dotsVisibility } from "../shots/dot.js";
 import { heatMap } from "../toggles.js";
-
+import { getDetails } from "../details/details-functions.js";
 import { createPage, updateTableFooter } from "./table.js";
 
 export function createFilterRow(details) {
@@ -221,6 +222,22 @@ function addFilter(filter) {
     setFilteredRows(filterRows(getRows()));
 
     const numRows = getFilteredRows().length;
+    setNumFilteredRows(numRows);
+    setStartRow(1);
+    setEndRow(numRows < getRowsPerPage() ? numRows : getRowsPerPage());
+    updateTableFooter();
+    createPage(1, getEndRow());
+    dotsVisibility();
+    heatMap();
+}
+
+export function clearFilters() {
+    sessionStorage.setItem("filters", JSON.stringify([]));
+    createFilterRow(getDetails());
+    select2Filter();
+
+    setFilteredRows(getRows());
+    const numRows = getNumRows();
     setNumFilteredRows(numRows);
     setStartRow(1);
     setEndRow(numRows < getRowsPerPage() ? numRows : getRowsPerPage());

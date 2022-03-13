@@ -439,6 +439,14 @@ table {
       padding-bottom: 0.5rem;
     }
 
+    #clear-filter-icon {
+      &:hover {
+        color: $medium-grey;
+        text-shadow: 0.15rem 0.15rem black;
+        cursor: pointer;
+      }
+    }
+
     .bi-funnel-fill:hover {
       color: $medium-grey;
       text-shadow: 0.1rem 0.1rem black;

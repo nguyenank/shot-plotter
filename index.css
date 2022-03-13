@@ -378,6 +378,11 @@ table thead th.row-span {
   border-bottom: 1px solid black;
   padding-bottom: 0.5rem;
 }
+table thead #clear-filter-icon:hover {
+  color: #aaaaaa;
+  text-shadow: 0.15rem 0.15rem black;
+  cursor: pointer;
+}
 table thead .bi-funnel-fill:hover {
   color: #aaaaaa;
   text-shadow: 0.1rem 0.1rem black;

@@ -16,7 +16,7 @@ import {
     getRows,
 } from "./table-functions.js";
 import { createRowFromData } from "./row.js";
-import { createFilterRow } from "./filter.js";
+import { createFilterRow, clearFilters } from "./filter.js";
 import { cfgDetails } from "../details/config-details.js";
 
 function setUpTable() {
@@ -142,12 +142,13 @@ function createHeaderRow(details) {
     // clear row
     headerRow.selectAll("*").remove();
 
-    // for checkbox
-    headerRow
+    // for checkbox, use for filters
+    const filterIconCell = headerRow
         .append("th")
         .attr("scope", "col")
         .attr("rowspan", "2")
-        .attr("class", "row-span centered-cell")
+        .attr("class", "row-span centered-cell");
+    filterIconCell
         .append("i")
         .attr("class", "bi bi-funnel-fill")
         .on("click", function () {
@@ -155,16 +156,26 @@ function createHeaderRow(details) {
             const filterRow = d3.select("#filters");
             const headerRow = d3.select("#column-names").selectAll("th");
             const filterIcon = d3.select(this);
+            const clearFilterIcon = d3.select("#clear-filter-icon");
             if (filterRow.style("visibility") === "collapse") {
                 filterRow.style("visibility", "visible");
                 filterIcon.classed("open", true);
                 headerRow.style("padding-bottom", 0);
+                clearFilterIcon.style("display", "block");
             } else {
                 filterRow.style("visibility", "collapse");
                 filterIcon.classed("open", false);
                 headerRow.style("padding-bottom", "0.5rem");
+                clearFilterIcon.style("display", "none");
             }
         });
+
+    filterIconCell
+        .append("i")
+        .attr("id", "clear-filter-icon")
+        .attr("class", "bi bi-x-square-fill")
+        .style("display", "none")
+        .on("click", clearFilters);
 
     const columns = [{ title: "" }, ...details]; // for check box
     for (const col of details) {
