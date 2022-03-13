@@ -160,7 +160,13 @@ function createHeaderRow(details) {
             if (filterRow.style("visibility") === "collapse") {
                 filterRow.style("visibility", "visible");
                 filterIcon.classed("open", true);
-                headerRow.style("padding-bottom", 0);
+                // don't adjust padding for filter and trash can cells
+                headerRow.each(function () {
+                    const node = d3.select(this);
+                    if (!node.classed("row-span")) {
+                        node.style("padding-bottom", 0);
+                    }
+                });
                 clearFilterIcon.style("display", "block");
             } else {
                 filterRow.style("visibility", "collapse");
