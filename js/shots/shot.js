@@ -6,8 +6,10 @@ import {
     getRows,
     setFilteredRows,
     getFilteredRows,
+    setNumRows,
     getNumRows,
 } from "../table/table-functions.js";
+import { updateTableFooter } from "../table/table.js";
 import { getTypeIndex } from "../details/details-functions.js";
 import { heatMap } from "../toggles.js";
 import { filterRows } from "../table/filter.js";
@@ -228,7 +230,10 @@ function createShotFromData(id, rowData, specialData) {
         selected: false,
     };
 
-    setRows([...getRows(), newRow]);
+    const newRows = [...getRows(), newRow];
+    setRows(newRows);
+    setNumRows(newRows.length);
+    updateTableFooter();
     if (filterRows([newRow]).length == 1) {
         createDot("#normal", id, specialData, "visible");
         setFilteredRows([...getFilteredRows(), newRow]);
@@ -236,6 +241,7 @@ function createShotFromData(id, rowData, specialData) {
         heatMap();
     } else {
         createDot("#normal", id, specialData, "hidden");
+        updateTableFooter();
     }
 }
 
