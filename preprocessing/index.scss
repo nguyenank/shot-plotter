@@ -536,6 +536,10 @@ table {
     vertical-align: middle;
   }
 }
+/* playing area */
+#playing-area {
+  cursor: crosshair;
+}
 
 .ghost-shot {
   opacity: 50%;
