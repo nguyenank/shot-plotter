@@ -105,6 +105,7 @@ async function uploadCSV(id, uploadId, e) {
             clearTable();
             Papa.parse(f, {
                 header: true,
+                skipEmptyLines: true,
                 step: function (row) {
                     swapTeamColor = processCSV(
                         uploadId,
