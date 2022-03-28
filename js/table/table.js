@@ -174,7 +174,11 @@ function createHeaderRow(details) {
                 headerRow.style("padding-bottom", "0.5rem");
                 clearFiltersIcon.style("display", "none");
             }
-        });
+        })
+        .classed(
+            "open",
+            d3.select("#filters").style("visibility") !== "collapse"
+        );
 
     filterIconCell
         .append("i")

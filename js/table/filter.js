@@ -31,6 +31,17 @@ export function createFilterRow(details) {
         (d) => d.hidden === undefined || d.hidden === null
     );
 
+    // get rid of any filters corresponding to non-existent columns
+
+    const visDetailIds = _.map(visDetails, (d) => d.id);
+    const filterIds = _.map(getFilters(), (d) => d.col_id);
+    const deleteFilters = _.map(_.difference(filterIds, visDetailIds), (id) => {
+        addFilter({
+            col_id: id,
+            delete: true,
+        });
+    });
+
     for (const col of visDetails) {
         let c = filterRow
             .append("td")
