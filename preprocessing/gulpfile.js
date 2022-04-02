@@ -7,7 +7,8 @@ const del = require("del");
 const sports = require("../supported-sports.json").sports;
 
 const indexBanner = true;
-const banner = false;
+const banner = true;
+const analytics = true;
 
 function html(sport) {
     return src("./base.html")
@@ -26,6 +27,18 @@ function html(sport) {
                 banner,
                 inject(src(`./banner.html`), {
                     starttag: "<!-- inject:banner -->",
+                    transform: function (filePath, file) {
+                        // return file contents as string
+                        return file.contents.toString("utf8");
+                    },
+                })
+            )
+        )
+        .pipe(
+            gulpif(
+                analytics,
+                inject(src(`./analytics.html`), {
+                    starttag: "<!-- inject:analytics -->",
                     transform: function (filePath, file) {
                         // return file contents as string
                         return file.contents.toString("utf8");
@@ -80,6 +93,18 @@ function index() {
                 banner || indexBanner,
                 inject(src(`./banner.html`), {
                     starttag: "<!-- inject:banner -->",
+                    transform: function (filePath, file) {
+                        // return file contents as string
+                        return file.contents.toString("utf8");
+                    },
+                })
+            )
+        )
+        .pipe(
+            gulpif(
+                analytics,
+                inject(src(`./analytics.html`), {
+                    starttag: "<!-- inject:analytics -->",
                     transform: function (filePath, file) {
                         // return file contents as string
                         return file.contents.toString("utf8");

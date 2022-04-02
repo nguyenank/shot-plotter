@@ -15,7 +15,7 @@ function getCurrentShotTypes() {
     if (existsDetail("#shot-type")) {
         d3.select("#shot-type-select")
             .selectAll("option")
-            .each(function() {
+            .each(function () {
                 let obj = {
                     value: d3.select(this).property("value"),
                 };
@@ -47,7 +47,7 @@ function createId(title) {
     let id = title
         .toLowerCase()
         .replace(/\s/g, "-") // lowercase and replace all whitespace
-        .replace(/^\d/, d => "a" + d);
+        .replace(/^\d/, (d) => "a" + d);
 
     while (
         _.findIndex(getDetails(), { id: id }) !== -1 ||
@@ -65,19 +65,14 @@ function saveCurrentDetailSetup() {
     let newDetails = [];
     d3.select("#reorder-columns")
         .selectAll("td")
-        .each(function() {
+        .each(function () {
             let detail = _.find(details, {
                 id: d3.select(this).attr("data-id"),
             });
             if (
-                d3
-                    .select(this)
-                    .select("i")
-                    .size() !== 0 &&
-                d3
-                    .select(this)
-                    .select("i")
-                    .attr("class") === "bi bi-eye-slash-fill"
+                d3.select(this).select("i").size() !== 0 &&
+                d3.select(this).select("i").attr("class") ===
+                    "bi bi-eye-slash-fill"
             ) {
                 detail["hidden"] = true;
             } else {
@@ -115,21 +110,14 @@ function saveCurrentDetailSetup() {
                             let selectedValue = d
                                 .select("select")
                                 .property("value");
-                            detail.options = detail.options.map(function(o) {
-                                let option = { value: o.value };
-                                if (o.value === selectedValue) {
-                                    option.selected = true;
-                                }
-                                return option;
-                            });
+                            detail.options = getCurrentShotTypes();
                             break;
-
                         case "radio":
                             // save current selection
                             let checkedValue = d
                                 .select(`input[name='${detail.id}']:checked`)
                                 .property("value");
-                            detail.options = detail.options.map(function(o) {
+                            detail.options = detail.options.map(function (o) {
                                 let option = { value: o.value };
                                 if (o.value === checkedValue) {
                                     option.checked = true;

@@ -2,7 +2,7 @@
 
 ![A screenshot of the web application.](./resources/ice-hockey-screenshot.png)
 
-**01/14/22: Volleyball, men's lacrosse, and women's lacrosse (all NCAA) have been added to the list of supported sports!**
+**04/02/22: The ability to filter rows based on their column values has been added!**
 
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
@@ -78,9 +78,19 @@ The table logs the information for each event, as well as the row number of the 
 
 The table, by default, shows the last page, which has the last 10 events recorded. Pages can be navigated using the _Prev_(ious) and _Next_ buttons at the lower-right of the table. The currently shown events and the total number of events recorded can be seen in the bottom-left of the table.
 
+By click on the funnel icon in the header of the table, the filters become visible beneath the table headers and apply to the column in question. Multiple filters can be active at once; if there are multiple filters, only events that fit the criteria of all filters are visible. Events are filtered from both the table and playing area - in other words, events that do not fit the filter criteria are not visible as a row in the table or as a dot in the playing area. The form of the filter varies by the detail type:
+
+-   **Numeric/Time (e.g. X, Y, #):** Numeric or time details will have a filter that takes a _minimum_ and a _maximum_ value and filters out any events with values for that detail not in the range specified. The range is inclusive of the minimum and maximum. If no value is specified for either the minimum or maximum, it is treated as if there is no limit in that direction. For example, if the minimum is indicated to be 4 and there is no maximum value indicated, only rows with a value of 4 or greater will be visible.
+-   **Radio Buttons/Dropdown (e.g. Period, Team, Type):** Radio button and dropdown details will have a filter that takes the form of a dropdown and filters out any events with values not selected in the dropdown. If the dropdown has no selected options, it is as if the filter does not exist. It is possible to select multiple options in the dropdown filter; in this case, events with values corresponding to any currently selected in the dropdown will be visible. For example, if a dropdown filter currently has the values _Shot_ and _Goal_ selected, events with the value _Shot_ OR the value _Goal_ for that detail will be visible.
+-   **Text (e.g. Player):** Text details will have a filter that is just a text box: any string that contains the string in the text box filter will satisfy the filter. If the string is surrounded in quote marks, double or single, instead only exact matches for the string satisfy the filter. For example, for the filter value _hat_, both _hate_ and _chat_ will be visible, but for the filter value _'hat'_ only the value 'hat' will suffice. It is also possible to use regular expressions in the text box filter for more complex text queries.
+
+Clicking on the funnel icon will toggle whether the filters are visible. Filters are applied regardless of whether the filters are visible or not; hiding them does not remove all filters. When at least one filter is active and the filters are visible, a small X-in-a-square icon will appear near the funnel icon; clicking this X icon will clear all filters.
+
+The number of currently filtered rows is also visible in the bottom left of the table.
+
 #### Download/Upload Table
 
-The event table information can be downloaded by pressing the _Download_ button. There is a text-field to customize the name of the file; otherwise, it defaults to the day and time when the web app was opened. Files are in .csv format, using comma separators, with the header row as it appears on the table, excluding _\#_, included in the file.
+The event table information can be downloaded by pressing the _Download_ button. There is a text-field to customize the name of the file; otherwise, it defaults to the day and time when the web app was opened. Files are in .csv format, using comma separators, with the header row as it appears on the table, excluding _\#_, included in the file. When filters are active, only currently visible events that satisfy the filters are included in the file; this is indicated by the text of the button saying _Download Filter_ rather than just _Download_.
 
 To initialize the table, a .csv file can be uploaded using the _Choose File_ button next to the Upload label. Only .csv files are permitted. The header row must exactly match the header row of the table, excluding _\#_, including order. Any custom shot types will be added in shot order. Custom teams will be added in order as they appear, alternating between the teal and orange team. This means if a shot by the orange team is logged first, when the file is downloaded and later uploaded, the team will be blue, but besides color there is no impact to the web app. _When a file is uploaded, any shots previously in the table are erased._
 

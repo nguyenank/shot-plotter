@@ -1,8 +1,18 @@
 import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
-import { getHeaderRow, getNumRows } from "../table/table-functions.js";
+import {
+    getHeaderRow,
+    setRows,
+    getRows,
+    setFilteredRows,
+    getFilteredRows,
+    setNumRows,
+    getNumRows,
+} from "../table/table-functions.js";
+import { updateTableFooter } from "../table/table.js";
 import { getTypeIndex } from "../details/details-functions.js";
 import { heatMap } from "../toggles.js";
+import { filterRows } from "../table/filter.js";
 import {
     sport,
     cfgSportA,
@@ -169,20 +179,25 @@ function createShotFromEvent(e, point1) {
                 break;
             case "distance-calc":
                 // if 2 coordinate event, record distance between points
+                function distance([x1, y1], [x2, y2]) {
+                    return Math.sqrt(
+                        Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)
+                    );
+                }
+
                 if (specialData["coords2"]) {
-                    rowData[col.id] = math
-                        .distance(specialData["coords"], specialData["coords2"])
-                        .toFixed(2);
+                    rowData[col.id] = distance(
+                        specialData["coords"],
+                        specialData["coords2"]
+                    ).toFixed(2);
                 } else {
                     // else if 1 coordinate event, record distance to nearest goal
                     if (cfgSportGoalCoords) {
-                        rowData[col.id] = math
-                            .min(
-                                _.map(cfgSportGoalCoords, (g) =>
-                                    math.distance(g, specialData["coords"])
-                                )
+                        rowData[col.id] = Math.min(
+                            ..._.map(cfgSportGoalCoords, (g) =>
+                                distance(g, specialData["coords"])
                             )
-                            .toFixed(2);
+                        ).toFixed(2);
                     } else {
                         rowData[col.id] = "";
                     }
@@ -203,15 +218,31 @@ function createShotFromEvent(e, point1) {
         }
     }
 
-    createDot("#normal", id, specialData);
-    createNewRow(id, rowData, specialData);
-    heatMap();
+    // add row to sessionStorage
+    createShotFromData(id, rowData, specialData);
 }
 
 function createShotFromData(id, rowData, specialData) {
-    createDot("#normal", id, specialData);
-    createNewRow(id, rowData, specialData);
-    heatMap();
+    const newRow = {
+        id: id,
+        rowData: rowData,
+        specialData: specialData,
+        selected: false,
+    };
+
+    const newRows = [...getRows(), newRow];
+    setRows(newRows);
+    updateTableFooter();
+    if (filterRows([newRow]).length == 1) {
+        createDot("#normal", id, specialData, "visible");
+        setFilteredRows([...getFilteredRows(), newRow]);
+        createNewRow(id, rowData, specialData);
+        heatMap();
+    } else {
+        createDot("#normal", id, specialData, "hidden");
+        setNumRows(newRows.length);
+        updateTableFooter();
+    }
 }
 
 export { setUpShots, createShotFromData };

@@ -1,4 +1,4 @@
-import { createHeaderRow } from "../../table/table.js";
+import { createTableHeader } from "../../table/table.js";
 import { setRowsPerPage } from "../../table/table-functions.js";
 import {
     getDetails,
@@ -18,6 +18,7 @@ import { createWidgetTypePage } from "./widget-type-page.js";
 import { cfgDetails } from "../config-details.js";
 import { sport, cfgDefaultEnable } from "../../../setup.js";
 import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
+import { select2Filter } from "../../table/filter.js";
 
 function createMainPage(id) {
     d3.select(id).selectAll("*").remove();
@@ -229,10 +230,11 @@ function saveChanges(e) {
             }
         });
 
-    createHeaderRow(titles);
     const visibleDetails = titles.map((x) =>
         _.find(getDetails(), { id: x.id })
     );
+
+    createTableHeader(visibleDetails);
 
     const widgetsPerRow = parseInt(
         d3.select("#widgets-per-row-dropdown").property("value")
@@ -242,6 +244,8 @@ function saveChanges(e) {
     createDetailsPanel(visibleDetails, "#details", widgetsPerRow);
     shotTypeLegend();
     teamLegend();
+    select2Filter();
+
     $("#details-modal").modal("hide"); // default js doesn't work for some reason
 }
 

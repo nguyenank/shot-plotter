@@ -32,7 +32,7 @@ function setUpPlayingArea() {
         .attr("id", "dots");
 
     for (const id of ["ghost", "normal", "selected"]) {
-        dots.append("svg:g").attr("id", id);
+        dots.append("svg:g").attr("id", id).style("visibility", "hidden");
     }
 
     d3.select("#transformations")

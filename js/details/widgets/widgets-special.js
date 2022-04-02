@@ -1,6 +1,11 @@
 import { cfgDetails } from "../config-details.js";
-import { regenHeatMapTeamNames } from "../../toggles.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
+import {
+    updateDropdownFilter,
+    createFilterRow,
+    select2Filter,
+} from "../../table/filter.js";
+import { saveCurrentDetailSetup, getDetails } from "../details-functions.js";
 
 function createTooltip({ id, title, text }) {
     // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
@@ -49,6 +54,14 @@ function teamRadioButtons(id, data) {
         .append("div")
         .attr("class", "form-group");
     let blueDiv = wrapper.append("div").attr("class", "form-check");
+
+    const changeFunction = () => {
+        teamLegend();
+        saveCurrentDetailSetup();
+        createFilterRow(getDetails());
+        select2Filter();
+    };
+
     blueDiv
         .append("input")
         .attr("class", "form-check-input")
@@ -61,10 +74,7 @@ function teamRadioButtons(id, data) {
         .attr("type", "text")
         .attr("id", "blue-team-name")
         .attr("value", data.blueTeamName)
-        .on("change", () => {
-            teamLegend();
-            regenHeatMapTeamNames();
-        });
+        .on("change", changeFunction);
 
     let orangeDiv = wrapper.append("div").attr("class", "form-check");
     orangeDiv
@@ -79,16 +89,15 @@ function teamRadioButtons(id, data) {
         .attr("type", "text")
         .attr("id", "orange-team-name")
         .attr("value", data.orangeTeamName)
-        .on("change", () => {
-            teamLegend();
-            regenHeatMapTeamNames();
-        });
+        .on("change", changeFunction);
 
     wrapper.select("#" + data.checked).attr("checked", true);
 }
 
 function select2Dropdown() {
     $(".select2").select2({});
+
+    select2Filter();
 
     $("#sample-dropdown-select").select2({
         dropdownParent: $("#sample-dropdown"),
@@ -103,6 +112,10 @@ function select2Dropdown() {
         .on("change", function (e) {
             // update legend
             shotTypeLegend();
+
+            saveCurrentDetailSetup();
+            createFilterRow(getDetails());
+            select2Filter();
 
             // https://stackoverflow.com/a/54047075
             // do not delete new options

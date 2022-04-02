@@ -7,6 +7,11 @@
   <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg" />
   <link rel="mask-icon" href="/resources/favicon.svg" color="red" />
 
+  <!-- inject:analytics -->
+  <!-- Plausible -->
+<script defer data-domain="shot-plotter.netlify.app" src="https://plausible.io/js/plausible.js"></script>
+  <!-- endinject -->
+
   <title>Shot-Plotter</title>
 
   <!-- Google fonts -->
@@ -20,9 +25,6 @@
 
   <!-- downloadjs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous"></script>
-
-  <!-- Math.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.1.0/math.js" integrity="sha512-UvIACSDvB2RfwkjYTjYkuJq901Y6L4nZNoOHZMRBvSdIiIm3BFrtOdgjr5EZSPYR5cU/P6XUW6TN/578FuTysw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- PapaParse -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js" integrity="sha512-rKFvwjvE4liWPlFnvH4ZhRDfNZ9FOpdkD/BU5gAIA3VS3vOQrQ5BjKgbO3kxebKhHdHcNUHLqxQYSoxee9UwgA==" crossorigin="anonymous"></script>
@@ -55,6 +57,9 @@
 
 <body>
   <!-- inject:banner -->
+  <div class="alert alert-info" role="alert">
+  <b>04/02/22:</b> The ability to filter rows based on column values has been added! Click on the funnel icon in the table header to try it out!
+</div>
   <!-- endinject -->
   <div class="center header">
     <h1>Shot-Plotter</h1>

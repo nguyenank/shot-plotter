@@ -3,14 +3,20 @@ import {
     existsDetail,
     getCurrentShotTypes,
     getTypeIndex,
+    saveCurrentDetailSetup,
 } from "./details/details-functions.js";
+import {
+    createFilterRow,
+    select2Filter,
+    existFilters,
+} from "./table/filter.js";
 import {
     clearTable,
     getHeaderRow,
+    getFilteredRows,
     getRows,
-    getNumRows,
 } from "./table/table-functions.js";
-import { regenHeatMapTeamNames } from "./toggles.js";
+import { updateTableFooter } from "./table/table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
@@ -39,6 +45,13 @@ function setUpCSVDownloadUpload() {
     );
 }
 
+export function toggleDownloadText() {
+    const node = d3
+        .select("#csv-upload-download")
+        .select("button")
+        .text(existFilters() ? "Download Filtered" : "Download");
+}
+
 function downloadCSV(id) {
     // set up header row
     let csv = "";
@@ -54,7 +67,7 @@ function downloadCSV(id) {
             }
         });
     csv = csv.slice(0, -1) + "\n";
-    const rows = getRows();
+    const rows = getFilteredRows();
     for (let row of rows) {
         for (let col of _.compact(header)) {
             if (col !== "shot-number") {
@@ -77,7 +90,7 @@ function escape(text) {
     return text.includes(",") ? '"' + text + '"' : text;
 }
 
-function uploadCSV(id, uploadId, e) {
+async function uploadCSV(id, uploadId, e) {
     if (/.csv$/i.exec(d3.select(uploadId).property("value"))) {
         const f = e.target.files[0];
         if (f) {
@@ -92,6 +105,7 @@ function uploadCSV(id, uploadId, e) {
             clearTable();
             Papa.parse(f, {
                 header: true,
+                skipEmptyLines: true,
                 step: function (row) {
                     swapTeamColor = processCSV(
                         uploadId,
@@ -100,6 +114,7 @@ function uploadCSV(id, uploadId, e) {
                     );
                 },
             });
+            updateTableFooter();
         }
     } else {
         d3.select(uploadId).classed("is-invalid", true);
@@ -131,6 +146,9 @@ function processCSV(uploadId, row, swapTeamColor) {
         if (typeOptions.indexOf(value) === -1) {
             d3.select("#shot-type-select").append("option").text(value);
             shotTypeLegend();
+            saveCurrentDetailSetup();
+            createFilterRow(getDetails());
+            select2Filter();
         }
     }
 
@@ -156,7 +174,9 @@ function processCSV(uploadId, row, swapTeamColor) {
                     : "#orange-team-name";
             d3.select(swapTeamId).property("value", row.Team);
             teamLegend();
-            regenHeatMapTeamNames();
+            saveCurrentDetailSetup();
+            createFilterRow(getDetails());
+            select2Filter();
 
             teamColor = swapTeamColor;
             // alternate changing team names
@@ -191,7 +211,9 @@ function processCSV(uploadId, row, swapTeamColor) {
         "shot-number"
     );
     let rowData =
-        specialData.numberCol !== -2 ? { "shot-number": getNumRows() + 1 } : {};
+        specialData.numberCol !== -2
+            ? { "shot-number": getRows().length + 1 }
+            : {};
     _.forEach(_.zip(headerIds, Object.values(row)), function ([header, value]) {
         rowData[header] = value;
     });
