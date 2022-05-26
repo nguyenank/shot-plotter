@@ -766,7 +766,9 @@
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
-                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
             ]
         },
         {
@@ -833,7 +835,9 @@
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
-                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
             ]
         }
     ]

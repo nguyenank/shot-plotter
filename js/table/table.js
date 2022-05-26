@@ -157,21 +157,29 @@ function createHeaderRow(details) {
             const headerRow = d3.select("#column-names").selectAll("th");
             const filterIcon = d3.select(this);
             const clearFiltersIcon = d3.select("#clear-filter-icon");
-            if (filterRow.style("visibility") === "collapse") {
-                filterRow.style("visibility", "visible");
+            if (filterRow.style("display") === "none") {
+                filterRow.style("display", "table-row");
                 filterIcon.classed("open", true);
                 // don't adjust padding for filter and trash can cells
                 headerRow.each(function () {
                     const node = d3.select(this);
-                    if (!node.classed("row-span")) {
+                    if (node.classed("row-span")) {
+                        node.style("border-bottom", "1px solid black");
+                    } else {
                         node.style("padding-bottom", 0);
                     }
                 });
                 toggleClearFiltersIcon();
             } else {
-                filterRow.style("visibility", "collapse");
+                filterRow.style("display", "none");
                 filterIcon.classed("open", false);
                 headerRow.style("padding-bottom", "0.5rem");
+                headerRow.each(function () {
+                    const node = d3.select(this);
+                    if (node.classed("row-span")) {
+                        node.style("border-bottom", "revert");
+                    }
+                });
                 clearFiltersIcon.style("display", "none");
             }
         })

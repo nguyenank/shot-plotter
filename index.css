@@ -370,7 +370,7 @@ table thead th {
   border-bottom: 0;
 }
 table thead #filters {
-  visibility: collapse;
+  display: none;
 }
 table thead #filters td {
   padding-top: 0;
