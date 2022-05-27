@@ -8,7 +8,7 @@ const sports = require("../supported-sports.json").sports;
 
 const indexBanner = false;
 const banner = false;
-const analytics = true;
+const analytics = false;
 
 function html(sport) {
     return src("./base.html")
