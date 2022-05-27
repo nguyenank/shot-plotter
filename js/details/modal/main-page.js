@@ -236,12 +236,8 @@ function saveChanges(e) {
 
     createTableHeader(visibleDetails);
 
-    const widgetsPerRow = parseInt(
-        d3.select("#widgets-per-row-dropdown").property("value")
-    );
-
     createWidgetTypePage();
-    createDetailsPanel(visibleDetails, "#details", widgetsPerRow);
+    createDetailsPanel(visibleDetails, "#details");
     shotTypeLegend();
     teamLegend();
     select2Filter();

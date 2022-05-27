@@ -25,20 +25,26 @@ function setUpDetailsPanel(id = "#details") {
     setDetails(details);
     createDetailsPanel(details, id);
 
-    d3.select(id).on("mouseleave", e => {
+    d3.select(id).on("mouseleave", (e) => {
         d3.select("#customize-btn").classed("is-invalid", false);
     });
 
     setUpDetailsModal("#details-modal");
 }
 
-function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
+function createDetailsPanel(details, id = "#details") {
+    let widgetsPerRow;
+    try {
+        widgetsPerRow = parseInt(
+            d3.select("#widgets-per-row-dropdown").property("value")
+        );
+    } catch (TypeError) {
+        widgetsPerRow = 2;
+    }
     // clear existing details
-    d3.select(id)
-        .selectAll("*")
-        .remove();
+    d3.select(id).selectAll("*").remove();
 
-    _.remove(details, x => x.noWidget);
+    _.remove(details, (x) => x.noWidget);
     for (let [i, data] of details.entries()) {
         let rowId = "#row" + (Math.floor(i / widgetsPerRow) + 1);
 
@@ -54,9 +60,7 @@ function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
                 .attr("id", rowId.slice(1));
         } else {
             // need to add dividing line
-            d3.select(rowId)
-                .append("div")
-                .attr("class", "vr");
+            d3.select(rowId).append("div").attr("class", "vr");
         }
 
         switch (data.type) {
@@ -112,7 +116,8 @@ function customizeButton(id) {
         .attr("class", "form-control white-btn")
         .attr("id", "customize-btn")
         .text("Customize Setup")
-        .on("click", e => {
+        .attr("disabled", getNumRows() > 0 ? true : undefined)
+        .on("click", (e) => {
             if (getNumRows() === 0) {
                 // update details storage with shot options b/c this
                 // was the most convenient place

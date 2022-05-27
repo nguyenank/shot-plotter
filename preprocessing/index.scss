@@ -137,11 +137,12 @@ ul {
 .column-center {
   @extend .center;
   flex-direction: column;
+  width: 100%;
 }
 /* shot info */
 .shot-info {
   @extend %box;
-  // width: 30%;
+  width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
   flex-grow: 1;

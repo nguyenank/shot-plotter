@@ -1,6 +1,7 @@
 import { getFilteredRows } from "./table/table-functions.js";
 import { perimeterId, cfgSportA } from "../setup.js";
-import { existsDetail } from "./details/details-functions.js";
+import { existsDetail, getDetails } from "./details/details-functions.js";
+import { createDetailsPanel } from "./details/details-panel.js";
 
 export function setUpToggles() {
     setUpPlayingAreaToggles();
@@ -131,8 +132,14 @@ export function heatMapFunctionality() {
 }
 
 function eventGuideFunctionality() {
-    function setOn() {}
-    function setOff() {}
+    function setOn() {
+        d3.select("#details").selectAll("*").remove();
+    }
+    function setOff() {
+        const details = getDetails();
+        const visibleDetails = _.filter(details, (d) => d.hidden != true);
+        createDetailsPanel(visibleDetails, "#details");
+    }
 
     const toggleArea = d3.select("#event-guide-toggle-area");
 
