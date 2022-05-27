@@ -105,15 +105,18 @@ ul {
 }
 
 /* utility */
-.center {
+.center, .column-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.column-center {
+  flex-direction: column;
+}
+
 /* shot info */
 .shot-info {
-  width: 30%;
   padding: 1rem;
   margin-bottom: 1rem;
   flex-grow: 1;

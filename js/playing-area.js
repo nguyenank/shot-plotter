@@ -38,6 +38,20 @@ function setUpPlayingArea() {
     d3.select("#transformations")
         .insert("g", "#outside-perimeter")
         .attr("id", "heat-map");
+
+    let guides = d3
+        .select("#transformations")
+        .insert("svg:g", "#outside-perimeter")
+        .attr("id", "guides");
+
+    guides
+        .append("line")
+        .attr("x1", 0)
+        .attr("x2", paWidth)
+        .attr("y1", paHeight / 2 + 10)
+        .attr("y2", paHeight / 2 + 10)
+        .attr("stroke", "rgba(0,0,0,0.2)")
+        .attr("stroke-width", cfgSportA.strokeWidth);
 }
 
 export { setUpPlayingArea };

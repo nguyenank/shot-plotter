@@ -3,7 +3,12 @@ import { perimeterId, cfgSportA } from "../setup.js";
 import { existsDetail } from "./details/details-functions.js";
 
 export function setUpToggles() {
-    const toggles = d3.select("#toggles");
+    setUpPlayingAreaToggles();
+    setUpPanelToggles();
+}
+
+function setUpPlayingAreaToggles() {
+    const toggles = d3.select("#playing-area-toggles");
     toggles
         .append("div")
         .attr("class", "toggle-area center")
@@ -12,14 +17,19 @@ export function setUpToggles() {
         .append("div")
         .attr("class", "toggle-area center")
         .attr("id", "heat-map-toggle-area");
-    toggles
-        .append("div")
-        .attr("class", "toggle-area center")
-        .attr("id", "heat-map-team-select")
-        .style("display", "none");
 
     twoPointFunctionality();
     heatMapFunctionality();
+}
+
+function setUpPanelToggles() {
+    const toggles = d3.select("#panel-toggles");
+    toggles
+        .append("div")
+        .attr("class", "toggle-area center")
+        .attr("id", "event-guide-toggle-area");
+
+    eventGuideFunctionality();
 }
 
 export function twoPointFunctionality() {
@@ -81,15 +91,10 @@ export function heatMapFunctionality() {
     function setOn() {
         d3.select("#dots").attr("display", "none");
         heatMap();
-        if (existsDetail("#team")) {
-            regenHeatMapTeamNames();
-            d3.select("#heat-map-team-select").style("display", "flex");
-        }
     }
     function setOff() {
         d3.select("#dots").attr("display", "contents");
         d3.select("#heat-map").selectAll("*").remove();
-        d3.select("#heat-map-team-select").style("display", "none");
     }
     if (d3.select("#heat-map-enable").property("checked")) {
         d3.select("#heat-map-toggle-area").selectAll("*").remove();
@@ -122,8 +127,38 @@ export function heatMapFunctionality() {
     } else {
         setOff();
         d3.select("#heat-map-toggle-area").selectAll("*").remove();
-        d3.select("#heat-map-team-select").style("display", "none");
     }
+}
+
+function eventGuideFunctionality() {
+    function setOn() {}
+    function setOff() {}
+
+    const toggleArea = d3.select("#event-guide-toggle-area");
+
+    toggleArea
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "event-guide-toggle")
+        .text("Create Events");
+    let toggle = toggleArea
+        .append("div")
+        .attr("class", "form-check form-switch");
+    toggle
+        .append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "checkbox")
+        .attr("id", "event-guide-toggle")
+        .on("change", () =>
+            d3.select("#event-guide-toggle").property("checked")
+                ? setOn()
+                : setOff()
+        );
+    toggleArea
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "event-guide-toggle")
+        .text("Create Guides");
 }
 
 export function heatMap() {
