@@ -133,10 +133,15 @@ ul {
   justify-content: center;
   align-items: center;
 }
+
+.column-center {
+  @extend .center;
+  flex-direction: column;
+}
 /* shot info */
 .shot-info {
   @extend %box;
-  width: 30%;
+  // width: 30%;
   padding: 1rem;
   margin-bottom: 1rem;
   flex-grow: 1;
