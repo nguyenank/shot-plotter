@@ -381,7 +381,7 @@ table thead #filters td {
   padding-top: 0;
 }
 table thead th.row-span {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #aaaaaa;
   padding-bottom: 0.5rem;
 }
 table thead #clear-filter-icon:hover {
