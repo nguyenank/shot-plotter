@@ -38,46 +38,48 @@ function setUpShots() {
 
     d3.select("#playing-area")
         .select(perimeterId)
-        .on("click", (e) => {
-            document.getSelection().removeAllRanges();
-            d3.select("#ghost").selectAll("*").remove();
-            let shiftHeld = sessionStorage.getItem("shiftHeld");
-            let firstPoint =
-                sessionStorage.getItem("firstPoint") === "null"
-                    ? null
-                    : sessionStorage
-                          .getItem("firstPoint")
-                          .split(",")
-                          .map(parseFloat);
-            if (shiftHeld === "true" && firstPoint === null) {
-                // create ghost dot for first point
-                sessionStorage.setItem("firstPoint", d3.pointer(e));
-                const type = d3.select("#shot-type").empty()
-                    ? null
-                    : d3
-                          .select("#shot-type")
-                          .select("select")
-                          .property("value");
-                createDot("#ghost", "ghost-dot", {
-                    id: "ghost-dot",
-                    typeIndex: getTypeIndex(type),
-                    teamColor: d3
-                        .select("input[name='team-bool']:checked")
-                        .empty()
-                        ? null
-                        : d3
-                              .select("input[name='team-bool']:checked")
-                              .property("value"),
-                    coords: d3.pointer(e),
-                    ghostBool: true,
-                });
-            } else if (shiftHeld === "true" && firstPoint !== null) {
-                sessionStorage.setItem("firstPoint", null);
-                createShotFromEvent(e, firstPoint);
-            } else {
-                createShotFromEvent(e);
-            }
+        .on("click", onClickShot);
+}
+
+export function onClickShot(e) {
+    document.getSelection().removeAllRanges();
+    d3.select("#ghost").selectAll("*").remove();
+    let shiftHeld = sessionStorage.getItem("shiftHeld");
+    let firstPoint =
+        sessionStorage.getItem("firstPoint") === "null"
+            ? null
+            : sessionStorage
+                  .getItem("firstPoint")
+                  .split(",")
+                  .map(parseFloat);
+    if (shiftHeld === "true" && firstPoint === null) {
+        // create ghost dot for first point
+        sessionStorage.setItem("firstPoint", d3.pointer(e));
+        const type = d3.select("#shot-type").empty()
+            ? null
+            : d3
+                  .select("#shot-type")
+                  .select("select")
+                  .property("value");
+        createDot("#ghost", "ghost-dot", {
+            id: "ghost-dot",
+            typeIndex: getTypeIndex(type),
+            teamColor: d3
+                .select("input[name='team-bool']:checked")
+                .empty()
+                ? null
+                : d3
+                      .select("input[name='team-bool']:checked")
+                      .property("value"),
+            coords: d3.pointer(e),
+            ghostBool: true,
         });
+    } else if (shiftHeld === "true" && firstPoint !== null) {
+        sessionStorage.setItem("firstPoint", null);
+        createShotFromEvent(e, firstPoint);
+    } else {
+        createShotFromEvent(e);
+    }
 }
 
 function createShotFromEvent(e, point1) {

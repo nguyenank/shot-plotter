@@ -3,7 +3,7 @@ import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
 import {
     updateDropdownFilter,
     createFilterRow,
-    select2Filter,
+    select2Filter
 } from "../../table/filter.js";
 import { saveCurrentDetailSetup, getDetails } from "../details-functions.js";
 
@@ -102,12 +102,12 @@ function select2Dropdown() {
     $("#sample-dropdown-select").select2({
         dropdownParent: $("#sample-dropdown"),
         width: "100%",
-        dropdownCssClass: "small-text",
+        dropdownCssClass: "small-text"
     });
 
     $("#shot-type-select")
         .select2({
-            tags: true,
+            tags: true
         })
         .on("change", function (e) {
             // update legend
@@ -124,13 +124,13 @@ function select2Dropdown() {
     $("#example-select").select2({
         dropdownParent: $(".cards"),
         width: "100%",
-        dropdownCssClass: "small-text",
+        dropdownCssClass: "small-text"
     });
 
     $("#widgets-per-row-dropdown").select2({
         dropdownParent: $("#main-page-mb"),
         width: "3em",
-        dropdownCssClass: "small-text",
+        dropdownCssClass: "small-text"
     });
 }
 

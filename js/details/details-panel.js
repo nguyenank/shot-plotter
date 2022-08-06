@@ -5,16 +5,17 @@ import {
     createTextField,
     createDropdown,
     createTimeWidget,
+    createGuideWidget
 } from "./widgets/widgets-base.js";
 import {
     createTooltip,
     teamRadioButtons,
-    select2Dropdown,
+    select2Dropdown
 } from "./widgets/widgets-special.js";
 import {
     setDetails,
     getDetails,
-    getCurrentShotTypes,
+    getCurrentShotTypes
 } from "./details-functions.js";
 import { getDefaultDetails } from "../../setup.js";
 import { getNumRows } from "../table/table-functions.js";
@@ -72,8 +73,7 @@ function createDetailsPanel(details, id = "#details") {
                 createTooltip({
                     id: rowId,
                     title: data.title,
-                    text:
-                        "Player will appear on dot if 2 or less characters long.",
+                    text: "Player will appear on dot if 2 or less characters long."
                 });
                 break;
             case "shot-type":
@@ -81,11 +81,10 @@ function createDetailsPanel(details, id = "#details") {
                 createTooltip({
                     id: rowId,
                     title: data.title,
-                    text:
-                        "To add new options, type into the dropdown, then select the new option or press Enter.",
+                    text: "To add new options, type into the dropdown, then select the new option or press Enter."
                 });
                 $(".select2").select2({
-                    tags: true,
+                    tags: true
                 });
                 break;
             case "radio":
@@ -100,11 +99,15 @@ function createDetailsPanel(details, id = "#details") {
             case "time":
                 createTimeWidget(rowId, data);
                 break;
+            case "guide":
+                createGuideWidget(rowId, data);
         }
     }
     select2Dropdown();
     d3.select(id).append("hr");
-    customizeButton(id);
+    if (!_.every(details, (d) => d.type === "guide")) {
+        customizeButton(id);
+    }
 }
 
 function customizeButton(id) {
@@ -137,7 +140,7 @@ function customizeButton(id) {
 
                 new bootstrap.Modal(document.getElementById("details-modal"), {
                     backdrop: "static",
-                    keyboard: false,
+                    keyboard: false
                 }).show();
             } else {
                 d3.select("#customize-btn").classed("is-invalid", true);

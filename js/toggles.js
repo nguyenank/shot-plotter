@@ -2,6 +2,8 @@ import { getFilteredRows } from "./table/table-functions.js";
 import { perimeterId, cfgSportA } from "../setup.js";
 import { existsDetail, getDetails } from "./details/details-functions.js";
 import { createDetailsPanel } from "./details/details-panel.js";
+import { onClickShot } from "./shots/shot.js";
+import { onClickGuide } from "./guides/guides.js";
 
 export function setUpToggles() {
     setUpPlayingAreaToggles();
@@ -134,11 +136,31 @@ export function heatMapFunctionality() {
 function eventGuideFunctionality() {
     function setOn() {
         d3.select("#details").selectAll("*").remove();
+        d3.select("#playing-area")
+            .select(perimeterId)
+            .on("click", onClickGuide);
+        createDetailsPanel(
+            [
+                {
+                    type: "guide",
+                    id: "horizontal-line",
+                    title: "Horizontal Line",
+                    checked: true
+                },
+                {
+                    type: "guide",
+                    id: "vertical-line",
+                    title: "Vertical Line"
+                }
+            ],
+            "#details"
+        );
     }
     function setOff() {
         const details = getDetails();
         const visibleDetails = _.filter(details, (d) => d.hidden != true);
         createDetailsPanel(visibleDetails, "#details");
+        d3.select("#playing-area").select(perimeterId).on("click", onClickShot);
     }
 
     const toggleArea = d3.select("#event-guide-toggle-area");
@@ -182,7 +204,7 @@ export function heatMap() {
     const data = _.map(getFilteredRows(), (r) => ({
         team: r.specialData.teamColor,
         x: r.specialData.coords[0],
-        y: r.specialData.coords[1],
+        y: r.specialData.coords[1]
     }));
 
     function colorFunc(colorName) {

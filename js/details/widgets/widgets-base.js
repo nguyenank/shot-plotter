@@ -35,9 +35,7 @@ function createTextField(selectId, { id, title, defaultValue }) {
         .append("div")
         .attr("class", cfgDetails.detailClass + " " + "even-width")
         .attr("id", id);
-    div.append("h3")
-        .text(title)
-        .attr("class", "center");
+    div.append("h3").text(title).attr("class", "center");
     div.append("div")
         .attr("class", "form-group")
         .append("input")
@@ -52,9 +50,7 @@ function createDropdown(selectId, { id, title, options }) {
         .append("div")
         .attr("class", cfgDetails.detailClass + " " + "even-width")
         .attr("id", id);
-    div.append("h3")
-        .text(title)
-        .attr("class", "center");
+    div.append("h3").text(title).attr("class", "center");
 
     let select = div
         .append("div")
@@ -75,9 +71,7 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
         .append("div")
         .attr("class", cfgDetails.detailClass + " even-width")
         .attr("id", id);
-    div.append("h3")
-        .text(title)
-        .attr("class", "center");
+    div.append("h3").text(title).attr("class", "center");
     const timer = new Tock({
         countdown: countdown,
         interval: 10,
@@ -94,7 +88,7 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
                         .toString()
                         .padStart(2, "0")}`
                 );
-        },
+        }
     });
     let text = div.append("div").attr("class", "time-widget position-relative");
     text.append("input")
@@ -106,20 +100,13 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
         .text("Times must be in the form 'MM:SS' or 'M:SS'.");
     text.append("div")
         .attr("class", "white-btn time-btn")
-        .on("click", function() {
+        .on("click", function () {
             if (
-                d3
-                    .select(this)
-                    .select("i")
-                    .attr("class") === "bi bi-stop-fill"
+                d3.select(this).select("i").attr("class") === "bi bi-stop-fill"
             ) {
                 timer.stop();
-                d3.select(this)
-                    .select("i")
-                    .remove();
-                d3.select(this)
-                    .append("i")
-                    .attr("class", "bi bi-play-fill");
+                d3.select(this).select("i").remove();
+                d3.select(this).append("i").attr("class", "bi bi-play-fill");
                 d3.select("#" + id)
                     .select("input")
                     .attr("disabled", null);
@@ -133,9 +120,7 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
                         .select("input")
                         .attr("disabled", true)
                         .attr("class", "form-control time-box");
-                    d3.select(this)
-                        .select("i")
-                        .remove();
+                    d3.select(this).select("i").remove();
                     d3.select(this)
                         .append("i")
                         .attr("class", "bi bi-stop-fill");
@@ -151,9 +136,37 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
         .attr("class", "bi bi-play-fill");
 }
 
+function createGuideWidget(selectId, { id, title, checked }) {
+    d3.select(selectId)
+        .append("div")
+        .attr("class", cfgDetails.detailClass)
+        .attr("id", id)
+        .append("h3")
+        .text(title)
+        .attr("class", "center");
+
+    let div = d3
+        .select("#" + id)
+        .append("div")
+        .attr("class", "form-check vertical");
+
+    div.append("input")
+        .attr("class", "form-check-input")
+        .attr("type", "radio")
+        .attr("name", "guide-widget")
+        .attr("id", id + "-input")
+        .attr("checked", checked)
+        .attr("value", id);
+    div.append("label")
+        .attr("class", "form-check-label")
+        .attr("for", id + "-input")
+        .text(title);
+}
+
 export {
     createRadioButtons,
     createTextField,
     createDropdown,
     createTimeWidget,
+    createGuideWidget
 };
