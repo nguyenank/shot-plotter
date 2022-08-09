@@ -1,7 +1,4 @@
 import { updateTableFooter } from "./table.js";
-function addRow(rowData) {
-    sessionStorage.setItem("rows", JSON.stringify([...getRows(), rowData]));
-}
 
 function setRows(rows) {
     sessionStorage.setItem("rows", JSON.stringify(rows));
@@ -109,5 +106,5 @@ export {
     getRowsPerPage,
     setRowsPerPage,
     getNumFilteredRows,
-    setNumFilteredRows,
+    setNumFilteredRows
 };
