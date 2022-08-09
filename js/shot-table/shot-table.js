@@ -1,4 +1,7 @@
-import { setUpDeleteAllModal } from "../shots/delete-all-modal.js";
+import {
+    createDeleteAllModal,
+    setUpDeleteAllModal
+} from "../components/delete-all-modal.js";
 import { getDefaultDetails } from "../../setup.js";
 import {
     getFilteredRows,
@@ -19,7 +22,7 @@ import { createRowFromData } from "./row.js";
 import { createFilterRow, clearFilters, existFilters } from "./filter.js";
 import { cfgDetails } from "../details/config-details.js";
 
-function setUpTable() {
+function setUpShotTable() {
     sessionStorage.setItem("rows", JSON.stringify([]));
     sessionStorage.setItem("filteredRows", JSON.stringify([]));
     sessionStorage.setItem("filters", JSON.stringify([]));
@@ -213,6 +216,7 @@ function createHeaderRow(details) {
     r.append("i")
         .attr("class", "bi-trash-fill")
         .on("click", () => {
+            createDeleteAllModal("#delete-all-modal", "shot");
             new bootstrap.Modal(
                 document.getElementById("delete-all-modal")
             ).show();
@@ -237,4 +241,4 @@ function createPage(startRow, endRow, newRow = null) {
     }
 }
 
-export { setUpTable, createTableHeader, updateTableFooter, createPage };
+export { setUpShotTable, createTableHeader, updateTableFooter, createPage };

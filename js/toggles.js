@@ -139,6 +139,8 @@ function eventGuideFunctionality() {
         d3.select("#playing-area")
             .select(perimeterId)
             .on("click", onClickGuide);
+        d3.select("#shot-table").style("display", "none");
+        d3.select("#guide-table").style("display", "table");
         createDetailsPanel(
             [
                 {
@@ -161,6 +163,8 @@ function eventGuideFunctionality() {
         const visibleDetails = _.filter(details, (d) => d.hidden != true);
         createDetailsPanel(visibleDetails, "#details");
         d3.select("#playing-area").select(perimeterId).on("click", onClickShot);
+        d3.select("#shot-table").style("display", "table");
+        d3.select("#guide-table").style("display", "none");
     }
 
     const toggleArea = d3.select("#event-guide-toggle-area");

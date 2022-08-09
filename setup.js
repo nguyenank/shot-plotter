@@ -3,7 +3,8 @@ import { setUpDetailsPanel } from "./js/details/details-panel.js";
 import { setDetails, getDetails } from "./js/details/details-functions.js";
 import { setUpToggles } from "./js/toggles.js";
 import { setUpShots } from "./js/shots/shot.js";
-import { setUpTable } from "./js/shot-table/shot-table.js";
+import { setUpShotTable } from "./js/shot-table/shot-table.js";
+import { setUpGuideTable } from "./js/guides/guide-table.js";
 import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
@@ -30,8 +31,9 @@ export function setup(s) {
         setUpPlayingArea();
         setUpDetailsPanel();
         setUpToggles();
-        setUpTable();
+        setUpShotTable();
         setUpShots();
+        setUpGuideTable();
         setUpCSVDownloadUpload();
         setUpLegend();
 
