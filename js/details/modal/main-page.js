@@ -1,10 +1,10 @@
-import { createTableHeader } from "../../table/table.js";
-import { setRowsPerPage } from "../../table/table-functions.js";
+import { createTableHeader } from "../../shot-table/shot-table.js";
+import { setRowsPerPage } from "../../shot-table/shot-table-functions.js";
 import {
     getDetails,
     setDetails,
     changePage,
-    saveCurrentDetailSetup,
+    saveCurrentDetailSetup
 } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
@@ -18,7 +18,7 @@ import { createWidgetTypePage } from "./widget-type-page.js";
 import { cfgDetails } from "../config-details.js";
 import { sport, cfgDefaultEnable } from "../../../setup.js";
 import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
-import { select2Filter } from "../../table/filter.js";
+import { select2Filter } from "../../shot-table/filter.js";
 
 function createMainPage(id) {
     d3.select(id).selectAll("*").remove();
@@ -419,7 +419,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             id: "two-point-enable",
             newDetails: [
                 { type: "x", title: "X2", id: "x2", noWidget: true },
-                { type: "y", title: "Y2", id: "y2", noWidget: true },
+                { type: "y", title: "Y2", id: "y2", noWidget: true }
             ],
             label: "2-Location Events",
             onChecked: () => {
@@ -430,7 +430,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                 d3.select("#heat-map-enable").property("disabled", false);
             },
             description:
-                "Create events with 2 locations. Incompatible with Heat Map View.",
+                "Create events with 2 locations. Incompatible with Heat Map View."
         },
         {
             id: "distance-calc",
@@ -439,12 +439,12 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                     type: "distance-calc",
                     title: "Distance",
                     id: "distance-calc",
-                    noWidget: true,
-                },
+                    noWidget: true
+                }
             ],
             label: "Distance",
-            description: distanceDescription,
-        },
+            description: distanceDescription
+        }
     ];
 
     if (_.startsWith(sport, "basketball")) {
@@ -455,11 +455,11 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                     type: "value-calc",
                     title: "Shot Value",
                     id: "value-calc",
-                    noWidget: true,
-                },
+                    noWidget: true
+                }
             ],
             description: `Whether a shot would be worth 2 or 3 points.`,
-            label: "Shot Value",
+            label: "Shot Value"
         });
     }
 
@@ -471,11 +471,11 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
                     type: "in-out",
                     title: "In/Out",
                     id: "in-out",
-                    noWidget: true,
-                },
+                    noWidget: true
+                }
             ],
             description: `Whether a ball is in or out.`,
-            label: "In/Out",
+            label: "In/Out"
         });
     }
 
@@ -485,7 +485,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
         label,
         description,
         onChecked,
-        onUnchecked,
+        onUnchecked
     }) {
         let detail = specialDetails
             .append("div")

@@ -1,10 +1,10 @@
 import {
     getDetails,
-    getCurrentShotTypes,
+    getCurrentShotTypes
 } from "../details/details-functions.js";
 import { cfgSportA } from "../../setup.js";
 import { cfgAppearance } from "../config-appearance.js";
-import { getFilteredRows } from "../table/table-functions.js";
+import { getFilteredRows } from "../shot-table/shot-table-functions.js";
 
 function createDot(
     svgId,
@@ -31,12 +31,12 @@ function createDot(
             coords: coords,
             legendBool: legendBool,
             pointTwoBool: true,
-            team: team,
+            team: team
         });
         // create connecting line
         const halfcoords = [
             (coords[0] + coords2[0]) / 2,
-            (coords[1] + coords2[1]) / 2,
+            (coords[1] + coords2[1]) / 2
         ];
         g.append("polyline")
             .attr(
@@ -56,7 +56,7 @@ function createDot(
         typeIndex: typeIndex,
         coords: coords,
         legendBool: legendBool,
-        team: team,
+        team: team
     });
 
     // only display text if two characters or less
@@ -78,7 +78,7 @@ function createShape({
     coords,
     pointTwoBool,
     legendBool,
-    team,
+    team
 }) {
     const ghostBool = id === "ghost-dot";
     let g = legendBool

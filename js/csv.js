@@ -3,20 +3,20 @@ import {
     existsDetail,
     getCurrentShotTypes,
     getTypeIndex,
-    saveCurrentDetailSetup,
+    saveCurrentDetailSetup
 } from "./details/details-functions.js";
 import {
     createFilterRow,
     select2Filter,
-    existFilters,
-} from "./table/filter.js";
+    existFilters
+} from "./shot-table/filter.js";
 import {
     clearTable,
     getHeaderRow,
     getFilteredRows,
-    getRows,
-} from "./table/table-functions.js";
-import { updateTableFooter } from "./table/table.js";
+    getRows
+} from "./shot-table/shot-table-functions.js";
+import { updateTableFooter } from "./shot-table/shot-table.js";
 import { createShotFromData } from "./shots/shot.js";
 import { shotTypeLegend, teamLegend } from "./shots/legend.js";
 import { downloadArea, uploadArea } from "./components/upload-download.js";
@@ -112,7 +112,7 @@ async function uploadCSV(id, uploadId, e) {
                         row.data,
                         swapTeamColor
                     );
-                },
+                }
             });
             updateTableFooter();
         }
@@ -193,16 +193,16 @@ function processCSV(uploadId, row, swapTeamColor) {
         teamColor: teamColor,
         coords: [
             parseFloat(row.X) + cfgSportA.width / 2,
-            -1 * parseFloat(row.Y) + cfgSportA.height / 2,
+            -1 * parseFloat(row.Y) + cfgSportA.height / 2
         ], // undo coordinate adjustment
         player: row.Player,
-        numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1,
+        numberCol: _.findIndex(getHeaderRow(), { type: "shot-number" }) - 1
     };
 
     if (row.X2 && row.Y2) {
         specialData.coords2 = [
             parseFloat(row.X2) + cfgSportA.width / 2,
-            -1 * parseFloat(row.Y2) + cfgSportA.height / 2,
+            -1 * parseFloat(row.Y2) + cfgSportA.height / 2
         ]; // undo coordinate adjustment
     }
 

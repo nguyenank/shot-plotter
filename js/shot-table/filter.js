@@ -9,16 +9,16 @@ import {
     getNumRows,
     getRowsPerPage,
     getFilteredRows,
-    setFilteredRows,
-} from "./table-functions.js";
+    setFilteredRows
+} from "./shot-table-functions.js";
 import { dotsVisibility } from "../shots/dot.js";
 import { heatMap } from "../toggles.js";
 import { getDetails } from "../details/details-functions.js";
 import {
     createPage,
     updateTableFooter,
-    toggleClearFiltersIcon,
-} from "./table.js";
+    toggleClearFiltersIcon
+} from "./shot-table.js";
 import { toggleDownloadText } from "../csv.js";
 
 export function createFilterRow(details) {
@@ -38,7 +38,7 @@ export function createFilterRow(details) {
     const deleteFilters = _.map(_.difference(filterIds, visDetailIds), (id) => {
         addFilter({
             col_id: id,
-            delete: true,
+            delete: true
         });
     });
 
@@ -91,7 +91,7 @@ export function select2Filter() {
             width: "100%",
             dropdownCssClass: "smaller-text",
             selectionCssClass: "smaller-text",
-            placeholder: "click for options",
+            placeholder: "click for options"
         })
         .on("change", function (e) {
             const col_id = $(this).parent().attr("data-col-id");
@@ -125,7 +125,7 @@ function minMaxFilter(cell) {
             type: "min-max",
             min: min,
             max: max,
-            delete: isNaN(min) && isNaN(max),
+            delete: isNaN(min) && isNaN(max)
         });
     };
     cell.classed("filter", true);
@@ -170,7 +170,7 @@ function minMaxTimeFilter(cell) {
             type: "min-max-time",
             min: min,
             max: max,
-            delete: min === null && max === null,
+            delete: min === null && max === null
         });
     };
 
@@ -200,7 +200,7 @@ function textFilter(cell) {
             col_id: col_id,
             type: "text-filter",
             search_string: search_string,
-            delete: search_string.length === 0,
+            delete: search_string.length === 0
         });
     };
 
@@ -228,7 +228,7 @@ export const updateDropdownFilter = (col_id, options) => {
         col_id: col_id,
         type: "dropdown-filter",
         options: options,
-        delete: options.length === 0,
+        delete: options.length === 0
     });
 };
 

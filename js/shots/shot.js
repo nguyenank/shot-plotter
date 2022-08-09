@@ -1,5 +1,5 @@
 import { createDot } from "./dot.js";
-import { createNewRow } from "../table/row.js";
+import { createNewRow } from "../shot-table/row.js";
 import {
     getHeaderRow,
     setRows,
@@ -7,17 +7,17 @@ import {
     setFilteredRows,
     getFilteredRows,
     setNumRows,
-    getNumRows,
-} from "../table/table-functions.js";
-import { updateTableFooter } from "../table/table.js";
+    getNumRows
+} from "../shot-table/shot-table-functions.js";
+import { updateTableFooter } from "../shot-table/shot-table.js";
 import { getTypeIndex } from "../details/details-functions.js";
 import { heatMap } from "../toggles.js";
-import { filterRows } from "../table/filter.js";
+import { filterRows } from "../shot-table/filter.js";
 import {
     sport,
     cfgSportA,
     cfgSportGoalCoords,
-    perimeterId,
+    perimeterId
 } from "../../setup.js";
 
 function setUpShots() {
@@ -36,9 +36,7 @@ function setUpShots() {
             .attr("class", className);
     }
 
-    d3.select("#playing-area")
-        .select(perimeterId)
-        .on("click", onClickShot);
+    d3.select("#playing-area").select(perimeterId).on("click", onClickShot);
 }
 
 export function onClickShot(e) {
@@ -48,31 +46,23 @@ export function onClickShot(e) {
     let firstPoint =
         sessionStorage.getItem("firstPoint") === "null"
             ? null
-            : sessionStorage
-                  .getItem("firstPoint")
-                  .split(",")
-                  .map(parseFloat);
+            : sessionStorage.getItem("firstPoint").split(",").map(parseFloat);
     if (shiftHeld === "true" && firstPoint === null) {
         // create ghost dot for first point
         sessionStorage.setItem("firstPoint", d3.pointer(e));
         const type = d3.select("#shot-type").empty()
             ? null
-            : d3
-                  .select("#shot-type")
-                  .select("select")
-                  .property("value");
+            : d3.select("#shot-type").select("select").property("value");
         createDot("#ghost", "ghost-dot", {
             id: "ghost-dot",
             typeIndex: getTypeIndex(type),
-            teamColor: d3
-                .select("input[name='team-bool']:checked")
-                .empty()
+            teamColor: d3.select("input[name='team-bool']:checked").empty()
                 ? null
                 : d3
                       .select("input[name='team-bool']:checked")
                       .property("value"),
             coords: d3.pointer(e),
-            ghostBool: true,
+            ghostBool: true
         });
     } else if (shiftHeld === "true" && firstPoint !== null) {
         sessionStorage.setItem("firstPoint", null);
@@ -93,7 +83,7 @@ function createShotFromEvent(e, point1) {
         typeIndex: 0,
         coords: point1 ? point1 : d3.pointer(e),
         coords2: point1 ? d3.pointer(e) : null,
-        numberCol: _.findIndex(columns, { type: "shot-number" }) - 1, // subtract out checkbox column
+        numberCol: _.findIndex(columns, { type: "shot-number" }) - 1 // subtract out checkbox column
     };
 
     for (let col of columns) {
@@ -229,7 +219,7 @@ function createShotFromData(id, rowData, specialData) {
         id: id,
         rowData: rowData,
         specialData: specialData,
-        selected: false,
+        selected: false
     };
 
     const newRows = [...getRows(), newRow];

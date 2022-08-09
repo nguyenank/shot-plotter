@@ -4,7 +4,7 @@ import {
     updateDropdownFilter,
     createFilterRow,
     select2Filter
-} from "../../table/filter.js";
+} from "../../shot-table/filter.js";
 import { saveCurrentDetailSetup, getDetails } from "../details-functions.js";
 
 function createTooltip({ id, title, text }) {

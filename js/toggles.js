@@ -1,4 +1,4 @@
-import { getFilteredRows } from "./table/table-functions.js";
+import { getFilteredRows } from "./shot-table/shot-table-functions.js";
 import { perimeterId, cfgSportA } from "../setup.js";
 import { existsDetail, getDetails } from "./details/details-functions.js";
 import { createDetailsPanel } from "./details/details-panel.js";

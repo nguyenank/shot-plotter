@@ -13,8 +13,8 @@ import {
     setNumFilteredRows,
     setRowsPerPage,
     getRowsPerPage,
-    getRows,
-} from "./table-functions.js";
+    getRows
+} from "./shot-table-functions.js";
 import { createRowFromData } from "./row.js";
 import { createFilterRow, clearFilters, existFilters } from "./filter.js";
 import { cfgDetails } from "../details/config-details.js";

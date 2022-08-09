@@ -1,4 +1,4 @@
-import { clearTable } from "../table/table-functions.js";
+import { clearTable } from "../shot-table/shot-table-functions.js";
 
 function setUpDeleteAllModal(id) {
     let m = d3
@@ -12,9 +12,7 @@ function setUpDeleteAllModal(id) {
         .attr("class", "modal-content");
 
     let h = m.append("div").attr("class", "modal-header");
-    h.append("h5")
-        .attr("class", "modal-title")
-        .text("Delete All Events");
+    h.append("h5").attr("class", "modal-title").text("Delete All Events");
     h.append("button")
         .attr("type", "button")
         .attr("class", "btn-close")

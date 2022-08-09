@@ -1,4 +1,4 @@
-import { updateTableFooter } from "./table.js";
+import { updateTableFooter } from "./shot-table.js";
 
 function setRows(rows) {
     sessionStorage.setItem("rows", JSON.stringify(rows));

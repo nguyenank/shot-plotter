@@ -11,10 +11,10 @@ import {
     setFilteredRows,
     setNumFilteredRows,
     getNumFilteredRows,
-    getRowsPerPage,
-} from "./table-functions.js";
+    getRowsPerPage
+} from "./shot-table-functions.js";
 import { filterRows } from "./filter.js";
-import { updateTableFooter, createPage } from "./table.js";
+import { updateTableFooter, createPage } from "./shot-table.js";
 import { heatMap } from "../toggles.js";
 import { dotSizeHandler } from "../shots/dot.js";
 import { cfgAppearance } from "../config-appearance.js";
