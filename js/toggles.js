@@ -141,6 +141,8 @@ function eventGuideFunctionality() {
             .on("click", onClickGuide);
         d3.select("#shot-table").style("display", "none");
         d3.select("#guide-table").style("display", "table");
+        d3.select("#guide-upload-download").style("display", "block");
+        d3.select("#csv-upload-download").style("display", "none");
         createDetailsPanel(
             [
                 {
@@ -165,6 +167,8 @@ function eventGuideFunctionality() {
         d3.select("#playing-area").select(perimeterId).on("click", onClickShot);
         d3.select("#shot-table").style("display", "table");
         d3.select("#guide-table").style("display", "none");
+        d3.select("#guide-upload-download").style("display", "none");
+        d3.select("#csv-upload-download").style("display", "block");
     }
 
     const toggleArea = d3.select("#event-guide-toggle-area");

@@ -8,6 +8,7 @@ import { setUpGuideTable } from "./js/guides/guide-table.js";
 import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
+import { setUpGuideDownloadUpload } from "./js/guides/guide-upload-download.js";
 
 export let sport;
 export let cfgSportA;
@@ -34,6 +35,7 @@ export function setup(s) {
         setUpShotTable();
         setUpShots();
         setUpGuideTable();
+        setUpGuideDownloadUpload();
         setUpCSVDownloadUpload();
         setUpLegend();
 
