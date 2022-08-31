@@ -458,25 +458,25 @@ table .centered-cell {
 }
 
 polyline.blueTeam {
-  stroke: #35aba9;
+  stroke: rgb(53, 171, 169);
   opacity: 30%;
   fill-opacity: 0;
 }
 
 marker polygon.blueTeam {
-  stroke: #35aba9;
-  fill: #35aba9;
+  stroke: rgb(53, 171, 169);
+  fill: rgb(53, 171, 169);
 }
 
 polyline.orangeTeam {
-  stroke: #ea8e48;
+  stroke: rgb(234, 142, 72);
   opacity: 30%;
   fill-opacity: 0;
 }
 
 marker polygon.orangeTeam {
-  stroke: #ea8e48;
-  fill: #ea8e48;
+  stroke: rgb(234, 142, 72);
+  fill: rgb(234, 142, 72);
 }
 
 marker polygon.greyTeam {
@@ -560,7 +560,6 @@ div.tooltip {
   .main {
     display: block;
   }
-
   .shot-info {
     height: auto;
     width: 100%;
