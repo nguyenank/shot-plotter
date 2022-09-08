@@ -33,7 +33,7 @@ function getCurrentShotTypes() {
 }
 
 function getTypeIndex(type) {
-    if (!existsDetail("shot-type")) {
+    if (!existsDetail("#shot-type")) {
         return 0;
     }
     return type ? _.findIndex(getCurrentShotTypes(), { value: type }) : 0;
