@@ -2,11 +2,11 @@
 
 ![A screenshot of the web application.](./resources/ice-hockey-screenshot.png)
 
-**04/02/22: The ability to filter rows based on their column values has been added!**
+**09/13/22: Soccer (NCAA) has been added as a playing area**
 
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
-Currently 12 different playing areas across 8 different sports are supported: ice hockey (NHL, IIHF), floorball (IFF), handball (IHF), volleyball (NCAA), basketball (NBA, NCAA, WNBA), men's lacrosse (NCAA), women's lacrosse (NCAA), and American football (NFL, NCAA).
+Currently 13 different playing areas across 9 different sports are supported: ice hockey (NHL, IIHF), floorball (IFF), handball (IHF), volleyball (NCAA), basketball (NBA, NCAA, WNBA), men's lacrosse (NCAA), women's lacrosse (NCAA), American football (NFL, NCAA), and soccer (NCAA).
 
 ![A screenshot of the main page of the web application allowing you to pick between sports.](./resources/sport-select-screenshot.png)
 

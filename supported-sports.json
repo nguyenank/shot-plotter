@@ -839,6 +839,139 @@
                 { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
                 { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
             ]
+        },
+        {
+            "id": "soccer-ncaa",
+            "name": "Soccer (NCAA)",
+            "units": "yards",
+            "specifications": "National Collegiate Athletic Association (2022 & 2023)",
+            "dimensions": "120 x 75",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "120",
+                "height": "75",
+                "circleR": "1.2",
+                "polyR": "1.65",
+                "fontSize": "0.09rem",
+                "strokeWidth": "0.3px",
+                "heatMapScale": 2.08,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "OT1" },
+                        { "value": "OT2" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
+            "id": "soccer-meerse",
+            "name": "Soccer (requested by John Meerse)",
+            "private": true,
+            "units": "yards",
+            "specifications": "National Federation of State High School Associations (2023)",
+            "dimensions": "115 x 70",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "115",
+                "height": "70",
+                "circleR": "1.15",
+                "polyR": "1.58125",
+                "fontSize": "0.08625rem",
+                "strokeWidth": "0.2875px",
+                "heatMapScale": 2.1739,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "OT1" },
+                        { "value": "OT2" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
         }
     ]
 }
