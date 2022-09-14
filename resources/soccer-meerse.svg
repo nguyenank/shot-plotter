@@ -1,0 +1,92 @@
+<svg id="soccer-meerse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 117 72">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <path d="  M 0 0
+        L 115 0
+        L 115 70
+        L 0 70
+        Z" />
+    </clipPath>
+    <path id="background" d="
+        M 0 0
+        L 115 0
+        L 115 70
+        L 0 70
+        Z" stroke="transparent" fill="#036602"></path>
+    <path id="halfway-line" d="M 57.5 0 L 57.5 70" stroke-width="0.1389" stroke="white"></path>
+    <circle id="halfway-circle" cx="57.5" cy="35" r="10" fill="transparent" stroke-width="0.1389" stroke="white">
+    </circle>
+    <path id="outside-perimeter" d="
+        M 0 0
+        L 115 0
+        L 115 70
+        L 0 70
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+    <g id="left-goal-area">
+      <path id="left-eighteen-yd-box" d="
+        M 0 13
+        L 18 13
+        L 18 57
+        L 0 57
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="left-goal-area" d="
+        M 0 25
+        L 6 25
+        L 6 45
+        L 0 45
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="left-penalty-kick-mark" d="
+        M 12 34.666
+        L 12 35.333
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="left-goal-arc" d="
+        M 18 27
+        A 10 10 1 0 1 18 43
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="goal-line" d="
+      M 0 31
+      L 0 39" stroke-width="0.75" stroke="white"></path>
+      <path id="top-left-corner" d="
+      M 1 0
+      A 1 1 1 0 1 0 1
+      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="top-right-corner" d="
+      M 0 69
+      A 1 1 0 0 1 1 70
+      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
+    </g>
+    <g id="right-goal-area" transform="translate(115, 70) rotate(180)">
+      <path id="right-eighteen-yd-box" d="
+        M 0 13
+        L 18 13
+        L 18 57
+        L 0 57
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="right-goal-area" d="
+        M 0 25
+        L 6 25
+        L 6 45
+        L 0 45
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="right-penalty-kick-mark" d="
+        M 12 34.666
+        L 12 35.333
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="right-goal-arc" d="
+        M 18 27
+        A 10 10 1 0 1 18 43
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="goal-line" d="
+      M 0 31
+      L 0 39" stroke-width="0.75" stroke="white"></path>
+      <path id="top-right-corner" d="
+      M 1 0
+      A 1 1 1 0 1 0 1
+      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      <path id="top-right-corner" d="
+      M 0 69
+      A 1 1 0 0 1 1 70
+      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
+    </g>
+  </g>
+</svg>

@@ -6,7 +6,7 @@ const inject = require("gulp-inject");
 const del = require("del");
 const sports = require("../supported-sports.json").sports;
 
-const indexBanner = false;
+const indexBanner = true;
 const banner = false;
 const analytics = true;
 
@@ -77,7 +77,7 @@ function card(sport) {
 }
 
 function index() {
-    const filePaths = sports.map((sport) => `./card/${sport.id}-card.html`);
+    const filePaths = sports.filter((s) => !s.private).map((sport) => `./card/${sport.id}-card.html`);
     return src("./index-base.html")
         .pipe(
             inject(src(filePaths), {
