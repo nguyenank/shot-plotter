@@ -89,7 +89,7 @@ function createShape({
         let circle = g
             .append("circle")
             .classed("ghost-shot", ghostBool)
-            .style("visibility","visible")
+            .style("visibility", ghostBool ? "visible" : undefined)
             .attr("cx", coords[0])
             .attr("cy", coords[1])
             .style("fill", cfgAppearance[team])
