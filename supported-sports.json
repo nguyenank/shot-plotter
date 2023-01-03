@@ -410,7 +410,8 @@
                     "options": [
                         { "value": "Miss", "selected": true },
                         { "value": "Make" },
-                        { "value": "Blocked" }
+                        { "value": "Blocked" },
+                        { "value": "Fouled" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -480,7 +481,8 @@
                     "options": [
                         { "value": "Miss", "selected": true },
                         { "value": "Make" },
-                        { "value": "Blocked" }
+                        { "value": "Blocked" },
+                        { "value": "Fouled" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -550,7 +552,8 @@
                     "options": [
                         { "value": "Miss", "selected": true },
                         { "value": "Make" },
-                        { "value": "Blocked" }
+                        { "value": "Blocked" },
+                        { "value": "Fouled" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -716,7 +719,6 @@
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px",
                 "heatMapScale": 2.08,
-                "heatMapLowOpacity": 0.05,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
