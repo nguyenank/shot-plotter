@@ -909,6 +909,75 @@
             ]
         },
         {
+            "id": "australian-rules",
+            "name": "Australian Rules Football",
+            "units": "meters",
+            "specifications": "AFL (2021)",
+            "dimensions": "162 x 132",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "162",
+                "height": "132",
+                "circleR": "1.62",
+                "polyR": "2.2275",
+                "fontSize": "0.1215rem",
+                "strokeWidth": "0.405px",
+                "heatMapScale": 1.54,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultEnable": ["two-location"],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quart",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Disposal", "selected": true },
+                        { "value": "Mark" },
+                        { "value": "Behind" },
+                        { "value": "Goal" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
             "id": "soccer-meerse",
             "name": "Soccer (requested by John Meerse)",
             "private": true,

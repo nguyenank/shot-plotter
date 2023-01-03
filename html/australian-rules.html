@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg" />
+  <link rel="mask-icon" href="/resources/favicon.svg" color="red" />
+
+  <!-- inject:analytics -->
+  <!-- endinject -->
+
+  <title>Shot-Plotter</title>
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
+
+  <!-- lodash -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+  <!-- UUID -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+
+  <!-- downloadjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous"></script>
+
+  <!-- PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js" integrity="sha512-rKFvwjvE4liWPlFnvH4ZhRDfNZ9FOpdkD/BU5gAIA3VS3vOQrQ5BjKgbO3kxebKhHdHcNUHLqxQYSoxee9UwgA==" crossorigin="anonymous"></script>
+
+  <!-- D3.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.6.0/d3.min.js" integrity="sha512-XgjkLS0sSzUq88GniFcrLy6zjgVWkBoRFziaLm1Z+gVgkHuO3ieikhD/Q6eNKXAsp88yvBFS0n6ovVlabXftIg==" crossorigin="anonymous"></script>
+
+  <!-- SortableJS :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <!-- TockTimer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocktimer/1.1.0/tock.min.js" integrity="sha512-vq5wJzEIsMaUGpNliTdBuAuvevdVhlFcbSKtz+YgJwfriIN03L20HoPnmywMcmjom64KLcjnBfTV3CSn2Y0rOg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="/index.css" />
+</head>
+
+<body>
+  <!-- inject:banner -->
+  <!-- endinject -->
+  <div class="center header">
+    <h1>Shot-Plotter</h1>
+  </div>
+  <div class="center medium-text">
+    A graphical interface for tracking locational events in sports.
+    Click on the playing area to log an event!
+  </div>
+  <hr />
+
+  <div class="main">
+    <div id="details" class="shot-info"></div>
+    <div class="center">
+      <div>
+        <div id="toggles">
+        </div>
+        <div id="playing-area">
+          <!-- inject:playingarea -->
+          <svg id="australian-rules-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 164 134">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+    <path id="background" d="
+    M 0 56.4
+    A 81 56.4 0 0 1 162 56.4
+    L 162 75.6
+    A 81 56.4 0 0 1 0 75.6
+    Z
+    " fill="#036602" stroke="#aaa" stroke-width="0.5" />
+    </clipPath>
+    <clipPath id="clipBorderAFL">
+    <path id="background" d="
+    M 0 56.4
+    A 81 56.4 0 0 1 162 56.4
+    L 162 75.6
+    A 81 56.4 0 0 1 0 75.6
+    Z
+    " fill="#036602" stroke="#aaa" stroke-width="0.5" />
+    </clipPath>
+    <!-- <rect x='0' y="0" width="162" height="132"/> -->
+    <path id="background" d="
+    M 0 56.4
+    A 81 56.4 0 0 1 162 56.4
+    L 162 75.6
+    A 81 56.4 0 0 1 0 75.6
+    Z
+    " fill="#036602" stroke="#aaa" stroke-width="0.5" />
+    <rect id="center-square" x="56" y="41" width="50" height="50" fill="transparent" stroke="white" stroke-width="0.3" />
+    <circle id="center-circle" cx="81" cy="66" r="1.5" stroke="white" fill="transparent" stroke-width="0.3" />
+    <circle id="ten-m-circle" cx="81" cy="66" r="5" stroke="white" fill="transparent" stroke-width="0.3" />
+    <line id="center-line" x1="81" y1="61" x2="81" y2="71" stroke="white" fill="transparent" stroke-width="0.3" />
+    <path id="interchange-area" d="
+    M 73.5 0
+    L 73.5 1
+    M 88.5 0
+    L 88.5 1" stroke="white" fill="transparent" stroke-width="0.3" />
+    <path id="left-goal-square" d=
+    "M 0 62.8
+     L 9 62.8
+     L 9 69.2
+     L 0 69.2" stroke="white" fill="transparent" stroke-width="0.3" />
+    <path id="left-goal-sticks"
+    d="
+    M -0.75 62.8
+    L 0.75 62.8
+    M -0.75 69.2
+    L 0.75 69.2"
+    stroke="white" fill="transparent" stroke-width="1" />
+    <path id="left-behind-sticks"
+    d="
+    M -0.5 56.4
+    L 0.5 56.4
+    M -0.5 75.6
+    L 0.5 75.6"
+    stroke="white" fill="transparent" stroke-width="0.75" />
+    <circle id="left-fifty-meter-arc" cx="0" cy="66" r="50" stroke="white" fill="transparent" clip-path="url(#clipBorderAFL)" stroke-width="0.3" />
+    <g id="right-side" transform="translate(162 132) rotate(180)">
+          <path id="right-goal-square" d=
+    "M 0 62.8
+     L 9 62.8
+     L 9 69.2
+     L 0 69.2" stroke="white" fill="transparent" stroke-width="0.3" />
+    <path id="right-goal-sticks"
+    d="
+    M -0.75 62.8
+    L 0.75 62.8
+    M -0.75 69.2
+    L 0.75 69.2"
+    stroke="white" fill="transparent" stroke-width="1" />
+    <path id="right-behind-sticks"
+    d="
+    M -0.5 56.4
+    L 0.5 56.4
+    M -0.5 75.6
+    L 0.5 75.6"
+    stroke="white" fill="transparent" stroke-width="0.75" />
+    <circle id="right-fifty-meter-arc" cx="0" cy="66" r="50" stroke="white" fill="transparent" clip-path="url(#clipBorderAFL)" stroke-width="0.3" />
+    </g>
+        <path id="outside-perimter" d="
+    M 0 56.4
+    A 81 56.4 0 0 1 162 56.4
+    L 162 75.6
+    A 81 56.4 0 0 1 0 75.6
+    Z
+    " fill="transparent" stroke="#aaa" stroke-width="0.5" />
+  </g>
+</svg>
+
+          <!-- endinject -->
+        </div>
+        <div class="center">
+          <div id="legend"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table id="shot-table" class="table shot-table"></table>
+  <div id="csv-upload-download"></div>
+  <div id="details-modal"></div>
+  <div id="delete-all-modal"></div>
+  <hr />
+  <script type="module" src="/setup.js"></script>
+  <script type="module">
+    import {
+      setup
+    } from "/setup.js";
+    setup("australian-rules");
+  </script>
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+<footer class="center">
+  <span>
+    Website built by An Nguyen primarily using D3.js. Source code and
+    details on how to use the app are available on
+    <a href="https://github.com/nguyenank/shot-plotter">Github</a>.
+    Contact me with bugs/feedback/suggestions/etc. on
+    <a href="https://twitter.com/nguyenank_">Twitter</a> or by
+    <a id="email" href="">email</a>.
+  </span>
+</footer>
+
+</html>
