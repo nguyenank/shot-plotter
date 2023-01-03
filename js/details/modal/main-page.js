@@ -5,17 +5,16 @@ import {
     setDetails,
     changePage,
     saveCurrentDetailSetup,
+    resetCustomSetupUploadFlag,
 } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
-import { getDefaultDetails } from "../../../setup.js";
 import { setUpJSONDownloadUpload } from "./json.js";
 import { createTextFieldPage } from "./text-field-page.js";
 import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
-import { cfgDetails } from "../config-details.js";
 import { sport, cfgDefaultEnable } from "../../../setup.js";
 import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
 import { select2Filter } from "../../table/filter.js";
@@ -190,7 +189,10 @@ function createReorderColumns(id = "#reorder") {
 }
 
 function saveChanges(e) {
-    saveCurrentDetailSetup();
+    if (resetCustomSetupUploadFlag() === "false") {
+        // custom setup not uploaded, want to use the current values
+        saveCurrentDetailSetup();
+    }
     heatMapFunctionality();
     twoPointFunctionality();
 

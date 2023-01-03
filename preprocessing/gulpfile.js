@@ -8,7 +8,7 @@ const sports = require("../supported-sports.json").sports;
 
 const indexBanner = false;
 const banner = false;
-const analytics = true;
+const analytics = false;
 
 function html(sport) {
     return src("./base.html")
@@ -77,7 +77,9 @@ function card(sport) {
 }
 
 function index() {
-    const filePaths = sports.filter((s) => !s.private).map((sport) => `./card/${sport.id}-card.html`);
+    const filePaths = sports
+        .filter((s) => !s.private)
+        .map((sport) => `./card/${sport.id}-card.html`);
     return src("./index-base.html")
         .pipe(
             inject(src(filePaths), {
