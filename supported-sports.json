@@ -926,6 +926,10 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
+            "goalCoords": [
+                [0, 37.5],
+                [120, 37.5]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -992,6 +996,10 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
+            "goalCoords": [
+                [0, 66],
+                [162, 66]
+            ],
             "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
@@ -1003,12 +1011,84 @@
                 {
                     "type": "radio",
                     "title": "Quarter",
-                    "id": "quart",
+                    "id": "quarter",
                     "options": [
                         { "value": "1", "checked": true },
                         { "value": "2" },
                         { "value": "3" },
                         { "value": "4" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Disposal", "selected": true },
+                        { "value": "Mark" },
+                        { "value": "Behind" },
+                        { "value": "Goal" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
+            "id": "rugby-union",
+            "name": "Rugby Union",
+            "units": "meters",
+            "specifications": "World Rugby (2021)",
+            "dimensions": "100 x 70 (128 x 70 including in-goal areas)",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "128",
+                "height": "70",
+                "circleR": "1.28",
+                "polyR": "1.76",
+                "fontSize": "0.096rem",
+                "strokeWidth": "0.32px",
+                "heatMapScale": 1.953125,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultEnable": ["two-location"],
+            "goalCoords": [
+                [14, 35],
+                [114, 35]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "Extra Time" }
                     ]
                 },
                 {
