@@ -77,7 +77,7 @@
     stroke="white" fill="transparent" stroke-width="0.75" />
     <circle id="right-fifty-meter-arc" cx="0" cy="66" r="50" stroke="white" fill="transparent" clip-path="url(#clipBorderAFL)" stroke-width="0.3" />
     </g>
-        <path id="outside-perimter" d="
+    <path id="outside-perimeter" d="
     M 0 56.4
     A 81 56.4 0 0 1 162 56.4
     L 162 75.6
