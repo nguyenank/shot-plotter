@@ -71,6 +71,72 @@
             ]
         },
         {
+            "id": "ice-hockey-net-nhl",
+            "name": "Ice Hockey Net (NHL)",
+            "units": "inches",
+            "specifications": "National Hockey League (2021-2022)",
+            "dimensions": "72 x 48 (76.75 x 49.1875 including posts)",
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "78",
+                "height": "54",
+                "circleR": "0.78",
+                "polyR": "1.0725",
+                "fontSize": "0.0585rem",
+                "strokeWidth": "0.195px",
+                "heatMapScale": 3.205,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Period",
+                    "id": "period",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Save", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "ice-hockey-iihf",
             "name": "Ice Hockey (IIHF)",
             "units": "meters",
