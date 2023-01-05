@@ -6,6 +6,7 @@
             "units": "feet",
             "specifications": "National Hockey League (2020-2021)",
             "dimensions": "200 x 85",
+            "scoringArea": "net",
             "perimeter": "#outside-perimeter",
             "appearance": {
                 "width": "200",
@@ -76,6 +77,7 @@
             "units": "inches",
             "specifications": "National Hockey League (2021-2022)",
             "dimensions": "72 x 48 (76.75 x 49.1875 including posts)",
+            "scoringArea": null,
             "perimeter": "#outside-perimeter",
             "appearance": {
                 "width": "78",
@@ -143,6 +145,7 @@
             "specifications": "International Ice Hockey Federation (2021-2022)",
             "dimensions": "60 x 30",
             "perimeter": "#outside-perimeter",
+            "scoringArea": "net",
             "appearance": {
                 "width": "60",
                 "height": "30",
@@ -212,6 +215,7 @@
             "units": "meters",
             "specifications": "International Floorball Federation (2018)",
             "dimensions": "40 x 20",
+            "scoringArea": "net",
             "appearance": {
                 "width": "40",
                 "height": "20",
@@ -283,6 +287,7 @@
             "specifications": "International Handball Federation (2016)",
             "perimeter": "#outside-perimeter",
             "dimensions": "40 x 20",
+            "scoringArea": "goal",
             "appearance": {
                 "width": "40",
                 "height": "20",
@@ -352,6 +357,7 @@
             "specifications": "National Collegiate Athletic Association (2020-2021)",
             "dimensions": "18 x 9 (27 x 15 including free zone)",
             "perimeter": "#transformations",
+            "scoringArea": null,
             "appearance": {
                 "width": "27",
                 "height": "15",
@@ -419,6 +425,7 @@
             "units": "feet",
             "specifications": "National Basketball Association (2020-2021)",
             "dimensions": "94 x 50",
+            "scoringArea": "hoop",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -490,6 +497,7 @@
             "units": "feet",
             "specifications": "National Collegiate Athletic Association (2021-2022)",
             "dimensions": "94 x 50",
+            "scoringArea": "hoop",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -561,6 +569,7 @@
             "units": "feet",
             "specifications": "Women's National Basketball Association (2021)",
             "dimensions": "94 x 50",
+            "scoringArea": "hoop",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -632,6 +641,7 @@
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2021-2022)",
             "dimensions": "110 x 60",
+            "scoringArea": "goal",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "110",
@@ -704,6 +714,7 @@
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2022-2023)",
             "dimensions": "120 x 65",
+            "scoringArea": "goal",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -776,6 +787,7 @@
             "units": "yards",
             "specifications": "National Football League (2021)",
             "dimensions": "120 x 53.33",
+            "scoringArea": null,
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -845,6 +857,7 @@
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2021)",
             "dimensions": "120 x 53.33",
+            "scoringArea": null,
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -914,6 +927,7 @@
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2022 & 2023)",
             "dimensions": "120 x 75",
+            "scoringArea": "goal",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -984,6 +998,7 @@
             "units": "meters",
             "specifications": "AFL (2021)",
             "dimensions": "162 x 132",
+            "scoringArea": "goal posts",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "162",
@@ -1057,6 +1072,7 @@
             "units": "meters",
             "specifications": "World Rugby (2021)",
             "dimensions": "100 x 70 (128 x 70 including in-goal areas)",
+            "scoringArea": "goal posts",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "128",
@@ -1130,6 +1146,7 @@
             "units": "yards",
             "specifications": "National Federation of State High School Associations (2023)",
             "dimensions": "115 x 70",
+            "scoringArea": "goal",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "115",
@@ -1142,6 +1159,10 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
+            "goalCoords": [
+                [0, 37.5],
+                [115, 37.5]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",

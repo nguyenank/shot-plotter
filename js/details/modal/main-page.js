@@ -15,7 +15,11 @@ import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
-import { sport, cfgDefaultEnable } from "../../../setup.js";
+import {
+    sport,
+    cfgDefaultEnable,
+    cfgSportScoringArea,
+} from "../../../setup.js";
 import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
 import { select2Filter } from "../../table/filter.js";
 
@@ -392,32 +396,8 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
     let specialDetails = d3.select(id);
     specialDetails.append("h6").text("Special Details");
 
-    let scoringArea;
-    switch (sport) {
-        case "volleyball":
-        case "football-ncaa":
-        case "football-nfl":
-            scoringArea = null;
-            break;
-        case "basketball-nba":
-        case "basketball-ncaa":
-        case "basketball-wnba":
-            scoringArea = "hoop";
-            break;
-        case "floorball":
-        case "ice-hockey-iihf":
-        case "ice-hockey":
-        case "mens-lacrosse":
-        case "womens-lacrosse":
-            scoringArea = "net";
-            break;
-        default:
-            scoringArea = "scoring area";
-            break;
-    }
-
-    const distanceDescription = scoringArea
-        ? `Distance to closest ${scoringArea} for 1-location events; distance between locations for 2-location events.`
+    const distanceDescription = cfgSportScoringArea
+        ? `Distance to closest ${cfgSportScoringArea} for 1-location events; distance between locations for 2-location events.`
         : `Distance between locations for 2-location events.`;
 
     const sdList = [
