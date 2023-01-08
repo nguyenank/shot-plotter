@@ -2,7 +2,7 @@
 
 ![A screenshot of the web application.](./resources/ice-hockey-screenshot.png)
 
-**01/08/23: Ice hockey net, Australian football, rugby union, and table
+**01/08/23: Ice hockey net, Australian rules football, rugby union, and table
 tennis have been added as playing areas**
 
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
