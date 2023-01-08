@@ -10,6 +10,16 @@ function existsDetail(id) {
     return !d3.select(id).empty();
 }
 
+export function setCustomSetupUploadFlag(bool) {
+    sessionStorage.setItem("customSetupUploadFlag", bool);
+}
+
+export function resetCustomSetupUploadFlag() {
+    let value = sessionStorage.getItem("customSetupUploadFlag");
+    setCustomSetupUploadFlag(false);
+    return value;
+}
+
 function getCurrentShotTypes() {
     let options = [];
     if (existsDetail("#shot-type")) {

@@ -11,6 +11,7 @@ import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 export let sport;
 export let cfgSportA;
 export let cfgSportGoalCoords;
+export let cfgSportScoringArea;
 export let getDefaultDetails;
 export let cfgDefaultEnable;
 export let perimeterId;
@@ -21,6 +22,7 @@ export function setup(s) {
         const sportData = _.find(data.sports, { id: sport });
         cfgSportA = sportData.appearance;
         cfgSportGoalCoords = sportData.goalCoords;
+        cfgSportScoringArea = sportData.scoringArea;
         perimeterId = sportData.perimeter;
         getDefaultDetails = function () {
             return _.cloneDeep(sportData.defaultDetails);

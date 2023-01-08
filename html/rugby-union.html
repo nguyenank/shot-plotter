@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg" />
+  <link rel="mask-icon" href="/resources/favicon.svg" color="red" />
+
+  <!-- inject:analytics -->
+  <!-- Plausible -->
+<script defer data-domain="shot-plotter.netlify.app" src="https://plausible.io/js/plausible.js"></script>
+  <!-- endinject -->
+
+  <title>Shot-Plotter</title>
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
+
+  <!-- lodash -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+  <!-- UUID -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+
+  <!-- downloadjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous"></script>
+
+  <!-- PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js" integrity="sha512-rKFvwjvE4liWPlFnvH4ZhRDfNZ9FOpdkD/BU5gAIA3VS3vOQrQ5BjKgbO3kxebKhHdHcNUHLqxQYSoxee9UwgA==" crossorigin="anonymous"></script>
+
+  <!-- D3.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.6.0/d3.min.js" integrity="sha512-XgjkLS0sSzUq88GniFcrLy6zjgVWkBoRFziaLm1Z+gVgkHuO3ieikhD/Q6eNKXAsp88yvBFS0n6ovVlabXftIg==" crossorigin="anonymous"></script>
+
+  <!-- SortableJS :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <!-- TockTimer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocktimer/1.1.0/tock.min.js" integrity="sha512-vq5wJzEIsMaUGpNliTdBuAuvevdVhlFcbSKtz+YgJwfriIN03L20HoPnmywMcmjom64KLcjnBfTV3CSn2Y0rOg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="/index.css" />
+</head>
+
+<body>
+  <!-- inject:banner -->
+  <!-- endinject -->
+  <div class="center header">
+    <h1>Shot-Plotter</h1>
+  </div>
+  <div class="center medium-text">
+    A graphical interface for tracking locational events in sports.
+    Click on the playing area to log an event!
+  </div>
+  <hr />
+
+  <div class="main">
+    <div id="details" class="shot-info"></div>
+    <div class="center">
+      <div>
+        <div id="toggles">
+        </div>
+        <div id="playing-area">
+          <!-- inject:playingarea -->
+          <svg id="rugby-union-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 130 72">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="128" height="70" />
+    </clipPath>
+    <!-- <rect x='0' y="0" width="162" height="132"/> -->
+    <rect id="background" width="128" height="70" fill="#036602" stroke="#ccc" stroke-width="0.5" />
+    <rect id="left-in-goal" width="14" height="70" fill="black" opacity="0.15" />
+    <rect id="right-in-goal" x="114" width="14" height="70" fill="black" opacity="0.15" />
+    <line id="left-goal-line" x1="14" y1="0" x2="14" y2="70" stroke="white" stroke-width="0.25" />
+    <path id="left-goal-posts" d="
+    M 13.5 32.2
+    L 14.5 32.2
+    M 13.5 37.8
+    L 14.5 37.8" stroke="#ccc" stroke-width="0.5" />
+    <line id="left-five-m-goal-line-dash" x1="19" y1="2.5" x2="19" y2="70" stroke="white" stroke-width="0.25" stroke-dasharray="5" />
+    <line id="left-twenty-two-m-line" x1="36" y1="0" x2="36" y2="70" stroke="white" stroke-width="0.25" />
+    <line id="left-ten-m-line" x1="54" y1="2.5" x2="54" y2="70" stroke="white" stroke-width="0.25" stroke-dasharray="5" />
+    <path id="left-five-m-touchline-dash" stroke="white" stroke-width="0.25" d="
+    M 19 5
+    L 24 5
+    M 33.5 5
+    L 38.5 5
+    M 51.5 5
+    L 56.5 5
+    M 61.5 5
+    L 66.5 5" />
+    <path id="left-fifteen-m-touchline-dash" stroke="white" stroke-width="0.25" d="
+    M 19 15
+    L 24 15
+    M 33.5 15
+    L 38.5 15
+    M 51.5 15
+    L 56.5 15
+    M 61.5 15
+    L 66.5 15" />
+    <path id="left-neg-five-m-touchline-dash" stroke="white" stroke-width="0.25" d="
+    M 19 65
+    L 24 65
+    M 33.5 65
+    L 38.5 65
+    M 51.5 65
+    L 56.5 65
+    M 61.5 65
+    L 66.5 65" />
+    <path id="left-neg-fifteen-m-touchline-dash" stroke="white" stroke-width="0.25" d="
+    M 19 55
+    L 24 55
+    M 33.5 55
+    L 38.5 55
+    M 51.5 55
+    L 56.5 55
+    M 61.5 55
+    L 66.5 55" />
+    <g transform="translate(128 70) rotate(180)">
+      <line id="right-goal-line" x1="14" y1="0" x2="14" y2="70" stroke="white" stroke-width="0.25" />
+    <path id="right-goal-posts" d="
+    M 13.5 32.2
+    L 14.5 32.2
+    M 13.5 37.8
+    L 14.5 37.8" stroke="#ccc" stroke-width="0.5" />
+    <line id="right-five-m-goal-line-dash" x1="19" y1="2.5" x2="19" y2="70" stroke="white" stroke-width="0.25" stroke-dasharray="5" />
+    <line id="right-twenty-two-m-line" x1="36" y1="0" x2="36" y2="70" stroke="white" stroke-width="0.25" />
+    <line id="right-ten-m-line" x1="54" y1="2.5" x2="54" y2="70" stroke="white" stroke-width="0.25" stroke-dasharray="5" />
+    <path id="right-five-m-touchline-dash" stroke="white" stroke-width="0.25" d="
+    M 19 5
+    L 24 5
+    M 33.5 5
+    L 38.5 5
+    M 51.5 5
+    L 56.5 5
+    M 61.5 5
+    L 66.5 5" />
+    <path id="right-fifteen-m-touchline-dash" stroke="white" stroke-width="0.25" d="
+    M 19 15
+    L 24 15
+    M 33.5 15
+    L 38.5 15
+    M 51.5 15
+    L 56.5 15
+    M 61.5 15
+    L 66.5 15" />
+    <path id="right-neg-five-m-touchline-dash" stroke="white" stroke-width="0.25" d="
+    M 19 65
+    L 24 65
+    M 33.5 65
+    L 38.5 65
+    M 51.5 65
+    L 56.5 65
+    M 61.5 65
+    L 66.5 65" />
+    <path id="right-neg-fifteen-m-touchline-dash" stroke="white" stroke-width="0.25" d="
+    M 19 55
+    L 24 55
+    M 33.5 55
+    L 38.5 55
+    M 51.5 55
+    L 56.5 55
+    M 61.5 55
+    L 66.5 55" />
+      </g>
+    <line id="halfway-line" x1="64" y1="0" x2="64" y2="70" stroke="white" stroke-width="0.25" />
+    <line id="halfway-tick" x1="63.75" y1="35" x2="64.25" y2="35" stroke="white" stroke-width="0.25" />
+        <rect id="outside-perimeter" width="128" height="70" fill="transparent" stroke="#ccc" stroke-width="0.5" />
+  </g>
+</svg>
+
+          <!-- endinject -->
+        </div>
+        <div class="center">
+          <div id="legend"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table id="shot-table" class="table shot-table"></table>
+  <div id="csv-upload-download"></div>
+  <div id="details-modal"></div>
+  <div id="delete-all-modal"></div>
+  <hr />
+  <script type="module" src="/setup.js"></script>
+  <script type="module">
+    import {
+      setup
+    } from "/setup.js";
+    setup("rugby-union");
+  </script>
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+<footer class="center">
+  <span>
+    Website built by An Nguyen primarily using D3.js. Source code and
+    details on how to use the app are available on
+    <a href="https://github.com/nguyenank/shot-plotter">Github</a>.
+    Contact me with bugs/feedback/suggestions/etc. on
+    <a href="https://twitter.com/nguyenank_">Twitter</a> or by
+    <a id="email" href="">email</a>.
+  </span>
+</footer>
+
+</html>

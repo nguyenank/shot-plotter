@@ -35,6 +35,7 @@ function setUpShots() {
             .attr("points", "0 0, 5 2.5, 0 5")
             .attr("class", className);
     }
+    sessionStorage.setItem("firstPoint", null);
 
     d3.select("#playing-area")
         .select(perimeterId)

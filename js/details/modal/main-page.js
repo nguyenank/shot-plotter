@@ -5,18 +5,21 @@ import {
     setDetails,
     changePage,
     saveCurrentDetailSetup,
+    resetCustomSetupUploadFlag,
 } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
-import { getDefaultDetails } from "../../../setup.js";
 import { setUpJSONDownloadUpload } from "./json.js";
 import { createTextFieldPage } from "./text-field-page.js";
 import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
-import { cfgDetails } from "../config-details.js";
-import { sport, cfgDefaultEnable } from "../../../setup.js";
+import {
+    sport,
+    cfgDefaultEnable,
+    cfgSportScoringArea,
+} from "../../../setup.js";
 import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
 import { select2Filter } from "../../table/filter.js";
 
@@ -190,7 +193,10 @@ function createReorderColumns(id = "#reorder") {
 }
 
 function saveChanges(e) {
-    saveCurrentDetailSetup();
+    if (resetCustomSetupUploadFlag() === "false") {
+        // custom setup not uploaded, want to use the current values
+        saveCurrentDetailSetup();
+    }
     heatMapFunctionality();
     twoPointFunctionality();
 
@@ -390,32 +396,8 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
     let specialDetails = d3.select(id);
     specialDetails.append("h6").text("Special Details");
 
-    let scoringArea;
-    switch (sport) {
-        case "volleyball":
-        case "football-ncaa":
-        case "football-nfl":
-            scoringArea = null;
-            break;
-        case "basketball-nba":
-        case "basketball-ncaa":
-        case "basketball-wnba":
-            scoringArea = "hoop";
-            break;
-        case "floorball":
-        case "ice-hockey-iihf":
-        case "ice-hockey":
-        case "mens-lacrosse":
-        case "womens-lacrosse":
-            scoringArea = "net";
-            break;
-        default:
-            scoringArea = "scoring area";
-            break;
-    }
-
-    const distanceDescription = scoringArea
-        ? `Distance to closest ${scoringArea} for 1-location events; distance between locations for 2-location events.`
+    const distanceDescription = cfgSportScoringArea
+        ? `Distance to closest ${cfgSportScoringArea} for 1-location events; distance between locations for 2-location events.`
         : `Distance between locations for 2-location events.`;
 
     const sdList = [

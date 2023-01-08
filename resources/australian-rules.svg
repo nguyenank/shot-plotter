@@ -1,0 +1,88 @@
+<svg id="australian-rules-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 164 134">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+    <path id="background" d="
+    M 0 56.4
+    A 81 56.4 0 0 1 162 56.4
+    L 162 75.6
+    A 81 56.4 0 0 1 0 75.6
+    Z
+    " fill="#036602" stroke="#aaa" stroke-width="0.5" />
+    </clipPath>
+    <clipPath id="clipBorderAFL">
+    <path id="background" d="
+    M 0 56.4
+    A 81 56.4 0 0 1 162 56.4
+    L 162 75.6
+    A 81 56.4 0 0 1 0 75.6
+    Z
+    " fill="#036602" stroke="#aaa" stroke-width="0.5" />
+    </clipPath>
+    <!-- <rect x='0' y="0" width="162" height="132"/> -->
+    <path id="background" d="
+    M 0 56.4
+    A 81 56.4 0 0 1 162 56.4
+    L 162 75.6
+    A 81 56.4 0 0 1 0 75.6
+    Z
+    " fill="#036602" stroke="#aaa" stroke-width="0.5" />
+    <rect id="center-square" x="56" y="41" width="50" height="50" fill="transparent" stroke="white" stroke-width="0.3" />
+    <circle id="center-circle" cx="81" cy="66" r="1.5" stroke="white" fill="transparent" stroke-width="0.3" />
+    <circle id="ten-m-circle" cx="81" cy="66" r="5" stroke="white" fill="transparent" stroke-width="0.3" />
+    <line id="center-line" x1="81" y1="61" x2="81" y2="71" stroke="white" fill="transparent" stroke-width="0.3" />
+    <path id="interchange-area" d="
+    M 73.5 0
+    L 73.5 1
+    M 88.5 0
+    L 88.5 1" stroke="white" fill="transparent" stroke-width="0.3" />
+    <path id="left-goal-square" d=
+    "M 0 62.8
+     L 9 62.8
+     L 9 69.2
+     L 0 69.2" stroke="white" fill="transparent" stroke-width="0.3" />
+    <path id="left-goal-sticks"
+    d="
+    M -0.75 62.8
+    L 0.75 62.8
+    M -0.75 69.2
+    L 0.75 69.2"
+    stroke="white" fill="transparent" stroke-width="1" />
+    <path id="left-behind-sticks"
+    d="
+    M -0.5 56.4
+    L 0.5 56.4
+    M -0.5 75.6
+    L 0.5 75.6"
+    stroke="white" fill="transparent" stroke-width="0.75" />
+    <circle id="left-fifty-meter-arc" cx="0" cy="66" r="50" stroke="white" fill="transparent" clip-path="url(#clipBorderAFL)" stroke-width="0.3" />
+    <g id="right-side" transform="translate(162 132) rotate(180)">
+          <path id="right-goal-square" d=
+    "M 0 62.8
+     L 9 62.8
+     L 9 69.2
+     L 0 69.2" stroke="white" fill="transparent" stroke-width="0.3" />
+    <path id="right-goal-sticks"
+    d="
+    M -0.75 62.8
+    L 0.75 62.8
+    M -0.75 69.2
+    L 0.75 69.2"
+    stroke="white" fill="transparent" stroke-width="1" />
+    <path id="right-behind-sticks"
+    d="
+    M -0.5 56.4
+    L 0.5 56.4
+    M -0.5 75.6
+    L 0.5 75.6"
+    stroke="white" fill="transparent" stroke-width="0.75" />
+    <circle id="right-fifty-meter-arc" cx="0" cy="66" r="50" stroke="white" fill="transparent" clip-path="url(#clipBorderAFL)" stroke-width="0.3" />
+    </g>
+    <path id="outside-perimeter" d="
+    M 0 56.4
+    A 81 56.4 0 0 1 162 56.4
+    L 162 75.6
+    A 81 56.4 0 0 1 0 75.6
+    Z
+    " fill="transparent" stroke="#aaa" stroke-width="0.5" />
+  </g>
+</svg>

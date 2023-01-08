@@ -2,6 +2,7 @@ import {
     saveCurrentDetailSetup,
     getDetails,
     setDetails,
+    setCustomSetupUploadFlag,
 } from "../details-functions.js";
 import { downloadArea, uploadArea } from "../../components/upload-download.js";
 import { createReorderColumns } from "./main-page.js";
@@ -15,6 +16,7 @@ function setUpJSONDownloadUpload(id) {
         (e) => uploadJSON(id, "#json-upload", e),
         "Only .json files are allowed."
     );
+    setCustomSetupUploadFlag(false);
 }
 
 function downloadJSON(id) {
@@ -66,7 +68,6 @@ function uploadJSON(id, uploadId, e) {
                     );
                     $("#widgets-per-row-dropdown").trigger("change");
                 }
-
                 setDetails(details);
                 createReorderColumns("#reorder");
                 const detailToggles = [
@@ -89,6 +90,7 @@ function uploadJSON(id, uploadId, e) {
                 }
                 setDetails(details);
                 createReorderColumns("#reorder");
+                setCustomSetupUploadFlag(true);
             });
         }
     } else {

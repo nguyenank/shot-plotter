@@ -1,0 +1,17 @@
+<svg id="table-tennis-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 276 185">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="274" height="183" />
+    </clipPath>
+    <rect id="background" y="15.25" width="274" height="152.5" fill="#2162b7"/>
+    <path id="border" d="
+    M 1 16.25
+    L 273 16.25
+    L 273 167.75
+    L 1 167.75
+    Z" stroke="#eee" stroke-width="2" fill="transparent" />
+    <line id="middle divider" x1="0" y1="91.5" x2="274" y2="91.5" stroke="#eee" stroke-width="0.3" />
+    <line id="net-overhangs" x1="137" y1="0" x2="137" y2="183" stroke-width="1.5" stroke="#0c4896" />
+    <line id="net" x1="137" y1="3" x2="137" y2="180" stroke-width="1" stroke="#ccc" />
+  </g>
+</svg>

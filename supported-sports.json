@@ -6,6 +6,7 @@
             "units": "feet",
             "specifications": "National Hockey League (2020-2021)",
             "dimensions": "200 x 85",
+            "scoringArea": "net",
             "perimeter": "#outside-perimeter",
             "appearance": {
                 "width": "200",
@@ -71,12 +72,80 @@
             ]
         },
         {
+            "id": "ice-hockey-net-nhl",
+            "name": "Ice Hockey Net (NHL)",
+            "units": "inches",
+            "specifications": "National Hockey League (2021-2022)",
+            "dimensions": "72 x 48 (76.75 x 49.1875 including posts)",
+            "scoringArea": null,
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "78",
+                "height": "54",
+                "circleR": "0.78",
+                "polyR": "1.0725",
+                "fontSize": "0.0585rem",
+                "strokeWidth": "0.195px",
+                "heatMapScale": 3.205,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Period",
+                    "id": "period",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Save", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "ice-hockey-iihf",
             "name": "Ice Hockey (IIHF)",
             "units": "meters",
             "specifications": "International Ice Hockey Federation (2021-2022)",
             "dimensions": "60 x 30",
             "perimeter": "#outside-perimeter",
+            "scoringArea": "net",
             "appearance": {
                 "width": "60",
                 "height": "30",
@@ -146,6 +215,7 @@
             "units": "meters",
             "specifications": "International Floorball Federation (2018)",
             "dimensions": "40 x 20",
+            "scoringArea": "net",
             "appearance": {
                 "width": "40",
                 "height": "20",
@@ -217,6 +287,7 @@
             "specifications": "International Handball Federation (2016)",
             "perimeter": "#outside-perimeter",
             "dimensions": "40 x 20",
+            "scoringArea": "goal",
             "appearance": {
                 "width": "40",
                 "height": "20",
@@ -286,6 +357,7 @@
             "specifications": "National Collegiate Athletic Association (2020-2021)",
             "dimensions": "18 x 9 (27 x 15 including free zone)",
             "perimeter": "#transformations",
+            "scoringArea": null,
             "appearance": {
                 "width": "27",
                 "height": "15",
@@ -348,11 +420,82 @@
             ]
         },
         {
+            "id": "table-tennis",
+            "name": "Table Tennis",
+            "units": "centimeters",
+            "specifications": "International Table Tennis Federation (2022)",
+            "dimensions": "274 x 152.5 (274 x 183 including net overhangs)",
+            "perimeter": "#transformations",
+            "scoringArea": null,
+            "appearance": {
+                "width": "274",
+                "height": "183",
+                "circleR": "2.74",
+                "polyR": "3.7675",
+                "fontSize": "0.2055rem",
+                "strokeWidth": "0.685px",
+                "heatMapScale": 0.9124,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Game",
+                    "id": "game",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "5" },
+                        { "value": "6" },
+                        { "value": "7" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Serve", "selected": true },
+                        { "value": "Serve Return" },
+                        { "value": "Rally" },
+                        { "value": "Error" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "basketball-nba",
             "name": "Basketball (NBA)",
             "units": "feet",
             "specifications": "National Basketball Association (2020-2021)",
             "dimensions": "94 x 50",
+            "scoringArea": "hoop",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -410,7 +553,8 @@
                     "options": [
                         { "value": "Miss", "selected": true },
                         { "value": "Make" },
-                        { "value": "Blocked" }
+                        { "value": "Blocked" },
+                        { "value": "Fouled" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -423,6 +567,7 @@
             "units": "feet",
             "specifications": "National Collegiate Athletic Association (2021-2022)",
             "dimensions": "94 x 50",
+            "scoringArea": "hoop",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -480,7 +625,8 @@
                     "options": [
                         { "value": "Miss", "selected": true },
                         { "value": "Make" },
-                        { "value": "Blocked" }
+                        { "value": "Blocked" },
+                        { "value": "Fouled" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -493,6 +639,7 @@
             "units": "feet",
             "specifications": "Women's National Basketball Association (2021)",
             "dimensions": "94 x 50",
+            "scoringArea": "hoop",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "94",
@@ -550,7 +697,8 @@
                     "options": [
                         { "value": "Miss", "selected": true },
                         { "value": "Make" },
-                        { "value": "Blocked" }
+                        { "value": "Blocked" },
+                        { "value": "Fouled" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -563,6 +711,7 @@
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2021-2022)",
             "dimensions": "110 x 60",
+            "scoringArea": "goal",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "110",
@@ -635,6 +784,7 @@
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2022-2023)",
             "dimensions": "120 x 65",
+            "scoringArea": "goal",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -707,6 +857,7 @@
             "units": "yards",
             "specifications": "National Football League (2021)",
             "dimensions": "120 x 53.33",
+            "scoringArea": null,
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -716,7 +867,6 @@
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px",
                 "heatMapScale": 2.08,
-                "heatMapLowOpacity": 0.05,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
@@ -777,6 +927,7 @@
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2021)",
             "dimensions": "120 x 53.33",
+            "scoringArea": null,
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -846,6 +997,7 @@
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2022 & 2023)",
             "dimensions": "120 x 75",
+            "scoringArea": "goal",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "120",
@@ -858,6 +1010,10 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
+            "goalCoords": [
+                [0, 37.5],
+                [120, 37.5]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -907,12 +1063,160 @@
             ]
         },
         {
+            "id": "australian-rules",
+            "name": "Australian Rules Football",
+            "units": "meters",
+            "specifications": "AFL (2021)",
+            "dimensions": "162 x 132",
+            "scoringArea": "goal posts",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "162",
+                "height": "132",
+                "circleR": "1.62",
+                "polyR": "2.2275",
+                "fontSize": "0.1215rem",
+                "strokeWidth": "0.405px",
+                "heatMapScale": 1.54,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [0, 66],
+                [162, 66]
+            ],
+            "defaultEnable": ["two-location"],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Disposal", "selected": true },
+                        { "value": "Mark" },
+                        { "value": "Behind" },
+                        { "value": "Goal" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
+            "id": "rugby-union",
+            "name": "Rugby Union",
+            "units": "meters",
+            "specifications": "World Rugby (2021)",
+            "dimensions": "100 x 70 (128 x 70 including in-goal areas)",
+            "scoringArea": "goal posts",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "128",
+                "height": "70",
+                "circleR": "1.28",
+                "polyR": "1.76",
+                "fontSize": "0.096rem",
+                "strokeWidth": "0.32px",
+                "heatMapScale": 1.953125,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultEnable": ["two-location"],
+            "goalCoords": [
+                [14, 35],
+                [114, 35]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "Extra Time" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Disposal", "selected": true },
+                        { "value": "Mark" },
+                        { "value": "Behind" },
+                        { "value": "Goal" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
             "id": "soccer-meerse",
             "name": "Soccer (requested by John Meerse)",
             "private": true,
             "units": "yards",
             "specifications": "National Federation of State High School Associations (2023)",
             "dimensions": "115 x 70",
+            "scoringArea": "goal",
             "perimeter": "#transformations",
             "appearance": {
                 "width": "115",
@@ -925,6 +1229,10 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
+            "goalCoords": [
+                [0, 37.5],
+                [115, 37.5]
+            ],
             "defaultDetails": [
                 {
                     "type": "shot-number",
