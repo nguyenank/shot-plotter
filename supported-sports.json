@@ -420,6 +420,76 @@
             ]
         },
         {
+            "id": "table-tennis",
+            "name": "Table Tennis",
+            "units": "centimeters",
+            "specifications": "International Table Tennis Federation (2022)",
+            "dimensions": "274 x 152.5 (274 x 183 including net overhangs)",
+            "perimeter": "#transformations",
+            "scoringArea": null,
+            "appearance": {
+                "width": "274",
+                "height": "183",
+                "circleR": "2.74",
+                "polyR": "3.7675",
+                "fontSize": "0.2055rem",
+                "strokeWidth": "0.685px",
+                "heatMapScale": 0.9124,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Game",
+                    "id": "game",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "5" },
+                        { "value": "6" },
+                        { "value": "7" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Serve", "selected": true },
+                        { "value": "Serve Return" },
+                        { "value": "Rally" },
+                        { "value": "Error" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "basketball-nba",
             "name": "Basketball (NBA)",
             "units": "feet",
