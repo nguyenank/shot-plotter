@@ -23,11 +23,11 @@ By default, four pieces of information can be specified for each event.
 
 The period of the event can be logged through radio buttons.
 
-The team can be specified through radio buttons and a text field that allows custom team names to be entered. The first team, which defaults to Home, corresponds to teal dots, and the second team, which defaults to Away, corresponds to orange dots. The legend below the rink clarifies which color corresponds to which team.
+The team can be specified through radio buttons and a text field that allows custom team names to be entered. The first team, which defaults to Home, corresponds to teal dots, and the second team, which defaults to Away, corresponds to orange dots. The legend below the playing area clarifies which color corresponds to which team.
 
 The player can be specified through a text field. If the player entry is 2 characters or less (for a player number, say), the player will appear on the event dot on the playing area.
 
-The type of event can be specified, under Type or Outcome.Additional options can be specified by typing in the dropdown and selecting the new option that appears by clicking or pressing Enter. Each option corresponds to a different dot shape, as indicated by the legend below the rink.
+The type of event can be specified, under Type or Outcome. Additional options can be specified by typing in the dropdown and selecting the new option that appears by clicking or pressing Enter. Each option corresponds to a different dot shape, as indicated by the legend below the playing area.
 
 Details logged for each event can be customized by clicking on the _Customize Details_ button at the bottom of the details panel. Details can only be customized when there are noevents recorded.
 
@@ -75,7 +75,7 @@ The playing area size is not pinned to the window size. This allows you to zoom 
 
 #### Table
 
-The table logs the information for each event, as well as the row number of the event in the table. Events can be highlighted by clicking on the check box for the appropriate row. This will highlight the row in the matching team color, and both enlarge the dot on the rink and move it to the front if it was previously covered by other dots. Multiple events can be highlighted at once. Events can be deleted by clicking on the trash can in the appropriate row. All events can be deleted by clicking on the trash can in the header of the table; a prompt will confirm this choice.
+The table logs the information for each event, as well as the row number of the event in the table. Events can be highlighted by clicking on the check box for the appropriate row. This will highlight the row in the matching team color, and both enlarge the dot on the playing area and move it to the front if it was previously covered by other dots. Multiple events can be highlighted at once. Events can be deleted by clicking on the trash can in the appropriate row. All events can be deleted by clicking on the trash can in the header of the table; a prompt will confirm this choice.
 
 The table, by default, shows the last page, which has the last 10 events recorded. Pages can be navigated using the _Prev_(ious) and _Next_ buttons at the lower-right of the table. The currently shown events and the total number of events recorded can be seen in the bottom-left of the table.
 
