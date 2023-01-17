@@ -1,0 +1,63 @@
+<svg id ="korfball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 40 20">
+            <g id="transformations">
+              <clipPath id="clipBorder">
+                <rect x="0" y="0" width="40" height="20"></rect>
+                </clipPath>
+                <rect id="background" x="0" y="0" width="40" height="20" fill="#C0C0C0"></rect>
+                <g id="center-markings">
+                <line id="center-line" x1="20" y1="0" x2="20" y2="20" stroke="#494949" stroke-width="0.05"></line>
+                <circle id="center-dot" cx="20" cy="10" r="0.15" fill="#a5015b"></circle>
+              </g>
+              <g id="left-side">
+                <circle id="left-free-pass" cx="9.177" cy="10" r="2.5" stroke="#a5015b" stroke-width="0.05" fill="#250285"></circle>
+                <circle id="left-goal" cx="6.67" cy="10" r="0.15" fill="#a5015b"></circle>
+                <path id="right-penalty-area" fill="transparent" stroke="#a5015b" stroke-width="0.05" d="
+                  M 9.17 12.5
+                  L 6.67 12.5
+                  A 2.5 2.5 0 0 1 4.17 10
+                  A 2.5 2.5 0 0 1 6.67 7.5
+                  L 9.17 7.5">
+                </path>
+                  <g id="left-distance-guides">
+                    <circle id="left-2m" cx="6.67" cy="10" r="2" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="8.67" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff">2m</text>
+                    <circle id="left-4m" cx="6.67" cy="10" r="4" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="10.67" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff">4m</text>
+                    <circle id="left-6m" cx="6.67" cy="10" r="6" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="12.67" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff">6m</text>
+                    <circle id="left-8m" cx="6.67" cy="10" r="8" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="14.67" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff">8m</text>
+                    <circle id="left-10m" cx="6.67" cy="10" r="10" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="16.67" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff">10m</text>
+                  </g>
+              </g>
+              <g id="right-side">
+                <circle id="right-free-pass" cx="30.83" cy="10" r="2.5" stroke="#a5015b" stroke-width="0.05" fill="#250285"></circle>
+                <circle id="right-goal" cx="33.33" cy="10" r="0.15" fill="#a5015b"></circle>
+                <path id="right-penalty-area" fill="transparent" stroke="#a5015b" stroke-width="0.05" d="
+                  M 30.83 12.5
+                  L 33.33 12.5
+                  A 2.5 2.5 0 0 0 35.83 10
+                  A 2.5 2.5 0 0 0 33.33 7.5
+                  L 30.83 7.5"></path>
+                <g id="right-distance-guides">
+                    <circle id="right-2m" cx="33.33" cy="10" r="2" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="31.33" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff" text-anchor="end">2m </text>
+                    <circle id="right-4m" cx="33.33" cy="10" r="4" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="29.33" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff" text-anchor="end">4m </text>
+                    <circle id="right-6m" cx="33.33" cy="10" r="6" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="27.33" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff" text-anchor="end">6m </text>
+                    <circle id="right-8m" cx="33.33" cy="10" r="8" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="25.33" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff" text-anchor="end">8m </text>
+                    <circle id="right-10m" cx="33.33" cy="10" r="10" stroke="#a36c8a" stroke-width="0.05" fill="transparent" stroke-dasharray="0.3"/>
+                    <text x="23.33" y="10" font-family="Verdana" font-size="0.5" fill="#6262ff" text-anchor="end">10m </text>
+                  </g>
+              </g>
+              <path id="outside-perimeter" d="
+    M 0 0
+    L 40 0
+    L 40 20
+    L 0 20
+    Z" stroke="#000" fill="transparent" stroke-width="0.05"></path>
+              </g>
+          </svg>

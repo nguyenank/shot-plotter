@@ -1280,6 +1280,82 @@
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
                 { "type": "y", "title": "Y", "id": "y", "noWidget": true }
             ]
+        },
+        {
+            "id": "korfball",
+            "name": "Korfball",
+            "units": "meters",
+            "specifications": "IKF (2022)",
+            "dimensions": "40 x 20",
+            "scoringArea": "goal",
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "40",
+                "height": "20",
+                "circleR": "0.4",
+                "polyR": "0.55",
+                "fontSize": "0.03rem",
+                "strokeWidth": "0.075px",
+                "heatMapScale": 6.25,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [6.67, 10],
+                [33.33, 10]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Outcome",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Miss", "selected": true },
+                        { "value": "Make" },
+                        { "value": "FP - Miss" },
+                        { "value": "FP - Make" },
+                        { "value": "P - Miss" },
+                        { "value": "P - Make" },
+                        { "value": "Blocked" },
+                        { "value": "Fouled" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
         }
     ]
 }
