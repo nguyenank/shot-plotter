@@ -9,7 +9,7 @@
               </g>
               <g id="left-third">
                 <line id="left-transverse-line" x1="10.167" y1="0" x2="10.167" y2="15.25" stroke="black" stroke-width="0.05"></line>
-                <path id="left-goal-circle" fill="white" stroke="black" stroke-width="0.05" d="
+                <path id="left-goal-circle" fill="#a5015b" stroke="black" stroke-width="0.05" d="
                   M 0 2.725
                   A 4.9 4.9 0 0 1 0 12.525">
                 </path>
@@ -21,7 +21,7 @@
               </g>
               <g id="right-third">
                 <line id="right-transverse-line" x1="21.25" y1="0" x2="21.25" y2="15.25" stroke="black" stroke-width="0.05"></line>
-                <path id="right-goal-circle" fill="white" stroke="black" stroke-width="0.05" d="
+                <path id="right-goal-circle" fill="#a5015b" stroke="black" stroke-width="0.05" d="
                   M 30.5 2.725
                   A 4.9 4.9 0 0 0 30.5 12.525">
                 </path>
