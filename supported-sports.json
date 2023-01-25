@@ -1210,6 +1210,76 @@
             ]
         },
         {
+            "id": "gaa",
+            "name": "Hurling and Gaelic Football",
+            "units": "meters",
+            "specifications": "Gaelic Athletic Association (2022)",
+            "dimensions": "145 x 90",
+            "scoringArea": "goal",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "145",
+                "height": "90",
+                "circleR": "1.45",
+                "polyR": "1.99375",
+                "fontSize": "0.10875rem",
+                "strokeWidth": "0.3625px",
+                "heatMapScale": 1.724,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [0, 45],
+                [145, 45]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "Extra Time" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Save", "selected": true },
+                        { "value": "Wide" },
+                        { "value": "Point" },
+                        { "value": "Goal" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "soccer-meerse",
             "name": "Soccer (requested by John Meerse)",
             "private": true,

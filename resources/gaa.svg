@@ -1,0 +1,52 @@
+<svg id="gaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 147 92">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="145" height="90" />
+    </clipPath>
+    <rect id="background" width="145" height="90" fill="#036602" stroke="#ccc" stroke-width="0.1" />
+    <line id="left-thirteen" x1="13" y1="0" x2="13" y2="90" stroke="white" stroke-width="0.1" />
+    <line id="left-twenty" x1="20" y1="0" x2="20" y2="90" stroke="white" stroke-width="0.1" />
+    <line id="left-forty-five" x1="45" y1="0" x2="45" y2="90" stroke="white" stroke-width="0.1" />
+    <line id="left-sixty-five" x1="65" y1="0" x2="65" y2="90" stroke="white" stroke-width="0.1" />
+    <path id="left-arc" d="
+    M 20 32
+    A 13 13 0 0 1 20 58" stroke="white" stroke-width="0.1" fill="transparent" />
+    <path id="left-goal-area" d="
+    M 0 35.5
+    L 13 35.5
+    M 0 54.5
+    L 13 54.5
+    M 0 38
+    L 4.5 38
+    L 4.5 52
+    L 0 52
+    " stroke="white" stroke-width="0.1" fill="transparent" />
+    <line id="left-goal-line" x1="0" y1="41.75" x2="0" y2="48.25" stroke="white" stroke-width="0.75" />
+    <circle id="left-penalty-point" cx="11" cy="45" r="0.1" fill="white" />
+
+    <g transform="translate(145 90) rotate(180)">
+          <line id="right-thirteen" x1="13" y1="0" x2="13" y2="90" stroke="white" stroke-width="0.1" />
+    <line id="right-twenty" x1="20" y1="0" x2="20" y2="90" stroke="white" stroke-width="0.1" />
+    <line id="right-forty-five" x1="45" y1="0" x2="45" y2="90" stroke="white" stroke-width="0.1" />
+    <line id="right-sixty-five" x1="65" y1="0" x2="65" y2="90" stroke="white" stroke-width="0.1" />
+    <path id="right-arc" d="
+    M 20 32
+    A 13 13 0 0 1 20 58" stroke="white" stroke-width="0.1" fill="transparent" />
+    <path id="right-goal-area" d="
+    M 0 35.5
+    L 13 35.5
+    M 0 54.5
+    L 13 54.5
+    M 0 38
+    L 4.5 38
+    L 4.5 52
+    L 0 52
+    " stroke="white" stroke-width="0.1" fill="transparent" />
+    <line id="right-goal-line" x1="0" y1="41.75" x2="0" y2="48.25" stroke="white" stroke-width="0.75" />
+    <circle id="right-penalty-point" cx="11" cy="45" r="0.1" fill="white" />
+    </g>
+    
+    <line id="midline" x1="72.5" y1="40" x2="72.5" y2="50" stroke="white" stroke-width="0.1" />
+    <rect id="outside-perimeter" width="145" height="90" fill="transparent" stroke="#ccc" stroke-width="0.3" />
+  </g>
+</svg>
