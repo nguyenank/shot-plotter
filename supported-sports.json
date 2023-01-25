@@ -992,6 +992,146 @@
             ]
         },
         {
+            "id": "cfl",
+            "name": "Canadian Football",
+            "units": "yards",
+            "specifications": "Canadian Football League (2022)",
+            "dimensions": "110 x 65 (150 x 65 including goal areas)",
+            "scoringArea": null,
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "150",
+                "height": "65",
+                "circleR": "1.5",
+                "polyR": "2.0625",
+                "fontSize": "0.1125rem",
+                "strokeWidth": "0.375px",
+                "heatMapScale": 1.66666,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultEnable": ["two-location"],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Receiver",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Outcome",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Complete", "selected": true },
+                        { "value": "Incomplete" },
+                        { "value": "Interception" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
+            "id": "cfl-pre-2022",
+            "name": "Canadian Football (CFL pre-2022 & Amateur)",
+            "units": "yards",
+            "specifications": "Canadian Football League (2021)",
+            "dimensions": "110 x 65 (150 x 65 including goal areas)",
+            "scoringArea": null,
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "150",
+                "height": "65",
+                "circleR": "1.5",
+                "polyR": "2.0625",
+                "fontSize": "0.1125rem",
+                "strokeWidth": "0.375px",
+                "heatMapScale": 1.66666,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultEnable": ["two-location"],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Receiver",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Outcome",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Complete", "selected": true },
+                        { "value": "Incomplete" },
+                        { "value": "Interception" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
             "id": "soccer-ncaa",
             "name": "Soccer (NCAA)",
             "units": "yards",
