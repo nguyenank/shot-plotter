@@ -852,6 +852,77 @@
             ]
         },
         {
+            "id": "field-hockey",
+            "name": "Field Hockey",
+            "units": "meters",
+            "specifications": "International Hockey Federation (2022)",
+            "dimensions": "91.4 x 55",
+            "scoringArea": "net",
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "91.4",
+                "height": "55",
+                "circleR": "0.914",
+                "polyR": "1.25675",
+                "fontSize": "0.06855rem",
+                "strokeWidth": "0.2285px",
+                "heatMapScale": 2.735,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [0, 27.5],
+                [91.4, 27.5]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "football-nfl",
             "name": "Football (NFL)",
             "units": "yards",
