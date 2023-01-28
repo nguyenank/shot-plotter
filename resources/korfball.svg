@@ -1,0 +1,41 @@
+<svg id ="korfball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 40 20">
+            <g id="transformations">
+              <clipPath id="clipBorder">
+                <rect x="0" y="0" width="40" height="20"></rect>
+                </clipPath>
+                <rect id="background" x="0" y="0" width="40" height="20" fill="#eacda6"></rect>
+                <g id="center-markings">
+                <line id="center-line" x1="20" y1="0" x2="20" y2="20" stroke="#a5015b" stroke-width="0.05"></line>
+                <circle id="center-dot" cx="20" cy="10" r="0.15" fill="#a5015b"></circle>
+              </g>
+              <g id="left-side">
+                <circle id="left-free-pass" cx="9.177" cy="10" r="2.5" stroke="#a5015b" stroke-width="0.05" fill="#e2b983"></circle>
+                <circle id="left-goal" cx="6.87" cy="10" r="0.2" fill="transparent" stroke="#a5015b" stroke-width="0.05"></circle>
+                <path id="left-penalty-area" fill="transparent" stroke="#a5015b" stroke-width="0.05" d="
+                  M 9.17 12.5
+                  L 6.67 12.5
+                  A 2.5 2.5 0 0 1 4.17 10
+                  A 2.5 2.5 0 0 1 6.67 7.5
+                  L 9.17 7.5">
+                </path>
+                 <line id="left-penalty-spot" x1="9.17" x2="9.17" y1="9.8" y2="10.2" stroke="#a5015b" stroke-width="0.05"/>
+              </g>
+              <g id="right-side">
+                <circle id="right-free-pass" cx="30.83" cy="10" r="2.5" stroke="#a5015b" stroke-width="0.05" fill="#e2b983"></circle>
+                <circle id="right-goal" cx="33.13" cy="10" r="0.2" fill="transparent" stroke="#a5015b" stroke-width="0.05"></circle>
+                <path id="right-penalty-area" fill="transparent" stroke="#a5015b" stroke-width="0.05" d="
+                  M 30.83 12.5
+                  L 33.33 12.5
+                  A 2.5 2.5 0 0 0 35.83 10
+                  A 2.5 2.5 0 0 0 33.33 7.5
+                  L 30.83 7.5"></path>
+                <line id="right-penalty-spot" x1="30.83" x2="30.83" y1="9.8" y2="10.2" stroke="#a5015b" stroke-width="0.05"/>
+              </g>
+              <path id="outside-perimeter" d="
+    M 0 0
+    L 40 0
+    L 40 20
+    L 0 20
+    Z" stroke="#000" fill="transparent" stroke-width="0.05"></path>
+              </g>
+          </svg>
