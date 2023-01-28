@@ -75,47 +75,91 @@
         </div>
         <div id="playing-area">
           <!-- inject:playingarea -->
-          <svg id ="korfball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 40 20">
-            <g id="transformations">
-              <clipPath id="clipBorder">
-                <rect x="0" y="0" width="40" height="20"></rect>
-                </clipPath>
-                <rect id="background" x="0" y="0" width="40" height="20" fill="#eacda6"></rect>
-                <g id="center-markings">
-                <line id="center-line" x1="20" y1="0" x2="20" y2="20" stroke="#a5015b" stroke-width="0.05"></line>
-                <circle id="center-dot" cx="20" cy="10" r="0.15" fill="#a5015b"></circle>
-              </g>
-              <g id="left-side">
-                <circle id="left-free-pass" cx="9.177" cy="10" r="2.5" stroke="#a5015b" stroke-width="0.05" fill="#e2b983"></circle>
-                <circle id="left-goal" cx="6.87" cy="10" r="0.2" fill="transparent" stroke="#a5015b" stroke-width="0.05"></circle>
-                <path id="left-penalty-area" fill="transparent" stroke="#a5015b" stroke-width="0.05" d="
-                  M 9.17 12.5
-                  L 6.67 12.5
-                  A 2.5 2.5 0 0 1 4.17 10
-                  A 2.5 2.5 0 0 1 6.67 7.5
-                  L 9.17 7.5">
-                </path>
-                 <line id="left-penalty-spot" x1="9.17" x2="9.17" y1="9.8" y2="10.2" stroke="#a5015b" stroke-width="0.05"/>
-              </g>
-              <g id="right-side">
-                <circle id="right-free-pass" cx="30.83" cy="10" r="2.5" stroke="#a5015b" stroke-width="0.05" fill="#e2b983"></circle>
-                <circle id="right-goal" cx="33.13" cy="10" r="0.2" fill="transparent" stroke="#a5015b" stroke-width="0.05"></circle>
-                <path id="right-penalty-area" fill="transparent" stroke="#a5015b" stroke-width="0.05" d="
-                  M 30.83 12.5
-                  L 33.33 12.5
-                  A 2.5 2.5 0 0 0 35.83 10
-                  A 2.5 2.5 0 0 0 33.33 7.5
-                  L 30.83 7.5"></path>
-                <line id="right-penalty-spot" x1="30.83" x2="30.83" y1="9.8" y2="10.2" stroke="#a5015b" stroke-width="0.05"/>
-              </g>
-              <path id="outside-perimeter" d="
-    M 0 0
-    L 40 0
-    L 40 20
-    L 0 20
-    Z" stroke="#000" fill="transparent" stroke-width="0.05"></path>
-              </g>
-          </svg>
+          <svg id="field-hockey-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 93.4 57">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect id="background" x="-0.3" width="92" y="-0.3" height="55.6"/>
+    </clipPath>
+    <rect id="background" x="0" width="91.4" y="0" height="55" fill="#036602"/>
+    <line id="left-twenty-two-point-nine" x1="22.9" x2="22.9" y1="0" y2="55" stroke-width="0.075" stroke="white"/>
+    <line id="left-goal-line" x1="0" x2="0" y1="25.67" y2="29.33" stroke-width="0.2" stroke="#ccc"/>
+    <path id="left-solid-arcs" d="
+    M 0 11.04
+    A 14.63 14.63 0 0 1 14.63 25.67
+    L 14.63 29.33
+    A 14.63 14.63 1 0 1 0 43.96
+    " stroke-width="0.075" stroke="white" fill="transparent" />
+    <line x1="19.63" x2="19.63" y1="27.35" y2="27.65" stroke="red" stroke-width="0.05" />
+    <path id="left-dashed-arcs" d="
+    M 19.63 27.65
+    L 19.63 25.67
+    A 19.63 19.63 0 0 0 0 6.04
+    M 19.63 27.35
+    L 19.63 29.33
+    A 19.63 19.63 0 0 1 0 48.96
+    " stroke-width="0.075" stroke="white" fill="transparent" stroke-dasharray="0.3 3" />
+    <circle id="left-penalty-dot" cx="6.475" cy="27.5" r="0.075" fill="white" />
+    <path id="left-extras" d="
+    M 14.63 0
+    L 14.63 -0.3 
+    M 14.63  55 
+    L 14.63 55.3
+    M 0 15.67
+    L -0.3 15.67
+    M 0 20.67
+    L -0.3 20.67
+    M 0 25.67
+    L -0.15 25.67
+    M 0 29.33
+    L -0.15 29.33
+    M 0 34.33
+    L -0.3 34.33
+    M 0 39.33
+    L -0.3 39.33
+    " 
+    stroke-width="0.075" stroke="#ccc" fill="transparent" />
+    <g transform="translate(91.4 55) rotate(180)">
+      <line id="right-twenty-two-point-nine" x1="22.9" x2="22.9" y1="0" y2="55" stroke-width="0.075" stroke="white"/>
+    <line id="right-goal-line" x1="0" x2="0" y1="25.67" y2="29.33" stroke-width="0.2" stroke="#ccc"/>
+    <path id="right-solid-arcs" d="
+    M 0 11.04
+    A 14.63 14.63 0 0 1 14.63 25.67
+    L 14.63 29.33
+    A 14.63 14.63 1 0 1 0 43.96
+    " stroke-width="0.075" stroke="white" fill="transparent" />
+    <path id="right-dashed-arcs" d="
+    M 19.63 27.65
+    L 19.63 25.67
+    A 19.63 19.63 0 0 0 0 6.04
+    M 19.63 27.35
+    L 19.63 29.33
+    A 19.63 19.63 0 0 1 0 48.96
+    " stroke-width="0.075" stroke="white" fill="transparent" stroke-dasharray="0.3 3" />
+    <circle id="right-penalty-dot" cx="6.475" cy="27.5" r="0.075" fill="white" />
+    <path id="right-extras" d="
+    M 14.63 0
+    L 14.63 -0.3 
+    M 14.63  55 
+    L 14.63 55.3
+    M 0 15.67
+    L -0.3 15.67
+    M 0 20.67
+    L -0.3 20.67
+    M 0 25.67
+    L -0.15 25.67
+    M 0 29.33
+    L -0.15 29.33
+    M 0 34.33
+    L -0.3 34.33
+    M 0 39.33
+    L -0.3 39.33
+    " 
+    stroke-width="0.075" stroke="#ccc" fill="transparent" />
+      </g>
+    <line id="center-line" x1="45.7" x2="45.7" y1="0" y2="55" stroke-width="0.075" stroke="white"/>
+    <path id="outside-perimeter" d=" M 0.0325 0.0325 L 91.3675 0.0325 L 91.3675 54.9675 L 0.0325 54.9675 Z" stroke-width="0.075" stroke="#ccc" fill="transparent"/>
+  </g>
+</svg>
 
           <!-- endinject -->
         </div>
@@ -135,7 +179,7 @@
     import {
       setup
     } from "/setup.js";
-    setup("korfball");
+    setup("field-hockey");
   </script>
   <!-- bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

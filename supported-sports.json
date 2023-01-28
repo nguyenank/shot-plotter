@@ -706,6 +706,149 @@
             ]
         },
         {
+            "id": "korfball",
+            "name": "Korfball",
+            "units": "meters",
+            "specifications": "International Korfball Federation (2022)",
+            "dimensions": "40 x 20",
+            "scoringArea": "goal",
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "40",
+                "height": "20",
+                "circleR": "0.4",
+                "polyR": "0.55",
+                "fontSize": "0.03rem",
+                "strokeWidth": "0.075px",
+                "heatMapScale": 6.25,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [6.67, 10],
+                [33.33, 10]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Outcome",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Miss", "selected": true },
+                        { "value": "Make" },
+                        { "value": "Blocked" },
+                        { "value": "Fouled" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
+            "id": "netball-ssn",
+            "name": "Netball (SSN)",
+            "units": "meters",
+            "specifications": "Suncorp Super Netball (2022)",
+            "dimensions": "30.5 x 15.25",
+            "scoringArea": "goal",
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "30.5",
+                "height": "15.25",
+                "circleR": "0.305",
+                "polyR": "0.42",
+                "fontSize": "0.023rem",
+                "strokeWidth": "0.076px",
+                "heatMapScale": 8.2,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [0, 7.625],
+                [30.5, 7.625]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Outcome",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Miss", "selected": true },
+                        { "value": "Make" },
+                        { "value": "Blocked" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "mens-lacrosse",
             "name": "Men's Lacrosse",
             "units": "yards",
@@ -852,6 +995,77 @@
             ]
         },
         {
+            "id": "field-hockey",
+            "name": "Field Hockey",
+            "units": "meters",
+            "specifications": "International Hockey Federation (2022)",
+            "dimensions": "91.4 x 55",
+            "scoringArea": "net",
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "91.4",
+                "height": "55",
+                "circleR": "0.914",
+                "polyR": "1.25675",
+                "fontSize": "0.06855rem",
+                "strokeWidth": "0.2285px",
+                "heatMapScale": 2.735,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [0, 27.5],
+                [91.4, 27.5]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "football-nfl",
             "name": "Football (NFL)",
             "units": "yards",
@@ -937,6 +1151,146 @@
                 "fontSize": "0.09rem",
                 "strokeWidth": "0.3px",
                 "heatMapScale": 2.08,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultEnable": ["two-location"],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Receiver",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Outcome",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Complete", "selected": true },
+                        { "value": "Incomplete" },
+                        { "value": "Interception" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
+            "id": "cfl",
+            "name": "Canadian Football",
+            "units": "yards",
+            "specifications": "Canadian Football League (2022)",
+            "dimensions": "110 x 65 (150 x 65 including goal areas)",
+            "scoringArea": null,
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "150",
+                "height": "65",
+                "circleR": "1.5",
+                "polyR": "2.0625",
+                "fontSize": "0.1125rem",
+                "strokeWidth": "0.375px",
+                "heatMapScale": 1.66666,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultEnable": ["two-location"],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Receiver",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Outcome",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Complete", "selected": true },
+                        { "value": "Incomplete" },
+                        { "value": "Interception" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
+            "id": "cfl-pre-2022",
+            "name": "Canadian Football (CFL pre-2022 & Amateur)",
+            "units": "yards",
+            "specifications": "Canadian Football League (2021)",
+            "dimensions": "110 x 65 (150 x 65 including goal areas)",
+            "scoringArea": null,
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "150",
+                "height": "65",
+                "circleR": "1.5",
+                "polyR": "2.0625",
+                "fontSize": "0.1125rem",
+                "strokeWidth": "0.375px",
+                "heatMapScale": 1.66666,
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
@@ -1210,6 +1564,76 @@
             ]
         },
         {
+            "id": "gaa",
+            "name": "Hurling and Gaelic Football",
+            "units": "meters",
+            "specifications": "Gaelic Athletic Association (2022)",
+            "dimensions": "145 x 90",
+            "scoringArea": "goal",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "145",
+                "height": "90",
+                "circleR": "1.45",
+                "polyR": "1.99375",
+                "fontSize": "0.10875rem",
+                "strokeWidth": "0.3625px",
+                "heatMapScale": 1.724,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [0, 45],
+                [145, 45]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "Extra Time" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Save", "selected": true },
+                        { "value": "Wide" },
+                        { "value": "Point" },
+                        { "value": "Goal" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "soccer-meerse",
             "name": "Soccer (requested by John Meerse)",
             "private": true,
@@ -1275,149 +1699,6 @@
                         { "value": "Goal" },
                         { "value": "Block" },
                         { "value": "Miss" }
-                    ]
-                },
-                { "type": "x", "title": "X", "id": "x", "noWidget": true },
-                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
-            ]
-        },
-        {
-            "id": "korfball",
-            "name": "Korfball",
-            "units": "meters",
-            "specifications": "International Korfball Federation (2022)",
-            "dimensions": "40 x 20",
-            "scoringArea": "goal",
-            "perimeter": "#outside-perimeter",
-            "appearance": {
-                "width": "40",
-                "height": "20",
-                "circleR": "0.4",
-                "polyR": "0.55",
-                "fontSize": "0.03rem",
-                "strokeWidth": "0.075px",
-                "heatMapScale": 6.25,
-                "heatMapLowOpacity": 0.1,
-                "heatMapHighOpacity": 0.4
-            },
-            "goalCoords": [
-                [6.67, 10],
-                [33.33, 10]
-            ],
-            "defaultDetails": [
-                {
-                    "type": "shot-number",
-                    "title": "#",
-                    "id": "shot-number",
-                    "noWidget": true
-                },
-                {
-                    "type": "radio",
-                    "title": "Quarter",
-                    "id": "quarter",
-                    "options": [
-                        { "value": "1", "checked": true },
-                        { "value": "2" },
-                        { "value": "3" },
-                        { "value": "4" },
-                        { "value": "OT" }
-                    ]
-                },
-                {
-                    "type": "team",
-                    "title": "Team",
-                    "className": "team-select",
-                    "id": "team",
-                    "blueTeamName": "Home",
-                    "orangeTeamName": "Away",
-                    "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
-                },
-                {
-                    "type": "shot-type",
-                    "title": "Outcome",
-                    "id": "shot-type",
-                    "options": [
-                        { "value": "Miss", "selected": true },
-                        { "value": "Make" },
-                        { "value": "Blocked" },
-                        { "value": "Fouled" }
-                    ]
-                },
-                { "type": "x", "title": "X", "id": "x", "noWidget": true },
-                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
-            ]
-        },
-        {
-            "id": "netball-ssn",
-            "name": "Netball (SSN)",
-            "units": "meters",
-            "specifications": "Suncorp Super Netball (2022)",
-            "dimensions": "30.5 x 15.25",
-            "scoringArea": "goal",
-            "perimeter": "#outside-perimeter",
-            "appearance": {
-                "width": "30.5",
-                "height": "15.25",
-                "circleR": "0.305",
-                "polyR": "0.42",
-                "fontSize": "0.023rem",
-                "strokeWidth": "0.076px",
-                "heatMapScale": 8.2,
-                "heatMapLowOpacity": 0.1,
-                "heatMapHighOpacity": 0.4
-            },
-            "goalCoords": [
-                [0, 7.625],
-                [30.5, 7.625]
-            ],
-            "defaultDetails": [
-                {
-                    "type": "shot-number",
-                    "title": "#",
-                    "id": "shot-number",
-                    "noWidget": true
-                },
-                {
-                    "type": "radio",
-                    "title": "Quarter",
-                    "id": "quarter",
-                    "options": [
-                        { "value": "1", "checked": true },
-                        { "value": "2" },
-                        { "value": "3" },
-                        { "value": "4" },
-                        { "value": "OT" }
-                    ]
-                },
-                {
-                    "type": "team",
-                    "title": "Team",
-                    "className": "team-select",
-                    "id": "team",
-                    "blueTeamName": "Home",
-                    "orangeTeamName": "Away",
-                    "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
-                },
-                {
-                    "type": "shot-type",
-                    "title": "Outcome",
-                    "id": "shot-type",
-                    "options": [
-                        { "value": "Miss", "selected": true },
-                        { "value": "Make" },
-                        { "value": "Blocked" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
