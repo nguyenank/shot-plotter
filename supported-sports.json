@@ -1548,13 +1548,13 @@
                 },
                 {
                     "type": "shot-type",
-                    "title": "Type",
+                    "title": "Outcome",
                     "id": "shot-type",
                     "options": [
-                        { "value": "Disposal", "selected": true },
-                        { "value": "Mark" },
-                        { "value": "Behind" },
-                        { "value": "Goal" }
+                        { "value": "Ruck", "selected": true },
+                        { "value": "Lineout" },
+                        { "value": "Pass" },
+                        { "value": "Missed" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
