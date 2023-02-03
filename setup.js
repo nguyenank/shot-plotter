@@ -1,31 +1,40 @@
 import { setUpPlayingArea } from "./js/playing-area.js";
 import { setUpDetailsPanel } from "./js/details/details-panel.js";
-import { setDetails, getDetails } from "./js/details/details-functions.js";
 import { setUpToggles } from "./js/toggles.js";
 import { setUpShots } from "./js/shots/shot.js";
 import { setUpTable } from "./js/table/table.js";
 import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
+import { cfgOtherSetup } from "./js/details/config-details.js";
 
 export let sport;
+export let dataStorage;
 export let cfgSportA;
 export let cfgSportGoalCoords;
 export let cfgSportScoringArea;
-export let getDefaultDetails;
+export let getDefaultSetup;
 export let cfgDefaultEnable;
 export let perimeterId;
 
 export function setup(s) {
     sport = s;
+    dataStorage = localDataStorage(sport);
     d3.json("/supported-sports.json").then((data) => {
         const sportData = _.find(data.sports, { id: sport });
         cfgSportA = sportData.appearance;
         cfgSportGoalCoords = sportData.goalCoords;
         cfgSportScoringArea = sportData.scoringArea;
         perimeterId = sportData.perimeter;
-        getDefaultDetails = function () {
-            return _.cloneDeep(sportData.defaultDetails);
+        getDefaultSetup = function () {
+            const details = _.cloneDeep(sportData.defaultDetails);
+            return {
+                details: details,
+                ...cfgOtherSetup,
+                twoPointEnable:
+                    _.some(details, { type: "x", id: "x2" }) &&
+                    _.some(details, { type: "y", id: "y2" }),
+            };
         };
         cfgDefaultEnable = sportData.defaultEnable;
 

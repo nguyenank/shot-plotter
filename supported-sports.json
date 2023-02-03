@@ -1084,7 +1084,6 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
-            "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -1154,7 +1153,6 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
-            "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -1224,7 +1222,6 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
-            "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -1294,7 +1291,6 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
-            "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -1439,7 +1435,6 @@
                 [0, 66],
                 [162, 66]
             ],
-            "defaultEnable": ["two-location"],
             "defaultDetails": [
                 {
                     "type": "shot-number",
@@ -1509,7 +1504,6 @@
                 "heatMapLowOpacity": 0.1,
                 "heatMapHighOpacity": 0.4
             },
-            "defaultEnable": ["two-location"],
             "goalCoords": [
                 [14, 35],
                 [114, 35]
