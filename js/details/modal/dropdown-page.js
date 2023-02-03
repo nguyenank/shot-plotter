@@ -4,13 +4,11 @@ import {
     setDetails,
     createId,
 } from "../details-functions.js";
-import { createTextField, createDropdown } from "../widgets/widgets-base.js";
+import { createDropdown } from "../widgets/widgets-base.js";
 import { createReorderColumns } from "./main-page.js";
 
 function createDropdownPage(id, data) {
-    d3.select(id)
-        .selectAll("*")
-        .remove();
+    d3.select(id).selectAll("*").remove();
 
     let mb = d3
         .select(id)
@@ -84,7 +82,7 @@ function createDropdownPage(id, data) {
         .attr("rows", "10")
         .text(
             data
-                ? data.options.map(x => x.value).join("\n")
+                ? data.options.map((x) => x.value).join("\n")
                 : "Option 1\nOption 2\n"
         );
     optionsDiv
@@ -93,10 +91,7 @@ function createDropdownPage(id, data) {
         .text("Each option must be 1-50 characters long.");
 
     // footer
-    let footer = d3
-        .select(id)
-        .append("div")
-        .attr("class", "footer-row");
+    let footer = d3.select(id).append("div").attr("class", "footer-row");
     footer
         .append("button")
         .attr("type", "button")
@@ -150,7 +145,7 @@ function createNewDropdown(data) {
         optionValues.push(last);
     }
 
-    if (optionValues.some(value => value < 1 || value > 50)) {
+    if (optionValues.some((value) => value < 1 || value > 50)) {
         d3.select("#dropdown-options").classed("is-invalid", true);
         invalid = true;
     } else {
@@ -160,7 +155,7 @@ function createNewDropdown(data) {
         return;
     }
 
-    let options = optionValues.map(value => ({
+    let options = optionValues.map((value) => ({
         value: value,
     }));
     options[0] = { ...options[0], selected: true };

@@ -1,4 +1,3 @@
-import { teamLegend } from "../shots/legend.js";
 import { setUpDetailsModal } from "./modal/details-modal.js";
 import {
     createRadioButtons,
@@ -15,31 +14,35 @@ import {
     setDetails,
     getDetails,
     getCurrentShotTypes,
+    getCustomSetup,
+    setCustomSetup,
 } from "./details-functions.js";
-import { getDefaultDetails } from "../../setup.js";
+import { getDefaultSetup } from "../../setup.js";
 import { getNumRows } from "../table/table-functions.js";
 
 function setUpDetailsPanel(id = "#details") {
-    let details = getDefaultDetails();
+    if (!getCustomSetup()) {
+        setCustomSetup(getDefaultSetup());
+    }
 
-    setDetails(details);
-    createDetailsPanel(details, id);
+    createDetailsPanel(id);
 
-    d3.select(id).on("mouseleave", e => {
+    d3.select(id).on("mouseleave", (e) => {
         d3.select("#customize-btn").classed("is-invalid", false);
     });
 
     setUpDetailsModal("#details-modal");
 }
 
-function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
-    // clear existing details
-    d3.select(id)
-        .selectAll("*")
-        .remove();
+function createDetailsPanel(id = "#details") {
+    const { details, widgetsPerRow } = getCustomSetup();
 
-    _.remove(details, x => x.noWidget);
-    for (let [i, data] of details.entries()) {
+    console.log(details);
+    const visibleDetails = _.filter(details, (x) => !(x.hidden || x.noWidget));
+    // clear existing details
+    d3.select(id).selectAll("*").remove();
+
+    for (let [i, data] of visibleDetails.entries()) {
         let rowId = "#row" + (Math.floor(i / widgetsPerRow) + 1);
 
         if (i % widgetsPerRow == 0) {
@@ -54,9 +57,7 @@ function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
                 .attr("id", rowId.slice(1));
         } else {
             // need to add dividing line
-            d3.select(rowId)
-                .append("div")
-                .attr("class", "vr");
+            d3.select(rowId).append("div").attr("class", "vr");
         }
 
         switch (data.type) {
@@ -68,8 +69,7 @@ function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
                 createTooltip({
                     id: rowId,
                     title: data.title,
-                    text:
-                        "Player will appear on dot if 2 or less characters long.",
+                    text: "Player will appear on dot if 2 or less characters long.",
                 });
                 break;
             case "shot-type":
@@ -77,8 +77,7 @@ function createDetailsPanel(details, id = "#details", widgetsPerRow = 2) {
                 createTooltip({
                     id: rowId,
                     title: data.title,
-                    text:
-                        "To add new options, type into the dropdown, then select the new option or press Enter.",
+                    text: "To add new options, type into the dropdown, then select the new option or press Enter.",
                 });
                 $(".select2").select2({
                     tags: true,
@@ -112,7 +111,7 @@ function customizeButton(id) {
         .attr("class", "form-control white-btn")
         .attr("id", "customize-btn")
         .text("Customize Setup")
-        .on("click", e => {
+        .on("click", (e) => {
             if (getNumRows() === 0) {
                 // update details storage with shot options b/c this
                 // was the most convenient place

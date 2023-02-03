@@ -1,8 +1,9 @@
 import {
-    saveCurrentDetailSetup,
-    getDetails,
+    saveCurrentSetup,
     setDetails,
     setCustomSetupUploadFlag,
+    getCustomSetup,
+    setCustomSetup,
 } from "../details-functions.js";
 import { downloadArea, uploadArea } from "../../components/upload-download.js";
 import { createReorderColumns } from "./main-page.js";
@@ -26,14 +27,12 @@ function downloadJSON(id) {
             d3.select(id).select(".download-name").attr("placeholder") +
             ".json";
     }
-    saveCurrentDetailSetup();
-    const json = {
-        details: getDetails(),
-        rowsPerPage: d3.select("#page-size-field").property("value"),
-        widgetsPerRow: d3.select("#widgets-per-row-dropdown").property("value"),
-        heatMapView: d3.select("#heat-map-enable").property("checked"),
-    };
-    download(JSON.stringify(json, null, 2), fileName, "application/json");
+    saveCurrentSetup();
+    download(
+        JSON.stringify(getCustomSetup(), null, 2),
+        fileName,
+        "application/json"
+    );
 }
 
 function uploadJSON(id, uploadId, e) {
@@ -51,6 +50,7 @@ function uploadJSON(id, uploadId, e) {
                 if (Array.isArray(json)) {
                     // old version
                     details = json;
+                    setDetails(details);
                 } else {
                     // new version
                     details = json.details;
@@ -60,23 +60,27 @@ function uploadJSON(id, uploadId, e) {
                     );
                     d3.select("#heat-map-enable").property(
                         "checked",
-                        json.heatMapView ? json.heatMapView : false
+                        json.heatMapEnable
+                            ? json.heatMapEnable
+                            : json.heatMapView
+                            ? json.heatMapView
+                            : false
                         // TODO: do the disable stuff for two-point & heat map here too
                     );
                     $("#widgets-per-row-dropdown").val(
                         json.widgetsPerRow ? json.widgetsPerRow : "2"
                     );
                     $("#widgets-per-row-dropdown").trigger("change");
+                    setCustomSetup(json);
                 }
-                setDetails(details);
                 createReorderColumns("#reorder");
                 const detailToggles = [
-                    { id: "x2", selector: "#two-point-enable" },
+                    { id: "x2", type: "x", selector: "#two-point-enable" },
                     { id: "distance-calc", selector: "#distance-calc" },
                     { id: "value-calc", selector: "#value-calc" },
                 ];
                 for (const detailToggle of detailToggles) {
-                    if (_.find(details, { id: detailToggle.id })) {
+                    if (_.some(details, { id: detailToggle.id })) {
                         d3.select(detailToggle.selector).property(
                             "checked",
                             true
@@ -88,8 +92,6 @@ function uploadJSON(id, uploadId, e) {
                         );
                     }
                 }
-                setDetails(details);
-                createReorderColumns("#reorder");
                 setCustomSetupUploadFlag(true);
             });
         }

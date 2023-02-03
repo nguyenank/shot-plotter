@@ -3,5 +3,9 @@ const cfgDetails = {
     defaultRowsPerPage: 10,
     defaultWidgetsPerRow: 2,
 };
-
-export { cfgDetails };
+const cfgOtherSetup = {
+    rowsPerPage: 10,
+    widgetsPerRow: 2,
+    heatMapEnable: false,
+};
+export { cfgDetails, cfgOtherSetup };

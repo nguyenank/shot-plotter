@@ -1,5 +1,5 @@
 import { setUpDeleteAllModal } from "../shots/delete-all-modal.js";
-import { getDefaultDetails } from "../../setup.js";
+import { dataStorage, getDefaultSetup } from "../../setup.js";
 import {
     getFilteredRows,
     getHeaderRow,
@@ -11,30 +11,29 @@ import {
     getNumRows,
     getNumFilteredRows,
     setNumFilteredRows,
-    setRowsPerPage,
     getRowsPerPage,
-    getRows,
 } from "./table-functions.js";
 import { createRowFromData } from "./row.js";
 import { createFilterRow, clearFilters, existFilters } from "./filter.js";
-import { cfgDetails } from "../details/config-details.js";
+import { getCustomSetup } from "../details/details-functions.js";
 
 function setUpTable() {
-    sessionStorage.setItem("rows", JSON.stringify([]));
-    sessionStorage.setItem("filteredRows", JSON.stringify([]));
-    sessionStorage.setItem("filters", JSON.stringify([]));
-    setStartRow(0);
-    setEndRow(0);
-    setNumRows(0);
-    setNumFilteredRows(0);
-    setRowsPerPage(cfgDetails.defaultRowsPerPage);
+    if (dataStorage.get("rows") === undefined) {
+        dataStorage.set("rows", []);
+        dataStorage.set("filteredRows", []);
+        dataStorage.set("filters", []);
+        setStartRow(0);
+        setEndRow(0);
+        setNumRows(0);
+        setNumFilteredRows(0);
+    }
 
     const thead = d3.select("#shot-table").append("thead");
 
     thead.append("tr").attr("id", "column-names");
     thead.append("tr").attr("id", "filters");
 
-    createTableHeader(getDefaultDetails());
+    createTableHeader(getCustomSetup().details);
 
     d3.select("#shot-table").append("tbody").attr("id", "shot-table-body");
 
@@ -60,6 +59,7 @@ function setUpTable() {
         .attr("id", "table-navigation");
 
     updateTableFooter();
+    createPage(getStartRow(), getEndRow());
 
     setUpDeleteAllModal("#delete-all-modal");
 }
