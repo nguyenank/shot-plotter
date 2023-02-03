@@ -160,7 +160,6 @@ function saveCurrentSetup() {
             newDetails.push(detail);
         });
 
-    console.log(d3.select("#two-point-enable").property("checked"));
     const customSetup = {
         details: newDetails,
         rowsPerPage: d3.select("#page-size-field").property("value"),

@@ -37,7 +37,6 @@ function setUpDetailsPanel(id = "#details") {
 function createDetailsPanel(id = "#details") {
     const { details, widgetsPerRow } = getCustomSetup();
 
-    console.log(details);
     const visibleDetails = _.filter(details, (x) => !(x.hidden || x.noWidget));
     // clear existing details
     d3.select(id).selectAll("*").remove();
