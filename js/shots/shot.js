@@ -1,11 +1,10 @@
 import { createDot } from "./dot.js";
 import { createNewRow } from "../table/row.js";
 import {
+    addRow,
     getHeaderRow,
-    setRows,
     getRows,
-    setFilteredRows,
-    getFilteredRows,
+    addFilteredRow,
     setNumRows,
     getNumRows,
 } from "../table/table-functions.js";
@@ -15,6 +14,7 @@ import { heatMap } from "../toggles.js";
 import { filterRows } from "../table/filter.js";
 import {
     sport,
+    dataStorage,
     cfgSportA,
     cfgSportGoalCoords,
     perimeterId,
@@ -35,24 +35,18 @@ function setUpShots() {
             .attr("points", "0 0, 5 2.5, 0 5")
             .attr("class", className);
     }
-    sessionStorage.setItem("firstPoint", null);
+    dataStorage.set("firstPoint", null);
 
     d3.select("#playing-area")
         .select(perimeterId)
         .on("click", (e) => {
             document.getSelection().removeAllRanges();
             d3.select("#ghost").selectAll("*").remove();
-            let shiftHeld = sessionStorage.getItem("shiftHeld");
-            let firstPoint =
-                sessionStorage.getItem("firstPoint") === "null"
-                    ? null
-                    : sessionStorage
-                          .getItem("firstPoint")
-                          .split(",")
-                          .map(parseFloat);
-            if (shiftHeld === "true" && firstPoint === null) {
+            let shiftHeld = dataStorage.get("shiftHeld");
+            let firstPoint = dataStorage.get("firstPoint");
+            if (shiftHeld && firstPoint === null) {
                 // create ghost dot for first point
-                sessionStorage.setItem("firstPoint", d3.pointer(e));
+                dataStorage.set("firstPoint", d3.pointer(e));
                 const type = d3.select("#shot-type").empty()
                     ? null
                     : d3
@@ -72,13 +66,19 @@ function setUpShots() {
                     coords: d3.pointer(e),
                     ghostBool: true,
                 });
-            } else if (shiftHeld === "true" && firstPoint !== null) {
-                sessionStorage.setItem("firstPoint", null);
+            } else if (shiftHeld && firstPoint !== null) {
+                dataStorage.set("firstPoint", null);
                 createShotFromEvent(e, firstPoint);
             } else {
                 createShotFromEvent(e);
             }
         });
+
+    if (getRows()) {
+        _.map(getRows(), (r) => {
+            createShotFromData(r.id, r.rowData, r.specialData, false);
+        });
+    }
 }
 
 function createShotFromEvent(e, point1) {
@@ -219,30 +219,34 @@ function createShotFromEvent(e, point1) {
         }
     }
 
-    // add row to sessionStorage
+    // add row to dataStorage
     createShotFromData(id, rowData, specialData);
 }
 
-function createShotFromData(id, rowData, specialData) {
-    const newRow = {
+function createShotFromData(id, rowData, specialData, newRow = true) {
+    const formattedRow = {
         id: id,
         rowData: rowData,
         specialData: specialData,
         selected: false,
     };
-
-    const newRows = [...getRows(), newRow];
-    setRows(newRows);
-    updateTableFooter();
-    if (filterRows([newRow]).length == 1) {
+    if (newRow) {
+        addRow(formattedRow);
+        updateTableFooter();
+    }
+    if (filterRows([formattedRow]).length == 1) {
         createDot("#normal", id, specialData, "visible");
-        setFilteredRows([...getFilteredRows(), newRow]);
-        createNewRow(id, rowData, specialData);
+        if (newRow) {
+            addFilteredRow(formattedRow);
+            createNewRow(id, rowData, specialData);
+        }
         heatMap();
     } else {
         createDot("#normal", id, specialData, "hidden");
-        setNumRows(newRows.length);
-        updateTableFooter();
+        if (addRow) {
+            setNumRows(getNumRows() + 1);
+            updateTableFooter();
+        }
     }
 }
 

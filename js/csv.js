@@ -3,7 +3,7 @@ import {
     existsDetail,
     getCurrentShotTypes,
     getTypeIndex,
-    saveCurrentDetailSetup,
+    saveCurrentSetup,
 } from "./details/details-functions.js";
 import {
     createFilterRow,
@@ -146,7 +146,7 @@ function processCSV(uploadId, row, swapTeamColor) {
         if (typeOptions.indexOf(value) === -1) {
             d3.select("#shot-type-select").append("option").text(value);
             shotTypeLegend();
-            saveCurrentDetailSetup();
+            saveCurrentSetup();
             createFilterRow(getDetails());
             select2Filter();
         }
@@ -174,7 +174,7 @@ function processCSV(uploadId, row, swapTeamColor) {
                     : "#orange-team-name";
             d3.select(swapTeamId).property("value", row.Team);
             teamLegend();
-            saveCurrentDetailSetup();
+            saveCurrentSetup();
             createFilterRow(getDetails());
             select2Filter();
 

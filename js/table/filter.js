@@ -1,12 +1,10 @@
+import { dataStorage } from "../../setup.js";
 import {
     getRows,
     setStartRow,
-    getStartRow,
     setEndRow,
     getEndRow,
-    setRows,
     setNumFilteredRows,
-    getNumRows,
     getRowsPerPage,
     getFilteredRows,
     setFilteredRows,
@@ -251,13 +249,13 @@ function addFilter(filter) {
         newFilters = filter.delete ? filters : [...filters, filter];
     }
 
-    sessionStorage.setItem("filters", JSON.stringify(newFilters));
+    dataStorage.set("filters", newFilters);
     setFilteredRows(filterRows(getRows()));
     afterFiltersUpdate();
 }
 
 export function clearFilters() {
-    sessionStorage.setItem("filters", JSON.stringify([]));
+    dataStorage.set("filters", []);
     createFilterRow(getDetails());
     select2Filter();
     setFilteredRows(getRows());
@@ -280,7 +278,7 @@ function afterFiltersUpdate() {
 }
 
 function getFilters() {
-    return JSON.parse(sessionStorage.getItem("filters"));
+    return dataStorage.get("filters");
 }
 
 export function existFilters() {

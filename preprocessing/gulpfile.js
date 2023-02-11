@@ -7,7 +7,7 @@ const del = require("del");
 const sports = require("../supported-sports.json").sports;
 
 const indexBanner = true;
-const banner = false;
+const banner = true;
 const analytics = true;
 
 function html(sport) {

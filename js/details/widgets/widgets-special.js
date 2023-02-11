@@ -5,7 +5,7 @@ import {
     createFilterRow,
     select2Filter,
 } from "../../table/filter.js";
-import { saveCurrentDetailSetup, getDetails } from "../details-functions.js";
+import { saveCurrentSetup, getDetails } from "../details-functions.js";
 
 function createTooltip({ id, title, text }) {
     // https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
@@ -57,7 +57,7 @@ function teamRadioButtons(id, data) {
 
     const changeFunction = () => {
         teamLegend();
-        saveCurrentDetailSetup();
+        saveCurrentSetup();
         createFilterRow(getDetails());
         select2Filter();
     };
@@ -113,7 +113,7 @@ function select2Dropdown() {
             // update legend
             shotTypeLegend();
 
-            saveCurrentDetailSetup();
+            saveCurrentSetup();
             createFilterRow(getDetails());
             select2Filter();
 

@@ -1,9 +1,19 @@
+import { dataStorage } from "../../setup.js";
+
 function getDetails() {
-    return JSON.parse(sessionStorage.getItem("details"));
+    return getCustomSetup().details;
 }
 
 function setDetails(detailsList) {
-    sessionStorage.setItem("details", JSON.stringify(detailsList));
+    setCustomSetup({ ...getCustomSetup(), details: detailsList });
+}
+
+export function getCustomSetup() {
+    return dataStorage.get("customSetup");
+}
+
+export function setCustomSetup(setup) {
+    dataStorage.set("customSetup", setup);
 }
 
 function existsDetail(id) {
@@ -11,11 +21,11 @@ function existsDetail(id) {
 }
 
 export function setCustomSetupUploadFlag(bool) {
-    sessionStorage.setItem("customSetupUploadFlag", bool);
+    dataStorage.set("customSetupUploadFlag", bool);
 }
 
 export function resetCustomSetupUploadFlag() {
-    let value = sessionStorage.getItem("customSetupUploadFlag");
+    let value = dataStorage.get("customSetupUploadFlag");
     setCustomSetupUploadFlag(false);
     return value;
 }
@@ -72,7 +82,7 @@ function createId(title) {
     return id;
 }
 
-function saveCurrentDetailSetup() {
+function saveCurrentSetup() {
     // based on select2, reorder and tag with hidden
     const details = getDetails("details");
     let newDetails = [];
@@ -149,7 +159,15 @@ function saveCurrentDetailSetup() {
             }
             newDetails.push(detail);
         });
-    setDetails(newDetails);
+
+    const customSetup = {
+        details: newDetails,
+        rowsPerPage: d3.select("#page-size-field").property("value"),
+        widgetsPerRow: d3.select("#widgets-per-row-dropdown").property("value"),
+        heatMapEnable: d3.select("#heat-map-enable").property("checked"),
+        twoPointEnable: d3.select("#two-point-enable").property("checked"),
+    };
+    setCustomSetup(customSetup);
 }
 
 export {
@@ -160,5 +178,5 @@ export {
     getTypeIndex,
     changePage,
     createId,
-    saveCurrentDetailSetup,
+    saveCurrentSetup,
 };

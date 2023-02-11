@@ -1,11 +1,12 @@
 import { createTableHeader } from "../../table/table.js";
-import { setRowsPerPage } from "../../table/table-functions.js";
 import {
     getDetails,
     setDetails,
     changePage,
-    saveCurrentDetailSetup,
+    saveCurrentSetup,
+    setCustomSetup,
     resetCustomSetupUploadFlag,
+    getCustomSetup,
 } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
@@ -15,13 +16,10 @@ import { createRadioButtonsPage } from "./radio-buttons-page.js";
 import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
-import {
-    sport,
-    cfgDefaultEnable,
-    cfgSportScoringArea,
-} from "../../../setup.js";
+import { sport, cfgSportScoringArea, getDefaultSetup } from "../../../setup.js";
 import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
 import { select2Filter } from "../../table/filter.js";
+import { select2Dropdown } from "../widgets/widgets-special.js";
 
 function createMainPage(id) {
     d3.select(id).selectAll("*").remove();
@@ -58,6 +56,19 @@ function createMainPage(id) {
     // explanation text
     createExplainText();
 
+    let reset = mb.append("div").attr("id", "reset-defaults");
+    reset
+        .append("button")
+        .attr("type", "button")
+        .attr("id", "reset-defaults-btn")
+        .attr("class", "btn grey-btn small-text")
+        .text("Reset to Defaults")
+        .on("click", () => {
+            setCustomSetup(getDefaultSetup());
+            createMainPage(id);
+            select2Dropdown();
+        });
+
     mb.append("hr");
 
     // reorder columns
@@ -70,7 +81,7 @@ function createMainPage(id) {
         .attr("class", "grey-btn new-column-btn")
         .text("Create New Detail")
         .on("click", function () {
-            saveCurrentDetailSetup();
+            saveCurrentSetup();
             createTextFieldPage("#text-field-page");
             createDropdownPage("#dropdown-page");
             createRadioButtonsPage("#radio-buttons-page");
@@ -96,12 +107,18 @@ function createMainPage(id) {
         .text("Save Changes")
         .on("click", (e) => saveChanges(e));
 
-    if (_.indexOf(cfgDefaultEnable, "two-location") !== -1) {
+    if (getCustomSetup().twoPointEnable) {
         d3.select("#two-point-enable").property("checked", true);
         d3.select("#heat-map-enable")
             .property("checked", false)
             .property("disabled", true);
         twoPointFunctionality();
+    } else if (getCustomSetup().heatMapEnable) {
+        d3.select("#heat-map-enable").property("checked", true);
+        d3.select("#two-point-enable")
+            .property("checked", false)
+            .property("disabled", true);
+        heatMapFunctionality();
     }
 }
 
@@ -150,7 +167,7 @@ function createReorderColumns(id = "#reorder") {
                         .append("i")
                         .attr("class", "bi bi-pencil-square")
                         .on("click", function () {
-                            saveCurrentDetailSetup();
+                            saveCurrentSetup();
                             let details = _.find(getDetails(), { id: d.id });
                             let pageId;
                             switch (d.type) {
@@ -193,9 +210,9 @@ function createReorderColumns(id = "#reorder") {
 }
 
 function saveChanges(e) {
-    if (resetCustomSetupUploadFlag() === "false") {
+    if (!resetCustomSetupUploadFlag()) {
         // custom setup not uploaded, want to use the current values
-        saveCurrentDetailSetup();
+        saveCurrentSetup();
     }
     heatMapFunctionality();
     twoPointFunctionality();
@@ -211,7 +228,6 @@ function saveChanges(e) {
         return;
     }
     d3.select("#page-size-field").classed("is-invalid", false);
-    setRowsPerPage(pageSize);
 
     let titles = [];
     d3.select("#reorder-columns")
@@ -246,8 +262,14 @@ function saveChanges(e) {
         d3.select("#widgets-per-row-dropdown").property("value")
     );
 
+    setCustomSetup({
+        ...getCustomSetup(),
+        rowsPerPage: pageSize,
+        widgetsPerRow: widgetsPerRow,
+    });
+
     createWidgetTypePage();
-    createDetailsPanel(visibleDetails, "#details", widgetsPerRow);
+    createDetailsPanel("#details");
     shotTypeLegend();
     teamLegend();
     select2Filter();
@@ -325,6 +347,7 @@ function createExplainText(id = "#explain-text") {
 function createAppearanceOptions(id = "#appearance-options") {
     const appearanceOptions = d3.select(id);
     appearanceOptions.append("h5").text("Appearance Options");
+    const customSetup = getCustomSetup();
 
     let pageSizeField = appearanceOptions
         .append("div")
@@ -334,7 +357,7 @@ function createAppearanceOptions(id = "#appearance-options") {
         .attr("type", "number")
         .attr("min", 1)
         .attr("max", 999)
-        .attr("value", 10)
+        .attr("value", customSetup.rowsPerPage)
         .attr("class", "form-control")
         .attr("id", "page-size-field");
     pageSizeField.append("span").text("Rows Per Table Page");
@@ -355,7 +378,10 @@ function createAppearanceOptions(id = "#appearance-options") {
         widgetsPerRowDropdown
             .append("option")
             .text(i)
-            .attr("selected", i === 2 ? true : undefined);
+            .attr(
+                "selected",
+                i === customSetup.widgetsPerRow ? true : undefined
+            );
     }
     widgetsPerRowWrapper
         .append("span")

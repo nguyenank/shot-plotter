@@ -1,62 +1,64 @@
 import { updateTableFooter } from "./table.js";
+import { dataStorage } from "../../setup.js";
+
 function addRow(rowData) {
-    sessionStorage.setItem("rows", JSON.stringify([...getRows(), rowData]));
+    dataStorage.push("rows", rowData);
 }
 
 function setRows(rows) {
-    sessionStorage.setItem("rows", JSON.stringify(rows));
+    dataStorage.set("rows", rows);
 }
 
 function getRows() {
-    return JSON.parse(sessionStorage.getItem("rows"));
+    return dataStorage.get("rows");
+}
+
+function addFilteredRow(row) {
+    dataStorage.push("filteredRows", row);
 }
 
 function setFilteredRows(rows) {
-    sessionStorage.setItem("filteredRows", JSON.stringify(rows));
+    dataStorage.set("filteredRows", rows);
 }
 
 function getFilteredRows() {
-    return JSON.parse(sessionStorage.getItem("filteredRows"));
+    return dataStorage.get("filteredRows");
 }
 
 function getStartRow() {
-    return parseInt(sessionStorage.getItem("startRow"));
+    return dataStorage.get("startRow");
 }
 
 function setStartRow(i) {
-    sessionStorage.setItem("startRow", i);
+    dataStorage.set("startRow", i);
 }
 
 function getEndRow() {
-    return parseInt(sessionStorage.getItem("endRow"));
+    return dataStorage.get("endRow");
 }
 
 function setEndRow(i) {
-    sessionStorage.setItem("endRow", i);
+    dataStorage.set("endRow", i);
 }
 
 function getNumRows() {
-    return parseInt(sessionStorage.getItem("numRows"));
+    return dataStorage.get("numRows");
 }
 
 function setNumRows(i) {
-    sessionStorage.setItem("numRows", i);
+    dataStorage.set("numRows", i);
 }
 
 function getNumFilteredRows() {
-    return parseInt(sessionStorage.getItem("numFilteredRows"));
+    return dataStorage.get("numFilteredRows");
 }
 
 function setNumFilteredRows(i) {
-    sessionStorage.setItem("numFilteredRows", i);
+    dataStorage.set("numFilteredRows", i);
 }
 
 function getRowsPerPage() {
-    return parseInt(sessionStorage.getItem("rowsPerPage"));
-}
-
-function setRowsPerPage(i) {
-    sessionStorage.setItem("rowsPerPage", i);
+    return dataStorage.get("customSetup").rowsPerPage;
 }
 
 function getHeaderRow() {
@@ -94,8 +96,10 @@ function clearTable() {
 }
 
 export {
+    addRow,
     setRows,
     getRows,
+    addFilteredRow,
     setFilteredRows,
     getFilteredRows,
     getHeaderRow,
@@ -107,7 +111,6 @@ export {
     getNumRows,
     setNumRows,
     getRowsPerPage,
-    setRowsPerPage,
     getNumFilteredRows,
     setNumFilteredRows,
 };

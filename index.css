@@ -269,8 +269,13 @@ input[type=text] {
   margin-bottom: 0;
 }
 
-#reset-defaults-btn {
-  font-size: 0.85rem;
+#reset-defaults {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+#reset-defaults #reset-defaults-btn {
+  padding: 0.2rem;
 }
 
 .cards {

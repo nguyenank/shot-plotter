@@ -1,6 +1,6 @@
 import { getFilteredRows } from "./table/table-functions.js";
-import { perimeterId, cfgSportA } from "../setup.js";
-import { existsDetail } from "./details/details-functions.js";
+import { dataStorage, cfgSportA } from "../setup.js";
+import { existsDetail, getCustomSetup } from "./details/details-functions.js";
 
 export function setUpToggles() {
     const toggles = d3.select("#toggles");
@@ -24,13 +24,13 @@ export function setUpToggles() {
 
 export function twoPointFunctionality() {
     function setOn() {
-        sessionStorage.setItem("shiftHeld", true);
+        dataStorage.set("shiftHeld", true);
         d3.select("#two-point-toggle").property("checked", true);
     }
     function setOff() {
         d3.select("#two-point-toggle").property("checked", false);
-        sessionStorage.setItem("shiftHeld", false);
-        sessionStorage.setItem("firstPoint", null);
+        dataStorage.set("shiftHeld", false);
+        dataStorage.set("firstPoint", null);
         d3.select("#ghost").selectAll("*").remove();
     }
     if (d3.select("#two-point-enable").property("checked")) {
@@ -91,7 +91,7 @@ export function heatMapFunctionality() {
         d3.select("#heat-map").selectAll("*").remove();
         d3.select("#heat-map-team-select").style("display", "none");
     }
-    if (d3.select("#heat-map-enable").property("checked")) {
+    if (getCustomSetup().heatMapEnable) {
         d3.select("#heat-map-toggle-area").selectAll("*").remove();
 
         const toggleArea = d3.select("#heat-map-toggle-area");
@@ -128,7 +128,7 @@ export function heatMapFunctionality() {
 
 export function heatMap() {
     if (
-        d3.select("#heat-map-toggle").empty() ||
+        !getCustomSetup().heatMapEnable ||
         !d3.select("#heat-map-toggle").property("checked")
     ) {
         // do not generate heat map if feature not enabled
