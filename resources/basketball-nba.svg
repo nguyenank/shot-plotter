@@ -1,7 +1,7 @@
 <svg id="basketball-nba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
   <g id="transformations">
     <clipPath id="clipBorder">
-      <rect x="0" y="0" width="94" height="50">
+      <rect x="0" y="0" width="94" height="50" />
     </clipPath>
     <rect id="background" x="0" y="0" width="94" height="50" fill="#eacda6"></rect>
     <g id="center">
@@ -139,14 +139,14 @@
       <line x1="0" y1="0" x2="0" y2="50" stroke="black" fill="transparent" stroke-width="0.167"></line>
     </g>
     <path id="left-arc" fill="transparent" d="
-      M 0 2.833
-      L 14 2.833
-      A 23.75 23.75 0 0 1 14 47.167
-      L 0 47.167"></path>
+        M 0 3
+        L 14 3
+        A 23.75 23.75 0 0 1 14 47
+        L 0 47"></path>
     <path id="right-arc" transform="translate(94 50) rotate(180)" fill="transparent" stroke-width="0.167" d="
-      M 0 2.833
-      L 14 2.833
-      A 23.75 23.75 0 0 1 14 47.167
-      L 0 47.167"></path>
+        M 0 3
+        L 14 3
+        A 23.75 23.75 0 0 1 14 47
+        L 0 47"></path>
   </g>
 </svg>
