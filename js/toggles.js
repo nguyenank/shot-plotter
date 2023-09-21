@@ -69,6 +69,7 @@ export function twoPointFunctionality() {
             .attr("class", "form-check-input")
             .attr("type", "checkbox")
             .attr("id", "two-point-toggle")
+            .property("checked", dataStorage.get("shiftHeld"))
             .on("change", () =>
                 d3.select("#two-point-toggle").property("checked")
                     ? setOn()
