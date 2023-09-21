@@ -18,7 +18,11 @@ import { createDropdownPage } from "./dropdown-page.js";
 import { createTimeWidgetPage } from "./time-widget-page.js";
 import { createWidgetTypePage } from "./widget-type-page.js";
 import { sport, cfgSportScoringArea, getDefaultSetup } from "../../../setup.js";
-import { twoPointFunctionality, heatMapFunctionality } from "../../toggles.js";
+import {
+    twoPointFunctionality,
+    heatMapFunctionality,
+    allTogglesFunctionality,
+} from "../../toggles.js";
 import { select2Filter } from "../../table/filter.js";
 import { select2Dropdown } from "../widgets/widgets-special.js";
 
@@ -229,8 +233,7 @@ function saveChanges(e) {
         // custom setup not uploaded, want to use the current values
         saveCurrentSetup();
     }
-    heatMapFunctionality();
-    twoPointFunctionality();
+    allTogglesFunctionality();
 
     const pageSize = d3.select("#page-size-field").property("value");
 
@@ -452,9 +455,43 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             onChecked: () => {
                 d3.select("#heat-map-enable").property("checked", false);
                 d3.select("#heat-map-enable").property("disabled", true);
+                return !d3.select("#adj-coords-toggle").empty() &&
+                    d3.select("#adj-coords").property("checked")
+                    ? [
+                          {
+                              type: "x",
+                              title: "X2Adj",
+                              id: "x2adj",
+                              noWidget: true,
+                          },
+                          {
+                              type: "y",
+                              title: "Y2Adj",
+                              id: "y2adj",
+                              noWidget: true,
+                          },
+                      ]
+                    : [];
             },
             onUnchecked: () => {
                 d3.select("#heat-map-enable").property("disabled", false);
+                return !d3.select("#adj-coords-toggle").empty() &&
+                    d3.select("#adj-coords")?.property("checked")
+                    ? [
+                          {
+                              type: "x",
+                              title: "X2Adj",
+                              id: "x2adj",
+                              noWidget: true,
+                          },
+                          {
+                              type: "y",
+                              title: "Y2Adj",
+                              id: "y2adj",
+                              noWidget: true,
+                          },
+                      ]
+                    : [];
             },
             description:
                 "Create events with 2 locations. Incompatible with Heat Map View.",
@@ -506,6 +543,64 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
         });
     }
 
+    if (_.startsWith(sport, "football-nfl")) {
+        sdList.push({
+            id: "adj-coords",
+            newDetails: [
+                {
+                    type: "x",
+                    title: "XAdj",
+                    id: "xadj",
+                    noWidget: true,
+                },
+                {
+                    type: "y",
+                    title: "YAdj",
+                    id: "yadj",
+                    noWidget: true,
+                },
+            ],
+            onChecked: () => {
+                return d3.select("#two-point-enable").property("checked")
+                    ? [
+                          {
+                              type: "x",
+                              title: "X2Adj",
+                              id: "x2adj",
+                              noWidget: true,
+                          },
+                          {
+                              type: "y",
+                              title: "Y2Adj",
+                              id: "y2adj",
+                              noWidget: true,
+                          },
+                      ]
+                    : [];
+            },
+            onUnchecked: () => {
+                return d3.select("#two-point-enable").property("checked")
+                    ? [
+                          {
+                              type: "x",
+                              title: "X2Adj",
+                              id: "x2adj",
+                              noWidget: true,
+                          },
+                          {
+                              type: "y",
+                              title: "Y2Adj",
+                              id: "y2adj",
+                              noWidget: true,
+                          },
+                      ]
+                    : [];
+            },
+            description: `Provides a toggle to indicate the direction of the offense and adds two columns (XAdj and YAdj) that adjust the coordinates such that the offense is always going right.`,
+            label: "Adjusted Coords",
+        });
+    }
+
     function createDetailToggle({
         id,
         newDetails,
@@ -522,23 +617,32 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             .attr("class", "form-check-input")
             .attr("type", "checkbox")
             .attr("id", id)
+            .property("checked", _.find(getDetails(), ["id", newDetails[0].id]))
             .on("click", function () {
                 let checked = d3.select("#" + id).property("checked");
+                let extraDetails = [];
                 if (checked) {
-                    setDetails([...getDetails(), ...newDetails]);
                     if (onChecked) {
-                        onChecked();
+                        extraDetails = onChecked();
                     }
+                    setDetails([
+                        ...getDetails(),
+                        ...newDetails,
+                        ...extraDetails,
+                    ]);
                 } else {
+                    if (onUnchecked) {
+                        extraDetails = onUnchecked();
+                    }
                     setDetails(
-                        _.remove(getDetails(), (d) =>
-                            // keep d if for all new details, d.id is not the same as nd.id
-                            newDetails.every((nd) => nd.id !== d.id)
+                        _.remove(
+                            getDetails(),
+                            (d) =>
+                                // keep d if for all new details, d.id is not the same as nd.id
+                                newDetails.every((nd) => nd.id !== d.id) &&
+                                extraDetails.every((nd) => nd.id !== d.id)
                         )
                     );
-                    if (onUnchecked) {
-                        onUnchecked();
-                    }
                 }
                 createReorderColumns();
             });

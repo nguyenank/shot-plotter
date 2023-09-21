@@ -147,26 +147,39 @@ function createShotFromEvent(e, point1) {
                 rowData[col.id] = getNumRows() + 1;
                 break;
             case "x":
-                if (col.id === "x2") {
+                let adjXFactor =
+                    !d3.select("#adj-coords-toggle").empty() &&
+                    !d3.select("#adj-coords-toggle").property("checked") &&
+                    (col.id == "xadj" || col.id == "x2adj")
+                        ? -1
+                        : 1;
+                if (col.id === "x2" || col.id === "x2adj") {
                     let x2 = specialData["coords2"]
                         ? (
-                              specialData["coords2"][0] -
-                              cfgSportA.width / 2
+                              adjXFactor *
+                              (specialData["coords2"][0] - cfgSportA.width / 2)
                           ).toFixed(2)
                         : "";
                     rowData[col.id] = x2;
                 } else {
                     rowData[col.id] = (
-                        specialData["coords"][0] -
-                        cfgSportA.width / 2
+                        adjXFactor *
+                        (specialData["coords"][0] - cfgSportA.width / 2)
                     ).toFixed(2);
                 }
                 break;
             case "y":
-                if (col.id === "y2") {
+                let adjYFactor =
+                    !d3.select("#adj-coords-toggle").empty() &&
+                    !d3.select("#adj-coords-toggle").property("checked") &&
+                    (col.id == "yadj" || col.id == "y2adj")
+                        ? -1
+                        : 1;
+                if (col.id === "y2" || col.id === "y2adj") {
                     let y2 = specialData["coords2"]
                         ? (
                               -1 *
+                              adjYFactor *
                               (specialData["coords2"][1] - cfgSportA.height / 2)
                           ).toFixed(2)
                         : "";
@@ -174,6 +187,7 @@ function createShotFromEvent(e, point1) {
                 } else {
                     rowData[col.id] = (
                         -1 *
+                        adjYFactor *
                         (specialData["coords"][1] - cfgSportA.height / 2)
                     ).toFixed(2);
                 }

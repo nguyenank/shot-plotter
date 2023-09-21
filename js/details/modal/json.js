@@ -78,6 +78,7 @@ function uploadJSON(id, uploadId, e) {
                     { id: "x2", type: "x", selector: "#two-point-enable" },
                     { id: "distance-calc", selector: "#distance-calc" },
                     { id: "value-calc", selector: "#value-calc" },
+                    { id: "xadj", type: "x", selector: "#adj-coords" },
                 ];
                 for (const detailToggle of detailToggles) {
                     if (_.some(details, { id: detailToggle.id })) {
