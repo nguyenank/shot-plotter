@@ -126,14 +126,21 @@ function saveCurrentSetup() {
                                 .select("input")
                                 .property("value");
                             break;
-
                         case "shot-type":
+                            detail.options = getCurrentShotTypes();
+                            break;
                         case "dropdown":
                             // save currently selected option
                             let selectedValue = d
                                 .select("select")
                                 .property("value");
-                            detail.options = getCurrentShotTypes();
+                            detail.options = detail.options.map(function (o) {
+                                let option = { value: o.value };
+                                if (o.value === selectedValue) {
+                                    option.selected = true;
+                                }
+                                return option;
+                            });
                             break;
                         case "radio":
                             // save current selection
