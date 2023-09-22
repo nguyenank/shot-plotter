@@ -7,6 +7,7 @@ import {
     setCustomSetup,
     resetCustomSetupUploadFlag,
     getCustomSetup,
+    existsDetail,
 } from "../details-functions.js";
 import { createDetailsPanel } from "../details-panel.js";
 import { shotTypeLegend, teamLegend } from "../../shots/legend.js";
@@ -65,6 +66,20 @@ function createMainPage(id) {
         .text("Reset to Defaults")
         .on("click", () => {
             setCustomSetup(getDefaultSetup());
+            if (existsDetail("#shot-type")) {
+                let options = _.find(getDefaultSetup().details, {
+                    type: "shot-type",
+                    id: "shot-type",
+                }).options;
+                d3.select("#shot-type-select").selectAll("option").remove();
+                d3.select("#shot-type-select")
+                    .selectAll("option")
+                    .data(options)
+                    .enter()
+                    .append("option")
+                    .text((o) => o.value)
+                    .property("selected", (o) => o.selected);
+            }
             createMainPage(id);
             select2Dropdown();
         });
