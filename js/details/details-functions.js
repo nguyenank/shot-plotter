@@ -128,7 +128,6 @@ function saveCurrentSetup() {
                             break;
 
                         case "shot-type":
-                        case "dropdown":
                             // save currently selected option
                             let selectedValue = d
                                 .select("select")
