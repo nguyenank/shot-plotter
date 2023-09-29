@@ -29,15 +29,16 @@ function createRadioButtons(selectId, { id, title, options }) {
     }
 }
 
-function createTextField(selectId, { id, title, defaultValue }) {
+function createTextField(
+    selectId,
+    { id, title, defaultValue, dataTableEditable }
+) {
     let div = d3
         .select(selectId)
         .append("div")
         .attr("class", cfgDetails.detailClass + " " + "even-width")
         .attr("id", id);
-    div.append("h3")
-        .text(title)
-        .attr("class", "center");
+    div.append("h3").text(title).attr("class", "center");
     div.append("div")
         .attr("class", "form-group")
         .append("input")
@@ -52,9 +53,8 @@ function createDropdown(selectId, { id, title, options }) {
         .append("div")
         .attr("class", cfgDetails.detailClass + " " + "even-width")
         .attr("id", id);
-    div.append("h3")
-        .text(title)
-        .attr("class", "center");
+
+    div.append("h3").text(title).attr("class", "center");
 
     let select = div
         .append("div")
@@ -75,9 +75,7 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
         .append("div")
         .attr("class", cfgDetails.detailClass + " even-width")
         .attr("id", id);
-    div.append("h3")
-        .text(title)
-        .attr("class", "center");
+    div.append("h3").text(title).attr("class", "center");
     const timer = new Tock({
         countdown: countdown,
         interval: 10,
@@ -106,20 +104,13 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
         .text("Times must be in the form 'MM:SS' or 'M:SS'.");
     text.append("div")
         .attr("class", "white-btn time-btn")
-        .on("click", function() {
+        .on("click", function () {
             if (
-                d3
-                    .select(this)
-                    .select("i")
-                    .attr("class") === "bi bi-stop-fill"
+                d3.select(this).select("i").attr("class") === "bi bi-stop-fill"
             ) {
                 timer.stop();
-                d3.select(this)
-                    .select("i")
-                    .remove();
-                d3.select(this)
-                    .append("i")
-                    .attr("class", "bi bi-play-fill");
+                d3.select(this).select("i").remove();
+                d3.select(this).append("i").attr("class", "bi bi-play-fill");
                 d3.select("#" + id)
                     .select("input")
                     .attr("disabled", null);
@@ -133,9 +124,7 @@ function createTimeWidget(selectId, { id, title, defaultTime, countdown }) {
                         .select("input")
                         .attr("disabled", true)
                         .attr("class", "form-control time-box");
-                    d3.select(this)
-                        .select("i")
-                        .remove();
+                    d3.select(this).select("i").remove();
                     d3.select(this)
                         .append("i")
                         .attr("class", "bi bi-stop-fill");

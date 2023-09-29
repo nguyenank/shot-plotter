@@ -13,6 +13,7 @@ import {
     getNumFilteredRows,
     getRowsPerPage,
 } from "./table-functions.js";
+import { getDetails } from "../details/details-functions.js";
 import { filterRows } from "./filter.js";
 import { updateTableFooter, createPage } from "./table.js";
 import { heatMap } from "../toggles.js";
@@ -87,18 +88,45 @@ function createRowFromData(
             selectHandler(id, checked, teamColor, typeIndex !== 0);
         });
 
-    let headerRow = getHeaderRow().map((item) => item.id);
-    _.pull(headerRow, null);
-
+    let headerRow = getHeaderRow().map((item) => ({
+        item: item.id,
+        editable: _.find(getDetails(), ["id", item.id])?.dataTableEditable,
+    }));
+    _.pullAllBy(headerRow, [{ item: null, editable: null }], "item");
     // row data
-    headerRow.forEach((item) => {
+    headerRow.forEach(({ item, editable }) => {
         if (item === "shot-number") {
             row.append("th")
                 .attr("scope", "col")
                 .attr("class", "shot-number")
                 .text(rowData[item]);
         } else {
-            row.append("td").text(rowData[item]);
+            const entry = row.append("td");
+            if (editable) {
+                entry
+                    .append("input")
+                    .attr("type", "text")
+                    .attr("class", "form-control")
+                    .property("value", rowData[item])
+                    .on("change", function (e) {
+                        const rowId = d3
+                            .select(this.parentNode.parentNode)
+                            .attr("id");
+                        const newValue = d3.select(this).property("value");
+                        setRows(
+                            getRows().map(function (row) {
+                                if (row.id === rowId) {
+                                    row.rowData[item] = newValue;
+                                }
+                                return row;
+                            })
+                        );
+
+                        setFilteredRows(getRows());
+                    });
+            } else {
+                entry.text(rowData[item]);
+            }
         }
     });
 

@@ -8,9 +8,7 @@ import { createTextField } from "../widgets/widgets-base.js";
 import { createReorderColumns } from "./main-page.js";
 
 function createTextFieldPage(id, data) {
-    d3.select(id)
-        .selectAll("*")
-        .remove();
+    d3.select(id).selectAll("*").remove();
 
     let mb = d3
         .select(id)
@@ -84,11 +82,19 @@ function createTextFieldPage(id, data) {
         .attr("class", "invalid-tooltip")
         .text("Default text can be at most 32 characters long.");
 
+    let checkbox = form.append("div").attr("class", "form-check");
+    checkbox
+        .append("input")
+        .attr("type", "checkbox")
+        .attr("class", "form-check-input")
+        .attr("id", "text-field-editable-checkbox");
+    checkbox
+        .append("label")
+        .attr("class", "form-check-label")
+        .attr("for", "text-field-editable-checkbox")
+        .text("Allow editing in data table.");
     // footer
-    let footer = d3
-        .select(id)
-        .append("div")
-        .attr("class", "footer-row");
+    let footer = d3.select(id).append("div").attr("class", "footer-row");
     footer
         .append("button")
         .attr("type", "button")
@@ -145,6 +151,9 @@ function createNewTextField(data) {
         id: createId(title),
         defaultValue: text,
         editable: true,
+        dataTableEditable: d3
+            .select("#text-field-editable-checkbox")
+            .property("checked"),
     };
     if (data) {
         let i = _.findIndex(details, data);
