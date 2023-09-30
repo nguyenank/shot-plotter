@@ -1,0 +1,20 @@
+<svg id="tennis-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 90 48">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect id="background" x="0" width="88" y="0" height="46"/>
+    </clipPath>
+    <rect id="background" x="0" width="88" y="0" height="46" fill="#036602"/>
+    <rect id="doubles" x="5" width="78" y="5" height="36" stroke="white" stroke-width="0.167" fill="#2162b7"/>
+    <rect id="singles" x="5" width="78" y="9.5" height="27" stroke="white" stroke-width="0.167" fill="transparent"/>
+    <rect id="service-lines" x="23" width="42" y="9.5" height="27" stroke="white" stroke-width="0.167" fill="transparent"/>
+    <line id="center-service-lines" x1="23" x2="65" y1="23" y2="23"  stroke="white" stroke-width="0.167" fill="transparent"/>
+    <line id="left-center-mark" x1="5" y1="23" x2="5.3333" y2="23" stroke="white" stroke-width="0.167" fill="transparent"/>
+    <line id="left-center-mark" x1="83" y1="23" x2="82.66666" y2="23" stroke="white" stroke-width="0.167" fill="transparent"/>
+    <line id="net" x1="44" y1="2" x2="44" y2="44" stroke="#cccccc" stroke-width="0.05" fill="transparent" />
+    <circle id="top-net-post" cx="44" cy="2" r="0.25" fill="#333333" stroke-width="0" />
+    <circle id="bottom-net-post" cx="44" cy="44" r="0.25" fill="#333333" stroke-width="0" />
+    <circle id="top-single-stick" cx="44" cy="6.5" r="0.125" fill="#333333" stroke-width="0" />
+    <circle id="bottom-single-stick" cx="44" cy="39.5" r="0.125" fill="#333333" stroke-width="0" />
+    <!-- <path id="border" d=" M 0 0 L 110 0 L 110 60 L 0 60 Z" stroke-width="0.11" stroke="orange" fill="transparent"/> -->
+  </g>
+</svg>
