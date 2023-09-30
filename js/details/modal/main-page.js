@@ -455,7 +455,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             onChecked: () => {
                 d3.select("#heat-map-enable").property("checked", false);
                 d3.select("#heat-map-enable").property("disabled", true);
-                return !d3.select("#adj-coords-toggle").empty() &&
+                return !d3.select("#adj-coords").empty() &&
                     d3.select("#adj-coords").property("checked")
                     ? [
                           {
@@ -475,7 +475,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
             },
             onUnchecked: () => {
                 d3.select("#heat-map-enable").property("disabled", false);
-                return !d3.select("#adj-coords-toggle").empty() &&
+                return !d3.select("#adj-coords").empty() &&
                     d3.select("#adj-coords")?.property("checked")
                     ? [
                           {
