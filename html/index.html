@@ -1,50 +1,62 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg" />
+        <link rel="mask-icon" href="/resources/favicon.svg" color="red" />
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/svg+xml" href="/resources/favicon.svg">
-  <link rel="mask-icon" href="/resources/favicon.svg" color="red">
-
-  <!-- inject:analytics -->
-  <!-- Plausible -->
+        <!-- inject:analytics -->
+        <!-- Plausible -->
 <script defer data-domain="shot-plotter.netlify.app" src="https://plausible.io/js/plausible.js"></script>
-  <!-- endinject -->
+        <!-- endinject -->
 
-  <title>Shot-Plotter</title>
+        <title>Shot-Plotter</title>
 
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Domine:400,300,600" rel="stylesheet" type="text/css" />
+        <!-- Google fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Domine:400,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+        <!-- Bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+            crossorigin="anonymous"
+        />
 
-  <!-- custom stylesheet -->
-  <link rel="stylesheet" href="/index.css" />
-</head>
+        <!-- custom stylesheet -->
+        <link rel="stylesheet" href="/index.css" />
+    </head>
 
-<body>
-  <!-- inject:banner -->
-  <div class="alert alert-info" role="alert">
+    <body>
+        <!-- inject:banner -->
+        <div class="alert alert-info" role="alert">
     <b>09/30/23:</b> Tennis has been added as a sport, and you can now add a
     textbox detail that is editable in the data table!
 </div>
 
-  <!-- endinject -->
-  <div class="center header">
-    <h1>Shot-Plotter</h1>
-  </div>
-  <div class="center medium-text">
-    A graphical interface for tracking locational events in sports.
-    Click on the sport you want!
-  </div>
-  <hr />
+        <!-- endinject -->
+        <div class="center header">
+            <h1>Shot-Plotter</h1>
+        </div>
+        <div class="center medium-text">
+            A graphical interface for tracking locational events in sports.
+            Click on the sport you want!
+        </div>
+        <hr />
 
-  <div id="index">
-    <!-- inject:cards -->
-    <a href="./ice-hockey" class="card" id="ice-hockey">
+        <div id="index">
+            <!-- inject:cards -->
+            <a href="./ice-hockey" class="card" id="ice-hockey">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="ice-hockey-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 202 87">
@@ -380,7 +392,7 @@
     </button>
   </div>
 </a>
-    <a href="./ice-hockey-net-nhl" class="card" id="ice-hockey-net-nhl">
+            <a href="./ice-hockey-net-nhl" class="card" id="ice-hockey-net-nhl">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="ice-hockey-net-nhl-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="-1 -1 80 56">
@@ -450,7 +462,7 @@
     </button>
   </div>
 </a>
-    <a href="./ice-hockey-iihf" class="card" id="ice-hockey-iihf">
+            <a href="./ice-hockey-iihf" class="card" id="ice-hockey-iihf">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
@@ -802,7 +814,7 @@
     </button>
   </div>
 </a>
-    <a href="./floorball" class="card" id="floorball">
+            <a href="./floorball" class="card" id="floorball">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id ="floorball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
@@ -919,7 +931,7 @@
     </button>
   </div>
 </a>
-    <a href="./handball" class="card" id="handball">
+            <a href="./handball" class="card" id="handball">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="handball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
@@ -1147,7 +1159,7 @@
     </button>
   </div>
 </a>
-    <a href="./volleyball" class="card" id="volleyball">
+            <a href="./volleyball" class="card" id="volleyball">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="volleyball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 29 17">
@@ -1230,7 +1242,7 @@
     </button>
   </div>
 </a>
-    <a href="./table-tennis" class="card" id="table-tennis">
+            <a href="./table-tennis" class="card" id="table-tennis">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="table-tennis-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 276 185">
@@ -1282,7 +1294,7 @@
     </button>
   </div>
 </a>
-    <a href="./basketball-nba" class="card" id="basketball-nba">
+            <a href="./basketball-nba" class="card" id="basketball-nba">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="basketball-nba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
@@ -1469,7 +1481,7 @@
     </button>
   </div>
 </a>
-    <a href="./basketball-ncaa" class="card" id="basketball-ncaa">
+            <a href="./basketball-ncaa" class="card" id="basketball-ncaa">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="basketball-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
@@ -1631,7 +1643,7 @@
     </button>
   </div>
 </a>
-    <a href="./basketball-wnba" class="card" id="basketball-wnba">
+            <a href="./basketball-wnba" class="card" id="basketball-wnba">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="basketball-wnba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
@@ -1819,7 +1831,7 @@
     </button>
   </div>
 </a>
-    <a href="./korfball" class="card" id="korfball">
+            <a href="./korfball" class="card" id="korfball">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id ="korfball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 40 20">
@@ -1895,7 +1907,7 @@
     </button>
   </div>
 </a>
-    <a href="./tennis" class="card" id="tennis">
+            <a href="./tennis" class="card" id="tennis">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="tennis-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 90 48">
@@ -1950,7 +1962,7 @@
     </button>
   </div>
 </a>
-    <a href="./netball-ssn" class="card" id="netball-ssn">
+            <a href="./netball-ssn" class="card" id="netball-ssn">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id ="netball-ssn-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 30.5 15.25">
@@ -2026,7 +2038,7 @@
     </button>
   </div>
 </a>
-    <a href="./mens-lacrosse" class="card" id="mens-lacrosse">
+            <a href="./mens-lacrosse" class="card" id="mens-lacrosse">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="mens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 112 62">
@@ -2194,7 +2206,7 @@
     </button>
   </div>
 </a>
-    <a href="./womens-lacrosse" class="card" id="womens-lacrosse">
+            <a href="./womens-lacrosse" class="card" id="womens-lacrosse">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="womens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 67">
@@ -2438,7 +2450,7 @@
     </button>
   </div>
 </a>
-    <a href="./field-hockey" class="card" id="field-hockey">
+            <a href="./field-hockey" class="card" id="field-hockey">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="field-hockey-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 93.4 57">
@@ -2558,7 +2570,7 @@
     </button>
   </div>
 </a>
-    <a href="./football-nfl" class="card" id="football-nfl">
+            <a href="./football-nfl" class="card" id="football-nfl">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55" id="football-nfl-svg">
@@ -2837,7 +2849,7 @@
     </button>
   </div>
 </a>
-    <a href="./football-ncaa" class="card" id="football-ncaa">
+            <a href="./football-ncaa" class="card" id="football-ncaa">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="football-ncaa-svg" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55">
@@ -3116,7 +3128,7 @@
     </button>
   </div>
 </a>
-    <a href="./cfl" class="card" id="cfl">
+            <a href="./cfl" class="card" id="cfl">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <?xml version='1.0' encoding='UTF-8' ?>
@@ -3704,7 +3716,7 @@
     </button>
   </div>
 </a>
-    <a href="./cfl-pre-2022" class="card" id="cfl-pre-2022">
+            <a href="./cfl-pre-2022" class="card" id="cfl-pre-2022">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <?xml version='1.0' encoding='UTF-8' ?>
@@ -4313,7 +4325,7 @@
     </button>
   </div>
 </a>
-    <a href="./soccer-ncaa" class="card" id="soccer-ncaa">
+            <a href="./soccer-ncaa" class="card" id="soccer-ncaa">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="soccer-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 77">
@@ -4441,7 +4453,7 @@
     </button>
   </div>
 </a>
-    <a href="./australian-rules" class="card" id="australian-rules">
+            <a href="./australian-rules" class="card" id="australian-rules">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="australian-rules-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 164 134">
@@ -4564,7 +4576,7 @@
     </button>
   </div>
 </a>
-    <a href="./rugby-union" class="card" id="rugby-union">
+            <a href="./rugby-union" class="card" id="rugby-union">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="rugby-union-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 130 72">
@@ -4705,7 +4717,7 @@
     </button>
   </div>
 </a>
-    <a href="./gaa" class="card" id="gaa">
+            <a href="./gaa" class="card" id="gaa">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
     <svg id="gaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 147 92">
@@ -4792,18 +4804,35 @@
     </button>
   </div>
 </a>
-    <!-- endinject -->
-  </div>
-  <hr />
-</body>
-<footer class="center">
-  <span>
-    Website built by An Nguyen primarily using D3.js. Source code and
-    details on how to use the app are available on
-    <a href="https://github.com/nguyenank/shot-plotter">Github</a>.
-    Contact me with bugs/feedback/suggestions/etc. on
-    <a href="https://twitter.com/nguyenank_">Twitter</a> or by
-    <a id="email" href="">email</a>.</span>
-</footer>
-
+            <!-- endinject -->
+        </div>
+        <hr />
+    </body>
+    <script type="text/javascript">
+        function decode(a) {
+            return a.replace(/[a-zA-Z]/g, function (c) {
+                return String.fromCharCode(
+                    (c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13)
+                        ? c
+                        : c - 26
+                );
+            });
+        }
+        function openMailer(element) {
+            var y = decode("znvygb:naxathlranaxathlra@tznvy.pbz");
+            element.setAttribute("href", y);
+            element.setAttribute("onclick", "");
+        }
+    </script>
+    <footer class="center">
+        <span>
+            Website built by An Nguyen primarily using D3.js. Source code and
+            details on how to use the app are available on
+            <a href="https://github.com/nguyenank/shot-plotter">Github</a>.
+            Contact me with bugs/feedback/suggestions/etc. on
+            <a href="https://bsky.app/profile/nguyenank.bsky.social">BlueSky</a
+            >, <a href="https://www.linkedin.com/in/nguyenank/">LinkedIn</a>, or
+            by <a id="email" href="" onclick="openMailer(this);">email</a>.
+        </span>
+    </footer>
 </html>
