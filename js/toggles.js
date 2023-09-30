@@ -2,8 +2,18 @@ import { getFilteredRows } from "./table/table-functions.js";
 import { dataStorage, cfgSportA } from "../setup.js";
 import { existsDetail, getCustomSetup } from "./details/details-functions.js";
 
+export function allTogglesFunctionality() {
+    twoPointFunctionality();
+    heatMapFunctionality();
+    adjCoordsFunctionality();
+}
+
 export function setUpToggles() {
     const toggles = d3.select("#toggles");
+    toggles
+        .append("div")
+        .attr("class", "toggle-area center")
+        .attr("id", "adj-coords-direction-area");
     toggles
         .append("div")
         .attr("class", "toggle-area center")
@@ -18,8 +28,7 @@ export function setUpToggles() {
         .attr("id", "heat-map-team-select")
         .style("display", "none");
 
-    twoPointFunctionality();
-    heatMapFunctionality();
+    allTogglesFunctionality();
 }
 
 export function twoPointFunctionality() {
@@ -60,6 +69,7 @@ export function twoPointFunctionality() {
             .attr("class", "form-check-input")
             .attr("type", "checkbox")
             .attr("id", "two-point-toggle")
+            .property("checked", dataStorage.get("shiftHeld"))
             .on("change", () =>
                 d3.select("#two-point-toggle").property("checked")
                     ? setOn()
@@ -74,6 +84,49 @@ export function twoPointFunctionality() {
         setOff();
         d3.select("body").on("keydown", null).on("keyup", null);
         d3.select("#two-point-toggle-area").selectAll("*").remove();
+    }
+}
+
+export function adjCoordsFunctionality() {
+    function setOn() {
+        d3.select("#adj-coords-toggle").property("checked", true);
+    }
+    function setOff() {
+        d3.select("#adj-coords-toggle").property("checked", false);
+    }
+    if (
+        !d3.select("#adj-coords").empty() &&
+        d3.select("#adj-coords").property("checked")
+    ) {
+        d3.select("#adj-coords-direction-area").selectAll("*").remove();
+        const toggleArea = d3.select("#adj-coords-direction-area");
+        toggleArea
+            .append("label")
+            .attr("class", "form-check-label")
+            .attr("for", "adj-coords-toggle")
+            .text("Offense Going Left");
+        let toggle = toggleArea
+            .append("div")
+            .attr("class", "form-check form-switch");
+        toggle
+            .append("input")
+            .attr("class", "form-check-input")
+            .attr("type", "checkbox")
+            .attr("id", "adj-coords-toggle")
+            .property("checked", true)
+            .on("change", () =>
+                d3.select("#adj-coords-toggle").property("checked")
+                    ? setOn()
+                    : setOff()
+            );
+        toggleArea
+            .append("label")
+            .attr("class", "form-check-label")
+            .attr("for", "adj-coords-toggle")
+            .text("Offense Going Right");
+    } else {
+        setOff();
+        d3.select("#adj-coords-direction-area").selectAll("*").remove();
     }
 }
 

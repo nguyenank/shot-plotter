@@ -6,8 +6,8 @@ const inject = require("gulp-inject");
 const del = require("del");
 const sports = require("../supported-sports.json").sports;
 
-const indexBanner = false;
-const banner = false;
+const indexBanner = true;
+const banner = true;
 const analytics = true;
 
 function html(sport) {

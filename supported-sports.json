@@ -778,6 +778,85 @@
             ]
         },
         {
+            "id": "tennis",
+            "name": "Tennis",
+            "units": "feet",
+            "specifications": "International Tennis Federation (2023)",
+            "dimensions": "88 x 46 (78 x 36 for doubles, 78 x 27 for singles)",
+            "perimeter": "#transformations",
+            "scoringArea": null,
+            "appearance": {
+                "width": "88",
+                "height": "46",
+                "circleR": "0.88",
+                "polyR": "1.21",
+                "fontSize": "0.066rem",
+                "strokeWidth": "0.22px",
+                "heatMapScale": 2.84,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Set",
+                    "id": "set",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "5" }
+                    ]
+                },
+                {
+                    "type": "text-field",
+                    "title": "Game",
+                    "id": "game"
+                },
+                {
+                    "type": "text-field",
+                    "title": "Point",
+                    "id": "point"
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Serve", "selected": true },
+                        { "value": "Serve Return" },
+                        { "value": "Rally" },
+                        { "value": "Error" },
+                        { "value": "Winner" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "netball-ssn",
             "name": "Netball (SSN)",
             "units": "meters",
