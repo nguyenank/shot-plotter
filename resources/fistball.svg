@@ -1,0 +1,36 @@
+<svg id="volleyball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 68 38">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <path d="M 0 0
+        L 27 0
+        L 27 15
+        L 0 15
+        Z"/>
+    </clipPath>
+    <path id="background" d="
+      M 0 0
+      L 62 0
+      L 62 32
+      L 00 32
+      Z" fill="#013220" stroke="black" stroke-width="0.5"/> 
+      <g id="court">
+        <path id="court-background" d="
+          M 6 6
+          L 56 6
+          L 56 26
+          L  6 26
+          Z" fill="#59A608" stroke="white" stroke-width="0.2"/>
+
+        <line id="center-line-white" x1="31" y1="6" x2="31" y2="26" stroke="white" stroke-width="0.5" stroke-dasharray="0"/>
+        <line id="center-line-red" x1="31" y1="6.5" x2="31" y2="25.5" stroke="red" stroke-width="0.5" stroke-dasharray="0 0.25 0.5"/>
+
+        <line id="left-serve-line" x1="28" y1="6" x2="28" y2="26" stroke="white" stroke-width="0.2"/>
+        <line id="right-serve-line" x1="34" y1="6" x2="34" y2="26" stroke="white" stroke-width="0.2"/>
+
+        <line id="left-top-referee-zone" x1="25" y1="0" x2="25" y2="6" stroke="white" stroke-width="0.2" stroke-dasharray="0.5"/>
+        <line id="left-bottom-referee-zone" x1="25" y1="26" x2="25" y2="32" stroke="white" stroke-width="0.2" stroke-dasharray="0.5"/>
+        <line id="right-top-referee-zone" x1="37" y1="0" x2="37" y2="6" stroke="white" stroke-width="0.2" stroke-dasharray="0.5"/>
+        <line id="right-bottom-referee-zone" x1="37" y1="26" x2="37" y2="32" stroke="white" stroke-width="0.2" stroke-dasharray="0.5"/>
+      </g>
+  </g>
+</svg>
