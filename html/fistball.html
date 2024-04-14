@@ -119,137 +119,40 @@
                     <div id="toggles"></div>
                     <div id="playing-area">
                         <!-- inject:playingarea -->
-                        <svg id="mens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 112 62">
+                        <svg id="volleyball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 68 38">
   <g id="transformations">
     <clipPath id="clipBorder">
-      <rect id="background" x="0" width="110" y="0" height="60"/>
+      <path d="M 0 0
+        L 27 0
+        L 27 15
+        L 0 15
+        Z"/>
     </clipPath>
-    <rect id="background" x="0" width="110" y="0" height="60" fill="#036602"/>
-    <line id="center-line" x1="55" y1="0" x2="55" y2="60" stroke-width="0.111" stroke="white" fill="transparent"/>
-    <rect id="center-line-square" x="54.9445" y="29.9445" width="0.111" height="0.111" fill="orange"/>
-    <g id="lines">
-      <line id="top-wing-area" x1="45" y1="10" x2="65" y2="10" stroke-width="0.083" stroke="white"/>
-      <line id="bottom-wing-area" x1="45" y1="50" x2="65" y2="50" stroke-width="0.083" stroke="white"/>
-      <line id="top-left-line" x1="0" y1="10" x2="35" y2="10" stroke-width="0.111" stroke="white"/>
-      <line id="bottom-left-line" x1="0" y1="50" x2="35" y2="50" stroke-width="0.111" stroke="white"/>
-      <line id="left-line" x1="35" y1="0" x2="35" y2="60" stroke-width="0.111" stroke="white"/>
+    <path id="background" d="
+      M 0 0
+      L 62 0
+      L 62 32
+      L 00 32
+      Z" fill="#013220" stroke="black" stroke-width="0.5"/> 
+      <g id="court">
+        <path id="court-background" d="
+          M 6 6
+          L 56 6
+          L 56 26
+          L  6 26
+          Z" fill="#59A608" stroke="white" stroke-width="0.2"/>
 
-      <line id="top-right-line" x1="75" y1="10" x2="110" y2="10" stroke-width="0.111" stroke="white"/>
-      <line id="bottom-left-line" x1="75" y1="50" x2="110" y2="50" stroke-width="0.111" stroke="white"/>
-      <line id="left-line" x1="75" y1="0" x2="75" y2="60" stroke-width="0.11" stroke="white"/>
-    </g>
-    <g id="right-goal">
-      <circle id="right-goal-crease" cx="95" cy="30" r="3" fill="transparent" stroke-width="0.083" stroke="white"/>
-      <path id="right-goal-mouth" d="M 95 28
-             L 95 32
-             A 2 2 1 1 1 95 28" stroke-width="0.056" fill="transparent" stroke="white"/>
-             <clipPath id="right-goal-clip">
-               <path d="M 95 29
-                 L 95.66 28.66
-                 L 97.33 30
-                 L 95.66 31.33
-                 L 95 31"/>
-             </clipPath>
-      <path
-        id="right-goal-mesh"
-        d="
-          M 95.33 28
-          L 95.33 32
-          M 95.66 28
-          L 95.66 32
-          M 96 28
-          L 96 32
-          M 96.33 28
-          L 96.33 32
-          M 96.66 28
-          L 96.66 32
-          M 97 28
-          L 97 32
+        <line id="center-line-white" x1="31" y1="6" x2="31" y2="26" stroke="white" stroke-width="0.5" stroke-dasharray="0"/>
+        <line id="center-line-red" x1="31" y1="6.5" x2="31" y2="25.5" stroke="red" stroke-width="0.5" stroke-dasharray="0 0.25 0.5"/>
 
-          M 95 28.66
-          L 98 28.66
-          M 95 29
-          L 98 29
-          M 95 29.33
-          L 98 29.33
-          M 95 29.66
-          L 98 29.66
-          M 95 30
-          L 98 30
-          M 95 30.33
-          L 98 30.33
-          M 95 30.66
-          L 98 30.66
-          M 95 31
-          L 98 31
-          "
-        stroke="#cccccc"
-        stroke-width="0.03"
-        fill="transparent"
-        clip-path="url(#right-goal-clip)"/>
-      <path id="right-goal-frame" d="
-            M 95 29
-            L 95.66 28.66
-            L 97.33 30
-            L 95.66 31.33
-            L 95 31" stroke="orange" stroke-width="0.053" fill="transparent"/>
-    </g>
-      <g id="left-goal" transform="translate(-80 0) rotate(180,95,30)">
-        <circle id="left-goal-crease" cx="95" cy="30" r="3" fill="transparent" stroke-width="0.083" stroke="white"/>
-        <path id="left-goal-mouth" d="M 95 28
-             L 95 32
-             A 2 2 1 1 1 95 28" stroke-width="0.056" fill="transparent" stroke="white"/>
-             <clipPath id="left-goal-clip">
-               <path d="M 95 29
-                 L 95.66 28.66
-                 L 97.33 30
-                 L 95.66 31.33
-                 L 95 31"/>
-             </clipPath>
-        <path
-          id="left-goal-mesh"
-          d="
-          M 95.33 28
-          L 95.33 32
-          M 95.66 28
-          L 95.66 32
-          M 96 28
-          L 96 32
-          M 96.33 28
-          L 96.33 32
-          M 96.66 28
-          L 96.66 32
-          M 97 28
-          L 97 32
+        <line id="left-serve-line" x1="28" y1="6" x2="28" y2="26" stroke="white" stroke-width="0.2"/>
+        <line id="right-serve-line" x1="34" y1="6" x2="34" y2="26" stroke="white" stroke-width="0.2"/>
 
-          M 95 28.66
-          L 98 28.66
-          M 95 29
-          L 98 29
-          M 95 29.33
-          L 98 29.33
-          M 95 29.66
-          L 98 29.66
-          M 95 30
-          L 98 30
-          M 95 30.33
-          L 98 30.33
-          M 95 30.66
-          L 98 30.66
-          M 95 31
-          L 98 31
-          "
-          stroke="#cccccc"
-          stroke-width="0.03"
-          fill="transparent" clip-path="url(#left-goal-clip)"/>
-        <path id="left-goal-frame" d="
-            M 95 29
-            L 95.66 28.66
-            L 97.33 30
-            L 95.66 31.33
-            L 95 31" stroke="orange" stroke-width="0.053" fill="transparent"/>
+        <line id="left-top-referee-zone" x1="25" y1="0" x2="25" y2="6" stroke="white" stroke-width="0.2" stroke-dasharray="0.5"/>
+        <line id="left-bottom-referee-zone" x1="25" y1="26" x2="25" y2="32" stroke="white" stroke-width="0.2" stroke-dasharray="0.5"/>
+        <line id="right-top-referee-zone" x1="37" y1="0" x2="37" y2="6" stroke="white" stroke-width="0.2" stroke-dasharray="0.5"/>
+        <line id="right-bottom-referee-zone" x1="37" y1="26" x2="37" y2="32" stroke="white" stroke-width="0.2" stroke-dasharray="0.5"/>
       </g>
-    <path id="border" d=" M 0 0 L 110 0 L 110 60 L 0 60 Z" stroke-width="0.11" stroke="orange" fill="transparent"/>
   </g>
 </svg>
 
@@ -269,7 +172,7 @@
         <script type="module" src="/setup.js"></script>
         <script type="module">
             import { setup } from "/setup.js";
-            setup("mens-lacrosse");
+            setup("fistball");
         </script>
         <!-- bootstrap -->
         <script
