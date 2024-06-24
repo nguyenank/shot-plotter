@@ -1629,10 +1629,11 @@
             ]
         },
         {
-            "id": "soccer-premier-league",
-            "name": "Football (IFAB compliant, Premier League typical)",
+            "id": "soccer-ifab-m",
+            "name": "Football (IFAB)",
             "units": "meters",
             "specifications": "International Football Association Board (2021)",
+            "needsCustomSetup": true,
             "dimensions": "105 x 68",
             "scoringArea": "goal",
             "perimeter": "#transformations",
@@ -1700,10 +1701,11 @@
             ]
         },
         {
-            "id": "soccer-mls",
-            "name": "Soccer (IFAB compliant, MLS typical)",
+            "id": "soccer-ifab-yd",
+            "name": "Soccer (IFAB)",
             "units": "yards",
             "specifications": "International Football Association Board (2021)",
+            "needsCustomSetup": true,
             "dimensions": "115 x 75",
             "scoringArea": "goal",
             "perimeter": "#transformations",

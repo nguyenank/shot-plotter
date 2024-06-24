@@ -4482,12 +4482,6 @@
     <path id="halfway-line" d="M 60 0 L 60 75" stroke-width="0.1389" stroke="white"></path>
     <circle id="halfway-circle" cx="60" cy="37.5" r="10" fill="transparent" stroke-width="0.1389" stroke="white">
     </circle>
-    <path id="outside-perimeter" d="
-        M 0 0
-        L 120 0
-        L 120 75
-        L 0 75
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
     <g id="left-goal-area">
       <path id="left-eighteen-yd-box" d="
         M 0 15.5
@@ -4556,6 +4550,12 @@
       A 1 1 0 0 1 1 75
       " stroke-width="0.1389" stroke="white" fill="transparent"></path>
     </g>
+        <path id="outside-perimeter" d="
+        M 0 0
+        L 120 0
+        L 120 75
+        L 0 75
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
   </g>
 </svg>
     <!-- endinject -->
@@ -4589,10 +4589,10 @@
     </button>
   </div>
 </a>
-            <a href="./soccer-premier-league" class="card" id="soccer-premier-league">
+            <a href="./soccer-ifab-m" class="card" id="soccer-ifab-m">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
-    <svg id="soccer-premier-league-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 107 70">
+    <svg id="soccer-ifab-m-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 107 70">
   <g id="transformations">
     <clipPath id="clipBorder">
       <path d="  M 0 0
@@ -4610,12 +4610,6 @@
     <path id="halfway-line" d="M 52.5 0 L 52.5 68" stroke-width="0.12" stroke="white"></path>
     <circle id="halfway-circle" cx="52.5" cy="34" r="9.15" fill="transparent" stroke-width="0.12" stroke="white">
     </circle>
-    <path id="outside-perimeter" d="
-        M 0 0
-        L 105 0
-        L 105 68
-        L 0 68
-        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
     <g id="left-goal-area">
       <path id="left-eighteen-yd-box" d="
         M 0 13.84
@@ -4678,13 +4672,19 @@
       A 1 1 0 0 1 1 68
       " stroke-width="0.12" stroke="white" fill="transparent"></path>
     </g>
+        <path id="outside-perimeter" d="
+        M 0 0
+        L 105 0
+        L 105 68
+        L 0 68
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
   </g>
 </svg>
     <!-- endinject -->
   </div>
   <div class="card-body">
     <h6 class="card-title">
-      Football (IFAB compliant, Premier League typical)
+      Football (IFAB)
     </h6>
     <div class="card-text">
       <div>
@@ -4707,38 +4707,23 @@
   <div class="card-footer text-center white-bg">
     <button type="button" class="grey-btn card-btn">
       Go To
-      Football (IFAB compliant, Premier League typical)
+      Football (IFAB)
     </button>
   </div>
 </a>
-            <a href="./soccer-mls" class="card" id="soccer-mls">
+            <a href="./soccer-ifab-yd" class="card" id="soccer-ifab-yd">
   <div class="card-header">
     <!-- inject:cardplayingarea -->
-    <svg id="soccer-mls-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 117 77">
+    <svg id="soccer-ifab-yd-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 117 77">
   <g id="transformations">
     <clipPath id="clipBorder">
-      <path d="  M 0 0
-        L 115 0
-        L 115 75
-        L 0 75
-        Z" />
+      <rect width="115" height="75" />
     </clipPath>
-    <path id="background" d="
-        M 0 0
-        L 115 0
-        L 115 75
-        L 0 75
-        Z" stroke="transparent" fill="#036602"></path>
+    <rect id="background" width="115" height="75" stroke="transparent" fill="#036602" />
     <path id="halfway-line" d="M 57.5 0 L 57.5 75" stroke-width="0.138" stroke="white"></path>
     <circle id="halfway-circle" cx="57.5" cy="37.5" r="10" fill="transparent" stroke-width="0.138" stroke="white">
     </circle>
-    <path id="outside-perimeter" d="
-        M 0 0
-        L 115 0
-        L 115 75
-        L 0 75
-        Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
-    <g id="left-goal-area">
+    <g id="left-goal">
       <path id="left-eighteen-yd-box" d="
         M 0 15.5
         L 18 15.5
@@ -4757,19 +4742,19 @@
         M 18 29.5
         A 10 10 1 0 1 18 45.5
         Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
-      <path id="goal-line" d="
+      <path id="left-goal-line" d="
       M 0 33.5
       L 0 41.5" stroke-width="0.75" stroke="white" />
-      <path id="top-left-corner" d="
+      <path id="left-top-corner" d="
       M 1 0
       A 1 1 1 0 1 0 1
       " stroke-width="0.138" stroke="white" fill="transparent"></path>
-      <path id="top-right-corner" d="
+      <path id="left-bottom-corner" d="
       M 0 74
       A 1 1 0 0 1 1 75
       " stroke-width="0.138" stroke="white" fill="transparent"></path>
     </g>
-    <g id="right-goal-area" transform="translate(115 75) rotate(180)">
+    <g id="right-goal" transform="translate(115 75) rotate(180)">
        <path id="right-eighteen-yd-box" d="
         M 0 15.5
         L 18 15.5
@@ -4788,25 +4773,26 @@
         M 18 29.5
         A 10 10 1 0 1 18 45.5
         Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
-      <path id="goal-line" d="
+      <path id="right-goal-line" d="
       M 0 33.5
       L 0 41.5" stroke-width="0.75" stroke="white" />
-      <path id="top-right-corner" d="
+      <path id="right-top-corner" d="
       M 1 0
       A 1 1 1 0 1 0 1
       " stroke-width="0.138" stroke="white" fill="transparent"></path>
-      <path id="top-right-corner" d="
+      <path id="right-bottom-corner" d="
       M 0 74
       A 1 1 0 0 1 1 75
       " stroke-width="0.138" stroke="white" fill="transparent"></path>
     </g>
+         <rect id="outside-perimeter" width="115" height="75" stroke-width="0.138" stroke="white" fill="transparent" />
   </g>
 </svg>
     <!-- endinject -->
   </div>
   <div class="card-body">
     <h6 class="card-title">
-      Soccer (IFAB compliant, MLS typical)
+      Soccer (IFAB)
     </h6>
     <div class="card-text">
       <div>
@@ -4829,7 +4815,7 @@
   <div class="card-footer text-center white-bg">
     <button type="button" class="grey-btn card-btn">
       Go To
-      Soccer (IFAB compliant, MLS typical)
+      Soccer (IFAB)
     </button>
   </div>
 </a>

@@ -10,6 +10,7 @@ import { cfgOtherSetup } from "./js/details/config-details.js";
 
 export let sport;
 export let dataStorage;
+export let cfgSportCustomSetup;
 export let cfgSportA;
 export let cfgSportGoalCoords;
 export let cfgSportScoringArea;
@@ -17,12 +18,53 @@ export let getDefaultSetup;
 export let cfgDefaultEnable;
 export let perimeterId;
 
+function customSetup(sportData) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const w = urlParams.get("width") || 76;
+    const h = urlParams.get("height") || 75;
+    sportData.appearance.width = w;
+    sportData.appearance.height = h;
+    sportData.goalCoords = [
+        [0, h / 2],
+        [w, h / 2],
+    ];
+
+    const ice_hockey = {
+        width: "200",
+        circleR: "2",
+        polyR: "2.75",
+        fontSize: "0.15", //rem
+        strokeWidth: "0.5", //px
+        heatMapScale: 1.25,
+    };
+
+    const scaleFactor = parseFloat(ice_hockey.width) / Math.max(w, h);
+    for (const key in ice_hockey) {
+        if (key === "heatMapScale") {
+            sportData.appearance[key] =
+                parseFloat(ice_hockey[key]) * scaleFactor;
+        } else {
+            const val = parseFloat(ice_hockey[key]) / scaleFactor;
+            const suffix =
+                key === "fontSize" ? "rem" : key === "strokeWidth" ? "px" : "";
+            sportData.appearance[key] = `${val.toFixed(3)}${suffix}`;
+        }
+    }
+    return sportData;
+}
+
 export function setup(s) {
     sport = s;
     dataStorage = localDataStorage(sport);
     d3.json("/supported-sports.json").then((data) => {
-        const sportData = _.find(data.sports, { id: sport });
+        let sportData = _.find(data.sports, { id: sport });
+        cfgSportCustomSetup = false;
+        if (sportData.needsCustomSetup) {
+            sportData = customSetup(sportData);
+            cfgSportCustomSetup = true;
+        }
         cfgSportA = sportData.appearance;
+        console.log(cfgSportA);
         cfgSportGoalCoords = sportData.goalCoords;
         cfgSportScoringArea = sportData.scoringArea;
         perimeterId = sportData.perimeter;

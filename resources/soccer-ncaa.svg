@@ -16,12 +16,6 @@
     <path id="halfway-line" d="M 60 0 L 60 75" stroke-width="0.1389" stroke="white"></path>
     <circle id="halfway-circle" cx="60" cy="37.5" r="10" fill="transparent" stroke-width="0.1389" stroke="white">
     </circle>
-    <path id="outside-perimeter" d="
-        M 0 0
-        L 120 0
-        L 120 75
-        L 0 75
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
     <g id="left-goal-area">
       <path id="left-eighteen-yd-box" d="
         M 0 15.5
@@ -90,5 +84,11 @@
       A 1 1 0 0 1 1 75
       " stroke-width="0.1389" stroke="white" fill="transparent"></path>
     </g>
+        <path id="outside-perimeter" d="
+        M 0 0
+        L 120 0
+        L 120 75
+        L 0 75
+        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
   </g>
 </svg>
