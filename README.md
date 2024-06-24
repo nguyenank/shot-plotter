@@ -6,7 +6,7 @@
 
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
-Currently 26 different playing areas across 19 different sports are supported:
+Currently 28 different playing areas across 19 different sports are supported:
 
 -   ice hockey (NHL, IIHF) and ice hockey net (NHL)
 -   floorball (IFF)
