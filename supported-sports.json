@@ -351,6 +351,73 @@
             ]
         },
         {
+            "id": "handball-net",
+            "name": "Handball Net",
+            "units": "centimeters",
+            "specifications": "International Handball Federation (2022)",
+            "dimensions": "300 x 200 (316 x 208 including posts)",
+            "scoringArea": null,
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "316",
+                "height": "208",
+                "circleR": "9",
+                "polyR": "12.375",
+                "fontSize": "0.675rem",
+                "strokeWidth": "2.25px",
+                "heatMapScale": 0.27777,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Period",
+                    "id": "period",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Save", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "volleyball",
             "name": "Volleyball",
             "units": "meters",
