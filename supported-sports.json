@@ -1629,6 +1629,77 @@
             ]
         },
         {
+            "id": "soccer-premier-league",
+            "name": "Football (IFAB compliant, Premier League typical)",
+            "units": "meters",
+            "specifications": "International Football Association Board (2021)",
+            "dimensions": "105 x 68",
+            "scoringArea": "goal",
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "105",
+                "height": "68",
+                "circleR": "1.05",
+                "polyR": "1.44375",
+                "fontSize": "0.07875rem",
+                "strokeWidth": "0.2625px",
+                "heatMapScale": 2.3809,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "goalCoords": [
+                [0, 34],
+                [105, 34]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "OT1" },
+                        { "value": "OT2" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "australian-rules",
             "name": "Australian Rules Football",
             "units": "meters",
