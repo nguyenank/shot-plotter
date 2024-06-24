@@ -928,6 +928,76 @@
             ]
         },
         {
+            "id": "fistball",
+            "name": "Fistball",
+            "units": "meters",
+            "specifications": "International Fistball Association (2023)",
+            "dimensions": "50 x 20 (62 x 32 including buffer zone)",
+            "scoringArea": null,
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "62",
+                "height": "32",
+                "circleR": "0.62",
+                "polyR": "0.8525",
+                "fontSize": "0.0465rem",
+                "strokeWidth": "0.155px",
+                "heatMapScale": 4.032,
+                "heatMapLowOpacity": 0.05,
+                "heatMapHighOpacity": 0.3
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Set",
+                    "id": "set",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "5" },
+                        { "value": "6" },
+                        { "value": "7" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Attack", "selected": true },
+                        { "value": "Serve" },
+                        { "value": "Kill" },
+                        { "value": "Error" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "mens-lacrosse",
             "name": "Men's Lacrosse",
             "units": "yards",

@@ -527,7 +527,7 @@ function createSpecialDetailsOptions(id = "#special-details-options") {
         });
     }
 
-    if (_.startsWith(sport, "volleyball")) {
+    if (["volleyball", "fistball"].some((val) => _.startsWith(sport, val))) {
         sdList.push({
             id: "in-out",
             newDetails: [
