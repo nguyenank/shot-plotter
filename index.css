@@ -40,6 +40,18 @@ table tbody, table thead, .example, .reorder-ghost, .grey-btn, .shot-info, .whit
 #index .card .bold {
   font-weight: 400;
 }
+#index .card label {
+  padding-left: 1em;
+  padding-right: 0.25rem;
+  font-variant-caps: all-petite-caps;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+#index .card input {
+  width: 3rem;
+  margin: 0.1rem 0;
+  margin-right: 0.4rem;
+}
 #index a {
   color: black;
   text-decoration: none;

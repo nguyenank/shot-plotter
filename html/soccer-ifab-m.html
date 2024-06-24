@@ -117,22 +117,13 @@
                         <svg id="soccer-ifab-m-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 107 70">
   <g id="transformations">
     <clipPath id="clipBorder">
-      <path d="  M 0 0
-        L 105 0
-        L 105 68
-        L 0 68
-        Z" />
+      <rect width="105" height="68" />
     </clipPath>
-    <path id="background" d="
-        M 0 0
-        L 105 0
-        L 105 68
-        L 0 68
-        Z" stroke="transparent" fill="#036602"></path>
+    <rect id="background" width="105" height="68" stroke="transparent" fill="#036602" />
     <path id="halfway-line" d="M 52.5 0 L 52.5 68" stroke-width="0.12" stroke="white"></path>
     <circle id="halfway-circle" cx="52.5" cy="34" r="9.15" fill="transparent" stroke-width="0.12" stroke="white">
     </circle>
-    <g id="left-goal-area">
+    <g id="left-goal">
       <path id="left-eighteen-yd-box" d="
         M 0 13.84
         L 16.5 13.84
@@ -154,16 +145,16 @@
       <path id="goal-line" d="
       M 0 30.34
       L 0 37.66" stroke-width="0.75" stroke="white" />
-      <path id="top-left-corner" d="
+      <path id="left-top-corner" d="
       M 1 0
       A 1 1 1 0 1 0 1
       " stroke-width="0.12" stroke="white" fill="transparent"></path>
-      <path id="top-right-corner" d="
+      <path id="left-bottom-corner" d="
       M 0 67
       A 1 1 0 0 1 1 68
       " stroke-width="0.12" stroke="white" fill="transparent"></path>
     </g>
-    <g id="right-goal-area" transform="translate(105 68) rotate(180)">
+    <g id="right-goal" transform="translate(105 68) rotate(180)">
        <path id="right-eighteen-yd-box" d="
         M 0 13.84
         L 16.5 13.84
@@ -185,21 +176,16 @@
       <path id="right-goal-line" d="
       M 0 30.34
       L 0 37.66" stroke-width="0.75" stroke="white" />
-      <path id="top-right-corner" d="
+      <path id="right-top-corner" d="
       M 1 0
       A 1 1 1 0 1 0 1
       " stroke-width="0.12" stroke="white" fill="transparent"></path>
-      <path id="top-right-corner" d="
+      <path id="right-bottom-corner" d="
       M 0 67
       A 1 1 0 0 1 1 68
       " stroke-width="0.12" stroke="white" fill="transparent"></path>
     </g>
-        <path id="outside-perimeter" d="
-        M 0 0
-        L 105 0
-        L 105 68
-        L 0 68
-        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+         <rect id="outside-perimeter" width="105" height="68" stroke-width="0.12" stroke="white" fill="transparent" />
   </g>
 </svg>
                         <!-- endinject -->

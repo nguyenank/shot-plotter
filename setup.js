@@ -7,6 +7,8 @@ import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 import { cfgOtherSetup } from "./js/details/config-details.js";
+import { customCardSetup } from "./js/custom-setups/card-setup.js";
+import { customConfigSetup } from "./js/custom-setups/config-setup.js";
 
 export let sport;
 export let dataStorage;
@@ -18,39 +20,13 @@ export let getDefaultSetup;
 export let cfgDefaultEnable;
 export let perimeterId;
 
-function customSetup(sportData) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const w = urlParams.get("width") || 76;
-    const h = urlParams.get("height") || 75;
-    sportData.appearance.width = w;
-    sportData.appearance.height = h;
-    sportData.goalCoords = [
-        [0, h / 2],
-        [w, h / 2],
-    ];
-
-    const ice_hockey = {
-        width: "200",
-        circleR: "2",
-        polyR: "2.75",
-        fontSize: "0.15", //rem
-        strokeWidth: "0.5", //px
-        heatMapScale: 1.25,
-    };
-
-    const scaleFactor = parseFloat(ice_hockey.width) / Math.max(w, h);
-    for (const key in ice_hockey) {
-        if (key === "heatMapScale") {
-            sportData.appearance[key] =
-                parseFloat(ice_hockey[key]) * scaleFactor;
-        } else {
-            const val = parseFloat(ice_hockey[key]) / scaleFactor;
-            const suffix =
-                key === "fontSize" ? "rem" : key === "strokeWidth" ? "px" : "";
-            sportData.appearance[key] = `${val.toFixed(3)}${suffix}`;
+export function indexSetup() {
+    d3.json("/supported-sports.json").then((data) => {
+        const customSports = _.filter(data.sports, "needsCustomSetup");
+        for (const s of customSports) {
+            customCardSetup(s);
         }
-    }
-    return sportData;
+    });
 }
 
 export function setup(s) {
@@ -60,11 +36,10 @@ export function setup(s) {
         let sportData = _.find(data.sports, { id: sport });
         cfgSportCustomSetup = false;
         if (sportData.needsCustomSetup) {
-            sportData = customSetup(sportData);
+            sportData = customConfigSetup(sportData);
             cfgSportCustomSetup = true;
         }
         cfgSportA = sportData.appearance;
-        console.log(cfgSportA);
         cfgSportGoalCoords = sportData.goalCoords;
         cfgSportScoringArea = sportData.scoringArea;
         perimeterId = sportData.perimeter;
