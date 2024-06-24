@@ -1562,6 +1562,7 @@
             "name": "Soccer (NCAA)",
             "units": "yards",
             "specifications": "National Collegiate Athletic Association (2022 & 2023)",
+            "needsCustomSetup": true,
             "dimensions": "120 x 75",
             "scoringArea": "goal",
             "perimeter": "#transformations",

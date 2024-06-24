@@ -1,5 +1,5 @@
 export function customConfigSetup(config) {
-    if (_.startsWith(config.id, "soccer-ifab")) {
+    if (_.startsWith(config.id, "soccer")) {
         return customSoccerConfigSetup(config);
     }
 }

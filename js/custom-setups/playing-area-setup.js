@@ -1,24 +1,42 @@
 import { sport, cfgSportA } from "../../setup.js";
 
 export function customPlayingAreaSetup() {
-    if (_.startsWith(sport, "soccer-ifab")) {
+    if (_.startsWith(sport, "soccer")) {
         customSoccerPlayingAreaSetup();
     }
 }
 
 function customSoccerPlayingAreaSetup() {
-    const inYards = _.endsWith(sport, "-yd");
-
-    const minWidth = inYards ? 100 : 90;
-    const maxWidth = inYards ? 130 : 120;
-
-    const minHeight = inYards ? 50 : 45;
-    const maxHeight = inYards ? 100 : 90;
-
+    const minMaxes = {
+        "soccer-ifab-yd": {
+            minWidth: 100,
+            maxWidth: 130,
+            minHeight: 50,
+            maxHeight: 100,
+        },
+        "soccer-ifab-m": {
+            minWidth: 90,
+            maxWidth: 120,
+            minHeight: 45,
+            maxHeight: 90,
+        },
+        "soccer-ncaa": {
+            minWidth: 115,
+            maxWidth: 120,
+            minHeight: 70,
+            maxHeight: 75,
+        },
+    };
+    const minMax = minMaxes[sport];
+    const inYards = sport === "soccer-ncaa" || sport === "soccer-ifab-yd";
     let w = cfgSportA.width;
-    w = w < minWidth || w > maxWidth ? 0 : w;
+    console.log(w);
+    w = w < minMax.minWidth || w > minMax.maxWidth ? 0 : w;
     let h = cfgSportA.height;
-    h = h < minHeight || h > maxHeight || h >= w ? 0 : h;
+    console.log(h);
+    h = h < minMax.minHeight || h > minMax.maxHeight || h >= w ? 0 : h;
+
+    console.log(w, h);
 
     const halfw = w / 2;
     const halfh = h / 2;
@@ -51,25 +69,27 @@ function customSoccerPlayingAreaSetup() {
         ga.select(`#${dir}-eighteen-yd-box`).attr(
             "d",
             `M  0 ${halfh - halfgoal - eighteenyd}
-             L 18 ${halfh - halfgoal - eighteenyd}
-             L 18 ${halfh + halfgoal + eighteenyd}
+             L ${eighteenyd} ${halfh - halfgoal - eighteenyd}
+             L ${eighteenyd} ${halfh + halfgoal + eighteenyd}
              L  0 ${halfh + halfgoal + eighteenyd}`
         );
 
         ga.select(`#${dir}-goal-area`).attr(
             "d",
             `M 0 ${halfh - halfgoal - goalarea}
-             L 6 ${halfh - halfgoal - goalarea}
-             L 6 ${halfh + halfgoal + goalarea}
+             L ${goalarea} ${halfh - halfgoal - goalarea}
+             L ${goalarea} ${halfh + halfgoal + goalarea}
              L 0 ${halfh + halfgoal + goalarea}`
         );
 
-        ga.select(`#${dir}-penalty-kick-mark`).attr("cy", halfh);
+        ga.select(`#${dir}-penalty-kick-mark`)
+            .attr("cy", halfh)
+            .attr("d", `M 12 ${halfh - 0.33} L 12 ${halfh + 0.33}`);
 
         ga.select(`#${dir}-goal-arc`).attr(
             "d",
-            `M 18 ${halfh - arc}
-             A 10 10 1 0 1 18 ${halfh + arc}
+            `M ${eighteenyd} ${halfh - arc}
+             A 10 10 1 0 1 ${eighteenyd} ${halfh + arc}
             `
         );
 
