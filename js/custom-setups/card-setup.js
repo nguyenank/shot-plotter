@@ -61,7 +61,6 @@ function customSoccerCardSetup(id, width, height) {
     card.select("button").on("click", function () {
         const width = d3.select(`#${id}-width`).property("value");
         const height = d3.select(`#${id}-height`).property("value");
-        console.log(width, height);
         let params = new URLSearchParams({
             width: width,
             height: height,

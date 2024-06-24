@@ -1,4 +1,5 @@
-import { sport, cfgSportA } from "../../setup.js";
+import { sport, cfgSportA, dataStorage } from "../../setup.js";
+import { setRows, getRows } from "../table/table-functions.js";
 
 export function customPlayingAreaSetup() {
     if (_.startsWith(sport, "soccer")) {
@@ -29,17 +30,37 @@ function customSoccerPlayingAreaSetup() {
     };
     const minMax = minMaxes[sport];
     const inYards = sport === "soccer-ncaa" || sport === "soccer-ifab-yd";
+
     let w = cfgSportA.width;
-    console.log(w);
-    w = w < minMax.minWidth || w > minMax.maxWidth ? 0 : w;
     let h = cfgSportA.height;
-    console.log(h);
+    w = w < minMax.minWidth || w > minMax.maxWidth ? 0 : w;
     h = h < minMax.minHeight || h > minMax.maxHeight || h >= w ? 0 : h;
 
-    console.log(w, h);
+    const storedWidth = dataStorage.get("width");
+    const storedHeight = dataStorage.get("height");
 
     const halfw = w / 2;
     const halfh = h / 2;
+
+    if (w !== 0 && h !== 0 && (storedWidth !== w || storedHeight !== h)) {
+        dataStorage.set("width", w);
+        dataStorage.set("height", h);
+        let rows = getRows();
+        for (let row of rows) {
+            // readjust coords
+            row.specialData.coords = [
+                halfw + parseFloat(row.rowData.x),
+                halfh + parseFloat(row.rowData.y),
+            ];
+            if (row.specialData.coords2) {
+                row.specialData.coords2 = [
+                    halfw + parseFloat(row.rowData.x2),
+                    halfh + parseFloat(row.rowData.y2),
+                ];
+            }
+        }
+        setRows(rows);
+    }
 
     const goal = inYards ? 8 : 7.32;
     const halfgoal = goal / 2;
