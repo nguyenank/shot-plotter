@@ -21,7 +21,7 @@ Currently 28 different playing areas across 19 different sports are supported:
 -   field hockey (FIH)
 -   American football (NFL, NCAA)
 -   Canadian football (CFL, CFL pre-2022 & Amateur)
--   soccer (NCAA, IFAB customizable in meters, IFAB customizable in yards)
+-   soccer (NCAA customizable, IFAB customizable in meters, IFAB customizable in yards)
 -   Australian rules football (AFL)
 -   rugby union (World Rugby)
 -   hurling and Gaelic football (GAA)

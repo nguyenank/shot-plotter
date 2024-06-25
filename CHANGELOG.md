@@ -16,13 +16,13 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 
 #### New Playing Areas
 
--   Fistball (IFF) thanks to @billyfryer
--   Football (IFAB in meters)
--   Soccer (IFAB in yards)
+-   Fistball (IFF) thanks to [@billyfryer](https://github.com/billyfryer)
+-   Football (IFAB customizable in meters)
+-   Soccer (IFAB customizable in yards)
 
 ### Changed
 
--   Adjusted Football (NCAA) playing area to also allow custom declaration of field height and width.
+-   Adjusted Football (NCAA) playing area to also allow customization of field height and width.
 
 ## [2.1.0] - 2023-09-30
 
@@ -39,7 +39,7 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 
 ### Fixed
 
--   Properly save dropdown options as pointed out by @PaShTiDa.
+-   Properly save dropdown options as found by [@PaShTiDa](https://github.com/PaShTiDa).
 -   Remove added shot types on reset.
 
 ## [2.0.0] - 2023-02-11
@@ -54,8 +54,8 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 
 #### New Playing Areas
 
--   Korfball (IKF) thanks to @davescroggs
--   Netball (SSN) thanks to @davescroggs
+-   Korfball (IKF) thanks to [@davescroggs](https://github.com/davescroggs)
+-   Netball (SSN) thanks to [@davescroggs](https://github.com/davescroggs)
 -   Field Hockey (IHF)
 -   Canadian Football (CFL)
 -   Canadian Football (CFL pre-2022 & Amateur)
@@ -63,7 +63,7 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 
 ### Fixed
 
--   README typos and legacy wording of rink versus playing area thanks to @davescroggs.
+-   README typos and legacy wording of rink versus playing area thanks to [@davescroggs](https://github.com/davescroggs).
 
 ## [1.8.0] - 2023-01-08
 
