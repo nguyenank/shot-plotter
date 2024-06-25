@@ -558,6 +558,15 @@ table {
 /* playing area */
 #playing-area {
     cursor: crosshair;
+
+    #custom-pa-error-message {
+        font-weight: 500;
+        font-size: 1.75rem;
+        text-align: center;
+        .bold {
+            font-weight: 700;
+        }
+    }
 }
 
 .ghost-shot {

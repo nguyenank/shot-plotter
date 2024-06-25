@@ -6,8 +6,8 @@ export function customConfigSetup(config) {
 
 function customSoccerConfigSetup(config) {
     const urlParams = new URLSearchParams(window.location.search);
-    const w = parseInt(urlParams.get("width")) || config.appearance.width;
-    const h = parseInt(urlParams.get("height")) || config.appearance.height;
+    const w = parseFloat(urlParams.get("width")) || config.appearance.width;
+    const h = parseFloat(urlParams.get("height")) || config.appearance.height;
     config.appearance.width = w;
     config.appearance.height = h;
     config.goalCoords = [
@@ -15,8 +15,8 @@ function customSoccerConfigSetup(config) {
         [w, h / 2],
     ];
 
+    const ice_hockey_width = 200;
     const ice_hockey = {
-        width: "200",
         circleR: "2",
         polyR: "2.75",
         fontSize: "0.15", //rem
@@ -24,7 +24,7 @@ function customSoccerConfigSetup(config) {
         heatMapScale: 1.25,
     };
 
-    const scaleFactor = parseFloat(ice_hockey.width) / Math.max(w, h);
+    const scaleFactor = parseFloat(ice_hockey_width) / Math.max(w, h);
     for (const key in ice_hockey) {
         if (key === "heatMapScale") {
             config.appearance[key] = parseFloat(ice_hockey[key]) * scaleFactor;

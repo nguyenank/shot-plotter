@@ -33,8 +33,41 @@ function customSoccerPlayingAreaSetup() {
 
     let w = cfgSportA.width;
     let h = cfgSportA.height;
-    w = w < minMax.minWidth || w > minMax.maxWidth ? 0 : w;
-    h = h < minMax.minHeight || h > minMax.maxHeight || h >= w ? 0 : h;
+    let errorString = [];
+    if (w < minMax.minWidth || w > minMax.maxWidth) {
+        errorString.push(
+            `Specified width (${w}) not within permitted range [${minMax.minWidth}, ${minMax.maxWidth}].`
+        );
+        w = 0;
+    }
+    if (h < minMax.minHeight || h > minMax.maxHeight) {
+        errorString.push(
+            `Specified height (${h}) not within permitted range [${minMax.minHeight}, ${minMax.maxHeight}].`
+        );
+        h = 0;
+    }
+    if (h >= w && w != 0) {
+        errorString.push(
+            `Specified width (${w}) must be larger than specified height (${h}).`
+        );
+        h = 0;
+    }
+
+    if (errorString.length > 0) {
+        const errorMessage = d3
+            .select("#playing-area")
+            .insert("div", "svg")
+            .attr("class", "center")
+            .attr("id", "custom-pa-error-message")
+            .append("div");
+        errorMessage
+            .append("div")
+            .text("ERROR: Invalid Dimensions")
+            .attr("class", "bold");
+        for (const line of errorString) {
+            errorMessage.append("div").text(line);
+        }
+    }
 
     const storedWidth = dataStorage.get("width");
     const storedHeight = dataStorage.get("height");
