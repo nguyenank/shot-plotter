@@ -409,8 +409,7 @@
                     "options": [
                         { "value": "Save", "selected": true },
                         { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Block" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
