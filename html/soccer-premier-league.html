@@ -114,84 +114,92 @@
                     <div id="toggles"></div>
                     <div id="playing-area">
                         <!-- inject:playingarea -->
-                        <svg id="soccer-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 77">
+                        <svg id="soccer-premier-league-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 107 70">
   <g id="transformations">
     <clipPath id="clipBorder">
-      <rect width="120" height="75" />
+      <path d="  M 0 0
+        L 105 0
+        L 105 68
+        L 0 68
+        Z" />
     </clipPath>
-    <rect id="background" width="115" height="75" fill="#036602"/>
-    <path id="halfway-line" d="M 60 0 L 60 75" stroke-width="0.1389" stroke="white"></path>
-    <circle id="halfway-circle" cx="60" cy="37.5" r="10" fill="transparent" stroke-width="0.1389" stroke="white">
+    <path id="background" d="
+        M 0 0
+        L 105 0
+        L 105 68
+        L 0 68
+        Z" stroke="transparent" fill="#036602"></path>
+    <path id="halfway-line" d="M 52.5 0 L 52.5 68" stroke-width="0.12" stroke="white"></path>
+    <circle id="halfway-circle" cx="52.5" cy="34" r="9.15" fill="transparent" stroke-width="0.12" stroke="white">
     </circle>
-    <g id="left-goal">
+    <path id="outside-perimeter" d="
+        M 0 0
+        L 105 0
+        L 105 68
+        L 0 68
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+    <g id="left-goal-area">
       <path id="left-eighteen-yd-box" d="
-        M 0 15.5
-        L 18 15.5
-        L 18 59.5
-        L 0 59.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+        M 0 13.84
+        L 16.5 13.84
+        L 16.5 54.16
+        L 0 54.16
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
       <path id="left-goal-area" d="
-        M 0 27.5
-        L 6 27.5
-        L 6 47.5
-        L 0 47.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="left-penalty-kick-mark" d="
-        M 12 37.167
-        L 12 37.8333
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+        M 0 24.84
+        L 5.5 24.84
+        L 5.5 43.16
+        L 0 43.16
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <circle id="left-penalty-kick-mark" cx="11" cy="34" r="0.12" fill="white" />
+      <!-- <circle cx="11" cy="34" r="9.15" stroke="yellow" fill="transparent" stroke-width="0.12" /> -->
       <path id="left-goal-arc" d="
-        M 18 29.5
-        A 10 10 1 0 1 18 45.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-
-      <path id="left-goal-line" d="
-      M 0 33.5
-      L 0 41.5" stroke-width="0.75" stroke="white"></path>
-      <path id="left-top-corner" d="
+        M 16.5 26.688
+        A 9.15 9.15 1 0 1 16.5 41.312
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="goal-line" d="
+      M 0 30.34
+      L 0 37.66" stroke-width="0.75" stroke="white" />
+      <path id="top-left-corner" d="
       M 1 0
       A 1 1 1 0 1 0 1
-      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="left-bottom-corner" d="
-      M 0 74
-      A 1 1 0 0 1 1 75
-      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      " stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="top-right-corner" d="
+      M 0 67
+      A 1 1 0 0 1 1 68
+      " stroke-width="0.12" stroke="white" fill="transparent"></path>
     </g>
-    <g id="right-goal" transform="translate(120 75) rotate(180)">
-      <path id="right-eighteen-yd-box" d="
-        M 0 15.5
-        L 18 15.5
-        L 18 59.5
-        L 0 59.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+    <g id="right-goal-area" transform="translate(105 68) rotate(180)">
+       <path id="right-eighteen-yd-box" d="
+        M 0 13.84
+        L 16.5 13.84
+        L 16.5 54.16
+        L 0 54.16
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
       <path id="right-goal-area" d="
-        M 0 27.5
-        L 6 27.5
-        L 6 47.5
-        L 0 47.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="right-penalty-kick-mark" d="
-        M 12 37.167
-        L 12 37.8333
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
+        M 0 24.84
+        L 5.5 24.84
+        L 5.5 43.16
+        L 0 43.16
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <circle id="right-penalty-kick-mark" cx="11" cy="34" r="0.12" fill="white" />
+      <!-- <circle cx="11" cy="34" r="9.15" stroke="yellow" fill="transparent" stroke-width="0.12" /> -->
       <path id="right-goal-arc" d="
-        M 18 29.5
-        A 10 10 1 0 1 18 45.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-
+        M 16.5 26.688
+        A 9.15 9.15 1 0 1 16.5 41.312
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
       <path id="right-goal-line" d="
-      M 0 33.5
-      L 0 41.5" stroke-width="0.75" stroke="white"></path>
-      <path id="right-top-corner" d="
+      M 0 30.34
+      L 0 37.66" stroke-width="0.75" stroke="white" />
+      <path id="top-right-corner" d="
       M 1 0
       A 1 1 1 0 1 0 1
-      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="right-bottom-corner" d="
-      M 0 74
-      A 1 1 0 0 1 1 75
-      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
+      " stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="top-right-corner" d="
+      M 0 67
+      A 1 1 0 0 1 1 68
+      " stroke-width="0.12" stroke="white" fill="transparent"></path>
     </g>
-    <rect width="115" height="75" stroke-width="0.1389" stroke="white" fill="transparent"/>
   </g>
 </svg>
                         <!-- endinject -->
@@ -210,7 +218,7 @@
         <script type="module" src="/setup.js"></script>
         <script type="module">
             import { setup } from "/setup.js";
-            setup("soccer-ncaa");
+            setup("soccer-premier-league");
         </script>
         <!-- bootstrap -->
         <script

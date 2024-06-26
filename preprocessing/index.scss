@@ -54,6 +54,20 @@ $orange-solid: rgba(234, 142, 72, 1);
         .bold {
             font-weight: 400;
         }
+
+        label {
+            padding-left: 1em;
+            padding-right: 0.25rem;
+            font-variant-caps: all-petite-caps;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 3rem;
+            margin: 0.1rem 0;
+            margin-right: 0.4rem;
+        }
     }
 
     a {
@@ -544,6 +558,15 @@ table {
 /* playing area */
 #playing-area {
     cursor: crosshair;
+
+    #custom-pa-error-message {
+        font-weight: 500;
+        font-size: 1.75rem;
+        text-align: center;
+        .bold {
+            font-weight: 700;
+        }
+    }
 }
 
 .ghost-shot {

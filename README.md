@@ -2,11 +2,29 @@
 
 ![A screenshot of the web application.](./resources/ice-hockey-screenshot.png)
 
-**01/28/23: Field hockey, Canadian football (pre- and post- 2022), hurling and Gaelic football, korfball, and netball have been added as playing areas!**
-
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
-Currently 23 different playing areas across 17 different sports are supported: ice hockey (NHL, IIHF), ice hockey net (NHL), floorball (IFF), handball (IHF), volleyball (NCAA), table tennis (ITTF), basketball (NBA, NCAA, WNBA), korfball (IKF), netball (SSN), men's lacrosse (NCAA), women's lacrosse (NCAA), field hockey (FIH), American football (NFL, NCAA), Canadian football (CFL, CFL pre-2022 & Amateur), soccer (NCAA), Australian rules football (AFL), rugby union (World Rugby), and hurling and Gaelic football (GAA).
+Currently 28 different playing areas across 19 different sports are supported:
+
+-   ice hockey (NHL, IIHF) and ice hockey net (NHL)
+-   floorball (IFF)
+-   handball (IHF) and handball net (IHF)
+-   volleyball (NCAA)
+-   table tennis (ITTF)
+-   basketball (NBA, NCAA, WNBA)
+-   korfball (IKF)
+-   tennis (ITF)
+-   netball (SSN)
+-   fistball (IFA)
+-   men's lacrosse (NCAA)
+-   women's lacrosse (NCAA)
+-   field hockey (FIH)
+-   American football (NFL, NCAA)
+-   Canadian football (CFL, CFL pre-2022 & Amateur)
+-   soccer (NCAA customizable, IFAB customizable in meters, IFAB customizable in yards)
+-   Australian rules football (AFL)
+-   rugby union (World Rugby)
+-   hurling and Gaelic football (GAA)
 
 ![A screenshot of the main page of the web application allowing you to pick between sports.](./resources/sport-select-screenshot.png)
 

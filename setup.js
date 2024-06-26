@@ -7,9 +7,12 @@ import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 import { cfgOtherSetup } from "./js/details/config-details.js";
+import { customCardSetup } from "./js/custom-setups/card-setup.js";
+import { customConfigSetup } from "./js/custom-setups/config-setup.js";
 
 export let sport;
 export let dataStorage;
+export let cfgSportCustomSetup;
 export let cfgSportA;
 export let cfgSportGoalCoords;
 export let cfgSportScoringArea;
@@ -17,11 +20,25 @@ export let getDefaultSetup;
 export let cfgDefaultEnable;
 export let perimeterId;
 
+export function indexSetup() {
+    d3.json("/supported-sports.json").then((data) => {
+        const customSports = _.filter(data.sports, "needsCustomSetup");
+        for (const s of customSports) {
+            customCardSetup(s);
+        }
+    });
+}
+
 export function setup(s) {
     sport = s;
     dataStorage = localDataStorage(sport);
     d3.json("/supported-sports.json").then((data) => {
-        const sportData = _.find(data.sports, { id: sport });
+        let sportData = _.find(data.sports, { id: sport });
+        cfgSportCustomSetup = false;
+        if (sportData.needsCustomSetup) {
+            sportData = customConfigSetup(sportData);
+            cfgSportCustomSetup = true;
+        }
         cfgSportA = sportData.appearance;
         cfgSportGoalCoords = sportData.goalCoords;
         cfgSportScoringArea = sportData.scoringArea;

@@ -25,6 +25,16 @@
             type="text/css"
         />
 
+        <!-- lodash -->
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+        <!-- D3.js -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.6.0/d3.min.js"
+            integrity="sha512-XgjkLS0sSzUq88GniFcrLy6zjgVWkBoRFziaLm1Z+gVgkHuO3ieikhD/Q6eNKXAsp88yvBFS0n6ovVlabXftIg=="
+            crossorigin="anonymous"
+        ></script>
+
         <!-- Bootstrap -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
@@ -39,6 +49,11 @@
 
     <body>
         <!-- inject:banner -->
+        <div class="alert alert-info" role="alert">
+    <b>06/24/24:</b> Fistball and handball net have been added, as well as
+    soccer/football fields with customizable sizes!
+</div>
+
         <!-- endinject -->
         <div class="center header">
             <h1>Shot-Plotter</h1>
@@ -52,9 +67,9 @@
         <div id="index">
             <!-- inject:cards -->
             <a href="./ice-hockey" class="card" id="ice-hockey">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="ice-hockey-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 202 87">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="ice-hockey-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 202 87">
   <g id="transformations">
     <clipPath id="clipBorder">
       <path d="M 0 28
@@ -356,41 +371,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Ice Hockey (NHL)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          200 x 85
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          feet
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Hockey League (2020-2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Ice Hockey (NHL)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Ice Hockey (NHL)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    200 x 85
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    feet
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Hockey League (2020-2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Ice Hockey (NHL)
+        </button>
+    </div>
 </a>
+
             <a href="./ice-hockey-net-nhl" class="card" id="ice-hockey-net-nhl">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="ice-hockey-net-nhl-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="-1 -1 80 56">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="ice-hockey-net-nhl-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="-1 -1 80 56">
   <g id="transformations">
     <clipPath id="clipBorder">
     <rect x="0.5625" y="0.5625" width="76.75" height="50.875" />
@@ -426,41 +445,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Ice Hockey Net (NHL)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          72 x 48 (76.75 x 49.1875 including posts)
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          inches
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Hockey League (2021-2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Ice Hockey Net (NHL)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Ice Hockey Net (NHL)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    72 x 48 (76.75 x 49.1875 including posts)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    inches
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Hockey League (2021-2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Ice Hockey Net (NHL)
+        </button>
+    </div>
 </a>
+
             <a href="./ice-hockey-iihf" class="card" id="ice-hockey-iihf">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
   <g id="transformations">
     <clipPath id="clipBorder">
       <path
@@ -778,41 +801,45 @@
       stroke-width="0.1"/></g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Ice Hockey (IIHF)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          60 x 30
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          International Ice Hockey Federation (2021-2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Ice Hockey (IIHF)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Ice Hockey (IIHF)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    60 x 30
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Ice Hockey Federation (2021-2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Ice Hockey (IIHF)
+        </button>
+    </div>
 </a>
+
             <a href="./floorball" class="card" id="floorball">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id ="floorball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id ="floorball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
   <g id="transformations">
     <clipPath id="clipBorder">
       <path d="
@@ -895,41 +922,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Floorball
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          40 x 20
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          International Floorball Federation (2018)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Floorball
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Floorball
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    40 x 20
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Floorball Federation (2018)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Floorball
+        </button>
+    </div>
 </a>
+
             <a href="./handball" class="card" id="handball">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="handball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="handball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 42 22">
   <g id="transformations">
     <clipPath id="clipBorder">
       <path d="  M 0 0
@@ -1123,41 +1154,120 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Handball
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          40 x 20
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          International Handball Federation (2016)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Handball
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Handball
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    40 x 20
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Handball Federation (2016)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Handball
+        </button>
+    </div>
 </a>
+
+            <a href="./handball-net" class="card" id="handball-net">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="handball-net-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 318 210">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+        <rect width="316" height="208" />
+    </clipPath>
+    <g id="frame">
+        <rect width="316" height="208" fill="#bbbbbb" />
+        <!-- top left -->
+        <rect x="0" y="0" width="28" height="8" fill="#C8102e" />
+        <rect x="0" y="0" width="8" height="28" fill="#C8102e" />
+        <!-- top bar -->
+        <rect x="48" y="0" width="20" height="8" fill="#C8102e" />
+        <rect x="88" y="0" width="20" height="8" fill="#C8102e" />
+        <rect x="128" y="0" width="20" height="8" fill="#C8102e" />
+        <rect x="168" y="0" width="20" height="8" fill="#C8102e" />  
+        <rect x="208" y="0" width="20" height="8" fill="#C8102e" />
+        <rect x="248" y="0" width="20" height="8" fill="#C8102e" />          
+        <!-- top right -->
+        <rect x="288" y="0" width="28" height="8" fill="#C8102e" />
+        <rect x="308" y="0" width="8" height="28" fill="#C8102e" />
+        <!-- left bar -->
+        <rect x="0" y="48" width="8" height="20" fill="#C8102e" />
+        <rect x="0" y="88" width="8" height="20" fill="#C8102e" />
+        <rect x="0" y="128" width="8" height="20" fill="#C8102e" />
+        <rect x="0" y="168" width="8" height="20" fill="#C8102e" />
+        <!-- right bar -->
+        <rect x="308" y="48" width="8" height="20" fill="#C8102e" />
+        <rect x="308" y="88" width="8" height="20" fill="#C8102e" />
+        <rect x="308" y="128" width="8" height="20" fill="#C8102e" />
+        <rect x="308" y="168" width="8" height="20" fill="#C8102e" />
+    </g>
+    <rect id="ground" x="-1" y="208" width="318" height="1" fill="black" />
+    <rect x="8" y="8" width="300" height="200" fill="#f2f2f2" />
+    <rect id="outside-perimeter" width="316" height="208" fill="transparent" />
+  </g>
+</svg>
+
+        <!-- endinject -->
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Handball Net
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    300 x 200 (316 x 208 including posts)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    centimeters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Handball Federation (2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Handball Net
+        </button>
+    </div>
+</a>
+
             <a href="./volleyball" class="card" id="volleyball">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="volleyball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 29 17">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="volleyball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 29 17">
   <g id="transformations">
     <clipPath id="clipBorder">
       <path d="M 0 0
@@ -1206,41 +1316,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Volleyball
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          18 x 9 (27 x 15 including free zone)
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Collegiate Athletic Association (2020-2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Volleyball
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Volleyball
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    18 x 9 (27 x 15 including free zone)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Collegiate Athletic Association (2020-2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Volleyball
+        </button>
+    </div>
 </a>
+
             <a href="./table-tennis" class="card" id="table-tennis">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="table-tennis-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 276 185">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="table-tennis-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 276 185">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect width="274" height="183" />
@@ -1258,41 +1372,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Table Tennis
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          274 x 152.5 (274 x 183 including net overhangs)
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          centimeters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          International Table Tennis Federation (2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Table Tennis
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Table Tennis
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    274 x 152.5 (274 x 183 including net overhangs)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    centimeters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Table Tennis Federation (2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Table Tennis
+        </button>
+    </div>
 </a>
+
             <a href="./basketball-nba" class="card" id="basketball-nba">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="basketball-nba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="basketball-nba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect x="0" y="0" width="94" height="50" />
@@ -1445,41 +1563,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Basketball (NBA)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          94 x 50
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          feet
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Basketball Association (2020-2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Basketball (NBA)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Basketball (NBA)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    94 x 50
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    feet
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Basketball Association (2020-2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Basketball (NBA)
+        </button>
+    </div>
 </a>
+
             <a href="./basketball-ncaa" class="card" id="basketball-ncaa">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="basketball-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="basketball-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect x="0" y="0" width="94" height="50" />
@@ -1607,41 +1729,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Basketball (NCAA)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          94 x 50
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          feet
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Collegiate Athletic Association (2021-2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Basketball (NCAA)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Basketball (NCAA)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    94 x 50
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    feet
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Collegiate Athletic Association (2021-2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Basketball (NCAA)
+        </button>
+    </div>
 </a>
+
             <a href="./basketball-wnba" class="card" id="basketball-wnba">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="basketball-wnba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="basketball-wnba-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 96 52">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect x="0" y="0" width="94" height="50" />
@@ -1795,41 +1921,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Basketball (WNBA)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          94 x 50
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          feet
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          Women's National Basketball Association (2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Basketball (WNBA)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Basketball (WNBA)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    94 x 50
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    feet
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    Women's National Basketball Association (2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Basketball (WNBA)
+        </button>
+    </div>
 </a>
+
             <a href="./korfball" class="card" id="korfball">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id ="korfball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 40 20">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id ="korfball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 40 20">
             <g id="transformations">
               <clipPath id="clipBorder">
                 <rect x="0" y="0" width="40" height="20"></rect>
@@ -1871,41 +2001,45 @@
               </g>
           </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Korfball
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          40 x 20
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          International Korfball Federation (2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Korfball
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Korfball
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    40 x 20
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Korfball Federation (2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Korfball
+        </button>
+    </div>
 </a>
+
             <a href="./tennis" class="card" id="tennis">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="tennis-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 90 48">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="tennis-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 90 48">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect id="background" x="0" width="88" y="0" height="46"/>
@@ -1926,41 +2060,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Tennis
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          88 x 46 (78 x 36 for doubles, 78 x 27 for singles)
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          feet
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          International Tennis Federation (2023)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Tennis
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Tennis
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    88 x 46 (78 x 36 for doubles, 78 x 27 for singles)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    feet
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Tennis Federation (2023)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Tennis
+        </button>
+    </div>
 </a>
+
             <a href="./netball-ssn" class="card" id="netball-ssn">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id ="netball-ssn-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 30.5 15.25">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id ="netball-ssn-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" 0 0 30.5 15.25">
             <g id="transformations">
               <clipPath id="clipBorder">
                 <rect x="0" y="0" width="30.5" height="15.25"></rect>
@@ -2002,41 +2140,119 @@
               </g>
           </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Netball (SSN)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          30.5 x 15.25
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          Suncorp Super Netball (2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Netball (SSN)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Netball (SSN)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    30.5 x 15.25
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    Suncorp Super Netball (2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Netball (SSN)
+        </button>
+    </div>
 </a>
+
+            <a href="./fistball" class="card" id="fistball">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="fistball-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 64 34">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+        <rect width="62" height="32" />
+    </clipPath>
+     <rect id="buffer-zone" width="62" height="32" fill="#036602" stroke="black" stroke-width="0.5" />
+    <rect id="buffer-zone-shade" width="62" height="32" fill="black" opacity="0.15" />
+      <g id="court">
+        <path id="court-background" d="
+          M 6 6
+          L 56 6
+          L 56 26
+          L  6 26
+          Z" fill="#036602" stroke="white" stroke-width="0.125"/>
+
+        <line id="center-line-white" x1="31" y1="6" x2="31" y2="26" stroke="#dddddd" stroke-width="0.1"/>
+        <circle id="center-line-pole-top" cx="31" cy="6" r="0.15" fill="#C8102e"/>
+        <line id="center-line-red" x1="31" y1="6" x2="31" y2="26" stroke="#C8102e" stroke-width="0.1" stroke-dasharray="0.2"/>
+        <circle id="center-line-pole-bottom" cx="31" cy="26" r="0.15" fill="#C8102e"/>
+        <line id="left-serve-line" x1="28" y1="6" x2="28" y2="26" stroke="white" stroke-width="0.125"/>
+        <line id="right-serve-line" x1="34" y1="6" x2="34" y2="26" stroke="white" stroke-width="0.125"/>
+
+        <line id="left-top-referee-zone" x1="25" y1="0" x2="25" y2="6" stroke="white" stroke-width="0.125" stroke-dasharray="0.5"/>
+        <line id="left-bottom-referee-zone" x1="25" y1="26" x2="25" y2="32" stroke="white" stroke-width="0.125" stroke-dasharray="0.5"/>
+        <line id="right-top-referee-zone" x1="37" y1="0" x2="37" y2="6" stroke="white" stroke-width="0.125" stroke-dasharray="0.5"/>
+        <line id="right-bottom-referee-zone" x1="37" y1="26" x2="37" y2="32" stroke="white" stroke-width="0.125" stroke-dasharray="0.5"/>
+      </g>
+        <rect id="buffer-zone-border" width="62" height="32" fill="transparent" stroke="black" stroke-width="0.5" />
+              <path id="outside-perimeter" d="
+          M 6 6
+          L 56 6
+          L 56 26
+          L  6 26
+        Z" fill="transparent" stroke="white" stroke-width="0.125"/>
+  </g>
+</svg>
+        <!-- endinject -->
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Fistball
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    50 x 20 (62 x 32 including buffer zone)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Fistball Association (2023)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Fistball
+        </button>
+    </div>
+</a>
+
             <a href="./mens-lacrosse" class="card" id="mens-lacrosse">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="mens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 112 62">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="mens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 112 62">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect id="background" x="0" width="110" y="0" height="60"/>
@@ -2170,41 +2386,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Men's Lacrosse
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          110 x 60
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          yards
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Collegiate Athletic Association (2021-2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Men's Lacrosse
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Men's Lacrosse
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    110 x 60
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    yards
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Collegiate Athletic Association (2021-2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Men's Lacrosse
+        </button>
+    </div>
 </a>
+
             <a href="./womens-lacrosse" class="card" id="womens-lacrosse">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="womens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 67">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="womens-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 67">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect id="background" x="0" width="120" y="0" height="65"/>
@@ -2414,41 +2634,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Women's Lacrosse
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          120 x 65
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          yards
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Collegiate Athletic Association (2022-2023)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Women's Lacrosse
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Women's Lacrosse
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    120 x 65
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    yards
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Collegiate Athletic Association (2022-2023)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Women's Lacrosse
+        </button>
+    </div>
 </a>
+
             <a href="./field-hockey" class="card" id="field-hockey">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="field-hockey-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 93.4 57">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="field-hockey-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 93.4 57">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect id="background" x="-0.3" width="92" y="-0.3" height="55.6"/>
@@ -2534,41 +2758,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Field Hockey
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          91.4 x 55
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          International Hockey Federation (2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Field Hockey
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Field Hockey
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    91.4 x 55
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Hockey Federation (2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Field Hockey
+        </button>
+    </div>
 </a>
+
             <a href="./football-nfl" class="card" id="football-nfl">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55" id="football-nfl-svg">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55" id="football-nfl-svg">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect width="120" height="53.33333"/>
@@ -2813,41 +3041,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Football (NFL)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          120 x 53.33
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          yards
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Football League (2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Football (NFL)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Football (NFL)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    120 x 53.33
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    yards
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Football League (2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Football (NFL)
+        </button>
+    </div>
 </a>
+
             <a href="./football-ncaa" class="card" id="football-ncaa">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="football-ncaa-svg" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="football-ncaa-svg" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" viewBox=" -1 -1 122 55">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect width="120" height="53.33333"/>
@@ -3092,41 +3324,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Football (NCAA)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          120 x 53.33
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          yards
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Collegiate Athletic Association (2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Football (NCAA)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Football (NCAA)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    120 x 53.33
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    yards
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Collegiate Athletic Association (2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Football (NCAA)
+        </button>
+    </div>
 </a>
+
             <a href="./cfl" class="card" id="cfl">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <?xml version='1.0' encoding='UTF-8' ?>
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <?xml version='1.0' encoding='UTF-8' ?>
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" class="svglite" viewBox=" -1 -1 152 67" id="cfl-svg">
 
 <defs>
@@ -3680,41 +3916,45 @@
 </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Canadian Football
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          110 x 65 (150 x 65 including goal areas)
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          yards
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          Canadian Football League (2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Canadian Football
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Canadian Football
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    110 x 65 (150 x 65 including goal areas)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    yards
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    Canadian Football League (2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Canadian Football
+        </button>
+    </div>
 </a>
+
             <a href="./cfl-pre-2022" class="card" id="cfl-pre-2022">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <?xml version='1.0' encoding='UTF-8' ?>
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <?xml version='1.0' encoding='UTF-8' ?>
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width="100%" class="svglite" viewBox=" -1 -1 152 67" id="cfl-pre-2022-svg">
 <defs>
   <style type='text/css'><![CDATA[
@@ -4289,65 +4529,54 @@
 </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Canadian Football (CFL pre-2022 & Amateur)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          110 x 65 (150 x 65 including goal areas)
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          yards
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          Canadian Football League (2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Canadian Football (CFL pre-2022 & Amateur)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Canadian Football (CFL pre-2022 & Amateur)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    110 x 65 (150 x 65 including goal areas)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    yards
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    Canadian Football League (2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Canadian Football (CFL pre-2022 & Amateur)
+        </button>
+    </div>
 </a>
+
             <a href="./soccer-ncaa" class="card" id="soccer-ncaa">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="soccer-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 77">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="soccer-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 77">
   <g id="transformations">
     <clipPath id="clipBorder">
-      <path d="  M 0 0
-        L 120 0
-        L 120 75
-        L 0 75
-        Z" />
+      <rect width="120" height="75" />
     </clipPath>
-    <path id="background" d="
-        M 0 0
-        L 120 0
-        L 120 75
-        L 0 75
-        Z" stroke="transparent" fill="#036602"></path>
+    <rect id="background" width="115" height="75" fill="#036602"/>
     <path id="halfway-line" d="M 60 0 L 60 75" stroke-width="0.1389" stroke="white"></path>
     <circle id="halfway-circle" cx="60" cy="37.5" r="10" fill="transparent" stroke-width="0.1389" stroke="white">
     </circle>
-    <path id="outside-perimeter" d="
-        M 0 0
-        L 120 0
-        L 120 75
-        L 0 75
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-    <g id="left-goal-area">
+    <g id="left-goal">
       <path id="left-eighteen-yd-box" d="
         M 0 15.5
         L 18 15.5
@@ -4369,19 +4598,19 @@
         A 10 10 1 0 1 18 45.5
         Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
 
-      <path id="goal-line" d="
+      <path id="left-goal-line" d="
       M 0 33.5
       L 0 41.5" stroke-width="0.75" stroke="white"></path>
-      <path id="top-left-corner" d="
+      <path id="left-top-corner" d="
       M 1 0
       A 1 1 1 0 1 0 1
       " stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="top-right-corner" d="
+      <path id="left-bottom-corner" d="
       M 0 74
       A 1 1 0 0 1 1 75
       " stroke-width="0.1389" stroke="white" fill="transparent"></path>
     </g>
-    <g id="right-goal-area" transform="translate(120 75) rotate(180)">
+    <g id="right-goal" transform="translate(120 75) rotate(180)">
       <path id="right-eighteen-yd-box" d="
         M 0 15.5
         L 18 15.5
@@ -4403,55 +4632,284 @@
         A 10 10 1 0 1 18 45.5
         Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
 
-      <path id="goal-line" d="
+      <path id="right-goal-line" d="
       M 0 33.5
       L 0 41.5" stroke-width="0.75" stroke="white"></path>
-      <path id="top-right-corner" d="
+      <path id="right-top-corner" d="
       M 1 0
       A 1 1 1 0 1 0 1
       " stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="top-right-corner" d="
+      <path id="right-bottom-corner" d="
       M 0 74
       A 1 1 0 0 1 1 75
       " stroke-width="0.1389" stroke="white" fill="transparent"></path>
     </g>
+    <rect width="115" height="75" stroke-width="0.1389" stroke="white" fill="transparent"/>
   </g>
 </svg>
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Soccer (NCAA)
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          120 x 75
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          yards
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          National Collegiate Athletic Association (2022 & 2023)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Soccer (NCAA)
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Soccer (NCAA)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    120 x 75
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    yards
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Collegiate Athletic Association (2022 & 2023)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Soccer (NCAA)
+        </button>
+    </div>
 </a>
+
+            <a href="./soccer-ifab-m" class="card" id="soccer-ifab-m">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="soccer-ifab-m-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 107 70">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="105" height="68" />
+    </clipPath>
+    <rect id="background" width="105" height="68" stroke="transparent" fill="#036602" />
+    <path id="halfway-line" d="M 52.5 0 L 52.5 68" stroke-width="0.12" stroke="white"></path>
+    <circle id="halfway-circle" cx="52.5" cy="34" r="9.15" fill="transparent" stroke-width="0.12" stroke="white">
+    </circle>
+    <g id="left-goal">
+      <path id="left-eighteen-yd-box" d="
+        M 0 13.84
+        L 16.5 13.84
+        L 16.5 54.16
+        L 0 54.16
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="left-goal-area" d="
+        M 0 24.84
+        L 5.5 24.84
+        L 5.5 43.16
+        L 0 43.16
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <circle id="left-penalty-kick-mark" cx="11" cy="34" r="0.12" fill="white" />
+      <!-- <circle cx="11" cy="34" r="9.15" stroke="yellow" fill="transparent" stroke-width="0.12" /> -->
+      <path id="left-goal-arc" d="
+        M 16.5 26.688
+        A 9.15 9.15 1 0 1 16.5 41.312
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="goal-line" d="
+      M 0 30.34
+      L 0 37.66" stroke-width="0.75" stroke="white" />
+      <path id="left-top-corner" d="
+      M 1 0
+      A 1 1 1 0 1 0 1
+      " stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="left-bottom-corner" d="
+      M 0 67
+      A 1 1 0 0 1 1 68
+      " stroke-width="0.12" stroke="white" fill="transparent"></path>
+    </g>
+    <g id="right-goal" transform="translate(105 68) rotate(180)">
+       <path id="right-eighteen-yd-box" d="
+        M 0 13.84
+        L 16.5 13.84
+        L 16.5 54.16
+        L 0 54.16
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="right-goal-area" d="
+        M 0 24.84
+        L 5.5 24.84
+        L 5.5 43.16
+        L 0 43.16
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <circle id="right-penalty-kick-mark" cx="11" cy="34" r="0.12" fill="white" />
+      <!-- <circle cx="11" cy="34" r="9.15" stroke="yellow" fill="transparent" stroke-width="0.12" /> -->
+      <path id="right-goal-arc" d="
+        M 16.5 26.688
+        A 9.15 9.15 1 0 1 16.5 41.312
+        Z" stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="right-goal-line" d="
+      M 0 30.34
+      L 0 37.66" stroke-width="0.75" stroke="white" />
+      <path id="right-top-corner" d="
+      M 1 0
+      A 1 1 1 0 1 0 1
+      " stroke-width="0.12" stroke="white" fill="transparent"></path>
+      <path id="right-bottom-corner" d="
+      M 0 67
+      A 1 1 0 0 1 1 68
+      " stroke-width="0.12" stroke="white" fill="transparent"></path>
+    </g>
+         <rect id="outside-perimeter" width="105" height="68" stroke-width="0.12" stroke="white" fill="transparent" />
+  </g>
+</svg>
+        <!-- endinject -->
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Football (IFAB)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    105 x 68
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Football Association Board (2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Football (IFAB)
+        </button>
+    </div>
+</a>
+
+            <a href="./soccer-ifab-yd" class="card" id="soccer-ifab-yd">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="soccer-ifab-yd-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 117 77">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect width="115" height="75" />
+    </clipPath>
+    <rect id="background" width="115" height="75" stroke="transparent" fill="#036602" />
+    <path id="halfway-line" d="M 57.5 0 L 57.5 75" stroke-width="0.138" stroke="white"></path>
+    <circle id="halfway-circle" cx="57.5" cy="37.5" r="10" fill="transparent" stroke-width="0.138" stroke="white">
+    </circle>
+    <g id="left-goal">
+      <path id="left-eighteen-yd-box" d="
+        M 0 15.5
+        L 18 15.5
+        L 18 59.5
+        L 0 59.5
+        Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
+      <path id="left-goal-area" d="
+        M 0 27.5
+        L 6 27.5
+        L 6 47.5
+        L 0 47.5
+        Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
+      <circle id="left-penalty-kick-mark" cx="12" cy="37.5" r="0.138" fill="white" />
+      <!-- <circle cx="12" cy="37.5" r="10" stroke="yellow" fill="transparent" stroke-width="0.138" /> -->
+      <path id="left-goal-arc" d="
+        M 18 29.5
+        A 10 10 1 0 1 18 45.5
+        Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
+      <path id="left-goal-line" d="
+      M 0 33.5
+      L 0 41.5" stroke-width="0.75" stroke="white" />
+      <path id="left-top-corner" d="
+      M 1 0
+      A 1 1 1 0 1 0 1
+      " stroke-width="0.138" stroke="white" fill="transparent"></path>
+      <path id="left-bottom-corner" d="
+      M 0 74
+      A 1 1 0 0 1 1 75
+      " stroke-width="0.138" stroke="white" fill="transparent"></path>
+    </g>
+    <g id="right-goal" transform="translate(115 75) rotate(180)">
+       <path id="right-eighteen-yd-box" d="
+        M 0 15.5
+        L 18 15.5
+        L 18 59.5
+        L 0 59.5
+        Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
+      <path id="right-goal-area" d="
+        M 0 27.5
+        L 6 27.5
+        L 6 47.5
+        L 0 47.5
+        Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
+      <circle id="right-penalty-kick-mark" cx="12" cy="37.5" r="0.138" fill="white" />
+      <!-- <circle cx="12" cy="37.5" r="10" stroke="yellow" fill="transparent" stroke-width="0.138" /> -->
+      <path id="right-goal-arc" d="
+        M 18 29.5
+        A 10 10 1 0 1 18 45.5
+        Z" stroke-width="0.138" stroke="white" fill="transparent"></path>
+      <path id="right-goal-line" d="
+      M 0 33.5
+      L 0 41.5" stroke-width="0.75" stroke="white" />
+      <path id="right-top-corner" d="
+      M 1 0
+      A 1 1 1 0 1 0 1
+      " stroke-width="0.138" stroke="white" fill="transparent"></path>
+      <path id="right-bottom-corner" d="
+      M 0 74
+      A 1 1 0 0 1 1 75
+      " stroke-width="0.138" stroke="white" fill="transparent"></path>
+    </g>
+         <rect id="outside-perimeter" width="115" height="75" stroke-width="0.138" stroke="white" fill="transparent" />
+  </g>
+</svg>
+        <!-- endinject -->
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Soccer (IFAB)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    115 x 75
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    yards
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Football Association Board (2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Soccer (IFAB)
+        </button>
+    </div>
+</a>
+
             <a href="./australian-rules" class="card" id="australian-rules">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="australian-rules-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 164 134">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="australian-rules-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 164 134">
   <g id="transformations">
     <clipPath id="clipBorder">
     <path id="background" d="
@@ -4540,41 +4998,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Australian Rules Football
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          162 x 132
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          AFL (2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Australian Rules Football
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Australian Rules Football
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    162 x 132
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    AFL (2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Australian Rules Football
+        </button>
+    </div>
 </a>
+
             <a href="./rugby-union" class="card" id="rugby-union">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="rugby-union-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 130 72">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="rugby-union-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 130 72">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect width="128" height="70" />
@@ -4681,41 +5143,45 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Rugby Union
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          100 x 70 (128 x 70 including in-goal areas)
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          World Rugby (2021)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Rugby Union
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Rugby Union
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    100 x 70 (128 x 70 including in-goal areas)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    World Rugby (2021)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Rugby Union
+        </button>
+    </div>
 </a>
+
             <a href="./gaa" class="card" id="gaa">
-  <div class="card-header">
-    <!-- inject:cardplayingarea -->
-    <svg id="gaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 147 92">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="gaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 147 92">
   <g id="transformations">
     <clipPath id="clipBorder">
       <rect width="145" height="90" />
@@ -4768,37 +5234,41 @@
   </g>
 </svg>
 
-    <!-- endinject -->
-  </div>
-  <div class="card-body">
-    <h6 class="card-title">
-      Hurling and Gaelic Football
-    </h6>
-    <div class="card-text">
-      <div>
-        <span class="bold">Dimensions: </span><span>
-          145 x 90
-        </span>
-      </div>
-      <div>
-        <span class="bold">Units: </span><span>
-          meters
-        </span>
-      </div>
-      <div>
-        <span class="bold">Specifications: </span><span>
-          Gaelic Athletic Association (2022)
-        </span>
-      </div>
+        <!-- endinject -->
     </div>
-  </div>
-  <div class="card-footer text-center white-bg">
-    <button type="button" class="grey-btn card-btn">
-      Go To
-      Hurling and Gaelic Football
-    </button>
-  </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Hurling and Gaelic Football
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    145 x 90
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    meters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    Gaelic Athletic Association (2022)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Hurling and Gaelic Football
+        </button>
+    </div>
 </a>
+
             <!-- endinject -->
         </div>
         <hr />
@@ -4818,6 +5288,11 @@
             element.setAttribute("href", y);
             element.setAttribute("onclick", "");
         }
+    </script>
+    <script type="module" src="/setup.js"></script>
+    <script type="module">
+        import { indexSetup } from "/setup.js";
+        indexSetup();
     </script>
     <footer class="center">
         <span>
