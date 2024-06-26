@@ -79,20 +79,22 @@ function customSoccerPlayingAreaSetup() {
         dataStorage.set("width", w);
         dataStorage.set("height", h);
         let rows = getRows();
-        for (let row of rows) {
-            // readjust coords
-            row.specialData.coords = [
-                halfw + parseFloat(row.rowData.x),
-                halfh + parseFloat(row.rowData.y),
-            ];
-            if (row.specialData.coords2) {
-                row.specialData.coords2 = [
-                    halfw + parseFloat(row.rowData.x2),
-                    halfh + parseFloat(row.rowData.y2),
+        if (rows) {
+            for (let row of rows) {
+                // readjust coords
+                row.specialData.coords = [
+                    halfw + parseFloat(row.rowData.x),
+                    halfh + parseFloat(row.rowData.y),
                 ];
+                if (row.specialData.coords2) {
+                    row.specialData.coords2 = [
+                        halfw + parseFloat(row.rowData.x2),
+                        halfh + parseFloat(row.rowData.y2),
+                    ];
+                }
             }
+            setRows(rows);
         }
-        setRows(rows);
     }
 
     const goal = inYards ? 8 : 7.32;
