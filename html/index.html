@@ -484,7 +484,7 @@
     <div class="card-header">
         <!-- inject:cardplayingarea -->
         <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
-  <g id="transformations">
+  <g id="transformations" clip-path="url(#iceClipBorder)">
     <clipPath id="clipBorder">
       <path
         d="
@@ -498,6 +498,20 @@
             A 8.5 8.5 0 0 1 0 21.5
             L 0 8.5"
             />
+    </clipPath>
+    <clipPath id="iceClipBorder">
+        <path
+          d="
+              M 0 8.5
+              A 8.5 8.5 0 0 1 8.5 0
+              L 51.5 0
+              A 8.5 8.5 0 0 1 60 8.5
+              L 60 21.5
+              A 8.5 8.5 0 0 1 51.5 30
+              L 8.5 30
+              A 8.5 8.5 0 0 1 0 21.5
+              L 0 8.5"
+              />
     </clipPath>
     <path
       id="background"
@@ -602,10 +616,10 @@
       </g>
     </g>
     <g id="goal-lines">
-      <path id="left-goal-line" d="M 4 1.25
-            L 4 28.75" stroke="#BE352A" stroke-width="0.05"/>
-      <path id="right-goal-line" d="M 56 1.25
-            L 56 28.75" stroke="#BE352A" stroke-width="0.05"/>
+      <path id="left-goal-line" d="M 4 0
+            L 4 30" stroke="#BE352A" stroke-width="0.05"/>
+      <path id="right-goal-line" d="M 56 0
+            L 56 30" stroke="#BE352A" stroke-width="0.05"/>
     </g>
     <g id="blue-lines">
       <path id="left-blue-line" d="M 22.5 0
@@ -615,28 +629,28 @@
     </g>
 
     <g id="faceoff-dots">
-      <g transform="translate(24, 8)">
+      <g id="top-left-dot" transform="translate(24, 8)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
       </g>
 
-      <g transform="translate(36, 8)">
+      <g id="top-right-dot" transform="translate(36, 8)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
       </g>
-      <g transform="translate(24, 22)">
+      <g id="bottom-left-dot" transform="translate(24, 22)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
       </g>
 
-      <g transform="translate(36, 22)">
+      <g id="bottom-right-dot" transform="translate(36, 22)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
       </g>
     </g>
 
     <g id="faceoff-circles">
-      <g transform="translate(10, 8)">
+      <g id="top-left-circle" transform="translate(10, 8)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
         <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
@@ -672,7 +686,7 @@
           L -1.8 -0.225
         "/>
       </g>
-      <g transform="translate(50, 8)">
+      <g id="top-right-circle" transform="translate(50, 8)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
         <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
@@ -708,7 +722,7 @@
           L -1.8 -0.225
         "/>
       </g>
-      <g transform="translate(10, 22)">
+      <g id="bottom-left-circle" transform="translate(10, 22)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
         <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
@@ -744,7 +758,7 @@
           L -1.8 -0.225
         "/>
       </g>
-      <g transform="translate(50, 22)">
+      <g id="bottom-right-circle" transform="translate(50, 22)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
         <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
@@ -823,7 +837,7 @@
             <div>
                 <span class="bold">Specifications: </span
                 ><span>
-                    International Ice Hockey Federation (2021-2022)
+                    International Ice Hockey Federation (2024-2025)
                 </span>
             </div>
         </div>

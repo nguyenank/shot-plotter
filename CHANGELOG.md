@@ -19,6 +19,11 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 
 -   Bandage fix for ghost dots not appearing promptly by disabling the size appearance transition for ghost dots.
 -   Fix sizing for default Soccer (NCAA) playing area.
+-   Fix dot transformation when changing dimensions on customizable dimension playing areas.
+
+### Changed
+
+-   Adjusted Ice Hockey (IIHF) playing area to allow customization of width and corner radius.
 
 ## [2.2.0] - 2024-06-26
 
@@ -272,7 +277,8 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 -   Ability to click on rink to create dot and add row to table with the current details.
 -   Ability to download and upload table.
 
-[2.1.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.2.0
+[2.3.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.3.0
+[2.2.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.2.0
 [2.1.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.1.0
 [2.0.1]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.0.1
 [2.0.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.0.0

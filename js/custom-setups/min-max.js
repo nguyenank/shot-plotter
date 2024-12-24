@@ -23,4 +23,12 @@ export const minMaxes = {
         minHeight: 85,
         maxHeight: 85,
     },
+    "ice-hockey-iihf": {
+        minWidth: 60,
+        maxWidth: 60,
+        minHeight: 26,
+        maxHeight: 30,
+        minCornerRadius: 7,
+        maxCornerRadius: 8.5,
+    },
 };

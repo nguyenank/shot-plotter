@@ -1,14 +1,15 @@
 export function customConfigSetup(config) {
-    if (
-        _.startsWith(config.id, "soccer") ||
-        _.startsWith(config.id, "indoor-lacrosse")
-    ) {
-        return customWidthHeightSetup(config);
+    const urlParams = new URLSearchParams(window.location.search);
+    var c = customWidthHeightSetup(urlParams, config);
+    if (config.appearance.hasOwnProperty("cornerRadius")) {
+        c.appearance.cornerRadius =
+            parseFloat(urlParams.get("cornerRadius")) ||
+            config.appearance.cornerRadius;
     }
+    return c;
 }
 
-function customWidthHeightSetup(config) {
-    const urlParams = new URLSearchParams(window.location.search);
+function customWidthHeightSetup(urlParams, config) {
     const w = parseFloat(urlParams.get("width")) || config.appearance.width;
     const h = parseFloat(urlParams.get("height")) || config.appearance.height;
     config.appearance.width = w;

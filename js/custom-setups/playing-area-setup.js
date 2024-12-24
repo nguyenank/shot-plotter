@@ -7,6 +7,8 @@ export function customPlayingAreaSetup() {
         customSoccerPlayingAreaSetup();
     } else if (_.startsWith(sport, "indoor-lacrosse")) {
         customIndoorLacrossePlayingAreaSetup();
+    } else if (sport === "ice-hockey-iihf") {
+        customIceHockeyPlayingAreaSetup();
     }
 }
 
@@ -67,12 +69,12 @@ function customSoccerPlayingAreaSetup() {
                 // readjust coords
                 row.specialData.coords = [
                     halfw + parseFloat(row.rowData.x),
-                    halfh + parseFloat(row.rowData.y),
+                    halfh - parseFloat(row.rowData.y),
                 ];
                 if (row.specialData.coords2) {
                     row.specialData.coords2 = [
                         halfw + parseFloat(row.rowData.x2),
-                        halfh + parseFloat(row.rowData.y2),
+                        halfh - parseFloat(row.rowData.y2),
                     ];
                 }
             }
@@ -204,12 +206,12 @@ function customIndoorLacrossePlayingAreaSetup() {
                 // readjust coords
                 row.specialData.coords = [
                     halfw + parseFloat(row.rowData.x),
-                    halfh + parseFloat(row.rowData.y),
+                    halfh - parseFloat(row.rowData.y),
                 ];
                 if (row.specialData.coords2) {
                     row.specialData.coords2 = [
                         halfw + parseFloat(row.rowData.x2),
-                        halfh + parseFloat(row.rowData.y2),
+                        halfh - parseFloat(row.rowData.y2),
                     ];
                 }
             }
@@ -298,4 +300,191 @@ function customIndoorLacrossePlayingAreaSetup() {
              Z`
         );
     }
+}
+
+function customIceHockeyPlayingAreaSetup() {
+    const minMax = minMaxes[sport];
+
+    let w = cfgSportA.width;
+    let h = cfgSportA.height;
+    let crad = cfgSportA.cornerRadius;
+    let errorString = [];
+    if (w < minMax.minWidth || w > minMax.maxWidth) {
+        errorString.push(
+            `Specified width (${w}) not within permitted range [${minMax.minWidth}, ${minMax.maxWidth}].`
+        );
+        w = 0;
+    }
+    if (h < minMax.minHeight || h > minMax.maxHeight) {
+        errorString.push(
+            `Specified height (${h}) not within permitted range [${minMax.minHeight}, ${minMax.maxHeight}].`
+        );
+        h = 0;
+    }
+    if (h >= w && w != 0) {
+        errorString.push(
+            `Specified width (${w}) must be larger than specified height (${h}).`
+        );
+        h = 0;
+    }
+    if (crad < minMax.minCornerRadius || crad > minMax.maxCornerRadius) {
+        errorString.push(
+            `Specified corner radius (${crad}) not within permitted range [${minMax.minCornerRadius}, ${minMax.maxCornerRadius}].`
+        );
+        crad = 0;
+    }
+
+    if (errorString.length > 0) {
+        const errorMessage = d3
+            .select("#playing-area")
+            .insert("div", "svg")
+            .attr("class", "center")
+            .attr("id", "custom-pa-error-message")
+            .append("div");
+        errorMessage
+            .append("div")
+            .text("ERROR: Invalid Dimensions")
+            .attr("class", "bold");
+        for (const line of errorString) {
+            errorMessage.append("div").text(line);
+        }
+    }
+
+    const storedWidth = dataStorage.get("width");
+    const storedHeight = dataStorage.get("height");
+
+    const halfw = w / 2;
+    const halfh = h / 2;
+
+    if (w !== 0 && h !== 0 && (storedWidth !== w || storedHeight !== h)) {
+        dataStorage.set("width", w);
+        dataStorage.set("height", h);
+        let rows = getRows();
+        if (rows) {
+            for (let row of rows) {
+                // readjust coords
+                console.log(row);
+                row.specialData.coords = [
+                    halfw + parseFloat(row.rowData.x),
+                    halfh - parseFloat(row.rowData.y),
+                ];
+                if (row.specialData.coords2) {
+                    row.specialData.coords2 = [
+                        halfw + parseFloat(row.rowData.x2),
+                        halfh - parseFloat(row.rowData.y2),
+                    ];
+                }
+            }
+            setRows(rows);
+        }
+    }
+
+    const svg = d3.select(`#${sport}-svg`);
+    svg.attr("viewBox", `-1 -1 ${w + 2} ${h + 2}`);
+
+    const borderPath = `
+    M 0 ${crad}
+    A ${crad} ${crad} 0 0 1 ${crad} 0
+    L ${w - crad} 0
+    A ${crad} ${crad} 0 0 1 ${w} ${crad}
+    L ${w} ${h - crad}
+    A ${crad} ${crad} 0 0 1 ${w - crad} ${h}
+    L ${crad} ${h}
+    A ${crad} ${crad} 0 0 1 0 ${h - crad}
+    L 0 ${crad}
+    `;
+
+    const trans = svg.select("#transformations");
+
+    trans.selectAll("clipPath").selectAll("path").attr("d", borderPath);
+    trans.select("#background").attr("d", borderPath);
+    trans.select("#outside-perimeter").attr("d", borderPath);
+
+    trans.select("#center-dot").attr("cy", halfh);
+    trans.select("#center-circle").attr("cy", halfh);
+    trans
+        .select("#center-line")
+        .attr(
+            "d",
+            `M 30 0 L 30 ${halfh - 0.25} M 30 ${halfh + 0.25} L 30 ${h}`
+        );
+
+    trans
+        .select("#officials-crease")
+        .attr("d", `M 27 ${h} A 3 3 0 0 1 33 ${h}`);
+
+    for (const dir of ["left", "right"]) {
+        const ga = trans.select(`#${dir}-goalie-crease`);
+        if (dir === "right") {
+            ga.attr("transform", `translate(${w} ${h}) rotate(180)`);
+        }
+
+        ga.select(`#${dir}-trapezoid`).attr(
+            "d",
+            `M 4 ${halfh - 3.4} L 0 ${halfh - 4.3} M 4 ${halfh + 3.54} L 0 ${
+                halfh + 4.3
+            }`
+        );
+
+        ga.select(`#${dir}-goal-crease`).attr(
+            "d",
+            `M 4 ${halfh - 2.45 / 2}
+            L 5.36 ${halfh - 2.45 / 2}
+            A 1.83 1.83 0 0 1 5.36 ${halfh + 2.45 / 2}
+            L 4 ${halfh + 2.45 / 2}`
+        );
+
+        ga.select(`#${dir}-goal-crease-markings`).attr(
+            "d",
+            `M 5.22 ${halfh - 2.45 / 2}
+            L 5.22 ${halfh - 2.45 / 2 + 0.2}
+            M 5.22  ${halfh + 2.45 / 2 - 0.2}
+            L 5.22 ${halfh + 2.45 / 2}`
+        );
+
+        ga.select(`#${dir}-goal`).attr(
+            "d",
+            `
+                  M 4 ${halfh - 0.915}
+                  L 3.6 ${halfh - 0.915}
+                  A 0.4 0.4 0 0 0 3.4 ${halfh - 0.515}
+                  L 3.4 ${halfh + 0.515}
+                  A 0.4 0.4 0 0 0 3.6 ${halfh + 0.915}
+                  L 4 ${halfh + 0.915}
+
+                  L 3.38 ${halfh + 1.025}
+                  A 0.5 0.5 0 0 1 2.88 ${halfh + 0.525}
+                  L 2.88 ${halfh - 0.525}
+                  A 0.5 0.5 0 0 1 3.38 ${halfh - 1.025}
+                  L 4 ${halfh - 0.915}`
+        );
+    }
+
+    const faceoffDots = trans.select("#faceoff-dots");
+    faceoffDots
+        .select("#top-left-dot")
+        .attr("transform", `translate(24, ${halfh - 7})`);
+    faceoffDots
+        .select("#top-right-dot")
+        .attr("transform", `translate(36, ${halfh - 7})`);
+    faceoffDots
+        .select("#bottom-left-dot")
+        .attr("transform", `translate(24, ${halfh + 7})`);
+    faceoffDots
+        .select("#bottom-right-dot")
+        .attr("transform", `translate(36, ${halfh + 7})`);
+
+    const faceOffCircles = trans.select("#faceoff-circles");
+    faceOffCircles
+        .select("#top-left-circle")
+        .attr("transform", `translate(10, ${halfh - 7})`);
+    faceOffCircles
+        .select("#top-right-circle")
+        .attr("transform", `translate(50, ${halfh - 7})`);
+    faceOffCircles
+        .select("#bottom-left-circle")
+        .attr("transform", `translate(10, ${halfh + 7})`);
+    faceOffCircles
+        .select("#bottom-right-circle")
+        .attr("transform", `translate(50, ${halfh + 7})`);
 }
