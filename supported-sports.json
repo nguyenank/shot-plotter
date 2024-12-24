@@ -1281,6 +1281,79 @@
             ]
         },
         {
+            "id": "indoor-lacrosse",
+            "name": "Indoor Lacrosse (NLL)",
+            "units": "feet",
+            "specifications": "National Lacrosse League (2024-2025)",
+            "needsCustomSetup": true,
+            "dimensions": "200 x 85",
+            "scoringArea": "net",
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "200",
+                "height": "85",
+                "circleR": "2",
+                "polyR": "2.75",
+                "fontSize": "0.15rem",
+                "strokeWidth": "0.5px",
+                "heatMapScale": 1.25,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
+            },
+            "goalCoords": [
+                [12, 42.5],
+                [188, 42.5]
+            ],
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" },
+                        { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "football-nfl",
             "name": "Football (NFL)",
             "units": "yards",

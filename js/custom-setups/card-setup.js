@@ -1,30 +1,16 @@
+import { minMaxes } from "./min-max.js";
+
 export function customCardSetup(s) {
-    if (_.startsWith(s.id, "soccer")) {
-        customSoccerCardSetup(s.id, s.appearance.width, s.appearance.height);
+    if (_.startsWith(s.id, "soccer") || _.startsWith(s.id, "indoor-lacrosse")) {
+        customWidthHeightCardSetup(
+            s.id,
+            s.appearance.width,
+            s.appearance.height
+        );
     }
 }
 
-function customSoccerCardSetup(id, width, height) {
-    const minMaxes = {
-        "soccer-ifab-yd": {
-            minWidth: 100,
-            maxWidth: 130,
-            minHeight: 50,
-            maxHeight: 100,
-        },
-        "soccer-ifab-m": {
-            minWidth: 90,
-            maxWidth: 120,
-            minHeight: 45,
-            maxHeight: 90,
-        },
-        "soccer-ncaa": {
-            minWidth: 115,
-            maxWidth: 120,
-            minHeight: 70,
-            maxHeight: 75,
-        },
-    };
+function customWidthHeightCardSetup(id, width, height) {
     const card = d3.select(`#${id}`).attr("href", undefined);
     const dim = card.select(".card-text").select(".dimensions");
     const minMax = minMaxes[id];
@@ -53,10 +39,13 @@ function customSoccerCardSetup(id, width, height) {
         .attr("name", `${id}-height`)
         .attr("min", minMax.minHeight)
         .attr("max", minMax.maxHeight)
-        .attr("value", height);
-    heightField
-        .append("span")
-        .text(`(min: ${minMax.minHeight}, max: ${minMax.maxHeight})`);
+        .attr("value", height)
+        .attr("disabled", minMax.minHeight === minMax.maxHeight ? true : null);
+    if (minMax.minHeight !== minMax.maxHeight) {
+        heightField
+            .append("span")
+            .text(`(min: ${minMax.minHeight}, max: ${minMax.maxHeight})`);
+    }
 
     card.select("button").on("click", function () {
         const width = d3.select(`#${id}-width`).property("value");

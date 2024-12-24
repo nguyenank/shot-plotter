@@ -1,10 +1,13 @@
 export function customConfigSetup(config) {
-    if (_.startsWith(config.id, "soccer")) {
-        return customSoccerConfigSetup(config);
+    if (
+        _.startsWith(config.id, "soccer") ||
+        _.startsWith(config.id, "indoor-lacrosse")
+    ) {
+        return customWidthHeightSetup(config);
     }
 }
 
-function customSoccerConfigSetup(config) {
+function customWidthHeightSetup(config) {
     const urlParams = new URLSearchParams(window.location.search);
     const w = parseFloat(urlParams.get("width")) || config.appearance.width;
     const h = parseFloat(urlParams.get("height")) || config.appearance.height;
