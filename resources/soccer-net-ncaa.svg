@@ -1,0 +1,14 @@
+<svg id="soccer-net-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 300 103">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+        <rect width="298" height="101" />
+    </clipPath>
+    <g id="frame">
+        <rect width="298" height="101" fill="#bbbbbb" />
+    </g>
+    <rect id="ground" x="-10" y="101" width="308" height="1" fill="black" />
+    <rect x="5" y="5" width="288" height="96" fill="#f2f2f2" />
+    <rect id="outside-perimeter" width="298" height="101" fill="transparent" />
+  </g>
+</svg>
+

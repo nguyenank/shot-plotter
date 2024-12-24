@@ -1629,6 +1629,72 @@
             ]
         },
         {
+            "id": "soccer-net-ncaa",
+            "name": "Soccer Net (NCAA)",
+            "units": "inches",
+            "specifications": "National Collegiate Athletic Association (2024 & 2025)",
+            "dimensions": "288 x 96 (298 x 101 including posts)",
+            "scoringArea": null,
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "298",
+                "height": "101",
+                "circleR": "4.16",
+                "polyR": "5.72",
+                "fontSize": "0.312rem",
+                "strokeWidth": "1.04px",
+                "heatMapScale": 0.6,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "OT1" },
+                        { "value": "OT2" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "soccer-ifab-m",
             "name": "Football (IFAB)",
             "units": "meters",
@@ -1766,6 +1832,72 @@
                         { "value": "Goal" },
                         { "value": "Block" },
                         { "value": "Miss" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
+            "id": "soccer-net-ifab",
+            "name": "Football Net (IFAB)",
+            "units": "centimeters",
+            "specifications": "International Football Association Board (2025)",
+            "dimensions": "732 x 244 (756 x 256 including posts)",
+            "scoringArea": null,
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "756",
+                "height": "256",
+                "circleR": "10.25",
+                "polyR": "14.09",
+                "fontSize": "0.77rem",
+                "strokeWidth": "2.56px",
+                "heatMapScale": 0.24,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "OT1" },
+                        { "value": "OT2" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" },
+                        { "value": "Block" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },

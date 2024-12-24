@@ -7,6 +7,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to the spirit of [Semantic Versioning](https://semver.org/spec/v2.0.0.html) as best it can without a proper API.
 
+## [2.3.0] - 2024-12-23
+
+#### New Playing Areas
+
+-   Football Net (IFAB)
+-   Soccer Net (NCAA)
+
+### Fixed
+
+-   Bandage fix for ghost dots not appearing promptly by disabling the size appearance transition for ghost dots.
+-   Fix sizing for default Soccer (NCAA) playing area.
+
 ## [2.2.0] - 2024-06-26
 
 ### Added
@@ -22,7 +34,7 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 
 ### Changed
 
--   Adjusted Football (NCAA) playing area to also allow customization of field height and width.
+-   Adjusted Soccer (NCAA) playing area to also allow customization of field height and width.
 
 ## [2.1.0] - 2023-09-30
 

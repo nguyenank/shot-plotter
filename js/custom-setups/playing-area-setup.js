@@ -2,7 +2,7 @@ import { sport, cfgSportA, dataStorage } from "../../setup.js";
 import { setRows, getRows } from "../table/table-functions.js";
 
 export function customPlayingAreaSetup() {
-    if (_.startsWith(sport, "soccer")) {
+    if (_.startsWith(sport, "soccer") && !_.startsWith(sport, "soccer-net")) {
         customSoccerPlayingAreaSetup();
     }
 }
