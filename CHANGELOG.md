@@ -9,6 +9,8 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 
 ## [2.3.0] - 2024-12-26
 
+### Added
+
 #### New Playing Areas
 
 -   Football Net (IFAB)
