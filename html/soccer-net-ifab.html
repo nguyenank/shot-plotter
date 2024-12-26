@@ -114,84 +114,17 @@
                     <div id="toggles"></div>
                     <div id="playing-area">
                         <!-- inject:playingarea -->
-                        <svg id="soccer-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 122 77">
+                        <svg id="soccer-net-ifab-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 758 258">
   <g id="transformations">
     <clipPath id="clipBorder">
-      <rect width="120" height="75" />
+        <rect x="-4" width="764" height="256" />
     </clipPath>
-    <rect id="background" width="120" height="75" fill="#036602"/>
-    <path id="halfway-line" d="M 60 0 L 60 75" stroke-width="0.1389" stroke="white"></path>
-    <circle id="halfway-circle" cx="60" cy="37.5" r="10" fill="transparent" stroke-width="0.1389" stroke="white">
-    </circle>
-    <g id="left-goal">
-      <path id="left-eighteen-yd-box" d="
-        M 0 15.5
-        L 18 15.5
-        L 18 59.5
-        L 0 59.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="left-goal-area" d="
-        M 0 27.5
-        L 6 27.5
-        L 6 47.5
-        L 0 47.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="left-penalty-kick-mark" d="
-        M 12 37.167
-        L 12 37.8333
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="left-goal-arc" d="
-        M 18 29.5
-        A 10 10 1 0 1 18 45.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-
-      <path id="left-goal-line" d="
-      M 0 33.5
-      L 0 41.5" stroke-width="0.75" stroke="white"></path>
-      <path id="left-top-corner" d="
-      M 1 0
-      A 1 1 1 0 1 0 1
-      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="left-bottom-corner" d="
-      M 0 74
-      A 1 1 0 0 1 1 75
-      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
+    <g id="frame">
+        <rect width="756" height="256" fill="#bbbbbb" />
     </g>
-    <g id="right-goal" transform="translate(120 75) rotate(180)">
-      <path id="right-eighteen-yd-box" d="
-        M 0 15.5
-        L 18 15.5
-        L 18 59.5
-        L 0 59.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="right-goal-area" d="
-        M 0 27.5
-        L 6 27.5
-        L 6 47.5
-        L 0 47.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="right-penalty-kick-mark" d="
-        M 12 37.167
-        L 12 37.8333
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="right-goal-arc" d="
-        M 18 29.5
-        A 10 10 1 0 1 18 45.5
-        Z" stroke-width="0.1389" stroke="white" fill="transparent"></path>
-
-      <path id="right-goal-line" d="
-      M 0 33.5
-      L 0 41.5" stroke-width="0.75" stroke="white"></path>
-      <path id="right-top-corner" d="
-      M 1 0
-      A 1 1 1 0 1 0 1
-      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
-      <path id="right-bottom-corner" d="
-      M 0 74
-      A 1 1 0 0 1 1 75
-      " stroke-width="0.1389" stroke="white" fill="transparent"></path>
-    </g>
-    <rect width="120" height="75" stroke-width="0.1389" stroke="white" fill="transparent"/>
+    <rect x="12" y="12" width="732" height="244" fill="#f2f2f2" />
+    <rect id="ground" x="-4" y="255" width="777" height="2" fill="black" />
+    <rect id="outside-perimeter" width="756" height="256" fill="transparent" />
   </g>
 </svg>
                         <!-- endinject -->
@@ -210,7 +143,7 @@
         <script type="module" src="/setup.js"></script>
         <script type="module">
             import { setup } from "/setup.js";
-            setup("soccer-ncaa");
+            setup("soccer-net-ifab");
         </script>
         <!-- bootstrap -->
         <script

@@ -50,8 +50,8 @@
     <body>
         <!-- inject:banner -->
         <div class="alert alert-info" role="alert">
-    <b>06/24/24:</b> Fistball and handball net have been added, as well as
-    soccer/football fields with customizable sizes!
+    <b>12/26/24:</b> Football/soccer net and indoor lacrosse have been added, as
+    well as customizable dimensions for the IIHF hockey rink!
 </div>
 
         <!-- endinject -->
@@ -484,7 +484,7 @@
     <div class="card-header">
         <!-- inject:cardplayingarea -->
         <svg id="ice-hockey-iihf-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 62 32">
-  <g id="transformations">
+  <g id="transformations" clip-path="url(#iceClipBorder)">
     <clipPath id="clipBorder">
       <path
         d="
@@ -498,6 +498,20 @@
             A 8.5 8.5 0 0 1 0 21.5
             L 0 8.5"
             />
+    </clipPath>
+    <clipPath id="iceClipBorder">
+        <path
+          d="
+              M 0 8.5
+              A 8.5 8.5 0 0 1 8.5 0
+              L 51.5 0
+              A 8.5 8.5 0 0 1 60 8.5
+              L 60 21.5
+              A 8.5 8.5 0 0 1 51.5 30
+              L 8.5 30
+              A 8.5 8.5 0 0 1 0 21.5
+              L 0 8.5"
+              />
     </clipPath>
     <path
       id="background"
@@ -602,10 +616,10 @@
       </g>
     </g>
     <g id="goal-lines">
-      <path id="left-goal-line" d="M 4 1.25
-            L 4 28.75" stroke="#BE352A" stroke-width="0.05"/>
-      <path id="right-goal-line" d="M 56 1.25
-            L 56 28.75" stroke="#BE352A" stroke-width="0.05"/>
+      <path id="left-goal-line" d="M 4 0
+            L 4 30" stroke="#BE352A" stroke-width="0.05"/>
+      <path id="right-goal-line" d="M 56 0
+            L 56 30" stroke="#BE352A" stroke-width="0.05"/>
     </g>
     <g id="blue-lines">
       <path id="left-blue-line" d="M 22.5 0
@@ -615,28 +629,28 @@
     </g>
 
     <g id="faceoff-dots">
-      <g transform="translate(24, 8)">
+      <g id="top-left-dot" transform="translate(24, 8)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
       </g>
 
-      <g transform="translate(36, 8)">
+      <g id="top-right-dot" transform="translate(36, 8)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
       </g>
-      <g transform="translate(24, 22)">
+      <g id="bottom-left-dot" transform="translate(24, 22)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
       </g>
 
-      <g transform="translate(36, 22)">
+      <g id="bottom-right-dot" transform="translate(36, 22)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
       </g>
     </g>
 
     <g id="faceoff-circles">
-      <g transform="translate(10, 8)">
+      <g id="top-left-circle" transform="translate(10, 8)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
         <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
@@ -672,7 +686,7 @@
           L -1.8 -0.225
         "/>
       </g>
-      <g transform="translate(50, 8)">
+      <g id="top-right-circle" transform="translate(50, 8)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
         <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
@@ -708,7 +722,7 @@
           L -1.8 -0.225
         "/>
       </g>
-      <g transform="translate(10, 22)">
+      <g id="bottom-left-circle" transform="translate(10, 22)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
         <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
@@ -744,7 +758,7 @@
           L -1.8 -0.225
         "/>
       </g>
-      <g transform="translate(50, 22)">
+      <g id="bottom-right-circle" transform="translate(50, 22)">
         <circle cx="0" cy="0" r="0.3" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
         <rect x="-0.175" y="-0.275" width="0.35" height="0.55" fill="#BE352A"/>
         <circle cx="0" cy="0" r="4.5" stroke="#BE352A" stroke-width="0.05" fill="transparent"/>
@@ -823,7 +837,7 @@
             <div>
                 <span class="bold">Specifications: </span
                 ><span>
-                    International Ice Hockey Federation (2021-2022)
+                    International Ice Hockey Federation (2024-2025)
                 </span>
             </div>
         </div>
@@ -2793,6 +2807,99 @@
     </div>
 </a>
 
+            <a href="./indoor-lacrosse" class="card" id="indoor-lacrosse">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="indoor-lacrosse-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 202 87">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <path d="M 0 28
+            A 28 28 0 0 1 28 0
+            L 172 0
+            A 28 28 0 0 1 200 28
+            L 200 57
+            A 28 28 0 0 1 172 85
+            L 29 85
+            A 28 28 0 0 1 0 57
+            L 0 28"/>
+    </clipPath>
+    <path id="background" d="M 0 28
+      A 28 28 0 0 1 28 0
+      L 172 0
+      A 28 28 0 0 1 200 28
+      L 200 57
+      A 28 28 0 0 1 172 85
+      L 28 85
+      A 28 28 0 0 1 0 57
+      L 0 28" fill="#036602" stroke="black" stroke-width="0.25" />
+    <path id="line-change-area" d="M 64 0 L 64 3 L 136 3 L 136 0" stroke="white" stroke-width="0.167" fill="transparent" />
+    <line id="center-line" y1="0" y2="85" x1="100" x2="100" stroke="white" stroke-width="0.4167" />
+    <circle id="center-dot" cx="100" cy="42.5" r="0.35" stroke="white" stroke-width="0.167" fill="#036602" />
+    <circle id="dotted-circle" cx="100" cy="42.5" r="1.417" stroke="white" stroke-width="0.167" fill="transparent" stroke-dasharray="0.45" />
+    <circle id="outer-central-circle" cx="100" cy="42.5" r="11" stroke="white" stroke-width="0.4167" fill="transparent" />
+    <path id="timer-crease" d="M 90 85 A 10 10 0 0 1 110 85" stroke="white" stroke-width="0.167" fill="transparent" />
+    <g id="left-side">
+      <line id="left-restraining-line" y1="0" y2="85" x1="57.5" x2="57.5" stroke="white" stroke-width="0.4167" />
+      <circle id="left-upper-faceoff-dot" cx="42.5" cy="15" r="0.4167" fill="white" />
+      <circle id="left-lower-faceoff-dot" cx="42.5" cy="70" r="0.4167" fill="white"/>
+      <line id="left-goal-line" y1="33.25" y2="51.75" x1="12" x2="12" stroke="white" stroke-width="0.167" />
+      <path id="left-goal-net" d="M 12 40.125 L 8.17777 42.5 L 12 44.875" stroke="orange" stroke-width="0.125" fill="transparent" />
+      <path id="left-goal-crease" d="M 7.17778 34.60642 A 9.25 9.25 0 1 1 7.17778 50.39358 Z" stroke="white" stroke-width="0.4167" fill="transparent" />
+    </g>
+    <g id="right-side" transform="translate(200 85) rotate(180)">
+      <line id="right-restraining-line" y1="0" y2="85" x1="57.5" x2="57.5" stroke="white" stroke-width="0.4167" />
+      <circle id="right-upper-faceoff-dot" cx="42.5" cy="15" r="0.4167" fill="white" />
+      <circle id="right-lower-faceoff-dot" cx="42.5" cy="70" r="0.4167" fill="white"/>
+      <line id="right-goal-line" y1="33.5" y2="52" x1="12" x2="12" stroke="white" stroke-width="0.167" />
+      <path id="right-goal-net" d="M 12 40.125 L 8.17777 42.5 L 12 44.875" stroke="orange" stroke-width="0.125" fill="transparent" />
+      <path id="right-goal-crease" d="M 7.17778 34.60642 A 9.25 9.25 0 1 1 7.17778 50.39358 Z" stroke="white" stroke-width="0.4167" fill="transparent" />
+    </g>
+    <path id="outside-perimeter" d="M 0 28
+      A 28 28 0 0 1 28 0
+      L 172 0
+      A 28 28 0 0 1 200 28
+      L 200 57
+      A 28 28 0 0 1 172 85
+      L 28 85
+      A 28 28 0 0 1 0 57
+      L 0 28" fill="transparent" stroke="black" stroke-width="0.25" />
+  </g>
+</svg>
+        <!-- endinject -->
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Indoor Lacrosse (NLL)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    200 x 85
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    feet
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Lacrosse League (2024-2025)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Indoor Lacrosse (NLL)
+        </button>
+    </div>
+</a>
+
             <a href="./football-nfl" class="card" id="football-nfl">
     <div class="card-header">
         <!-- inject:cardplayingarea -->
@@ -4572,7 +4679,7 @@
     <clipPath id="clipBorder">
       <rect width="120" height="75" />
     </clipPath>
-    <rect id="background" width="115" height="75" fill="#036602"/>
+    <rect id="background" width="120" height="75" fill="#036602"/>
     <path id="halfway-line" d="M 60 0 L 60 75" stroke-width="0.1389" stroke="white"></path>
     <circle id="halfway-circle" cx="60" cy="37.5" r="10" fill="transparent" stroke-width="0.1389" stroke="white">
     </circle>
@@ -4644,7 +4751,7 @@
       A 1 1 0 0 1 1 75
       " stroke-width="0.1389" stroke="white" fill="transparent"></path>
     </g>
-    <rect width="115" height="75" stroke-width="0.1389" stroke="white" fill="transparent"/>
+    <rect width="120" height="75" stroke-width="0.1389" stroke="white" fill="transparent"/>
   </g>
 </svg>
         <!-- endinject -->
@@ -4678,6 +4785,59 @@
         <button type="button" class="grey-btn card-btn">
             Go To
             Soccer (NCAA)
+        </button>
+    </div>
+</a>
+
+            <a href="./soccer-net-ncaa" class="card" id="soccer-net-ncaa">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="soccer-net-ncaa-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 300 103">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+        <rect x="-2" width="302" height="101.5" />
+    </clipPath>
+    <g id="frame">
+        <rect width="298" height="101" fill="#bbbbbb" />
+    </g>
+    <rect x="5" y="5" width="288" height="96" fill="#f2f2f2" />
+    <rect id="ground" x="-2" y="101" width="305" height="1" fill="black" />
+    <rect id="outside-perimeter" width="298" height="101" fill="transparent" />
+  </g>
+</svg>
+
+
+        <!-- endinject -->
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Soccer Net (NCAA)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    288 x 96 (298 x 101 including posts)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    inches
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    National Collegiate Athletic Association (2024 & 2025)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Soccer Net (NCAA)
         </button>
     </div>
 </a>
@@ -4902,6 +5062,57 @@
         <button type="button" class="grey-btn card-btn">
             Go To
             Soccer (IFAB)
+        </button>
+    </div>
+</a>
+
+            <a href="./soccer-net-ifab" class="card" id="soccer-net-ifab">
+    <div class="card-header">
+        <!-- inject:cardplayingarea -->
+        <svg id="soccer-net-ifab-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 758 258">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+        <rect x="-4" width="764" height="256" />
+    </clipPath>
+    <g id="frame">
+        <rect width="756" height="256" fill="#bbbbbb" />
+    </g>
+    <rect x="12" y="12" width="732" height="244" fill="#f2f2f2" />
+    <rect id="ground" x="-4" y="255" width="777" height="2" fill="black" />
+    <rect id="outside-perimeter" width="756" height="256" fill="transparent" />
+  </g>
+</svg>
+        <!-- endinject -->
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+            Football Net (IFAB)
+        </h6>
+        <div class="card-text">
+            <div class="dimensions">
+                <span class="bold">Dimensions: </span
+                ><span>
+                    732 x 244 (756 x 256 including posts)
+                </span>
+            </div>
+            <div>
+                <span class="bold">Units: </span
+                ><span>
+                    centimeters
+                </span>
+            </div>
+            <div>
+                <span class="bold">Specifications: </span
+                ><span>
+                    International Football Association Board (2025)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center white-bg">
+        <button type="button" class="grey-btn card-btn">
+            Go To
+            Football Net (IFAB)
         </button>
     </div>
 </a>
