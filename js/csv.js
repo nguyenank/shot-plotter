@@ -1,5 +1,6 @@
 import {
     getDetails,
+    getDetailTitle,
     existsDetail,
     getCurrentShotTypes,
     getTypeIndex,
@@ -141,7 +142,7 @@ function processCSV(uploadId, row, swapTeamColor) {
 
     // add any new shot type options
     if (existsDetail("#shot-type")) {
-        const value = row.Type ? row.Type : row.Outcome;
+        const value = row[getDetailTitle("#shot-type")];
         const typeOptions = getCurrentShotTypes().map((x) => x.value);
         if (typeOptions.indexOf(value) === -1) {
             d3.select("#shot-type-select").append("option").text(value);
@@ -156,23 +157,20 @@ function processCSV(uploadId, row, swapTeamColor) {
 
     let teamColor;
     if (existsDetail("#team")) {
+        const team = row[getDetailTitle("#team")];
         // add any new team name
-        if (!row.Team) {
+        if (!team) {
             teamColor = "blueTeam";
-        } else if (
-            row.Team === d3.select("#blue-team-name").property("value")
-        ) {
+        } else if (team === d3.select("#blue-team-name").property("value")) {
             teamColor = "blueTeam";
-        } else if (
-            row.Team === d3.select("#orange-team-name").property("value")
-        ) {
+        } else if (team === d3.select("#orange-team-name").property("value")) {
             teamColor = "orangeTeam";
         } else {
             const swapTeamId =
                 swapTeamColor === "blueTeam"
                     ? "#blue-team-name"
                     : "#orange-team-name";
-            d3.select(swapTeamId).property("value", row.Team);
+            d3.select(swapTeamId).property("value", team);
             teamLegend();
             saveCurrentSetup();
             createFilterRow(getDetails());
