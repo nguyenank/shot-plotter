@@ -94,22 +94,13 @@ function createShape({
         if (legendBool) {
             // do not transition for legend
             circle.attr("r", cfgAppearance.legendR);
-        } else if (ghostBool) {
-            // do not transition for ghost dots
-            circle.attr("r", cfgSportA.circleR / 2);
         } else {
-            // start with radius 1
-            circle.attr("r", 1);
-            // tranform it to have radius 0 with no transition
-            dotSizeHandler(id, 0, 1, 0);
-            // tranform to correct radius
-            dotSizeHandler(
-                id,
+            // do not transition for ghost dots
+            circle.attr(
+                "r",
                 pointTwoBool || ghostBool
                     ? cfgSportA.circleR / 2
-                    : cfgSportA.circleR,
-                1,
-                cfgAppearance.newDotDuration
+                    : cfgSportA.circleR
             );
         }
     } else {
@@ -121,7 +112,7 @@ function createShape({
                 "points",
                 polygon(coords[0], coords[1], cfgAppearance.legendR, sides)
             );
-        } else if (ghostBool) {
+        } else {
             // do not transition for ghost dots
             g.append("polygon")
                 .attr("class", "ghost-shot")
@@ -130,25 +121,24 @@ function createShape({
                 .style("stroke", cfgAppearance[team + "Solid"])
                 .attr(
                     "points",
-                    polygon(coords[0], coords[1], cfgSportA.polyR / 2, sides)
+                    polygon(
+                        coords[0],
+                        coords[1],
+                        pointTwoBool || ghostBool
+                            ? cfgSportA.polyR / 2
+                            : cfgSportA.polyR,
+                        sides
+                    )
                 );
-        } else {
-            // start with radius 1
-            g.append("polygon")
-                .style("fill", cfgAppearance[team])
-                .style("stroke-width", "0.05px")
-                .style("stroke", cfgAppearance[team + "Solid"])
-                .attr("points", polygon(coords[0], coords[1], 1, sides));
-            // tranform it to have radius 0 with no transition
-            dotSizeHandler(id, 0, 1, 0);
-            // tranform to correct radius
-            dotSizeHandler(
-                id,
-                pointTwoBool ? cfgSportA.polyR / 2 : cfgSportA.polyR,
-                1,
-                cfgAppearance.newDotDuration
-            );
         }
+    }
+
+    const line = d3
+        .select("#dots")
+        .select("[id='" + id + "']")
+        .select("polyline");
+    if (!line.empty()) {
+        line.style("opacity", line.style("opacity") === "0.3" ? 0.7 : 0.3);
     }
 }
 
