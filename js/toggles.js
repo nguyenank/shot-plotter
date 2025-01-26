@@ -127,11 +127,11 @@ export function adjCoordsFunctionality() {
 
 export function heatMapFunctionality() {
     function setOn() {
-        d3.select("#dots").attr("display", "none");
+        d3.select("#dots").style("display", "none");
         heatMap();
     }
     function setOff() {
-        d3.select("#dots").attr("display", "contents");
+        d3.select("#dots").style("display", "inline");
         d3.select("#heat-map").selectAll("*").remove();
     }
     if (getCustomSetup().heatMapEnable) {
