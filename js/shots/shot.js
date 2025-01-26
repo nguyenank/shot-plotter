@@ -53,24 +53,19 @@ function setUpShots() {
                           .select("#shot-type")
                           .select("select")
                           .property("value");
-                createDot(
-                    "#ghost",
-                    "ghost-dot",
-                    {
-                        id: "ghost-dot",
-                        typeIndex: getTypeIndex(type),
-                        teamColor: d3
-                            .select("input[name='team-bool']:checked")
-                            .empty()
-                            ? null
-                            : d3
-                                  .select("input[name='team-bool']:checked")
-                                  .property("value"),
-                        coords: d3.pointer(e),
-                        ghostBool: true,
-                    },
-                    "visible"
-                );
+                createDot("#ghost", "ghost-dot", {
+                    id: "ghost-dot",
+                    typeIndex: getTypeIndex(type),
+                    teamColor: d3
+                        .select("input[name='team-bool']:checked")
+                        .empty()
+                        ? null
+                        : d3
+                              .select("input[name='team-bool']:checked")
+                              .property("value"),
+                    coords: d3.pointer(e),
+                    ghostBool: true,
+                });
             } else if (shiftHeld && firstPoint !== null) {
                 dataStorage.set("firstPoint", null);
                 createShotFromEvent(e, firstPoint);

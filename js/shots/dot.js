@@ -1,3 +1,7 @@
+import {
+    getDetails,
+    getCurrentShotTypes,
+} from "../details/details-functions.js";
 import { cfgSportA } from "../../setup.js";
 import { cfgAppearance } from "../config-appearance.js";
 import { getFilteredRows } from "../table/table-functions.js";
@@ -94,9 +98,6 @@ function createShape({
         if (legendBool) {
             // do not transition for legend
             circle.attr("r", cfgAppearance.legendR);
-        } else if (ghostBool) {
-            // do not transition for ghost dots
-            circle.attr("r", cfgSportA.circleR / 2);
         } else {
             // start with radius 1
             circle.attr("r", 1);
@@ -121,20 +122,10 @@ function createShape({
                 "points",
                 polygon(coords[0], coords[1], cfgAppearance.legendR, sides)
             );
-        } else if (ghostBool) {
-            // do not transition for ghost dots
-            g.append("polygon")
-                .attr("class", "ghost-shot")
-                .style("fill", cfgAppearance[team])
-                .style("stroke-width", "0.05px")
-                .style("stroke", cfgAppearance[team + "Solid"])
-                .attr(
-                    "points",
-                    polygon(coords[0], coords[1], cfgSportA.polyR / 2, sides)
-                );
         } else {
             // start with radius 1
             g.append("polygon")
+                .classed("ghost-shot", ghostBool)
                 .style("fill", cfgAppearance[team])
                 .style("stroke-width", "0.05px")
                 .style("stroke", cfgAppearance[team + "Solid"])
@@ -144,7 +135,9 @@ function createShape({
             // tranform to correct radius
             dotSizeHandler(
                 id,
-                pointTwoBool ? cfgSportA.polyR / 2 : cfgSportA.polyR,
+                pointTwoBool || ghostBool
+                    ? cfgSportA.polyR / 2
+                    : cfgSportA.polyR,
                 1,
                 cfgAppearance.newDotDuration
             );
