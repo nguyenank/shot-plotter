@@ -7,6 +7,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to the spirit of [Semantic Versioning](https://semver.org/spec/v2.0.0.html) as best it can without a proper API.
 
+## [2.4.0] - 2025-01-31
+
+### Added
+
+#### New Playing Areas
+
+-   Men's Lacrosse Net (NCAA)
+-   Women's Lacrosse Net (NCAA)
+
+### Fixed
+
+-   Fix csv upload issues for custom configs with names different from default for default details.
+-   Fix issue with dots not appearing, especially upon transition between heat map and regular view by adjusting display attribute to be style value.
+
+### Changed
+
+-   Remove defunct heat map team select code.
+-   Reset filters on refresh (hopefully temporary fix).
+-   Undo bandage fix for ghost dots not appearing promptly by disabling the size appearance transition for ghost dots.
+
 ## [2.3.0] - 2024-12-26
 
 ### Added
@@ -279,6 +299,7 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 -   Ability to click on rink to create dot and add row to table with the current details.
 -   Ability to download and upload table.
 
+[2.4.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.4.0
 [2.3.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.3.0
 [2.2.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.2.0
 [2.1.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.1.0
