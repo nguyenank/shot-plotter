@@ -22,11 +22,6 @@ export function setUpToggles() {
         .append("div")
         .attr("class", "toggle-area center")
         .attr("id", "heat-map-toggle-area");
-    toggles
-        .append("div")
-        .attr("class", "toggle-area center")
-        .attr("id", "heat-map-team-select")
-        .style("display", "none");
 
     allTogglesFunctionality();
 }
@@ -132,17 +127,12 @@ export function adjCoordsFunctionality() {
 
 export function heatMapFunctionality() {
     function setOn() {
-        d3.select("#dots").attr("display", "none");
+        d3.select("#dots").style("display", "none");
         heatMap();
-        if (existsDetail("#team")) {
-            regenHeatMapTeamNames();
-            d3.select("#heat-map-team-select").style("display", "flex");
-        }
     }
     function setOff() {
-        d3.select("#dots").attr("display", "contents");
+        d3.select("#dots").style("display", "inline");
         d3.select("#heat-map").selectAll("*").remove();
-        d3.select("#heat-map-team-select").style("display", "none");
     }
     if (getCustomSetup().heatMapEnable) {
         d3.select("#heat-map-toggle-area").selectAll("*").remove();
@@ -175,7 +165,6 @@ export function heatMapFunctionality() {
     } else {
         setOff();
         d3.select("#heat-map-toggle-area").selectAll("*").remove();
-        d3.select("#heat-map-team-select").style("display", "none");
     }
 }
 

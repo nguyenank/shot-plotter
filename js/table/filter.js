@@ -254,10 +254,12 @@ function addFilter(filter) {
     afterFiltersUpdate();
 }
 
-export function clearFilters() {
+export function clearFilters(setup = false) {
     dataStorage.set("filters", []);
     createFilterRow(getDetails());
-    select2Filter();
+    if (!setup) {
+        select2Filter();
+    }
     setFilteredRows(getRows());
     afterFiltersUpdate();
 }

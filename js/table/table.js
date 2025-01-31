@@ -62,6 +62,8 @@ function setUpTable() {
     createPage(getStartRow(), getEndRow());
 
     setUpDeleteAllModal("#delete-all-modal");
+
+    clearFilters(true /* setup */);
 }
 
 function updateTableFooter() {
@@ -193,7 +195,7 @@ function createHeaderRow(details) {
         .attr("id", "clear-filter-icon")
         .attr("class", "bi bi-x-square-fill")
         .style("display", "none")
-        .on("click", clearFilters);
+        .on("click", () => clearFilters());
 
     const columns = [{ title: "" }, ...details]; // for check box
     for (const col of details) {

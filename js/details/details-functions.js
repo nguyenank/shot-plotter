@@ -20,6 +20,10 @@ function existsDetail(id) {
     return !d3.select(id).empty();
 }
 
+export function getDetailTitle(id) {
+    return _.find(getDetails(), ["id", _.trim(id, "#")]).title;
+}
+
 export function setCustomSetupUploadFlag(bool) {
     dataStorage.set("customSetupUploadFlag", bool);
 }
