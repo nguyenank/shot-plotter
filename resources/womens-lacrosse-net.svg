@@ -1,0 +1,46 @@
+<svg id="womens-lacrosse-net-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 74 74">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+        <rect x="-0.5" width="73" height="72.2" />
+    </clipPath>
+    <rect width="72" height="72" fill="#f9f9f9" />
+<!-- 
+   <line id="horizon-line" x1="0" y1="36" x2="76" y2="36" stroke="blue" stroke-width="0.1" />
+  <circle id="vanishing-point" cx="36" cy="36" r="1" fill="blue" />
+  <line id="center-of-vision" x1="36" x2="36" y1="0" y2="200" stroke="blue" stroke-width="0.1" />
+    <line id="picture-plane" x1="0" x2="72" y1="80" y2="80" stroke="red" stroke-width="0.1" />
+
+    <path id="top-down" d="M 30 130 L 36 116 L 42 130" stroke="red" stroke-width="0.4" fill="transparent" />
+    <path id="extra" d="M 30 130 L 30 116 L 42 116 L 42 130" stroke="red" stroke-width="0.2" fill="transparent" />
+  
+    <line x1="36" y1="140.32702" x2="0.95" y2="80" stroke-width="0.1" stroke="green" stroke-dasharray="0.5"/>
+    <circle cx="0.95" cy="80" r="1" fill="green" />
+    <circle cx="0.95" cy="36" r="1" fill="green" />
+    <line x1="36" y1="140.32702" x2="71.05" y2="80" stroke-width="0.1" stroke="green" stroke-dasharray="0.5"/>
+    <circle cx="71.05" cy="80" r="1" fill="green" />
+    <circle cx="71.05" cy="36" r="1" fill="green" />
+
+    <line x1="36" y1="140.32702" x2="21.12098" y2="80" stroke-width="0.1" stroke="magenta" stroke-dasharray="0.5"/>
+    <circle cx="21.12098" cy="80" r="1" fill="magenta" />
+    <circle cx="21.12098" cy="36" r="1" fill="magenta" />
+    <line x1="36" y1="140.32702" x2="50.87902" y2="80" stroke-width="0.1" stroke="magenta" stroke-dasharray="0.5"/>
+    <circle cx="50.87902" cy="80" r="1" fill="magenta" />
+    <circle cx="50.87902" cy="36" r="1" fill="magenta" />
+    <rect x="21.12098" y="21.12098" height="29.75804" width="29.75804" stroke-width="0.1" stroke="magenta" stroke-dasharray="0.5" fill="transparent"/>
+
+
+    <circle id="vantage" cx="36" cy="140.32702" r="1" fill="blue" /> -->
+
+    <path id="net-lines" d="M 0.95 0.95 L 36 50.87902 L 71.05 0.95" stroke="#dfdfdf" stroke-width="0.4" fill="transparent"/>
+
+    <path id="back-poles" d="M 0.95 72 L 36 50.87902 L 71.05 72" stroke="#dbab53" stroke-width="1.9" fill="#d7ddd7"/>
+
+    <path id="frame" d="M 0.95 72 L 0.95 0.95 L 71.05 0.95 L 71.05 72" stroke="orange" stroke-width="1.9" fill="transparent"/>
+
+    <!-- <circle id="ball" cx="36" cy="36" r="1.25" fill="blue" /> -->
+
+    <rect id="ground" x="-2" y="72" width="75" height="0.4" fill="#036602" />
+    <rect id="outside-perimeter" width="72" height="72" fill="transparent" />
+  </g>
+</svg>
+

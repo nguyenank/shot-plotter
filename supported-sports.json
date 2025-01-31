@@ -1139,6 +1139,72 @@
             ]
         },
         {
+            "id": "mens-lacrosse-net",
+            "name": "Men's Lacrosse Net",
+            "units": "inches",
+            "specifications": "National Collegiate Athletic Association (2025 & 2026)",
+            "dimensions": "72 x 72 (75.8 x 73.9 including posts)",
+            "scoringArea": null,
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "75.8",
+                "height": "73.9",
+                "circleR": "1.137",
+                "polyR": "1.563375",
+                "fontSize": "0.085275rem",
+                "strokeWidth": "0.28425px",
+                "heatMapScale": 2.198768689533861,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
             "id": "womens-lacrosse",
             "name": "Women's Lacrosse",
             "units": "yards",
@@ -1205,6 +1271,72 @@
                         { "value": "Miss" },
                         { "value": "Turnover" },
                         { "value": "Ground Ball" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true }
+            ]
+        },
+        {
+            "id": "womens-lacrosse-net",
+            "name": "Women's Lacrosse Net",
+            "units": "inches",
+            "specifications": "National Collegiate Athletic Association (2024 & 2025)",
+            "dimensions": "68.2 x 70.1 (72 x 72 including posts)",
+            "scoringArea": null,
+            "perimeter": "#outside-perimeter",
+            "appearance": {
+                "width": "72",
+                "height": "72",
+                "circleR": "1.137",
+                "polyR": "1.563375",
+                "fontSize": "0.085275rem",
+                "strokeWidth": "0.28425px",
+                "heatMapScale": 2.198768689533861,
+                "heatMapLowOpacity": 0.01,
+                "heatMapHighOpacity": 0.25
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Quarter",
+                    "id": "quarter",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "player",
+                    "title": "Player",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Type",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Shot", "selected": true },
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
