@@ -29,6 +29,10 @@ export function indexSetup() {
     });
 }
 
+export function setCfgSportGoalCoords(newGoalCoords) {
+    cfgSportGoalCoords = newGoalCoords;
+}
+
 export function setup(s) {
     sport = s;
     dataStorage = localDataStorage(sport);
