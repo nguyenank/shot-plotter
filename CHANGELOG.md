@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to the spirit of [Semantic Versioning](https://semver.org/spec/v2.0.0.html) as best it can without a proper API.
 
+## [2.4.1] - 2025-03-29
+
+### Fixed
+
+-   Fix goal coordinates being off for customizable dimension playing areas.
+
 ## [2.4.0] - 2025-01-31
 
 ### Added
@@ -299,6 +305,7 @@ and this project adheres to the spirit of [Semantic Versioning](https://semver.o
 -   Ability to click on rink to create dot and add row to table with the current details.
 -   Ability to download and upload table.
 
+[2.4.1]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.4.1
 [2.4.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.4.0
 [2.3.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.3.0
 [2.2.0]: https://github.com/nguyenank/shot-plotter/releases/tag/v2.2.0

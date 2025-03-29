@@ -1,4 +1,10 @@
-import { sport, cfgSportA, dataStorage } from "../../setup.js";
+import {
+    sport,
+    cfgSportA,
+    dataStorage,
+    cfgSportGoalCoords,
+    setCfgSportGoalCoords,
+} from "../../setup.js";
 import { setRows, getRows } from "../table/table-functions.js";
 import { minMaxes } from "./min-max.js";
 
@@ -87,6 +93,11 @@ function customSoccerPlayingAreaSetup() {
     const eighteenyd = inYards ? 18 : 16.5;
     const goalarea = inYards ? 6 : 5.5;
     const arc = inYards ? 8 : 7.312;
+
+    setCfgSportGoalCoords([
+        [0, halfh],
+        [w, halfh],
+    ]);
 
     const svg = d3.select(`#${sport}-svg`);
     svg.attr("viewBox", `-1 -1 ${w + 2} ${h + 2}`);
@@ -197,6 +208,12 @@ function customIndoorLacrossePlayingAreaSetup() {
     const halfw = w / 2;
     const halfh = h / 2;
 
+    const goalLine = 12;
+    setCfgSportGoalCoords([
+        [goalLine, halfh],
+        [w - goalLine, halfh],
+    ]);
+
     if (w !== 0 && h !== 0 && (storedWidth !== w || storedHeight !== h)) {
         dataStorage.set("width", w);
         dataStorage.set("height", h);
@@ -287,16 +304,18 @@ function customIndoorLacrossePlayingAreaSetup() {
         const goal_depth = Math.sqrt(4.5 ** 2 - halfgoal ** 2);
         ga.select(`#${dir}-goal-net`).attr(
             "d",
-            `M 12 ${halfh - halfgoal}
-                 L ${12 - goal_depth} ${halfh}
-                 L 12 ${halfh + halfgoal}`
+            `M ${goalLine} ${halfh - halfgoal}
+                 L ${goalLine - goal_depth} ${halfh}
+                 L ${goalLine} ${halfh + halfgoal}`
         );
 
         const intersect = Math.sqrt(9.25 ** 2 - (goal_depth - 1) ** 2);
         ga.select(`#${dir}-goal-crease`).attr(
             "d",
-            `M ${12 - goal_depth - 1} ${halfh - intersect}
-             A 9.25 9.25 0 1 1  ${12 - goal_depth - 1} ${halfh + intersect}
+            `M ${goalLine - goal_depth - 1} ${halfh - intersect}
+             A 9.25 9.25 0 1 1  ${goalLine - goal_depth - 1} ${
+                halfh + intersect
+            }
              Z`
         );
     }
@@ -355,6 +374,12 @@ function customIceHockeyPlayingAreaSetup() {
 
     const halfw = w / 2;
     const halfh = h / 2;
+
+    const iihfGoalLineDistance = 4;
+    setCfgSportGoalCoords([
+        [iihfGoalLineDistance, halfh],
+        [w - iihfGoalLineDistance, halfh],
+    ]);
 
     if (w !== 0 && h !== 0 && (storedWidth !== w || storedHeight !== h)) {
         dataStorage.set("width", w);
