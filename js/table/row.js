@@ -20,6 +20,7 @@ import { heatMap } from "../toggles.js";
 import { dotSizeHandler } from "../shots/dot.js";
 import { cfgAppearance } from "../config-appearance.js";
 import { cfgSportA } from "../../setup.js";
+import { triggerDeleteStat } from "../roster/roster-state.js";
 
 function createNewRow(id, rowData, specialData) {
     const numRows = getNumRows() + 1;
@@ -152,6 +153,13 @@ function createRowFromData(
 
 function deleteHandler(id) {
     event.stopPropagation();
+
+    // If this is a player-stat row, notify roster to clean up marker + count
+    const deletedRow = getRows().find(r => r.id === id);
+    if (deletedRow?.specialData?.isStatRow) {
+        triggerDeleteStat(id);
+    }
+
     const rows = _.differenceBy(getRows(), [{ id: id }], "id").map(function (
         x,
         i
@@ -257,4 +265,4 @@ function selectHandler(id, checked, teamColor, polygonBool) {
     }
 }
 
-export { createNewRow, createRowFromData };
+export { createNewRow, createRowFromData, deleteHandler };

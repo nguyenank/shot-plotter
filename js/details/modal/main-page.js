@@ -23,6 +23,7 @@ import {
     heatMapFunctionality,
     allTogglesFunctionality,
 } from "../../toggles.js";
+import { updateRinkLabels } from "../../shots/shot.js";
 import { select2Filter } from "../../table/filter.js";
 import { select2Dropdown } from "../widgets/widgets-special.js";
 
@@ -292,6 +293,8 @@ function saveChanges(e) {
     teamLegend();
     select2Filter();
 
+    updateRinkLabels();
+
     $("#details-modal").modal("hide"); // default js doesn't work for some reason
 }
 
@@ -365,6 +368,22 @@ function createExplainText(id = "#explain-text") {
 function createAppearanceOptions(id = "#appearance-options") {
     const appearanceOptions = d3.select(id);
     appearanceOptions.append("h5").text("Appearance Options");
+
+    // Rink size switcher
+    const isIIHF = sport === "ice-hockey-iihf";
+    const otherHref = isIIHF ? "./ice-hockey.html" : "./ice-hockey-iihf.html";
+    const currentLabel = isIIHF ? "IIHF (60 × 30 m)" : "NHL (200 × 85 ft)";
+    const otherLabel = isIIHF ? "Switch to NHL (200 × 85 ft)" : "Switch to IIHF (60 × 30 m)";
+
+    let rinkRow = appearanceOptions.append("div").attr("class", "page-size-form");
+    rinkRow.append("span").html(`Rink Size: <strong>${currentLabel}</strong>`);
+    rinkRow
+        .append("a")
+        .attr("href", otherHref)
+        .attr("class", "btn grey-btn small-text")
+        .style("margin-left", "0.75rem")
+        .text(otherLabel);
+
     const customSetup = getCustomSetup();
 
     let pageSizeField = appearanceOptions

@@ -5,6 +5,8 @@ import { setUpShots } from "./js/shots/shot.js";
 import { setUpTable } from "./js/table/table.js";
 import { setUpCSVDownloadUpload } from "./js/csv.js";
 import { setUpLegend, shotTypeLegend } from "./js/shots/legend.js";
+import { setUpRoster } from "./js/roster/roster.js";
+import { setUpSummary } from "./js/summary/summary.js";
 import { select2Dropdown } from "./js/details/widgets/widgets-special.js";
 import { cfgOtherSetup } from "./js/details/config-details.js";
 import { customCardSetup } from "./js/custom-setups/card-setup.js";
@@ -66,6 +68,9 @@ export function setup(s) {
         setUpShots();
         setUpCSVDownloadUpload();
         setUpLegend();
+        setUpRoster();
+        setUpSummary();
+        setUpResetButton();
 
         d3.select("h1")
             .attr("href", "./")
@@ -115,4 +120,17 @@ export function setup(s) {
             });
         });
     });
+}
+
+function setUpResetButton() {
+    d3.select(".header")
+        .append("button")
+        .attr("class", "reset-all-btn")
+        .attr("title", "Clear all shots, roster stats and settings")
+        .text("Reset All Data")
+        .on("click", () => {
+            if (!confirm("This will permanently clear all shots, roster stats, and settings. Continue?")) return;
+            localStorage.clear();
+            location.reload();
+        });
 }

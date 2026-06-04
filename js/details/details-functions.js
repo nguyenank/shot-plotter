@@ -40,22 +40,21 @@ export function resetCustomSetupUploadFlag() {
 
 function getCurrentShotTypes() {
     let options = [];
-    if (existsDetail("shot-type")) {
-        d3.select("#shot-type-select")
-            .selectAll("option")
-            .each(function () {
-                let obj = {
-                    value: d3.select(this).property("value"),
-                };
-                if (
-                    d3.select("#shot-type-select").property("value") ===
-                    obj.value
-                ) {
-                    obj["selected"] = true;
-                }
+    if (!existsDetail("shot-type")) return options;
 
-                options.push(obj);
+    const sel = d3.select("#shot-type-select");
+    if (!sel.empty()) {
+        sel.selectAll("option").each(function () {
+            options.push({
+                value: d3.select(this).property("value"),
+                ...(sel.property("value") === this.value ? { selected: true } : {}),
             });
+        });
+    } else {
+        // Radio button mode
+        d3.selectAll('input[name="shot-type"]').each(function () {
+            options.push({ value: this.value, ...(this.checked ? { selected: true } : {}) });
+        });
     }
     return options;
 }

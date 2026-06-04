@@ -1,0 +1,188 @@
+Period,Team,Type,Player,X,Y
+1,Perth,FO Loss,12,3.60,1.90
+1,Perth,Hits,23,-54.40,34.70
+1,Canberra ,Shot,,-67.20,16.70
+1,Perth,FO Win,93,-66.00,15.10
+1,Canberra ,Shot,,-62.00,1.90
+1,Perth,FO Loss,19,-67.20,21.90
+1,Perth,FO Loss,19,-62.80,18.70
+1,Canberra ,Shot,,-30.40,15.90
+1,Canberra ,Shot,,-38.80,-2.10
+1,Perth,FO Win,12,-62.40,20.30
+1,Perth,Hits,25,83.20,-26.50
+1,Canberra ,Shot,,-68.00,3.50
+1,Perth,Shot,,63.60,1.10
+1,Canberra ,Shot,,-48.40,-33.30
+1,Perth,Hits,19,-86.40,23.90
+1,Canberra ,Shot,,-85.60,28.70
+1,Perth,Hits,16,-77.20,35.10
+1,Canberra ,Shot,,-30.80,9.10
+1,Perth,Hits,12,-65.20,-36.50
+1,Canberra ,Shot,,-84.80,3.50
+1,Perth,FO Win,93,-15.60,-22.90
+1,Perth,Shot,,49.60,20.70
+1,Canberra ,Shot,,-50.80,11.50
+1,Perth,Hits,8,29.20,-33.70
+1,Perth,Shot,,85.60,-13.70
+1,Perth,FO Win,19,73.60,-17.70
+1,Perth,Hits,32,58.80,-35.70
+1,Perth,Hits,32,66.00,-34.10
+1,Perth,FO Win,12,70.00,-26.90
+1,Perth,Hits,81,-81.60,33.10
+1,Canberra ,Shot,,-49.20,3.10
+1,Perth,FO Win,93,-55.60,11.10
+1,Canberra ,Shot,,-54.80,10.70
+1,Canberra ,Shot,,-32.80,23.10
+1,Perth,FO Loss,93,-65.20,20.70
+1,Perth,Hits,11,-47.20,-28.90
+1,Perth,FO Loss,19,68.00,-21.70
+1,Canberra ,Shot,,-49.60,-28.90
+1,Perth,Hits,3,24.80,26.70
+1,Canberra ,Shot,,-62.80,12.30
+1,Canberra ,Shot,,-49.60,-24.50
+1,Perth,Shot,,66.80,-5.30
+1,Perth,FO Loss,93,-65.20,-21.30
+1,Perth,FO Loss,16,70.40,-22.50
+1,Perth,Shot,,53.60,-13.70
+1,Perth,FO Win,16,68.00,-21.30
+1,Perth,Hits,25,92.00,24.30
+1,Perth,Hits,13,-85.60,-27.30
+1,Perth,FO Win,12,19.20,-22.10
+1,Perth,Shot,,66.40,16.30
+1,Canberra ,Shot,,-53.60,23.50
+1,Perth,FO Loss,93,-66.00,21.50
+1,Canberra ,Shot,,-77.60,-28.10
+1,Perth,Shot,,28.40,17.90
+1,Perth,FO Loss,93,68.80,19.90
+1,Perth,Shot,,34.40,25.10
+1,Perth,FO Win,19,-67.60,-21.30
+1,Canberra ,Shot,,-46.00,-23.70
+1,Perth,FO Win,19,-62.00,-23.30
+1,Perth,Hits,16,-76.00,-34.90
+1,Canberra ,Shot,,-34.00,-35.30
+1,Perth,FO Loss,19,-62.80,-21.70
+1,Perth,Hits,27,84.40,33.90
+1,Canberra ,Shot,,-28.00,-36.50
+1,Perth,Hits,25,62.80,-39.70
+1,Perth,FO Loss,12,70.80,-20.50
+1,Canberra ,Shot,,-78.80,5.50
+1,Perth,FO Loss,93,-70.40,19.90
+1,Perth,Hits,27,82.40,-26.50
+1,Perth,Hits,71,4.80,37.50
+1,Canberra ,Shot,,-74.40,19.10
+2,Perth,FO Win,19,0.40,-0.50
+2,Perth,FO Win,19,-20.80,-24.90
+2,Perth,FO Loss,93,-69.60,19.90
+2,Perth,Hits,93,88.40,30.30
+2,Perth,Hits,28,-90.40,-27.30
+2,Perth,Shot,,-27.60,12.30
+2,Perth,FO Win,12,-70.80,21.90
+2,Perth,FO Win,12,-1.20,-2.50
+2,Perth,Hits,81,82.80,-32.10
+2,Perth,Hits,81,-24.00,-40.50
+2,Perth,FO Loss,19,-70.40,-25.30
+2,Perth,Hits,32,-33.60,19.10
+2,Perth,Shot,,-60.00,8.30
+2,Perth,FO Win,19,-66.00,18.70
+2,Perth,Hits,32,16.40,25.10
+2,Perth,FO Loss,93,71.20,21.50
+2,Perth,Hits,6,-92.80,1.90
+2,Perth,Shot,,-58.80,0.70
+2,Perth,FO Win,19,-66.00,21.90
+2,Perth,FO Loss,93,68.80,19.50
+2,Canberra ,Shot,,45.20,23.10
+2,Canberra ,Shot,,78.80,11.50
+2,Perth,Goal,,-60.00,1.90
+2,Perth,FO Win,12,0.80,-1.70
+2,Perth,Shot,,-74.80,14.70
+2,Perth,Hits,12,-80.80,22.70
+2,Canberra ,Shot,,45.20,4.30
+2,Canberra ,Shot,,57.60,-23.30
+2,Canberra ,Shot,,62.00,-7.70
+2,Perth,Hits,8,2.40,-32.90
+2,Perth,Hits,3,-48.40,37.50
+2,Perth,FO Loss,12,-66.80,23.10
+2,Perth,FO Loss,12,-67.60,-22.50
+2,Perth,Shot,,-55.60,20.30
+2,Perth,Hits,8,-81.20,31.10
+2,Perth,FO Win,19,-69.60,22.30
+2,Canberra ,Shot,,67.60,-2.50
+2,Perth,Hits,19,69.60,-35.30
+2,Perth,Shot,,-60.80,-10.90
+2,Perth,Hits,89,-83.60,31.90
+2,Perth,FO Win,93,-69.60,19.90
+2,Perth,Shot,,-54.80,10.70
+2,Perth,FO Win,93,-68.40,22.70
+2,Perth,FO Loss,93,20.80,-22.10
+2,Canberra ,Shot,,67.20,-10.90
+2,Perth,FO Loss,93,70.80,-20.50
+2,Perth,Goal,,-42.80,-2.50
+2,Perth,FO Win,12,1.20,0.30
+2,Canberra ,Shot,,57.20,-0.90
+2,Perth,FO Win,12,70.80,23.50
+2,Perth,FO Win,93,70.00,17.50
+2,Canberra ,Shot,,53.60,-20.90
+2,Perth,Hits,11,87.20,20.70
+2,Perth,FO Win,19,-69.60,20.70
+2,Perth,Hits,19,-66.80,35.90
+2,Perth,FO Win,19,70.00,21.50
+3,Perth,FO Loss,19,1.60,1.10
+3,Perth,Hits,11,-95.20,15.90
+3,Canberra ,Shot,,-70.00,-0.90
+3,Perth,FO Win,12,-67.60,24.70
+3,Perth,Hits,19,-85.20,-31.30
+3,Canberra ,Shot,,-40.40,-10.90
+3,Perth,FO Loss,19,-70.40,-22.10
+3,Perth,FO Win,93,-68.80,-24.10
+3,Canberra ,Shot,,-32.80,-14.10
+3,Perth,FO Loss,93,-66.00,20.30
+3,Perth,Hits,71,-92.40,-16.50
+3,Perth,Hits,11,-86.00,29.50
+3,Perth,Hits,81,-89.20,28.30
+3,Perth,FO Loss,19,69.60,-22.10
+3,Perth,Shot,,41.20,11.90
+3,Perth,FO Win,19,71.60,19.50
+3,Perth,FO Loss,19,70.00,19.10
+3,Perth,Hits,25,78.40,31.10
+3,Perth,Hits,15,84.80,-25.70
+3,Perth,Hits,19,92.00,31.50
+3,Perth,Goal,,71.60,0.30
+3,Perth,FO Win,93,1.60,1.90
+3,Perth,FO Win,12,21.20,-23.30
+3,Canberra ,Shot,,-33.20,21.10
+3,Canberra ,Shot,,-82.00,-7.30
+3,Canberra ,Shot,,-34.80,-29.70
+3,Perth,Hits,8,30.80,40.30
+3,Perth,FO Loss,19,71.60,-24.90
+3,Perth,Hits,27,95.20,-20.10
+3,Perth,Shot,,83.60,-11.30
+3,Perth,Hits,93,-94.40,8.30
+3,Canberra ,Goal,,-80.00,-12.10
+3,Perth,FO Loss,19,2.40,1.10
+3,Perth,Shot,,56.40,20.30
+3,Perth,Hits,89,90.00,-29.70
+3,Canberra ,Goal,,-81.60,24.30
+3,Perth,FO Win,93,0.00,-2.10
+3,Perth,Hits,15,71.20,-35.30
+3,Perth,FO Loss,93,-64.40,-18.50
+3,Perth,Hits,8,82.80,-28.10
+3,Perth,FO Loss,19,72.40,21.90
+3,Canberra ,Shot,,-58.40,-0.10
+3,Perth,Hits,16,-84.40,-32.90
+3,Perth,FO Loss,93,-68.40,-24.50
+3,Perth,FO Loss,93,-71.20,-27.30
+3,Perth,FO Loss,93,-66.80,-24.10
+3,Canberra ,Goal,,-73.60,-12.90
+3,Perth,FO Loss,19,2.00,0.30
+3,Perth,FO Loss,19,-2.00,1.50
+3,Perth,Hits,8,82.80,-31.30
+3,Perth,Shot,,33.20,-28.50
+3,Perth,FO Loss,93,67.20,-21.70
+OT,Perth,FO Loss,93,1.60,1.50
+OT,Perth,Hits,19,22.80,-38.50
+OT,Perth,Hits,19,30.80,-40.10
+OT,Perth,Shot,,54.40,13.10
+OT,Perth,FO Loss,71,74.00,-23.30
+OT,Perth,Shot,,57.20,-19.30
+OT,Perth,FO Win,93,68.40,-23.70
+OT,Canberra ,Shot,,-58.80,-4.90

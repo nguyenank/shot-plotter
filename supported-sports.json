@@ -46,15 +46,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -62,9 +56,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -113,7 +105,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -186,15 +178,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -202,9 +188,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -257,15 +241,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -273,9 +251,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -327,15 +303,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -343,9 +313,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -394,7 +362,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -461,7 +429,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -532,7 +500,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -604,7 +572,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -676,7 +644,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -748,7 +716,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -820,7 +788,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -898,7 +866,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -971,7 +939,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1040,7 +1008,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1112,7 +1080,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1181,7 +1149,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1251,7 +1219,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1320,7 +1288,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1389,15 +1357,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -1405,9 +1367,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -1462,15 +1422,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -1478,9 +1432,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -1530,7 +1482,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1599,7 +1551,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1668,7 +1620,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1737,7 +1689,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1810,15 +1762,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -1826,9 +1772,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -1877,7 +1821,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -1948,15 +1892,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -1964,9 +1902,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -2020,15 +1956,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -2036,9 +1966,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },
@@ -2087,7 +2015,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -2157,7 +2085,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -2229,7 +2157,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -2301,7 +2229,7 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
                 },
@@ -2373,15 +2301,9 @@
                     "title": "Team",
                     "className": "team-select",
                     "id": "team",
-                    "blueTeamName": "Home",
+                    "blueTeamName": "PER",
                     "orangeTeamName": "Away",
                     "checked": "blue-team-select"
-                },
-                {
-                    "type": "player",
-                    "title": "Player",
-                    "id": "player-input",
-                    "defaultValue": ""
                 },
                 {
                     "type": "shot-type",
@@ -2389,9 +2311,7 @@
                     "id": "shot-type",
                     "options": [
                         { "value": "Shot", "selected": true },
-                        { "value": "Goal" },
-                        { "value": "Block" },
-                        { "value": "Miss" }
+                        { "value": "Goal" }
                     ]
                 },
                 { "type": "x", "title": "X", "id": "x", "noWidget": true },

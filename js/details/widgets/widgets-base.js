@@ -1,29 +1,28 @@
 import { cfgDetails } from "../config-details.js";
 
 function createRadioButtons(selectId, { id, title, options }) {
-    d3.select(selectId)
+    const container = d3.select(selectId)
         .append("div")
         .attr("class", cfgDetails.detailClass)
-        .attr("id", id)
-        .append("h3")
-        .text(title)
-        .attr("class", "center");
+        .attr("id", id);
+
+    container.append("h3").text(title).attr("class", "center");
+
+    const btnGroup = container.append("div")
+        .attr("class", "detail-radio-group")
+        .attr("role", "group");
 
     for (let option of options) {
-        let div = d3
-            .select("#" + id)
-            .append("div")
-            .attr("class", "form-check vertical");
-
-        div.append("input")
-            .attr("class", "form-check-input")
+        btnGroup.append("input")
+            .attr("class", "btn-check")
             .attr("type", "radio")
             .attr("name", id)
-            .attr("id", option.value) // sanitize, make sure no duplicate values
+            .attr("id", option.value)
             .attr("value", option.value)
-            .attr("checked", option.checked);
-        div.append("label")
-            .attr("class", "form-check-label")
+            .attr("autocomplete", "off")
+            .attr("checked", option.checked || null);
+        btnGroup.append("label")
+            .attr("class", "btn detail-radio-btn")
             .attr("for", option.value)
             .text(option.value);
     }

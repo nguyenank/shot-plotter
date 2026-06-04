@@ -1,0 +1,7 @@
+[build]
+builder = "dockerfile"
+
+[deploy]
+healthcheckPath = "/html/"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"

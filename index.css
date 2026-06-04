@@ -45,6 +45,28 @@
     text-decoration: none; }
 
 /* general  */
+.header { position: relative; }
+
+.header-logo {
+  height: 56px;
+  width: auto;
+  margin-right: 0.75rem; }
+
+.reset-all-btn {
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  background: #fff0f0;
+  border: 1px solid #e63946;
+  border-radius: 0.2rem;
+  color: #e63946;
+  cursor: pointer; }
+  .reset-all-btn:hover {
+    background: #e63946;
+    color: white; }
+
 h1 {
   cursor: pointer;
   font-weight: bold; }
@@ -97,10 +119,60 @@ ul {
 
 /* shot info */
 .shot-info {
-  width: 30%;
-  padding: 1rem;
+  width: 25%;
+  padding: 0.6rem 0.75rem;
   margin-bottom: 1rem;
   flex-grow: 1; }
+
+/* pill-style radio buttons */
+.detail-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  justify-content: center; }
+
+.detail-radio-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: 2px solid #adb5bd;
+  background-color: #f8f9fa;
+  color: #495057;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  line-height: 1.2; }
+
+.detail-radio-btn:hover {
+  background-color: #e9ecef;
+  border-color: #6c757d; }
+
+.btn-check:checked + .detail-radio-btn {
+  background-color: #0033A0;
+  border-color: #0033A0;
+  color: white; }
+
+.btn-check:checked + .detail-team-away {
+  background-color: #C8102E;
+  border-color: #C8102E;
+  color: white; }
+
+.team-name-inputs {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+  justify-content: center; }
+
+.team-name-input {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  border: 1px solid #aaaaaa;
+  border-radius: 0.25rem;
+  padding: 0.2rem 0.4rem;
+  width: 50%;
+  min-width: 0; }
 
 select {
   width: 100%; }
@@ -367,6 +439,8 @@ table .centered-cell {
   vertical-align: middle; }
 
 /* playing area */
+.period-hidden { visibility: hidden !important; }
+
 #playing-area {
   cursor: crosshair; }
   #playing-area #custom-pa-error-message {
@@ -460,6 +534,185 @@ div.tooltip {
   background: #aaaaaa;
   border-radius: 0.5rem;
   pointer-events: none; }
+
+/* roster panel */
+#roster-panel {
+  margin-top: 1.5rem; }
+
+.roster-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem; }
+
+.roster-mode {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  background: #f2f4f5;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.75rem;
+  margin-bottom: 0.75rem; }
+
+.roster-mode-ready {
+  background: #e8f8f0;
+  border-color: #2dc653;
+  color: #1a7a3a;
+  font-weight: 600; }
+
+.add-player-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  align-items: center; }
+
+.roster-input {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  border: 1px solid #aaaaaa;
+  border-radius: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85rem; }
+
+input[type="text"].roster-input-num  { width: 3.5rem; flex: 0 0 3.5rem; }
+input[type="text"].roster-input-name { width: auto; flex: 1 1 auto; }
+
+.roster-csv-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem; }
+
+.roster-csv-btn {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  border: 1px solid #aaaaaa;
+  border-radius: 0.2rem; }
+
+.roster-upload-label {
+  display: inline-flex;
+  align-items: center; }
+
+.roster-table {
+  font-size: 0.85rem;
+  width: 100%; }
+
+.roster-table thead th {
+  font-weight: 600;
+  background-color: #eaecef;
+  border: 1px solid #aaaaaa;
+  padding: 0.35rem 0.5rem;
+  text-align: center; }
+
+.roster-stat-hdr {
+  transition: background-color 0.15s, color 0.15s; }
+
+.roster-stat-hdr:hover {
+  background-color: #dee0e3 !important; }
+
+.roster-stat-active:hover {
+  opacity: 0.85; }
+
+.roster-table tbody td {
+  padding: 0.3rem 0.5rem;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid #ddd; }
+
+.roster-table tbody td:nth-child(2) {
+  text-align: left; }
+
+.roster-row:hover {
+  background-color: #f2f4f5; }
+
+.roster-player-active {
+  background-color: #dce8ff !important;
+  font-weight: 600; }
+
+.roster-col-num  { width: 2.5rem; }
+.roster-col-name {
+  width: 6rem;
+  max-width: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+.roster-col-stat {
+  width: 6.5rem;
+  text-align: center;
+  position: relative; }
+.roster-col-del  { width: 2rem; }
+
+.roster-del-btn {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  line-height: 1;
+  border: 1px solid #aaa; }
+
+.roster-minus-btn {
+  font-size: 0.75rem;
+  padding: 0 0.35rem;
+  line-height: 1.2;
+  border: 1px solid #aaa;
+  position: absolute;
+  right: 0.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.15s; }
+
+.roster-row:hover .roster-minus-btn {
+  opacity: 1; }
+
+/* ── Summary tab ── */
+#main-tabs { margin-top: 0.5rem; margin-bottom: 0; }
+.tab-content { padding-top: 1rem; }
+
+.summary-filter-bar, .summary-type-bar {
+  display: flex; gap: 0.4rem; justify-content: center; margin-bottom: 0.5rem; }
+
+.summary-period-btn, .summary-type-btn {
+  padding: 0.2rem 0.7rem; font-size: 0.85rem;
+  border: 1px solid #aaaaaa; border-radius: 0.2rem; cursor: pointer; }
+
+.summary-period-active {
+  background-color: #0033A0; color: white; border-color: #0033A0; }
+.summary-period-active:hover { background-color: #002080; }
+
+.summary-type-btn { font-weight: 500; }
+
+.summary-counts {
+  font-size: 0.95rem; font-weight: 400; gap: 1.5rem; margin-bottom: 0.5rem; }
+
+.summary-sep        { color: #aaaaaa; }
+.summary-offensive  { color: rgba(53, 171, 169, 1); }
+.summary-defensive  { color: rgba(234, 142, 72, 1); }
+
+#summary-rink-svg { display: block; margin: 0 auto; }
+#summary-container svg { cursor: default; }
+
+.summary-tables-row {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+.summary-table-wrap { flex: 1; min-width: 260px; }
+
+.summary-table-title {
+  font-weight: 700; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.summary-stat-table {
+  font-size: 0.82rem; width: 100%; }
+
+.summary-stat-table thead th {
+  background-color: #eaecef; font-weight: 600;
+  padding: 0.3rem 0.5rem; text-align: center;
+  border: 1px solid #aaaaaa; }
+
+.summary-stat-table tbody td {
+  text-align: center; padding: 0.25rem 0.5rem;
+  border: 1px solid #ddd; }
+
+.summary-total-row td {
+  font-weight: 700; background-color: #f2f4f5;
+  border-top: 2px solid #aaaaaa; }
 
 @media (max-width: 768px) {
   .main {

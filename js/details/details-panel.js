@@ -72,15 +72,7 @@ function createDetailsPanel(id = "#details") {
                 });
                 break;
             case "shot-type":
-                createDropdown(rowId, data);
-                createTooltip({
-                    id: rowId,
-                    title: data.title,
-                    text: "To add new options, type into the dropdown, then select the new option or press Enter.",
-                });
-                $(".select2").select2({
-                    tags: true,
-                });
+                createShotTypeRadios(rowId, data);
                 break;
             case "radio":
                 createRadioButtons(rowId, data);
@@ -99,6 +91,35 @@ function createDetailsPanel(id = "#details") {
     select2Dropdown();
     d3.select(id).append("hr");
     customizeButton(id);
+}
+
+function createShotTypeRadios(selectId, { id, title, options }) {
+    const container = d3.select(selectId)
+        .append("div")
+        .attr("class", "detail-module")
+        .attr("id", id);
+
+    container.append("h3").text(title).attr("class", "center");
+
+    const btnGroup = container.append("div")
+        .attr("class", "detail-radio-group")
+        .attr("role", "group");
+
+    for (let option of options) {
+        btnGroup.append("input")
+            .attr("class", "btn-check")
+            .attr("type", "radio")
+            .attr("name", id)
+            .attr("id", id + "-" + option.value)
+            .attr("value", option.value)
+            .attr("autocomplete", "off")
+            .attr("checked", option.selected || null);
+        btnGroup.append("label")
+            .attr("class", "btn detail-radio-btn")
+            .attr("for", id + "-" + option.value)
+            .text(option.value);
+    }
+
 }
 
 function customizeButton(id) {

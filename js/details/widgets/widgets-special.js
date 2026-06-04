@@ -41,19 +41,12 @@ function createTooltip({ id, title, text }) {
 }
 
 function teamRadioButtons(id, data) {
-    d3.select(id)
+    const container = d3.select(id)
         .append("div")
         .attr("class", cfgDetails.detailClass + " " + data.class)
-        .attr("id", data.id)
-        .append("h3")
-        .text(data.title)
-        .attr("class", "center");
+        .attr("id", data.id);
 
-    let wrapper = d3
-        .select("." + data.class)
-        .append("div")
-        .attr("class", "form-group");
-    let blueDiv = wrapper.append("div").attr("class", "form-check");
+    container.append("h3").text(data.title).attr("class", "center");
 
     const changeFunction = () => {
         teamLegend();
@@ -62,36 +55,52 @@ function teamRadioButtons(id, data) {
         select2Filter();
     };
 
-    blueDiv
-        .append("input")
-        .attr("class", "form-check-input")
+    const btnGroup = container.append("div")
+        .attr("class", "detail-radio-group")
+        .attr("role", "group");
+
+    btnGroup.append("input")
+        .attr("class", "btn-check")
         .attr("type", "radio")
         .attr("name", "team-bool")
         .attr("id", "blue-team-select")
-        .attr("value", "blueTeam");
-    blueDiv
-        .append("input")
-        .attr("type", "text")
-        .attr("id", "blue-team-name")
-        .attr("value", data.blueTeamName)
-        .on("change", changeFunction);
+        .attr("value", "blueTeam")
+        .attr("autocomplete", "off");
+    btnGroup.append("label")
+        .attr("class", "btn detail-radio-btn detail-team-home")
+        .attr("for", "blue-team-select")
+        .text(data.blueTeamName);
 
-    let orangeDiv = wrapper.append("div").attr("class", "form-check");
-    orangeDiv
-        .append("input")
-        .attr("class", "form-check-input")
+    btnGroup.append("input")
+        .attr("class", "btn-check")
         .attr("type", "radio")
         .attr("name", "team-bool")
         .attr("id", "orange-team-select")
-        .attr("value", "orangeTeam");
-    orangeDiv
-        .append("input")
+        .attr("value", "orangeTeam")
+        .attr("autocomplete", "off");
+    btnGroup.append("label")
+        .attr("class", "btn detail-radio-btn detail-team-away")
+        .attr("for", "orange-team-select")
+        .text(data.orangeTeamName);
+
+    container.select("#" + data.checked).attr("checked", true);
+
+    // Editable team name inputs
+    const nameWrap = container.append("div").attr("class", "team-name-inputs");
+    nameWrap.append("input")
         .attr("type", "text")
+        .attr("class", "team-name-input")
+        .attr("id", "blue-team-name")
+        .attr("value", data.blueTeamName)
+        .attr("placeholder", "Home name")
+        .on("change", changeFunction);
+    nameWrap.append("input")
+        .attr("type", "text")
+        .attr("class", "team-name-input")
         .attr("id", "orange-team-name")
         .attr("value", data.orangeTeamName)
+        .attr("placeholder", "Away name")
         .on("change", changeFunction);
-
-    wrapper.select("#" + data.checked).attr("checked", true);
 }
 
 function select2Dropdown() {
