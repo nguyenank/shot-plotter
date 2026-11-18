@@ -1772,7 +1772,7 @@
             "scoringArea": null,
             "perimeter": "#transformations",
             "appearance": {
-                "width": "75",
+                "width": "70",
                 "height": "25",
                 "circleR": "0.75",
                 "polyR": "1.03125",
