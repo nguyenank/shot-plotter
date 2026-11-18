@@ -1764,6 +1764,83 @@
             ]
         },
         {
+            "id": "flag-football",
+            "name": "Flag Football (Non-International Championship)",
+            "units": "yards",
+            "specifications": "International Federation of American Football (2023)",
+            "dimensions": "50 x 25 (70 x 25 including end zones)",
+            "scoringArea": null,
+            "perimeter": "#transformations",
+            "appearance": {
+                "width": "75",
+                "height": "25",
+                "circleR": "0.75",
+                "polyR": "1.03125",
+                "fontSize": "0.05625rem",
+                "strokeWidth": "0.1875px",
+                "heatMapScale": 3.333,
+                "heatMapLowOpacity": 0.1,
+                "heatMapHighOpacity": 0.4
+            },
+            "defaultDetails": [
+                {
+                    "type": "shot-number",
+                    "title": "#",
+                    "id": "shot-number",
+                    "noWidget": true
+                },
+                {
+                    "type": "radio",
+                    "title": "Half",
+                    "id": "half",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "OT" }
+                    ]
+                },
+                {
+                    "type": "team",
+                    "title": "Team",
+                    "className": "team-select",
+                    "id": "team",
+                    "blueTeamName": "Home",
+                    "orangeTeamName": "Away",
+                    "checked": "blue-team-select"
+                },
+                {
+                    "type": "radio",
+                    "title": "Down",
+                    "id": "down",
+                    "options": [
+                        { "value": "1", "checked": true },
+                        { "value": "2" },
+                        { "value": "3" },
+                        { "value": "4" }
+                    ]
+                },
+                {
+                    "type": "player",
+                    "title": "Receiver",
+                    "id": "player-input",
+                    "defaultValue": ""
+                },
+                {
+                    "type": "shot-type",
+                    "title": "Outcome",
+                    "id": "shot-type",
+                    "options": [
+                        { "value": "Complete", "selected": true },
+                        { "value": "Incomplete" }
+                    ]
+                },
+                { "type": "x", "title": "X", "id": "x", "noWidget": true },
+                { "type": "y", "title": "Y", "id": "y", "noWidget": true },
+                { "type": "x", "title": "X2", "id": "x2", "noWidget": true },
+                { "type": "y", "title": "Y2", "id": "y2", "noWidget": true }
+            ]
+        },
+        {
             "id": "soccer-ncaa",
             "name": "Soccer (NCAA)",
             "units": "yards",

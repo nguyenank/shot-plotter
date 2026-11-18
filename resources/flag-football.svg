@@ -1,0 +1,16 @@
+<svg id="flag-football-svg" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox=" -1 -1 72 27">
+  <g id="transformations">
+    <clipPath id="clipBorder">
+      <rect id="background" x="0" width="70" y="0" height="25"/>
+    </clipPath>
+    <rect id="background" x="0" width="70" y="0" height="25" fill="#036602"/>
+    <line id="center-line" x1="35" x2="35" y1="0" y2="70" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <line id="left-goal-line" x1="9.945" x2="9.945" y1="0" y2="70" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <line id="left-1-pt-try-line" x1="14.945" x2="14.945" y1="12" y2="13" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <line id="left-2-pt-try-line" x1="19.945" x2="19.945" y1="12" y2="13" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <line id="right-goal-line" x1="60.055" x2="60.055" y1="0" y2="70" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <line id="right-1-pt-try-line" x1="55.055" x2="55.055" y1="12" y2="13" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <line id="right-2-pt-try-line" x1="50.055" x2="50.055" y1="12" y2="13" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <path id="outside-perimeter" d=" M -0.055 -0.055 L 70.055 -0.055 L 70.055 25.055 L -0.055 25.055 Z" stroke-width="0.11" stroke="#ccc" fill="transparent"/>
+  </g>
+</svg>
