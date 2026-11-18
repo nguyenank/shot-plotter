@@ -4,13 +4,253 @@
       <rect id="background" x="0" width="70" y="0" height="25"/>
     </clipPath>
     <rect id="background" x="0" width="70" y="0" height="25" fill="#036602"/>
-    <line id="center-line" x1="35" x2="35" y1="0" y2="70" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <line id="center-line" x1="35" x2="35" y1="0" y2="25" stroke-width="0.11" stroke="white" fill="transparent"/>
     <line id="left-goal-line" x1="9.945" x2="9.945" y1="0" y2="70" stroke-width="0.11" stroke="white" fill="transparent"/>
     <line id="left-1-pt-try-line" x1="14.945" x2="14.945" y1="12" y2="13" stroke-width="0.11" stroke="white" fill="transparent"/>
     <line id="left-2-pt-try-line" x1="19.945" x2="19.945" y1="12" y2="13" stroke-width="0.11" stroke="white" fill="transparent"/>
     <line id="right-goal-line" x1="60.055" x2="60.055" y1="0" y2="70" stroke-width="0.11" stroke="white" fill="transparent"/>
     <line id="right-1-pt-try-line" x1="55.055" x2="55.055" y1="12" y2="13" stroke-width="0.11" stroke="white" fill="transparent"/>
     <line id="right-2-pt-try-line" x1="50.055" x2="50.055" y1="12" y2="13" stroke-width="0.11" stroke="white" fill="transparent"/>
+    <g id="five-yard-lines">
+          <line id="left-5-yd-line-top" x1="14.945" x2="14.945" y1="13" y2="1.11" stroke-width="0.11" stroke="white" stroke-dasharray="1 0.5" fill="transparent"/>
+          <line id="left-5-yd-line-bottom" x1="14.945" x2="14.945" y1="12" y2="23.89" stroke-width="0.11" stroke="white" stroke-dasharray="1 0.5" fill="transparent"/>
+
+          <line id="left-10-yd-line" x1="19.945" x2="19.945" y1="0.11" y2="24.89" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line id="left-15-yd-line" x1="24.945" x2="24.945" y1="0.11" y2="24.89" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line id="left-20-yd-line" x1="29.945" x2="29.945" y1="0.11" y2="24.89" stroke-width="0.11" stroke="white" fill="transparent"/>
+
+          <line id="right-5-yd-line-top" x1="55.055" x2="55.055" y1="13" y2="1.11" stroke-width="0.11" stroke="white" stroke-dasharray="1 0.5" fill="transparent"/>
+          <line id="right-5-yd-line-bottom" x1="55.055" x2="55.055" y1="12" y2="23.89" stroke-width="0.11" stroke="white" stroke-dasharray="1 0.5" fill="transparent"/>
+
+          <line id="right-10-yd-line" x1="50.055" x2="50.055" y1="0.11" y2="24.89" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line id="right-15-yd-line" x1="45.055" x2="45.055" y1="0.11" y2="24.89" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line id="right-20-yd-line" x1="40.055" x2="40.055" y1="0.11" y2="24.89" stroke-width="0.11" stroke="white" fill="transparent"/>
+    </g>
+    <g id="top-markers">
+    <g id="top-left-yd-markers">
+      <g id="top-left-1-5-markers">
+          <line x1="14.945" x2="14.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="top-left-5-10-markers" transform="translate(5, 0)">
+            <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="top-left-10-15-markers" transform="translate(10, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="top-left-15-20-markers" transform="translate(15, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="top-left-20-25-markers" transform="translate(20, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+    </g>
+    <g id="top-right-yd-markers" transform="translate(25.11, 0)">
+      <g id="top-right-1-5-markers">
+          <line x1="14.945" x2="14.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="top-right-5-10-markers" transform="translate(5, 0)">
+            <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="top-right-10-15-markers" transform="translate(10, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="top-right-15-20-markers" transform="translate(15, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="top-right-20-25-markers" transform="translate(20, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="9.945" x2="9.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+    </g>
+    </g>
+<!--  -->
+    <g id="bottom-markers" transform="translate(0, 23.78)">
+    <g id="bottom-left-yd-markers">
+      <g id="bottom-left-1-5-markers">
+          <line x1="14.945" x2="14.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="bottom-left-5-10-markers" transform="translate(5, 0)">
+            <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="bottom-left-10-15-markers" transform="translate(10, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="bottom-left-15-20-markers" transform="translate(15, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="bottom-left-20-25-markers" transform="translate(20, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+    </g>
+    <g id="bottom-right-yd-markers" transform="translate(25.11, 0)">
+      <g id="bottom-right-1-5-markers">
+          <line x1="14.945" x2="14.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="bottom-right-5-10-markers" transform="translate(5, 0)">
+            <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="bottom-right-10-15-markers" transform="translate(10, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="bottom-right-15-20-markers" transform="translate(15, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="bottom-right-20-25-markers" transform="translate(20, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="9.945" x2="9.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+    </g>
+    </g>
+<!--  -->
+    <g id="center-markers" transform="translate(0, 11.89)">
+    <g id="center-left-yd-markers">
+      <g id="center-left-1-5-markers">
+          <line x1="14.945" x2="14.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="center-left-5-10-markers" transform="translate(5, 0)">
+            <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="center-left-10-15-markers" transform="translate(10, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="center-left-15-20-markers" transform="translate(15, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="center-left-20-25-markers" transform="translate(20, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+    </g>
+    <g id="center-right-yd-markers" transform="translate(25.11, 0)">
+      <g id="center-right-1-5-markers">
+          <line x1="14.945" x2="14.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="center-right-5-10-markers" transform="translate(5, 0)">
+            <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+            <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="center-right-10-15-markers" transform="translate(10, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="center-right-15-20-markers" transform="translate(15, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+      <g id="center-right-20-25-markers" transform="translate(20, 0)">
+          <line x1="13.945" x2="13.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="12.945" x2="12.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="11.945" x2="11.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="10.945" x2="10.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+          <line x1="9.945" x2="9.945" y1="0.11" y2="1.11" stroke-width="0.11" stroke="white" fill="transparent"/>
+      </g>
+    </g>
+    </g>
+
+    <g id="number-markers">
+
+      <text rotate="180" x="21.055" y="3" text-anchor='middle' style='font-size: 1.5px; fill: #FFFFFF; font-family: Domine;' textLength="2.5px" lengthAdjust='spacingAndGlyphs'>01</text>
+      <text rotate="180" x="31.055" y="3" text-anchor='middle' style='font-size: 1.5px; fill: #FFFFFF; font-family: Domine;' textLength="2.5px" lengthAdjust='spacingAndGlyphs'>02</text>
+
+      <text rotate="180" x="51.055" y="3" text-anchor='middle' style='font-size: 1.5px; fill: #FFFFFF; font-family: Domine;' textLength="2.5px" lengthAdjust='spacingAndGlyphs'>01</text>
+      <text rotate="180" x="41.2" y="3" text-anchor='middle' style='font-size: 1.5px; fill: #FFFFFF; font-family: Domine;' textLength="2.5px" lengthAdjust='spacingAndGlyphs'>02</text>
+
+      <text x="19.945" y="22" text-anchor='middle' style='font-size: 1.5px; fill: #FFFFFF; font-family: Domine;' textLength="2.5px" lengthAdjust='spacingAndGlyphs'>10</text>
+      <text x="29.945" y="22" text-anchor='middle' style='font-size: 1.5px; fill: #FFFFFF; font-family: Domine;' textLength="2.5px" lengthAdjust='spacingAndGlyphs'>20</text>
+
+      <text x="50.055" y="22" text-anchor='middle' style='font-size: 1.5px; fill: #FFFFFF; font-family: Domine;' textLength="2.5px" lengthAdjust='spacingAndGlyphs'>10</text>
+      <text x="40.055" y="22" text-anchor='middle' style='font-size: 1.5px; fill: #FFFFFF; font-family: Domine;' textLength="2.5px" lengthAdjust='spacingAndGlyphs'>20</text>
+    </g>
+
     <path id="outside-perimeter" d=" M -0.055 -0.055 L 70.055 -0.055 L 70.055 25.055 L -0.055 25.055 Z" stroke-width="0.11" stroke="#ccc" fill="transparent"/>
   </g>
 </svg>
