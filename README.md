@@ -4,7 +4,7 @@
 
 A [web application](https://shot-plotter.netlify.app/) for plotting events on a sport's playing area with a single click, while keeping track of any other details. The application supports download and upload of .csv files to retrieve that plotted data.
 
-Currently 33 different playing areas across 20 different sports are supported:
+Currently 34 different playing areas across 20 different sports are supported:
 
 -   ice hockey (NHL, IIHF customizable) and ice hockey net (NHL)
 -   floorball (IFF)
@@ -22,6 +22,7 @@ Currently 33 different playing areas across 20 different sports are supported:
 -   indoor lacrosse (NLL customizable)
 -   American football (NFL, NCAA)
 -   Canadian football (CFL, CFL pre-2022 & Amateur)
+-   flag football (5v5 international championship)
 -   soccer (NCAA customizable, IFAB customizable in meters, IFAB customizable in yards) and soccer net (IFAB, NCAA)
 -   Australian rules football (AFL)
 -   rugby union (World Rugby)
